@@ -1,0 +1,116 @@
+#!/bin/sh
+
+function yellowecho {
+    echo -e "\033[1;33m${1}\033[0m"
+}
+function blueecho {
+    echo -e "\033[1;36m${1}\033[0m"
+}
+function redecho {
+    echo -e "\033[1;31m${1}\033[0m"
+}
+
+
+# boost library
+export BOOST_ROOT="${HOME}/local/boost"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xwang95/local/boost:/home/xwang95/local/boost/lib
+export PATH=$PATH:${HOME}/local
+# go to work
+function work {
+    tmux new -AD -s main
+}
+alias dir_size='for f in $("ls"); do du -lsh $f; done;'
+alias eliot="ssh -X eliot.cs.illinois.edu"
+alias run_matlab="matlab -nodesktop -nosplash -r"
+alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
+alias ll="ls -alh"
+function kill_jobs {
+    for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done
+}
+
+# ssh
+#timan100='ssh xwang95@timan100.cs.uiuc.edu';
+#timan101='ssh xwang95@timan101.cs.illinois.edu';
+#timan102='ssh xwang95@timan102.cs.illinois.edu';
+#timan103='ssh xwang95@timan103.cs.illinois.edu';
+#timan104='ssh xwang95@timan104.cs.illinois.edu';
+#qchost='ssh xiaolong@qchost236-223.cs.illinois.edu';
+
+# Setting PATH for Python 3.3
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
+export PATH
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
+export PYTHONPATH=$PYTHONPATH:.
+
+# zsh
+if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
+
+# git
+alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
+alias xg_sl='git --no-pager log --all --branches --graph --decorate'
+
+function jump {
+    if [[ $# == 1 ]]
+    then
+	cd $1
+    fi
+    cd $(pwd -P)
+}
+alias jp="jump"
+
+function lt {
+    if [[ -z "$TMUX" ]] 
+    then
+        while true
+        do
+    	echo "Following starting options are available:"
+    	yellowecho "  (1)	:   ssh timan101"
+        	yellowecho "  (2)	:   ssh timan102"
+        	yellowecho "  (3)	:   ssh timan103"
+        	yellowecho "  (4/t)	:   tmux new -AD -s main"
+        	yellowecho "  (5/n)	:   zsh"
+        	echo $(printf '=%.0s' {1..50})
+        	echo -n "Select One Option From (1) - (5): "
+        	read option
+        	if [[ $option == 1* ]]
+        	then
+        	    echo "  (1)	:   ssh timan101"
+    	    option=1
+    	    break
+        	elif [[ $option == 2* ]]
+        	then
+        	    echo "  (2)	:   ssh timan102"
+    	    option=2
+    	    break
+        	elif [[ $option == 3* ]]
+        	then
+        	    echo "  (3)	:   ssh timan103"
+    	    option=3
+    	    break
+        	elif [[ $option == 4* || $option == t* ]]
+        	then
+        	    echo "  (4)	:   tmux new -AD -s main"
+    	    option=4
+    	    break
+        	elif [[ $option == 5* || $option == n* ]]
+        	then
+        	    echo "  (5)	:   zsh"
+    	    option=5
+    	    break
+    	else
+    	    redecho "  Input Not Recognized..."
+        	fi
+        done
+        [[ $option -eq 1 ]] && ssh timan101
+        [[ $option -eq 2 ]] && ssh timan102
+        [[ $option -eq 3 ]] && ssh timan103
+        [[ $option -eq 4 ]] && work
+    fi
+}
+
+lt
