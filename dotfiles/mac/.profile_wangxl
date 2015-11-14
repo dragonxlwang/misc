@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# color
 function yellowecho {
     echo -e "\033[1;33m${1}\033[0m"
 }
@@ -9,7 +10,8 @@ function blueecho {
 function redecho {
     echo -e "\033[1;31m${1}\033[0m"
 }
-
+ANSI_COLOR_RED="\e[31m"
+ANSI_COLOR_RESET="\e[0m"
 
 # boost library
 export BOOST_ROOT="${HOME}/local/boost"
@@ -53,7 +55,14 @@ if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
 # git
 alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
 alias xg_sl='git --no-pager log --all --branches --graph --decorate'
-
+function xg_rm_last_commit {
+    echo -n "${ANSI_COLOR_RED}Delete Last Commit [Y/N]?${ANSI_COLOR_RESET} "
+    read ans
+    if [[ $ans == (#i)yes || $ans == (#i)y ]]; then
+	yellowecho "deleting..."
+	git reset --hard "HEAD^"
+    fi
+}
 function jump {
     if [[ $# == 1 ]]
     then
