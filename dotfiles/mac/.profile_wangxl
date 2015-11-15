@@ -55,6 +55,8 @@ if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
 # git
 alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
 alias xg_sl='git --no-pager log --all --branches --graph --decorate'
+alias xg_ls='git ls-files'
+alias xg_st='git status'
 function xg_rm_last_commit {
     echo -n "${ANSI_COLOR_RED}Delete Last Commit [Y/N]?${ANSI_COLOR_RESET} "
     read ans
@@ -63,6 +65,24 @@ function xg_rm_last_commit {
 	git reset --hard "HEAD^"
     fi
 }
+alias xg_rk_last_commit='git reset --soft "HEAD^"'
+alias xg_browse='hub browse'
+
+# atom
+function atom_refresh_starred_package_list {
+    apm starred --json > starred.json;
+    node -e 'fs = require("fs"); JSON.parse(fs.readFileSync("starred.json")).forEach(function(item) { console.log(item.name); })' > starred.list;
+    apm unstar `cat starred.list`;
+    apm star --installed;
+    rm starred.json starred.list;
+}
+alias atom_ls_installed_packages='apm list --installed --bare'
+function atom_install_from_list {
+    apm install  $( cat ${1} )
+}
+alias atom_star_installed='apm star --installed'
+alias atom_install_starred='apm stars --install'
+
 function jump {
     if [[ $# == 1 ]]
     then
