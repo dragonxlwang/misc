@@ -84,6 +84,9 @@ alias atom_star_installed='apm star --installed'
 alias atom_install_starred='apm stars --install'
 alias atom_ls_starred='apm stars'
 
+# ipython
+alias start_ipython='ipython notebook'
+
 function jump {
     if [[ $# == 1 ]]
     then
