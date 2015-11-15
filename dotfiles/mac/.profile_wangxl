@@ -25,6 +25,7 @@ alias dir_size='for f in $("ls"); do du -lsh $f; done;'
 alias eliot="ssh -X eliot.cs.illinois.edu"
 alias run_matlab="matlab -nodesktop -nosplash -r"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
+alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 alias ll="ls -alh"
 function kill_jobs {
     for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done
@@ -48,6 +49,9 @@ export PATH
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
 export PYTHONPATH=$PYTHONPATH:.
+
+# Homebrew permission problem
+# sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
 
 # zsh
 if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
@@ -85,6 +89,14 @@ alias atom_install_starred='apm stars --install'
 alias atom_ls_starred='apm stars'
 
 # ipython
+# easy_install ipython
+# brew install freetype
+# brew install pnglib
+# sudo -H easy_install matplotlib
+#
+# one time config for inline matplotlib: http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook-matplotlib-plot-inline
+# cat "c = get_config()" >> /Users/xiaolong/.ipython/profile_default
+# cat 'c.InteractiveShellApp.matplotlib = "inline"' >> /Users/xiaolong/.ipython/profile_default
 alias start_ipython='ipython notebook'
 
 function jump {
