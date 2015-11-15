@@ -89,10 +89,12 @@ alias atom_install_starred='apm stars --install'
 alias atom_ls_starred='apm stars'
 
 # ipython
-# easy_install ipython
+# sudo easy_install ipython
+# brew install pkg-config
 # brew install freetype
 # brew install pnglib
 # sudo -H easy_install matplotlib
+# sudo -H pip install jupyter
 #
 # one time config for inline matplotlib: http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook-matplotlib-plot-inline
 # cat "c = get_config()" >> /Users/xiaolong/.ipython/profile_default
