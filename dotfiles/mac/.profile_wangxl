@@ -82,6 +82,7 @@ function atom_install_from_list {
 }
 alias atom_star_installed='apm star --installed'
 alias atom_install_starred='apm stars --install'
+alias atom_ls_starred='apm stars'
 
 function jump {
     if [[ $# == 1 ]]
