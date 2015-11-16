@@ -123,7 +123,7 @@ function lt {
         	yellowecho "  (5/n)	:   zsh"
         	echo $(printf '=%.0s' {1..50})
         	echo -n "Select One Option From (1) - (5): "
-        	read option
+        	if [[ $# -eq 1 ]]; then echo $1; option=$1; else read option; fi
         	if [[ $option == 1* ]]
         	then
         	    echo "  (1)	:   ssh timan101"
