@@ -31,28 +31,6 @@ function kill_jobs {
     for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done
 }
 
-# ssh
-#timan100='ssh xwang95@timan100.cs.uiuc.edu';
-#timan101='ssh xwang95@timan101.cs.illinois.edu';
-#timan102='ssh xwang95@timan102.cs.illinois.edu';
-#timan103='ssh xwang95@timan103.cs.illinois.edu';
-#timan104='ssh xwang95@timan104.cs.illinois.edu';
-#qchost='ssh xiaolong@qchost236-223.cs.illinois.edu';
-
-# Setting PATH for Python 3.3
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
-export PATH
-
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-export PATH
-export PYTHONPATH=$PYTHONPATH:.
-
-# Homebrew permission problem
-# sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
-
 # zsh
 if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
 
@@ -71,6 +49,33 @@ function xg_rm_last_commit {
 }
 alias xg_rk_last_commit='git reset --soft "HEAD^"'
 alias xg_browse='hub browse'
+
+function jump {
+    if [[ $# == 1 ]]
+    then
+	cd $1
+    fi
+    cd $(pwd -P)
+}
+alias jp="jump"
+
+################################################
+# Mac Specific Settings
+################################################
+
+# Setting PATH for Python 3.3
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
+export PATH
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
+export PYTHONPATH=$PYTHONPATH:.
+
+# Homebrew permission problem
+# sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
 
 # atom
 function atom_refresh_starred_package_list {
@@ -101,17 +106,8 @@ alias atom_ls_starred='apm stars'
 # cat 'c.InteractiveShellApp.matplotlib = "inline"' >> /Users/xiaolong/.ipython/profile_default
 alias start_ipython='cd ${HOME}/ipython; ipython notebook'
 
-function jump {
-    if [[ $# == 1 ]]
-    then
-	cd $1
-    fi
-    cd $(pwd -P)
-}
-alias jp="jump"
-
 function lt {
-    if [[ -z "$TMUX" ]] 
+    if [[ -z "$TMUX" ]]
     then
         while true
         do
