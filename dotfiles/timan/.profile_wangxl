@@ -13,7 +13,7 @@ function redecho {
 
 # boost library
 export BOOST_ROOT="${HOME}/local/boost"
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xwang95/local/boost:/home/xwang95/local/boost/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xwang95/local/boost:/home/xwang95/local/boost/lib:/usr/local/lib
 export PATH=$PATH:/home/xwang95/local:/home/xwang95/resource/vowpal_wabbit
 # go to work
 alias go_work="cd ~/workspace/src; screen"
@@ -68,8 +68,40 @@ function kill_all_xwang95_proc {
 
 alias ll="ls -al"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
-
+alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
+alias ll="ls -alh"
 function kill_jobs {
     for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done
 }
 alias python='/usr/bin/python'
+
+# zsh
+if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
+
+# git
+alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
+alias xg_sl='git --no-pager log --all --branches --graph --decorate'
+alias xg_ls='git ls-files'
+alias xg_st='git status'
+function xg_rm_last_commit {
+    echo -n "${ANSI_COLOR_RED}Delete Last Commit [Y/N]?${ANSI_COLOR_RESET} "
+    read ans
+    if [[ $ans == (#i)yes || $ans == (#i)y ]]; then
+	yellowecho "deleting..."
+	git reset --hard "HEAD^"
+    fi
+}
+alias xg_rk_last_commit='git reset --soft "HEAD^"'
+alias xg_browse='hub browse'
+
+function jump {
+    if [[ $# == 1 ]]
+    then
+	cd $1
+    fi
+    cd $(pwd -P)
+}
+alias jp="jump"
+
+
+
