@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# color
 function yellowecho {
     echo -e "\033[1;33m${1}\033[0m"
 }
@@ -9,71 +10,26 @@ function blueecho {
 function redecho {
     echo -e "\033[1;31m${1}\033[0m"
 }
-
+ANSI_COLOR_RED="\e[31m"
+ANSI_COLOR_RESET="\e[0m"
 
 # boost library
 export BOOST_ROOT="${HOME}/local/boost"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xwang95/local/boost:/home/xwang95/local/boost/lib:/usr/local/lib
 export PATH=$PATH:/home/xwang95/local:/home/xwang95/resource/vowpal_wabbit
 # go to work
-alias go_work="cd ~/workspace/src; screen"
-
-# utility
-alias clean_chrome_session="mv --verbose -f --backup=numbered --target-directory ~/.trash/ /home/xwang95/.config/google-chrome/SingletonLock"
-function clean_nx_sessions {
-    SESSION_PATHS=`find /tmp/nx/xwang95/.nx/ -maxdepth 1 -type d -user $USER`
-    for SESSION in $SESSION_PATHS
-    do
-	echo rm  $SESSION
-	rm  $SESSION
-    done
+function work {
+    tmux new -AD -s main
 }
-alias clean_chrome_profile="/bin/rm -rf /home/xwang95/.config/google-chrome/Default"
-alias killall="killall -u xwang95"
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
-function from_backup {
-    wget sifaka.cs.uiuc.edu/~xwang95/backup/$1
-}
-function to_backup {
-    scp $1 xwang95@timan100.cs.uiuc.edu:~/public_html/backup/
-}
-function from_content {
-    wget sifaka.cs.uiuc.edu/~xwang95/content/$1
-}
-function to_content {
-    scp $1 xwang95@timan100.cs.uiuc.edu:~/public_html/content/
-}
-function from_local {
-    scp xiaolong@qchost236-142.cs.illinois.edu:~/ServerDownloads/$1 ./
-}
-function to_local {
-    scp $1 xiaolong@qchost236-142.cs.illinois.edu:~/ServerDownloads/
-}
-function from_public {
-    wget sifaka.cs.uiuc.edu/~xwang95/public/$1
-}
-function to_public {
-    scp $1 xwang95@timan100.cs.uiuc.edu:~/public_html/public/
-}
-function to_data {
-    scp $1 xwang95@timan100.cs.uiuc.edu:~/public_html/content/data
-}
-
 alias eliot="ssh -X eliot.cs.illinois.edu"
 alias run_matlab="matlab -nodesktop -nosplash -r"
-
-function kill_all_xwang95_proc {
-    for i in $("ps" aux | grep xwang95 | awk '{print $2}' | tac); do kill -9 $i; done;
-}
-
-alias ll="ls -al"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 alias ll="ls -alh"
 function kill_jobs {
     for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done
 }
-alias python='/usr/bin/python'
 
 # zsh
 if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
@@ -103,5 +59,50 @@ function jump {
 }
 alias jp="jump"
 
+################################################
+# Timan Specific Settings
+################################################
 
+alias killall="killall -u xwang95"
+function kill_all_xwang95_proc {
+    for i in $("ps" aux | grep xwang95 | awk '{print $2}' | tac); do kill -9 $i; done;
+}
+alias python='/usr/bin/python'
 
+alias clean_chrome_session="mv --verbose -f --backup=numbered --target-directory ~/.trash/ /home/xwang95/.config/google-chrome/SingletonLock"
+function clean_nx_sessions {
+    SESSION_PATHS=`find /tmp/nx/xwang95/.nx/ -maxdepth 1 -type d -user $USER`
+    for SESSION in $SESSION_PATHS
+    do
+	echo rm  $SESSION
+	rm  $SESSION
+    done
+}
+alias clean_chrome_profile="/bin/rm -rf /home/xwang95/.config/google-chrome/Default"
+function from_backup {
+    wget sifaka.cs.uiuc.edu/~xwang95/backup/$1
+}
+function to_backup {
+    scp $1 xwang95@timan100.cs.uiuc.edu:~/public_html/backup/
+}
+function from_content {
+    wget sifaka.cs.uiuc.edu/~xwang95/content/$1
+}
+function to_content {
+    scp $1 xwang95@timan100.cs.uiuc.edu:~/public_html/content/
+}
+function from_local {
+    scp xiaolong@qchost236-142.cs.illinois.edu:~/ServerDownloads/$1 ./
+}
+function to_local {
+    scp $1 xiaolong@qchost236-142.cs.illinois.edu:~/ServerDownloads/
+}
+function from_public {
+    wget sifaka.cs.uiuc.edu/~xwang95/public/$1
+}
+function to_public {
+    scp $1 xwang95@timan100.cs.uiuc.edu:~/public_html/public/
+}
+function to_data {
+    scp $1 xwang95@timan100.cs.uiuc.edu:~/public_html/content/data
+}
