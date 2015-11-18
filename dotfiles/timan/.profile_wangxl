@@ -15,8 +15,8 @@ ANSI_COLOR_RESET="\e[0m"
 
 # boost library
 export BOOST_ROOT="${HOME}/local/boost"
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xwang95/local/boost:/home/xwang95/local/boost/lib:/usr/local/lib
-export PATH=$PATH:/home/xwang95/local:/home/xwang95/resource/vowpal_wabbit
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${HOME}/local/boost:${HOME}/local/boost/lib:/usr/local/lib
+export PATH=${PATH}:${HOME}/local
 
 function work {
     tmux new -AD -s main
@@ -41,6 +41,11 @@ if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
 alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
 function xg_sl {
     local option=""
+    # by default, zsh does not split word
+    # three ways to enable spliting safely
+    # ${=a}
+    # ${(@s: :)a}
+    # eval "(${a})"
     if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi
     git --no-pager log $option --branches --graph --decorate  # replace -10 with --all
 }
@@ -70,6 +75,8 @@ alias jp="jump"
 ################################################
 # Timan Specific Settings
 ################################################
+
+export PATH=${PATH}:${HOME}/resource/vowpal_wabbit
 
 alias killall="killall -u xwang95"
 function kill_all_xwang95_proc {

@@ -15,14 +15,14 @@ ANSI_COLOR_RESET="\e[0m"
 
 # boost library
 export BOOST_ROOT="${HOME}/local/boost"
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xwang95/local/boost:/home/xwang95/local/boost/lib
-export PATH=$PATH:${HOME}/local
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${HOME}/local/boost:${HOME}/local/boost/lib:/usr/local/lib
+export PATH=${PATH}:${HOME}/local
 
 function work {
     tmux new -AD -s main
 }
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
-alias rm='gmv --verbose -f --backup=numbered --target-directory ~/.trash/' # brew install coreutils
+alias rm='gmv --verbose -f --backup=numbered --target-directory ~/.trash/'
 alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
 alias cls='printf "\033c"'
 alias eliot="ssh -X eliot.cs.illinois.edu"
@@ -41,7 +41,12 @@ if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
 alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
 function xg_sl {
     local option=""
-    if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi # ${=a} ${(@s: :)a}
+    # by default, zsh does not split word
+    # three ways to enable spliting safely
+    # ${=a}
+    # ${(@s: :)a}
+    # eval "(${a})"
+    if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi
     git --no-pager log $option --branches --graph --decorate  # replace -10 with --all
 }
 alias xg_ls='git ls-files'
@@ -73,17 +78,16 @@ alias jp="jump"
 
 # Setting PATH for Python 3.3
 # The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.3/bin:${PATH}"
-export PATH
+export PATH="${PATH}:/Library/Frameworks/Python.framework/Versions/3.3/bin"
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-export PATH
-export PYTHONPATH=$PYTHONPATH:.
+export PATH="${PATH}:/Library/Frameworks/Python.framework/Versions/2.7/bin"
+export PYTHONPATH=${PYTHONPATH}:.
 
 # Homebrew permission problem
 # sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
+# brew install coreutils
 
 # atom
 function atom_refresh_starred_package_list {
