@@ -72,9 +72,9 @@ function jump {
 }
 alias jp="jump"
 
-################################################
-# Mac Specific Settings
-################################################
+#########################
+# Mac Specific Settings #
+#########################
 
 # Setting PATH for Python 3.3
 # The orginal version is saved in .bash_profile.pysave
