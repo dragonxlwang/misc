@@ -84,6 +84,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source /home/xwang95/ls_colors.zsh
-source /home/xwang95/.profile_wangxl
-
+source ${HOME}/ls_colors.zsh
+source ${HOME}/.profile_wangxl

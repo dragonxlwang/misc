@@ -22,6 +22,9 @@ function work {
     tmux new -AD -s main
 }
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
+alias rm='mv --verbose -f --backup=numbered --target-directory ~/.trash/'
+alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
+alias cls='printf "\033c"';
 alias eliot="ssh -X eliot.cs.illinois.edu"
 alias run_matlab="matlab -nodesktop -nosplash -r"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
@@ -36,7 +39,10 @@ if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
 
 # git
 alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
-alias xg_sl='git --no-pager log --all --branches --graph --decorate'
+function xg_sl {
+    if [[ $# -eq 0 ]]; then option="-10"; else option=${1}; fi
+    git --no-pager log ${option} --branches --graph --decorate  # replace -10 with --all
+}
 alias xg_ls='git ls-files'
 alias xg_st='git status'
 function xg_rm_last_commit {
