@@ -120,3 +120,20 @@ function to_public {
 function to_data {
     scp $1 xwang95@timan100.cs.uiuc.edu:~/public_html/content/data
 }
+
+# install git from source
+function install_git_from_source {
+    cd ${HOME}
+    local git_install_ver="git-2.6.3"
+    sudo yum install curl-devel expat-devel gettext-devel \
+	openssl-devel perl-devel zlib-devel
+    wget https://www.kernel.org/pub/software/scm/git/${git_install_ver}.tar.gz
+    tar -zxvf ${git_install_ver}.tar.gz
+    cd ${git_install_ver}
+    make prefix=/usr/local all
+    sudo make prefix=/usr/local install 
+    cd ${HOME} 
+    rm -rf ${git_install_ver}
+    rm -rf ${git_install_ver}.tar.gz 
+}
+
