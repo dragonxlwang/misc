@@ -17,14 +17,14 @@ ANSI_COLOR_RESET="\e[0m"
 export BOOST_ROOT="${HOME}/local/boost"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xwang95/local/boost:/home/xwang95/local/boost/lib:/usr/local/lib
 export PATH=$PATH:/home/xwang95/local:/home/xwang95/resource/vowpal_wabbit
-# go to work
+
 function work {
     tmux new -AD -s main
 }
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
 alias rm='mv --verbose -f --backup=numbered --target-directory ~/.trash/'
 alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
-alias cls='printf "\033c"';
+alias cls='printf "\033c"'
 alias eliot="ssh -X eliot.cs.illinois.edu"
 alias run_matlab="matlab -nodesktop -nosplash -r"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
