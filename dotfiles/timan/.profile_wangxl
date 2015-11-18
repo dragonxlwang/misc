@@ -72,9 +72,9 @@ function jump {
 }
 alias jp="jump"
 
-################################################
-# Timan Specific Settings
-################################################
+###########################
+# Timan Specific Settings #
+###########################
 
 export PATH=${PATH}:${HOME}/resource/vowpal_wabbit
 
