@@ -40,12 +40,14 @@ if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
 # git
 alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
 function xg_sl {
-    if [[ $# -eq 0 ]]; then option="-10"; else option=${1}; fi
-    git --no-pager log ${option} --branches --graph --decorate  # replace -10 with --all
+    local option=""
+    if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi
+    git --no-pager log $option --branches --graph --decorate  # replace -10 with --all
 }
 alias xg_ls='git ls-files'
 alias xg_st='git status'
 function xg_rm_last_commit {
+    local ans=""
     echo -n "${ANSI_COLOR_RED}Delete Last Commit [Y/N]?${ANSI_COLOR_RESET} "
     read ans
     if [[ $ans == (#i)yes || $ans == (#i)y ]]; then
@@ -76,7 +78,7 @@ function kill_all_xwang95_proc {
 alias python='/usr/bin/python'
 alias clean_chrome_session="mv --verbose -f --backup=numbered --target-directory ~/.trash/ /home/xwang95/.config/google-chrome/SingletonLock"
 function clean_nx_sessions {
-    SESSION_PATHS=`find /tmp/nx/xwang95/.nx/ -maxdepth 1 -type d -user $USER`
+    local SESSION_PATHS=`find /tmp/nx/xwang95/.nx/ -maxdepth 1 -type d -user $USER`
     for SESSION in $SESSION_PATHS
     do
 	echo rm  $SESSION

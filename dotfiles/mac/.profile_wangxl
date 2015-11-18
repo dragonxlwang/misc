@@ -40,12 +40,14 @@ if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
 # git
 alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
 function xg_sl {
-    if [[ $# -eq 0 ]]; then option="-10"; else option=${1}; fi
-    git --no-pager log ${option} --branches --graph --decorate  # replace -10 with --all
+    local option=""
+    if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi # ${=a} ${(@s: :)a}
+    git --no-pager log $option --branches --graph --decorate  # replace -10 with --all
 }
 alias xg_ls='git ls-files'
 alias xg_st='git status'
 function xg_rm_last_commit {
+    local ans=""
     echo -n "${ANSI_COLOR_RED}Delete Last Commit [Y/N]?${ANSI_COLOR_RESET} "
     read ans
     if [[ $ans == (#i)yes || $ans == (#i)y ]]; then
@@ -115,45 +117,46 @@ alias start_ipython='cd ${HOME}/ipython; ipython notebook'
 function lt {
     if [[ -z "$TMUX" ]]
     then
+	local option=""
         while true
         do
     	echo "Following starting options are available:"
     	yellowecho "  (1)	:   ssh timan101"
-        	yellowecho "  (2)	:   ssh timan102"
-        	yellowecho "  (3)	:   ssh timan103"
-        	yellowecho "  (4/t)	:   tmux new -AD -s main"
-        	yellowecho "  (5/n)	:   zsh"
-        	echo $(printf '=%.0s' {1..50})
-        	echo -n "Select One Option From (1) - (5): "
-        	if [[ $# -eq 1 ]]; then echo $1; option=$1; else read option; fi
-        	if [[ $option == 1* ]]
-        	then
-        	    echo "  (1)	:   ssh timan101"
+       	yellowecho "  (2)	:   ssh timan102"
+       	yellowecho "  (3)	:   ssh timan103"
+       	yellowecho "  (4/t)	:   tmux new -AD -s main"
+       	yellowecho "  (5/n)	:   zsh"
+       	echo $(printf '=%.0s' {1..50})
+       	echo -n "Select One Option From (1) - (5): "
+       	if [[ $# -eq 1 ]]; then echo $1; option=$1; else read option; fi
+       	if [[ $option == 1* ]]
+       	then
+       	    echo "  (1)	:   ssh timan101"
     	    option=1
     	    break
-        	elif [[ $option == 2* ]]
-        	then
-        	    echo "  (2)	:   ssh timan102"
-    	    option=2
+       	elif [[ $option == 2* ]]
+       	then
+       	    echo "  (2)	:   ssh timan102"
+   	    option=2
     	    break
-        	elif [[ $option == 3* ]]
-        	then
-        	    echo "  (3)	:   ssh timan103"
+       	elif [[ $option == 3* ]]
+       	then
+       	    echo "  (3)	:   ssh timan103"
     	    option=3
     	    break
-        	elif [[ $option == 4* || $option == t* ]]
-        	then
-        	    echo "  (4)	:   tmux new -AD -s main"
+       	elif [[ $option == 4* || $option == t* ]]
+       	then
+       	    echo "  (4)	:   tmux new -AD -s main"
     	    option=4
     	    break
-        	elif [[ $option == 5* || $option == n* ]]
-        	then
-        	    echo "  (5)	:   zsh"
+       	elif [[ $option == 5* || $option == n* ]]
+       	then
+       	    echo "  (5)	:   zsh"
     	    option=5
     	    break
     	else
     	    redecho "  Input Not Recognized..."
-        	fi
+       	fi
         done
         [[ $option -eq 1 ]] && ssh timan101
         [[ $option -eq 2 ]] && ssh timan102
