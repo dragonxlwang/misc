@@ -22,7 +22,7 @@ function work {
     tmux new -AD -s main
 }
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
-alias rm='mv --verbose -f --backup=numbered --target-directory ~/.trash/'
+alias rm='gmv --verbose -f --backup=numbered --target-directory ~/.trash/' # brew install coreutils
 alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
 alias cls='printf "\033c"'
 alias eliot="ssh -X eliot.cs.illinois.edu"
