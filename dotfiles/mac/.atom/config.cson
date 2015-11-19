@@ -1,0 +1,105 @@
+"*":
+  "exception-reporting":
+    userId: "37115345-b4cc-8e90-d39d-02aef4fc2d04"
+  welcome:
+    showOnStartup: false
+  core:
+    disabledPackages: [
+      "selection-highlight"
+      "indent-guide-improved"
+      "block-cursor"
+      "git-grep"
+      "nuclide-file-tree"
+      "nuclide-remote-projects"
+    ]
+    themes: [
+      "one-dark-ui"
+      "brahalla-syntax"
+    ]
+    packagesWithKeymapsDisabled: [
+      "compare-files"
+    ]
+  editor:
+    invisibles: {}
+    fontSize: 11
+    fontFamily: "monaco"
+    showIndentGuide: true
+    autoIndentOnPaste: false
+  minimap:
+    plugins:
+      "find-and-replace": true
+      "git-diff": true
+      "highlight-selected": true
+      selection: true
+  "remote-edit": {}
+  "remote-sync": {}
+  nuclide:
+    remoteProjectsConfig: []
+  linter:
+    errorPanelHeight: 46
+    showErrorTabLine: true
+  "linter-clang": {}
+  "selection-highlight":
+    lightTheme: true
+    highlightBackground: true
+  "highlight-selected":
+    lightTheme: true
+    highlightBackground: true
+    ignoreCase: true
+  "block-cursor":
+    global:
+      blinkOff: {}
+      blinkOn:
+        backgroundColor:
+          red: 42
+          green: 37
+          blue: 17
+          alpha: 1
+        borderColor:
+          red: 249
+          green: 105
+          blue: 76
+          alpha: 1
+      cursorLineFix: true
+  "autocomplete-plus": {}
+  "one-dark-ui": {}
+  "autocomplete-python":
+    pythonPath: "/usr/bin/python"
+    useSnippets: "all"
+    outputDebug: true
+  "linter-python-pep8":
+    pep8DirToExecutable: "/usr/local/bin/"
+    ignoreErrorCodes: "W292"
+  "linter-pep8":
+    maxLineLength: 80
+    pep8ExecutablePath: "/usr/local/bin/pep8"
+    ignoreErrorCodes: [
+      "E302"
+    ]
+  "advanced-open-file":
+    helmDirSwitch: true
+  "tree-view-git-status": {}
+  "git-history": {}
+  "git-log": {}
+  "git-plus": {}
+  "git-projects": {}
+  "git-status": {}
+  "git-diff":
+    showIconsInEditorGutter: true
+  "save-session":
+    dataSaveFolder: "/Users/xiaolong/.atom/packages/save-session/projects"
+  "latex-plus":
+    bibtexEnabled: true
+    texBin: "/Library/TeX/texbin/tex"
+    texInputs: "/Users/xiaolong/texmf"
+  "linter-chktex":
+    executablePath: "/Library/TeX/texbin/chktex"
+  "autocomplete-bibtex":
+    bibtex: [
+      "/Library/TeX/texbin/bibtex"
+    ]
+  latexer: {}
+  latex:
+    alwaysOpenResultInAtom: true
+  "pdf-view": {}
+  "merge-conflicts": {}
