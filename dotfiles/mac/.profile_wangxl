@@ -1,26 +1,19 @@
 #!/bin/sh
 
 # color
-function yellowecho {
-    echo -e "\033[1;33m${1}\033[0m"
-}
-function blueecho {
-    echo -e "\033[1;36m${1}\033[0m"
-}
-function redecho {
-    echo -e "\033[1;31m${1}\033[0m"
-}
+function yellowecho { echo -e "\033[1;33m${1}\033[0m" }
+function blueecho { echo -e "\033[1;36m${1}\033[0m" }
+function redecho { echo -e "\033[1;31m${1}\033[0m" }
 ANSI_COLOR_RED="\e[31m"
 ANSI_COLOR_RESET="\e[0m"
 
 # boost library
 export BOOST_ROOT="${HOME}/local/boost"
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${HOME}/local/boost:${HOME}/local/boost/lib:/usr/local/lib
+LD_LIBRARY_PATH+=":${HOME}/local/boost:${HOME}/local/boost/lib:/usr/local/lib"
+export LD_LIBRARY_PATH
 export PATH=${PATH}:${HOME}/local
 
-function work {
-    tmux new -AD -s main
-}
+function work { tmux new -AD -s main }
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
 alias rm='gmv --verbose -f --backup=numbered --target-directory ~/.trash/'
 alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
@@ -30,9 +23,9 @@ alias run_matlab="matlab -nodesktop -nosplash -r"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 alias ll="ls -alh"
-function kill_jobs {
-    for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done
-}
+function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
+function jump { if [[ $# == 1 ]]; then cd $1; fi; cd $(pwd -P); }
+alias jp="jump"
 
 # zsh
 if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
@@ -40,67 +33,68 @@ if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
 # git
 alias xg_log='git --no-pager log --pretty=format:"%h - %an, %ar : %s"'
 function xg_sl {
-    local option=""
-    # by default, zsh does not split word
-    # three ways to enable spliting safely
-    # ${=a}
-    # ${(@s: :)a}
-    # eval "(${a})"
-    if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi
-    git --no-pager log $option --branches --graph --decorate  # replace -10 with --all
+  local option=""
+  # by default, zsh does not split word
+  # three ways to enable spliting safely
+  # ${=a}
+  # ${(@s: :)a}
+  # eval "(${a})"
+  if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi
+  # replace -10 with --all
+  git --no-pager log $option --branches --graph --decorate
 }
 alias xg_ls='git ls-files'
 alias xg_st='git status'
 function xg_rm_last_commit {
-    local ans=""
-    echo -n "${ANSI_COLOR_RED}Delete Last Commit [Y/N]?${ANSI_COLOR_RESET} "
-    read ans
-    if [[ $ans == (#i)yes || $ans == (#i)y ]]; then
-	yellowecho "deleting..."
-	git reset --hard "HEAD^"
-    fi
+  local ans=""
+  echo -n "${ANSI_COLOR_RED}Delete Last Commit [Y/N]?${ANSI_COLOR_RESET} "
+  read ans
+  if [[ $ans == (#i)yes || $ans == (#i)y ]]; then
+    yellowecho "deleting..."
+    git reset --hard "HEAD^"
+  fi
 }
 alias xg_rk_last_commit='git reset --soft "HEAD^"'
 alias xg_browse='hub browse'
-
-function jump {
-    if [[ $# == 1 ]]
-    then
-	cd $1
-    fi
-    cd $(pwd -P)
+alias xg_list_remote_repo_branch='git ls-remote origin'
+alias xg_show_remote_repo='git remote show origin'
+alias xg_dry_run_featch='git fetch --dry-run'
+function xg_check_remote_up_2_date {
+  if [[ -z $(git fetch --dry-run 3>&2 2>&1 1>&3) ]]
+  then
+    blueecho "Git: up to date"
+  else
+    redecho "Git: need update"
+  fi
 }
-alias jp="jump"
 
 #########################
 # Mac Specific Settings #
 #########################
 
-# Setting PATH for Python 3.3
-# The orginal version is saved in .bash_profile.pysave
-export PATH="${PATH}:/Library/Frameworks/Python.framework/Versions/3.3/bin"
-
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
-export PATH="${PATH}:/Library/Frameworks/Python.framework/Versions/2.7/bin"
+# Setting PATH for Python 2.7, 3.3
+PATH+=":/Library/Frameworks/Python.framework/Versions/3.3/bin"
+PATH+=":/Library/Frameworks/Python.framework/Versions/2.7/bin"
+export PATH
 export PYTHONPATH=${PYTHONPATH}:.
 
 # Homebrew permission problem
-# sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
-# brew install coreutils
+## sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
+## brew install coreutils
 
 # atom
 function atom_refresh_starred_package_list {
-    apm starred --json > starred.json;
-    node -e 'fs = require("fs"); JSON.parse(fs.readFileSync("starred.json")).forEach(function(item) { console.log(item.name); })' > starred.list;
-    apm unstar `cat starred.list`;
-    apm star --installed;
-    rm starred.json starred.list;
+  apm starred --json > starred.json;
+  js='fs = require("fs");'
+  js+='JSON.parse(fs.readFileSync("starred.json")).forEach'
+  js+='(function(item){ console.log(item.name); })'
+  node -e  $js > starred.list;
+  apm unstar `cat starred.list`;
+  apm star --installed;
+  rm starred.json starred.list;
 }
 alias atom_ls_installed_packages='apm list --installed --bare'
-function atom_install_from_list {
-    apm install  $( cat ${1} )
-}
+function atom_install_from_list { apm install  $( cat ${1} ) }
 alias atom_star_installed='apm star --installed'
 alias atom_install_starred='apm stars --install'
 alias atom_ls_starred='apm stars'
@@ -113,59 +107,57 @@ alias atom_ls_starred='apm stars'
 # sudo -H easy_install matplotlib
 # sudo -H pip install jupyter
 #
-# one time config for inline matplotlib: http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook-matplotlib-plot-inline
+# one time config for inline matplotlib:
+# http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook\
+# -matplotlib-plot-inline
 # cat "c = get_config()" >> /Users/xiaolong/.ipython/profile_default
-# cat 'c.InteractiveShellApp.matplotlib = "inline"' >> /Users/xiaolong/.ipython/profile_default
+# cat 'c.InteractiveShellApp.matplotlib = "inline"' \
+# >> /Users/xiaolong/.ipython/profile_default
 alias start_ipython='cd ${HOME}/ipython; ipython notebook'
 
 function lt {
-    if [[ -z "$TMUX" ]]
+  if [[ -z "$TMUX" ]]
     then
-	local option=""
-        while true
-        do
-    	echo "Following starting options are available:"
-    	yellowecho "  (1)	:   ssh timan101"
-       	yellowecho "  (2)	:   ssh timan102"
-       	yellowecho "  (3)	:   ssh timan103"
-       	yellowecho "  (4/t)	:   tmux new -AD -s main"
-       	yellowecho "  (5/n)	:   zsh"
-       	echo $(printf '=%.0s' {1..50})
-       	echo -n "Select One Option From (1) - (5): "
-       	if [[ $# -eq 1 ]]; then echo $1; option=$1; else read option; fi
-       	if [[ $option == 1* ]]
-       	then
-       	    echo "  (1)	:   ssh timan101"
-    	    option=1
-    	    break
-       	elif [[ $option == 2* ]]
-       	then
-       	    echo "  (2)	:   ssh timan102"
-   	    option=2
-    	    break
-       	elif [[ $option == 3* ]]
-       	then
-       	    echo "  (3)	:   ssh timan103"
-    	    option=3
-    	    break
-       	elif [[ $option == 4* || $option == t* ]]
-       	then
-       	    echo "  (4)	:   tmux new -AD -s main"
-    	    option=4
-    	    break
-       	elif [[ $option == 5* || $option == n* ]]
-       	then
-       	    echo "  (5)	:   zsh"
-    	    option=5
-    	    break
-    	else
-    	    redecho "  Input Not Recognized..."
-       	fi
-        done
-        [[ $option -eq 1 ]] && ssh timan101
-        [[ $option -eq 2 ]] && ssh timan102
-        [[ $option -eq 3 ]] && ssh timan103
-        [[ $option -eq 4 ]] && work
+    local option=""
+    while true
+    do
+      echo "Following starting options are available:"
+      yellowecho "  (1)	:   ssh timan101"
+      yellowecho "  (2)	:   ssh timan102"
+      yellowecho "  (3)	:   ssh timan103"
+      yellowecho "  (4/t)	:   tmux new -AD -s main"
+      yellowecho "  (5/n)	:   zsh"
+      echo $(printf '=%.0s' {1..50})
+      echo -n "Select One Option From (1) - (5): "
+      if [[ $# -eq 1 ]]; then echo $1; option=$1; else read option; fi
+      if [[ $option == 1* ]]; then
+        echo "  (1)	:   ssh timan101"
+        option=1
+        break
+      elif [[ $option == 2* ]]; then
+        echo "  (2)	:   ssh timan102"
+        option=2
+        break
+      elif [[ $option == 3* ]]; then
+        echo "  (3)	:   ssh timan103"
+        option=3
+        break
+      elif [[ $option == 4* || $option == t* ]];  then
+        echo "  (4)	:   tmux new -AD -s main"
+        option=4
+        break
+      elif [[ $option == 5* || $option == n* ]];  then
+        echo "  (5)	:   zsh"
+        option=5
+        break
+      else
+        redecho "  Input Not Recognized..."
+      fi
+    done
+    [[ $option -eq 1 ]] && ssh timan101
+    [[ $option -eq 2 ]] && ssh timan102
+    [[ $option -eq 3 ]] && ssh timan103
+    [[ $option -eq 4 ]] && work
     fi
 }
 
