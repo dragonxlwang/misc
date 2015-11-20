@@ -51,7 +51,8 @@ function xg_rm_last_commit {
   local ans=""
   echo -n "${ANSI_COLOR_RED}Delete Last Commit [Y/N]?${ANSI_COLOR_RESET} "
   read ans
-  if [[ $ans == (#i)yes || $ans == (#i)y ]]; then
+  ans=$(echo ${ans} | tr "[:upper:]" "[:lower:]")
+  if [[ $ans == yes || $ans == y ]]; then
     yellowecho "deleting..."
     git reset --hard "HEAD^"
   fi
@@ -69,6 +70,7 @@ function xg_check_remote_up_2_date {
     redecho "Git: need update"
   fi
 }
+alias xg_diff="git diff HEAD"
 
 ###########################
 # Timan Specific Settings #
