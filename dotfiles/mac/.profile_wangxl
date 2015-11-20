@@ -23,8 +23,10 @@ alias run_matlab="matlab -nodesktop -nosplash -r"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 alias ll="ls -alh"
+function ll_symlink { 
+    [[ $# -eq 1 ]] && { ll $1 | grep "\->"} || {ll | grep "\->"} }
 function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
-function jump { if [[ $# == 1 ]]; then cd $1; fi; cd $(pwd -P); }
+function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
 alias jp="jump"
 
 # zsh

@@ -11,8 +11,7 @@ alias mkdir='mkdir -p';
 alias easy_install='easy_install --prefix=~/local';
 alias pip='~/local/bin/pip install --install-option="--prefix=~/local"';
 alias cp='cp -rf';
-LS_COLORS='di=1:fi=36:ln=95:pi=5:so=5:bd=5:cd=5:or=31:mi=31:ex=95:*.rpm=90'
-export LS_COLORS
+export LS_COLORS='di=1:fi=36:ln=95:pi=5:so=5:bd=5:cd=5:or=31:mi=31:ex=95:*.rpm=90'
 #export LSCOLORS=fxfxaxdxcxegedabagacad
 export PYTHONPATH=$PYTHONPATH:/home/xwang95/local/lib/python2.6/site-packages:/home/xwang95/local/lib64/python2.6/site-packages
 alias pip='/home/xwang95/local/bin/pip'
@@ -21,7 +20,7 @@ alias easy_install_package='easy_install --prefix=$HOME/local'
 alias rm='mv --verbose -f --backup=numbered --target-directory ~/.trash/'
 alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
 alias killall='killall -u xwang95' #kill all
-alias dir_size='for f in $("ls"); do du -lsh $f; done;';
+alias dir_size='for f in $("ls"); do du -lsh $f; done;'
 alias cls='printf "\033c"';
 # svn
 SVN_SRC='https://subversion.cs.illinois.edu/svn/TIMan/xwang95-self/src/'
