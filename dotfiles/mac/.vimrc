@@ -71,6 +71,10 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
+" Exit insert mode by typing jk
+inoremap jk <ESC>
+set timeoutlen=200
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
