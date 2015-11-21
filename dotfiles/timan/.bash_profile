@@ -1,3 +1,3 @@
 #!/bin/sh
-tmux new -A -D -s  main
+tmux new -A -D -s  $(hostname -s)-main
 zsh
