@@ -22,10 +22,10 @@ fi
 num_files=${#files[@]}
 num_files=$(( num_files / 2 ))
 
-ANSI_COLOR_RED="\e[31m"
-ANSI_COLOR_GREEN="\e[32m"
-ANSI_COLOR_RESET="\e[0m"
-ANSI_COLOR_BLUE="\e[36m"
+ANSI_COLOR_RED="\033[31m"
+ANSI_COLOR_GREEN="\033[32m"
+ANSI_COLOR_RESET="\033[0m"
+ANSI_COLOR_BLUE="\033[36m"
 
 for i in $( seq 0 $((num_files - 1)) );
 do
@@ -42,7 +42,7 @@ do
     then
       echo -e $ANSI_COLOR_RED "rm ${path}/${file}" $ANSI_COLOR_RESET 
       "rm" ${path}/${file}
-      echo -e $ANSI_COLOR_RED "ln -s $PWD/${1}/${file} ${path}/${file}" $ANSI_COLOR_RESET
+      echo -e  $ANSI_COLOR_RED "ln -s $PWD/${1}/${file} ${path}/${file}" $ANSI_COLOR_RESET
       ln -s $PWD/${1}/${file} ${path}/${file} 
     else
       echo -e $ANSI_COLOR_BLUE "skipping $PWD/${path}/${file}" $ANSI_COLOR_RESET
