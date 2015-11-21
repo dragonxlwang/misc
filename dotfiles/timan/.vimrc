@@ -36,7 +36,6 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
-
 " ================ Completion =======================
 set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
@@ -50,7 +49,24 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set completeopt=longest,menuone   "inserts the longest common text, even if one
 
+" Remap TAB to keyword completion
+function! InsertTabWrapper(direction)
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  elseif "backward" == a:direction
+    return "\<c-p>"
+  elseif "forward" == a:direction
+    return "\<c-n>"
+  endif
+endfunction
+
+inoremap <tab> <c-r>=InsertTabWrapper ("forward")<CR>
+inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<CR>
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 " ================ Scrolling ========================
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
@@ -63,29 +79,6 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 set showmatch       " set show matching parenthesis
-
-" ================ Completion =======================
-function! Smart_TabComplete()
-  let line = getline('.')                     " current line
-
-  let substr = strpart(line, -1, col('.')+1)  " from the start of the current
-                                              " line to one character right
-                                              " of the cursor
-  let substr = matchstr(substr, "[^ \t]*$")   " word till cursor
-  if (strlen(substr)==0)                      " nothing to match on empty string
-    return "\<tab>"
-  endif
-  let has_period = match(substr, '\.') != -1  " position of period, if any
-  let has_slash = match(substr, '\/') != -1   " position of slash, if any
-  if (!has_period && !has_slash)
-    return "\<C-X>\<C-P>"                     " existing text matching
-  elseif ( has_slash )
-    return "\<C-X>\<C-F>"                     " file matching
-  else
-    return "\<C-X>\<C-O>"                     " plugin matching
-  endif
-endfunction
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " ===================================================
 " Get off my lawn
