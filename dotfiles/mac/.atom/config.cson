@@ -99,7 +99,6 @@
       "/Library/TeX/texbin/bibtex"
     ]
   latexer: {}
-  latex:
-    alwaysOpenResultInAtom: true
+  latex: {}
   "pdf-view": {}
   "merge-conflicts": {}
