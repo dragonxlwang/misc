@@ -11,9 +11,21 @@ files=(	".bash_profile"       "${HOME}"	\
         ".zshrc"	            "${HOME}"	\
       )
 
+if [[ $# -ne 1 ]]; then
+  echo "specify which set of rules to apply"
+  echo "use mac or timan"
+  exit 1
+else
+  echo "building symlinks for ${1}"
+fi
+
 num_files=${#files[@]}
 num_files=$(( num_files / 2 ))
-echo "building symlinks for ${1}"
+
+ANSI_COLOR_RED="\e[31m"
+ANSI_COLOR_GREEN="\e[32m"
+ANSI_COLOR_RESET="\e[0m"
+ANSI_COLOR_BLUE="\e[36m"
 
 for i in $( seq 0 $((num_files - 1)) );
 do
@@ -28,16 +40,16 @@ do
     ans=$(echo $ans | tr '[:upper:]' '[:lower:]')
     if [[ $ans == yes || $ans == y ]]
     then
-      echo "rm ${path}/${file}"
+      echo -e $ANSI_COLOR_RED "rm ${path}/${file}" $ANSI_COLOR_RESET 
       "rm" ${path}/${file}
-      echo "ln -s ${1}/${file} ${path}/${file}"
-      ln -s ${1}/${file} ${path}/${file} 
+      echo -e $ANSI_COLOR_RED "ln -s $PWD/${1}/${file} ${path}/${file}" $ANSI_COLOR_RESET
+      ln -s $PWD/${1}/${file} ${path}/${file} 
     else
-      echo "skipping ${path}/${file}"
+      echo -e $ANSI_COLOR_BLUE "skipping $PWD/${path}/${file}" $ANSI_COLOR_RESET
     fi
   else
-    echo "ln -s ${1}/${file} ${path}/${file}"
-    ln -s ${1}/${file} ${path}/${file}
+    echo -e $ANSI_COLOR_GREEN "ln -s $PWD/${1}/${file} ${path}/${file}" $ANSI_COLOR_RESET
+    ln -s $PWD/${1}/${file} ${path}/${file}
   fi
 done    
        
