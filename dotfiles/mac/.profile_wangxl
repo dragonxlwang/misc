@@ -13,7 +13,7 @@ LD_LIBRARY_PATH+=":${HOME}/local/boost:${HOME}/local/boost/lib:/usr/local/lib"
 export LD_LIBRARY_PATH
 export PATH=${PATH}:${HOME}/local
 
-function work { tmux new -AD -s main }
+function work { tmux new -AD -s $(hostname -s)-main }
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
 alias rm='gmv --verbose -f --backup=numbered --target-directory ~/.trash/'
 alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
@@ -131,7 +131,7 @@ function lt {
       yellowecho "  (1)	:   ssh timan101"
       yellowecho "  (2)	:   ssh timan102"
       yellowecho "  (3)	:   ssh timan103"
-      yellowecho "  (4/t)	:   tmux new -AD -s main"
+      yellowecho "  (4/t)	:   tmux new -AD -s $(hostname -s)-main"
       yellowecho "  (5/n)	:   zsh"
       echo $(printf '=%.0s' {1..50})
       echo -n "Select One Option From (1) - (5): "
@@ -149,7 +149,7 @@ function lt {
         option=3
         break
       elif [[ $option == 4* || $option == t* ]];  then
-        echo "  (4)	:   tmux new -AD -s main"
+        echo "  (4)	:   tmux new -AD -s $(hostname -s)-main"
         option=4
         break
       elif [[ $option == 5* || $option == n* ]];  then
@@ -163,7 +163,7 @@ function lt {
     [[ $option -eq 1 ]] && ssh timan101
     [[ $option -eq 2 ]] && ssh timan102
     [[ $option -eq 3 ]] && ssh timan103
-    [[ $option -eq 4 ]] && work
+    [[ $option -eq 4 ]] && { tmux new -AD -s $(hostname -s)-main }
     fi
 }
 
