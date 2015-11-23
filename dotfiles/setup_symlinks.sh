@@ -9,6 +9,7 @@ files=(	".bash_profile"       "${HOME}"	\
         ".vimrc"              "${HOME}" \
         "ys.zsh-theme"        "${HOME}/.oh-my-zsh/themes" \
         ".zshrc"	            "${HOME}"	\
+        ".vim/colors"         "${HOME}"
       )
 
 if [[ $# -ne 1 ]]; then
@@ -41,7 +42,7 @@ do
     if [[ $ans == yes || $ans == y ]]
     then
       echo -e $ANSI_COLOR_RED "rm ${path}/${file}" $ANSI_COLOR_RESET 
-      "rm" ${path}/${file}
+      rm -rf ${path}/${file}
       echo -e  $ANSI_COLOR_RED "ln -s $PWD/${1}/${file} ${path}/${file}" $ANSI_COLOR_RESET
       ln -s $PWD/${1}/${file} ${path}/${file} 
     else
@@ -65,7 +66,7 @@ then
       if [[ $ans == "yes" || $ans == "y" ]];
       then
         echo -e $ANSI_COLOR_RED "rm ${HOME}/.atom/$f" $ANSI_COLOR_RESET 
-        "rm" ${HOME}/.atom/$f
+        rm -rf ${HOME}/.atom/$f
         echo -e $ANSI_COLOR_RED "ln -s $PWD/mac/.atom/$f ${HOME}/.atom/$f" $ANSI_COLOR_RESET
         ln -s $PWD/mac/.atom/$f ${HOME}/.atom/$f
       else

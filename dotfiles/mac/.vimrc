@@ -17,7 +17,16 @@ set hidden                      "Buffers can exist in the background
 syntax on                       "turn on syntax highlighting
 let mapleader=","               "Change leader to a comma
 set ttyfast
-colorscheme ansi_blows
+"colorscheme ansi_blows
+"set t_ut=
+"colorscheme lucario
+"colorscheme jellybeans
+"colorscheme atom-dark-256
+"" lucius setting
+"colorscheme lucius
+"LuciusBlackHighContrast
+"colorscheme monokai
+colorscheme vividchalk
 
 set wildchar=<TAB>
 set pastetoggle=<F2>
