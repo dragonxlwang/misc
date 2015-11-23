@@ -13,7 +13,7 @@ LD_LIBRARY_PATH+=":${HOME}/local/boost:${HOME}/local/boost/lib:/usr/local/lib"
 export LD_LIBRARY_PATH
 export PATH=${PATH}:${HOME}/local
 
-function work { tmux new -AD -s main }
+function work { tmux new -AD -s $(hostname -s)-main }
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
 alias rm='mv --verbose -f --backup=numbered --target-directory ~/.trash/'
 alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'

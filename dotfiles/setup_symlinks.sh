@@ -46,7 +46,7 @@ do
       echo -e  $ANSI_COLOR_RED "ln -s $PWD/${1}/${file} ${path}/${file}" $ANSI_COLOR_RESET
       ln -s $PWD/${1}/${file} ${path}/${file} 
     else
-      echo -e $ANSI_COLOR_BLUE "skipping $PWD/${path}/${file}" $ANSI_COLOR_RESET
+      echo -e $ANSI_COLOR_BLUE "skipping $PWD/${1}/${file}" $ANSI_COLOR_RESET
     fi
   else
     echo -e $ANSI_COLOR_GREEN "ln -s $PWD/${1}/${file} ${path}/${file}" $ANSI_COLOR_RESET
