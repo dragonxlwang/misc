@@ -11,6 +11,9 @@
       "git-grep"
       "nuclide-file-tree"
       "nuclide-remote-projects"
+      "remote-edit"
+      "formatter"
+      "linter-pep8"
     ]
     themes: [
       "one-dark-ui"
@@ -102,3 +105,19 @@
   latex: {}
   "pdf-view": {}
   "merge-conflicts": {}
+  "atom-beautify": {}
+  "atom-terminal": {}
+  "python-yapf":
+    yapfPath: "/usr/local/bin/yapf"
+    yapfStyle: "{based_on_style: google, column_limit: 80}"
+    formatOnSave: true
+  "python-autopep8":
+    autopep8Path: "/usr/local/bin/autopep8"
+    formatOnSave: true
+    maxLineLength: 80
+  "linter-flake8":
+    executablePath: "/usr/local/bin/flake8"
+    maxLineLength: 80
+    ignoreErrorCodes: [
+      "E302"
+    ]
