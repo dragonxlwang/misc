@@ -52,4 +52,29 @@ do
     ln -s $PWD/${1}/${file} ${path}/${file}
   fi
 done    
+
+if [[ $1 == "mac" ]];
+then
+  for f in $(ls "mac/.atom");
+  do
+    if [[ -e ${HOME}/.atom/$f ]];
+    then
+      echo -n "${HOME}/.atom/$f already existed. Do you want to overwrite? [Y/N] "
+      read ans
+      ans=$(echo $ans | tr '[:upper:]' '[:lower:]')
+      if [[ $ans == "yes" || $ans == "y" ]];
+      then
+        echo -e $ANSI_COLOR_RED "rm ${HOME}/.atom/$f" $ANSI_COLOR_RESET 
+        "rm" ${HOME}/.atom/$f
+        echo -e $ANSI_COLOR_RED "ln -s $PWD/mac/.atom/$f ${HOME}/.atom/$f" $ANSI_COLOR_RESET
+        ln -s $PWD/mac/.atom/$f ${HOME}/.atom/$f
+      else
+        echo -e $ANSI_COLOR_BLUE "skipping $PWD/mac/.atom/$f" $ANSI_COLOR_RESET
+      fi
+    else
+      echo -e $ANSI_COLOR_BLUE "ln -s $PWD/mac/.atom/$f ${HOME}/.atom/$f" $ANSI_COLOR_RESET
+      ln -s $PWD/mac/.atom/$f ${HOME}/.atom/$f
+    fi
+  done
+fi
        
