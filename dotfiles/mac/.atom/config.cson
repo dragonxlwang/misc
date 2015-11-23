@@ -121,3 +121,9 @@
     ignoreErrorCodes: [
       "E302"
     ]
+  "formatter-clang-format": {}
+  "clang-format":
+    executable: "/usr/local/bin/clang-format"
+    style: "Google"
+    formatCPlusPlusOnSave: false
+    formatCOnSave: false
