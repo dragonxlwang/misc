@@ -89,7 +89,7 @@ export PYTHONPATH=${PYTHONPATH}:.
 ## brew install coreutils
 
 # atom
-function atom_refresh_starred_package_list {
+function atom_overwrite_starred_package_list {
   apm starred --json > starred.json;
   js='fs = require("fs");'
   js+='JSON.parse(fs.readFileSync("starred.json")).forEach'
@@ -98,6 +98,25 @@ function atom_refresh_starred_package_list {
   apm unstar `cat starred.list`;
   apm star --installed;
   rm starred.json starred.list;
+}
+function atom_install_starred_incremental {
+  apm starred --json > starred.json;
+  js='fs = require("fs");'
+  js+='JSON.parse(fs.readFileSync("starred.json")).forEach'
+  js+='(function(item){ console.log(item.name); })'
+  node -e  $js > starred.list;
+  apm list --installed --bare > installed.list
+  for p in $(cat starred.list);
+  do
+    q=$(cat installed.list | grep "^$p@")
+    if [[ -n $q ]];
+    then
+      blueecho "$q already installed. skipping..."
+    else
+      apm install $p
+    fi
+  done
+  rm starred.json starred.list installed.list 
 }
 alias atom_ls_installed_packages='apm list --installed --bare'
 function atom_install_from_list { apm install  $( cat ${1} ) }
