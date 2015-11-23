@@ -65,7 +65,8 @@
           alpha: 1
       cursorLineFix: true
   "autocomplete-plus": {}
-  "one-dark-ui": {}
+  "one-dark-ui":
+    layoutMode: "Compact"
   "autocomplete-python":
     pythonPath: "/usr/bin/python"
     useSnippets: "all"
