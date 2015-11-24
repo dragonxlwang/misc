@@ -138,7 +138,7 @@ alias atom_ls_starred='apm stars'
 # cat "c = get_config()" >> /Users/xiaolong/.ipython/profile_default
 # cat 'c.InteractiveShellApp.matplotlib = "inline"' \
 # >> /Users/xiaolong/.ipython/profile_default
-alias start_ipython='cd ${HOME}/ipython; ipython notebook'
+alias start_ipython='cd ${HOME}/Dropbox/workspace/ipython; ipython notebook'
 
 function lt {
   if [[ -z "$TMUX" ]]
