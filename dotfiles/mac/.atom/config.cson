@@ -128,3 +128,5 @@
     style: "Google"
     formatCPlusPlusOnSave: false
     formatCOnSave: false
+  "python-tools":
+    pythonPath: "/usr/local/bin/python"
