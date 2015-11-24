@@ -68,7 +68,7 @@
   "one-dark-ui":
     layoutMode: "Compact"
   "autocomplete-python":
-    pythonPath: "/usr/bin/python"
+    pythonPath: "/usr/local/bin/python"
     useSnippets: "all"
     outputDebug: true
   "linter-python-pep8":

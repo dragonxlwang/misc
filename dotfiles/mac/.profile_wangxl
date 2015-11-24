@@ -88,6 +88,17 @@ export PYTHONPATH=${PYTHONPATH}:.
 ## sudo chown $(whoami):admin /usr/local && sudo chown -R $(whoami):admin /usr/local
 ## brew install coreutils
 
+# Python on mac
+# Homebrew python: https://github.com/Homebrew/homebrew-python
+## brew tap homebrew/python
+##brew install numpy scipy matplotlib matplotlib-basemap
+##brew install numba pillow pygame
+##sudo pip uninstall ipython
+##pip install ipython
+##sudo pip install -U nltk
+##python -m nltk.downloader all
+##sudo -H pip install --upgrade matplotlib
+
 # atom
 function atom_overwrite_starred_package_list {
   apm starred --json > starred.json;
