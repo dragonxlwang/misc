@@ -39,7 +39,7 @@ function xg_sl {
   # by default, zsh does not split word
   # three ways to enable spliting safely
   # ${=a}
-  # ${(@s: :)a}
+  # ${(@s: :)a} ## retain empty strings with @
   # eval "(${a})"
   if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi
   # replace -10 with --all
@@ -126,6 +126,6 @@ function install_git_from_source {
   make prefix=/usr/local all
   sudo make prefix=/usr/local install
   cd ${HOME}
-  rm -rf ${git_install_ver}
-  rm -rf ${git_install_ver}.tar.gz
+  /bin/rm -rf ${git_install_ver}
+  /bin/rm -rf ${git_install_ver}.tar.gz
 }
