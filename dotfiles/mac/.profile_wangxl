@@ -91,14 +91,17 @@ export PYTHONPATH=${PYTHONPATH}:.
 # Python on mac
 # Homebrew python: https://github.com/Homebrew/homebrew-python
 ## brew tap homebrew/python
-##brew install numpy scipy matplotlib matplotlib-basemap
-##brew install numba pillow pygame
-##brew install ffmpeg
-##sudo pip uninstall ipython
-##pip install ipython
-##sudo pip install -U nltk
-##python -m nltk.downloader all
-##sudo -H pip install --upgrade matplotlib
+## brew install python
+## brew install numpy scipy matplotlib matplotlib-basemap
+## brew install numba pillow pygame
+## brew install ffmpeg
+## sudo pip uninstall ipython
+## pip install ipython
+# Or alternatively, https://gitter.im/ipython/ipython/help/archives/2015/04/16
+## sudo pip install "ipython[all]" --upgrade --force-reinstall
+## sudo pip install -U nltk
+## python -m nltk.downloader all
+## sudo -H pip install --upgrade matplotlib
 
 # atom
 function atom_overwrite_starred_package_list {
