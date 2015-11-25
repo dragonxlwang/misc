@@ -93,6 +93,7 @@ export PYTHONPATH=${PYTHONPATH}:.
 ## brew tap homebrew/python
 ##brew install numpy scipy matplotlib matplotlib-basemap
 ##brew install numba pillow pygame
+##brew install ffmpeg
 ##sudo pip uninstall ipython
 ##pip install ipython
 ##sudo pip install -U nltk
