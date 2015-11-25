@@ -27,6 +27,7 @@ set ttyfast
 "LuciusBlackHighContrast
 "colorscheme monokai
 colorscheme vividchalk
+highlight Search        guibg=#ff5f00 ctermbg=202 gui=none cterm=none
 
 set wildchar=<TAB>
 set pastetoggle=<F2>
