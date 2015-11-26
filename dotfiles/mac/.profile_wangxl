@@ -39,11 +39,19 @@ function xg_sl {
   # by default, zsh does not split word
   # three ways to enable spliting safely
   # ${=a}
-  # ${(@s: :)a}
+  # ${(@s: :)a} ## retain empty strings with @
   # eval "(${a})"
   if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi
   # replace -10 with --all
   git --no-pager log $option --branches --graph --decorate
+}
+function xg_sl_outgoing {
+  git fetch
+  git --no-pager log --branches --decorate --graph ..origin/master $@
+}
+function xg_sl_incoming {
+  git fetch
+  git --no-pager log --branches --decorate --graph origin/master.. $@
 }
 alias xg_ls='git ls-files'
 alias xg_st='git status'
@@ -131,7 +139,7 @@ function atom_install_starred_incremental {
       apm install $p
     fi
   done
-  rm starred.json starred.list installed.list 
+  rm starred.json starred.list installed.list
 }
 alias atom_ls_installed_packages='apm list --installed --bare'
 function atom_install_from_list { apm install  $( cat ${1} ) }
