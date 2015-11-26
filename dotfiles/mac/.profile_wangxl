@@ -47,11 +47,11 @@ function xg_sl {
 }
 function xg_sl_outgoing {
   git fetch
-  git --no-pager log --branches --decorate --graph ..origin/master $@
+  git --no-pager log --branches --decorate --graph origin/master.. $@
 }
 function xg_sl_incoming {
   git fetch
-  git --no-pager log --branches --decorate --graph origin/master.. $@
+  git --no-pager log --branches --decorate --graph ..origin/master $@
 }
 alias xg_ls='git ls-files'
 alias xg_st='git status'
