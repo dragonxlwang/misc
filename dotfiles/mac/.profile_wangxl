@@ -111,6 +111,21 @@ export PYTHONPATH=${PYTHONPATH}:.
 ## python -m nltk.downloader all
 ## sudo -H pip install --upgrade matplotlib
 
+# pip utilities
+## for f in $(pip list); do echo $f; done
+## for f in $(pip list); do
+##   [[ $f != "("* ]] && {echo -n $f" "; pip show $f | grep "Location"};
+## done
+## for f in $(pip list); do
+##   [[ $f != "("* ]] && { s=$(pip show $f | grep "Location");
+##       [[ -n $(echo $s | grep "Library") ]] && {echo $f >> tmp.txt}; }
+## done
+## for f in $(cat tmp.txt); do echo $f; sudo pip uninstall $f; done
+## for f in $(cat tmp.txt); do
+##   echo $ANSI_COLOR_RED$f$ANSI_COLOR_RESET;
+##   pip install --upgrade --force-reinstall $f;
+## done
+
 # atom
 function atom_overwrite_starred_package_list {
   apm starred --json > starred.json;
