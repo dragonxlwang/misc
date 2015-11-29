@@ -167,6 +167,13 @@ function atom_install_from_list { apm install  $( cat ${1} ) }
 alias atom_star_installed='apm star --installed'
 alias atom_install_starred='apm stars --install'
 alias atom_ls_starred='apm stars'
+# apm manual upgrade
+## for f in $(atom_ls_installed_packages); do
+##   f=$(echo $f | sed -E 's/@.*//');
+##   echo $f;
+##   apm upgrade $f;
+##   [[ $? -ne 0 ]] && echo $f >> err.txt;
+## done
 
 # ipython
 # sudo easy_install ipython
