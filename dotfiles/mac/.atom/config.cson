@@ -103,7 +103,8 @@
       "/Library/TeX/texbin/bibtex"
     ]
   latexer: {}
-  latex: {}
+  latex:
+    openResultAfterBuild: false
   "pdf-view": {}
   "merge-conflicts": {}
   "atom-beautify": {}
