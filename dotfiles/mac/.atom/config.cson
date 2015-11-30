@@ -155,3 +155,7 @@
     formatCOnSave: false
   "python-tools":
     pythonPath: "/usr/local/bin/python"
+  "spell-check":
+    grammars: [
+      "text.tex.latex"
+    ]
