@@ -121,6 +121,31 @@
     maxLineLength: 80
     ignoreErrorCodes: [
       "E302"
+      "D100"
+      "D101"
+      "D102"
+      "D103"
+      "D104"
+      "D105"
+      "D200"
+      "D201"
+      "D202"
+      "D203"
+      "D204"
+      "D205"
+      "D208"
+      "D209"
+      "D300"
+      "D400"
+      "D401"
+      "D402"
+      "E123"
+      "E226"
+      "E241"
+      "N802"
+      "N803"
+      "N806"
+      "N812"
     ]
   "formatter-clang-format": {}
   "clang-format":
