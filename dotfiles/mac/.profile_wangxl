@@ -130,6 +130,7 @@ export PYTHONPATH=${PYTHONPATH}:.
 ## sudo chown $(whoami):admin /usr/local \
 ##  && sudo chown -R $(whoami):admin /usr/local
 ## brew install coreutils
+export HOMEBREW_GITHUB_API_TOKEN=2f9b5d70c1d10d2238d2b4846efb68a111524122
 
 # Python on mac
 # Homebrew python: https://github.com/Homebrew/homebrew-python
