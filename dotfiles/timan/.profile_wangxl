@@ -18,7 +18,7 @@ alias dir_size='for f in $("ls"); do du -lsh $f; done;'
 alias rrm='/bin/rm'
 function rm {
   local ret=""
-  ret=$(gmv --verbose -f --backup=numbered \
+  ret=$(mv --verbose -f --backup=numbered \
         --target-directory ${HOME}/.trash/ "$@")
   echo -e $ANSI_COLOR_RED$ret$ANSI_COLOR_RESET
   local reg=""
