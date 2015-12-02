@@ -27,11 +27,14 @@ function rm {
   local fp="${HOME}/.trash/rm.undo"
   echo "#!/bin/sh" > $fp
   for l in ${(f)ret}; do
-    reg='s/\xe2\x80\x98(.*)\xe2\x80\x99 -> \xe2\x80\x98(.*)\xe2\x80\x99/\1/p'
+    reg='s/^(.*) -> (.*)$/\1/p'
     f1=$(echo $l | sed -rn $reg)
-    reg='s/\xe2\x80\x98(.*)\xe2\x80\x99 -> \xe2\x80\x98(.*)\xe2\x80\x99/\2/p'
+    f1=${f1:1:${#f1}-2}
+    reg='s/^(.*) -> (.*)$/\2/p'
     f2=$(echo $l | sed -rn $reg)
-    f1="$PWD/$f1"
+    f2=$(echo $f2 | sed -r 's/ \(backup: .*\)//')
+    f2=${f2:1:${#f2}-2}
+    [[ $f1 != /* ]] && f1="$PWD/$f1"
     echo "# \"$f1\" -> \"$f2\"" >> $fp
     echo "mv \"$f2\" \"$f1\"" >> $fp
     echo "echo \"\\033[1;33mmv \\\"$f2\\\" \\\"$f1\\\"\\033[0m\"" >> $fp
