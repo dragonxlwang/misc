@@ -15,7 +15,32 @@ export PATH=${PATH}:${HOME}/local
 
 function work { tmux new -AD -s $(hostname -s)-main }
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
-alias rm='mv --verbose -f --backup=numbered --target-directory ~/.trash/'
+alias rrm='/bin/rm'
+function rm {
+  local ret=""
+  ret=$(gmv --verbose -f --backup=numbered \
+        --target-directory ${HOME}/.trash/ "$@")
+  echo -e $ANSI_COLOR_RED$ret$ANSI_COLOR_RESET
+  local reg=""
+  local f1=""
+  local f2=""
+  local fp="${HOME}/.trash/rm.undo"
+  echo "#!/bin/sh" > $fp
+  for l in ${(f)ret}; do
+    reg='s/\xe2\x80\x98(.*)\xe2\x80\x99 -> \xe2\x80\x98(.*)\xe2\x80\x99/\1/p'
+    f1=$(echo $l | sed -rn $reg)
+    reg='s/\xe2\x80\x98(.*)\xe2\x80\x99 -> \xe2\x80\x98(.*)\xe2\x80\x99/\2/p'
+    f2=$(echo $l | sed -rn $reg)
+    f1="$PWD/$f1"
+    echo "# \"$f1\" -> \"$f2\"" >> $fp
+    echo "mv \"$f2\" \"$f1\"" >> $fp
+    echo "echo \"\\033[1;33mmv \\\"$f2\\\" \\\"$f1\\\"\\033[0m\"" >> $fp
+  done
+}
+function undo {
+  local fp="${HOME}/.trash/rm.undo"
+  /bin/sh $fp
+}
 alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
 alias cls='printf "\033c"'
 alias eliot="ssh -X eliot.cs.illinois.edu"

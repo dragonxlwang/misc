@@ -29,6 +29,11 @@ syntax on                       "Turn on syntax highlighting
 let mapleader=","               "Change leader to a comma
 let g:mapleader = ","           "Global leader to a comma
 
+" remove trailing whitespace
+source ${HOME}/misc/dotfiles/better-whitespace.vim
+autocmd VimEnter * DisableWhitespace
+autocmd VimEnter * EnableWhitespace
+
 " ================ Color Themes ======================
 "colorscheme ansi_blows
 "set t_ut=
