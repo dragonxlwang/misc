@@ -170,7 +170,7 @@ function atom_overwrite_starred_package_list {
   node -e  $js > starred.list;
   apm unstar `cat starred.list`;
   apm star --installed;
-  rm starred.json starred.list;
+  /bin/rm starred.json starred.list;
 }
 function atom_install_starred_incremental {
   apm starred --json > starred.json;
@@ -189,9 +189,27 @@ function atom_install_starred_incremental {
       apm install $p
     fi
   done
-  rm starred.json starred.list installed.list
+  /bin/rm starred.json starred.list installed.list
 }
-alias atom_ls_installed_packages='apm list --installed --bare'
+function atom_ls_starred_packages {
+  apm starred --json > starred.json;
+  js='fs = require("fs");'
+  js+='JSON.parse(fs.readFileSync("starred.json")).forEach'
+  js+='(function(item){ console.log(item.name); })'
+  node -e  $js;
+  /bin/rm starred.json
+}
+function atom_ls_installed_packages {
+  local ret=""
+  ret=$(apm list --installed --bare)
+  if [[ $1 == '--no-version' || $1 == '-n' ]]; then
+    for f in $(echo $ret); do
+      echo $f | sed -r 's/@.*//'
+    done
+  else
+    echo $ret
+  fi
+}
 function atom_install_from_list { apm install  $( cat ${1} ) }
 alias atom_star_installed='apm star --installed'
 alias atom_install_starred='apm stars --install'
