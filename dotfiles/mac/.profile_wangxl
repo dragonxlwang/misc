@@ -15,7 +15,7 @@ export PATH=${PATH}:${HOME}/local
 
 function work { tmux new -AD -s $(hostname -s)-main }
 alias dir_size='for f in $("ls"); do du -lsh $f; done;'
-alias rrm='/bin/rm'
+alias rrm='/bin/rm -v'
 function rm {
   local ret=""
   ret=$(mv --verbose -f --backup=numbered \
