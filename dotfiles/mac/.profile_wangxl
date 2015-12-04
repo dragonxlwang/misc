@@ -162,6 +162,8 @@ export HOMEBREW_GITHUB_API_TOKEN=2f9b5d70c1d10d2238d2b4846efb68a111524122
 ##   pip install --upgrade --force-reinstall $f;
 ## done
 
+source /usr/local/etc/bash_completion.d/password-store
+
 # atom
 function atom_overwrite_starred_package_list {
   apm starred --json > starred.json;

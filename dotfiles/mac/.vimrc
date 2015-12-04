@@ -219,7 +219,7 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 "" Quickly open a buffer for scripbble
 "map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
 
 
 
