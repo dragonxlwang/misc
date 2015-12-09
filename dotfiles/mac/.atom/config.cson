@@ -71,7 +71,8 @@
   "autocomplete-python":
     pythonPath: "/usr/local/bin/python"
     useSnippets: "all"
-    outputDebug: true
+    pythonPaths: "/usr/local/bin/python"
+    outputProviderErrors: true
   "linter-python-pep8":
     pep8DirToExecutable: "/usr/local/bin/"
     ignoreErrorCodes: "W292"

@@ -241,6 +241,11 @@ alias atom_ls_starred='apm stars'
 # >> /Users/xiaolong/.ipython/profile_default
 alias start_ipython='cd ${HOME}/Dropbox/workspace/ipython; ipython notebook'
 
+# open chrome with url
+function go_url {
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -app=$1
+}
+
 function lt {
   if [[ -z "$TMUX" ]]
     then

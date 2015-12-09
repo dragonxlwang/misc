@@ -23,6 +23,7 @@ set splitright                  "Open new split panes to bottom
 set diffopt+=vertical           "Always use vertical diffs
 set timeoutlen=500              "How long it wait for mapped commands
 set ttimeoutlen=100             "Faster timeout for escape key and others
+set colorcolumn=80              "Highlight column at 80 char
 
 filetype plugin indent on       "Sets indent mode based on filetype
 syntax on                       "Turn on syntax highlighting
@@ -219,7 +220,7 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 "" Quickly open a buffer for scripbble
 "map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
 
 
 

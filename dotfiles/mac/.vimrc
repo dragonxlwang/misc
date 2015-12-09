@@ -23,6 +23,7 @@ set splitright                  "Open new split panes to bottom
 set diffopt+=vertical           "Always use vertical diffs
 set timeoutlen=500              "How long it wait for mapped commands
 set ttimeoutlen=100             "Faster timeout for escape key and others
+set colorcolumn=80              "Highlight column at 80 char
 
 filetype plugin indent on       "Sets indent mode based on filetype
 syntax on                       "Turn on syntax highlighting
