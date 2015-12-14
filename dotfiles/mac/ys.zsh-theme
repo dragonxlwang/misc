@@ -47,10 +47,10 @@ ys_hg_prompt_info() {
 # Prompt format: \n # USER at MACHINE in DIRECTORY on git:BRANCH STATE [TIME] \n $ 
 PROMPT="
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
-$FG[163]%n \
-%{$fg[white]%}at \
-$FG[154]$(box_name) \
-%{$fg[white]%}in \
+$FG[163]%n\
+$FG[123]@\
+$FG[154]$(box_name)\
+$FG[123]:\
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${hg_info}\
 ${git_info} \
