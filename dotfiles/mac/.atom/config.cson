@@ -1,8 +1,38 @@
 "*":
-  "exception-reporting":
-    userId: "37115345-b4cc-8e90-d39d-02aef4fc2d04"
-  welcome:
-    showOnStartup: false
+  "advanced-open-file":
+    helmDirSwitch: true
+  "atom-beautify": {}
+  "atom-terminal": {}
+  "autocomplete-bibtex":
+    bibtex: [
+      "/Library/TeX/texbin/bibtex"
+    ]
+  "autocomplete-plus": {}
+  "autocomplete-python":
+    outputProviderErrors: true
+    pythonPath: "/usr/local/bin/python"
+    pythonPaths: "/usr/local/bin/python"
+    useSnippets: "all"
+  "block-cursor":
+    global:
+      blinkOff: {}
+      blinkOn:
+        backgroundColor:
+          alpha: 1
+          blue: 17
+          green: 37
+          red: 42
+        borderColor:
+          alpha: 1
+          blue: 76
+          green: 105
+          red: 249
+      cursorLineFix: true
+  "clang-format":
+    executable: "/usr/local/bin/clang-format"
+    formatCOnSave: false
+    formatCPlusPlusOnSave: false
+    style: "Google"
   core:
     disabledPackages: [
       "selection-highlight"
@@ -16,112 +46,48 @@
       "linter-pep8"
       "vim-mode"
     ]
+    packagesWithKeymapsDisabled: [
+      "compare-files"
+    ]
     themes: [
       "one-dark-ui"
       "brahalla-syntax"
     ]
-    packagesWithKeymapsDisabled: [
-      "compare-files"
-    ]
   editor:
-    invisibles: {}
-    fontSize: 11
-    fontFamily: "monaco"
-    showIndentGuide: true
     autoIndentOnPaste: false
-  minimap:
-    plugins:
-      "find-and-replace": true
-      "git-diff": true
-      "highlight-selected": true
-      selection: true
-  "remote-edit": {}
-  "remote-sync": {}
-  nuclide:
-    remoteProjectsConfig: []
-  linter:
-    errorPanelHeight: 46
-    showErrorTabLine: true
-  "linter-clang": {}
-  "selection-highlight":
-    lightTheme: true
-    highlightBackground: true
-  "highlight-selected":
-    lightTheme: true
-    highlightBackground: true
-    ignoreCase: true
-  "block-cursor":
-    global:
-      blinkOff: {}
-      blinkOn:
-        backgroundColor:
-          red: 42
-          green: 37
-          blue: 17
-          alpha: 1
-        borderColor:
-          red: 249
-          green: 105
-          blue: 76
-          alpha: 1
-      cursorLineFix: true
-  "autocomplete-plus": {}
-  "one-dark-ui":
-    layoutMode: "Compact"
-  "autocomplete-python":
-    pythonPath: "/usr/local/bin/python"
-    useSnippets: "all"
-    pythonPaths: "/usr/local/bin/python"
-    outputProviderErrors: true
-  "linter-python-pep8":
-    pep8DirToExecutable: "/usr/local/bin/"
-    ignoreErrorCodes: "W292"
-  "linter-pep8":
-    maxLineLength: 80
-    pep8ExecutablePath: "/usr/local/bin/pep8"
-    ignoreErrorCodes: [
-      "E302"
-    ]
-  "advanced-open-file":
-    helmDirSwitch: true
-  "tree-view-git-status": {}
+    fontFamily: "monaco"
+    fontSize: 11
+    invisibles: {}
+    showIndentGuide: true
+  "exception-reporting":
+    userId: "37115345-b4cc-8e90-d39d-02aef4fc2d04"
+  "formatter-clang-format": {}
+  "git-diff":
+    showIconsInEditorGutter: true
   "git-history": {}
   "git-log": {}
   "git-plus": {}
   "git-projects": {}
   "git-status": {}
-  "git-diff":
-    showIconsInEditorGutter: true
-  "save-session":
-    dataSaveFolder: "/Users/xiaolong/.atom/packages/save-session/projects"
+  "highlight-selected":
+    highlightBackground: true
+    ignoreCase: true
+    lightTheme: true
+  latex:
+    openResultAfterBuild: false
   "latex-plus":
     bibtexEnabled: true
     texBin: "/Library/TeX/texbin/tex"
     texInputs: "/Users/xiaolong/texmf"
+  latexer: {}
+  linter:
+    errorPanelHeight: 46
+    showErrorTabLine: true
   "linter-chktex":
     executablePath: "/Library/TeX/texbin/chktex"
-  "autocomplete-bibtex":
-    bibtex: [
-      "/Library/TeX/texbin/bibtex"
-    ]
-  latexer: {}
-  latex:
-    openResultAfterBuild: false
-  "pdf-view": {}
-  "merge-conflicts": {}
-  "atom-beautify": {}
-  "atom-terminal": {}
-  "python-yapf":
-    yapfPath: "/usr/local/bin/yapf"
-    yapfStyle: "{based_on_style: google, column_limit: 80}"
-    formatOnSave: true
-  "python-autopep8":
-    autopep8Path: "/usr/local/bin/autopep8"
-    formatOnSave: true
-    maxLineLength: 80
+  "linter-clang": {}
   "linter-flake8":
     executablePath: "/usr/local/bin/flake8"
-    maxLineLength: 80
     ignoreErrorCodes: [
       "E302"
       "D100"
@@ -150,16 +116,50 @@
       "N806"
       "N812"
     ]
-  "formatter-clang-format": {}
-  "clang-format":
-    executable: "/usr/local/bin/clang-format"
-    style: "Google"
-    formatCPlusPlusOnSave: false
-    formatCOnSave: false
+    maxLineLength: 80
+  "linter-pep8":
+    ignoreErrorCodes: [
+      "E302"
+    ]
+    maxLineLength: 80
+    pep8ExecutablePath: "/usr/local/bin/pep8"
+  "linter-python-pep8":
+    ignoreErrorCodes: "W292"
+    pep8DirToExecutable: "/usr/local/bin/"
+  "merge-conflicts": {}
+  minimap:
+    plugins:
+      "find-and-replace": true
+      "git-diff": true
+      "highlight-selected": true
+      selection: true
+  nuclide:
+    remoteProjectsConfig: []
+  "one-dark-ui":
+    layoutMode: "Compact"
+  "pdf-view": {}
+  "python-autopep8":
+    autopep8Path: "/usr/local/bin/autopep8"
+    formatOnSave: true
+    maxLineLength: 80
   "python-tools":
     pythonPath: "/usr/local/bin/python"
+  "python-yapf":
+    formatOnSave: true
+    yapfPath: "/usr/local/bin/yapf"
+    yapfStyle: "{based_on_style: google, column_limit: 80}"
+  "remote-edit": {}
+  "remote-sync": {}
+  "save-session":
+    dataSaveFolder: "/Users/xiaolong/.atom/packages/save-session/projects"
+  "selection-highlight":
+    highlightBackground: true
+    lightTheme: true
   "spell-check":
     grammars: [
       "text.tex.latex"
     ]
+  "tree-view-git-status": {}
   "vim-mode": {}
+  welcome:
+    showOnStartup: false
