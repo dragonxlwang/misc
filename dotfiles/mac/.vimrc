@@ -46,7 +46,7 @@ autocmd VimEnter * EnableWhitespace
 "LuciusBlackHighContrast
 "colorscheme monokai
 colorscheme vividchalk
-highlight Search guibg=#ff5f00 ctermbg=202 gui=none cterm=none
+highlight Search guibg=#ff5f00 gui=none ctermbg=226 ctermfg=016 cterm=none
 
 " ================ Indentation =======================
 set autoindent
