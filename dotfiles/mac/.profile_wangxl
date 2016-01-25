@@ -115,6 +115,7 @@ function xg_check_remote_up_2_date {
   fi
 }
 alias xg_diff="git diff HEAD"
+alias xg_ca="git commit -v -a --amend --no-edit"
 
 #########################
 # Mac Specific Settings #

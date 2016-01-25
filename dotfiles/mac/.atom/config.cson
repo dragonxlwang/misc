@@ -44,7 +44,6 @@
       "remote-edit"
       "formatter"
       "linter-pep8"
-      "vim-mode"
     ]
     packagesWithKeymapsDisabled: [
       "compare-files"
