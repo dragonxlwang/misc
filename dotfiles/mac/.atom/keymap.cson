@@ -26,8 +26,9 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
-'atom-text-editor.vim-mode.insert-mode':
-  'j k': 'vim-mode:activate-normal-mode'
+'atom-text-editor.vim-mode:not(.normal-mode)':
+  'j k': 'vim-mode:reset-normal-mode'
+  'j j': 'vim-mode:activate-normal-mode'
 
 '.platform-darwin':
   'cmd-k m h':  'pane:split-left-moving-current-tab'
