@@ -39,11 +39,11 @@
       "indent-guide-improved"
       "block-cursor"
       "git-grep"
-      "nuclide-file-tree"
       "nuclide-remote-projects"
       "remote-edit"
       "formatter"
       "linter-pep8"
+      "nuclide-file-tree"
     ]
     packagesWithKeymapsDisabled: [
       "compare-files"

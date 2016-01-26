@@ -52,5 +52,5 @@
   'cmd-k k': 'window:focus-pane-above'
   'cmd-k l': 'window:focus-pane-on-right'
   'cmd-k h': 'window:focus-pane-on-left'
-  'alt-cmd-j': 'pane:show-previous-item'
-  'alt-cmd-k': 'pane:show-next-item'
+  'cmd-k cmd-j': 'pane:show-previous-item'
+  'cmd-k cmd-k': 'pane:show-next-item'
