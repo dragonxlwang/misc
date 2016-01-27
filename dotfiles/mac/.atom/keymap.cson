@@ -26,6 +26,12 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
+
+'atom-text-editor.vim-mode.normal-mode':
+  'ctrl-a': 'unset!'
+'atom-text-editor':
+  'ctrl-a': 'unset!'
+
 'atom-text-editor.vim-mode.insert-mode:not(.mini)':
   'j k': 'vim-mode:reset-normal-mode'
 
@@ -34,27 +40,27 @@
   ', ,': 'vim-mode:reset-normal-mode'
 
 '.platform-darwin':
-  'cmd-k m h':  'pane:split-left-moving-current-tab'
-  'cmd-k m l': 'pane:split-right-moving-current-tab'
-  'cmd-k m k':    'pane:split-up-moving-current-tab'
-  'cmd-k m j':  'pane:split-down-moving-current-tab'
+  'ctrl-a m h':  'pane:split-left-moving-current-tab'
+  'ctrl-a m l': 'pane:split-right-moving-current-tab'
+  'ctrl-a m k':    'pane:split-up-moving-current-tab'
+  'ctrl-a m j':  'pane:split-down-moving-current-tab'
 
-  'cmd-k n h':  'pane:split-left-creating-new-file'
-  'cmd-k n l': 'pane:split-right-creating-new-file'
-  'cmd-k n k':    'pane:split-up-creating-new-file'
-  'cmd-k n j':  'pane:split-down-creating-new-file'
+  'ctrl-a n h':  'pane:split-left-creating-new-file'
+  'ctrl-a n l': 'pane:split-right-creating-new-file'
+  'ctrl-a n k':    'pane:split-up-creating-new-file'
+  'ctrl-a n j':  'pane:split-down-creating-new-file'
 
-  'cmd-k d h':  'pane:split-left'
-  'cmd-k d l': 'pane:split-right'
-  'cmd-k d k':    'pane:split-up'
-  'cmd-k d j':  'pane:split-down'
+  'ctrl-a d h':  'pane:split-left'
+  'ctrl-a d l': 'pane:split-right'
+  'ctrl-a d k':    'pane:split-up'
+  'ctrl-a d j':  'pane:split-down'
 
-  'cmd-k m':  'pane:merge-all-panes'
+  'ctrl-a m':  'pane:merge-all-panes'
 
 'body':
-  'cmd-k j': 'window:focus-pane-below'
-  'cmd-k k': 'window:focus-pane-above'
-  'cmd-k l': 'window:focus-pane-on-right'
-  'cmd-k h': 'window:focus-pane-on-left'
-  'cmd-k cmd-j': 'pane:show-previous-item'
-  'cmd-k cmd-k': 'pane:show-next-item'
+  'ctrl-a j': 'window:focus-pane-below'
+  'ctrl-a k': 'window:focus-pane-above'
+  'ctrl-a l': 'window:focus-pane-on-right'
+  'ctrl-a h': 'window:focus-pane-on-left'
+  'ctrl-a ctrl-j': 'pane:show-previous-item'
+  'ctrl-a ctrl-k': 'pane:show-next-item'
