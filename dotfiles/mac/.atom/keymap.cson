@@ -27,8 +27,8 @@
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
 'atom-text-editor.vim-mode:not(.normal-mode)':
-  'ctrl-j ctrl-k': 'vim-mode:reset-normal-mode'
-  'ctrl-j ctrl-j': 'vim-mode:activate-normal-mode'
+  'j k': 'vim-mode:reset-normal-mode'
+  'j j': 'vim-mode:activate-normal-mode'
 
 '.platform-darwin':
   'cmd-k m h':  'pane:split-left-moving-current-tab'
