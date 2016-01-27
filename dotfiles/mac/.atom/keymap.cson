@@ -26,7 +26,6 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
-
 'atom-text-editor.vim-mode.normal-mode':
   'ctrl-a': 'unset!'
 'atom-text-editor':
@@ -64,3 +63,10 @@
   'ctrl-a h': 'window:focus-pane-on-left'
   'ctrl-a ctrl-j': 'pane:show-previous-item'
   'ctrl-a ctrl-k': 'pane:show-next-item'
+
+'.advanced-open-file atom-text-editor':
+  'ctrl-j': 'advanced-open-file:move-cursor-down'
+  'ctrl-k': 'advanced-open-file:move-cursor-up'
+  'ctrl-l': 'unset!'
+  'ctrl-x': 'advanced-open-file:delete-path-component'
+  'enter' : 'advanced-open-file:confirm-selected-or-first'

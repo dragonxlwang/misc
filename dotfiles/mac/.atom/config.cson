@@ -1,5 +1,6 @@
 "*":
   "advanced-open-file":
+    fuzzyMatch: true
     helmDirSwitch: true
   "atom-beautify": {}
   "atom-terminal": {}
