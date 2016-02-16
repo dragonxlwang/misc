@@ -13,7 +13,7 @@
     outputProviderErrors: true
     pythonPath: "/usr/local/bin/python"
     pythonPaths: "/usr/local/bin/python"
-    useSnippets: "all"
+    useSnippets: "required"
   "block-cursor":
     global:
       blinkOff: {}
@@ -56,7 +56,7 @@
   editor:
     autoIndentOnPaste: false
     fontFamily: "monaco"
-    fontSize: 11
+    fontSize: 12
     invisibles: {}
     showIndentGuide: true
   "exception-reporting":
@@ -89,6 +89,7 @@
   "linter-flake8":
     executablePath: "/usr/local/bin/flake8"
     ignoreErrorCodes: [
+      "C901"
       "E302"
       "D100"
       "D101"
@@ -160,6 +161,7 @@
       "text.tex.latex"
     ]
   "tree-view-git-status": {}
-  "vim-mode": {}
+  "vim-mode":
+    useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
