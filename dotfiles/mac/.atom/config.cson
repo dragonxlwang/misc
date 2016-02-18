@@ -42,9 +42,8 @@
       "git-grep"
       "nuclide-remote-projects"
       "remote-edit"
-      "formatter"
-      "linter-pep8"
       "nuclide-file-tree"
+      "linter-pep8"
     ]
     packagesWithKeymapsDisabled: [
       "compare-files"
@@ -83,6 +82,7 @@
   linter:
     errorPanelHeight: 46
     showErrorTabLine: true
+    statusIconScope: "File"
   "linter-chktex":
     executablePath: "/Library/TeX/texbin/chktex"
   "linter-clang": {}
@@ -160,6 +160,8 @@
     grammars: [
       "text.tex.latex"
     ]
+  "tree-view":
+    hideVcsIgnoredFiles: true
   "tree-view-git-status": {}
   "vim-mode":
     useSmartcaseForSearch: true

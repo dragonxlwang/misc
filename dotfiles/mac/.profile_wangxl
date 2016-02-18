@@ -133,6 +133,17 @@ export PYTHONPATH=${PYTHONPATH}:.
 ## brew install coreutils
 export HOMEBREW_GITHUB_API_TOKEN=2f9b5d70c1d10d2238d2b4846efb68a111524122
 
+# To activate these completions, add the following to your .zshrc:
+fpath=(/usr/local/share/zsh-completions $fpath)
+#You may also need to force rebuild `zcompdump`:
+#
+#  rm -f ~/.zcompdump; compinit
+#
+#Additionally, if you receive "zsh compinit: insecure directories" warnings when attempting
+#to load these completions, you may need to run this:
+#
+#  chmod go-w /usr/local/share
+
 # Python on mac
 # Homebrew python: https://github.com/Homebrew/homebrew-python
 ## brew tap homebrew/python
