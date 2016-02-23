@@ -3,6 +3,19 @@
     fuzzyMatch: true
     helmDirSwitch: true
   "atom-beautify": {}
+  "atom-material-ui":
+    fonts:
+      useRobotoInUI: true
+    panels:
+      panelContrast: true
+    tabs:
+      showTabIcons: "Show on all tabs"
+      tabMinWidth: true
+      tabSize: "Small"
+    treeView:
+      compactTreeView: true
+    ui:
+      slimScrollbar: true
   "atom-terminal": {}
   "autocomplete-bibtex":
     bibtex: [
@@ -49,12 +62,9 @@
       "git-diff-details"
       "tree-view-git-status"
     ]
-    packagesWithKeymapsDisabled: [
-      "compare-files"
-    ]
     themes: [
       "one-dark-ui"
-      "brahalla-syntax"
+      "crayons-syntax"
     ]
   editor:
     autoIndentOnPaste: false
@@ -64,6 +74,8 @@
     showIndentGuide: true
   "exception-reporting":
     userId: "37115345-b4cc-8e90-d39d-02aef4fc2d04"
+  "file-icons":
+    forceShow: true
   "formatter-clang-format": {}
   "git-diff":
     showIconsInEditorGutter: true
@@ -76,6 +88,7 @@
     highlightBackground: true
     ignoreCase: true
     lightTheme: true
+  "isotope-ui": {}
   latex:
     openResultAfterBuild: false
   "latex-plus":
@@ -166,6 +179,8 @@
     grammars: [
       "text.tex.latex"
     ]
+  tabs:
+    enableVcsColoring: true
   "tree-view":
     hideVcsIgnoredFiles: true
   "tree-view-git-status": {}
