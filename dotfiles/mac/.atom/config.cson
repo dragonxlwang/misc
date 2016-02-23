@@ -44,6 +44,10 @@
       "remote-edit"
       "nuclide-file-tree"
       "linter-pep8"
+      "atom-terminal"
+      "git-control"
+      "git-diff-details"
+      "tree-view-git-status"
     ]
     packagesWithKeymapsDisabled: [
       "compare-files"
@@ -134,6 +138,8 @@
       "git-diff": true
       "highlight-selected": true
       selection: true
+  "minimap-selection":
+    highlightCursorsLines: true
   nuclide:
     remoteProjectsConfig: []
   "one-dark-ui":
@@ -163,6 +169,7 @@
   "tree-view":
     hideVcsIgnoredFiles: true
   "tree-view-git-status": {}
+  "tree-view-open-files": {}
   "vim-mode":
     useSmartcaseForSearch: true
   welcome:
