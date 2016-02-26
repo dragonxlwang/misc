@@ -31,7 +31,7 @@ let mapleader=","               "Change leader to a comma
 let g:mapleader = ","           "Global leader to a comma
 
 " remove trailing whitespace
-source ${HOME}/misc/dotfiles/better-whitespace.vim
+source ${HOME}/misc/dotfiles/lib/better-whitespace.vim
 autocmd VimEnter * DisableWhitespace
 autocmd VimEnter * EnableWhitespace
 
