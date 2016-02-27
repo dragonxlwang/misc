@@ -15,7 +15,7 @@ brew tap homebrew/versions
 
 brew install coreutils # set mv by symlink
 brew install binutils diffutils
-brew install ed --default-names
+brew install ed --with-default-names
 brew install findutils --with-default-names
 brew install gnu-indent --with-default-names
 brew install gnu-sed --with-default-names
@@ -26,7 +26,7 @@ brew install wdiff --with-gettext
 brew install lua --with-completion
 brew install tmux curl clang-format tree
 brew install htop --with-ncurses
-brew install gnuplot --with-latex --with-pdflib-lite --with-qt --with-test --with-x11
+brew install gnuplot --with-tex --with-pdflib-lite --with-qt --with-test --with-x11
 brew install make --with-default-names
 brew install hub gawk ascii_plots gzip screen watch wget pigz
 brew install gcc node reattach-to-user-namespace zsh-completions
@@ -47,6 +47,7 @@ brew install python
 brew install numpy scipy
 brew install matplotlib --with-tex --with-tcl-tk
 brew install matplotlib-basemap numba pillow pygame ffmpeg
+pip install --upgrade pip
 pip install "ipython[all]" --upgrade --force-reinstall
 sudo pip install -U nltk
 ## python -m nltk.downloader all
