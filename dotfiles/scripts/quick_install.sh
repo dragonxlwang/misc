@@ -80,9 +80,10 @@ compinit
 
 # one time config for inline matplotlib:
 # http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook-matplotlib-plot-inline
-## cat "c = get_config()" >> /Users/xiaolong/.ipython/profile_default
+# http://stackoverflow.com/questions/21176731/automatically-run-matplotlib-inline-in-ipython-notebook
+## cat "c = get_config()" >> ~/.ipython/profile_default/ipython_kernel_config.py
 ## cat 'c.InteractiveShellApp.matplotlib = "inline"' \
-## >> /Users/xiaolong/.ipython/profile_default
+## >> ~/.ipython/profile_default/ipython_kernel_config.py
 
 # install atom
 ## atom_install_starred
