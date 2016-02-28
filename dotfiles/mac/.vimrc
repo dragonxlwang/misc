@@ -202,6 +202,9 @@ map <leader>n :cn<cr>
 " To go to the previous search results do:
 map <leader>p :cp<cr>
 
+" ================ Sudo write  =======================
+" w!! to write a file as sudo
+cmap w!! w !sudo tee % >/dev/null
 
 " => Spell checking
 """"""""""""""""""""""""

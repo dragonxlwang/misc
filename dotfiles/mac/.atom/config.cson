@@ -150,6 +150,7 @@
       "git-diff": true
       "highlight-selected": true
       selection: true
+      "split-diff": true
   "minimap-selection":
     highlightCursorsLines: true
   nuclide:
