@@ -204,7 +204,7 @@ map <leader>p :cp<cr>
 
 " ================ Sudo write  =======================
 " w!! to write a file as sudo
-cmap w!! w !sudo tee % >/dev/null
+cmap w!! w !sudo tee > /dev/null %
 
 " => Spell checking
 """"""""""""""""""""""""
