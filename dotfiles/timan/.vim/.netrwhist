@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/xiaolong/Documents/workspace/STS/STS/.settings'
-let g:netrw_dirhist_2='/Users/xiaolong/Documents/workspace/STS/.metadata'
-let g:netrw_dirhist_3='/Users/xiaolong/Documents/workspace/STS/data/train/CV_stem_allfea'
-let g:netrw_dirhist_4='/Users/xiaolong/Documents/workspace/STS/data/train'
-let g:netrw_dirhist_5='/Users/xiaolong/.oh-my-zsh/tools'
-let g:netrw_dirhist_6='/Users/xiaolong/.oh-my-zsh/.git'

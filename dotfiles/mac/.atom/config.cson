@@ -60,7 +60,6 @@
       "atom-terminal"
       "git-control"
       "git-diff-details"
-      "tree-view-git-status"
     ]
     themes: [
       "one-dark-ui"

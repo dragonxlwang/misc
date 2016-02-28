@@ -49,7 +49,7 @@ brew install matplotlib --with-tex --with-tcl-tk
 brew install matplotlib-basemap numba pillow pygame ffmpeg
 pip install --upgrade pip
 pip install "ipython[all]" --upgrade --force-reinstall
-sudo pip install -U nltk
+sudo -H pip install -U nltk
 ## python -m nltk.downloader all
 pip install -U jupyter
 pip install -U flake8
@@ -76,7 +76,7 @@ compinit
 
 # set mv by symlink
 ## cd /usr/local/bin
-## ln -s ../Cellar/coreutils/8.24/bin/gmv
+## ln -s gmv mv
 
 # one time config for inline matplotlib:
 # http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook-matplotlib-plot-inline
