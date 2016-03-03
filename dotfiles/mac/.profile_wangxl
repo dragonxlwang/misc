@@ -305,7 +305,7 @@ function lt {
     [[ $option -eq 2 ]] && ssh timan102
     [[ $option -eq 3 ]] && ssh timan103
     [[ $option -eq 4 ]] && { tmux new -AD -s $(hostname -s)-main }
-    fi
+  fi
 }
 
-lt
+[[ -t 1 ]] && lt
