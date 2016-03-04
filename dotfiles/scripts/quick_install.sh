@@ -85,6 +85,10 @@ compinit
 ## cat 'c.InteractiveShellApp.matplotlib = "inline"' \
 ## >> ~/.ipython/profile_default/ipython_kernel_config.py
 
+# show hidden files by default
+## defaults write com.apple.finder AppleShowAllFiles YES
+## killall Finder
+
 # install atom
 ## atom_install_starred
 
