@@ -24,11 +24,14 @@ set diffopt+=vertical           "Always use vertical diffs
 set timeoutlen=500              "How long it wait for mapped commands
 set ttimeoutlen=100             "Faster timeout for escape key and others
 set colorcolumn=80              "Highlight column at 80 char
+set mouse=a                     "Enable mouse
 
 filetype plugin indent on       "Sets indent mode based on filetype
 syntax on                       "Turn on syntax highlighting
 let mapleader=","               "Change leader to a comma
 let g:mapleader = ","           "Global leader to a comma
+
+let g:osName = substitute(system('uname'), "\n", "", "")
 
 " remove trailing whitespace
 source ${HOME}/misc/dotfiles/lib/better-whitespace.vim
@@ -200,7 +203,24 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " To go to the next search result do:
 map <leader>n :cn<cr>
 " To go to the previous search results do:
-map <leader>p :cp<cr>
+map <leader>N :cp<cr>
+
+" copy and paste
+if g:osName == 'Darwin'
+    " Add some Mac specific bindings
+    " so we use external commands instead to avoid recompiling vim
+    " swap vim default register and clipboard
+    nmap <silent> <leader>x :let @a=@" \| let @"=system("pbpaste") \| let res=system("pbcopy", @a)<CR>
+    vnoremap <silent> <leader>y :<CR>:let @a=@" \| execute "normal! vgvy" \| let res=system("pbcopy", @") \| let @"=@a<CR>
+    nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
+    noremap <silent> <leader>p :r !pbpaste<CR><CR>
+else
+    " this works only if vim is compiled with +clipboard or +xterm_clipboard
+    nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
+    set clipboard=unnamed
+    noremap <silent> <leader>y :!xclip -f -sel clip<CR>
+endif
+
 
 " ================ Sudo write  =======================
 " w!! to write a file as sudo
@@ -224,7 +244,6 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 "map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -256,7 +275,6 @@ function! VisualSelection(direction) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-
 
 " Returns true if paste mode is enabled
 function! HasPaste()
