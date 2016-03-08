@@ -262,6 +262,12 @@ function go_url {
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -app=$1
 }
 
+# remove all .DS_store files in current directory recursively
+function rm_finder_hidden_files {
+  find . -name '*.DS_Store'  -type f -delete -print
+  find . -name '*.localized' -type f -delete -print
+}
+
 function lt {
   if [[ -z "$TMUX" ]]
     then

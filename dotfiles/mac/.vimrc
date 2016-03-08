@@ -210,7 +210,7 @@ if g:osName == 'Darwin'
     " Add some Mac specific bindings
     " so we use external commands instead to avoid recompiling vim
     " swap vim default register and clipboard
-    nmap <silent> <leader>x :let @a=@" \| let @"=system("pbpaste") \| let res=system("pbcopy", @a)<CR>
+    nnoremap <silent> <leader>x :let @a=@" \| let @"=system("pbpaste") \| let res=system("pbcopy", @a)<CR>
     vnoremap <silent> <leader>y :<CR>:let @a=@" \| execute "normal! vgvy" \| let res=system("pbcopy", @") \| let @"=@a<CR>
     nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
     noremap <silent> <leader>p :r !pbpaste<CR><CR>
@@ -218,7 +218,8 @@ else
     " this works only if vim is compiled with +clipboard or +xterm_clipboard
     nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
     set clipboard=unnamed
-    noremap <silent> <leader>y :!xclip -f -sel clip<CR>
+    nnoremap <silent> <leader>y :.w !ssh mac_mini pbcopy<CR>
+    vnoremap <silent> <leader>y :<CR>:let @a=@" \| execute "normal! vgvy" \| let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
 endif
 
 

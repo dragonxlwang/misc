@@ -173,3 +173,9 @@ function install_git_from_source {
   /bin/rm -rf ${git_install_ver}
   /bin/rm -rf ${git_install_ver}.tar.gz
 }
+
+function xclip_forward {
+  xclip -o | ssh mac_mini pbcopy
+}
+
+alias forward_to_mac_mini="ssh mac_mini pbcopy"
