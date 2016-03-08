@@ -12,5 +12,5 @@ Host timan103
     Port 22
 Host mac_mini
     User xiaolong
-    HostName qchost236-198.cs.illinois.edu
+    HostName qchost236-189.cs.illinois.edu
     Port 22
