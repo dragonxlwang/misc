@@ -179,3 +179,4 @@ function xclip_forward {
 }
 
 alias forward_to_mac_mini="ssh mac_mini pbcopy"
+alias forward_from_mac_mini="ssh mac_mini pbpaste"
