@@ -257,9 +257,15 @@ alias start_ipython='cd ${HOME}/Dropbox/workspace/ipython; jupyter notebook'
 # mac show hidden files
 # defaults write com.apple.finder AppleShowAllFiles YES
 
-# open chrome with url
+# open chrome with url/file
 function go_url {
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -app=$1
+}
+function go_file {
+  go_url file:///$(readlink -f $1)
+}
+function go_chrome {
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" $1
 }
 
 # remove all .DS_store files in current directory recursively

@@ -77,9 +77,10 @@ compinit
 # Following needs to be executed manually #
 ###########################################
 
-# set mv by symlink
+# set symlink
 ## cd /usr/local/bin
 ## ln -s gmv mv
+## ln -s greadlink readlink
 
 # one time config for inline matplotlib:
 # http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook-matplotlib-plot-inline
