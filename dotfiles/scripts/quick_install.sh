@@ -41,12 +41,15 @@ brew install pwgen gmp libtool pdflib-lite smpeg sqlite llvm mpfr
 brew install freetype fontconfig isl jpeg readline xz libevent openssl
 brew install boost boost-build pkg-config gnutls gnu-getopt go
 brew install webp --with-libtiff
+brew install ffmpeg
+brew install gifsicle --with-x11
+brew install imagemagick --with-x11 --with-webp --with-librsvg
 
 ## python
 brew install python
 brew install numpy scipy
 brew install matplotlib --with-tex --with-tcl-tk
-brew install matplotlib-basemap numba pillow pygame ffmpeg
+brew install matplotlib-basemap numba pillow pygame
 pip install --upgrade pip
 pip install "ipython[all]" --upgrade --force-reinstall
 sudo -H pip install -U nltk

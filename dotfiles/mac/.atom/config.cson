@@ -27,6 +27,7 @@
     pythonPath: "/usr/local/bin/python"
     pythonPaths: "/usr/local/bin/python"
     useSnippets: "required"
+  autosave: {}
   "block-cursor":
     global:
       blinkOff: {}
@@ -177,6 +178,7 @@
   "remote-sync": {}
   "save-session":
     dataSaveFolder: "/Users/xiaolong/.atom/packages/save-session/projects"
+    skipSavePrompt: false
   "selection-highlight":
     highlightBackground: true
     lightTheme: true
