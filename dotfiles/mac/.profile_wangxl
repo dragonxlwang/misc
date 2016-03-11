@@ -312,6 +312,8 @@ function update_scripts {
   # xargs -n1 pip install -U
   yellowecho "source profile_wangxl"
   source ${HOME}/.profile_wangxl
+  yellowecho "source tmux conf"
+  tmux source ${HOME}/.tmux.conf
 }
 
 function lt {
