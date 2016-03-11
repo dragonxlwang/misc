@@ -124,6 +124,7 @@ brew cask install font-source-code-pro
 # ^[ escape sequence
 ## opt <-: send ^[ B
 ## opt ->: send ^[ F
+# Left option key acts as: +Esc
 
 # brew cask upgrade
 ## brew cask list | xargs brew cask install --force
