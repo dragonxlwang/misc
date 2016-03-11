@@ -1,3 +1,4 @@
 .DS_Store
 dotfiles/mac/.vim/.netrwhist
 dotfiles/timan/.vim/.netrwhist
+*.swp

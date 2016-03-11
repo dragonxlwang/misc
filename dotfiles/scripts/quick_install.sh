@@ -35,7 +35,7 @@ brew install emacs gdb gpatch m4 nano
 brew install file-formula git less openssh perl518 rsync svn unzip
 ## brew install vim --override-system-vi
 ## brew install macvim --override-system-vim --custom-system-icons
-##brew install zsh
+## brew install zsh
 
 brew install pwgen gmp libtool pdflib-lite smpeg sqlite llvm mpfr
 brew install freetype fontconfig isl jpeg readline xz libevent openssl
@@ -73,6 +73,30 @@ chsh -s $(which zsh)
 /bin/rm -rfv ~/.zcompdump
 compinit
 
+# homebrew caskroom/cask
+brew tap caskroom/cask
+brew tap caskroom/versions
+brew tap caskroom/fonts
+
+brew cask install xquartz
+brew cask install dropbox google-drive google-chrome adium qq skype
+brew cask install spotify neteasemusic graphviz inkscape gimp
+brew cask install iterm2-beta atom filezilla the-unarchiver flux
+brew cask install mactex texmaker textwrangler adobe-reader mou
+brew cask install cheatsheet suspicious-package
+
+brew cask install qlcolorcode
+brew cask install qlstephen
+brew cask install qlmarkdown
+brew cask install quicklook-json
+brew cask install qlprettypatch
+brew cask install quicklook-csv
+brew cask install betterzipql
+brew cask install webpquicklook
+
+brew cask install font-inconsolata
+brew cask install font-source-code-pro
+
 ###########################################
 # Following needs to be executed manually #
 ###########################################
@@ -100,3 +124,6 @@ compinit
 # ^[ escape sequence
 ## opt <-: send ^[ B
 ## opt ->: send ^[ F
+
+# brew cask upgrade
+## brew cask list | xargs brew cask install --force

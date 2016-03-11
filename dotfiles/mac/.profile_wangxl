@@ -278,8 +278,9 @@ function rm_finder_hidden_files {
 function convert_mov_to_gif {
   if [[ $(echo $1 | tr "[:upper:]" "[:lower:]") == *.mov ]]; then
     local f=$(echo $1 | sed 's/mov$/gif/i')
-    ffmpeg -i $1 -s 600x400 -pix_fmt rgb24 -r 25 -f gif - | gifsicle \
-    --optimize=3 --delay=3 > $f
+    ffmpeg -i $1 -vf "scale=min(iw\,600):-1" -pix_fmt rgb24 -r 10 -f gif - |\
+    # convert -delay 5 -layers Optimize -loop 0 - $f
+    gifsicle --optimize=3 --delay=7 > $f
     if [[ $2 == --publish ||  $2 == -p ]]; then
       local ff="${HOME}/Dropbox/Public/screenshots/"
       ff+=Screencast-`date +"%Y.%m.%d-%H.%M"`.gif
@@ -289,6 +290,28 @@ function convert_mov_to_gif {
   else
     echo "$1 is not a .mov file"
   fi
+}
+
+# update homebrew, oh-my-zsh, pip and source profile again
+function update_scripts {
+  upgrade_oh_my_zsh
+  yellowecho "brew update"
+  brew update
+  yellowecho "brew upgrade"
+  brew upgrade
+  yellowecho "brew cask update"
+  brew cask update
+  yellowecho "brew cask cleanup"
+  brew cask cleanup
+  yellowecho "brew cleanup"
+  brew cleanup
+  yellowecho "pip install --upgrade pip"
+  pip install --upgrade pip
+  # yellowecho "pip update package"
+  # pip freeze --local | grep -v '^\-e' | cut -d = -f 1  |\
+  # xargs -n1 pip install -U
+  yellowecho "source profile_wangxl"
+  source ${HOME}/.profile_wangxl
 }
 
 function lt {
