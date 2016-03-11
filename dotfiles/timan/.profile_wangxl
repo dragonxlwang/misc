@@ -14,7 +14,17 @@ export LD_LIBRARY_PATH
 export PATH=${PATH}:${HOME}/local
 
 function work { tmux new -AD -s $(hostname -s)-main }
-alias dir_size='for f in $("ls"); do du -lsh $f; done;'
+
+## ls -A: List all entries except for . and ...
+## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
+## @: In double quotes, array elements are put into separate words.
+##    E.g., ‘"${(@)foo}"’ is equivalent to ‘"${foo[@]}"’ and ‘"${(@)foo[1,2]}"’
+##    is the same as ‘"$foo[1]" "$foo[2]"’.
+##    This is distinct from field splitting by the f, s or z flags, which still
+##    applies within each array element.
+## unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
+alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
+
 alias rrm='/bin/rm -v'
 function rm {
   local ret=""

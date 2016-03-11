@@ -61,6 +61,7 @@
       "atom-terminal"
       "git-control"
       "git-diff-details"
+      "fonts"
     ]
     themes: [
       "one-dark-ui"

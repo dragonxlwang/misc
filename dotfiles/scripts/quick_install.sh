@@ -96,6 +96,11 @@ brew cask install webpquicklook
 
 brew cask install font-inconsolata
 brew cask install font-source-code-pro
+brew cask install font-profontx
+brew cask install font-andale-mono
+brew cask install font-droid-sans-mono
+brew cask install font-dejavu-sans-mono-for-powerline
+
 
 ###########################################
 # Following needs to be executed manually #

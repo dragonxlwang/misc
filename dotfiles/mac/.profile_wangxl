@@ -11,11 +11,20 @@ ANSI_COLOR_RESET="\033[0m"
 export BOOST_ROOT="${HOME}/local/boost"
 LD_LIBRARY_PATH+=":${HOME}/local/boost:${HOME}/local/boost/lib:/usr/local/lib"
 export LD_LIBRARY_PATH
-export PATH="/usr/local/sbin:$PATH"
 export PATH=${PATH}:${HOME}/local
 
 function work { tmux new -AD -s $(hostname -s)-main }
-alias dir_size='for f in $("ls"); do du -lsh $f; done;'
+
+## ls -A: List all entries except for . and ...
+## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
+## @: In double quotes, array elements are put into separate words.
+##    E.g., ‘"${(@)foo}"’ is equivalent to ‘"${foo[@]}"’ and ‘"${(@)foo[1,2]}"’
+##    is the same as ‘"$foo[1]" "$foo[2]"’.
+##    This is distinct from field splitting by the f, s or z flags, which still
+##    applies within each array element.
+## unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
+alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
+
 alias rrm='/bin/rm -v'
 function rm {
   local ret=""
@@ -118,15 +127,10 @@ function xg_check_remote_up_2_date {
 alias xg_diff="git diff HEAD"
 alias xg_ca="git commit -v -a --amend --no-edit"
 
+
 #########################
 # Mac Specific Settings #
 #########################
-
-# Setting PATH for Python 2.7, 3.3
-PATH+=":/Library/Frameworks/Python.framework/Versions/3.3/bin"
-PATH+=":/Library/Frameworks/Python.framework/Versions/2.7/bin"
-export PATH
-export PYTHONPATH=${PYTHONPATH}:.
 
 # Homebrew permission problem
 ## sudo chown $(whoami):admin /usr/local \
