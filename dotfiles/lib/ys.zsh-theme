@@ -2,7 +2,7 @@
 # Tested on Linux, Unix and Windows under ANSI colors.
 # It is recommended to use with a dark background and the font Inconsolata.
 # Colors: black, red, green, yellow, *blue, magenta, cyan, and white.
-# 
+#
 # http://ysmood.org/wp/2013/03/my-ys-terminal-theme/
 # Mar 2013 ys
 
@@ -44,7 +44,9 @@ ys_hg_prompt_info() {
 	fi
 }
 
-# Prompt format: \n # USER at MACHINE in DIRECTORY on git:BRANCH STATE [TIME] \n $ 
+local exit_code="%(?,%?,%{$fg[red]%}%?%{$reset_color%})"
+
+# Prompt format: \n # USER at MACHINE in DIRECTORY on git:BRANCH STATE [TIME] \n $
 PROMPT="
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
 $FG[163]%n\
@@ -54,7 +56,7 @@ $FG[123]:\
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${hg_info}\
 ${git_info} \
-$FG[135][%*]
+$FG[135][%*] tty:%l L:%L N:%i C:$exit_code
 %{$terminfo[bold]$fg[yellow]%}$ %{$reset_color%}"
 
 if [[ "$USER" == "root" ]]; then
