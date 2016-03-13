@@ -254,10 +254,16 @@ function convert_mov_to_gif {
     # convert -delay 5 -layers Optimize -loop 0 - $f
     gifsicle --optimize=3 --delay=7 > $f
     if [[ $2 == --publish ||  $2 == -p ]]; then
-      local ff="${HOME}/Dropbox/Public/screenshots/"
-      ff+=Screencast-`date +"%Y.%m.%d-%H.%M"`.gif
-      mv $f $ff
-      yellowecho "converted gif file: $ff"
+      local f0="${HOME}/Dropbox/Public"
+      local home_url=$(cat "${HOME}/Dropbox/Public/home_url")
+      local f1=/$(basename $f)
+      if [[ $3 == --date || $3 == -d ]]; then
+        f1="/screenshots/Screencast-"
+        f1+=`date +"%Y.%m.%d-%H.%M"`.gif
+      fi
+      mv $f "$f0$f1"
+      yellowecho "converted gif file: $f0$f1"
+      yellowecho "public url is: $home_url$f1"
     fi
   else
     echo "$1 is not a .mov file"
