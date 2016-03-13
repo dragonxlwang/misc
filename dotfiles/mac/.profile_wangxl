@@ -216,6 +216,12 @@ function atom_install_from_list { apm install  $( cat ${1} ) }
 alias atom_star_installed='apm star --installed'
 alias atom_install_starred='apm stars --install'
 alias atom_ls_starred='apm stars'
+function atom_compare_packages {
+  cd ${HOME}/.atom
+  atom_ls_installed_packages -n > installed.list
+  atom_ls_starred_packages > starred.list
+  vimdiff *.list
+}
 
 # ipython
 alias start_ipython='cd ${HOME}/Dropbox/workspace/ipython; jupyter notebook'
