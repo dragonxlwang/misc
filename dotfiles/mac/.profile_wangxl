@@ -25,6 +25,16 @@ function work { tmux new -AD -s $(hostname -s)-main }
 ## unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
 alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
 
+## show history with time, increase history size
+## https://github.com/robbyrussell/oh-my-zsh/issues/739
+## ./.oh-my-zsh/lib/history.zsh
+## "mm/dd/yyyy":  -f
+## "dd.mm.yyyy":  -E
+## "yyyy-mm-dd":  -i
+## HISTSIZE is the maximum number of lines that are kept in a session and
+## SAVEHIST is the maximum number of lines that are kept in the history file.
+alias history='fc -i -l 1'
+
 alias rrm='/bin/rm -v'
 function rm {
   local ret=""
@@ -150,35 +160,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 #
 #  chmod go-w /usr/local/share
 
-# Python on mac
-# Homebrew python: https://github.com/Homebrew/homebrew-python
-## brew tap homebrew/python
-## brew install python
-## brew install numpy scipy matplotlib matplotlib-basemap
-## brew install numba pillow pygame
-## brew install ffmpeg
-## sudo pip uninstall ipython
-## pip install ipython
-# Or alternatively, https://gitter.im/ipython/ipython/help/archives/2015/04/16
-## sudo pip install "ipython[all]" --upgrade --force-reinstall
-## sudo pip install -U nltk
-## python -m nltk.downloader all
-## sudo -H pip install --upgrade matplotlib
-
-# pip utilities
-## for f in $(pip list); do echo $f; done
-## for f in $(pip list); do
-##   [[ $f != "("* ]] && {echo -n $f" "; pip show $f | grep "Location"};
-## done
-## for f in $(pip list); do
-##   [[ $f != "("* ]] && { s=$(pip show $f | grep "Location");
-##       [[ -n $(echo $s | grep "Library") ]] && {echo $f >> tmp.txt}; }
-## done
-## for f in $(cat tmp.txt); do echo $f; sudo pip uninstall $f; done
-## for f in $(cat tmp.txt); do
-##   echo $ANSI_COLOR_RED$f$ANSI_COLOR_RESET;
-##   pip install --upgrade --force-reinstall $f;
-## done
 
 #source /usr/local/etc/bash_completion.d/password-store
 
@@ -235,28 +216,8 @@ function atom_install_from_list { apm install  $( cat ${1} ) }
 alias atom_star_installed='apm star --installed'
 alias atom_install_starred='apm stars --install'
 alias atom_ls_starred='apm stars'
-# apm manual upgrade
-## for f in $(atom_ls_installed_packages); do
-##   f=$(echo $f | sed -r 's/@.*//');
-##   echo $f;
-##   apm upgrade $f;
-##   [[ $? -ne 0 ]] && echo $f >> err.txt;
-## done
 
 # ipython
-# sudo easy_install ipython
-# brew install pkg-config
-# brew install freetype
-# brew install pnglib
-# sudo -H easy_install matplotlib
-# sudo -H pip install jupyter
-#
-# one time config for inline matplotlib:
-# http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook\
-# -matplotlib-plot-inline
-# cat "c = get_config()" >> /Users/xiaolong/.ipython/profile_default
-# cat 'c.InteractiveShellApp.matplotlib = "inline"' \
-# >> /Users/xiaolong/.ipython/profile_default
 alias start_ipython='cd ${HOME}/Dropbox/workspace/ipython; jupyter notebook'
 
 # mac show hidden files

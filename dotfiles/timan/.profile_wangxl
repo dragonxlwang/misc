@@ -25,6 +25,16 @@ function work { tmux new -AD -s $(hostname -s)-main }
 ## unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
 alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
 
+## show history with time, increase history size
+## https://github.com/robbyrussell/oh-my-zsh/issues/739
+## ./.oh-my-zsh/lib/history.zsh
+## "mm/dd/yyyy":  -f
+## "dd.mm.yyyy":  -E
+## "yyyy-mm-dd":  -i
+## HISTSIZE is the maximum number of lines that are kept in a session and
+## SAVEHIST is the maximum number of lines that are kept in the history file.
+alias history='fc -i -l 1'
+
 alias rrm='/bin/rm -v'
 function rm {
   local ret=""
