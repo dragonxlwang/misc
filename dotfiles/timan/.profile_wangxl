@@ -156,6 +156,8 @@ function kill_all_xwang95_proc {
     done
 }
 alias python='/usr/bin/python'
+alias pip='sudo /usr/local/bin/pip'
+alias pip2.7='sudo /usr/local/bin/pip2.7'
 function clean_nx_sessions {
   local SESSION_PATHS=$(find /tmp/nx/xwang95/.nx/ \
                             -maxdepth 1 -type d -user $USER)
