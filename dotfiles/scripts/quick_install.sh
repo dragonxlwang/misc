@@ -34,7 +34,7 @@ brew install make --with-default-names
 brew install hub gawk ascii_plots gzip screen watch wget pigz
 brew install gcc node reattach-to-user-namespace zsh-completions
 brew install emacs gdb gpatch m4 nano markdown
-brew install file-formula git gist less openssh perl518 rsync svn unzip
+brew install file-formula git gist bfg less openssh perl518 rsync svn unzip
 ## brew install vim --override-system-vi
 ## brew install macvim --override-system-vim --custom-system-icons
 ## brew install zsh
