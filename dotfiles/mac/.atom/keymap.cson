@@ -54,7 +54,7 @@
   'ctrl-a d k':    'pane:split-up'
   'ctrl-a d j':  'pane:split-down'
 
-  'ctrl-a m':  'pane:merge-all-panes'
+  'ctrl-a m m':  'pane:merge-all-panes'
 
 'body':
   'ctrl-a j': 'window:focus-pane-below'

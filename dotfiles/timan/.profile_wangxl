@@ -69,6 +69,7 @@ alias cls='printf "\033c"'
 alias eliot="ssh -X eliot.cs.illinois.edu"
 alias run_matlab="matlab -nodesktop -nosplash -r"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
+alias up_profile="source ~/.profile_wangxl; tmux source-file ~/.tmux.conf"
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 alias echo_path='echo ${PATH//:/"\n"}'
 function reload_settings {

@@ -69,6 +69,7 @@ alias cls='printf "\033c"'
 alias eliot="ssh -X eliot.cs.illinois.edu"
 alias run_matlab="matlab -nodesktop -nosplash -r"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
+alias up_profile="source ~/.profile_wangxl; tmux source-file ~/.tmux.conf"
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 alias echo_path='echo ${PATH//:/"\n"}'
 function reload_settings {
@@ -231,13 +232,13 @@ alias start_ipython='cd ${HOME}/Dropbox/workspace/ipython; jupyter notebook'
 
 # open chrome with url/file
 function go_url {
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -app=$1
+  "${HOME}/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -app=$1
 }
 function go_file {
   go_url file:///$(readlink -f $1)
 }
 function go_chrome {
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" $1
+  "${HOME}/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" $1
 }
 
 # remove all .DS_store files in current directory recursively
@@ -268,6 +269,12 @@ function convert_mov_to_gif {
   else
     echo "$1 is not a .mov file"
   fi
+}
+
+# markdown
+function markdown {
+    local f=$(echo $1 | sed 's/\(md\|markdown\)$/htm/i')
+    /usr/local/bin/markdown --html4tags $1 > $f
 }
 
 # update homebrew, oh-my-zsh, pip and source profile again
