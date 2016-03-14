@@ -109,7 +109,9 @@ function xg_sl_incoming {
   git fetch
   git --no-pager log --branches --decorate --graph ..origin/master $@
 }
-alias xg_ls='git ls-files'
+function xg_ls {
+  git ls-tree -r --name-only ${@:-HEAD}
+}
 alias xg_st='git status'
 function xg_rm_last_commit {
   local ans=""
