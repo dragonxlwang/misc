@@ -198,6 +198,7 @@
   "tree-view-open-files": {}
   "vim-mode":
     useSmartcaseForSearch: true
-  "vim-surround": {}
+  "vim-surround":
+    surroundCommand: "S"
   welcome:
     showOnStartup: false
