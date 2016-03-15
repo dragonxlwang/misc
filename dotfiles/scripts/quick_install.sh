@@ -122,6 +122,9 @@ compinit
 ## ln -s gmv mv
 ## ln -s greadlink readlink
 
+# vim vundle
+# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 # one time config for inline matplotlib:
 # http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook-matplotlib-plot-inline
 # http://stackoverflow.com/questions/21176731/automatically-run-matplotlib-inline-in-ipython-notebook

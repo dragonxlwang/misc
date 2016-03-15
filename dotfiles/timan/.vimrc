@@ -1,4 +1,5 @@
 " ================ General Config ====================
+let g:osName = substitute(system('uname'), "\n", "", "")
 set nocompatible                "Sse Vim settings, rather than Vi
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -26,12 +27,66 @@ set ttimeoutlen=100             "Faster timeout for escape key and others
 set colorcolumn=80              "Highlight column at 80 char
 set mouse=a                     "Enable mouse
 
+" ================ Vundle Config =====================
+"" https://github.com/VundleVim/Vundle.vim
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" vim +PluginInstall +qall
+"
+" turn filetype detection off and, even if it's not strictly
+" necessary, disable loading of indent scripts and filetype plugins
+filetype off
+filetype plugin indent off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Flake8
+Plugin 'nvie/vim-flake8'
+
+" Gist https://github.com/mattn/gist-vim
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+
+Plugin 'tpope/vim-surround'
+
+Plugin 'tpope/vim-fugitive'
+
+" https://github.com/vim-airline/vim-airline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+let g:airline_theme = 'term'
+" https://gist.github.com/kevinis/c788f85a654b2d7581d8
+" https://gist.github.com/baopham/1838072
+if g:osName == 'Darwin'
+    set guifont=Monaco\ for\ Powerline:h12
+    let g:airline_powerline_fonts = 1
+endif
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" ================ Vundle Finish =====================
 filetype plugin indent on       "Sets indent mode based on filetype
 syntax on                       "Turn on syntax highlighting
 let mapleader=","               "Change leader to a comma
 let g:mapleader = ","           "Global leader to a comma
 
-let g:osName = substitute(system('uname'), "\n", "", "")
 
 " remove trailing whitespace
 source ${HOME}/misc/dotfiles/lib/better-whitespace.vim
@@ -148,10 +203,10 @@ nnoremap <leader>nw :set nowrap<CR>
 noremap <leader>s :vsplit<cr>
 noremap <leader>i :split<cr>
 
-" ,D diff off
-nnoremap <Leader>D :diffoff<CR><C-w><C-w>:diffoff<CR>
+" ,do diff off
+nnoremap <Leader>do :diffoff<CR><C-w><C-w>:diffoff<CR>
 " ,dt diff this
-nnoremap <Leader>d :diffthis<CR><C-w><C-w>:diffthis<CR>
+nnoremap <Leader>dt :diffthis<CR><C-w><C-w>:diffthis<CR>
 " ,ds Diff split
 nnoremap <Leader>ds :<C-u>diffsplit<Space>
 " ,dd Diff current files in split view
