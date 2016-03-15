@@ -50,8 +50,8 @@ Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 
 Plugin 'tpope/vim-surround'
-
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
 
 " https://github.com/vim-airline/vim-airline
 Plugin 'vim-airline/vim-airline'

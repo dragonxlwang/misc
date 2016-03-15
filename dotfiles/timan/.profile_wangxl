@@ -130,6 +130,8 @@ function xg_sl_incoming {
 function xg_ls {
   git ls-tree -r --name-only ${@:-HEAD}
 }
+alias xg_ls_ignored="git ls-files --ignored --exclude-standard --others"
+alias xg_ls_untracked="git ls-files --exclude-standard --others"
 alias xg_st='git status'
 function xg_rm_last_commit {
   local ans=""
