@@ -62,8 +62,15 @@ let g:airline_theme = 'term'
 " https://gist.github.com/kevinis/c788f85a654b2d7581d8
 " https://gist.github.com/baopham/1838072
 if g:osName == 'Darwin'
-    set guifont=Monaco\ for\ Powerline:h12
-    let g:airline_powerline_fonts = 1
+  set guifont=Monaco\ for\ Powerline:h12
+  let g:airline_powerline_fonts = 1
+else
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_left_sep=''
+  let g:airline_right_sep=''
+  let g:airline_left_alt_sep=''
+  let g:airline_right_alt_sep=''
 endif
 
 
