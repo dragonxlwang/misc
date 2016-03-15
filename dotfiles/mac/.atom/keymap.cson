@@ -70,3 +70,8 @@
   'ctrl-l': 'unset!'
   'ctrl-x': 'advanced-open-file:delete-path-component'
   'enter' : 'advanced-open-file:confirm-selected-or-first'
+
+'.platform-darwin atom-text-editor.vim-mode:not(.insert-mode)':
+  'ctrl-p': 'clipboard-plus:toggle'
+'.platform-darwin atom-text-editor:not([mini])':
+  'cmd-shift-v': 'clipboard-plus:toggle'
