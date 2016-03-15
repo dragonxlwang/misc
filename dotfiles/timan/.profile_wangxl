@@ -70,7 +70,23 @@ alias eliot="ssh -X eliot.cs.illinois.edu"
 alias run_matlab="matlab -nodesktop -nosplash -r"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
 alias up_profile="source ~/.profile_wangxl; tmux source-file ~/.tmux.conf"
+alias up_vundle="vim +PluginInstall +qall"
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
+function ed_misc {
+  local diff_cmd=" | vertical all | windo diffthis"
+  local cmd1='args ~/misc/dotfiles/*/.profile_wangxl'$diff_cmd
+  local cmd2='args ~/misc/dotfiles/*/.tmux.conf'$diff_cmd
+  local cmd3='args ~/misc/dotfiles/*/.vimrc'$diff_cmd
+  vim -c "$cmd1" -c "tabnew" \
+      -c "$cmd2" -c "tabnew" \
+      -c "$cmd3" -c "tabn1"
+  #echo "$cmd1"
+  #echo $cmd1
+  yellowecho "source ~/.profile_wangxl"
+  source ${HOME}/.profile_wangxl
+  yellowecho "source ~/.tmux.conf"
+  tmux source-file ${HOME}/.tmux.conf
+}
 alias echo_path='echo ${PATH//:/"\n"}'
 function reload_settings {
   echo "reloading ${HOME}/.profile_wangxl"
