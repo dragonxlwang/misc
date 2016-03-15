@@ -48,6 +48,7 @@
     formatCOnSave: false
     formatCPlusPlusOnSave: false
     style: "Google"
+  "clipboard-plus": {}
   core:
     disabledPackages: [
       "selection-highlight"
@@ -197,5 +198,6 @@
   "tree-view-open-files": {}
   "vim-mode":
     useSmartcaseForSearch: true
+  "vim-surround": {}
   welcome:
     showOnStartup: false

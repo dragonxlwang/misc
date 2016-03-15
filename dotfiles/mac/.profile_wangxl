@@ -4,6 +4,8 @@
 function yellowecho { echo -e "\033[1;33m${1}\033[0m" }
 function blueecho { echo -e "\033[1;36m${1}\033[0m" }
 function redecho { echo -e "\033[1;31m${1}\033[0m" }
+function greenecho { echo -e "\033[1;32m${1}\033[0m" }
+
 ANSI_COLOR_RED="\033[31m"   # \e vs \033
 ANSI_COLOR_RESET="\033[0m"
 
@@ -157,6 +159,9 @@ function xg_check_remote_up_2_date {
 alias xg_diff="git diff HEAD"
 alias xg_ca="git commit -v -a --amend --no-edit"
 
+# Enable hidden files completion
+# https://github.com/robbyrussell/oh-my-zsh/pull/4489#issuecomment-196992974
+_comp_options+=(globdots)
 
 #########################
 # Mac Specific Settings #
@@ -179,39 +184,9 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 #
 #  chmod go-w /usr/local/share
 
-
 #source /usr/local/etc/bash_completion.d/password-store
 
 # atom
-function atom_overwrite_starred_package_list {
-  apm starred --json > starred.json;
-  js='fs = require("fs");'
-  js+='JSON.parse(fs.readFileSync("starred.json")).forEach'
-  js+='(function(item){ console.log(item.name); })'
-  node -e  $js > starred.list;
-  apm unstar `cat starred.list`;
-  apm star --installed;
-  /bin/rm starred.json starred.list;
-}
-function atom_install_starred_incremental {
-  apm starred --json > starred.json;
-  js='fs = require("fs");'
-  js+='JSON.parse(fs.readFileSync("starred.json")).forEach'
-  js+='(function(item){ console.log(item.name); })'
-  node -e  $js > starred.list;
-  apm list --installed --bare > installed.list
-  for p in $(cat starred.list);
-  do
-    q=$(cat installed.list | grep "^$p@")
-    if [[ -n $q ]];
-    then
-      blueecho "$q already installed. skipping..."
-    else
-      apm install $p
-    fi
-  done
-  /bin/rm starred.json starred.list installed.list
-}
 function atom_ls_starred_packages {
   apm starred --json > starred.json;
   js='fs = require("fs");'
@@ -231,15 +206,63 @@ function atom_ls_installed_packages {
     echo $ret
   fi
 }
-function atom_install_from_list { apm install  $( cat ${1} ) }
-alias atom_star_installed='apm star --installed'
-alias atom_install_starred='apm stars --install'
 alias atom_ls_starred='apm stars'
 function atom_compare_packages {
+  local dir=$PWD
   cd ${HOME}/.atom
   atom_ls_installed_packages -n > installed.list
   atom_ls_starred_packages > starred.list
-  vimdiff *.list
+  local starred="$(diff installed.list starred.list | \
+    sed -rn 's/^>[[:space:]]*//p')"
+  local instald="$(diff installed.list starred.list | \
+    sed -rn 's/^<[[:space:]]*//p')"
+  [[ -n ${instald// /} ]] && greenecho "Installed but not starred packages:"
+  for p in "${(f)instald}";
+  do
+    [[ -n ${p// /} ]] && blueecho "==>  $p"
+  done
+  [[ -n ${starred// /} ]] && greenecho "Starred but not installed packages:"
+  for p in "${(f)starred}";
+  do
+    [[ -n ${p// /} ]] && yellowecho "==> $p"
+  done
+  greenecho "Compare Finished!"
+  cd $dir
+}
+alias atom_star_installed='apm star --installed'
+alias atom_install_starred='apm stars --install'
+function atom_install_from_list { apm install  $( cat ${1} ) }
+function atom_star_only_installed {
+  local dir=$PWD
+  cd ${HOME}/.atom
+  atom_ls_starred_packages > starred.list
+  apm unstar `cat starred.list`;
+  apm star --installed;
+  /bin/rm starred.list;
+  cd $dir
+}
+function atom_sync_package_incremental {
+  local dir=$PWD
+  cd ${HOME}/.atom
+  atom_ls_installed_packages -n > installed.list
+  atom_ls_starred_packages > starred.list
+  local starred="$(diff installed.list starred.list | \
+    sed -rn 's/^>[[:space:]]*//p')"
+  local instald="$(diff installed.list starred.list | \
+    sed -rn 's/^<[[:space:]]*//p')"
+  [[ -n ${instald// /} ]] && greenecho "Installed but not starred packages:"
+  for p in "${(f)instald}";
+  do
+    [[ -n ${p// /} ]] && { blueecho "==>  $p";  apm star "$p" }
+  done
+  [[ -n ${starred// /} ]] && greenecho "Starred but not installed packages:"
+  for p in "${(f)starred}";
+  do
+    [[ -n ${p// /} ]] && { yellowecho "==> $p"; apm install "$p" }
+  done
+  greenecho "Sync Finished!"
+  /bin/rm starred.list installed.list
+  cd $dir
 }
 
 # ipython

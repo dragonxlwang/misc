@@ -4,6 +4,8 @@
 function yellowecho { echo -e "\033[1;33m${1}\033[0m" }
 function blueecho { echo -e "\033[1;36m${1}\033[0m" }
 function redecho { echo -e "\033[1;31m${1}\033[0m" }
+function greenecho { echo -e "\033[1;32m${1}\033[0m" }
+
 ANSI_COLOR_RED="\033[31m"   # \e vs \033
 ANSI_COLOR_RESET="\033[0m"
 
@@ -157,6 +159,9 @@ function xg_check_remote_up_2_date {
 alias xg_diff="git diff HEAD"
 alias xg_ca="git commit -v -a --amend --no-edit"
 
+# Enable hidden files completion
+# https://github.com/robbyrussell/oh-my-zsh/pull/4489#issuecomment-196992974
+_comp_options+=(globdots)
 
 ###########################
 # Timan Specific Settings #
@@ -202,7 +207,7 @@ function install_git_from_source {
   cd ${HOME}
   local git_install_ver="git-2.6.3"
   sudo yum install curl-devel expat-devel gettext-devel \
-	openssl-devel perl-devel zlib-devel
+    openssl-devel perl-devel zlib-devel
   wget https://www.kernel.org/pub/software/scm/git/${git_install_ver}.tar.gz
   tar -zxvf ${git_install_ver}.tar.gz
   cd ${git_install_ver}

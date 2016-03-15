@@ -25,8 +25,8 @@ for FGs in '    m' '   1m' '  30m' '1;30m' '  31m' '1;31m' '  32m' \
 done
 echo
 
-echo -e "\033[31m" abc "\033[0m"
-echo -e "\e[31m" abc "\e[0m"
+echo -en "\033[31m" abc "\033[0m"
+echo -en "\e[31m" abc "\e[0m"
 #gecho -e "\033[31m" abc "\033[0m"
 #gecho -e "\e[31m" abc "\e[0m"
 
@@ -34,5 +34,3 @@ echo  "\033[31m" abc "\033[0m"
 echo  "\e[31m" abc "\e[0m"
 #gecho  "\033[31m" abc "\033[0m"
 #gecho  "\e[31m" abc "\e[0m"
-
-
