@@ -203,3 +203,9 @@ function xclip_forward {
 
 alias copy_to_mac_mini="ssh mac_mini pbcopy"
 alias paste_from_mac_mini="ssh mac_mini pbpaste"
+
+# ipython
+function start_ipython {
+  [[ $# == 1 ]] && { cd $1 } || { cd ${HOME}/workspace/ipython }
+  jupyter notebook --no-browser --port=8889
+}

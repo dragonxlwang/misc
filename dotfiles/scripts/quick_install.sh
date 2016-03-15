@@ -125,6 +125,9 @@ compinit
 # vim vundle
 # git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+# ipython default profile create:
+# https://ipython.org/ipython-doc/3/config/intro.html
+# ipython profile create [profilename]
 # one time config for inline matplotlib:
 # http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook-matplotlib-plot-inline
 # http://stackoverflow.com/questions/21176731/automatically-run-matplotlib-inline-in-ipython-notebook

@@ -174,8 +174,8 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 #
 #  rm -f ~/.zcompdump; compinit
 #
-#Additionally, if you receive "zsh compinit: insecure directories" warnings when attempting
-#to load these completions, you may need to run this:
+#Additionally, if you receive "zsh compinit: insecure directories" warnings
+#when attempting to load these completions, you may need to run this:
 #
 #  chmod go-w /usr/local/share
 
@@ -244,6 +244,22 @@ function atom_compare_packages {
 
 # ipython
 alias start_ipython='cd ${HOME}/Dropbox/workspace/ipython; jupyter notebook'
+alias start_tunnel_ipython='ssh -N -f -L localhost:8889:localhost:8889 timan101'
+function kill_tunnel_ipython {
+  # quote the command substitution
+  # stackoverflow.com/questions/31521221/zsh-local-keyword-not-an-identifier
+  local pids="$(ps aux | \
+               grep 'ssh -N -f -L localhost:8889:localhost:8889 timan101' | \
+               awk '{print $2}')"
+  for i in ${=pids};
+  do
+    local comm=$(ps -p $i -o comm=)
+    if [[ $comm == ssh* ]]; then
+      echo "kill PID:($i) "$comm
+      kill -9 $i
+    fi
+  done
+}
 
 # mac show hidden files
 # defaults write com.apple.finder AppleShowAllFiles YES
