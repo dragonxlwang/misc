@@ -73,6 +73,13 @@ else
   let g:airline_right_alt_sep=''
 endif
 
+" remove trailing whitespace
+Plugin 'ntpeters/vim-better-whitespace'
+" add following to turn on when start
+let g:better_whitespace_enabled = 0
+autocmd VimEnter * EnableWhitespace
+" turn on by default for all filetypes
+autocmd BufWritePre * StripWhitespace
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
