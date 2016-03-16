@@ -9,3 +9,21 @@
 # atom.workspace.observeTextEditors (editor) ->
 #   editor.onDidSave ->
 #     console.log "Saved! #{editor.getPath()}"
+
+# https://discuss.atom.io/t/how-to-toggle-current-fold-in-editor-view/11094
+atom.commands.add 'atom-text-editor',
+  'editor:toggle-current-row-folding': (event) ->
+    editor = @getModel()
+    bufferRow = editor.bufferPositionForScreenPosition(editor.getCursorScreenPosition()).row
+    if editor.isFoldedAtBufferRow(bufferRow)
+      editor.unfoldBufferRow(bufferRow)
+    else
+      editor.foldBufferRow(bufferRow)
+atom.commands.add 'atom-text-editor',
+  'editor:toggle-all-folding': (event) ->
+    editor = @getModel()
+    bufferRow = editor.bufferPositionForScreenPosition(editor.getCursorScreenPosition()).row
+    if editor.isFoldedAtBufferRow(bufferRow)
+      editor.unfoldAll(bufferRow)
+    else
+      editor.foldAll(bufferRow)

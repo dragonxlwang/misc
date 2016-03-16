@@ -65,13 +65,15 @@
   'ctrl-a ctrl-k': 'pane:show-next-item'
 
 '.advanced-open-file atom-text-editor':
-  'ctrl-j': 'advanced-open-file:move-cursor-down'
-  'ctrl-k': 'advanced-open-file:move-cursor-up'
   'ctrl-l': 'unset!'
   'ctrl-x': 'advanced-open-file:delete-path-component'
   'enter' : 'advanced-open-file:confirm-selected-or-first'
 
-'.platform-darwin atom-text-editor.vim-mode:not(.insert-mode)':
-  'ctrl-p': 'clipboard-plus:toggle'
 '.platform-darwin atom-text-editor:not([mini])':
   'cmd-shift-v': 'clipboard-plus:toggle'
+
+'.platform-darwin atom-text-editor.vim-mode:not(.insert-mode)':
+  'ctrl-p'      : 'clipboard-plus:toggle'
+  'z a'         : 'editor:toggle-current-row-folding'
+  'z shift-A'   : 'editor:toggle-all-folding'
+  'g c'         : 'editor:toggle-line-comments'
