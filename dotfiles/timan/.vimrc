@@ -242,7 +242,7 @@ map <leader>bd :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
+map <leader>tt :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
@@ -250,6 +250,13 @@ map <leader>tm :tabmove
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Cycle between buffers
+map <leader>k :bnext<cr>
+map <leader>j :bprev<cr>
+" Cycle between tabs
+map <leader>l :tabn<cr>
+map <leader>h :tabp<cr>
 
 " => vimgrep searching and cope displaying
 """"""""""""""""""""""""
