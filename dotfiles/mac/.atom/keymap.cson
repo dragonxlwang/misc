@@ -73,7 +73,9 @@
   'cmd-shift-v': 'clipboard-plus:toggle'
 
 '.platform-darwin atom-text-editor.vim-mode:not(.insert-mode)':
-  'ctrl-p'      : 'clipboard-plus:toggle'
-  'z a'         : 'editor:toggle-current-row-folding'
-  'z shift-A'   : 'editor:toggle-all-folding'
-  'g c'         : 'editor:toggle-line-comments'
+  'ctrl-p'          : 'clipboard-plus:toggle'
+  'z a'             : 'editor:toggle-current-row-folding'
+  'z shift-A'       : 'editor:toggle-all-folding'
+  'g c'             : 'editor:toggle-line-comments'
+  'ctrl-w ctrl-j'   : 'pane:show-previous-item'
+  'ctrl-w ctrl-k'   : 'pane:show-next-item'

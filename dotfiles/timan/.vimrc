@@ -259,8 +259,8 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 map <leader>k :bnext<cr>
 map <leader>j :bprev<cr>
 " Cycle between tabs
-map <leader>l :tabn<cr>
-map <leader>h :tabp<cr>
+map <C-w><C-k> :tabn<cr>
+map <C-w><C-j> :tabp<cr>
 
 " => vimgrep searching and cope displaying
 """"""""""""""""""""""""
