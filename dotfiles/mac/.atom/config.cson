@@ -63,6 +63,7 @@
       "git-control"
       "git-diff-details"
       "fonts"
+      "vim-mode-plus"
     ]
     themes: [
       "one-dark-ui"
@@ -199,6 +200,13 @@
   "tree-view-open-files": {}
   "vim-mode":
     useSmartcaseForSearch: true
+  "vim-mode-plus":
+    highlightSearch: true
+    incrementalSearch: true
+    showHoverOnOperate: true
+    useClipboardAsDefaultRegister: true
+    useSmartcaseForSearch: true
+    useSmartcaseForSearchCurrentWord: true
   "vim-surround":
     surroundCommand: "S"
   welcome:

@@ -86,6 +86,10 @@ autocmd BufWritePre * StripWhitespace
 
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -189,7 +193,12 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 " Exit insert mode by typing jk
-inoremap jk <ESC>
+" http://vim.wikia.com/wiki/Avoid_the_escape_key
+inoremap jk <ESC>`^
+vnoremap ;; <Esc>gV
+cnoremap ;; <C-c>
+nnoremap ;; <Esc>
+onoremap ;; <Esc>
 
 " ================ Leader  ===========================
 " ,w Fast saves

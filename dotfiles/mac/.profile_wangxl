@@ -73,6 +73,7 @@ alias run_matlab="matlab -nodesktop -nosplash -r"
 alias ed_profile="vim ~/.profile_wangxl; source ~/.profile_wangxl"
 alias up_profile="source ~/.profile_wangxl; tmux source-file ~/.tmux.conf"
 alias up_vundle="vim +PluginInstall +qall"
+alias update_vundle="vim +PluginInstall +qall; vim +PluginUpdate +qall"
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 function ed_misc {
   local diff_cmd=" | vertical all | windo diffthis"

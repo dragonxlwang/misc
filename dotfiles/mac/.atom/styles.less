@@ -20,28 +20,57 @@
   // background-color: whitesmoke;
 }
 
+// http://cloford.com/resources/colours/500col.htm
 // style the background and foreground colors on the atom-text-editor-element itself
 atom-text-editor {
-  // color: white;
+  color: #FAFAD2;
   // background-color: hsl(180, 24%, 12%);
 }
-
-// To style other content in the text editor's shadow DOM, use the ::shadow expression
-atom-text-editor::shadow .cursor {
-  // border-color: red;
-}
-
-.editor {
-    font-weight: bold;
-}
-
-.indent-guide-improved {
-  background-color: #3D3D29;
-  &.indent-guide-stack {
-    background-color: #47476B;
-    &.indent-guide-active {
-      background-color: #6B47B2;
+// // To style other content in the text editor's shadow DOM, use the ::shadow expression
+atom-text-editor::shadow {
+  .variable {
+    // this (js), @varable_name (sass),  variable of {{variable}} (handlebars)
+    // color: rgba(255,0,0, 1);
+    // foo & bar of function name(foo, bar)
+    &.parameter.function { color: #00FF00; }
+  }
+  .keyword {
+    // @ of @font-face & @media
+    color: #FF7F00;
+    // try, catch, if, else, return (js)
+    &.control { color: #7CFC00; }
+    // // =, +, -, ?, :, !=. &&, in (js)
+    &.operator { color: #FF4500; }
+  }
+  // // STORAGE |
+  // .storage {
+  //   color: red;
+  //   // var of var a = b;
+  //   &.modifier { color: yellow; }
+  // }
+  .constant {
+    // true, false, null, undefined
+    color: #FFFF00;
+  //  // \ of ("what\'s")
+  //   &.character.escape {
+  //     color: rgba(255,215,0, 1);
+  //   }
+    // all the numbers!
+    &.numeric { color: #7FFF00; }
+  }
+  .support {
+    // background of background: none,
+    color: #FF3E96;
+    // SUPPORT | module of module.exports
+    &.class { color: #FF3E96; }
+    &.function  {
+      color: #FF3E96; // .log of console.log, url of url(http://web.com)
+      // can't tell what this does :/
+      &.any-method { color: #FF3E96; }
     }
+    // {{}} of {{ variable }} none of text-decoration: none;
+    &.constant { color: #C6E2FF; }
+    // &.type.property-name.css { color: red; }
   }
 }
 
@@ -82,5 +111,13 @@ atom-text-editor::shadow .highlight {
   &.current-result ~ .highlight.selection .region {
     background: rgba(255, 0, 0, 0.2);
     border: 2px solid rgba(255, 255, 0, 1);
+  }
+}
+
+// t9md/atom-vim-mode-plus
+atom-text-editor::shadow {
+  .vim-mode-plus-highlight-search .region {
+    border: 2px solid rgba(255, 255, 0, 1);
+    background-color: rgba(255, 255, 0, 0.2);
   }
 }

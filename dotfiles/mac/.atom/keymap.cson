@@ -26,18 +26,6 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
-'atom-text-editor.vim-mode.normal-mode':
-  'ctrl-a': 'unset!'
-'atom-text-editor':
-  'ctrl-a': 'unset!'
-
-'atom-text-editor.vim-mode.insert-mode:not(.mini)':
-  'j k': 'vim-mode:reset-normal-mode'
-
-'atom-text-editor.vim-mode.visual-mode:not(.mini)':
-  '; ;': 'vim-mode:activate-normal-mode'
-  ', ,': 'vim-mode:reset-normal-mode'
-
 '.platform-darwin':
   'ctrl-a m h':  'pane:split-left-moving-current-tab'
   'ctrl-a m l': 'pane:split-right-moving-current-tab'
@@ -72,10 +60,38 @@
 '.platform-darwin atom-text-editor:not([mini])':
   'cmd-shift-v': 'clipboard-plus:toggle'
 
+'atom-text-editor.vim-mode.normal-mode':
+  'ctrl-a': 'unset!'
+'atom-text-editor':
+  'ctrl-a': 'unset!'
+
+'atom-text-editor.vim-mode.insert-mode:not(.mini)':
+  'j k': 'vim-mode:reset-normal-mode'
+
 '.platform-darwin atom-text-editor.vim-mode:not(.insert-mode)':
+  ', ,'             : 'vim-mode:activate-normal-mode'
+  '; ;'             : 'vim-mode:reset-normal-mode'
   'ctrl-p'          : 'clipboard-plus:toggle'
   'z a'             : 'editor:toggle-current-row-folding'
   'z shift-A'       : 'editor:toggle-all-folding'
   'g c'             : 'editor:toggle-line-comments'
   'ctrl-w ctrl-j'   : 'pane:show-previous-item'
   'ctrl-w ctrl-k'   : 'pane:show-next-item'
+
+# 'atom-text-editor.vim-mode-plus.normal-mode':
+#   'ctrl-a': 'unset!'
+# 'atom-text-editor':
+#   'ctrl-a': 'unset!'
+#
+# 'atom-text-editor.vim-mode-plus.insert-mode':
+#   'j k'               : 'vim-mode-plus:reset-normal-mode'
+#
+# 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+#   ', ,'               : 'vim-mode-plus:activate-normal-mode'
+#   '; ;'               : 'vim-mode-plus:reset-normal-mode'
+#   'ctrl-p'            : 'clipboard-plus:toggle'
+#   'z shift-A'         : 'editor:toggle-all-folding'
+#   'g c'               : 'editor:toggle-line-comments'
+#   'ctrl-w ctrl-j'     : 'pane:show-previous-item'
+#   'ctrl-w ctrl-k'     : 'pane:show-next-item'
+#   ':'                 : 'ex-mode:open'
