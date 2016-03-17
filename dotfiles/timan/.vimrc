@@ -58,6 +58,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme = 'term'
 " https://gist.github.com/kevinis/c788f85a654b2d7581d8
 " https://gist.github.com/baopham/1838072
@@ -81,6 +83,8 @@ let g:better_whitespace_enabled = 0
 autocmd VimEnter * EnableWhitespace
 " turn on by default for all filetypes
 autocmd BufWritePre * StripWhitespace
+
+Plugin 'airblade/vim-gitgutter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
