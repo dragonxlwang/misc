@@ -44,3 +44,23 @@ atom-text-editor::shadow .cursor {
     }
   }
 }
+
+// https://github.com/richrace/highlight-selected
+atom-text-editor, atom-text-editor::shadow {
+  // Box
+  .highlights .highlight-selected .region {
+    border-color: #ddd;
+  }
+  // Background
+  .highlights .highlight-selected.background .region {
+    background-color: rgba(155, 149, 0, 0.6);
+  }
+  // Light theme box (set in settings)
+  .highlights .highlight-selected.light-theme .region {
+    border-color: rgba(255, 255, 0, 1.0);
+  }
+  // Light theme background (set in settings)
+  .highlights .highlight-selected.light-theme.background .region {
+    background-color: rgba(255, 255, 0, 0.2);
+  }
+}
