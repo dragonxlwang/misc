@@ -64,3 +64,23 @@ atom-text-editor, atom-text-editor::shadow {
     background-color: rgba(255, 255, 0, 0.2);
   }
 }
+
+// https://discuss.atom.io/t/how-to-change-find-and-replace-highlight-color/14750/7
+atom-text-editor::shadow .highlight {
+  &.find-result .region,
+  &.current-result .region,
+  &.current-result ~ .highlight.selection .region {
+    z-index: -1;
+  }
+
+  &.find-result .region {
+    background: rgba(255, 255, 0, 0.2);
+    border: 2px solid rgba(255, 255, 0, 1);
+  }
+
+  &.current-result .region,
+  &.current-result ~ .highlight.selection .region {
+    background: rgba(255, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 0, 1);
+  }
+}

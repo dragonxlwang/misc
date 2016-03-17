@@ -78,6 +78,7 @@
     userId: "37115345-b4cc-8e90-d39d-02aef4fc2d04"
   "file-icons":
     forceShow: true
+  "find-and-replace": {}
   "formatter-clang-format": {}
   "gist-it":
     openAfterCreate: true
