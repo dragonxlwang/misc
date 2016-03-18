@@ -94,6 +94,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_show_hidden = 1
 
 Plugin 'nvie/vim-flake8'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'tpope/vim-surround'
