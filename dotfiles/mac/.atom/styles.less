@@ -30,7 +30,7 @@ atom-text-editor {
 atom-text-editor::shadow {
   .variable {
     // this (js), @varable_name (sass),  variable of {{variable}} (handlebars)
-    // color: rgba(255,0,0, 1);
+    // color: #AAAA77;
     // foo & bar of function name(foo, bar)
     &.parameter.function { color: #00FF00; }
   }
@@ -42,12 +42,12 @@ atom-text-editor::shadow {
     // // =, +, -, ?, :, !=. &&, in (js)
     &.operator { color: #FF4500; }
   }
-  // // STORAGE |
-  // .storage {
-  //   color: red;
-  //   // var of var a = b;
-  //   &.modifier { color: yellow; }
-  // }
+  // STORAGE |
+  .storage {
+    color: #EE7600;
+    // var of var a = b;
+    &.modifier { color: #EE7600; }
+  }
   .constant {
     // true, false, null, undefined
     color: #FFFF00;
@@ -64,14 +64,15 @@ atom-text-editor::shadow {
     // SUPPORT | module of module.exports
     &.class { color: #FF3E96; }
     &.function  {
-      color: #FF3E96; // .log of console.log, url of url(http://web.com)
+      color: #AF5FFF; // .log of console.log, url of url(http://web.com)
       // can't tell what this does :/
-      &.any-method { color: #FF3E96; }
+      &.any-method { color: #AF5FFF; }
     }
     // {{}} of {{ variable }} none of text-decoration: none;
     &.constant { color: #C6E2FF; }
     // &.type.property-name.css { color: red; }
   }
+  // .string { color: #00FFFF;}
 }
 
 // https://github.com/richrace/highlight-selected
