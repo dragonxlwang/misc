@@ -209,6 +209,8 @@ set magic               "For regular expressions turn magic on
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
+" Clearr search history
+nnoremap <space> :noh<CR><ESC>
 
 " ================ Misc ==============================
 " Get off my lawn
