@@ -50,9 +50,9 @@ Plugin 'scrooloose/nerdtree'
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeShowHidden = 1
-nnoremap nn :NERDTreeToggle<CR>
-nnoremap n. :NERDTreeFind<cr>
-nnoremap no :NERDTree<space>
+nnoremap <leader>nn :NERDTreeToggle<CR>
+nnoremap <leader>n. :NERDTreeFind<cr>
+nnoremap <leader>no :NERDTree<space>
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " https://github.com/vim-airline/vim-airline
