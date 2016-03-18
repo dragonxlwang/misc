@@ -45,7 +45,6 @@
       cursorLineFix: true
   "clang-format":
     executable: "/usr/local/bin/clang-format"
-    formatCOnSave: false
     formatCPlusPlusOnSave: false
     style: "Google"
   "clipboard-plus": {}

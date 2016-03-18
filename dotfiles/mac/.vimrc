@@ -42,16 +42,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Flake8
-Plugin 'nvie/vim-flake8'
-
-" Gist https://github.com/mattn/gist-vim
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-commentary'
+Plugin 'scrooloose/nerdtree'
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeShowHidden = 1
+nnoremap nt :NERDTreeToggle<CR>
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " https://github.com/vim-airline/vim-airline
 Plugin 'vim-airline/vim-airline'
@@ -84,17 +81,40 @@ autocmd VimEnter * EnableWhitespace
 " turn on by default for all filetypes
 autocmd BufWritePre * StripWhitespace
 
-Plugin 'airblade/vim-gitgutter'
-
 Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 
+Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_show_hidden = 1
+
+Plugin 'nvie/vim-flake8'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'godlygeek/tabular'
+
+"cuke tables: https://gist.github.com/tpope/287147
+"Plugin 'dhruvasagar/vim-table-mode'
+
+" Plugin 'Valloric/YouCompleteMe'
+
+" Plugin 'scrooloose/syntastic'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
