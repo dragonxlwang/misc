@@ -1,5 +1,4 @@
 " ================ General Config ====================
-let g:osName = substitute(system('uname'), "\n", "", "")
 set nocompatible                "Sse Vim settings, rather than Vi
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -27,6 +26,10 @@ set ttimeoutlen=100             "Faster timeout for escape key and others
 set colorcolumn=80              "Highlight column at 80 char
 set mouse=a                     "Enable mouse
 
+let g:osName = substitute(system('uname'), "\n", "", "")
+let mapleader=","               "Change leader to a comma
+let g:mapleader = ","           "Global leader to a comma
+
 " ================ Vundle Config =====================
 "" https://github.com/VundleVim/Vundle.vim
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -47,7 +50,9 @@ Plugin 'scrooloose/nerdtree'
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeShowHidden = 1
-nnoremap nt :NERDTreeToggle<CR>
+nnoremap nn :NERDTreeToggle<CR>
+nnoremap n. :NERDTreeFind<cr>
+nnoremap no :NERDTree<space>
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " https://github.com/vim-airline/vim-airline
@@ -127,8 +132,6 @@ filetype plugin indent on    " required
 " ================ Vundle Finish =====================
 filetype plugin indent on       "Sets indent mode based on filetype
 syntax on                       "Turn on syntax highlighting
-let mapleader=","               "Change leader to a comma
-let g:mapleader = ","           "Global leader to a comma
 
 " ================ Color Themes ======================
 "colorscheme ansi_blows
