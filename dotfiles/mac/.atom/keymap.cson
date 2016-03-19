@@ -62,8 +62,13 @@
 
 'atom-text-editor.vim-mode.normal-mode':
   'ctrl-a': 'unset!'
-'atom-text-editor':
+'atom-text-editor:not([mini])':
   'ctrl-a': 'unset!'
+  'ctrl-o': 'last-cursor-position:previous'
+  'ctrl-i': 'last-cursor-position:next'
+  'ctrl-shift-J'  : 'goto:declaration'
+  'ctrl-shift-K'  : 'goto:file-symbol'
+  'ctrl-shift-H'  : 'goto:project-symbol'
 
 'atom-text-editor.vim-mode.insert-mode:not(.mini)':
   'j k': 'vim-mode:reset-normal-mode'

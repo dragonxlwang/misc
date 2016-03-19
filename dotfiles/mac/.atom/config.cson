@@ -64,10 +64,15 @@
       "fonts"
       "vim-mode-plus"
     ]
+    packagesWithKeymapsDisabled: [
+      "goto"
+    ]
     themes: [
       "one-dark-ui"
       "seti-syntax"
     ]
+  docblockr:
+    auto_add_method_tag: true
   editor:
     autoIndentOnPaste: false
     fontFamily: "monaco"
