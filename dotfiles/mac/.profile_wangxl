@@ -287,8 +287,21 @@ function kill_tunnel_ipython {
   done
 }
 
-# mac show hidden files
-# defaults write com.apple.finder AppleShowAllFiles YES
+# mac:
+function mac_show_hidden {
+  defaults write com.apple.finder AppleShowAllFiles YES
+  killall Finder
+}
+function mac_hide_hidden {
+  defaults write com.apple.finder AppleShowAllFiles NO
+  killall Finder
+}
+function mac_disable_accent_char {
+  defaults write -g ApplePressAndHoldEnabled -bool false
+}
+function mac_enable_accent_char {
+  defaults write -g ApplePressAndHoldEnabled -bool true
+}
 
 # open chrome with url/file
 function go_url {
