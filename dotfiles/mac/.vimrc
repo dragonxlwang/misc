@@ -8,7 +8,7 @@ set title                       "Change the terminal's title
 set ruler                       "Bottom right corner of the status line
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
-set visualbell                  "No sounds
+" set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set laststatus=2                "Always display the status line
 set hidden                      "Buffers can exist in the background
@@ -55,7 +55,8 @@ nnoremap <leader>n. :NERDTreeFind<cr>
 nnoremap <leader>no :NERDTree<space>
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-" https://github.com/vim-airline/vim-airline
+Plugin 'flazz/vim-colorschemes'
+
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
@@ -108,10 +109,23 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
 
-"cuke tables: https://gist.github.com/tpope/287147
-"Plugin 'dhruvasagar/vim-table-mode'
+" cuke tables: https://gist.github.com/tpope/287147
+" Plugin 'dhruvasagar/vim-table-mode'
 
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.py --clang-completer
 Plugin 'Valloric/YouCompleteMe'
+" cd ~/.vim/bundle/color_coded
+" mkdir build && cd build
+" cmake ..
+" make && make install # Compiling with GCC is preferred, ironically
+" # Clang works on OS X, but has mixed success on Linux and the BSDs
+" # Cleanup afterward; frees several hundred megabytes
+" make clean && make clean_clang
+Plugin 'jeaye/color_coded'
+Plugin 'rdnetto/YCM-Generator'
+let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
+let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
 
 " Plugin 'scrooloose/syntastic'
 " set statusline+=%#warningmsg#
@@ -138,19 +152,6 @@ filetype plugin indent on    " required
 filetype plugin indent on       "Sets indent mode based on filetype
 syntax on                       "Turn on syntax highlighting
 
-" ================ Color Themes ======================
-"colorscheme ansi_blows
-"set t_ut=
-"colorscheme lucario
-"colorscheme jellybeans
-"colorscheme atom-dark-256
-""Lucius setting
-"colorscheme lucius
-"LuciusBlackHighContrast
-"colorscheme monokai
-colorscheme vividchalk
-highlight Search guibg=#ff5f00 gui=none ctermbg=226 ctermfg=016 cterm=none
-
 " ================ Indentation =======================
 set autoindent
 set smartindent
@@ -166,7 +167,7 @@ set foldnestmax=3       "Deepest fold is 3 levels
 set nofoldenable        "Dont fold by default
 
 " ================ Completion ========================
-set wildmode=list:longest
+set wildmode=list:longest,full
 set wildmenu                    "Enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~     "Stuff to ignore when tab completing
 set wildignore+=*vim/backups*
@@ -180,18 +181,6 @@ set wildignore+=tmp/**
 set wildignore+=*.pyc
 set wildignore+=*.png,*.jpg,*.gif
 set completeopt=longest,menuone "Inserts the longest common text, even if one
-
-" Remap TAB to keyword completion
-function! InsertTabWrapper(direction)
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  elseif "backward" == a:direction
-    return "\<c-p>"
-  elseif "forward" == a:direction
-    return "\<c-n>"
-  endif
-endfunction
 
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<CR>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<CR>
@@ -384,6 +373,19 @@ map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Remap TAB to keyword completion
+function! InsertTabWrapper(direction)
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  elseif "backward" == a:direction
+    return "\<c-p>"
+  elseif "forward" == a:direction
+    return "\<c-n>"
+  endif
+endfunction
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -462,3 +464,17 @@ function! AutoHighlightToggle()
     return 1
   endif
 endfunction
+
+" ================ Color Themes ======================
+" "colorscheme ansi_blows
+" "set t_ut=
+" "colorscheme lucario
+" "colorscheme jellybeans
+" "colorscheme atom-dark-256
+" ""Lucius setting
+" "colorscheme lucius
+" "LuciusBlackHighContrast
+" "colorscheme monokai
+colorscheme vividchalk
+" highlight Search guibg=#ff5f00 gui=none ctermbg=226 ctermfg=016 cterm=none
+" "
