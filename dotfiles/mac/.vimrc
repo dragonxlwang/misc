@@ -111,7 +111,7 @@ Plugin 'godlygeek/tabular'
 "cuke tables: https://gist.github.com/tpope/287147
 "Plugin 'dhruvasagar/vim-table-mode'
 
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " Plugin 'scrooloose/syntastic'
 " set statusline+=%#warningmsg#

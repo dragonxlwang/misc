@@ -21,6 +21,7 @@
     bibtex: [
       "/Library/TeX/texbin/bibtex"
     ]
+  "autocomplete-clang": {}
   "autocomplete-plus": {}
   "autocomplete-python":
     outputProviderErrors: true
