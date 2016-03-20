@@ -109,18 +109,43 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
 
-" cd ~/.vim/bundle/YouCompleteMe
-" ./install.py --clang-completer
-" cd ~/.vim/bundle/color_coded
-" mkdir build && cd build
-" cmake ..
-" make && make install # Compiling with GCC is preferred, ironically
-" # Clang works on OS X, but has mixed success on Linux and the BSDs
-" # Cleanup afterward; frees several hundred megabytes
-" make clean && make clean_clang
+if g:osName == 'Darwin'
+  " cd ~/.vim/bundle/YouCompleteMe
+  " ./install.py --clang-completer
+  " cd ~/.vim/bundle/color_coded
+  " mkdir build && cd build
+  " cmake ..
+  " make && make install # Compiling with GCC is preferred, ironically
+  " # Clang works on OS X, but has mixed success on Linux and the BSDs
+  " # Cleanup afterward; frees several hundred megabytes
+  " make clean && make clean_clang
+  Plugin 'Valloric/YouCompleteMe' " <leader>d: diagnostic msg on current line
+  let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
+  let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
+  let g:ycm_always_populate_location_list = 1
+  let g:ycm_complete_in_comments = 1
+  let g:lt_location_list_toggle_map = '<leader>ll' " toggle location list
+  let g:lt_quickfix_list_toggle_map = '<leader>qf' " toggle quickfix list
+  noremap <Leader>jd :YcmCompleter GoTo<CR>
+  noremap <leader>jt :YcmCompleter GetType<CR>
+  noremap <leader>jm :YcmCompleter GetDoc<CR>
+  noremap <leader>jj :YcmForceCompileAndDiagnostics<CR> :YcmDiags<CR>
+        \ :wincmd w<CR>
 
-Plugin 'Valloric/YouCompleteMe'
-" Plugin 'jeaye/color_coded'        " not working right now
+  Plugin 'Valloric/ListToggle'
+  " Plugin 'jeaye/color_coded'        " not working right now
+  Plugin 'rdnetto/YCM-Generator'
+  " =============================================
+  " Plugin 'scrooloose/syntastic'
+  " set statusline+=%#warningmsg#
+  " set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
+  " let g:syntastic_always_populate_loc_list = 1
+  " let g:syntastic_auto_loc_list = 1
+  " let g:syntastic_check_on_open = 1
+  " let g:syntastic_check_on_wq = 0
+endif
+
 Plugin 'justinmk/vim-syntax-extra'  " temporal solution
 
 Plugin 'Chiel92/vim-autoformat'
