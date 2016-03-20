@@ -34,7 +34,6 @@ let g:mapleader = ","           "Global leader to a comma
 "" https://github.com/VundleVim/Vundle.vim
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " vim +PluginInstall +qall
-"
 " turn filetype detection off and, even if it's not strictly
 " necessary, disable loading of indent scripts and filetype plugins
 filetype off
@@ -46,16 +45,16 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree
+      \ | exe "normal! \<C-w>\<C-w>" | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
+      \ && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeShowHidden = 1
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>n. :NERDTreeFind<cr>
 nnoremap <leader>no :NERDTree<space>
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-Plugin 'flazz/vim-colorschemes'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -79,7 +78,6 @@ else
   " let g:airline_right_alt_sep=''
 endif
 
-" remove trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 " add following to turn on when start
 let g:better_whitespace_enabled = 0
@@ -98,6 +96,7 @@ Plugin 'majutsushi/tagbar'
 nmap <leader>gg
   \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
 
+Plugin 'flazz/vim-colorschemes'
 Plugin 'nvie/vim-flake8'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/gist-vim'
@@ -107,9 +106,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'godlygeek/tabular'
-
-" cuke tables: https://gist.github.com/tpope/287147
+Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
 
 " cd ~/.vim/bundle/YouCompleteMe
@@ -141,16 +138,22 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " Brief help
 " :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginInstall    - installs plugins; append `!` to update or :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
+" :PluginClean      - removal of unused plugins; `!` to auto-approve removal
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
 " ================ Vundle Finish =====================
 filetype plugin indent on       "Sets indent mode based on filetype
 syntax on                       "Turn on syntax highlighting
+
+
+" ================ Color Themes ======================
+" "set t_ut=
+" "colorscheme lucario jellybeans atom-dark-256 ansi_blows lucius monokai
+" "LuciusBlackHighContrast
+colorscheme vividchalk
+highlight Search guibg=#ff5f00 gui=none ctermbg=226 ctermfg=016 cterm=none
 
 " ================ Indentation =======================
 set autoindent
@@ -168,7 +171,7 @@ set nofoldenable        "Dont fold by default
 
 " ================ Completion ========================
 set wildmode=list:longest,full
-set wildmenu                    "Enable ctrl-n and ctrl-p to scroll thru matches
+set wildmenu                    "Enable ctrl-n and ctrl-p to scroll thru matche
 set wildignore=*.o,*.obj,*~     "Stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
@@ -238,6 +241,8 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+" sudo write: w!! to write a file as sudo
+cmap w!! w !sudo tee > /dev/null %
 
 " ================ Leader  ===========================
 " ,w Fast saves
@@ -317,7 +322,9 @@ vnoremap <silent> gv :call VisualSelection('gv')<CR>
 " Open vimgrep and put the cursor in the right position
 map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 " Vimgreps in the current file
-map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
+map <leader><space>
+      \ :vimgrep // <C-R>%<C-A><Home><right><right><right><right>
+      \<right><right><right><right><right>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 " When you search with vimgrep, display your results in cope by doing:
@@ -333,8 +340,14 @@ if g:osName == 'Darwin'
     " Add some Mac specific bindings
     " so we use external commands instead to avoid recompiling vim
     " swap vim default register and clipboard
-    nnoremap <silent> <leader>x :let @a=@" \| let @"=system("pbpaste") \| let res=system("pbcopy", @a)<CR>
-    vnoremap <silent> <leader>y :<CR>:let @a=@" \| execute "normal! vgvy" \| let res=system("pbcopy", @") \| let @"=@a<CR>
+    nnoremap <silent> <leader>x
+          \ :let @a=@" \|
+          \ let @"=system("pbpaste") \|
+          \ let res=system("pbcopy", @a)<CR>
+    vnoremap <silent> <leader>y
+          \ :<CR>:let @a=@" \|
+          \ execute "normal! vgvy" \|
+          \ let res=system("pbcopy", @") \| let @"=@a<CR>
     nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
     noremap <silent> <leader>p :r !pbpaste<CR><CR>
 else
@@ -342,13 +355,11 @@ else
     nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
     set clipboard=unnamed
     nnoremap <silent> <leader>y :.w !ssh mac_mini pbcopy<CR>
-    vnoremap <silent> <leader>y :<CR>:let @a=@" \| execute "normal! vgvy" \| let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
+    vnoremap <silent> <leader>y
+          \ :<CR>:let @a=@" \|
+          \ execute "normal! vgvy" \|
+          \ let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
 endif
-
-
-" ================ Sudo write  =======================
-" w!! to write a file as sudo
-cmap w!! w !sudo tee > /dev/null %
 
 " => Spell checking
 """"""""""""""""""""""""
@@ -464,17 +475,3 @@ function! AutoHighlightToggle()
     return 1
   endif
 endfunction
-
-" ================ Color Themes ======================
-" "colorscheme ansi_blows
-" "set t_ut=
-" "colorscheme lucario
-" "colorscheme jellybeans
-" "colorscheme atom-dark-256
-" ""Lucius setting
-" "colorscheme lucius
-" "LuciusBlackHighContrast
-" "colorscheme monokai
-colorscheme vividchalk
-" highlight Search guibg=#ff5f00 gui=none ctermbg=226 ctermfg=016 cterm=none
-" "
