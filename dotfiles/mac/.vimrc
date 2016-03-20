@@ -122,22 +122,12 @@ Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 Plugin 'Valloric/YouCompleteMe'
 " Plugin 'jeaye/color_coded'        " not working right now
 Plugin 'justinmk/vim-syntax-extra'  " temporal solution
-Plugin 'rdnetto/YCM-Generator'
-" let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
-let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
+
 Plugin 'Chiel92/vim-autoformat'
 let auto_format_type_list = ['c', 'cpp', 'py']
 autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 | :Autoformat
 " au BufWrite * :Autoformat
 
-" Plugin 'scrooloose/syntastic'
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -161,7 +151,9 @@ syntax on                       "Turn on syntax highlighting
 colorscheme vividchalk
 highlight Search guibg=#ff5f00 gui=none ctermbg=226 ctermfg=016 cterm=none
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
-highlight LineNr ctermbg=234 ctermfg=033 guibg=#1c1c1c guifg=#0087ff
+highlight LineNr ctermfg=033 ctermbg=234 guifg=#0087ff guibg=#1c1c1c
+highlight Pmenu ctermfg=051 ctermbg=235 guifg=#00ffff guibg=#2c2d27
+highlight PmenuSel ctermfg=015 ctermbg=008 guifg=#ffffff guibg=#808080
 
 " ================ Indentation =======================
 set autoindent
@@ -191,7 +183,7 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.pyc
 set wildignore+=*.png,*.jpg,*.gif
-set completeopt=longest,menuone "Inserts the longest common text, even if one
+set completeopt=longest,menuone
 
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<CR>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<CR>
