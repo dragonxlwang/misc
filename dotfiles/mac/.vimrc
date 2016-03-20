@@ -85,9 +85,14 @@ autocmd VimEnter * EnableWhitespace
 " turn on by default for all filetypes
 autocmd BufWritePre * StripWhitespace
 
-Plugin 'nathanaelkane/vim-indent-guides'
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
+if g:osName == 'Darwin'
+  Plugin 'Yggdroot/indentLine'
+  let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
+else
+  Plugin 'nathanaelkane/vim-indent-guides'
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size = 1
+endif
 
 Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_show_hidden = 1
