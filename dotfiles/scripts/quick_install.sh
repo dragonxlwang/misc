@@ -52,6 +52,7 @@ brew install imagemagick --with-x11 --with-webp --with-librsvg
 
 ## python
 brew install python
+brew linkapps python
 brew install numpy scipy
 brew install matplotlib --with-tex --with-tcl-tk
 brew install matplotlib-basemap numba pillow pygame

@@ -64,6 +64,8 @@
       "git-diff-details"
       "fonts"
       "vim-mode-plus"
+      "python-tools"
+      "you-complete-me"
     ]
     packagesWithKeymapsDisabled: [
       "goto"
@@ -216,3 +218,6 @@
     surroundCommand: "S"
   welcome:
     showOnStartup: false
+  "you-complete-me":
+    pythonExecutable: "/usr/local/bin/python"
+    ycmdPath: "/Users/xiaolong/.vim/bundle/YouCompleteMe/third_party/ycmd"

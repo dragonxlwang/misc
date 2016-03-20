@@ -8,7 +8,7 @@ set title                       "Change the terminal's title
 set ruler                       "Bottom right corner of the status line
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
-" set visualbell                  "No sounds
+set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set laststatus=2                "Always display the status line
 set hidden                      "Buffers can exist in the background
@@ -94,7 +94,7 @@ let g:ctrlp_show_hidden = 1
 
 Plugin 'majutsushi/tagbar'
 nmap <leader>gg
-  \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
+      \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'nvie/vim-flake8'
@@ -111,7 +111,6 @@ Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 
 " cd ~/.vim/bundle/YouCompleteMe
 " ./install.py --clang-completer
-Plugin 'Valloric/YouCompleteMe'
 " cd ~/.vim/bundle/color_coded
 " mkdir build && cd build
 " cmake ..
@@ -119,10 +118,17 @@ Plugin 'Valloric/YouCompleteMe'
 " # Clang works on OS X, but has mixed success on Linux and the BSDs
 " # Cleanup afterward; frees several hundred megabytes
 " make clean && make clean_clang
-Plugin 'jeaye/color_coded'
+
+Plugin 'Valloric/YouCompleteMe'
+" Plugin 'jeaye/color_coded'        " not working right now
+Plugin 'justinmk/vim-syntax-extra'  " temporal solution
 Plugin 'rdnetto/YCM-Generator'
-let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
+" let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
 let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
+Plugin 'Chiel92/vim-autoformat'
+let auto_format_type_list = ['c', 'cpp', 'py']
+autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 | :Autoformat
+" au BufWrite * :Autoformat
 
 " Plugin 'scrooloose/syntastic'
 " set statusline+=%#warningmsg#
@@ -154,6 +160,8 @@ syntax on                       "Turn on syntax highlighting
 " "LuciusBlackHighContrast
 colorscheme vividchalk
 highlight Search guibg=#ff5f00 gui=none ctermbg=226 ctermfg=016 cterm=none
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+highlight LineNr ctermbg=234 ctermfg=033 guibg=#1c1c1c guifg=#0087ff
 
 " ================ Indentation =======================
 set autoindent
@@ -231,15 +239,15 @@ inoremap <c-w> <c-g>u<c-w>
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
 autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+        \ | wincmd p | diffthis
 endif
 " sudo write: w!! to write a file as sudo
 cmap w!! w !sudo tee > /dev/null %
@@ -285,7 +293,7 @@ nnoremap <Leader>o :!git checkout %<CR><CR>
 map <leader>v :sp ~/.vimrc<CR><C-W>_
 ",V reloads it -- making all changes active (have to save first)
 map <silent> <leader>V
-  \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+      \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 "  Tags
 nnoremap <Leader>] <C-]>
@@ -337,28 +345,28 @@ map <leader>N :cp<cr>
 
 " copy and paste
 if g:osName == 'Darwin'
-    " Add some Mac specific bindings
-    " so we use external commands instead to avoid recompiling vim
-    " swap vim default register and clipboard
-    nnoremap <silent> <leader>x
-          \ :let @a=@" \|
-          \ let @"=system("pbpaste") \|
-          \ let res=system("pbcopy", @a)<CR>
-    vnoremap <silent> <leader>y
-          \ :<CR>:let @a=@" \|
-          \ execute "normal! vgvy" \|
-          \ let res=system("pbcopy", @") \| let @"=@a<CR>
-    nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
-    noremap <silent> <leader>p :r !pbpaste<CR><CR>
+  " Add some Mac specific bindings
+  " so we use external commands instead to avoid recompiling vim
+  " swap vim default register and clipboard
+  nnoremap <silent> <leader>x
+        \ :let @a=@" \|
+        \ let @"=system("pbpaste") \|
+        \ let res=system("pbcopy", @a)<CR>
+  vnoremap <silent> <leader>y
+        \ :<CR>:let @a=@" \|
+        \ execute "normal! vgvy" \|
+        \ let res=system("pbcopy", @") \| let @"=@a<CR>
+  nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
+  noremap <silent> <leader>p :r !pbpaste<CR><CR>
 else
-    " this works only if vim is compiled with +clipboard or +xterm_clipboard
-    nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
-    set clipboard=unnamed
-    nnoremap <silent> <leader>y :.w !ssh mac_mini pbcopy<CR>
-    vnoremap <silent> <leader>y
-          \ :<CR>:let @a=@" \|
-          \ execute "normal! vgvy" \|
-          \ let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
+  " this works only if vim is compiled with +clipboard or +xterm_clipboard
+  nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
+  set clipboard=unnamed
+  nnoremap <silent> <leader>y :.w !ssh mac_mini pbcopy<CR>
+  vnoremap <silent> <leader>y
+        \ :<CR>:let @a=@" \|
+        \ execute "normal! vgvy" \|
+        \ let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
 endif
 
 " => Spell checking
@@ -398,59 +406,59 @@ function! InsertTabWrapper(direction)
 endfunction
 
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+  exe "menu Foo.Bar :" . a:str
+  emenu Foo.Bar
+  unmenu Foo
 endfunction
 
 function! VisualSelection(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+  let l:saved_reg = @"
+  execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
+  if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+  elseif a:direction == 'gv'
+    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+  endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+  let @/ = l:pattern
+  let @" = l:saved_reg
 endfunction
 
 " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
+  if &paste
+    return 'PASTE MODE  '
+  en
+  return ''
 endfunction
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+  let l:currentBufNum = bufnr("%")
+  let l:alternateBufNum = bufnr("#")
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+  if buflisted(l:alternateBufNum)
+    buffer #
+  else
+    bnext
+  endif
 
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
+  if bufnr("%") == l:currentBufNum
+    new
+  endif
 
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
+  if buflisted(l:currentBufNum)
+    execute("bdelete! ".l:currentBufNum)
+  endif
 endfunction
 
 " Highlight all instances of word under cursor, when idle.
