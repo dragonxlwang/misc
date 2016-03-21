@@ -45,9 +45,7 @@ files=(	".bash_profile"       "${HOME}"	\
         "ls_colors.zsh"       "${HOME}"	\
         ".profile_wangxl"     "${HOME}"	\
         ".tmux.conf"	        "${HOME}"	\
-        ".vimrc"              "${HOME}" \
-        ".zshrc"	            "${HOME}"	\
-        ".vim"                "${HOME}"
+        ".zshrc"	            "${HOME}"
       )
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
 do
@@ -73,7 +71,9 @@ fi
 
 ## mac & timan suite
 files=( "$root_dir/lib/ys.zsh-theme" \
-        "${HOME}/.oh-my-zsh/custom/themes/ys.zsh-theme")
+        "${HOME}/.oh-my-zsh/custom/themes/ys.zsh-theme" \
+        "$root_dir/lib/.vimrc" \
+        "${HOME}/.vimrc")
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
 do
   j=$(( i * 2 ))

@@ -541,25 +541,9 @@ endfunction
 function! SyncUploadFile()
   let exe = SyncGetExe()
   if !empty(exe)
-    let fold = substitute(expand('%:p:h'), exe[0:strridx(exe, '/')], "", "")
-    let strstr = exe[0:strridx(exe, '/')]
-    let strstr2 = expand('%:p:h')
-    let filelist = split(expand('%:p'), '/')
-    let file = filelist[-1]
-    let cmd = printf("%s %s %s %s %s %s", exe, 'upload', fold, shellescape(file), expand('%:p:h'), exe[0:(strridx(exe, '/') - 1)])
+    let l:current_file_path = expand('%:p')
+    let cmd = printf("%s %s", exe, l:current_file_path)
     execute '!' . cmd
   endif
 endfunction
-function! SyncDownloadFile()
-  let exe = SyncGetExe()
-  if !empty(exe)
-    let fold = substitute(expand('%:p:h'), exe[0:strridx(exe, '/')], "", "")
-    let filelist = split(expand('%:p'), '/')
-    let file = filelist[-1]
-    let cmd = printf("%s %s %s %s", exe, 'upload', fold, shellescape(file))
-    execute '!' . cmd
-  endif
-endfunction
-
 command SyncUploadFile :call SyncUploadFile()
-command SyncDownloadFile :call SyncDownloadFile()
