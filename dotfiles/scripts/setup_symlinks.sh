@@ -39,9 +39,7 @@ mk_link() {
 }
 
 ## mac/timan suite
-files=(	".bash_profile"       "${HOME}"	\
-        ".profile_wangxl"     "${HOME}"	\
-        ".tmux.conf"	        "${HOME}"	\
+files=(	".tmux.conf"	        "${HOME}"	\
         ".zshrc"	            "${HOME}"
       )
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
@@ -69,10 +67,12 @@ fi
 ## mac & timan suite
 files=( "$root_dir/lib/ys.zsh-theme"                      \
         "${HOME}/.oh-my-zsh/custom/themes/ys.zsh-theme"   \
-        "$root_dir/lib/.vimrc"        "${HOME}/.vimrc"              \
-        "$root_dir/lib/.gitconfig"    "${HOME}/.gitconfig"        	\
-        "$root_dir/lib/config"        "${HOME}/.ssh/config"         \
-        "$root_dir/lib/ls_colors.zsh" "${HOME}/ls_colors.zsh" )
+        "$root_dir/lib/.vimrc"            "${HOME}/.vimrc"              \
+        "$root_dir/lib/.gitconfig"        "${HOME}/.gitconfig"        	\
+        "$root_dir/lib/config"            "${HOME}/.ssh/config"         \
+        "$root_dir/lib/ls_colors.zsh"     "${HOME}/ls_colors.zsh"       \
+        "$root_dir/lib/.profile_wangxl"   "${HOME}/.profile_wangxl"	    \
+        "$root_dir/lib/.bash_profile"     "${HOME}/.bash_profile"	      )
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
 do
   j=$(( i * 2 ))
