@@ -18,7 +18,7 @@ fi
 mk_link() {
   src=$1
   des=$2
-  if [[ -a $des ]];
+  if [[ -e $des || -L $des ]];
   then
     echo -n "${des} already existed. Do you want to overwrite? [Y/N] "
     read ans
@@ -40,9 +40,6 @@ mk_link() {
 
 ## mac/timan suite
 files=(	".bash_profile"       "${HOME}"	\
-        "config"              "${HOME}/.ssh"  \
-        ".gitconfig"          "${HOME}"	\
-        "ls_colors.zsh"       "${HOME}"	\
         ".profile_wangxl"     "${HOME}"	\
         ".tmux.conf"	        "${HOME}"	\
         ".zshrc"	            "${HOME}"
@@ -70,10 +67,12 @@ then
 fi
 
 ## mac & timan suite
-files=( "$root_dir/lib/ys.zsh-theme" \
-        "${HOME}/.oh-my-zsh/custom/themes/ys.zsh-theme" \
-        "$root_dir/lib/.vimrc" \
-        "${HOME}/.vimrc")
+files=( "$root_dir/lib/ys.zsh-theme"                      \
+        "${HOME}/.oh-my-zsh/custom/themes/ys.zsh-theme"   \
+        "$root_dir/lib/.vimrc"        "${HOME}/.vimrc"              \
+        "$root_dir/lib/.gitconfig"    "${HOME}/.gitconfig"        	\
+        "$root_dir/lib/config"        "${HOME}/.ssh/config"         \
+        "$root_dir/lib/ls_colors.zsh" "${HOME}/ls_colors.zsh" )
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
 do
   j=$(( i * 2 ))
