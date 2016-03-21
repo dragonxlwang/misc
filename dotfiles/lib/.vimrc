@@ -116,6 +116,8 @@ Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
 
 if g:osName == 'Darwin'
+  " export LC_ALL=en_US.UTF-8
+  " export LANG=en_US.UTF-8
   " cd ~/.vim/bundle/YouCompleteMe
   " ./install.py --clang-completer
   " cd ~/.vim/bundle/color_coded
@@ -546,4 +548,4 @@ function! SyncUploadFile()
     execute '!' . cmd
   endif
 endfunction
-command SyncUploadFile :call SyncUploadFile()
+command! SyncUploadFile call SyncUploadFile()
