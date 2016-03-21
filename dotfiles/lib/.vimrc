@@ -46,8 +46,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree
-      \ | exe "normal! \<C-w>\<C-w>" | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+      " \ | exe "normal! \<C-w>\<C-w>" | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
       \ && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeShowHidden = 1
@@ -256,7 +256,7 @@ set magic               "For regular expressions turn magic on
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
-" Clearr search history
+" Clear search history
 nnoremap <space> :noh<CR><ESC>
 
 " ================ Misc ==============================
