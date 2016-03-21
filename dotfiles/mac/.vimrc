@@ -102,6 +102,7 @@ nmap <leader>gg
       \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
 
 Plugin 'flazz/vim-colorschemes'
+Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'nvie/vim-flake8'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/gist-vim'
@@ -505,3 +506,60 @@ function! AutoHighlightToggle()
     return 1
   endif
 endfunction
+
+"eshion/vim-sync
+function! SyncGetExe()
+  if '.sync' == expand('%')
+    return
+  endif
+  let l:exe_path = expand('%:p:h')
+  let l:exe_file = l:exe_path . '/.sync'
+  let l:found_exe = ''
+  if filereadable(l:exe_file)
+    let l:found_exe = l:exe_file
+  else
+    while !filereadable(l:exe_file)
+      let slashindex = strridx(l:exe_path, '/')
+      if slashindex >= 0
+        let l:exe_path = l:exe_path[0:slashindex]
+        let l:exe_file = l:exe_path . '.sync'
+        let l:exe_path = l:exe_path[0:slashindex-1]
+        if filereadable(l:exe_file)
+          let l:found_exe = l:exe_file
+          break
+        endif
+        if slashindex == 0 && !filereadable(l:exe_file)
+          break
+        endif
+      else
+        break
+      endif
+    endwhile
+  endif
+  return l:found_exe
+endfunction
+function! SyncUploadFile()
+  let exe = SyncGetExe()
+  if !empty(exe)
+    let fold = substitute(expand('%:p:h'), exe[0:strridx(exe, '/')], "", "")
+    let strstr = exe[0:strridx(exe, '/')]
+    let strstr2 = expand('%:p:h')
+    let filelist = split(expand('%:p'), '/')
+    let file = filelist[-1]
+    let cmd = printf("%s %s %s %s %s %s", exe, 'upload', fold, shellescape(file), expand('%:p:h'), exe[0:(strridx(exe, '/') - 1)])
+    execute '!' . cmd
+  endif
+endfunction
+function! SyncDownloadFile()
+  let exe = SyncGetExe()
+  if !empty(exe)
+    let fold = substitute(expand('%:p:h'), exe[0:strridx(exe, '/')], "", "")
+    let filelist = split(expand('%:p'), '/')
+    let file = filelist[-1]
+    let cmd = printf("%s %s %s %s", exe, 'upload', fold, shellescape(file))
+    execute '!' . cmd
+  endif
+endfunction
+
+command SyncUploadFile :call SyncUploadFile()
+command SyncDownloadFile :call SyncDownloadFile()
