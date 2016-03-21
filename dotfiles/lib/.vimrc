@@ -140,6 +140,9 @@ if g:osName == 'Darwin'
   " # Cleanup afterward; frees several hundred megabytes
   " make clean && make clean_clang
   Plugin 'Valloric/YouCompleteMe' " <leader>d: diagnostic msg on current line
+  Plugin 'Valloric/ListToggle'
+  " Plugin 'jeaye/color_coded'        " not working right now
+  Plugin 'rdnetto/YCM-Generator'
   let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
   let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
   let g:ycm_always_populate_location_list = 1
@@ -151,10 +154,17 @@ if g:osName == 'Darwin'
   noremap <leader>jm :YcmCompleter GetDoc<CR>
   noremap <leader>jj :YcmForceCompileAndDiagnostics<CR> :YcmDiags<CR>
         \ :wincmd w<CR>
-
-  Plugin 'Valloric/ListToggle'
-  " Plugin 'jeaye/color_coded'        " not working right now
-  Plugin 'rdnetto/YCM-Generator'
+  let g:ycm_filetype_blacklist = {
+        \ 'tagbar' : 1,
+        \ 'qf' : 1,
+        \ 'notes' : 1,
+        \ 'unite' : 1,
+        \ 'text' : 1,
+        \ 'vimwiki' : 1,
+        \ 'pandoc' : 1,
+        \ 'infolog' : 1,
+        \ 'mail' : 1
+        \} " \ 'markdown' : 1,
   " =============================================
   " Plugin 'scrooloose/syntastic'
   " set statusline+=%#warningmsg#
@@ -187,7 +197,6 @@ filetype plugin indent on    " required
 " ================ Vundle Finish =====================
 filetype plugin indent on       "Sets indent mode based on filetype
 syntax on                       "Turn on syntax highlighting
-
 
 " ================ Color Themes ======================
 " "set t_ut=
@@ -229,11 +238,10 @@ set wildignore+=tmp/**
 set wildignore+=*.pyc
 set wildignore+=*.png,*.jpg,*.gif
 set completeopt=longest,menuone
-
-inoremap <tab> <c-r>=InsertTabWrapper ("forward")<CR>
-inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<CR>
-inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+" inoremap <tab> <c-r>=InsertTabWrapper ("forward")<CR>
+" inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<CR>
+" inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+" inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 " ================ Scrolling =========================
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
