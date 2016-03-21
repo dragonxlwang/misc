@@ -115,16 +115,6 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
 
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-" Trigger configuration. Do not use <tab> if you use Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 if g:osName == 'Darwin'
   " export LC_ALL=en_US.UTF-8
@@ -142,6 +132,10 @@ if g:osName == 'Darwin'
   Plugin 'Valloric/ListToggle'
   " Plugin 'jeaye/color_coded'        " not working right now
   Plugin 'rdnetto/YCM-Generator'
+  " Track the engine.
+  Plugin 'SirVer/ultisnips'
+  " Snippets are separated from the engine. Add this if you want them:
+  Plugin 'honza/vim-snippets'
   let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
   let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
   let g:ycm_always_populate_location_list = 1
@@ -164,6 +158,12 @@ if g:osName == 'Darwin'
         \ 'infolog' : 1,
         \ 'mail' : 1
         \} " \ 'markdown' : 1,
+  " Trigger configuration. Do not use <tab> if you use Valloric/YouCompleteMe.
+  let g:UltiSnipsExpandTrigger="<c-j>"
+  let g:UltiSnipsJumpForwardTrigger="<c-j>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+  " If you want :UltiSnipsEdit to split your window.
+  let g:UltiSnipsEditSplit="vertical"
   " =============================================
   " Plugin 'scrooloose/syntastic'
   " set statusline+=%#warningmsg#
@@ -333,7 +333,8 @@ nnoremap <leader>dd :windo diffthis<CR>
 nnoremap <Leader>o :!git checkout %<CR><CR>
 
 ",v brings up my .vimrc
-map <leader>v :sp ~/.vimrc<CR><C-W>_
+" map <leader>v :sp ~/.vimrc<CR><C-W>_
+map <leader>v :e ~/.vimrc<CR>
 ",V reloads it -- making all changes active (have to save first)
 map <silent> <leader>V
       \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
