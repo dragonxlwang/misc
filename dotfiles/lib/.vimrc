@@ -179,6 +179,9 @@ Plugin 'justinmk/vim-syntax-extra'  " temporal solution
 
 Plugin 'Chiel92/vim-autoformat'
 let auto_format_type_list = ['c', 'cpp', 'py']
+let g:formatdef_my_custom_clang = '"clang-format -style=google"'
+let g:formatters_cpp = ['my_custom_clang']
+let g:formatters_c = ['my_custom_clang']
 let g:formatdef_clangformat = '"clang-format -style=google"'
 autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 | :Autoformat
 " au BufWrite * :Autoformat
