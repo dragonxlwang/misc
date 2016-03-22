@@ -114,6 +114,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
+" Plugin 'severin-lemaignan/vim-minimap'
 
 
 if g:osName == 'Darwin'
