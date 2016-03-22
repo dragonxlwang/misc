@@ -65,7 +65,7 @@
       "fonts"
       "vim-mode-plus"
       "python-tools"
-      "you-complete-me"
+      "autocomplete-clang"
     ]
     packagesWithKeymapsDisabled: [
       "goto"
@@ -201,8 +201,7 @@
     ]
   tabs:
     enableVcsColoring: true
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   "tree-view-git-status": {}
   "tree-view-open-files": {}
   "vim-mode":
