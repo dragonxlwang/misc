@@ -146,7 +146,6 @@ if g:osName == 'Darwin'
   noremap <leader>jt :YcmCompleter GetType<CR>
   noremap <leader>jm :YcmCompleter GetDoc<CR>
   noremap <leader>jj :YcmForceCompileAndDiagnostics<CR> :YcmDiags<CR>
-        \ :wincmd w<CR>
   let g:ycm_filetype_blacklist = {
         \ 'tagbar' : 1,
         \ 'qf' : 1,
