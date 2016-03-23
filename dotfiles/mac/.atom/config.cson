@@ -66,6 +66,7 @@
       "vim-mode-plus"
       "python-tools"
       "autocomplete-clang"
+      "linter-clang"
     ]
     packagesWithKeymapsDisabled: [
       "goto"
@@ -113,6 +114,7 @@
   latexer: {}
   linter:
     errorPanelHeight: 46
+    ignoreVCSIgnoredFiles: false
     showErrorTabLine: true
     statusIconScope: "File"
   "linter-chktex":
