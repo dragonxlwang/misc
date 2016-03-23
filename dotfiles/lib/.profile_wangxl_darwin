@@ -1,3 +1,4 @@
+#!/bin/sh
 #########################
 # Mac Specific Settings #
 #########################
@@ -43,6 +44,16 @@ function atom_ls_installed_packages {
 }
 alias atom_ls_starred='apm stars'
 function atom_compare_packages {
+  local opt_unstar=0
+  local opt_uninstall=0
+  local opt_star=0
+  local opt_install=0
+  for i in "$@"; do
+    [[ ${i:l} == '--unstar' ]]    && opt_unstar=1;
+    [[ ${i:l} == '--uninstall' ]] && opt_uninstall=1;
+    [[ ${i:l} == '--star' ]]      && opt_star=1;
+    [[ ${i:l} == '--install' ]]   && opt_install=1;
+  done
   local dir=$PWD
   cd ${HOME}/.atom
   atom_ls_installed_packages -n > installed.list
@@ -54,12 +65,28 @@ function atom_compare_packages {
   [[ -n ${instald// /} ]] && greenecho "Installed but not starred packages:"
   for p in "${(f)instald}";
   do
-    [[ -n ${p// /} ]] && blueecho "==>  $p"
+    [[ -n ${p// /} ]] && blueecho "==> $p"
+    if [[ opt_star -eq 1 ]]; then
+      redecho "   star $p"
+      apm star ${p// /}
+    fi
+    if [[ opt_uninstall -eq 1 ]]; then
+      redecho "    uninstall $p"
+      apm uninstall ${p// /}
+    fi
   done
   [[ -n ${starred// /} ]] && greenecho "Starred but not installed packages:"
   for p in "${(f)starred}";
   do
     [[ -n ${p// /} ]] && yellowecho "==> $p"
+    if [[ $opt_unstar -eq 1 ]]; then
+      redecho "    unstar $p"
+      apm unstar ${p// /}
+    fi
+    if [[ $opt_install -eq 1 ]]; then
+      redecho "    install $p"
+      apm install ${p// /}
+    fi
   done
   greenecho "Compare Finished!"
   cd $dir

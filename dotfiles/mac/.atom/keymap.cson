@@ -62,13 +62,18 @@
 
 'atom-text-editor.vim-mode.normal-mode':
   'ctrl-a': 'unset!'
+  ', j'   : 'goto:declaration'
+  ', j k' : 'goto:file-symbol'
+  ', j h' : 'goto:project-symbol'
+  ', j d' : 'you-complete-me:go-to'
 'atom-text-editor:not([mini])':
   'ctrl-a': 'unset!'
-  'ctrl-o': 'last-cursor-position:previous'
-  'ctrl-i': 'last-cursor-position:next'
-  'ctrl-shift-J'  : 'goto:declaration'
-  'ctrl-shift-K'  : 'goto:file-symbol'
-  'ctrl-shift-H'  : 'goto:project-symbol'
+
+'atom-workspace':
+  'ctrl-i':     'cursor-history:next'
+  'ctrl-o':     'cursor-history:prev'
+  'ctrl-cmd-i': 'cursor-history:next-within-editor'
+  'ctrl-cmd-o': 'cursor-history:prev-within-editor'
 
 'atom-text-editor.vim-mode.insert-mode:not(.mini)':
   'j k': 'vim-mode:reset-normal-mode'

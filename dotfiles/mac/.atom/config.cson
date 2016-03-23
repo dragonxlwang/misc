@@ -74,6 +74,8 @@
       "one-dark-ui"
       "seti-syntax"
     ]
+  "cursor-history":
+    searchAllPanes: false
   docblockr:
     auto_add_method_tag: true
   editor:
