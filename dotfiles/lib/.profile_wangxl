@@ -108,6 +108,7 @@ alias ll="ls -alh"
 function ll_symlink {
     [[ $# -eq 1 ]] && { ll $1 | grep "\->"} || {ll | grep "\->"} }
 function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
+alias kill_tmux='tmux kill-session'
 function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
 alias jp="jump"
 
