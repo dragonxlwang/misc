@@ -222,5 +222,9 @@
   welcome:
     showOnStartup: false
   "you-complete-me":
+    extraConfigGloblist: [
+      "~/workspace/*"
+      "~/Dropbox/workspace/*"
+    ]
     pythonExecutable: "/usr/local/bin/python"
     ycmdPath: "/Users/xiaolong/.vim/bundle/YouCompleteMe/third_party/ycmd"
