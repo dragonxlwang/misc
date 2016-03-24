@@ -73,6 +73,15 @@ atom-text-editor::shadow {
     // &.type.property-name.css { color: red; }
   }
   // .string { color: #00FFFF;}
+
+  @punctuation: rgba(255,	99,	71, 1);
+  // @punctuation: rgba(255,	48,	48, 1);
+  // MISC PUNCTUATION
+  .punctuation {
+    color: @punctuation;
+    &.terminator { color: @punctuation; }
+    &.separator { color: @punctuation; }
+  }
 }
 
 // https://github.com/richrace/highlight-selected

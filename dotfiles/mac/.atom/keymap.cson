@@ -74,6 +74,12 @@
   'ctrl-o':     'cursor-history:prev'
   'ctrl-cmd-i': 'cursor-history:next-within-editor'
   'ctrl-cmd-o': 'cursor-history:prev-within-editor'
+  'alt-j':      'multi-cursor:expandDown'
+  'alt-k':      'multi-cursor:expandUp'
+  # 'ctrl-alt-j': 'multi-cursor:move-last-cursor-down'
+  # 'ctrl-alt-l':	'multi-cursor:move-last-cursor-right'
+  # 'ctrl-alt-h':	'multi-cursor:move-last-cursor-left'
+  # 'ctrl-alt-k':	'multi-cursor:move-last-cursor-up'
 
 'atom-text-editor.vim-mode.insert-mode:not(.mini)':
   'j k': 'vim-mode:reset-normal-mode'
