@@ -65,8 +65,7 @@
       "fonts"
       "vim-mode-plus"
       "python-tools"
-      "autocomplete-clang"
-      "linter-clang"
+      "you-complete-me"
     ]
     packagesWithKeymapsDisabled: [
       "goto"
@@ -210,6 +209,7 @@
   "tree-view-open-files": {}
   "vim-mode":
     useSmartcaseForSearch: true
+    wrapLeftRightMotion: true
   "vim-mode-plus":
     highlightSearch: true
     incrementalSearch: true

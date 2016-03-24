@@ -58,7 +58,7 @@
   'enter' : 'advanced-open-file:confirm-selected-or-first'
 
 '.platform-darwin atom-text-editor:not([mini])':
-  'cmd-shift-v': 'clipboard-plus:toggle'
+  'cmd-shift-V': 'clipboard-plus:toggle'
 
 'atom-text-editor.vim-mode.normal-mode':
   'ctrl-a': 'unset!'

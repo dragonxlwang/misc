@@ -19,11 +19,12 @@ atom.commands.add 'atom-text-editor',
       editor.unfoldBufferRow(bufferRow)
     else
       editor.foldBufferRow(bufferRow)
+
 atom.commands.add 'atom-text-editor',
   'editor:toggle-all-folding': (event) ->
     editor = @getModel()
     bufferRow = editor.bufferPositionForScreenPosition(editor.getCursorScreenPosition()).row
     if editor.isFoldedAtBufferRow(bufferRow)
-      editor.unfoldAll(bufferRow)
+      editor.unfoldAll()
     else
-      editor.foldAll(bufferRow)
+      editor.foldAllAtIndentLevel(0)
