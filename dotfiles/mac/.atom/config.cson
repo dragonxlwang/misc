@@ -40,7 +40,7 @@
     ]
     themes: [
       "one-dark-ui"
-      "seti-syntax"
+      "dragonxlwang-seti-syntax"
     ]
   "cursor-history":
     searchAllPanes: false

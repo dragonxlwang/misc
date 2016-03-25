@@ -62,10 +62,6 @@
 
 'atom-text-editor.vim-mode.normal-mode':
   'ctrl-a': 'unset!'
-  ', j'   : 'goto:declaration'
-  ', j k' : 'goto:file-symbol'
-  ', j h' : 'goto:project-symbol'
-  ', j d' : 'you-complete-me:go-to'
 'atom-text-editor:not([mini])':
   'ctrl-a': 'unset!'
 
@@ -93,6 +89,11 @@
   'g c'             : 'editor:toggle-line-comments'
   'ctrl-w ctrl-j'   : 'pane:show-previous-item'
   'ctrl-w ctrl-k'   : 'pane:show-next-item'
+  ', j'             : 'goto:declaration'
+  ', j k'           : 'goto:file-symbol'
+  ', j h'           : 'goto:project-symbol'
+  ', j d'           : 'you-complete-me:go-to'
+  ', d d'           : 'split-diff:toggle'
 
 # 'atom-text-editor.vim-mode-plus.normal-mode':
 #   'ctrl-a': 'unset!'
