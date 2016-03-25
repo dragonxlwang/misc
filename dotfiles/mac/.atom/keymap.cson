@@ -89,7 +89,7 @@
   'g c'             : 'editor:toggle-line-comments'
   'ctrl-w ctrl-j'   : 'pane:show-previous-item'
   'ctrl-w ctrl-k'   : 'pane:show-next-item'
-  ', j'             : 'goto:declaration'
+  ', j j'           : 'goto:declaration'
   ', j k'           : 'goto:file-symbol'
   ', j h'           : 'goto:project-symbol'
   ', j d'           : 'you-complete-me:go-to'
