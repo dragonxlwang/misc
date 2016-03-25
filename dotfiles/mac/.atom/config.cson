@@ -2,7 +2,6 @@
   "advanced-open-file":
     fuzzyMatch: true
     helmDirSwitch: true
-  "atom-beautify": {}
   "atom-material-ui":
     fonts:
       useRobotoInUI: true
@@ -16,54 +15,24 @@
       compactTreeView: true
     ui:
       slimScrollbar: true
-  "atom-terminal": {}
   "autocomplete-bibtex":
     bibtex: [
       "/Library/TeX/texbin/bibtex"
     ]
-  "autocomplete-clang": {}
-  "autocomplete-plus": {}
   "autocomplete-python":
     outputProviderErrors: true
     pythonPath: "/usr/local/bin/python"
     pythonPaths: "/usr/local/bin/python"
     useSnippets: "required"
-  autosave: {}
-  "block-cursor":
-    global:
-      blinkOff: {}
-      blinkOn:
-        backgroundColor:
-          alpha: 1
-          blue: 17
-          green: 37
-          red: 42
-        borderColor:
-          alpha: 1
-          blue: 76
-          green: 105
-          red: 249
-      cursorLineFix: true
   "clang-format":
     executable: "/usr/local/bin/clang-format"
     formatCPlusPlusOnSave: false
     style: "Google"
-  "clipboard-plus": {}
   core:
     disabledPackages: [
-      "selection-highlight"
-      "indent-guide-improved"
-      "git-grep"
-      "nuclide-remote-projects"
-      "remote-edit"
-      "nuclide-file-tree"
-      "linter-pep8"
-      "atom-terminal"
       "git-control"
       "git-diff-details"
       "fonts"
-      "vim-mode-plus"
-      "python-tools"
       "you-complete-me"
     ]
     packagesWithKeymapsDisabled: [
@@ -87,29 +56,20 @@
     userId: "37115345-b4cc-8e90-d39d-02aef4fc2d04"
   "file-icons":
     forceShow: true
-  "find-and-replace": {}
-  "formatter-clang-format": {}
   "gist-it":
     openAfterCreate: true
   "git-diff":
     showIconsInEditorGutter: true
-  "git-history": {}
-  "git-log": {}
-  "git-plus": {}
-  "git-projects": {}
-  "git-status": {}
   "highlight-selected":
     highlightBackground: true
     ignoreCase: true
     lightTheme: true
-  "isotope-ui": {}
   latex:
     openResultAfterBuild: false
   "latex-plus":
     bibtexEnabled: true
     texBin: "/Library/TeX/texbin/tex"
     texInputs: "/Users/xiaolong/texmf"
-  latexer: {}
   linter:
     errorPanelHeight: 750
     ignoreVCSIgnoredFiles: false
@@ -117,7 +77,6 @@
     statusIconScope: "File"
   "linter-chktex":
     executablePath: "/Library/TeX/texbin/chktex"
-  "linter-clang": {}
   "linter-flake8":
     executablePath: "/usr/local/bin/flake8"
     ignoreErrorCodes: [
@@ -159,7 +118,6 @@
   "linter-python-pep8":
     ignoreErrorCodes: "W292"
     pep8DirToExecutable: "/usr/local/bin/"
-  "merge-conflicts": {}
   minimap:
     plugins:
       "find-and-replace": true
@@ -174,48 +132,21 @@
       "split-diffDecorationsZIndex": 0
   "minimap-selection":
     highlightCursorsLines: true
-  nuclide:
-    remoteProjectsConfig: []
   "one-dark-ui":
     layoutMode: "Compact"
-  "pdf-view": {}
   "python-autopep8":
     autopep8Path: "/usr/local/bin/autopep8"
     formatOnSave: true
     maxLineLength: 80
-  "python-tools":
-    pythonPath: "/usr/local/bin/python"
-  "python-yapf":
-    formatOnSave: true
-    yapfPath: "/usr/local/bin/yapf"
-    yapfStyle: "{based_on_style: google, column_limit: 80}"
-  "remote-edit": {}
-  "remote-sync": {}
-  "save-session":
-    dataSaveFolder: "/Users/xiaolong/.atom/packages/save-session/projects"
-    skipSavePrompt: false
-  "selection-highlight":
-    highlightBackground: true
-    lightTheme: true
   "spell-check":
     grammars: [
       "text.tex.latex"
     ]
   tabs:
     enableVcsColoring: true
-  "tree-view": {}
-  "tree-view-git-status": {}
-  "tree-view-open-files": {}
   "vim-mode":
     useSmartcaseForSearch: true
     wrapLeftRightMotion: true
-  "vim-mode-plus":
-    highlightSearch: true
-    incrementalSearch: true
-    showHoverOnOperate: true
-    useClipboardAsDefaultRegister: true
-    useSmartcaseForSearch: true
-    useSmartcaseForSearchCurrentWord: true
   "vim-surround":
     surroundCommand: "S"
   welcome:
