@@ -131,3 +131,11 @@ atom-text-editor::shadow {
     background-color: rgba(255, 255, 0, 0.2);
   }
 }
+
+@import "ui-variables";
+@import "syntax-variables";
+.minimap {
+  .git-line-modified{ background: fadeOut(@syntax-color-modified, 80%); }
+  .git-line-added { background: fadeOut(@syntax-color-added, 70%); }
+  .git-line-removed { background: fadeOut(@syntax-color-removed, 60%); }
+}
