@@ -101,6 +101,11 @@ Plugin 'majutsushi/tagbar'
 nmap <leader>gg
       \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
 
+Plugin 'vim-scripts/YankRing.vim'
+let g:yankring_replace_n_pkey = '<leader><leader>p'
+let g:yankring_replace_n_nkey = '<leader><leader>n'
+nnoremap <leader><leader>y :YRShow<cr>
+
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'nvie/vim-flake8'
