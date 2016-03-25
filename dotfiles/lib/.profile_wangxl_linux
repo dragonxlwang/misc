@@ -3,6 +3,8 @@
 # Timan Specific Settings #
 ###########################
 
+source /opt/rh/devtoolset-2/enable
+
 export PATH=${PATH}:${HOME}/resource/vowpal_wabbit
 
 alias killall="killall -u xwang95"
