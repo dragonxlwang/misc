@@ -177,6 +177,9 @@ let g:yankring_replace_n_pkey = '<leader><leader>p'
 let g:yankring_replace_n_nkey = '<leader><leader>n'
 nnoremap <leader><leader>y :YRShow<cr>
 
+Plugin 'severin-lemaignan/vim-minimap'
+let g:minimap_highlight='String'
+
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'nvie/vim-flake8'
@@ -190,7 +193,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
-" Plugin 'severin-lemaignan/vim-minimap'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
