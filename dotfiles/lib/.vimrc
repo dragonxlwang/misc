@@ -78,50 +78,6 @@ else
   " let g:airline_right_alt_sep=''
 endif
 
-Plugin 'ntpeters/vim-better-whitespace'
-" add following to turn on when start
-let g:better_whitespace_enabled = 0
-autocmd VimEnter * EnableWhitespace
-" turn on by default for all filetypes
-autocmd BufWritePre * StripWhitespace
-
-if g:osName == 'Darwin'
-  Plugin 'Yggdroot/indentLine'
-  let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
-else
-  Plugin 'nathanaelkane/vim-indent-guides'
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_guide_size = 1
-endif
-
-Plugin 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_show_hidden = 1
-
-Plugin 'majutsushi/tagbar'
-nmap <leader>gg
-      \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
-
-Plugin 'vim-scripts/YankRing.vim'
-let g:yankring_replace_n_pkey = '<leader><leader>p'
-let g:yankring_replace_n_nkey = '<leader><leader>n'
-nnoremap <leader><leader>y :YRShow<cr>
-
-Plugin 'flazz/vim-colorschemes'
-Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'nvie/vim-flake8'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-commentary'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
-" Plugin 'dhruvasagar/vim-table-mode'
-" Plugin 'severin-lemaignan/vim-minimap'
-
-
 if g:osName == 'Darwin'
   " export LC_ALL=en_US.UTF-8
   " export LANG=en_US.UTF-8
@@ -179,7 +135,6 @@ if g:osName == 'Darwin'
   " let g:syntastic_check_on_open = 1
   " let g:syntastic_check_on_wq = 0
 endif
-
 Plugin 'justinmk/vim-syntax-extra'  " temporal solution
 
 Plugin 'Chiel92/vim-autoformat'
@@ -190,6 +145,52 @@ let g:formatters_c = ['my_custom_clang']
 let g:formatdef_clangformat = '"clang-format -style=google"'
 autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 | :Autoformat
 " au BufWrite * :Autoformat
+if g:osName == 'Darwin'
+  Plugin 'Yggdroot/indentLine'
+  let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
+else
+  Plugin 'nathanaelkane/vim-indent-guides'
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size = 1
+endif
+
+Plugin 'ntpeters/vim-better-whitespace'
+" add following to turn on when start
+let g:better_whitespace_enabled = 0
+autocmd VimEnter * EnableWhitespace
+" turn on by default for all filetypes
+autocmd BufWritePre * StripWhitespace
+
+Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_show_hidden = 1
+
+Plugin 'moll/vim-bbye'
+" Close the current buffer
+map <leader>bd :Bclose<cr>
+
+Plugin 'majutsushi/tagbar'
+nmap <leader>gg
+      \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
+
+Plugin 'vim-scripts/YankRing.vim'
+let g:yankring_replace_n_pkey = '<leader><leader>p'
+let g:yankring_replace_n_nkey = '<leader><leader>n'
+nnoremap <leader><leader>y :YRShow<cr>
+
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'nvie/vim-flake8'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
+" Plugin 'dhruvasagar/vim-table-mode'
+" Plugin 'severin-lemaignan/vim-minimap'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -210,7 +211,8 @@ syntax on                       "Turn on syntax highlighting
 " "colorscheme lucario jellybeans atom-dark-256 ansi_blows lucius monokai
 " "LuciusBlackHighContrast
 colorscheme vividchalk
-highlight Search guibg=#ff5f00 gui=none ctermbg=226 ctermfg=016 cterm=none
+highlight Search guibg=#ffff00 guifg=#000000 gui=none
+      \ ctermbg=226 ctermfg=016 cterm=none
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 highlight LineNr ctermfg=033 ctermbg=234 guifg=#0087ff guibg=#1c1c1c
 highlight Pmenu ctermfg=051 ctermbg=235 guifg=#00ffff guibg=#2c2d27
@@ -355,8 +357,6 @@ nnoremap <Leader>[ <C-o>
 
 " =>  tabs, buffers and path
 """"""""""""""""""""""""
-" Close the current buffer
-map <leader>bd :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 " Useful mappings for managing tabs
@@ -491,27 +491,6 @@ function! HasPaste()
     return 'PASTE MODE  '
   en
   return ''
-endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-  let l:currentBufNum = bufnr("%")
-  let l:alternateBufNum = bufnr("#")
-
-  if buflisted(l:alternateBufNum)
-    buffer #
-  else
-    bnext
-  endif
-
-  if bufnr("%") == l:currentBufNum
-    new
-  endif
-
-  if buflisted(l:currentBufNum)
-    execute("bdelete! ".l:currentBufNum)
-  endif
 endfunction
 
 " Highlight all instances of word under cursor, when idle.
