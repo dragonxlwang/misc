@@ -165,7 +165,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_show_hidden = 1
 
 Plugin 'moll/vim-bbye'
-" Close the current buffer
+" Close the current buffer without closing windows
 map <leader>bd :Bdelete<cr>
 
 Plugin 'majutsushi/tagbar'
