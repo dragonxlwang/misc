@@ -166,7 +166,7 @@ let g:ctrlp_show_hidden = 1
 
 Plugin 'moll/vim-bbye'
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+map <leader>bd :Bdelete<cr>
 
 Plugin 'majutsushi/tagbar'
 nmap <leader>gg
