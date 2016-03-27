@@ -25,6 +25,7 @@ set timeoutlen=500              "How long it wait for mapped commands
 set ttimeoutlen=100             "Faster timeout for escape key and others
 set colorcolumn=80              "Highlight column at 80 char
 set mouse=a                     "Enable mouse
+syntax on                       "Turn on syntax highlighting
 
 let g:osName = substitute(system('uname'), "\n", "", "")
 let mapleader=","               "Change leader to a comma
@@ -199,10 +200,12 @@ Plugin 'mattn/webapi-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-eunuch'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
+" Plugin 'benmills/vimux'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -215,8 +218,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " ================ Vundle Finish =====================
-filetype plugin indent on       "Sets indent mode based on filetype
-syntax on                       "Turn on syntax highlighting
 
 " ================ Color Themes ======================
 " "set t_ut=
@@ -285,6 +286,14 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 nnoremap <space> :noh<CR><ESC>
 
 " ================ Misc ==============================
+" Delete comment character when joining commented lines
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j
+endif
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
@@ -362,7 +371,7 @@ nnoremap <Leader>o :!git checkout %<CR><CR>
 map <leader>v :e ~/.vimrc<CR>
 ",V reloads it -- making all changes active (have to save first)
 map <silent> <leader>V
-      \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 "  Tags
 nnoremap <Leader>] <C-]>
