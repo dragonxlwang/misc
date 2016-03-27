@@ -179,6 +179,10 @@ nnoremap <leader><leader>y :YRShow<cr>
 
 Plugin 'severin-lemaignan/vim-minimap'
 let g:minimap_highlight='String'
+let g:minimap_show='<leader>ms'
+let g:minimap_update='<leader>mu'
+let g:minimap_close='<leader>mc'
+let g:minimap_toggle='<leader>mm'
 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ConradIrwin/vim-bracketed-paste'
@@ -219,6 +223,8 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 highlight LineNr ctermfg=033 ctermbg=234 guifg=#0087ff guibg=#1c1c1c
 highlight Pmenu ctermfg=051 ctermbg=235 guifg=#00ffff guibg=#2c2d27
 highlight PmenuSel ctermfg=015 ctermbg=008 guifg=#ffffff guibg=#808080
+highlight Folded term=standout ctermfg=202 ctermbg=017      
+      \ guifg=#ff5f00 guibg=#00005f
 
 " ================ Indentation =======================
 set autoindent
