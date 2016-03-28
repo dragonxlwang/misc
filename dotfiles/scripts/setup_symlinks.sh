@@ -5,9 +5,10 @@ ANSI_COLOR_GREEN="\033[32m"
 ANSI_COLOR_RESET="\033[0m"
 ANSI_COLOR_BLUE="\033[36m"
 
-root_dir=$(dirname $PWD)
+root_dir=$(dirname $(dirname $0))
 
-if [[ $# -ne 1 ]]; then
+
+if [[ ${1:l} != "mac" && ${1:l} != "timan" ]]; then
   echo "specify which set of rules to apply"
   echo "use mac or timan"
   exit 1
@@ -15,25 +16,31 @@ else
   echo "building symlinks for ${1}"
 fi
 
+no_confirm=0
+[[ ${2:l} == '--no-confirm' ]] && no_confirm=1
+
+cnt=0
+
 mk_link() {
   src=$1
   des=$2
+  cnt=$((cnt + 1))
   if [[ -e $des || -L $des ]];
   then
     echo -n "${des} already existed. Do you want to overwrite? [Y/N] "
-    read ans
+    [[ $no_confirm -eq 1 ]] && {  ans="yes"; echo ""; } || read ans
     ans=$(echo $ans | tr '[:upper:]' '[:lower:]')
     if [[ $ans == yes || $ans == y ]]
     then
-      echo -e $ANSI_COLOR_RED "rm ${des}" $ANSI_COLOR_RESET
+      echo -e $ANSI_COLOR_RED "[$cnt]: rm ${des}" $ANSI_COLOR_RESET
       rm -rf ${des}
-      echo -e  $ANSI_COLOR_RED "ln -s ${scr} ${des}" $ANSI_COLOR_RESET
+      echo -e  $ANSI_COLOR_RED "[$cnt]: ln -s ${scr} ${des}" $ANSI_COLOR_RESET
       ln -s ${scr} ${des}
     else
-      echo -e $ANSI_COLOR_BLUE "skipping ${des}" $ANSI_COLOR_RESET
+      echo -e $ANSI_COLOR_BLUE "[$cnt]: skipping ${des}" $ANSI_COLOR_RESET
     fi
   else
-    echo -e $ANSI_COLOR_GREEN "ln -s ${scr} ${des}" $ANSI_COLOR_RESET
+    echo -e $ANSI_COLOR_GREEN "[$cnt]: ln -s ${scr} ${des}" $ANSI_COLOR_RESET
     ln -s ${scr} ${des}
   fi
 }

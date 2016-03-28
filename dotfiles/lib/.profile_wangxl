@@ -15,8 +15,8 @@ LD_LIBRARY_PATH+=":${HOME}/local/boost:${HOME}/local/boost/lib:/usr/local/lib"
 export LD_LIBRARY_PATH
 export PATH=${PATH}:${HOME}/local
 
+# function and alias
 function work { tmux new -AD -s $(hostname -s)-main }
-
 ## ls -A: List all entries except for . and ...
 ## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
 ## @: In double quotes, array elements are put into separate words.
@@ -26,7 +26,6 @@ function work { tmux new -AD -s $(hostname -s)-main }
 ##    applies within each array element.
 ## unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
 alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
-
 ## show history with time, increase history size
 ## https://github.com/robbyrussell/oh-my-zsh/issues/739
 ## ./.oh-my-zsh/lib/history.zsh
@@ -36,7 +35,6 @@ alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
 ## HISTSIZE is the maximum number of lines that are kept in a session and
 ## SAVEHIST is the maximum number of lines that are kept in the history file.
 alias history='fc -i -l 1'
-
 alias rrm='/bin/rm -v'
 function rm {
   local ret=""
@@ -68,10 +66,25 @@ function undo {
 }
 alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
 alias cls='printf "\033c"'
-alias eliot="ssh -X eliot.cs.illinois.edu"
 alias run_matlab="matlab -nodesktop -nosplash -r"
-function edit_then_source { vim $1; source $1; }
-function ed_profile { edit_then_source ~/.profile_wangxl }
+alias echo_path='echo ${PATH//:/"\n"}'
+alias ll="ls -alh"
+function ll_symlink {
+    [[ $# -eq 1 ]] && { ll $1 | grep "\->"} || {ll | grep "\->"} }
+function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
+alias kill_tmux='tmux kill-session'
+function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
+alias jp="jump"
+
+function edit_then_source { vim $1; yellowecho "sourcing $1"; source $1; }
+function ed_profile {
+  local f1="${HOME}/misc/dotfiles/lib/.profile_wangxl"
+  local f2="${HOME}/misc/dotfiles/lib/.profile_wangxl_darwin"
+  local f3="${HOME}/misc/dotfiles/lib/.profile_wangxl_linux"
+  vim $f1 $f2 $f3
+  yellowecho "sourcing ~/.profile_wangxl"
+  source ${HOME}/.profile_wangxl
+}
 function ed_profile_darwin {
   edit_then_source ${HOME}/misc/dotfiles/lib/.profile_wangxl_darwin
 }
@@ -81,36 +94,39 @@ function ed_profile_linux {
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 function ed_misc {
   local diff_cmd=" | vertical all | windo diffthis"
-  local cmd1='e ~/misc/dotfiles/lib/.profile_wangxl'
-  local cmd2='args ~/misc/dotfiles/lib/.profile_wangxl_* | vertical all'
-  local cmd3='args ~/misc/dotfiles/*/.tmux.conf'$diff_cmd
-  local cmd4='e ~/misc/dotfiles/lib/.vimrc'
+  local cmd1='args ~/misc/dotfiles/lib/.profile_wangxl | '
+  cmd1+='bel split ~/misc/dotfiles/lib/.profile_wangxl_darwin | '
+  cmd1+='bel vsplit ~/misc/dotfiles/lib/.profile_wangxl_linux | wincmd w'
+  local cmd2='e ~/misc/dotfiles/lib/.tmux.conf'
+  local cmd3='e ~/misc/dotfiles/lib/.vimrc'
   vim -c "$cmd1" -c "tabnew" \
       -c "$cmd2" -c "tabnew" \
-      -c "$cmd3" -c "tabnew" \
-      -c "$cmd4" -c "tabn1"
-  yellowecho "source ~/.profile_wangxl"
+      -c "$cmd3" -c "tabn1"
+  yellowecho "sourcing ~/.profile_wangxl"
   source ${HOME}/.profile_wangxl
-  yellowecho "source ~/.tmux.conf"
+  yellowecho "sourcing ~/.tmux.conf"
   tmux source-file ${HOME}/.tmux.conf
 }
-alias up_profile="source ~/.profile_wangxl; tmux source-file ~/.tmux.conf"
+function ed_scripts {
+  local f1="${HOME}/misc/dotfiles/scripts/setup_symlinks.sh"
+  local f2="${HOME}/misc/dotfiles/scripts/quick_install.sh"
+  vim $f1 $f2
+}
+function up_profile {
+  yellowecho "sourcing ${HOME}/.profile_wangxl"
+  source ${HOME}/.profile_wangxl
+  yellowecho "sourcing ${HOME}/.tmux.conf"
+  tmux source-file ${HOME}/.tmux.conf
+}
 alias up_vundle="vim +PluginInstall +qall"
 alias update_vundle="vim +PluginInstall +qall; vim +PluginUpdate +qall"
-alias echo_path='echo ${PATH//:/"\n"}'
-function reload_settings {
-  echo "reloading ${HOME}/.profile_wangxl"
-  source ${HOME}/.profile_wangxl
-  echo "reloading ${HOME}/.tmux.conf"
-  tmux source-file ${HOME}/.tmux.conf
+function up_symlinks {
+  local opt=""
+  [[ $(uname) == "Darwin" ]] && opt="mac"
+  [[ $(uname) == "Linux" ]] && opt="timan"
+  yellowecho "setup symlinks for $opt"
+  ${HOME}/misc/dotfiles/scripts/setup_symlinks.sh $opt --no-confirm
 }
-alias ll="ls -alh"
-function ll_symlink {
-    [[ $# -eq 1 ]] && { ll $1 | grep "\->"} || {ll | grep "\->"} }
-function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
-alias kill_tmux='tmux kill-session'
-function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
-alias jp="jump"
 
 # zsh
 if [[ $options[extended_glob] == off ]]; then setopt extended_glob; fi
