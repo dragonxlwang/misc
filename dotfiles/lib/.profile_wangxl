@@ -215,6 +215,10 @@ alias xg_ca="git commit -v -a --amend --no-edit"
 # https://github.com/robbyrussell/oh-my-zsh/pull/4489#issuecomment-196992974
 _comp_options+=(globdots)
 
+# homebrew api token
+export HOMEBREW_GITHUB_API_TOKEN=$(cat \
+  ~/Dropbox/Tools/secrets/homebrew_github_api_token)
+
 if [[ $(uname) == "Darwin" ]]; then
   source ${HOME}/misc/dotfiles/lib/.profile_wangxl_darwin
 elif [[ $(uname) == "Linux" ]]; then

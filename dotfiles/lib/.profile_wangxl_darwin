@@ -3,12 +3,6 @@
 # Mac Specific Settings #
 #########################
 
-# Homebrew permission problem
-## sudo chown $(whoami):admin /usr/local \
-##  && sudo chown -R $(whoami):admin /usr/local
-## brew install coreutils
-export HOMEBREW_GITHUB_API_TOKEN=2f9b5d70c1d10d2238d2b4846efb68a111524122
-
 # To activate these completions, add the following to your .zshrc:
 fpath=(/usr/local/share/zsh-completions $fpath)
 #You may also need to force rebuild `zcompdump`:

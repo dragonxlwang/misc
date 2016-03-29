@@ -242,3 +242,8 @@ compinit
 # cat "c = get_config()" >> /Users/xiaolong/.ipython/profile_default
 # cat 'c.InteractiveShellApp.matplotlib = "inline"' \
 # >> /Users/xiaolong/.ipython/profile_default
+
+# Homebrew permission problem
+## sudo chown $(whoami):admin /usr/local \
+##  && sudo chown -R $(whoami):admin /usr/local
+## brew install coreutils
