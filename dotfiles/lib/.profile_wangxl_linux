@@ -3,10 +3,6 @@
 # Timan Specific Settings #
 ###########################
 
-source /opt/rh/devtoolset-2/enable
-
-export PATH=${PATH}:${HOME}/resource/vowpal_wabbit
-
 alias killall="killall -u xwang95"
 function kill_all_xwang95_proc {
     for i in $("ps" aux | grep xwang95 | awk '{print $2}' | tac)
