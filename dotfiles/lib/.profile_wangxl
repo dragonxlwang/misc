@@ -9,12 +9,6 @@ function greenecho { echo -e "\033[1;32m${1}\033[0m" }
 ANSI_COLOR_RED="\033[31m"   # \e vs \033
 ANSI_COLOR_RESET="\033[0m"
 
-# boost library
-export BOOST_ROOT="${HOME}/local/boost"
-LD_LIBRARY_PATH+=":${HOME}/local/boost:${HOME}/local/boost/lib:/usr/local/lib"
-export LD_LIBRARY_PATH
-export PATH=${PATH}:${HOME}/local
-
 # function and alias
 function work { tmux new -AD -s $(hostname -s)-main }
 ## ls -A: List all entries except for . and ...
