@@ -216,8 +216,13 @@ alias xg_ca="git commit -v -a --amend --no-edit"
 _comp_options+=(globdots)
 
 # homebrew api token
-export HOMEBREW_GITHUB_API_TOKEN=$(cat \
-  ~/Dropbox/Tools/secrets/homebrew_github_api_token)
+if [[ -f  ~/Dropbox/Tools/secrets/homebrew_github_api_token ]]; then
+  export HOMEBREW_GITHUB_API_TOKEN=$(cat \
+    ~/Dropbox/Tools/secrets/homebrew_github_api_token)
+else
+  redecho "cannot find file ~/Dropbox/Tools/secrets/homebrew_github_api_token"
+  redecho "fix dropbox missing problem"
+fi
 
 if [[ $(uname) == "Darwin" ]]; then
   source ${HOME}/misc/dotfiles/lib/.profile_wangxl_darwin
