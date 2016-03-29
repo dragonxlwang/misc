@@ -29,6 +29,10 @@ alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
 ## HISTSIZE is the maximum number of lines that are kept in a session and
 ## SAVEHIST is the maximum number of lines that are kept in the history file.
 alias history='fc -i -l 1'
+# oh-my-zsh/plugins/history/history.plugin.zsh
+function hs { history | grep $* }
+alias hsi='hs -i'
+# real remove vs save remove
 alias rrm='/bin/rm -v'
 function rm {
   local ret=""
@@ -114,8 +118,33 @@ function up_profile {
   yellowecho "sourcing ${HOME}/.tmux.conf"
   tmux source-file ${HOME}/.tmux.conf
 }
-alias up_vundle="vim +PluginInstall +qall"
-alias update_vundle="vim +PluginInstall +qall; vim +PluginUpdate +qall"
+# oh-my-zsh/plugins/vundle/vundle.plugin.zsh
+# https://github.com/VundleVim/Vundle.vim
+function init_vundle {
+  if [[ ! -d ~/.vim/bundle/Vundle.vim/.git ]] && \
+     [[ ! -f ~/.vim/bundle/Vundle.vim/.git ]]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git \
+      ~/.vim/bundle/Vundle.vim
+    echo "\n\tRead about vim configuration for vundle" \
+         " at https://github.com/VundleVim/Vundle.vim\n"
+  fi
+}
+alias up_vundle="init_vundle; vim +PluginInstall +qall"
+alias update_vundle="init_vundle; vim +PluginInstall! +qall"
+alias clean_vundle="init_vundle; vim +PluginClean! +qall"
+function init_tmux_tpm {
+  if [[ ! -d ~/.tmux/plugins/tpm/.git ]] && \
+     [[ ! -f ~/.tmux/plugins/tpm/.git ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    echo "\n\tRead about tmux tpm configuration for vundle" \
+         " at https://github.com/tmux-plugins/tpm\n"
+    yellowecho "prefix + I : install new plugins"
+    yellowecho "prefix + U : updates plugin(s)"
+    yellowecho "prefix + alt + u : remove/uninstall plugins not on the list"
+  fi
+}
+alias up_tmux_tpm="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/install_plugins"
+alias clean_tmux_tmp="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/clean_plugins"
 function up_symlinks {
   local opt=""
   [[ $(uname) == "Darwin" ]] && opt="mac"

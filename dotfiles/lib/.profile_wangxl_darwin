@@ -229,6 +229,8 @@ function update_scripts {
   upgrade_oh_my_zsh
   yellowecho "brew update"
   brew update
+  yellowecho "brew outdated"
+  brew outdated
   yellowecho "brew upgrade"
   brew upgrade
   yellowecho "brew cask update"
@@ -243,7 +245,13 @@ function update_scripts {
   # pip freeze --local | grep -v '^\-e' | cut -d = -f 1  |\
   # xargs -n1 pip install -U
   yellowecho "vundle update"
-  vim +PluginInstall +qall
+  up_vundle
+  yellowecho "vundle clean"
+  clean_vundle
+  yellowecho "tmux tpm update"
+  up_tmux_tpm
+  yellowecho "tmux tpm clean"
+  clean_tmux_tmp
   yellowecho "source tmux conf"
   tmux source ${HOME}/.tmux.conf
   yellowecho "source profile_wangxl"
