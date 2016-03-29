@@ -182,15 +182,30 @@ function rm_finder_hidden_files {
 # convert .mov to .gif annimation files
 function convert_mov_to_gif {
   if [[ $(echo $1 | tr "[:upper:]" "[:lower:]") == *.mov ]]; then
+    local opt_publish=0
+    local opt_date=0
+    local opt_res=600
+    for (( i = 1; i <= $#; i++ )); do
+      #statements
+      local arg=${(P)i}
+      [[ ${arg:l} == "-p" || ${arg:l} == "--publish" ]] && opt_publish=1
+      [[ ${arg:l} == "-d" || ${arg:l} == "--date" ]] && opt_date=1
+      [[ ${arg:l} == -r* ]] && opt_res=${arg:2}
+    done
+    yellowecho "input file: ${1}"
+    yellowecho "if publish to dropbox: $opt_publish"
+    yellowecho "if rename by date: $opt_date"
+    yellowecho "width max resolution: $opt_res"
     local f=$(echo $1 | sed 's/mov$/gif/i')
-    ffmpeg -i $1 -vf "scale=min(iw\,600):-1" -pix_fmt rgb24 -r 10 -f gif - |\
+    opt_res="scale=min(iw\,${opt_res}):-1"
+    ffmpeg -i $1 -vf "${opt_res}" -pix_fmt rgb24 -r 10 -f gif - |\
     # convert -delay 5 -layers Optimize -loop 0 - $f
     gifsicle --optimize=3 --delay=7 > $f
-    if [[ $2 == --publish ||  $2 == -p ]]; then
+    if [[ opt_publish -eq 1 ]]; then
       local f0="${HOME}/Dropbox/Public"
       local home_url=$(cat "${HOME}/Dropbox/Public/home_url")
       local f1=/$(basename $f)
-      if [[ $3 == --date || $3 == -d ]]; then
+      if [[ opt_date -eq 1 ]]; then
         f1="/screenshots/Screencast-"
         f1+=`date +"%Y.%m.%d-%H.%M"`.gif
       fi

@@ -74,7 +74,9 @@ function ll_symlink {
 function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
 alias kill_tmux='tmux kill-session'
 function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
+function follow { cd $(dirname $(readlink -f $1)) }
 alias jp="jump"
+alias fl="follow"
 
 function edit_then_source { vim $1; yellowecho "sourcing $1"; source $1; }
 function ed_profile {
