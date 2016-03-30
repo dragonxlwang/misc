@@ -62,7 +62,7 @@ function undo {
   local fp="${HOME}/.trash/rm.undo"
   /bin/sh $fp
 }
-alias empty_trash='/bin/rm -rf --verbose  ~/.trash/*'
+alias empty_trash='find ~/.Trash -mindepth 1 -delete -print'
 alias cls='printf "\033c"'
 alias run_matlab="matlab -nodesktop -nosplash -r"
 alias echo_path='echo ${PATH//:/"\n"}'
