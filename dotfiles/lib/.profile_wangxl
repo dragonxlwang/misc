@@ -68,6 +68,7 @@ alias run_matlab="matlab -nodesktop -nosplash -r"
 alias echo_path='echo ${PATH//:/"\n"}'
 alias ll="ls -alh"
 function lll { ll $@ --color=always | less }
+alias lllt="lll -t"
 function lls { ll | grep $* }
 alias llsi='lls -i'
 function ll_symlink {
