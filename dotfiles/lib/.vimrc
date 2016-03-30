@@ -28,6 +28,7 @@ set colorcolumn=80              "Highlight column at 80 char
 set mouse=a                     "Enable mouse
 set nrformats-=octal            "Set number format for C-A, C-X
 set tabpagemax=50               "Max 50 tabs
+set sessionoptions-=options     "Session don't remember global options
 syntax on                       "Turn on syntax highlighting
 
 let g:osName = substitute(system('uname'), "\n", "", "")
@@ -69,7 +70,6 @@ endif
 " if &shell =~# 'fish$'
 "   set shell=/bin/bash
 " endif
-" set sessionoptions-=options
 
 
 " ================ Vundle Config =====================
