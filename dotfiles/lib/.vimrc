@@ -427,6 +427,7 @@ map <leader>j :bprev<cr>
 " Cycle between tabs
 map <C-w><C-k> :tabn<cr>
 map <C-w><C-j> :tabp<cr>
+map <C-w><c-l> :tabl<cr>
 
 " => vimgrep searching and cope displaying
 """"""""""""""""""""""""
