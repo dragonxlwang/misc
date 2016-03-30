@@ -31,6 +31,10 @@ set tabpagemax=50               "Max 50 tabs
 syntax on                       "Turn on syntax highlighting
 
 let g:osName = substitute(system('uname'), "\n", "", "")
+" overwrite settings for timan linux to be the same as mac
+if substitute(system('hostname -s'), "\n", "", "") =~ 'timan'
+  let g:osName = 'Darwin'
+end
 let mapleader=","               "Change leader to a comma
 let g:mapleader = ","           "Global leader to a comma
 
