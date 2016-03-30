@@ -21,15 +21,52 @@ set whichwrap+=<,>,h,l,[,]      "Automatically wrap left and right
 set splitbelow                  "Open new split panes to right and bottom
 set splitright                  "Open new split panes to bottom
 set diffopt+=vertical           "Always use vertical diffs
+set ttimeout                    "Set timeout on key codes
 set timeoutlen=500              "How long it wait for mapped commands
 set ttimeoutlen=100             "Faster timeout for escape key and others
 set colorcolumn=80              "Highlight column at 80 char
 set mouse=a                     "Enable mouse
+set nrformats-=octal            "Set number format for C-A, C-X
+set tabpagemax=50               "Max 50 tabs
 syntax on                       "Turn on syntax highlighting
 
 let g:osName = substitute(system('uname'), "\n", "", "")
 let mapleader=","               "Change leader to a comma
 let g:mapleader = ","           "Global leader to a comma
+
+if &encoding ==# 'latin1' && has('gui_running')         " encoding
+  set encoding=utf-8
+endif
+if has('path_extra')                                    " ctags path
+  setglobal tags-=./tags tags-=./tags; tags^=./tags;
+endif
+if !empty(&viminfo)                                     " store global vars
+  set viminfo^=!
+endif
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+  set t_Co=16
+endif
+" Delete comment character when joining commented lines
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j
+endif
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
+" =========== Vim Sensible (not used) ================
+" set complete-=i
+" set display+=lastline
+" if &listchars ==# 'eol:$'
+"   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+" endif
+" if &shell =~# 'fish$'
+"   set shell=/bin/bash
+" endif
+" set sessionoptions-=options
+
 
 " ================ Vundle Config =====================
 "" https://github.com/VundleVim/Vundle.vim
@@ -143,15 +180,10 @@ let g:formatdef_my_custom_clang = '"clang-format -style=google"'
 let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
 let g:formatdef_clangformat = '"clang-format -style=google"'
-autocmd BufWritePre * call Determine_if_auto_format()
-function! Determine_if_auto_format()
-  let auto_format_type_list = ['c', 'cpp', 'py']
-  if index(auto_format_type_list, &ft) >= 0
-    Autoformat
-  endif
-endfunction
+let auto_format_type_list = ['c', 'cpp', 'py']
+autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
+      \ exe "Autoformat" | endif
 
-" au BufWrite * :Autoformat
 if g:osName == 'Darwin'
   Plugin 'Yggdroot/indentLine'
   let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
@@ -282,18 +314,15 @@ set magic               "For regular expressions turn magic on
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('')<CR>?<C-R>=@/<CR><CR>
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L>
+        \ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
 " Clear search history
 nnoremap <space> :noh<CR><ESC>
 
 " ================ Misc ==============================
-" Delete comment character when joining commented lines
-if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j
-endif
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
