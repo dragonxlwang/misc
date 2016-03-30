@@ -2,5 +2,6 @@
 dotfiles/mac/.vim/.netrwhist
 dotfiles/timan/.vim/.netrwhist
 *.swp
+*.swo
 dotfiles/mac/.vim/bundle
 dotfiles/timan/.vim/bundle
