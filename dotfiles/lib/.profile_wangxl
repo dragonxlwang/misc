@@ -112,6 +112,7 @@ alias fl="follow"
 #  | (_>  <   |  `--'  | |  |      |  '--'  | /  _____  \   |  |    |  |____   #
 #   \___/\/    \______/  | _|      |_______/ /__/     \__\  |__|    |_______|  #
 ## ========================================================================== ##
+##-------------------------------== profiles ==-------------------------------##
 function edit_then_source { vim $1; yellowecho "sourcing $1"; source $1; }
 function ed_profile {
   local f1="${HOME}/misc/dotfiles/lib/.profile_wangxl"
@@ -127,7 +128,28 @@ function ed_profile_darwin {
 function ed_profile_linux {
   edit_then_source ${HOME}/misc/dotfiles/lib/.profile_wangxl_linux
 }
+function up_profile {
+  yellowecho "sourcing ${HOME}/.profile_wangxl"
+  source ${HOME}/.profile_wangxl
+  yellowecho "sourcing ${HOME}/.tmux.conf"
+  tmux source-file ${HOME}/.tmux.conf
+}
+##----------------------------== tmux conf, tmp ==----------------------------##
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
+function init_tmux_tpm {
+  if [[ ! -d ~/.tmux/plugins/tpm/.git ]] && \
+     [[ ! -f ~/.tmux/plugins/tpm/.git ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    echo "\n\tRead about tmux tpm configuration for vundle" \
+         " at https://github.com/tmux-plugins/tpm\n"
+    yellowecho "prefix + I : install new plugins"
+    yellowecho "prefix + U : updates plugin(s)"
+    yellowecho "prefix + alt + u : remove/uninstall plugins not on the list"
+  fi
+}
+alias up_tmux_tpm="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/install_plugins"
+alias clean_tmux_tmp="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/clean_plugins"
+##-------------------------------== git:misc ==-------------------------------##
 function ed_misc {
   local diff_cmd=" | vertical all | windo diffthis"
   local cmd1='args ~/misc/dotfiles/lib/.profile_wangxl | '
@@ -149,12 +171,14 @@ function ed_scripts {
   local f2="${HOME}/misc/dotfiles/scripts/quick_install.sh"
   vim $f1 $f2
 }
-function up_profile {
-  yellowecho "sourcing ${HOME}/.profile_wangxl"
-  source ${HOME}/.profile_wangxl
-  yellowecho "sourcing ${HOME}/.tmux.conf"
-  tmux source-file ${HOME}/.tmux.conf
+function up_symlinks {
+  local opt=""
+  [[ $(uname) == "Darwin" ]] && opt="mac"
+  [[ $(uname) == "Linux" ]] && opt="timan"
+  yellowecho "setup symlinks for $opt"
+  ${HOME}/misc/dotfiles/scripts/setup_symlinks.sh $opt --no-confirm
 }
+##--------------------------------== vundle ==--------------------------------##
 # oh-my-zsh/plugins/vundle/vundle.plugin.zsh
 # https://github.com/VundleVim/Vundle.vim
 function init_vundle {
@@ -169,26 +193,6 @@ function init_vundle {
 alias up_vundle="init_vundle; vim +PluginInstall +qall"
 alias update_vundle="init_vundle; vim +PluginInstall! +qall"
 alias clean_vundle="init_vundle; vim +PluginClean! +qall"
-function init_tmux_tpm {
-  if [[ ! -d ~/.tmux/plugins/tpm/.git ]] && \
-     [[ ! -f ~/.tmux/plugins/tpm/.git ]]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    echo "\n\tRead about tmux tpm configuration for vundle" \
-         " at https://github.com/tmux-plugins/tpm\n"
-    yellowecho "prefix + I : install new plugins"
-    yellowecho "prefix + U : updates plugin(s)"
-    yellowecho "prefix + alt + u : remove/uninstall plugins not on the list"
-  fi
-}
-alias up_tmux_tpm="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/install_plugins"
-alias clean_tmux_tmp="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/clean_plugins"
-function up_symlinks {
-  local opt=""
-  [[ $(uname) == "Darwin" ]] && opt="mac"
-  [[ $(uname) == "Linux" ]] && opt="timan"
-  yellowecho "setup symlinks for $opt"
-  ${HOME}/misc/dotfiles/scripts/setup_symlinks.sh $opt --no-confirm
-}
 
 ## ========================================================================== ##
 #                     ________      _______. __    __                          #
