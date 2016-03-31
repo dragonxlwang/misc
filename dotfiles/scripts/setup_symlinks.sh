@@ -59,6 +59,7 @@ do
 done
 
 ## mac suite: atom
+bins=("mv" "readlink" "ls")
 if [[ $1 == "mac" ]];
 then
   for f in $(ls "$root_dir/mac/.atom");
@@ -66,6 +67,28 @@ then
     scr="$root_dir/mac/.atom/$f"
     des="${HOME}/.atom/$f"
     mk_link $scr $des
+  done
+  echo -e $ANSI_COLOR_GREEN "setting up /usr/local symlinks" $ANSI_COLOR_RESET
+  for b in "${bins[@]}"
+  do
+    echo -e $ANSI_COLOR_BLUE "$b -> g$b" $ANSI_COLOR_RESET
+    if [[ -e /usr/local/bin/$b ]]; then
+      echo "==> bin symlink: skipping, $b exist"
+    elif [[ ! -e /usr/local/bin/g$b ]]; then
+      echo "==> bin symlink: skipping, g$b doesn't exist"
+    else
+      ln -s /usr/local/bin/g$b /usr/local/bin/$b
+      echo "==> bin symlink: $b -> g$b"
+    fi
+    if [[ -e /usr/local/man/man1/$b.1 ]]; then
+      echo "==> man symlink: skipping, $b exist"
+    elif [[ ! -e /usr/local/opt/coreutils/libexec/gnuman/man1/$b.1 ]]; then
+      echo "==> man symlink: skipping, $b doesn't exist"
+    else
+      ln -s /usr/local/opt/coreutils/libexec/gnuman/man1/$b.1 \
+            /usr/local/man/man1/$b.1
+      echo "==> man symlink: $b -> g$b"
+    fi
   done
 fi
 
