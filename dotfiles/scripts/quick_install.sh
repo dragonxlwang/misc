@@ -126,6 +126,7 @@ compinit
 ## ln -s gmv mv
 ## ln -s greadlink readlink
 ## ln -s mvim vvim
+## ln -s gls ls
 
 # vim vundle
 # git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

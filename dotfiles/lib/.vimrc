@@ -255,7 +255,12 @@ map <C-w><c-l> :tabl<cr>
 " => vimgrep searching and cope displaying
 """"""""""""""""""""""""
 " When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSelection('gv')<CR>
+" grep visual-selected in current file
+vnoremap gvc :call VisualSelection('gvc')<CR> \| cw
+      \<left><left><left><left><left>
+" grep visual-selected in project directory
+vnoremap gvd :call VisualSelection('gvd')<CR> \| cw
+      \<left><left><left><left><left>
 " Open vimgrep and put the cursor in the right position
 map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 " Vimgreps in the current file
@@ -271,6 +276,8 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 " To go to the previous search results do:
 map <leader>N :cp<cr>
+" To get the total number of items in quickfix (matches, errors)
+command! QfLen :echo 'Total number of items: ' len(getqflist())
 
 " copy and paste
 if g:osName == 'Darwin'
@@ -346,8 +353,10 @@ function! VisualSelection(direction) range
   let l:pattern = escape(@", '\\/.*$^~[]')
   let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-  if a:direction == 'gv'
-    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+  if a:direction == 'gvc'
+    call CmdLine("vimgrep " . '/'. l:pattern . '/g' . ' %')
+  elseif a:direction == 'gvd'
+    call CmdLine("vimgrep " . '/'. l:pattern . '/g' . ' **/*.')
   elseif a:direction == 'replace'
     call CmdLine("%s" . '/'. l:pattern . '/')
   endif

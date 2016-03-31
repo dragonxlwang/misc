@@ -1,8 +1,27 @@
 #!/bin/sh
-#########################
-# Mac Specific Settings #
-#########################
+## ========================================================================== ##
+#      _______       ___      .______     ____    __    ____  __  .__   __.    #
+#     |       \     /   \     |   _  \    \   \  /  \  /   / |  | |  \ |  |    #
+#     |  .--.  |   /  ^  \    |  |_)  |    \   \/    \/   /  |  | |   \|  |    #
+#     |  |  |  |  /  /_\  \   |      /      \            /   |  | |  . `  |    #
+#     |  '--'  | /  _____  \  |  |\  \----.  \    /\    /    |  | |  |\   |    #
+#     |___________..________\ ________________\___  \_______ |__| |_______|    #
+#         /       ||   _  \  |   ____| /      ||  | |   ____||  |  /      |    #
+#        |   (----`|  |_)  | |  |__   |  ,----'|  | |  |__   |  | |  ,----'    #
+#         \   \    |   ___/  |   __|  |  |     |  | |   __|  |  | |  |         #
+#     .----)   |   |  |      |  |____ |  `----.|  | |  |     |  | |  `----.    #
+#     |_______/    | _|      |_______| \______||__| |__|     |__|  \______|    #
+                                                                               #
+## ========================================================================== ##
 
+## ========================================================================== ##
+#                     ________      _______. __    __                          #
+#                    |       /     /       ||  |  |  |                         #
+#                    `---/  /     |   (----`|  |__|  |                         #
+#                       /  /       \   \    |   __   |                         #
+#                      /  /----.----)   |   |  |  |  |                         #
+#                     /________|_______/    |__|  |__|                         #
+## ========================================================================== ##
 # To activate these completions, add the following to your .zshrc:
 fpath=(/usr/local/share/zsh-completions $fpath)
 #You may also need to force rebuild `zcompdump`:
@@ -14,9 +33,16 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 #
 #  chmod go-w /usr/local/share
 
-#source /usr/local/etc/bash_completion.d/password-store
+#  source /usr/local/etc/bash_completion.d/password-store
 
-# atom
+## ========================================================================== ##
+#                  ___   .___________. ______   .___  ___.                     #
+#                 /   \  |           |/  __  \  |   \/   |                     #
+#                /  ^  \ `---|  |----|  |  |  | |  \  /  |                     #
+#               /  /_\  \    |  |    |  |  |  | |  |\/|  |                     #
+#              /  _____  \   |  |    |  `--'  | |  |  |  |                     #
+#             /__/     \__\  |__|     \______/  |__|  |__|                     #
+## ========================================================================== ##
 function atom_ls_starred_packages {
   apm starred --json > starred.json;
   js='fs = require("fs");'
@@ -121,7 +147,14 @@ function atom_sync_package_incremental {
   cd $dir
 }
 
-# ipython
+## ========================================================================== ##
+#     __  .______   ____    ____ .___________.__    __    ______   .__   __.   #
+#    |  | |   _  \  \   \  /   / |           |  |  |  |  /  __  \  |  \ |  |   #
+#    |  | |  |_)  |  \   \/   /  `---|  |----|  |__|  | |  |  |  | |   \|  |   #
+#    |  | |   ___/    \_    _/       |  |    |   __   | |  |  |  | |  . `  |   #
+#    |  | |  |          |  |         |  |    |  |  |  | |  `--'  | |  |\   |   #
+#    |__| | _|          |__|         |__|    |__|  |__|  \______/  |__| \__|   #
+## ========================================================================== ##
 alias start_ipython='cd ${HOME}/Dropbox/workspace/ipython; jupyter notebook'
 alias start_tunnel_ipython='ssh -N -f -L localhost:8889:localhost:8889 timan101'
 function kill_tunnel_ipython {
@@ -140,7 +173,14 @@ function kill_tunnel_ipython {
   done
 }
 
-# mac:
+## ========================================================================== ##
+#                  ______        _______.         ___   ___                    #
+#                 /  __  \      /       |         \  \ /  /                    #
+#                |  |  |  |    |   (----`          \  V  /                     #
+#                |  |  |  |     \   \               >   <                      #
+#                |  `--'  | .----)   |             /  .  \                     #
+#                 \______/  |_______/             /__/ \__\                    #
+## ========================================================================== ##
 function mac_show_hidden {
   defaults write com.apple.finder AppleShowAllFiles YES
   killall Finder
@@ -155,8 +195,21 @@ function mac_disable_accent_char {
 function mac_enable_accent_char {
   defaults write -g ApplePressAndHoldEnabled -bool true
 }
+# remove all .DS_store files in current directory recursively
+function rm_finder_hidden_files {
+  find . -name '*.DS_Store'  -type f -delete -print
+  find . -name '*.localized' -type f -delete -print
+}
 
-# open chrome with url/file
+## ========================================================================== ##
+#            __    __  .___________.__   __          _______.                  #
+#           |  |  |  | |           |  | |  |        /       |                  #
+#           |  |  |  | `---|  |----|  | |  |       |   (----`                  #
+#           |  |  |  |     |  |    |  | |  |        \   \                      #
+#           |  `--'  |     |  |    |  | |  `----.----)   |                     #
+#            \______/      |__|    |__| |_______|_______/                      #
+## ========================================================================== ##
+##---------------------== open chrome with url/file ==------------------------##
 function go_url {
   "${HOME}/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" -app=$1
 }
@@ -166,14 +219,7 @@ function go_file {
 function go_chrome {
   "${HOME}/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" $1
 }
-
-# remove all .DS_store files in current directory recursively
-function rm_finder_hidden_files {
-  find . -name '*.DS_Store'  -type f -delete -print
-  find . -name '*.localized' -type f -delete -print
-}
-
-# convert .mov to .gif annimation files
+##----------------------== convert MOV to GIF file ==-------------------------##
 function convert_mov_to_gif {
   if [[ $(echo $1 | tr "[:upper:]" "[:lower:]") == *.mov ]]; then
     local opt_publish=0
@@ -211,14 +257,26 @@ function convert_mov_to_gif {
     echo "$1 is not a .mov file"
   fi
 }
-
-# markdown
+##-----------------------------== markdown ==---------------------------------##
 function markdown {
     local f=$(echo $1 | sed 's/\(md\|markdown\)$/htm/i')
     /usr/local/bin/markdown --html4tags $1 > $f
 }
 
-# update homebrew, oh-my-zsh, pip and source profile again
+## ========================================================================== ##
+#     .______      ___       ______  __  ___      ___       _______  _______   #
+#     |   _  \    /   \     /      ||  |/  /     /   \     /  _____||   ____|  #
+#     |  |_)  |  /  ^  \   |  ,----'|  '  /     /  ^  \   |  |  __  |  |__     #
+#     |   ___/  /  /_\  \  |  |     |    <     /  /_\  \  |  | |_ | |   __|    #
+#     |  |     /  _____  \ |  `----.|  .  \   /  _____  \ |  |__| | |  |____   #
+#     |__|   ____.________\ _______||__|\____/__.___________._______|_______|  #
+#     |  |  |  | |   _  \  |       \     /   \  |           |   ____|          #
+#     |  |  |  | |  |_)  | |  .--.  |   /  ^  \ `---|  |----|  |__             #
+#     |  |  |  | |   ___/  |  |  |  |  /  /_\  \    |  |    |   __|            #
+#     |  `--'  | |  |      |  '--'  | /  _____  \   |  |    |  |____           #
+#      \______/  | _|      |_______/ /__/     \__\  |__|    |_______|          #
+## ========================================================================== ##
+##---------== update homebrew, oh-my-zsh, pip and source profile==------------##
 function update_scripts {
   upgrade_oh_my_zsh
   yellowecho "brew update"
@@ -252,6 +310,14 @@ function update_scripts {
   source ${HOME}/.profile_wangxl
 }
 
+## ========================================================================== ##
+#        .___________.    ___           _______. __  ___      _______.         #
+#        |           |   /   \         /       ||  |/  /     /       |         #
+#        `---|  |----`  /  ^  \       |   (----`|  '  /     |   (----`         #
+#            |  |      /  /_\  \       \   \    |    <       \   \             #
+#            |  |     /  _____  \  .----)   |   |  .  \  .----)   |            #
+#            |__|    /__/     \__\ |_______/    |__|\__\ |_______/             #
+## ========================================================================== ##
 function lt {
   if [[ -z "$TMUX" ]]
     then
@@ -297,5 +363,4 @@ function lt {
     [[ $option -eq 4 ]] && { tmux new -AD -s $(hostname -s)-main }
   fi
 }
-
 [[ -t 1 ]] && lt

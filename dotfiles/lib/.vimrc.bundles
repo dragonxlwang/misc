@@ -12,6 +12,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" ============================================================================="
+"                      _______  __   __       _______                          "
+"                     |   ____||  | |  |     |   ____|                         "
+"                     |  |__   |  | |  |     |  |__                            "
+"                     |   __|  |  | |  |     |   __|                           "
+"                     |  |     |  | |  `----.|  |____                          "
+"                     |__|     |__| |_______||_______|                         "
+" ============================================================================="
 Plugin 'scrooloose/nerdtree'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -24,6 +32,24 @@ nnoremap <leader>n. :NERDTreeFind<cr>
 nnoremap <leader>no :NERDTree<space>
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
+Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_show_hidden = 1
+
+Plugin 'majutsushi/tagbar'
+nmap <leader>gg
+      \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
+
+Plugin 'tpope/vim-eunuch'
+" Plugin 'benmills/vimux'
+
+" ============================================================================="
+"         ____    ____  __       _______. __    __       ___       __          "
+"         \   \  /   / |  |     /       ||  |  |  |     /   \     |  |         "
+"          \   \/   /  |  |    |   (----`|  |  |  |    /  ^  \    |  |         "
+"           \      /   |  |     \   \    |  |  |  |   /  /_\  \   |  |         "
+"            \    /    |  | .----)   |   |  `--'  |  /  _____  \  |  `----.    "
+"             \__/     |__| |_______/     \______/  /__/     \__\ |_______|    "
+" ============================================================================="
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
@@ -46,6 +72,33 @@ else
   " let g:airline_right_alt_sep=''
 endif
 
+if g:osName == 'Darwin'
+  Plugin 'Yggdroot/indentLine'
+  let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
+else
+  Plugin 'nathanaelkane/vim-indent-guides'
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size = 1
+endif
+
+Plugin 'severin-lemaignan/vim-minimap'
+let g:minimap_highlight='String'
+let g:minimap_show='<leader>ms'
+let g:minimap_update='<leader>mu'
+let g:minimap_close='<leader>mc'
+let g:minimap_toggle='<leader>mm'
+
+Plugin 'flazz/vim-colorschemes'
+Plugin 'airblade/vim-gitgutter'
+
+" ============================================================================="
+"            __       __  .__   __. .___________._______ .______               "
+"           |  |     |  | |  \ |  | |           |   ____||   _  \              "
+"           |  |     |  | |   \|  | `---|  |----|  |__   |  |_)  |             "
+"           |  |     |  | |  . `  |     |  |    |   __|  |      /              "
+"           |  `----.|  | |  |\   |     |  |    |  |____ |  |\  \----.         "
+"           |_______||__| |__| \__|     |__|    |_______|| _| `._____|         "
+" ============================================================================="
 if g:osName == 'Darwin'
   " export LC_ALL=en_US.UTF-8
   " export LANG=en_US.UTF-8
@@ -114,15 +167,6 @@ let auto_format_type_list = ['c', 'cpp', 'py']
 autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
       \ exe "Autoformat" | endif
 
-if g:osName == 'Darwin'
-  Plugin 'Yggdroot/indentLine'
-  let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
-else
-  Plugin 'nathanaelkane/vim-indent-guides'
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_guide_size = 1
-endif
-
 Plugin 'ntpeters/vim-better-whitespace'
 " add following to turn on when start
 let g:better_whitespace_enabled = 0
@@ -130,44 +174,44 @@ autocmd VimEnter * EnableWhitespace
 " turn on by default for all filetypes
 autocmd BufWritePre * StripWhitespace
 
-Plugin 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_show_hidden = 1
+Plugin 'nvie/vim-flake8'
+Plugin 'kchmck/vim-coffee-script'
 
+" ============================================================================="
+"            _______  _______   __  .___________. ______   .______             "
+"           |   ____||       \ |  | |           |/  __  \  |   _  \            "
+"           |  |__   |  .--.  ||  | `---|  |----|  |  |  | |  |_)  |           "
+"           |   __|  |  |  |  ||  |     |  |    |  |  |  | |      /            "
+"           |  |____ |  '--'  ||  |     |  |    |  `--'  | |  |\  \----.       "
+"           |_______||_______/ |__|     |__|     \______/  | _| `._____|       "
+" ============================================================================="
 Plugin 'moll/vim-bbye'
 " Close the current buffer without closing windows
 map <leader>bd :Bdelete<cr>
-
-Plugin 'majutsushi/tagbar'
-nmap <leader>gg
-      \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
 
 Plugin 'vim-scripts/YankRing.vim'
 let g:yankring_replace_n_pkey = '<leader><leader>p'
 let g:yankring_replace_n_nkey = '<leader><leader>n'
 nnoremap <leader><leader>y :YRShow<cr>
 
-Plugin 'severin-lemaignan/vim-minimap'
-let g:minimap_highlight='String'
-let g:minimap_show='<leader>ms'
-let g:minimap_update='<leader>mu'
-let g:minimap_close='<leader>mc'
-let g:minimap_toggle='<leader>mm'
-
-Plugin 'flazz/vim-colorschemes'
 Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'nvie/vim-flake8'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-eunuch'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
-" Plugin 'benmills/vimux'
+
+" ============================================================================="
+"                      _______  __  .___________.                              "
+"                     /  _____||  | |           |                              "
+"                    |  |  __  |  | `---|  |----`                              "
+"                    |  | |_ | |  |     |  |                                   "
+"                    |  |__| | |  |     |  |                                   "
+"                     \______| |__|     |__|                                   "
+" ============================================================================="
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -180,4 +224,3 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " ================ Vundle Finish =====================
-
