@@ -87,6 +87,7 @@ highlight Pmenu ctermfg=051 ctermbg=235 guifg=#00ffff guibg=#2c2d27
 highlight PmenuSel ctermfg=015 ctermbg=008 guifg=#ffffff guibg=#808080
 highlight Folded term=standout ctermfg=202 ctermbg=017
       \ guifg=#ff5f00 guibg=#00005f
+highlight ExtraWhitespace ctermbg=199 guibg=#ff00af
 
 " ================ Indentation =======================
 set autoindent
