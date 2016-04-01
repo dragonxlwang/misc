@@ -76,9 +76,9 @@ source ~/misc/dotfiles/lib/.vimrc.bundles
 
 " ================ Color Themes ======================
 " "set t_ut=
-" "colorscheme lucario jellybeans atom-dark-256 ansi_blows lucius monokai
-" "LuciusBlackHighContrast
-colorscheme vividchalk
+" "vividchalk lucario jellybeans atom-dark-256 ansi_blows lucius monokai
+" "solarized LuciusBlackHighContrast
+colorscheme molokai
 highlight Search guibg=#ffff00 guifg=#000000 gui=none
       \ ctermbg=226 ctermfg=016 cterm=none
 highlight ColorColumn ctermbg=235 guibg=#2c2d27

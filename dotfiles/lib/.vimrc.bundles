@@ -90,6 +90,7 @@ let g:minimap_toggle='<leader>mm'
 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
+" Plugin 'vim-scripts/ScrollColors'
 
 " ============================================================================="
 "            __       __  .__   __. .___________._______ .______               "
