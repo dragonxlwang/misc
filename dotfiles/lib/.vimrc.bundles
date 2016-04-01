@@ -56,7 +56,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_theme = 'term'
+let g:airline_theme = 'molokai'
 " https://gist.github.com/kevinis/c788f85a654b2d7581d8
 " https://gist.github.com/baopham/1838072
 if g:osName == 'Darwin'
