@@ -5,7 +5,7 @@ ANSI_COLOR_GREEN="\033[32m"
 ANSI_COLOR_RESET="\033[0m"
 ANSI_COLOR_BLUE="\033[36m"
 
-root_dir=$(dirname $(dirname $0))
+root_dir=$(dirname $(dirname $(readlink -f $0)))
 
 
 if [[ ${1:l} != "mac" && ${1:l} != "timan" ]]; then
