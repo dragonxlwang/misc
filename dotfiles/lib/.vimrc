@@ -1,140 +1,142 @@
-" ================ General Config ====================
-set nocompatible                "Sse Vim settings, rather than Vi
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set undolevels=1000             "Use many muchos levels of undo
-set title                       "Change the terminal's title
-set ruler                       "Bottom right corner of the status line
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-set laststatus=2                "Always display the status line
-set hidden                      "Buffers can exist in the background
-set nowrap                      "Do not wrap lines visually
-set textwidth=80                "Maximum line text width
-set ttyfast                     "Optimize for fast terminal connections
-set wildchar=<TAB>              "Show possible completions
-set pastetoggle=<F2>            "No indent on paste
-set whichwrap+=<,>,h,l,[,]      "Automatically wrap left and right
-set splitbelow                  "Open new split panes to right and bottom
-set splitright                  "Open new split panes to bottom
-set diffopt+=vertical           "Always use vertical diffs
-set ttimeout                    "Set timeout on key codes
-set timeoutlen=500              "How long it wait for mapped commands
-set ttimeoutlen=100             "Faster timeout for escape key and others
-set colorcolumn=80              "Highlight column at 80 char
-set mouse=a                     "Enable mouse
-set nrformats-=octal            "Set number format for C-A, C-X
-set tabpagemax=50               "Max 50 tabs
-set sessionoptions-=options     "Session don't remember global options
-syntax on                       "Turn on syntax highlighting
-
-let g:osName = substitute(system('uname'), "\n", "", "")
-" overwrite settings for timan linux to be the same as mac
+" =============================- General Config -===============================
+set nocompatible                " Sse Vim settings, rather than Vi
+set autoread                    " Reload files changed outside vim
+set hidden                      " Buffers can exist in the background
+set ttyfast                     " Optimize for fast terminal connections
+set ttimeout                    " Set timeout on key codes
+set timeoutlen=500              " How long it wait for mapped commands
+set ttimeoutlen=100             " Faster timeout for escape key and others
+set history=1000                " Store lots of :cmdline history
+set undolevels=1000             " Use many muchos levels of undo
+set tabpagemax=50               " Max 50 tabs
+set mouse=a                     " Enable mouse
+set sessionoptions-=options     " Session don't remember global options
+set splitbelow                  " Open new split panes to right and bottom
+set splitright                  " Open new split panes to bottom
+set diffopt+=vertical           " Always use vertical diffs
+set backspace=indent,eol,start  " Allow backspace in insert mode
+set whichwrap+=<,>,h,l,[,]      " Move across lines
+set pastetoggle=<F2>            " No indent on paste
+set nrformats-=octal            " Set number format for C-A, C-X
+" ================================- Display -===================================
+set number                      " Line numbers are good
+set ruler                       " Bottom right corner of the status line
+set wrap                        " Wrap lines visually
+set textwidth=80                " Maximum line text width
+set colorcolumn=80              " Highlight column at 80 char
+set title                       " Change the terminal's title
+set showcmd                     " Show incomplete cmds down the bottom
+set showmode                    " Show current mode down the bottom
+set visualbell                  " No sounds
+set laststatus=2                " Always display the status line
+" ==============================- Indentation -=================================
+set autoindent                  " Indent for new lines
+set smartindent                 " Indent by context
+set expandtab                   " Use space instead of tabs
+set smarttab                    " Dynamic change what to insert
+set shiftwidth=2                " How many columns to indent by <<, >>
+set softtabstop=2               " How many columns when hitting a tab
+set tabstop=2                   " How many columns a tab counts for display
+" =================================- Folds -====================================
+set foldmethod=indent           " Fold based on indent
+set foldnestmax=3               " Deepest fold is 3 levels
+set nofoldenable                " Dont fold by default
+" ===============================- Completion -=================================
+set wildmode=list:longest,full  " List all matches including current
+set wildmenu                    " Enable ctrl-n and ctrl-p to scroll
+set wildchar=<TAB>              " Show possible completions
+set wildignore=*.o,*.pyc,*~     " Stuff to ignore when tab completing
+set wildignore+=*/.git/**,*/.DS_Store
+set wildignore+=*.png,*.jpg,*.gif
+set completeopt=longest,menuone " Show menu but insert longest common substring
+" ===============================- Scrolling -==================================
+set scrolloff=8                 " Start scrolling when 8 lines away vertically
+set sidescrolloff=15            " Same as above, for horizontal scrolling
+set sidescroll=3                " Scroll sideways 3 characters at a time
+" =================================- Search -===================================
+set incsearch                   " Find the next match as we type the search
+set hlsearch                    " Highlight searches by default
+set ignorecase                  " Ignore case when searching...
+set smartcase                   " ...unless we type a capital
+set showmatch                   " Set show matching parenthesis
+set magic                       " For regular expressions turn magic on
+" ==================================- Misc -====================================
+syntax on                       " Turn on syntax highlighting
+let mapleader=","               " Change leader to a comma
+let g:mapleader = ","           " Global leader to a comma
 if substitute(system('hostname -s'), "\n", "", "") =~ 'timan'
-  let g:osName = 'Darwin'
+  let g:osName = 'Darwin'       " Platform
+elseif
+  let g:osName = substitute(system('uname'), "\n", "", "")
 end
-let mapleader=","               "Change leader to a comma
-let g:mapleader = ","           "Global leader to a comma
-
-if &encoding ==# 'latin1' && has('gui_running')         " encoding
-  set encoding=utf-8
+if &encoding ==# 'latin1' && has('gui_running')
+  set encoding=utf-8            " Encoding
 endif
-if has('path_extra')                                    " ctags path
+if has('path_extra')            " Ctags path
   setglobal tags-=./tags tags-=./tags; tags^=./tags;
 endif
-if !empty(&viminfo)                                     " store global vars
+if !empty(&viminfo)             " Store global vars
   set viminfo^=!
 endif
-" Allow color schemes to do bright colors without forcing bold.
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
-  set t_Co=16
+  set t_Co=16                   " Allow bright colors without forcing bold.
 endif
-" Delete comment character when joining commented lines
 if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j
+  set formatoptions+=j          " Delete comment char when joining lines
 endif
-" Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
+  runtime! macros/matchit.vim   " Load matchit.vim
 endif
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
 
-" =========== Vim Sensible (not used) ================
-" set complete-=i
-" set display+=lastline
-" if &listchars ==# 'eol:$'
-"   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-" endif
-" if &shell =~# 'fish$'
-"   set shell=/bin/bash
-" endif
-
-" ================ Vundle Config =====================
+" =============================- Vundle Config -================================
 source ~/misc/dotfiles/lib/.vimrc.bundles
 
-" ================ Color Themes ======================
-" "set t_ut=
-" "vividchalk lucario jellybeans atom-dark-256 ansi_blows lucius monokai
-" "solarized LuciusBlackHighContrast
+" ==============================- Color Themes -================================
 colorscheme molokai
-highlight Search guibg=#ffff00 guifg=#000000 gui=none
-      \ ctermbg=226 ctermfg=016 cterm=none
+highlight Search ctermfg=016 ctermbg=226 cterm=none
+      \ guibg=#ffff00 guifg=#000000 gui=none
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 highlight LineNr ctermfg=033 ctermbg=234 guifg=#0087ff guibg=#1c1c1c
 highlight Pmenu ctermfg=051 ctermbg=235 guifg=#00ffff guibg=#2c2d27
 highlight PmenuSel ctermfg=015 ctermbg=008 guifg=#ffffff guibg=#808080
-highlight Folded term=standout ctermfg=202 ctermbg=017
+highlight Folded ctermfg=202 ctermbg=017 term=standout
       \ guifg=#ff5f00 guibg=#00005f
 highlight ExtraWhitespace ctermbg=199 guibg=#ff00af
 
-" ================ Indentation =======================
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
+" ==========================- Keymap: Save & Close -============================
+" Fast saves
+noremap <leader>w :w!<cr>
+" Close window
+noremap <leader>q :clo<CR>
+" Close all the buffers
+map <leader>ba :1,1000 bd!<cr>
+" Open last edited file
+nnoremap <Leader><Leader> <C-^>
+" Sudo write
+cmap w!! w !sudo tee > /dev/null %
+" Switch WD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+" Change pwd to current dir
+command! CdPwd :cd %:p:h
+" Automatically change directory
+"" autocmd BufEnter * silent! lcd %:p:h
+" Sync with servers
+command! SyncUploadFile call SyncUploadFile()
 
-" ================ Folds =============================
-set foldmethod=indent   "Fold based on indent
-set foldnestmax=3       "Deepest fold is 3 levels
-set nofoldenable        "Dont fold by default
-
-" ================ Completion ========================
-set wildmode=list:longest,full
-set wildmenu                    "Enable ctrl-n and ctrl-p to scroll thru matche
-set wildignore=*.o,*.obj,*~     "Stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.pyc
-set wildignore+=*.png,*.jpg,*.gif
-set completeopt=longest,menuone
-" inoremap <tab> <c-r>=InsertTabWrapper ("forward")<CR>
-" inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<CR>
-" inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-" inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
-
-" ================ Scrolling =========================
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15    "Same as above, for horizontal scrolling
-set sidescroll=3        "Scroll sideways 3 characters at a time
-
-" ================ Search ============================
-set incsearch           "Find the next match as we type the search
-set hlsearch            "Highlight searches by default
-set ignorecase          "Ignore case when searching...
-set smartcase           "...unless we type a capital
-set showmatch           "Set show matching parenthesis
-set magic               "For regular expressions turn magic on
+" =============================- Keymap: Search -===============================
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('')<CR>?<C-R>=@/<CR><CR>
@@ -145,106 +147,80 @@ if maparg('<C-L>', 'n') ==# ''
 endif
 " Clear search history
 nnoremap <space> :noh<CR><ESC>
+" Vimgrep visual-selected in current file
+vnoremap gvc :call VisualSelection('gvc')<CR> \| cw
+      \<left><left><left><left><left>
+" Vimgrep visual-selected in project directory
+vnoremap gvd :call VisualSelection('gvd')<CR> \| cw
+      \<left><left><left><left><left>
+" Vimgrep in project directory
+map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
+" Vimgreps in the current file
+map <leader><space>
+      \ :vimgrep // <C-R>%<C-A><Home><right><right><right><right>
+      \<right><right><right><right><right>
+" Search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
+" Open quickfix window:
+map <leader>cc :botright cope<cr>
+map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+" To go to the next search result do:
+map <leader>n :cn<cr>
+" To go to the previous search results do:
+map <leader>N :cp<cr>
+" Show total number of matches in quickfix (matches, errors)
+command! QfLen :echo 'Total number of items: ' len(getqflist())
+" Highlight all instances of word under cursor
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 
-" ================ Misc ==============================
+" =============================- Keymap: Vimrc -================================
+" Edit .vimrc
+map <leader>v :e ~/.vimrc<CR>
+" Reloads it -- making all changes active (have to save first)
+map <silent> <leader>V
+    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+" ==============================- Keymap: Diff -================================
+" ,do: Diff off
+nnoremap <Leader>do :diffoff<CR><C-w><C-w>:diffoff<CR>
+" ,dd: Diff windows
+nnoremap <leader>dd :windo diffthis<CR>
+" ,dt: Diff two windows
+nnoremap <Leader>dt :diffthis<CR><C-w><C-w>:diffthis<CR>
+" ,ds: Diff split another file
+nnoremap <Leader>ds :<C-u>diffsplit<Space>
+" Diff with original (before save)
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+        \ | wincmd p | diffthis
+endif
+
+" =============================- Keymap: Motion -===============================
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-" Exit insert mode by typing jk
-" http://vim.wikia.com/wiki/Avoid_the_escape_key
+" Exit insert mode without esc, http://vim.wikia.com/wiki/Avoid_the_escape_key
 inoremap jk <ESC>`^
 vnoremap ;; <Esc>gV
 cnoremap ;; <C-c>
 nnoremap ;; <Esc>
 onoremap ;; <Esc>
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <c-u> <c-g>u<c-u>
-inoremap <c-w> <c-g>u<c-w>
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-" Also don't do it when the mark is in the first line, that is the default
-" position when opening a file.
-autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-        \ | wincmd p | diffthis
-endif
-" sudo write: w!! to write a file as sudo
-cmap w!! w !sudo tee > /dev/null %
-
-" ================ Leader  ===========================
-" ,w Fast saves
-noremap <leader>w :w!<cr>
-" ,q Close window
-noremap <leader>q :clo<CR>
-" ,, open previously edited file
-nnoremap <Leader><Leader> <C-^>
-
-" ,c replace until next underscore
+" ,c: replace until next underscore
 nnoremap <Leader>c ct_
-" ,a replace until next capital letter
+" ,a: replace until next capital letter
 nnoremap <Leader>a c/[A-Z]<CR>
-
-" ,| go to 80th column
+" ,|: go to 80th column
 nnoremap <Leader><Bar> 80<Bar>
 vnoremap <Leader><Bar> 80<Bar>
 
-" text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
-nnoremap <leader>tw gqip
-nnoremap <leader>nw :set nowrap<CR>
-
-" Open current buffer in a new split
-noremap <leader>s :vsplit<cr>
-noremap <leader>i :split<cr>
-
-" ,do diff off
-nnoremap <Leader>do :diffoff<CR><C-w><C-w>:diffoff<CR>
-" ,dt diff this
-nnoremap <Leader>dt :diffthis<CR><C-w><C-w>:diffthis<CR>
-" ,ds Diff split
-nnoremap <Leader>ds :<C-u>diffsplit<Space>
-" ,dd Diff current files in split view
-nnoremap <leader>dd :windo diffthis<CR>
-
-" ,o git checkout current file
-nnoremap <Leader>o :!git checkout %<CR><CR>
-
-",v brings up my .vimrc
-" map <leader>v :sp ~/.vimrc<CR><C-W>_
-map <leader>v :e ~/.vimrc<CR>
-",V reloads it -- making all changes active (have to save first)
-map <silent> <leader>V
-    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-
-"  Tags
-nnoremap <Leader>] <C-]>
-nnoremap <Leader>: :<C-u>tab<Space>stj<Space><C-R>=expand('<cword>')<CR><CR>
-nnoremap <Leader>[ <C-o>
-
-" =>  tabs, buffers and path
-""""""""""""""""""""""""
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
-" Useful mappings for managing tabs
+" =========================- Keymap: Windows & Tabs -===========================
 map <leader>tt :tabnew<cr>
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-" Opens a new tab with the current buffer's path
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
 " Cycle between buffers
 map <leader>k :bnext<cr>
 map <leader>j :bprev<cr>
@@ -253,34 +229,7 @@ map <C-w><C-k> :tabn<cr>
 map <C-w><C-j> :tabp<cr>
 map <C-w><c-l> :tabl<cr>
 
-" => vimgrep searching and cope displaying
-""""""""""""""""""""""""
-" When you press gv you vimgrep after the selected text
-" grep visual-selected in current file
-vnoremap gvc :call VisualSelection('gvc')<CR> \| cw
-      \<left><left><left><left><left>
-" grep visual-selected in project directory
-vnoremap gvd :call VisualSelection('gvd')<CR> \| cw
-      \<left><left><left><left><left>
-" Open vimgrep and put the cursor in the right position
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-" Vimgreps in the current file
-map <leader><space>
-      \ :vimgrep // <C-R>%<C-A><Home><right><right><right><right>
-      \<right><right><right><right><right>
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
-" When you search with vimgrep, display your results in cope by doing:
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-" To go to the next search result do:
-map <leader>n :cn<cr>
-" To go to the previous search results do:
-map <leader>N :cp<cr>
-" To get the total number of items in quickfix (matches, errors)
-command! QfLen :echo 'Total number of items: ' len(getqflist())
-
-" copy and paste
+" ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'
   " Add some Mac specific bindings
   " so we use external commands instead to avoid recompiling vim
@@ -305,47 +254,31 @@ else
         \ execute "normal! vgvy" \|
         \ let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
 endif
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
 
-" => Spell checking
-""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
+" ==============================- Keymap: Misc -================================
+" Text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
+nnoremap <leader>tw gqip
+nnoremap <leader>nw :set nowrap<CR>
+" Git checkout current file
+nnoremap <Leader>o :!git checkout %<CR><CR>
+" Tags
+nnoremap <Leader>] <C-]>
+nnoremap <Leader>: :<C-u>tab<Space>stj<Space><C-R>=expand('<cword>')<CR><CR>
+nnoremap <Leader>[ <C-o>
+" Spell checking
 map <leader>ss :setlocal spell!<cr>
-" Shortcuts using <leader>
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-
-" => Misc
-""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-" Quickly open a buffer for scripbble
-"" map <leader>q :e ~/buffer<cr>
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
-" Change pwd to current dir
-command! CdPwd :cd %:p:h
-" Automatically change directory
-"" autocmd BufEnter * silent! lcd %:p:h
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Remap TAB to keyword completion
-function! InsertTabWrapper(direction)
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  elseif "backward" == a:direction
-    return "\<c-p>"
-  elseif "forward" == a:direction
-    return "\<c-n>"
-  endif
-endfunction
-
 function! CmdLine(str)
   exe "menu Foo.Bar :" . a:str
   emenu Foo.Bar
@@ -357,7 +290,6 @@ function! VisualSelection(direction) range
   execute "normal! vgvy"
   let l:pattern = escape(@", '\\/.*$^~[]')
   let l:pattern = substitute(l:pattern, "\n$", "", "")
-
   if a:direction == 'gvc'
     call CmdLine("vimgrep " . '/'. l:pattern . '/g' . ' %')
   elseif a:direction == 'gvd'
@@ -365,12 +297,10 @@ function! VisualSelection(direction) range
   elseif a:direction == 'replace'
     call CmdLine("%s" . '/'. l:pattern . '/')
   endif
-
   let @/ = l:pattern
   let @" = l:saved_reg
 endfunction
 
-" Returns true if paste mode is enabled
 function! HasPaste()
   if &paste
     return 'PASTE MODE  '
@@ -381,7 +311,6 @@ endfunction
 " Highlight all instances of word under cursor, when idle.
 " Useful when studying strange source code.
 " Type z/ to toggle highlighting on/off.
-nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
   let @/ = ''
   if exists('#auto_highlight')
@@ -401,7 +330,7 @@ function! AutoHighlightToggle()
   endif
 endfunction
 
-"eshion/vim-sync
+" Sync with server: eshion/vim-sync
 function! SyncGetExe()
   if '.sync' == expand('%')
     return
@@ -440,4 +369,3 @@ function! SyncUploadFile()
     execute '!' . cmd
   endif
 endfunction
-command! SyncUploadFile call SyncUploadFile()
