@@ -66,7 +66,7 @@ let mapleader=","               " Change leader to a comma
 let g:mapleader = ","           " Global leader to a comma
 if substitute(system('hostname -s'), "\n", "", "") =~ 'timan'
   let g:osName = 'Darwin'       " Platform
-elseif
+else
   let g:osName = substitute(system('uname'), "\n", "", "")
 end
 if &encoding ==# 'latin1' && has('gui_running')
