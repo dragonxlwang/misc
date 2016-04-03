@@ -113,6 +113,7 @@ if g:osName == 'Darwin'
   " # Cleanup afterward; frees several hundred megabytes
   " make clean && make clean_clang
   Plugin 'Valloric/YouCompleteMe' " <leader>d: diagnostic msg on current line
+  " Plugin 'oblitum/YouCompleteMe'
   Plugin 'Valloric/ListToggle'
   " Plugin 'jeaye/color_coded'        " not working right now
   Plugin 'rdnetto/YCM-Generator'

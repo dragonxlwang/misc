@@ -19,6 +19,7 @@
     bibtex: [
       "/Library/TeX/texbin/bibtex"
     ]
+  "autocomplete-clang": {}
   "autocomplete-python":
     outputProviderErrors: true
     pythonPath: "/usr/local/bin/python"
