@@ -148,11 +148,13 @@ endif
 " Clear search history
 nnoremap <space> :noh<CR><ESC>
 " Vimgrep visual-selected in current file
-vnoremap gvc :call VisualSelection('gvc')<CR> \| cw
-      \<left><left><left><left><left>
+vnoremap gvc :call VisualSelection('gvc')<CR> \| botright cw
+      \<left><left><left><left><left><left><left><left><left><left>
+      \<left><left><left><left>
 " Vimgrep visual-selected in project directory
-vnoremap gvd :call VisualSelection('gvd')<CR> \| cw
-      \<left><left><left><left><left>
+vnoremap gvd :call VisualSelection('gvd')<CR> \| botright cw
+      \<left><left><left><left><left><left><left><left><left><left>
+      \<left><left><left><left>
 " Vimgrep in project directory
 map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 " Vimgreps in the current file
