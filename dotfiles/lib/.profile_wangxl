@@ -50,12 +50,12 @@ alias rrm='/bin/rm -v'
 function rm {
   local ret=""
   ret=$(mv --verbose -f --backup=numbered \
-        --target-directory ${HOME}/.trash/ "$@")
+        --target-directory ${HOME}/.Trash/ "$@")
   echo -e $ANSI_COLOR_RED$ret$ANSI_COLOR_RESET
   local reg=""
   local f1=""
   local f2=""
-  local fp="${HOME}/.trash/rm.undo"
+  local fp="${HOME}/.Trash/rm.undo"
   echo "#!/bin/sh" > $fp
   for l in ${(f)ret}; do
     reg='s/^(.*) -> (.*)$/\1/p'
@@ -72,7 +72,7 @@ function rm {
   done
 }
 function undo {
-  local fp="${HOME}/.trash/rm.undo"
+  local fp="${HOME}/.Trash/rm.undo"
   /bin/sh $fp
 }
 alias empty_trash='find ~/.Trash -mindepth 1 -delete -print'

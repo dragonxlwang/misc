@@ -56,12 +56,12 @@ plugins=(git colored-man-pages extract python web-search)
 
 export PATH="/software/matlab-R2011a-x86_64/bin:/software/sun-jdk-1.6.0-latest-el6-x86_64/bin:/srv/adm/bin:/usr/lib64/qt-3.3/bin:/usr/NX/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
+## set by devtoolset-2
 source /opt/rh/devtoolset-2/enable
-# set by linuxbrew
-export PATH="$HOME/.linuxbrew/bin:$PATH"
+## set by linuxbrew
+export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-export PATH="/home/xwang95/.linuxbrew/sbin:$PATH"
 export PATH="$PATH:$HOME/resource/vowpal_wabbit"
 
 source $ZSH/oh-my-zsh.sh

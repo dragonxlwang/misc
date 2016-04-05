@@ -29,7 +29,7 @@ function clean_nx_sessions {
   done
 }
 alias clean_chrome_session="mv --verbose -f --backup=numbered \
-                            --target-directory ~/.trash/  \
+                            --target-directory ~/.Trash/  \
                             ${HOME}/.config/google-chrome/SingletonLock"
 alias clean_chrome_profile="/bin/rm -rf ${HOME}/.config/google-chrome/Default"
 sifaka_url="sifaka.cs.uiuc.edu/~xwang95"
