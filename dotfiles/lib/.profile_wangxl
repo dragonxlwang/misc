@@ -300,6 +300,14 @@ function xg_check_remote_up_2_date {
 }
 alias xg_diff="git diff HEAD"
 alias xg_ca="git commit -v -a --amend --no-edit"
+function github_short_url {
+  curl -isS https://git.io -F "url=$1" | sed -rn 's/^Location: (.*)$/\1/p'
+}
+function github_short_url_to_clipboard {
+  local url="$(github_short_url $1)"
+  echo $url | pbcopy
+  echo $url
+}
 
 ## ========================================================================== ##
 #             .______   .______      ___________    __    ____                 #
