@@ -39,8 +39,8 @@ brew install macvim --with-lua --with-override-system-vim
 brew linkapps macvim
 
 ## brew install vim --override-system-vi
-## brew install macvim --override-system-vim --custom-system-icons
 ## brew install zsh
+## brew install zsh-syntax-highlighting
 
 brew install pwgen gmp libtool pdflib-lite smpeg sqlite llvm mpfr
 brew install freetype fontconfig isl jpeg readline xz libevent openssl
