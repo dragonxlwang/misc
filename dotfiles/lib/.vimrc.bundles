@@ -88,7 +88,8 @@ let g:minimap_update='<leader>mu'
 let g:minimap_close='<leader>mc'
 let g:minimap_toggle='<leader>mm'
 
-Plugin 'flazz/vim-colorschemes'
+" Plugin 'flazz/vim-colorschemes'
+Plugin 'dragonxlwang/molokai'
 Plugin 'airblade/vim-gitgutter'
 " Plugin 'vim-scripts/ScrollColors'
 
@@ -131,6 +132,7 @@ if g:osName == 'Darwin'
   noremap <leader>jt :YcmCompleter GetType<CR>
   noremap <leader>jm :YcmCompleter GetDoc<CR>
   noremap <leader>jj :YcmForceCompileAndDiagnostics<CR> :YcmDiags<CR>
+  noremap <Leader>ff :YcmCompleter FixIt<CR>
   let g:ycm_filetype_blacklist = {
         \ 'tagbar' : 1,
         \ 'qf' : 1,
@@ -202,6 +204,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'dragonxlwang/vim-better-search'
 
 " ============================================================================="
 "                      _______  __  .___________.                              "

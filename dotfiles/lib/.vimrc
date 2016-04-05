@@ -104,18 +104,6 @@ inoremap <c-w> <c-g>u<c-w>
 " =============================- Vundle Config -================================
 source ~/misc/dotfiles/lib/.vimrc.bundles
 
-" ==============================- Color Themes -================================
-colorscheme molokai
-highlight Search ctermfg=016 ctermbg=226 cterm=none
-      \ guibg=#ffff00 guifg=#000000 gui=none
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
-highlight LineNr ctermfg=033 ctermbg=234 guifg=#0087ff guibg=#1c1c1c
-highlight Pmenu ctermfg=051 ctermbg=235 guifg=#00ffff guibg=#2c2d27
-highlight PmenuSel ctermfg=015 ctermbg=008 guifg=#ffffff guibg=#808080
-highlight Folded ctermfg=202 ctermbg=017 term=standout
-      \ guifg=#ff5f00 guibg=#00005f
-highlight ExtraWhitespace ctermbg=199 guibg=#ff00af
-
 " ==========================- Keymap: Save & Close -============================
 " Fast saves
 noremap <leader>w :w!<cr>
@@ -136,44 +124,6 @@ command! CdPwd :cd %:p:h
 " Sync with servers
 command! SyncUploadFile call SyncUploadFile()
 
-" =============================- Keymap: Search -===============================
-" Visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :<C-u>call VisualSelection('')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('')<CR>?<C-R>=@/<CR><CR>
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L>
-        \ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-endif
-" Clear search history
-nnoremap <space> :noh<CR><ESC>
-" Vimgrep visual-selected in current file
-vnoremap gvc :call VisualSelection('gvc')<CR> \| botright cw
-      \<left><left><left><left><left><left><left><left><left><left>
-      \<left><left><left><left>
-" Vimgrep visual-selected in project directory
-vnoremap gvd :call VisualSelection('gvd')<CR> \| botright cw
-      \<left><left><left><left><left><left><left><left><left><left>
-      \<left><left><left><left>
-" Vimgrep in project directory
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-" Vimgreps in the current file
-map <leader><space>
-      \ :vimgrep // <C-R>%<C-A><Home><right><right><right><right>
-      \<right><right><right><right><right>
-" Search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
-" Open quickfix window:
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-" To go to the next search result do:
-map <leader>n :cn<cr>
-" To go to the previous search results do:
-map <leader>N :cp<cr>
-" Show total number of matches in quickfix (matches, errors)
-command! QfLen :echo 'Total number of items: ' len(getqflist())
-" Highlight all instances of word under cursor
-nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc
@@ -281,55 +231,12 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CmdLine(str)
-  exe "menu Foo.Bar :" . a:str
-  emenu Foo.Bar
-  unmenu Foo
-endfunction
-
-function! VisualSelection(direction) range
-  let l:saved_reg = @"
-  execute "normal! vgvy"
-  let l:pattern = escape(@", '\\/.*$^~[]')
-  let l:pattern = substitute(l:pattern, "\n$", "", "")
-  if a:direction == 'gvc'
-    call CmdLine("vimgrep " . '/'. l:pattern . '/g' . ' %')
-  elseif a:direction == 'gvd'
-    call CmdLine("vimgrep " . '/'. l:pattern . '/g' . ' **/*.')
-  elseif a:direction == 'replace'
-    call CmdLine("%s" . '/'. l:pattern . '/')
-  endif
-  let @/ = l:pattern
-  let @" = l:saved_reg
-endfunction
 
 function! HasPaste()
   if &paste
     return 'PASTE MODE  '
   en
   return ''
-endfunction
-
-" Highlight all instances of word under cursor, when idle.
-" Useful when studying strange source code.
-" Type z/ to toggle highlighting on/off.
-function! AutoHighlightToggle()
-  let @/ = ''
-  if exists('#auto_highlight')
-    au! auto_highlight
-    augroup! auto_highlight
-    setl updatetime=4000
-    echo 'Highlight current word: off'
-    return 0
-  else
-    augroup auto_highlight
-      au!
-      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-    augroup end
-    setl updatetime=500
-    echo 'Highlight current word: ON'
-    return 1
-  endif
 endfunction
 
 " Sync with server: eshion/vim-sync

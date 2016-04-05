@@ -195,11 +195,6 @@ function mac_disable_accent_char {
 function mac_enable_accent_char {
   defaults write -g ApplePressAndHoldEnabled -bool true
 }
-# remove all .DS_store files in current directory recursively
-function rm_finder_hidden_files {
-  find . -name '*.DS_Store'  -type f -delete -print
-  find . -name '*.localized' -type f -delete -print
-}
 
 ## ========================================================================== ##
 #            __    __  .___________.__   __          _______.                  #

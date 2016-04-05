@@ -76,6 +76,29 @@ function undo {
   /bin/sh $fp
 }
 alias empty_trash='find ~/.Trash -mindepth 1 -delete -print'
+# remove the following
+## all mac .DS_store/.localized files in current directory recursively
+function rm_mac_hidden_files {
+  local clean_place=${*:-'.'}
+  find $clean_place -name '*.DS_Store'  -type f -delete -print
+  find $clean_place -name '*.localized' -type f -delete -print
+}
+## all python .py[co] files and __pycache__ dirs
+alias rm_python_compiled_files="pyclean"
+function rm_python_compiled_files_no_recursion {
+  local clean_place=${*:-'.'}
+  find $clean_place -maxdepth 1 -type f -name "*.py[co]" -delete
+  find $clean_place -maxdepth 1 -type d -name "__pycache__" -delete
+}
+## all vim swap .sw[pon]
+function rm_vim_swap_files {
+  local clean_place=${*:-'.'}
+  find $clean_place -name '*.sw[pon]'  -type f -delete -print
+}
+function rm_vim_swap_files_no_recursion {
+  local clean_place=${*:-'.'}
+  find $clean_place -maxdepth 1 -name '*.sw[pon]'  -type f -delete -print
+}
 alias cls='printf "\033c"'
 alias echo_path='echo ${PATH//:/"\n"}'
 alias ll="ls -alh"
