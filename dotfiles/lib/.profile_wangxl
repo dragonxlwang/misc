@@ -114,6 +114,9 @@ function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
 function follow { cd $(dirname $(readlink -f $1)) }
 alias jp="jump"
 alias fl="follow"
+function exe_remote_script {
+  eval "$(curl -fsSL $1)"
+}
 
 ## ========================================================================== ##
 #       _______.  ______ .______      __  .______   .___________.    _______.  #
