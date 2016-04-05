@@ -5,6 +5,7 @@
 #
 # http://ysmood.org/wp/2013/03/my-ys-terminal-theme/
 # Mar 2013 ys
+# Forked by wxl
 
 # Machine name.
 function box_name {
@@ -46,29 +47,25 @@ ys_hg_prompt_info() {
 
 local exit_code="%(?,%?,%{$fg[red]%}%?%{$reset_color%})"
 
-# Prompt format: \n # USER at MACHINE in DIRECTORY on git:BRANCH STATE [TIME] \n $
-PROMPT="
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
-$FG[163]%n\
-$FG[123]@\
-$FG[154]$(box_name)\
-$FG[123]:\
-%{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
-${hg_info}\
-${git_info} \
-$FG[135][%*] tty:%l L:%L N:%i C:$exit_code
-%{$terminfo[bold]$fg[yellow]%}$ %{$reset_color%}"
+# Prompt format:
+# # USER at MACHINE in DIRECTORY on git:BRANCH STATE [TIME] \
+# tty:tty L:shell_depth C:exit_code
+# $
+# For example
+# xiaolong at 189.128-25.236.17.192.in-addr.arpa in ~/misc on git:master x \
+# [16:24:04] tty:s005 L:2 N:1 C:0
+# For more info
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
-if [[ "$USER" == "root" ]]; then
 PROMPT="
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
-%{$bg[yellow]%}%{$fg[cyan]%}%n%{$reset_color%} \
-%{$fg[white]%}at \
-%{$fg[green]%}$(box_name) \
-%{$fg[white]%}in \
-%{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
-${hg_info}\
-${git_info} \
-%{$fg[white]%}[%*]
-%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
-fi
+%{$terminfo[bold]$fg[white]%}#%{$reset_color%} \
+%(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},\
+%{$terminfo[bold]$fg[cyan]%}%n%{$reset_color%}) \
+%{$terminfo[bold]$fg[white]%}at%{$reset_color%} \
+%{$terminfo[bold]$fg[magenta]%}%M%{$reset_color%} \
+%{$terminfo[bold]$fg[white]%}in%{$reset_color%} \
+%{$terminfo[bold]$fg[green]%}%~%{$reset_color%}\
+%{$terminfo[bold]%}${hg_info}${git_info}%{$reset_color%} \
+%{$fg[yellow]%}[%*] \
+%{$fg[blue]%}tty:%l L:%L N:%i C:$exit_code
+%{$terminfo[bold]$fg[yellow]%}$%{$reset_color%} "
