@@ -15,9 +15,6 @@ LSCOLORS="gxfxheheBxhehexbxgagag"
 # Tell ls to be colourful
 export CLICOLOR=1
 
-# Tell grep to highlight matches
-export GREP_OPTIONS='--color=auto'
-
 # Do we need Linux or BSD Style?
 if ls --color -d . &>/dev/null 2>&1
 then
