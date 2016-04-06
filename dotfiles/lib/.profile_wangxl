@@ -23,6 +23,7 @@ ANSI_COLOR_RESET="\033[0m"
 #           /  _____  \  |  `----.|  |  /  _____  \  .----)   |                #
 #          /__/     \__\ |_______||__| /__/     \__\ |_______/                 #
 ## ========================================================================== ##
+function test_alias_exist { alias $1 2>/dev/null >/dev/null }
 function work { tmux new -AD -s $(hostname -s)-main }
 ## ls -A: List all entries except for . and ...
 ## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
@@ -33,6 +34,7 @@ function work { tmux new -AD -s $(hostname -s)-main }
 ##    applies within each array element.
 ## unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
 alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
+alias ds='du -ahd1'
 ## show history with time, increase history size
 ## https://github.com/robbyrussell/oh-my-zsh/issues/739
 ## ./.oh-my-zsh/lib/history.zsh
@@ -101,13 +103,21 @@ function rm_vim_swap_files_no_recursion {
 }
 alias cls='printf "\033c"'
 alias echo_path='echo ${PATH//:/"\n"}'
+# ls
 alias ll="ls -alh"
 function lll { ll $@ --color=always | less }
 alias lllt="lll -t"
 function lls { ll | grep $* }
 alias llsi='lls -i'
 function ll_symlink {
-    [[ $# -eq 1 ]] && { ll $1 | grep "\->"} || {ll | grep "\->"} }
+    ll "$@" --color=always | grep "\->" }
+# grep: recursive, ln num, show file name, context
+alias gg="grep -R -n -H -C5"
+# find: search file/directory
+alias sd='find . -type d -name'
+alias sf='find . -type f -name'
+alias sdi='find . -type d -iname'
+alias sfi='find . -type f -iname'
 function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
 alias kill_tmux='tmux kill-session'
 function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
@@ -117,6 +127,20 @@ alias fl="follow"
 function exe_remote_script {
   eval "$(curl -fsSL $1)"
 }
+alias help='man'
+# pipes
+alias -g PH='| head'
+alias -g PT='| tail'
+alias -g PG='| grep'
+alias -g PL="| less"
+alias -g PP="| pygmentize"
+alias -g PC="| cat -A"
+alias -g PLL="2>&1 | less"
+alias -g PCC="2>&1 | cat -A"
+alias -g PPP="2>&1| pygmentize"
+# redirection
+alias -g RNE="2> /dev/null"
+alias -g ROE="> /dev/null 2>&1"
 
 ## ========================================================================== ##
 #       _______.  ______ .______      __  .______   .___________.    _______.  #

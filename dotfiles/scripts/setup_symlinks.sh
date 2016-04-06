@@ -59,7 +59,7 @@ do
 done
 
 ## mac suite: atom
-bins=("mv" "readlink" "ls")
+bins=("mv" "readlink" "ls" "du")
 if [[ $1 == "mac" ]];
 then
   for f in $(ls "$root_dir/mac/.atom");
