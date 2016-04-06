@@ -23,8 +23,37 @@ ANSI_COLOR_RESET="\033[0m"
 #           /  _____  \  |  `----.|  |  /  _____  \  .----)   |                #
 #          /__/     \__\ |_______||__| /__/     \__\ |_______/                 #
 ## ========================================================================== ##
+##-------------------------------== general ==--------------------------------##
 function test_alias_exist { alias $1 2>/dev/null >/dev/null }
 function work { tmux new -AD -s $(hostname -s)-main }
+function exe_remote_script {
+  eval "$(curl -fsSL $1)"
+}
+alias help='man'
+alias echo_path='echo ${PATH//:/"\n"}'
+##--------------------------------== admin ==---------------------------------##
+function psmem {
+  local s="$(ps -e -o pid,rss,pcpu,cpu,nice,state,cputime,comm |\
+    awk 'NR == 1; NR > 1 {print $0 | "sort -k2 -rn"}')"
+  echo "$s" | head
+}
+function pscpu {
+  local s="$(ps -e -o pid,rss,pcpu,cpu,nice,state,cputime,comm |\
+    awk 'NR == 1; NR > 1 {print $0 | "sort -k3 -rn"}')"
+  echo "$s" | head
+}
+alias pscmd='print -l ${(o)history%% *} | uniq -c | sort -nr | head'
+# case insensitive grep
+function psgrep { ps aux | grep -i $1 | grep -v grep }
+# case sensitive kill
+function pskill {
+  ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs kill -9 }
+function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
+alias kill_tmux='tmux kill-session'
+function kill_zombies {
+  ps -e -o pid,state | awk '{ if ($2 == "Z") {print $1} }' | xargs  kill -9 }
+alias cls='printf "\033c"'
+##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
 ## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
 ## @: In double quotes, array elements are put into separate words.
@@ -35,19 +64,32 @@ function work { tmux new -AD -s $(hostname -s)-main }
 ## unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
 alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
 alias ds='du -ahd1'
-## show history with time, increase history size
-## https://github.com/robbyrussell/oh-my-zsh/issues/739
-## ./.oh-my-zsh/lib/history.zsh
-## "mm/dd/yyyy":  -f
-## "dd.mm.yyyy":  -E
-## "yyyy-mm-dd":  -i
-## HISTSIZE is the maximum number of lines that are kept in a session and
-## SAVEHIST is the maximum number of lines that are kept in the history file.
-alias history='fc -i -l 1'
-# oh-my-zsh/plugins/history/history.plugin.zsh
-function hs { history | grep $* }
-alias hsi='hs -i'
-# real remove vs save remove
+alias dls='find . -maxdepth 1 -type d'
+# ls
+alias ll="ls -alh"
+function lll { ll $@ --color=always | less }
+alias lllt="lll -t"
+function lls { ll | grep $* }
+alias llsi='lls -i'
+function ll_symlink {
+    ll "$@" --color=always | grep "\->" }
+# cd
+function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
+function follow { cd $(dirname $(readlink -f $1)) }
+alias jp="jump"
+alias fl="follow"
+# tree might not installed; use ugly tree instead
+if [ -z "\${which tree}" ]; then
+  tree () {
+      find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+  }
+fi
+# gather external ip address
+alias showip="curl -s -S https://icanhazip.com"
+alias showptr="curl -s -S -k https://icanhazptr.com"
+# determine local IP address
+##--------------------------------== remove ==--------------------------------##
+# real remove
 alias rrm='/bin/rm -v'
 function rm {
   local ret=""
@@ -101,16 +143,20 @@ function rm_vim_swap_files_no_recursion {
   local clean_place=${*:-'.'}
   find $clean_place -maxdepth 1 -name '*.sw[pon]'  -type f -delete -print
 }
-alias cls='printf "\033c"'
-alias echo_path='echo ${PATH//:/"\n"}'
-# ls
-alias ll="ls -alh"
-function lll { ll $@ --color=always | less }
-alias lllt="lll -t"
-function lls { ll | grep $* }
-alias llsi='lls -i'
-function ll_symlink {
-    ll "$@" --color=always | grep "\->" }
+##-------------------------------== history ==--------------------------------##
+## show history with time, increase history size
+## https://github.com/robbyrussell/oh-my-zsh/issues/739
+## ./.oh-my-zsh/lib/history.zsh
+## "mm/dd/yyyy":  -f
+## "dd.mm.yyyy":  -E
+## "yyyy-mm-dd":  -i
+## HISTSIZE is the maximum number of lines that are kept in a session and
+## SAVEHIST is the maximum number of lines that are kept in the history file.
+alias history='fc -i -l 1'
+# oh-my-zsh/plugins/history/history.plugin.zsh
+function hs { history | grep $* }
+alias hsi='hs -i'
+##---------------------------== search and find ==----------------------------##
 # grep: recursive, ln num, show file name, context
 alias gg="grep -R -n -H -C5"
 # find: search file/directory
@@ -118,16 +164,7 @@ alias sd='find . -type d -name'
 alias sf='find . -type f -name'
 alias sdi='find . -type d -iname'
 alias sfi='find . -type f -iname'
-function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
-alias kill_tmux='tmux kill-session'
-function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
-function follow { cd $(dirname $(readlink -f $1)) }
-alias jp="jump"
-alias fl="follow"
-function exe_remote_script {
-  eval "$(curl -fsSL $1)"
-}
-alias help='man'
+##------------------------== pipes and redirection ==-------------------------##
 # pipes
 alias -g PH='| head'
 alias -g PT='| tail'
