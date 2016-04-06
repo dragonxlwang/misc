@@ -264,8 +264,8 @@ function up_misc {
   popd > /dev/null
 }
 function ed_scripts {
-  local f1="${HOME}/misc/dotfiles/scripts/setup_symlinks.sh"
-  local f2="${HOME}/misc/dotfiles/scripts/quick_install.sh"
+  local f1="${HOME}/misc/scripts/setup_symlinks.sh"
+  local f2="${HOME}/misc/scripts/quick_install.sh"
   vim $f1 $f2
 }
 function up_symlinks {
@@ -273,7 +273,7 @@ function up_symlinks {
   [[ $(uname) == "Darwin" ]] && opt="mac"
   [[ $(uname) == "Linux" ]] && opt="timan"
   yellowecho "setup symlinks for $opt"
-  ${HOME}/misc/dotfiles/scripts/setup_symlinks.sh $opt --no-confirm
+  ${HOME}/misc/scripts/setup_symlinks.sh $opt --no-confirm
 }
 ##--------------------------------== vundle ==--------------------------------##
 # oh-my-zsh/plugins/vundle/vundle.plugin.zsh
