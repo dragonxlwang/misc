@@ -180,6 +180,7 @@ alias -g PH='| head'
 alias -g PT='| tail'
 alias -g PG='| grep'
 alias -g PL="| less"
+alias -g PCL="--color=always | less"
 alias -g PP="| pygmentize"
 alias -g PC="| cat -A"
 alias -g PLL="2>&1 | less"
