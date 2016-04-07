@@ -2,7 +2,7 @@
 miscellaneous stuffs
 
 ## Shell special variables
-|----------|---------------------------------------------------|
+|----------|----------------------------------------------------|
 |$1 - $9   |these variables are the positional parameters.      |
 | $0       |the name of the command currently being executed.   |
 | $#       |the number of positional arguments given to this invocation of the shell. |
@@ -11,8 +11,7 @@ miscellaneous stuffs
 | $!       |Process ID of last process run in the background using ampersand (&) operator. |
 | $-       |A list of all shell flags currently enabled. |
 | $_       |Name of last command. |
-| $*       |Complete list of arguments passed to the shell, separated by the first character of 
-            the IFS (input field separators) variable., starting at $1. |
+| $*       |Complete list of arguments passed to the shell, separated by the first character of the IFS (input field separators) variable., starting at $1. |
 | $@       | same as above, separated by spaces. |
 
 [1](https://developer.apple.com/library/mac/documentation/OpenSource/Conceptual/ShellScripting/SpecialShellVariables/SpecialShellVariables.html)
