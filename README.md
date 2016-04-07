@@ -2,7 +2,7 @@
 miscellaneous stuffs
 
 ## Shell special variables
------------|-----------------------------------------------------
+|----------|---------------------------------------------------|
 |$1 - $9   |these variables are the positional parameters.      |
 | $0       |the name of the command currently being executed.   |
 | $#       |the number of positional arguments given to this invocation of the shell. |
