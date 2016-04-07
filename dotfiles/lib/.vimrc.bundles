@@ -38,48 +38,6 @@ Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 Plugin 'dragonxlwang/vim-better-search'
 
 " ============================================================================="
-"                      _______  __  .___________.                              "
-"                     /  _____||  | |           |                              "
-"                    |  |  __  |  | `---|  |----`                              "
-"                    |  | |_ | |  |     |  |                                   "
-"                    |  |__| | |  |     |  |                                   "
-"                     \______| |__|     |__|                                   "
-" ============================================================================="
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'tpope/vim-fugitive'
-
-" ============================================================================="
-"                      _______  __   __       _______                          "
-"                     |   ____||  | |  |     |   ____|                         "
-"                     |  |__   |  | |  |     |  |__                            "
-"                     |   __|  |  | |  |     |   __|                           "
-"                     |  |     |  | |  `----.|  |____                          "
-"                     |__|     |__| |_______||_______|                         "
-" ============================================================================="
-Plugin 'scrooloose/nerdtree'
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" \ | exe "normal! \<C-w>\<C-w>" | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
-      \ && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeShowHidden = 1
-nnoremap <leader>nn :NERDTreeToggle<CR>
-nnoremap <leader>n. :NERDTreeFind<cr>
-nnoremap <leader>no :NERDTree<space>
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-Plugin 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_show_hidden = 1
-
-Plugin 'majutsushi/tagbar'
-nmap <leader>gg
-      \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
-
-Plugin 'tpope/vim-eunuch'
-" Plugin 'benmills/vimux'
-
-" ============================================================================="
 "         ____    ____  __       _______. __    __       ___       __          "
 "         \   \  /   / |  |     /       ||  |  |  |     /   \     |  |         "
 "          \   \/   /  |  |    |   (----`|  |  |  |    /  ^  \    |  |         "
@@ -217,6 +175,48 @@ let g:formatdef_clangformat = '"clang-format -style=google"'
 let auto_format_type_list = ['c', 'cpp', 'py']
 autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
       \ exe "Autoformat" | endif
+
+" ============================================================================="
+"                      _______  __   __       _______                          "
+"                     |   ____||  | |  |     |   ____|                         "
+"                     |  |__   |  | |  |     |  |__                            "
+"                     |   __|  |  | |  |     |   __|                           "
+"                     |  |     |  | |  `----.|  |____                          "
+"                     |__|     |__| |_______||_______|                         "
+" ============================================================================="
+Plugin 'scrooloose/nerdtree'
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" \ | exe "normal! \<C-w>\<C-w>" | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
+      \ && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeShowHidden = 1
+nnoremap <leader>nn :NERDTreeToggle<CR>
+nnoremap <leader>n. :NERDTreeFind<cr>
+nnoremap <leader>no :NERDTree<space>
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_show_hidden = 1
+
+Plugin 'majutsushi/tagbar'
+nmap <leader>gg
+      \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
+
+Plugin 'tpope/vim-eunuch'
+" Plugin 'benmills/vimux'
+
+" ============================================================================="
+"                      _______  __  .___________.                              "
+"                     /  _____||  | |           |                              "
+"                    |  |  __  |  | `---|  |----`                              "
+"                    |  | |_ | |  |     |  |                                   "
+"                    |  |__| | |  |     |  |                                   "
+"                     \______| |__|     |__|                                   "
+" ============================================================================="
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
