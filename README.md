@@ -17,3 +17,9 @@ miscellaneous stuffs
 [1](https://developer.apple.com/library/mac/documentation/OpenSource/Conceptual/ShellScripting/SpecialShellVariables/SpecialShellVariables.html)
 [2](http://sillydog.org/unix/scrpt/scrpt2.2.2.php)
 [3](http://www.tutorialspoint.com/unix/unix-special-variables.htm)
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
