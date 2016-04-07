@@ -187,7 +187,8 @@ alias -g PCC="2>&1 | cat -A"
 alias -g PPP="2>&1| pygmentize"
 # redirection
 alias -g RNE="2> /dev/null"
-alias -g ROE="> /dev/null 2>&1"
+alias -g RALL="2>&1"
+alias -g RNUL="> /dev/null 2>&1"
 
 ## ========================================================================== ##
 #       _______.  ______ .______      __  .______   .___________.    _______.  #
