@@ -102,7 +102,14 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
 " =============================- Vundle Config -================================
-source ~/misc/dotfiles/lib/.vimrc.bundles
+if !empty(glob('~/.vim/bundle/Vundle.vim'))
+  source ~/misc/dotfiles/lib/.vimrc.bundles
+endif
+
+" ==============================- Color Themes -================================
+if !empty(globpath(&rtp, 'colors/molokai.vim'))
+  colorscheme molokai
+endif
 
 " ==========================- Keymap: Save & Close -============================
 " Fast saves
