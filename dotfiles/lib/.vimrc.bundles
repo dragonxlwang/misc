@@ -13,6 +13,43 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " ============================================================================="
+"            _______  _______   __  .___________. ______   .______             "
+"           |   ____||       \ |  | |           |/  __  \  |   _  \            "
+"           |  |__   |  .--.  ||  | `---|  |----|  |  |  | |  |_)  |           "
+"           |   __|  |  |  |  ||  |     |  |    |  |  |  | |      /            "
+"           |  |____ |  '--'  ||  |     |  |    |  `--'  | |  |\  \----.       "
+"           |_______||_______/ |__|     |__|     \______/  | _| `._____|       "
+" ============================================================================="
+Plugin 'moll/vim-bbye'
+" Close the current buffer without closing windows
+map <leader>bd :Bdelete<cr>
+
+Plugin 'vim-scripts/YankRing.vim'
+let g:yankring_replace_n_pkey = '<leader><leader>p'
+let g:yankring_replace_n_nkey = '<leader><leader>n'
+nnoremap <leader><leader>y :YRShow<cr>
+
+Plugin 'ConradIrwin/vim-bracketed-paste'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
+" Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'dragonxlwang/vim-better-search'
+
+" ============================================================================="
+"                      _______  __  .___________.                              "
+"                     /  _____||  | |           |                              "
+"                    |  |  __  |  | `---|  |----`                              "
+"                    |  | |_ | |  |     |  |                                   "
+"                    |  |__| | |  |     |  |                                   "
+"                     \______| |__|     |__|                                   "
+" ============================================================================="
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'tpope/vim-fugitive'
+
+" ============================================================================="
 "                      _______  __   __       _______                          "
 "                     |   ____||  | |  |     |   ____|                         "
 "                     |  |__   |  | |  |     |  |__                            "
@@ -101,6 +138,16 @@ Plugin 'airblade/vim-gitgutter'
 "           |  `----.|  | |  |\   |     |  |    |  |____ |  |\  \----.         "
 "           |_______||__| |__| \__|     |__|    |_______|| _| `._____|         "
 " ============================================================================="
+Plugin 'nvie/vim-flake8'
+Plugin 'kchmck/vim-coffee-script'
+
+Plugin 'ntpeters/vim-better-whitespace'
+" add following to turn on when start
+let g:better_whitespace_enabled = 0
+autocmd VimEnter * EnableWhitespace
+" turn on by default for all filetypes
+autocmd BufWritePre * StripWhitespace
+
 if g:osName == 'Darwin'
   " export LC_ALL=en_US.UTF-8
   " export LANG=en_US.UTF-8
@@ -170,53 +217,6 @@ let g:formatdef_clangformat = '"clang-format -style=google"'
 let auto_format_type_list = ['c', 'cpp', 'py']
 autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
       \ exe "Autoformat" | endif
-
-Plugin 'ntpeters/vim-better-whitespace'
-" add following to turn on when start
-let g:better_whitespace_enabled = 0
-autocmd VimEnter * EnableWhitespace
-" turn on by default for all filetypes
-autocmd BufWritePre * StripWhitespace
-
-Plugin 'nvie/vim-flake8'
-Plugin 'kchmck/vim-coffee-script'
-
-" ============================================================================="
-"            _______  _______   __  .___________. ______   .______             "
-"           |   ____||       \ |  | |           |/  __  \  |   _  \            "
-"           |  |__   |  .--.  ||  | `---|  |----|  |  |  | |  |_)  |           "
-"           |   __|  |  |  |  ||  |     |  |    |  |  |  | |      /            "
-"           |  |____ |  '--'  ||  |     |  |    |  `--'  | |  |\  \----.       "
-"           |_______||_______/ |__|     |__|     \______/  | _| `._____|       "
-" ============================================================================="
-Plugin 'moll/vim-bbye'
-" Close the current buffer without closing windows
-map <leader>bd :Bdelete<cr>
-
-Plugin 'vim-scripts/YankRing.vim'
-let g:yankring_replace_n_pkey = '<leader><leader>p'
-let g:yankring_replace_n_nkey = '<leader><leader>n'
-nnoremap <leader><leader>y :YRShow<cr>
-
-Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
-" Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'dragonxlwang/vim-better-search'
-
-" ============================================================================="
-"                      _______  __  .___________.                              "
-"                     /  _____||  | |           |                              "
-"                    |  |  __  |  | `---|  |----`                              "
-"                    |  | |_ | |  |     |  |                                   "
-"                    |  |__| | |  |     |  |                                   "
-"                     \______| |__|     |__|                                   "
-" ============================================================================="
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
