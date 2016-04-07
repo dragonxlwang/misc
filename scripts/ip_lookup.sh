@@ -4,6 +4,8 @@ function is_osx { [[ $(uname) == 'Darwin' ]]; }
 function is_linux { [[ $(uname) == 'Linux' ]]; }
 
 # tmux-powerline/segments/lan_ip.sh
+# tmux-powerline/segments/wan_ip.sh
+# oh-my-zsh/plugins/systemadmin/systemadmin.plugin.zsh
 if is_osx; then
   all_nics=$(ifconfig 2>/dev/null |\
     awk -F':' '/^[a-z]/ && !/^lo/ {print $1}')

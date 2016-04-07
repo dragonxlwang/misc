@@ -49,7 +49,7 @@ local exit_code="%(?,%?,%{$fg[red]%}%?%{$reset_color%})"
 
 # Prompt format:
 # # USER at MACHINE in DIRECTORY on git:BRANCH STATE [TIME] \
-# tty:tty L:shell_depth C:exit_code
+# tty:tty L:shell_depth N:line_number C:exit_code
 # $
 # For example
 # xiaolong at 189.128-25.236.17.192.in-addr.arpa in ~/misc on git:master x \
