@@ -58,7 +58,7 @@ function psgrep { ps aux | grep -i $1 | grep -v grep }
 # case sensitive kill
 function pskill {
   ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs kill -9 }
-function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill %$i; done }
+function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill -9 %$i; done }
 alias kill_tmux='tmux kill-session'
 function kill_zombies {
   ps -e -o pid,state | awk '{ if ($2 == "Z") {print $1} }' | xargs  kill -9 }
