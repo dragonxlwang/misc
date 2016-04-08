@@ -1,2 +1,2 @@
 # interactive and non-login
-zsh
+# zsh
