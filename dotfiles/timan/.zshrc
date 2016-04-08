@@ -60,10 +60,14 @@ source /opt/rh/devtoolset-2/enable
 ## add /usr/local
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
+
 ## set by linuxbrew
-export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+INCLUDE_LINUXBREW_PATHS=0
+if [[ INCLUDE_LINUXBREW_PATHS -eq 1 ]]; then
+  export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+fi
 
 source $ZSH/oh-my-zsh.sh
 
