@@ -128,12 +128,10 @@ if g:osName == 'Darwin' || g:osName == 'Timan'
   " Snippets are separated from the engine. Add this if you want them:
   Plugin 'honza/vim-snippets'
   let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
-  " let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
   if g:osName == 'Darwin'
     let g:ycm_server_python_interpreter='/usr/local/bin/python'
   else
     let g:ycm_server_python_interpreter='/home/xwang95/.linuxbrew/bin/python'
-    let g:ycm_path_to_python_interpreter='/home/xwang95/.linuxbrew/bin/python'
   endif
   let g:ycm_always_populate_location_list = 1
   let g:ycm_complete_in_comments = 1
