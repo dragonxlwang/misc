@@ -73,3 +73,4 @@ function start_ipython {
   [[ $# == 1 ]] && { cd $1 } || { cd ${HOME}/workspace/ipython }
   jupyter notebook --no-browser --port=8889
 }
+

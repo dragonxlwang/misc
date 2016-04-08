@@ -169,6 +169,9 @@ alias hsi='hs -i'
 ##---------------------------== search and find ==----------------------------##
 # grep: recursive, ln num, show file name, context
 alias gg="grep -R -n -H -C5"
+alias ggi="grep -R -n -H -C5 -i"
+alias ggt="grep -R -n -H -C5 --include"
+alias ggti="grep -R -n -H -C5 -i --include"
 # find: search file/directory
 alias sd='find . -type d -name'
 alias sf='find . -type f -name'
@@ -180,8 +183,6 @@ alias -g PH='| head'
 alias -g PT='| tail'
 alias -g PG='| grep'
 alias -g PGI='| grep -i'
-alias -g PGT='| grep --include'
-alias -g PGTI='| grep -i --include'
 alias -g PL="| less"
 alias -g PCL="--color=always | less"
 alias -g PP="| pygmentize"

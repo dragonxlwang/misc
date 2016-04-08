@@ -313,49 +313,56 @@ function update_scripts {
 #            |  |     /  _____  \  .----)   |   |  .  \  .----)   |            #
 #            |__|    /__/     \__\ |_______/    |__|\__\ |_______/             #
 ## ========================================================================== ##
-function lt {
-  if [[ -z "$TMUX" ]]
-    then
-    local option=""
-    while true
-    do
-      echo "Following starting options are available:"
-      yellowecho "  (1)	:   ssh timan101"
-      yellowecho "  (2)	:   ssh timan102"
-      yellowecho "  (3)	:   ssh timan103"
-      yellowecho "  (4/t)	:   tmux new -AD -s $(hostname -s)-main"
-      yellowecho "  (5/n)	:   zsh"
-      echo $(printf '=%.0s' {1..50})
-      echo -n "Select One Option From (1) - (5): "
-      if [[ $# -eq 1 ]]; then echo $1; option=$1; else read option; fi
-      if [[ $option == 1* ]]; then
-        echo "  (1)	:   ssh timan101"
-        option=1
-        break
-      elif [[ $option == 2* ]]; then
-        echo "  (2)	:   ssh timan102"
-        option=2
-        break
-      elif [[ $option == 3* ]]; then
-        echo "  (3)	:   ssh timan103"
-        option=3
-        break
-      elif [[ $option == 4* || $option == t* ]];  then
-        echo "  (4)	:   tmux new -AD -s $(hostname -s)-main"
-        option=4
-        break
-      elif [[ $option == 5* || $option == n* ]];  then
-        echo "  (5)	:   zsh"
-        option=5
-        break
-      else
-        redecho "  Input Not Recognized..."
-      fi
-    done
-    [[ $option -eq 1 ]] && ssh timan101
-    [[ $option -eq 2 ]] && ssh timan102
-    [[ $option -eq 3 ]] && ssh timan103
-    [[ $option -eq 4 ]] && { tmux new -AD -s $(hostname -s)-main }
+function list_task {
+  local caller_is_profile=$1
+  local is_inside_tmux=0
+  [[ -n "$TMUX" ]] && is_inside_tmux=1
+  local option=$2
+  # finish if called from profile and inside tmux
+  [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
+
+  while [[ -z $option ]]
+  do
+    echo "Following starting options are available:"
+    yellowecho "  (1)   :   ssh timan101"
+    yellowecho "  (2)   :   ssh timan102"
+    yellowecho "  (3)   :   ssh timan103"
+    yellowecho "  (4/t) :   tmux new -AD -s $(hostname -s)-main"
+    yellowecho "  (5/n) :   zsh"
+    yellowecho "  (6)   :   ssh mac_mini"
+    echo $(printf '=%.0s' {1..50})
+    echo -n "Select One Option From (1) - (6): "
+    read option
+    if [[ $option == 1* ]]; then option=1
+    elif [[ $option == 2* ]]; then option=2
+    elif [[ $option == 3* ]]; then option=3
+    elif [[ $option == 4* || $option == t* ]]; then option=4
+    elif [[ $option == 5* || $option == n* ]]; then option=5
+    elif [[ $option == 6* ]]; then option=6
+    else redecho "  Input Not Recognized..."
+    fi
+  done
+
+  if [[ $option -eq 1 ]]; then
+    echo "  (1)	:   ssh timan101"
+    [[ $is_inside_tmux -eq 1 ]] && ssh timan101 || ssh timan101 -t 'tmux'
+  elif [[ $option -eq 2 ]]; then
+    echo "  (2)	:   ssh timan102"
+    [[ $is_inside_tmux -eq 1 ]] && ssh timan102 || ssh timan102 -t 'tmux'
+  elif [[ $option -eq 3 ]]; then
+    echo "  (3)	:   ssh timan103"
+    [[ $is_inside_tmux -eq 1 ]] && ssh timan103 || ssh timan103 -t 'tmux'
+  elif [[ $option -eq 4 ]]; then
+    echo "  (4)	:   tmux new -AD -s $(hostname -s)-main"
+    [[ $is_inside_tmux -eq 1 ]] && { redecho "already in tmux" } || \
+      { tmux new -AD -s $(hostname -s)-main }
+  elif [[ $option -eq 5 ]]; then
+    echo "  (5)	:   zsh"
+  elif [[ $option -eq 6 ]]; then
+    echo "  (6)	:   ssh mac_mini"
+    [[ $is_inside_tmux -eq 1 ]] && ssh mac_mini || ssh mac_mini -t 'tmux'
   fi
 }
-[[ -t 1 ]] && lt
+
+alias lt="list_task 0"
+[[ -t 1 ]] && list_task 1

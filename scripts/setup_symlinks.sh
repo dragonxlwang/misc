@@ -45,19 +45,21 @@ mk_link() {
 }
 
 ## mac/timan suite
-files=(".zshrc"	            "${HOME}")
-for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
-do
-  j=$(( i * 2 ))
-  k=$(( j + 1 ))
-  file=${files[j]}
-  path=${files[k]}
-  scr="$root_dir/${1}/${file}"
-  des="${path}/${file}"
-  mk_link $scr $des
-done
+files=(".zshrc"         "${HOME}")
+if [[ ${#files[@]} -gt 0 ]]; then
+  for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
+  do
+    j=$(( i * 2 ))
+    k=$(( j + 1 ))
+    file=${files[j]}
+    path=${files[k]}
+    scr="$root_dir/${1}/${file}"
+    des="${path}/${file}"
+    mk_link $scr $des
+  done
+fi
 
-## mac suite: atom
+## mac suite: gnu coreutils and atom
 bins=("mv" "readlink" "ls" "du")
 if [[ $1 == "mac" ]];
 then
@@ -100,6 +102,7 @@ files=( "$root_dir/lib/ys.zsh-theme"                      \
         "$root_dir/lib/ls_colors.zsh"     "${HOME}/ls_colors.zsh"       \
         "$root_dir/lib/.profile_wangxl"   "${HOME}/.profile_wangxl"	    \
         "$root_dir/lib/.bash_profile"     "${HOME}/.bash_profile"	      \
+        "$root_dir/lib/.bashrc"           "${HOME}/.bashrc"	            \
         "$root_dir/lib/.tmux.conf"	      "${HOME}/.tmux.conf" )
 
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
