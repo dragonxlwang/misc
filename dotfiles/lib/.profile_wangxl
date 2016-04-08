@@ -179,6 +179,9 @@ alias sfi='find . -type f -iname'
 alias -g PH='| head'
 alias -g PT='| tail'
 alias -g PG='| grep'
+alias -g PGI='| grep -i'
+alias -g PGT='| grep --include'
+alias -g PGTI='| grep -i --include'
 alias -g PL="| less"
 alias -g PCL="--color=always | less"
 alias -g PP="| pygmentize"

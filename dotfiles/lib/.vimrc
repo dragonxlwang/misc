@@ -65,7 +65,7 @@ syntax on                       " Turn on syntax highlighting
 let mapleader=","               " Change leader to a comma
 let g:mapleader = ","           " Global leader to a comma
 if substitute(system('hostname -s'), "\n", "", "") =~ 'timan'
-  let g:osName = 'Darwin'       " Platform
+  let g:osName = 'Timan'       " Platform
 else
   let g:osName = substitute(system('uname'), "\n", "", "")
 end
@@ -189,7 +189,7 @@ map <C-w><C-j> :tabp<cr>
 map <C-w><c-l> :tabl<cr>
 
 " ==========================- Keymap: Copy & Paste -============================
-if g:osName == 'Darwin'
+if g:osName == 'Darwin' || g:osName == 'Timan'
   " Add some Mac specific bindings
   " so we use external commands instead to avoid recompiling vim
   " swap vim default register and clipboard
