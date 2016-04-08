@@ -305,6 +305,25 @@ function init_vundle {
 alias up_vundle="init_vundle; vim +PluginInstall +qall"
 alias update_vundle="init_vundle; vim +PluginInstall! +qall"
 alias clean_vundle="init_vundle; vim +PluginClean! +qall"
+function build_vundle_ycm {
+  if [[ $(uname) == "Darwin" ]]; then
+    pushd . RNUL
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.py --clang-completer
+    popd RNUL
+  else
+    pushd . RNUL
+    local build_dir="${HOME}/.vim/ycm_build"
+    mkdir $build_dir
+    cd $build_dir
+    cmake -G "Unix Makefiles" \
+      -DEXTERNAL_LIBCLANG_PATH="${HOME}/llvm/build/lib/libclang.so" . \
+      ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
+    cmake --build . --target ycm_core
+    popd RNUL
+    /bin/rm -rf $build_dir
+  fi
+}
 
 ## ========================================================================== ##
 #                     ________      _______. __    __                          #
