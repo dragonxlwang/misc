@@ -68,7 +68,15 @@ function kill_zombies {
   ps -e -o pid,state | awk '{ if ($2 == "Z") {print $1} }' | xargs  kill -9 }
 alias cls='printf "\033c"'
 alias kt='kill_tmux'
-alias q='exit'
+alias ht='tmux detach'
+function q {
+  if [[ -z $TMUX ]]; then
+    exit
+  else
+    tmux detach
+  fi
+}
+
 ##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
 ## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
