@@ -268,6 +268,7 @@ function init_tmux_tpm {
 }
 alias up_tmux_tpm="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/install_plugins"
 alias clean_tmux_tmp="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/clean_plugins"
+alias enter_tmux="tmux new -AD -s $(hostname -s)-main"
 ##-------------------------------== git:misc ==-------------------------------##
 function ed_misc {
   local diff_cmd=" | vertical all | windo diffthis"
