@@ -18,16 +18,18 @@ export LANG=en_US.UTF-8
 #     |  `----.|  `--'  | |  `----.|  `--'  | |  |\  \----.----)   |           #
 #      \______| \______/  |_______| \______/  | _| `._____|_______/            #
 ## ========================================================================== ##
-function blackecho    { echo -e "\033[1;30m${@}\033[0m" }
-function redecho      { echo -e "\033[1;31m${@}\033[0m" }
-function greenecho    { echo -e "\033[1;32m${@}\033[0m" }
-function yellowecho   { echo -e "\033[1;33m${@}\033[0m" }
-function blueecho     { echo -e "\033[1;34m${@}\033[0m" }
-function magentaecho  { echo -e "\033[1;35m${@}\033[0m" }
-function cyanecho     { echo -e "\033[1;36m${@}\033[0m" }
-function whiteecho    { echo -e "\033[1;37m${@}\033[0m" }
-ANSI_COLOR_RED="\033[31m"   # \e vs \033
-ANSI_COLOR_RESET="\033[0m"
+# print with or without newline
+function _color_echo {
+  if [[ "$2" == "-n" ]]; then echo -ne "\033[${1}${@:3}\033[0m"
+  else echo -e "\033[${1}${@:2}\033[0m"; fi }
+function blackecho    { _color_echo "1;30m" "${@}" }
+function redecho      { _color_echo "1;31m" "${@}" }
+function greenecho    { _color_echo "1;32m" "${@}" }
+function yellowecho   { _color_echo "1;33m" "${@}" }
+function blueecho     { _color_echo "1;34m" "${@}" }
+function magentaecho  { _color_echo "1;35m" "${@}" }
+function cyanecho     { _color_echo "1;36m" "${@}" }
+function whiteecho    { _color_echo "1;37m" "${@}" }
 
 ## ========================================================================== ##
 #               ___       __       __       ___           _______.             #
@@ -44,7 +46,7 @@ function exe_remote_script {
   eval "$(curl -fsSL $1)"
 }
 alias help='man'
-alias echo_path='echo ${PATH//:/"\n"}'
+function echo_path { echo ${${1:-$PATH}//:/$'\n'} }
 ##--------------------------------== admin ==---------------------------------##
 function psmem {
   local s="$(ps -e -o pid,rss,pcpu,cpu,nice,state,cputime,comm |\
@@ -119,7 +121,7 @@ function rm {
   local ret=""
   ret=$(mv --verbose -f --backup=numbered \
         --target-directory ${HOME}/.Trash/ "$@")
-  echo -e $ANSI_COLOR_RED$ret$ANSI_COLOR_RESET
+  redecho $ret
   local reg=""
   local f1=""
   local f2=""
@@ -230,13 +232,13 @@ alias -g RNUL="> /dev/null 2>&1"
 #   \___/\/    \______/  | _|      |_______/ /__/     \__\  |__|    |_______|  #
 ## ========================================================================== ##
 ##-------------------------------== profiles ==-------------------------------##
-function edit_then_source { vim $1; yellowecho "sourcing $1"; source $1; }
+function edit_then_source { vim $1; cyanecho "sourcing $1"; source $1; }
 function ed_profile {
   local f1="${HOME}/misc/dotfiles/lib/.profile_wangxl"
   local f2="${HOME}/misc/dotfiles/lib/.profile_wangxl_darwin"
   local f3="${HOME}/misc/dotfiles/lib/.profile_wangxl_linux"
   vim $f1 $f2 $f3
-  yellowecho "sourcing ~/.profile_wangxl"
+  cyanecho "sourcing ~/.profile_wangxl"
   source ${HOME}/.profile_wangxl
 }
 function ed_profile_darwin {
@@ -246,9 +248,9 @@ function ed_profile_linux {
   edit_then_source ${HOME}/misc/dotfiles/lib/.profile_wangxl_linux
 }
 function up_profile {
-  yellowecho "sourcing ${HOME}/.profile_wangxl"
+  cyanecho "sourcing ${HOME}/.profile_wangxl"
   source ${HOME}/.profile_wangxl
-  yellowecho "sourcing ${HOME}/.tmux.conf"
+  cyanecho "sourcing ${HOME}/.tmux.conf"
   tmux source-file ${HOME}/.tmux.conf
 }
 ##----------------------------== tmux conf, tmp ==----------------------------##
@@ -257,11 +259,11 @@ function init_tmux_tpm {
   if [[ ! -d ~/.tmux/plugins/tpm/.git ]] && \
      [[ ! -f ~/.tmux/plugins/tpm/.git ]]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    echo "\n\tRead about tmux tpm configuration for vundle" \
+    redecho "\n\tRead about tmux tpm configuration for vundle" \
          " at https://github.com/tmux-plugins/tpm\n"
-    yellowecho "prefix + I : install new plugins"
-    yellowecho "prefix + U : updates plugin(s)"
-    yellowecho "prefix + alt + u : remove/uninstall plugins not on the list"
+    cyanecho "prefix + I : install new plugins"
+    cyanecho "prefix + U : updates plugin(s)"
+    cyanecho "prefix + alt + u : remove/uninstall plugins not on the list"
   fi
 }
 alias up_tmux_tpm="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/install_plugins"
@@ -278,9 +280,9 @@ function ed_misc {
   vim -c "$cmd1" -c "tabnew" \
       -c "$cmd2" -c "tabnew" \
       -c "$cmd3" -c "tabn1"
-  yellowecho "sourcing ~/.profile_wangxl"
+  cyanecho "sourcing ~/.profile_wangxl"
   source ${HOME}/.profile_wangxl
-  yellowecho "sourcing ~/.tmux.conf"
+  cyanecho "sourcing ~/.tmux.conf"
   tmux source-file ${HOME}/.tmux.conf
 }
 function up_misc {
@@ -302,7 +304,7 @@ function up_symlinks {
   local opt=""
   [[ $(uname) == "Darwin" ]] && opt="mac"
   [[ $(uname) == "Linux" ]] && opt="timan"
-  yellowecho "setup symlinks for $opt"
+  cyanecho "setup symlinks for $opt"
   ${HOME}/misc/scripts/setup_symlinks.sh $opt --no-confirm
 }
 ##--------------------------------== vundle ==--------------------------------##
@@ -313,7 +315,7 @@ function init_vundle {
      [[ ! -f ~/.vim/bundle/Vundle.vim/.git ]]; then
     git clone https://github.com/VundleVim/Vundle.vim.git \
       ~/.vim/bundle/Vundle.vim
-    echo "\n\tRead about vim configuration for vundle" \
+    redecho "\n\tRead about vim configuration for vundle" \
          " at https://github.com/VundleVim/Vundle.vim\n"
   fi
 }
@@ -388,14 +390,14 @@ alias xg_ls_untracked="git ls-files --exclude-standard --others"
 alias xg_st='git status'
 function xg_rm_last_commit {
   local ans=""
-  echo -ne "${ANSI_COLOR_RED}Delete Last Commit [Y/N]?${ANSI_COLOR_RESET} "
+  redecho -n "Delete Last Commit [Y/N]? "
   read ans
   ans=$(echo ${ans} | tr "[:upper:]" "[:lower:]")
   if [[ $ans == yes || $ans == y ]]; then
-    yellowecho "deleting..."
+    cyanecho "deleting..."
     git reset --hard "HEAD^"
   else
-    yellowecho "do nothing, exit..."
+    cyanecho "do nothing, exit..."
   fi
 }
 alias xg_rk_last_commit='git reset --soft "HEAD^"'
@@ -406,7 +408,7 @@ alias xg_dry_run_featch='git fetch --dry-run'
 function xg_check_remote_up_2_date {
   if [[ -z $(git fetch --dry-run 3>&2 2>&1 1>&3) ]]
   then
-    blueecho "Git: up to date"
+    cyanecho "Git: up to date"
   else
     redecho "Git: need update"
   fi

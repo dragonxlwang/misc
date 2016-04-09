@@ -85,7 +85,7 @@ function atom_compare_packages {
   [[ -n ${instald// /} ]] && greenecho "Installed but not starred packages:"
   for p in "${(f)instald}";
   do
-    [[ -n ${p// /} ]] && blueecho "==> $p"
+    [[ -n ${p// /} ]] && cyanecho "==> $p"
     if [[ opt_star -eq 1 ]]; then
       redecho "   star $p"
       apm star ${p// /}
@@ -132,17 +132,17 @@ function atom_sync_package_incremental {
     sed -rn 's/^>[[:space:]]*//p')"
   local instald="$(diff installed.list starred.list | \
     sed -rn 's/^<[[:space:]]*//p')"
-  [[ -n ${instald// /} ]] && greenecho "Installed but not starred packages:"
+  [[ -n ${instald// /} ]] && cyanecho "Installed but not starred packages:"
   for p in "${(f)instald}";
   do
-    [[ -n ${p// /} ]] && { blueecho "==>  $p";  apm star "$p" }
+    [[ -n ${p// /} ]] && { redecho "==>  $p";  apm star "$p" }
   done
-  [[ -n ${starred// /} ]] && greenecho "Starred but not installed packages:"
+  [[ -n ${starred// /} ]] && cyanecho "Starred but not installed packages:"
   for p in "${(f)starred}";
   do
-    [[ -n ${p// /} ]] && { yellowecho "==> $p"; apm install "$p" }
+    [[ -n ${p// /} ]] && { redecho "==> $p"; apm install "$p" }
   done
-  greenecho "Sync Finished!"
+  cyanecho "Sync Finished!"
   /bin/rm starred.list installed.list
   cd $dir
 }
@@ -167,7 +167,7 @@ function kill_tunnel_ipython {
   do
     local comm=$(ps -p $i -o comm=)
     if [[ $comm == ssh* ]]; then
-      echo "kill PID:($i) "$comm
+      redecho "kill PID:($i) "$comm
       kill -9 $i
     fi
   done
@@ -245,11 +245,11 @@ function convert_mov_to_gif {
         f1+=`date +"%Y.%m.%d-%H.%M"`.gif
       fi
       mv $f "$f0$f1"
-      yellowecho "converted gif file: $f0$f1"
-      yellowecho "public url is: $home_url$f1"
+      cyanecho "converted gif file: $f0$f1"
+      cyanecho "public url is: $home_url$f1"
     fi
   else
-    echo "$1 is not a .mov file"
+    redecho "$1 is not a .mov file"
   fi
 }
 ##-----------------------------== markdown ==---------------------------------##
@@ -274,34 +274,34 @@ function markdown {
 ##---------== update homebrew, oh-my-zsh, pip and source profile==------------##
 function update_scripts {
   upgrade_oh_my_zsh
-  yellowecho "brew update"
+  redecho "brew update"
   brew update
-  yellowecho "brew outdated"
+  redecho "brew outdated"
   brew outdated
-  yellowecho "brew upgrade"
+  redecho "brew upgrade"
   brew upgrade
-  yellowecho "brew cask update"
+  redecho "brew cask update"
   brew cask update
-  yellowecho "brew cask cleanup"
+  redecho "brew cask cleanup"
   brew cask cleanup
-  yellowecho "brew cleanup"
+  redecho "brew cleanup"
   brew cleanup
-  yellowecho "pip install --upgrade pip"
+  redecho "pip install --upgrade pip"
   pip install --upgrade pip
   # yellowecho "pip update package"
   # pip freeze --local | grep -v '^\-e' | cut -d = -f 1  |\
   # xargs -n1 pip install -U
-  yellowecho "vundle update"
+  redecho "vundle update"
   up_vundle
-  yellowecho "vundle clean"
+  redecho "vundle clean"
   clean_vundle
-  yellowecho "tmux tpm update"
+  redecho "tmux tpm update"
   up_tmux_tpm
-  yellowecho "tmux tpm clean"
+  redecho "tmux tpm clean"
   clean_tmux_tmp
-  yellowecho "source tmux conf"
+  redecho "source tmux conf"
   tmux source ${HOME}/.tmux.conf
-  yellowecho "source profile_wangxl"
+  redecho "source profile_wangxl"
   source ${HOME}/.profile_wangxl
 }
 
@@ -343,7 +343,7 @@ function _list_task {
     cyanecho "  (5/n) :   zsh"
     cyanecho "  (6)   :   ssh mac_mini"
     whiteecho $(printf '=%.0s' {1..50})
-    echo -n "Select One Option From (1) - (6): "
+    yellowecho -n "Select One Option From (1) - (6): "
     read option
     if [[ $option == 1* ]]; then option=1
     elif [[ $option == 2* ]]; then option=2
@@ -354,6 +354,7 @@ function _list_task {
     else redecho "  Input Not Recognized..."
     fi
   done
+  whiteecho $(printf '=%.0s' {1..50})
   greenecho "caller_is_profile  :  $caller_is_profile"
   greenecho "is_inside_tmux     :  $is_inside_tmux"
   greenecho "option             : (${option})"

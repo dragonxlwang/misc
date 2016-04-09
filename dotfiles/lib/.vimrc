@@ -215,6 +215,8 @@ else
 endif
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
+" Y: from the cursor to the end of line
+nnoremap Y y$
 
 " ==============================- Keymap: Misc -================================
 " Text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
