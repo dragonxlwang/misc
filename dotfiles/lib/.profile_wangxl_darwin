@@ -354,9 +354,9 @@ function _list_task {
     else redecho "  Input Not Recognized..."
     fi
   done
-  greenecho caller_is_profile: $caller_is_profile
-  greenecho is_inside_tmux: $is_inside_tmux
-  greenecho option: \($option\)
+  greenecho "caller_is_profile  :  $caller_is_profile"
+  greenecho "is_inside_tmux     :  $is_inside_tmux"
+  greenecho "option             : (${option})"
   if [[ $option -eq 1 ]]; then
     redecho "  (1)	:   ssh timan101"
     _smart_ssh $is_inside_tmux timan101
