@@ -18,10 +18,14 @@ export LANG=en_US.UTF-8
 #     |  `----.|  `--'  | |  `----.|  `--'  | |  |\  \----.----)   |           #
 #      \______| \______/  |_______| \______/  | _| `._____|_______/            #
 ## ========================================================================== ##
-function yellowecho { echo -e "\033[1;33m${1}\033[0m" }
-function blueecho { echo -e "\033[1;36m${1}\033[0m" }
-function redecho { echo -e "\033[1;31m${1}\033[0m" }
-function greenecho { echo -e "\033[1;32m${1}\033[0m" }
+function blackecho    { echo -e "\033[1;30m${1}\033[0m" }
+function redecho      { echo -e "\033[1;31m${1}\033[0m" }
+function greenecho    { echo -e "\033[1;32m${1}\033[0m" }
+function yellowecho   { echo -e "\033[1;33m${1}\033[0m" }
+function blueecho     { echo -e "\033[1;34m${1}\033[0m" }
+function magentaecho  { echo -e "\033[1;35m${1}\033[0m" }
+function cyanecho     { echo -e "\033[1;36m${1}\033[0m" }
+function whiteecho    { echo -e "\033[1;37m${1}\033[0m" }
 ANSI_COLOR_RED="\033[31m"   # \e vs \033
 ANSI_COLOR_RESET="\033[0m"
 

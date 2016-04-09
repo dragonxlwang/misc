@@ -227,10 +227,10 @@ function convert_mov_to_gif {
       [[ ${arg:l} == "-d" || ${arg:l} == "--date" ]] && opt_date=1
       [[ ${arg:l} == -r* ]] && opt_res=${arg:2}
     done
-    yellowecho "input file: ${1}"
-    yellowecho "if publish to dropbox: $opt_publish"
-    yellowecho "if rename by date: $opt_date"
-    yellowecho "width max resolution: $opt_res"
+    cyanecho "input file: ${1}"
+    cyanecho "if publish to dropbox: $opt_publish"
+    cyanecho "if rename by date: $opt_date"
+    cyanecho "width max resolution: $opt_res"
     local f=$(echo $1 | sed 's/mov$/gif/i')
     opt_res="scale=min(iw\,${opt_res}):-1"
     ffmpeg -i $1 -vf "${opt_res}" -pix_fmt rgb24 -r 10 -f gif - |\
@@ -313,25 +313,37 @@ function update_scripts {
 #            |  |     /  _____  \  .----)   |   |  .  \  .----)   |            #
 #            |__|    /__/     \__\ |_______/    |__|\__\ |_______/             #
 ## ========================================================================== ##
-function list_task {
+function _smart_ssh {
+  local is_inside_tmux=$1
+  local t_host=$2
+  if [[ $is_inside_tmux -eq 1 ]]; then
+    # login shell: bash_profile directs to zsh
+    ssh $t_host
+  else
+    # non-login shell: bashrc only add paths
+    ssh $t_host -t 'tmux new -AD -s $(hostname -s)-main'
+  fi
+}
+
+function _list_task {
   local caller_is_profile=$1
   local is_inside_tmux=0
   [[ -n "$TMUX" ]] && is_inside_tmux=1
   local option=$2
   # finish if called from profile and inside tmux
   [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
-
+  # main loop
   while [[ -z $option ]]
   do
-    echo "Following starting options are available:"
-    yellowecho "  (1)   :   ssh timan101"
-    yellowecho "  (2)   :   ssh timan102"
-    yellowecho "  (3)   :   ssh timan103"
-    yellowecho "  (4/t) :   tmux new -AD -s $(hostname -s)-main"
-    yellowecho "  (5/n) :   zsh"
-    yellowecho "  (6)   :   ssh mac_mini"
+    whiteecho "Following starting options are available:"
+    cyanecho "  (1)   :   ssh timan101"
+    cyanecho "  (2)   :   ssh timan102"
+    cyanecho "  (3)   :   ssh timan103"
+    cyanecho "  (4/t) :   tmux new -AD -s $(hostname -s)-main"
+    cyanecho "  (5/n) :   zsh"
+    cyanecho "  (6)   :   ssh mac_mini"
     echo $(printf '=%.0s' {1..50})
-    echo -n "Select One Option From (1) - (6): "
+    redecho -n "Select One Option From (1) - (6): "
     read option
     if [[ $option == 1* ]]; then option=1
     elif [[ $option == 2* ]]; then option=2
@@ -342,31 +354,29 @@ function list_task {
     else redecho "  Input Not Recognized..."
     fi
   done
-
+  greenecho caller_is_profile: $caller_is_profile
+  greenecho is_inside_tmux: $is_inside_tmux
+  greenecho option: ($option)
   if [[ $option -eq 1 ]]; then
-    echo "  (1)	:   ssh timan101"
-    [[ $is_inside_tmux -eq 1 ]] && ssh timan101 || \
-      ssh timan101 -t 'tmux new -AD -s $(hostname -s)-main'
+    redecho "  (1)	:   ssh timan101"
+    _smart_ssh $is_inside_tmux timan101
   elif [[ $option -eq 2 ]]; then
-    echo "  (2)	:   ssh timan102"
-    [[ $is_inside_tmux -eq 1 ]] && ssh timan102 || \
-      ssh timan102 -t 'tmux new -AD -s $(hostname -s)-main'
+    redecho "  (2)	:   ssh timan102"
+    _smart_ssh $is_inside_tmux timan102
   elif [[ $option -eq 3 ]]; then
-    echo "  (3)	:   ssh timan103"
-    [[ $is_inside_tmux -eq 1 ]] && ssh timan103 || \
-      ssh timan103 -t 'tmux new -AD -s $(hostname -s)-main'
+    redecho "  (3)	:   ssh timan103"
+    _smart_ssh $is_inside_tmux timan103
   elif [[ $option -eq 4 ]]; then
-    echo "  (4)	:   tmux new -AD -s $(hostname -s)-main"
+    redecho "  (4)	:   tmux new -AD -s $(hostname -s)-main"
     [[ $is_inside_tmux -eq 1 ]] && redecho "already in tmux" || \
       tmux new -AD -s $(hostname -s)-main
   elif [[ $option -eq 5 ]]; then
-    echo "  (5)	:   zsh"
+    redecho "  (5)	:   zsh"
   elif [[ $option -eq 6 ]]; then
-    echo "  (6)	:   ssh mac_mini"
-    [[ $is_inside_tmux -eq 1 ]] && ssh mac_mini || \
-      ssh mac_mini -t 'mux new -AD -s $(hostname -s)-main'
+    redecho "  (6)	:   ssh mac_mini"
+    _smart_ssh $is_inside_tmux mac_mini
   fi
 }
 
-alias lt="list_task 0"
-[[ -t 1 ]] && list_task 1
+alias lt="_list_task 0"
+[[ -t 1 ]] && _list_task 1

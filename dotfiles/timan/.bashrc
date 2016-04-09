@@ -22,3 +22,5 @@ if [[ INCLUDE_LINUXBREW_PATHS -eq 1 ]]; then
   export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 fi
 
+## q for quick exit
+alias q='exit'
