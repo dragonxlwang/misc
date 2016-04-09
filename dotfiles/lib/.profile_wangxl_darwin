@@ -335,15 +335,15 @@ function _list_task {
   # main loop
   while [[ -z $option ]]
   do
-    whiteecho "Following starting options are available:"
+    redecho "Following starting options are available:"
     cyanecho "  (1)   :   ssh timan101"
     cyanecho "  (2)   :   ssh timan102"
     cyanecho "  (3)   :   ssh timan103"
     cyanecho "  (4/t) :   tmux new -AD -s $(hostname -s)-main"
     cyanecho "  (5/n) :   zsh"
     cyanecho "  (6)   :   ssh mac_mini"
-    echo $(printf '=%.0s' {1..50})
-    redecho -n "Select One Option From (1) - (6): "
+    whiteecho $(printf '=%.0s' {1..50})
+    echo -n "Select One Option From (1) - (6): "
     read option
     if [[ $option == 1* ]]; then option=1
     elif [[ $option == 2* ]]; then option=2
@@ -356,7 +356,7 @@ function _list_task {
   done
   greenecho caller_is_profile: $caller_is_profile
   greenecho is_inside_tmux: $is_inside_tmux
-  greenecho option: ($option)
+  greenecho option: \($option\)
   if [[ $option -eq 1 ]]; then
     redecho "  (1)	:   ssh timan101"
     _smart_ssh $is_inside_tmux timan101
