@@ -61,6 +61,8 @@ function pscpu {
 alias pscmd='print -l ${(o)history%% *} | uniq -c | sort -nr | head'
 # case insensitive grep
 function psgrep { ps aux | grep -i $1 | grep -v grep }
+function pszombies { ps -e -o pid,state,rss,pcpu,cpu,nice,cputime,comm | \
+    awk '{ if ($2 == "Z") {print $0} }' }
 # case sensitive kill
 function pskill {
   ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs kill -9 }
