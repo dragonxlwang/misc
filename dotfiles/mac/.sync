@@ -1,0 +1,23 @@
+#!/bin/bash
+remote_host=timan101
+remote_root="~/workspace/"
+
+exe_path=$0
+file_path=$1
+
+dir1=$(dirname "$exe_path")
+local_root=$(dirname "$dir1")
+proj=$(basename "$dir1")
+dir2=${file_path#${dir1}}
+dir2=${dir2#"/"}
+inner_dir=$(dirname "$dir2")
+fp=$(basename "$dir2")
+remote_root=${remote_root%"/"}
+
+scr="$local_root/$proj/$inner_dir/$fp"
+dst="$remote_root/$proj/$inner_dir/$fp"
+dst_dir="$remote_root/$proj/$inner_dir"
+
+echo "Upload ${scr} => ${remote_host}:${dst}"
+ssh "$remote_host" "mkdir -p ${dst_dir}"
+scp "$scr" "$remote_host":"$dst"
