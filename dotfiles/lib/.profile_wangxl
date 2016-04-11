@@ -336,7 +336,8 @@ function build_vundle_ycm {
     local build_dir="${HOME}/.vim/ycm_build"
     mkdir $build_dir
     cd $build_dir
-    cmake -G "Unix Makefiles" \
+    LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" \
+      cmake -G "Unix Makefiles" \
       -DEXTERNAL_LIBCLANG_PATH="${HOME}/llvm/build/lib/libclang.so" . \
       ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
     cmake --build . --target ycm_core
