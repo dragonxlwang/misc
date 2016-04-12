@@ -101,7 +101,7 @@ cd ~
 curl -fsSL https://bootstrap.pypa.io/get-pip.py | /usr/local/bin/python -
 curl -fsSL https://bootstrap.pypa.io/ez_setup.py | /usr/local/bin/python -
 cd ~
--H /usr/local/bin/pip install --upgrade "ipython[all]"
+/usr/local/bin/pip install --upgrade "ipython[all]"
 /usr/local/bin/pip install --upgrade numpy scipy matplotlib jupyter
 /usr/local/bin/pip install --upgrade basemap numba pillow pygame sympy nose
 /usr/local/bin/pip install --upgrade nltk
