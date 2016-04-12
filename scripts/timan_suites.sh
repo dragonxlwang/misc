@@ -33,7 +33,7 @@ redecho "install git"
 yum groupinstall "Development Tools"
 yum install gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel curl-devel
 # for gga git gui
-sudo yum install xorg-x11-xauth
+yum install xorg-x11-xauth
 cd ~
 ver=2.8.0
 curl -L https://github.com/git/git/archive/v$ver.tar.gz -o git-$ver.tar.gz
@@ -61,7 +61,7 @@ tar -xvzf libevent-$ver-stable.tar.gz
 cd libevent-$ver-stable
 ./configure --prefix=/usr/local
 make
-sudo make install
+make install
 cd ~
 rm -rf libevent-$ver-stable
 # DOWNLOAD SOURCES FOR TMUX AND MAKE AND INSTALL
@@ -72,7 +72,7 @@ tar -xvzf tmux-$ver.tar.gz
 cd tmux-$ver
 LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" ./configure --prefix=/usr/local
 make
-sudo make install
+make install
 # pkill tmux
 # close your terminal window (flushes cached tmux executable)
 # open new shell and check tmux version
@@ -86,6 +86,7 @@ redecho "install python"
 yum groupinstall "Development tools"
 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline readline-devel
 yum -y install python-devel openssl openssl-devel gcc sqlite-devel
+cd ~
 ver=2.7.11
 wget --no-check-certificate https://www.python.org/ftp/python/$ver/Python-$ver.tgz
 tar -zxvf Python-$ver.tgz
@@ -100,12 +101,41 @@ cd ~
 curl -fsSL https://bootstrap.pypa.io/get-pip.py | /usr/local/bin/python -
 curl -fsSL https://bootstrap.pypa.io/ez_setup.py | /usr/local/bin/python -
 cd ~
-sudo -H /usr/local/bin/pip install --upgrade "ipython[all]"
-sudo -H /usr/local/bin/pip install --upgrade numpy scipy matplotlib jupyter
-sudo -H /usr/local/bin/pip install --upgrade basemap numba pillow pygame sympy nose
-sudo -H /usr/local/bin/pip install --upgrade nltk
-sudo -H /usr/local/bin/pip install --upgrade flake8 pep8 autopep8 yapf jedi psutil
+-H /usr/local/bin/pip install --upgrade "ipython[all]"
+/usr/local/bin/pip install --upgrade numpy scipy matplotlib jupyter
+/usr/local/bin/pip install --upgrade basemap numba pillow pygame sympy nose
+/usr/local/bin/pip install --upgrade nltk
+/usr/local/bin/pip install --upgrade flake8 pep8 autopep8 yapf jedi psutil
 
+# timan-install-vim
+## ==================================================
+sudo yum install -y ruby ruby-devel lua lua-devel luajit \
+    luajit-devel ctags git python python-devel \
+    python3 python3-devel tcl-devel \
+    perl perl-devel perl-ExtUtils-ParseXS \
+    perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
+    perl-ExtUtils-Embed
+cd ~
+ver=7.4.1724
+curl -OL https://github.com/vim/vim/archive/v$ver.tar.gz
+tar -zxvf v$ver.tar.gz
+cd vim-$ver
+./configure --prefix=/usr/local \
+            --with-features=huge \
+            --enable-multibyte \
+            --enable-rubyinterp \
+            --enable-pythoninterp \
+            --with-python-config-dir=/usr/local/lib/python2.7/config \
+            --enable-perlinterp \
+            --enable-luainterp \
+            --enable-gui=gtk2 --enable-cscope \
+            LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib"
+make VIMRUNTIMEDIR=/usr/local/share/vim/vim74
+make install
+/usr/local/bin/vim --version
+cd ~
+rm -rf vim-$ver
 
+#####################################################
 echo "chmod -R a+rx /usr/local"
 chmod -R a+rx /usr/local
