@@ -5,7 +5,7 @@ import sys
 cpu_pct = psutil.cpu_percent(interval=1)
 cpu_cnt = psutil.cpu_count()
 mem_pct = psutil.virtual_memory().percent
-mem_all = float(psutil.virtual_memory().total) / float(2**30)
+mem_all = int(float(psutil.virtual_memory().total) / float(2**30))
 
 
 if len(sys.argv) == 1:
