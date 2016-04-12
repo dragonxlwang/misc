@@ -374,17 +374,17 @@ function xg_sl {
   # ${=a}
   # ${(@s: :)a} ## retain empty strings with @
   # eval "(${a})"
-  if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi
-  # replace -10 with --all
-  git --no-pager log $option --branches --graph --decorate --all
+  if [[ $# -eq 0 ]]; then option="-5"; else eval "option=(${@})"; fi
+  # replace -5 with --all
+  git --no-pager log $option --stat --branches --graph --decorate --all
 }
 function xg_sl_outgoing {
   git fetch
-  git --no-pager log --branches --decorate --graph origin/master.. $@
+  git --no-pager log --stat --branches --decorate --graph origin/master.. $@
 }
 function xg_sl_incoming {
   git fetch
-  git --no-pager log --branches --decorate --graph ..origin/master $@
+  git --no-pager log --stat --branches --decorate --graph ..origin/master $@
 }
 function xg_ls {
   git ls-tree -r --name-only ${@:-HEAD}
