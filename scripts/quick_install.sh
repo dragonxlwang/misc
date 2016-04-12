@@ -66,7 +66,7 @@ pip install -U pep8
 pip install -U autopep8
 pip install -U yapf
 pip install -U jedi
-pip install psutil
+pip install -U psutil
 
 # homebrew caskroom/cask
 brew tap caskroom/cask
@@ -80,7 +80,7 @@ brew cask install iterm2-beta atom filezilla the-unarchiver flux
 brew cask install mactex texmaker textwrangler adobe-reader mou
 brew cask install cheatsheet suspicious-package
 brew cask install github-desktop
-brew cask install java
+brew cask install java tcl
 
 brew cask install qlcolorcode
 brew cask install qlstephen

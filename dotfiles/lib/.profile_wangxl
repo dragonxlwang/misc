@@ -374,19 +374,70 @@ function xg_sl {
   # ${=a}
   # ${(@s: :)a} ## retain empty strings with @
   # eval "(${a})"
-  if [[ $# -eq 0 ]]; then option="-5"; else eval "option=(${@})"; fi
-  # replace -5 with --all
-  git --no-pager log $option --stat --branches --graph --decorate --all
+  if [[ $# -eq 0 ]]; then option="-10"; else eval "option=(${@})"; fi
+  # replace -10 with --all
+  # git --no-pager log $option --stat --branches --graph --decorate --all
+  local format="" # commit, date, branches, subject, author
+  format="%C(bold cyan)%h%Creset - %Cred%aD%Creset "
+  format+="%C(bold green)(%ar)%C(reset) %C(auto)%d%Creset%n"
+  format+=" %C(yellow)%s%Creset %C(bold white)by%Creset "
+  format+="%C(bold blue)%an%Creset"
+  git --no-pager log \
+    --abbrev-commit --stat --stat-graph-width=60 --graph --decorate --all \
+    --pretty=tformat:$format \
+    $option
 }
-function xg_sl_outgoing {
+function xg_sll { # long
+  # get remote unpulled changes
   git fetch
-  git --no-pager log --stat --branches --decorate --graph origin/master.. $@
+  local format="" # commit, date, branches, subject, author
+  format="%C(bold cyan)%h%Creset - %Cred%aD%Creset "
+  format+="%C(bold green)(%ar)%C(reset) %C(auto)%d%Creset%n"
+  format+="%C(yellow)%s%Creset %C(bold white)by%Creset "
+  format+="%C(bold blue)%an%Creset"
+  format+="%C(auto)%+b%Creset"
+  git log \
+    --abbrev-commit --stat --stat-graph-width=60 --graph --decorate --all \
+    --pretty=tformat:$format
 }
-function xg_sl_incoming {
+function _xg_sls {
+  local pager_option=""
+  [[ $1 == "--no-pager" ]] && pager_option="--no-pager"
+  local format=""
+  format="%C(bold cyan)%h%Creset - %C(bold green)(%ar)%Creset " # commmit, date
+  format+="%C(yellow)%s%Creset %C(bold white)by%Creset "        # subject
+  format+="%C(bold blue)%an%Creset %C(auto)%d%Creset"           # author, decor
+  git $pager_option log \
+    --abbrev-commit --graph --decorate --all --pretty=tformat:$format "${@:2}"
+}
+function xg_sls { # short
+  local option=""
+  if [[ $# -eq 0 ]]; then option="-20"; else eval "option=(${@})"; fi
+  _xg_sls --no-pager $option
+}
+function xg_slo { # outgoing
   git fetch
-  git --no-pager log --stat --branches --decorate --graph ..origin/master $@
+  _xg_sls --no-pager $@ origin/master..
 }
-function xg_ls {
+function xg_sli { # incoming
+  git fetch
+  _xg_sls --no-pager $@ ..origin/master
+}
+function xg_slf { # show changes against file/directory, alternativ: gitk
+  if [[ $# == 0 ]]; then
+    _xg_sls --pager --full-diff -p
+  else
+    _xg_sls --pager -p $@
+  fi
+}
+function xg_slf5 { # show changes against file/directory, last 5 changes only
+  if [[ $# == 0 ]]; then
+    _xg_sls --no-pager -5 --full-diff -p
+  else
+    _xg_sls --no-pager -5 -p $@
+  fi
+}
+function xg_ls {  # list all file tracked under master
   git ls-tree -r --name-only ${@:-HEAD}
 }
 alias xg_ls_ignored="git ls-files --ignored --exclude-standard --others"
@@ -418,6 +469,7 @@ function xg_check_remote_up_2_date {
   fi
 }
 alias xg_diff="git diff HEAD"
+alias xg_ddiff='git diff "HEAD^"'
 alias xg_ca="git commit -v -a --amend --no-edit"
 function github_short_url {
   curl -isS https://git.io -F "url=$1" | sed -rn 's/^Location: (.*)$/\1/p'
