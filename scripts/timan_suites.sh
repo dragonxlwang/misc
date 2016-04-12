@@ -25,7 +25,8 @@ yum install cmake clang boost rubygems curl-devel
 ## ==================================================
 redecho "install gist"
 gem install gist
-chmod a+rx /usr/bin/gist
+chmod -R a+rx /usr/bin/gist
+chmod -R a+rx /usr/lib
 
 # timan-install-git
 ## ==================================================
