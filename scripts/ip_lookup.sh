@@ -40,7 +40,7 @@ fi
 
 misc_dir="$(dirname $(dirname $(readlink -f $0)))"
 [[ ! -d "$misc_dir/tmp" ]] && mkdir "$misc_dir/tmp"
-tmp_file="$misc_dir/tmp/wan_ip.txt"
+tmp_file="$misc_dir/tmp/wan_ip_$(hostname).txt"
 if [ -f "$tmp_file" ]; then
   if is_osx; then
     stat >/dev/null 2>&1 && { last_update=$(stat -f "%m" ${tmp_file}); }\
