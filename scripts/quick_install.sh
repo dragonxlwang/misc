@@ -66,6 +66,7 @@ pip install -U pep8
 pip install -U autopep8
 pip install -U yapf
 pip install -U jedi
+pip install psutil
 
 # homebrew caskroom/cask
 brew tap caskroom/cask
