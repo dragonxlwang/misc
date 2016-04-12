@@ -19,7 +19,7 @@ cd ~
 wget -O /etc/yum.repos.d/slc6-devtoolset.repo http://linuxsoft.cern.ch/cern/devtoolset/slc6-devtoolset.repo
 yum install devtoolset-2
 source /opt/rh/devtoolset-2/enable
-yum install cmake clang boost rubygems curl-devel
+yum install cmake clang boost rubygems curl-devel htop
 
 # timan-install-gist
 ## ==================================================
