@@ -40,7 +40,7 @@ set tabstop=2                   " How many columns a tab counts for display
 " =================================- Folds -====================================
 set foldmethod=indent           " Fold based on indent
 set foldnestmax=3               " Deepest fold is 3 levels
-set nofoldenable                " Dont fold by default
+set foldlevelstart=99           " Dont fold by default (in lieu of nofoldenable)
 " ===============================- Completion -=================================
 set wildmode=list:longest,full  " List all matches including current
 set wildmenu                    " Enable ctrl-n and ctrl-p to scroll
