@@ -160,7 +160,7 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 " Exit insert mode without esc, http://vim.wikia.com/wiki/Avoid_the_escape_key
-inoremap jk <ESC>`^
+inoremap jk <Esc><Esc>`^
 vnoremap ;; <Esc>gV
 cnoremap ;; <C-c>
 nnoremap ;; <Esc>
