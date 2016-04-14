@@ -51,12 +51,12 @@ function echo_path { echo ${${1:-$PATH}//:/$'\n'} }
 function psmem {
   local s="$(ps -e -o pid,rss,pcpu,cpu,nice,state,cputime,comm |\
     awk 'NR == 1; NR > 1 {print $0 | "sort -k2 -rn"}')"
-  echo "$s" | head
+  echo "$s" | head $@
 }
 function pscpu {
   local s="$(ps -e -o pid,rss,pcpu,cpu,nice,state,cputime,comm |\
     awk 'NR == 1; NR > 1 {print $0 | "sort -k3 -rn"}')"
-  echo "$s" | head
+  echo "$s" | head $@
 }
 alias pscmd='print -l ${(o)history%% *} | uniq -c | sort -nr | head'
 # case insensitive grep
