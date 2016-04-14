@@ -131,7 +131,6 @@ command! CdPwd :cd %:p:h
 " Sync with servers
 command! SyncUploadFile call SyncUploadFile()
 
-
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc
 map <leader>v :e ~/.vimrc<CR>
