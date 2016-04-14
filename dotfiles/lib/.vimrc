@@ -114,8 +114,8 @@ endif
 " ==========================- Keymap: Save & Close -============================
 " Fast saves
 noremap <leader>w :w!<cr>
-" Close window
-noremap <leader>q :clo<CR>
+" Close window with buffer (:clo for window only)
+noremap <leader>q :bd<CR>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 " Open last edited file
