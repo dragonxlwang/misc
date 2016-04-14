@@ -273,6 +273,7 @@ function markdown {
 ## ========================================================================== ##
 ##---------== update homebrew, oh-my-zsh, pip and source profile==------------##
 function update_scripts {
+  redecho "brew oh-my-zsh"
   upgrade_oh_my_zsh
   redecho "brew update"
   brew update
