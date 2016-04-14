@@ -325,6 +325,7 @@ function init_vundle {
 alias up_vundle="init_vundle; vim +PluginInstall +qall"
 alias update_vundle="init_vundle; vim +PluginInstall! +qall"
 alias clean_vundle="init_vundle; vim +PluginClean! +qall"
+alias cd_vundle="cd ~/.vim/bundle"
 function build_vundle_ycm {
   if [[ $(uname) == "Darwin" ]]; then
     pushd . RNUL
