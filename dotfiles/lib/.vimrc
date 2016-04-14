@@ -127,6 +127,7 @@ cmap w!! w !sudo tee > /dev/null %
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Change pwd to current dir
 command! CdPwd :cd %:p:h
+command! LcdPwd :lcd %:p:h
 " Automatically change directory
 "" autocmd BufEnter * silent! lcd %:p:h
 " Sync with servers

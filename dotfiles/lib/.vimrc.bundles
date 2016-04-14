@@ -194,6 +194,7 @@ let g:NERDTreeShowHidden = 1
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>n. :NERDTreeFind<cr>
 nnoremap <leader>no :NERDTree<space>
+nnoremap <leader>nf :NERDTreeFocus<CR>
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'ctrlpvim/ctrlp.vim'
