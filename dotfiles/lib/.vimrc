@@ -10,6 +10,7 @@ set history=1000                " Store lots of :cmdline history
 set undolevels=1000             " Use many muchos levels of undo
 set tabpagemax=50               " Max 50 tabs
 set mouse=a                     " Enable mouse
+set ttymouse=sgr                " Enable mouse dragging. default: xterm2/xterm
 set sessionoptions-=options     " Session don't remember global options
 set splitbelow                  " Open new split panes to right and bottom
 set splitright                  " Open new split panes to bottom
