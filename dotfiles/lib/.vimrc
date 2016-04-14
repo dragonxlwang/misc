@@ -237,6 +237,9 @@ map <leader>sa zg
 map <leader>s? z=
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+" Remap ctrl-A to ctrl-C, which is rarely used anyways
+map <C-a> <Nop>
+noremap <C-C> <C-a>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
