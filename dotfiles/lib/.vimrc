@@ -135,7 +135,7 @@ command! SyncUploadFile call SyncUploadFile()
 
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc
-map <leader>v :e ~/.vimrc<CR>
+map <leader>v :e ~/.vimrc \| vs ~/misc/dotfiles/lib/.vimrc.bundles<CR>
 " Reloads it -- making all changes active (have to save first)
 map <silent> <leader>V
     \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>

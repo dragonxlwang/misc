@@ -205,6 +205,7 @@ nmap <leader>gg
       \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
 
 Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-dispatch'
 " Plugin 'benmills/vimux'
 
 " ============================================================================="
