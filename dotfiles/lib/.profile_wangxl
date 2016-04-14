@@ -471,6 +471,9 @@ function xg_check_remote_up_2_date {
 alias xg_diff="git diff HEAD"
 alias xg_ddiff='git diff "HEAD^"'
 alias xg_ca="git commit -v -a --amend --no-edit"
+function xg_clone {
+  git clone git@github.com:$(git config github.user)/$1.git
+}
 function github_short_url {
   curl -isS https://git.io -F "url=$1" | sed -rn 's/^Location: (.*)$/\1/p'
 }
