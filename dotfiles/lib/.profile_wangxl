@@ -58,6 +58,12 @@ function pscpu {
     awk 'NR == 1; NR > 1 {print $0 | "sort -k3 -rn"}')"
   echo "$s" | head $@
 }
+function psmine {
+  local u=$(whoami)
+  ps -e -o user,pid,rss,pcpu,cpu,state,nice,state,cputime,command |\
+    awk -v var="$u" '{if ($1 == var) {print $0} }'
+
+}
 alias pscmd='print -l ${(o)history%% *} | uniq -c | sort -nr | head'
 # case insensitive grep
 function psgrep { ps -e -o pid,rss,pcpu,cpu,state,nice,state,cputime,command |\
@@ -83,6 +89,13 @@ function q {
 }
 function check_busy { lsof +D ${@:-.} }
 alias nicer="sudo renice -20"
+function nicer_all {
+ for x in "${(@f)$(psmine | awk '{print $2}')}";
+ do
+   redecho "nicer ${x}"
+   nicer ${x}
+ done
+}
 
 ##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
