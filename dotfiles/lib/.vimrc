@@ -191,6 +191,11 @@ map <C-w><c-l> :tabl<cr>
 " Resize window to minimal
 map <C-w>0 :res 0<CR>
 map <C-w>) :vertical res 0<CR>
+" Resize stepsize 5 horizontally and 10 vertically
+map <C-w>- :resize -5<CR>
+map <C-w>+ :resize +5<CR>
+map <C-w>< :vertical resize -10<CR>
+map <C-w>> :vertical resize +10<CR>
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin' || g:osName == 'Timan'
