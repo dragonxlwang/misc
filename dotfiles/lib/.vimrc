@@ -230,11 +230,11 @@ nnoremap <Leader>] <C-]>
 nnoremap <Leader>: :<C-u>tab<Space>stj<Space><C-R>=expand('<cword>')<CR><CR>
 nnoremap <Leader>[ <C-o>
 " Spell checking
-map <leader>sps :setlocal spell!<cr>
-map <leader>spn ]s
-map <leader>spp [s
-map <leader>spa zg
-map <leader>sp? z=
+map <leader>Ss :setlocal spell!<cr>
+map <leader>Sn ]s
+map <leader>Sp [s
+map <leader>Sa zg
+map <leader>S? z=
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Remap ctrl-A to ctrl-C, which is rarely used anyways
