@@ -131,7 +131,7 @@ if g:osName == 'Darwin' || g:osName == 'Timan'
   let g:ycm_server_python_interpreter='/usr/local/bin/python'
   let g:ycm_always_populate_location_list = 1
   let g:ycm_complete_in_comments = 1
-  let g:ycm_goto_buffer_command = 'vertical-split'
+  let g:ycm_goto_buffer_command = 'horizontal-split'
   let g:lt_location_list_toggle_map = '<leader>ll' " toggle location list
   let g:lt_quickfix_list_toggle_map = '<leader>qf' " toggle quickfix list
   noremap <Leader>jd :YcmCompleter GoTo<CR>
