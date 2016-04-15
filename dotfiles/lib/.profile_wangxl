@@ -484,6 +484,7 @@ function xg_ls {  # list all file tracked under master
 alias xg_ls_ignored="git ls-files --ignored --exclude-standard --others"
 alias xg_ls_untracked="git ls-files --exclude-standard --others"
 alias xg_st='git status'
+alias xg_fetch_st='git fetch; git status;'
 function xg_rm_last_commit {
   local ans=""
   redecho -n "Delete Last Commit [Y/N]? "
