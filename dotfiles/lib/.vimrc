@@ -241,7 +241,7 @@ map <leader>S? z=
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Remap ctrl-A to ctrl-C, which is rarely used anyways
-map <C-a> :echoe "Use <C-C> to increase digits -- tmux takes <C-A> as prefix"
+map <C-a> :echoe "Use \<C-C\> to increase digits -- tmux has prefix \<C-A\>"<CR>
 noremap <C-C> <C-a>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
