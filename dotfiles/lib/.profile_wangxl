@@ -60,7 +60,8 @@ function pscpu {
 }
 alias pscmd='print -l ${(o)history%% *} | uniq -c | sort -nr | head'
 # case insensitive grep
-function psgrep { ps aux | grep -i $1 | grep -v grep }
+function psgrep { ps -e -o pid,rss,pcpu,cpu,state,nice,state,cputime,command |\
+  grep -i $1 --color=always | grep -v grep }
 function pszombies { ps -e -o pid,state,rss,pcpu,cpu,nice,cputime,comm | \
     awk '{ if ($2 == "Z") {print $0} }' }
 # case sensitive kill
@@ -81,6 +82,7 @@ function q {
   fi
 }
 function check_busy { lsof +D ${@:-.} }
+alias nicer="sudo renice -20"
 
 ##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
