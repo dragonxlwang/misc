@@ -47,32 +47,56 @@ function exe_remote_script {
 }
 alias help='man'
 function echo_path { echo ${${1:-$PATH}//:/$'\n'} }
+function colorize_column {
+  local s="$(sed "s/[^[:blank:]]\{1,\}/\\\\033[${1}&\\\\033[0m/${2}")"
+  echo -e $s
+}
 ##--------------------------------== admin ==---------------------------------##
-function psmem {
-  local s="$(ps -e -o pid,rss,pcpu,cpu,nice,state,cputime,comm |\
-    awk 'NR == 1; NR > 1 {print $0 | "sort -k2 -rn"}')"
-  echo "$s" | head $@
+function _psfmt {
+  local fmt="user,pid,ppid,pcpu,cpu,pmem,rss,tty,state,pri,nice,start,time"
+  if [[ $1 == "comm" ]]; then
+    fmt+=",comm"
+  else
+    fmt+=",command"
+  fi
+  echo "$(ps -e -o $fmt)"
 }
 function pscpu {
-  local s="$(ps -e -o pid,rss,pcpu,cpu,nice,state,cputime,comm |\
-    awk 'NR == 1; NR > 1 {print $0 | "sort -k3 -rn"}')"
-  echo "$s" | head $@
+  local s="$(_psfmt comm)"
+  local h="$(echo $s | head -1)"
+  local b="$(echo $s | sed 1d)"
+  greenecho $h
+  b="$(echo $b | sort -k4 -rn)"
+  echo "$b" | head $@ | colorize_column "1;36m" 4
+}
+function psmem {
+  local s="$(_psfmt comm)"
+  local h="$(echo $s | head -1)"
+  local b="$(echo $s | sed 1d)"
+  greenecho $h
+  b="$(echo $b | sort -k7 -rn)"
+  echo "$b" | head $@ | colorize_column "1;36m" 7
 }
 function psmine {
   local u=$(whoami)
-  ps -e -o user,pid,rss,pcpu,cpu,state,nice,state,cputime,command |\
-    awk -v var="$u" '{if ($1 == var) {print $0} }'
-
+  local s="$(_psfmt comm)"
+  local h="$(echo $s | head -1)"
+  local b="$(echo $s | sed 1d)"
+  greenecho $h
+  b="$(echo $b | awk -v var=${u} '{if ($1 == var) {print $0} }')"
+  echo "$b" | head $@ | colorize_column "1;36m" 1
 }
 alias pscmd='print -l ${(o)history%% *} | uniq -c | sort -nr | head'
 # case insensitive grep
-function psgrep { ps -e -o pid,rss,pcpu,cpu,state,nice,state,cputime,command |\
-  grep -i $1 --color=always | grep -v grep }
-function pszombies { ps -e -o pid,state,rss,pcpu,cpu,nice,cputime,comm | \
-    awk '{ if ($2 == "Z") {print $0} }' }
+function psgrep { _psfmt | grep -i $1 --color=always | grep -v grep }
+function pszombies { _psfmt "comm" | awk '{ if ($9 == "Z") {print $0} }' }
+# ps pid
+function pspidgrep { _psfmt | grep -i $1 | grep -v grep | awk '{print $2}' }
+function pspidmine { psmine | sed 1d | awk '{print $2}' }
 # case sensitive kill
 function pskill {
   ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs kill -9 }
+# kill from joblist
 function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill -9 %$i; done }
 alias kill_tmux='tmux kill-session'
 function kill_zombies {
@@ -90,8 +114,8 @@ function q {
 function check_busy { lsof +D ${@:-.} }
 alias nicer="sudo renice -20"
 function nicer_all {
- for x in "${(@f)$(psmine | awk '{print $2}')}";
- do
+  for x in "${(@f)$(pspidmine)}";
+  do
    redecho "nicer ${x}"
    nicer ${x}
  done
