@@ -80,6 +80,7 @@ function q {
     tmux detach
   fi
 }
+function check_busy { lsof +D ${@:-.} }
 
 ##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
