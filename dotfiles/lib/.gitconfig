@@ -7,3 +7,5 @@
 	required = true
 [github]
 	user = dragonxlwang
+[color "diff"]
+  meta = yellow bold
