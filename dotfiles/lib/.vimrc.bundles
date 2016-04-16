@@ -48,6 +48,9 @@ Plugin 'dragonxlwang/vim-better-search'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#ycm#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#buffer_nr_show = 1
