@@ -196,6 +196,7 @@ map <C-w>- :resize -5<CR>
 map <C-w>+ :resize +5<CR>
 map <C-w>< :vertical resize -10<CR>
 map <C-w>> :vertical resize +10<CR>
+cmap rw vert res 100
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin' || g:osName == 'Timan'
@@ -248,6 +249,8 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Remap ctrl-A to ctrl-C, which is rarely used anyways
 map <C-a> :echoe "Use \<C-C\> to increase digits -- tmux has prefix \<C-A\>"<CR>
 noremap <C-C> <C-a>
+map <leader>zc :%foldc<cr>
+map <leader>zo :%foldo<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
