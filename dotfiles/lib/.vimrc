@@ -200,7 +200,7 @@ map <C-w>> :vertical resize +10<CR>
 cmap rw vert res 100
 
 " ==========================- Keymap: Copy & Paste -============================
-if g:osName == 'Darwin' || g:osName == 'Timan'
+if g:osName == 'Darwin'
   " Add some Mac specific bindings
   " so we use external commands instead to avoid recompiling vim
   " swap vim default register and clipboard
@@ -214,7 +214,7 @@ if g:osName == 'Darwin' || g:osName == 'Timan'
         \ let res=system("pbcopy", @") \| let @"=@a<CR>
   nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
   noremap <silent> <leader>p :r !pbpaste<CR><CR>
-else
+elseif g:osName == 'Timan'
   " this works only if vim is compiled with +clipboard or +xterm_clipboard
   nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
   set clipboard=unnamed
