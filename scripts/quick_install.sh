@@ -110,6 +110,9 @@ wget https://gist.githubusercontent.com/baopham/1838072/raw/616d338cea8b9dcc3a5b
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+# gdb
+curl -L https://raw.githubusercontent.com/gdbinit/Gdbinit/master/gdbinit -o ~/.gdbinit
+
 # zsh set to default shell
 # User & Groups -> Advanced Options -> Login Shell
 # http://apple.stackexchange.com/questions/88278/change-default-shell-from-bash-to-zsh
