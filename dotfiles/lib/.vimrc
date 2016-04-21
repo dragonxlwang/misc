@@ -150,6 +150,8 @@ nnoremap <leader>dd :windo diffthis<CR>
 nnoremap <Leader>dt :diffthis<CR><C-w><C-w>:diffthis<CR>
 " ,ds: Diff split another file
 nnoremap <Leader>ds :<C-u>diffsplit<Space>
+" ,du: Diff update
+nnoremap <leader>du :diffupdate<CR><CR><C-L>
 " Diff with original (before save)
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
@@ -190,11 +192,6 @@ map <leader>j :bprev<cr>
 map <C-w><C-k> :tabn<cr>
 map <C-w><C-j> :tabp<cr>
 map <C-w><c-l> :tabl<cr>
-" select windows
-map <C-h> :wincmd h<cr>
-map <C-j> :wincmd j<cr>
-map <C-k> :wincmd k<cr>
-map <C-l> :wincmd l<cr>
 " Resize window to minimal
 map <C-w>0 :res 0<CR>
 map <C-w>) :vertical res 0<CR>
