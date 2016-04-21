@@ -103,7 +103,8 @@ files=( "$root_dir/lib/ys.zsh-theme"                      \
         "$root_dir/lib/ls_colors.zsh"     "${HOME}/ls_colors.zsh"       \
         "$root_dir/lib/.profile_wangxl"   "${HOME}/.profile_wangxl"	    \
         "$root_dir/lib/.bash_profile"     "${HOME}/.bash_profile"	      \
-        "$root_dir/lib/.tmux.conf"	      "${HOME}/.tmux.conf" )
+        "$root_dir/lib/.tmux.conf"	      "${HOME}/.tmux.conf"          \
+        "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit")
 
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
 do
