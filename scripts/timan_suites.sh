@@ -137,6 +137,21 @@ make install
 cd ~
 rm -rf vim-$ver
 
+# timan-install-gdb
+## ==================================================
+redecho "install gdb"
+yum install gcc gcc-c++
+yum install wget tar gzip ncurses-devel texinfo svn python-devel
+ver=7.11
+curl -OL http://ftp.gnu.org/gnu/gdb/gdb-$ver.tar.xz
+tar xf gdb-$ver.tar.xz
+cd gdb-$ver
+CC=gcc ./configure --with-python=yes --prefix=/usr/local LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib"
+make && make install
+/usr/local/bin/gdb --version
+cd ~
+rm -rf gdb-$ver
+
 #####################################################
 echo "chmod -R a+rx /usr/local"
 chmod -R a+rx /usr/local
