@@ -2202,7 +2202,7 @@ end
 
 
 # _______________process control______________
-define n
+define nn
     if $argc == 0
         nexti
     end
@@ -2210,11 +2210,11 @@ define n
         nexti $arg0
     end
     if $argc > 1
-        help n
+        help nn
     end
 end
-document n
-Syntax: n <NUM>
+document nn
+Syntax: nn <NUM>
 | Step one instruction, but proceed through subroutine calls.
 | If NUM is given, then repeat it NUM times or till program stops.
 | This is alias for nexti.

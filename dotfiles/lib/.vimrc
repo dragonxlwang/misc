@@ -177,6 +177,7 @@ nnoremap <Leader><Bar> 80<Bar>
 vnoremap <Leader><Bar> 80<Bar>
 
 " =========================- Keymap: Windows & Tabs -===========================
+" tab
 map <leader>tt :tabnew<cr>
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>to :tabonly<cr>
@@ -189,6 +190,11 @@ map <leader>j :bprev<cr>
 map <C-w><C-k> :tabn<cr>
 map <C-w><C-j> :tabp<cr>
 map <C-w><c-l> :tabl<cr>
+" select windows
+map <C-h> :wincmd h<cr>
+map <C-j> :wincmd j<cr>
+map <C-k> :wincmd k<cr>
+map <C-l> :wincmd l<cr>
 " Resize window to minimal
 map <C-w>0 :res 0<CR>
 map <C-w>) :vertical res 0<CR>
