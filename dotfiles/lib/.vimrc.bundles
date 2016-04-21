@@ -234,6 +234,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'tpope/vim-fugitive'
+cnoremap xg_diff exe "Gdiff" \| wincmd p \| wincmd x
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
