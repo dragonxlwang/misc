@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [[ $(tmux list-panes | wc -l) -eq 1 ]]; then # only 1 pain e.g. vim
-  tmux split-window -c $PWD -v -l 15
+  tmux split-window -c "#{pane_current_path}" -v -p 20
   tmux select-pane -D
 elif tmux list-panes -F "#F" | grep -q Z; then  # zoomed already
   tmux resize-pane -Z
