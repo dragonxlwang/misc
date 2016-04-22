@@ -53,13 +53,22 @@ function colorize_column {
 }
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
-  local fmt="user,pid,ppid,pcpu,cpu,pmem,rss,tty,state,pri,nice,start,time"
+  if [[ $(uname) == "Linux" ]]; then
+    # only gnu ps has tid option
+    local fmt="user,tid,ppid,pcpu,cpu,pmem,rss,tty,state,pri,nice,start,time"
+  else
+    local fmt="user,pid,ppid,pcpu,cpu,pmem,rss,tty,state,pri,nice,start,time"
+  fi
   if [[ $1 == "comm" ]]; then
     fmt+=",comm"
   else
     fmt+=",command"
   fi
-  echo "$(ps -e -o $fmt)"
+  if [[ $(uname) == "Linux" ]]; then
+    echo "$(ps -e H -o $fmt)"
+  else
+    echo "$(ps -e -o $fmt)"
+  fi
 }
 function pscpu {
   local s="$(_psfmt comm)"
@@ -84,7 +93,7 @@ function psmine {
   local b="$(echo $s | sed 1d)"
   greenecho $h
   b="$(echo $b | awk -v var=${u} '{if ($1 == var) {print $0} }')"
-  echo "$b" | head $@ | colorize_column "1;36m" 1
+  echo "$b" | colorize_column "1;36m" 1
 }
 alias pscmd='print -l ${(o)history%% *} | uniq -c | sort -nr | head'
 # case insensitive grep
@@ -113,11 +122,19 @@ function q {
 }
 function check_busy { lsof +D ${@:-.} }
 alias nicer="sudo renice -20"
+alias unnice="renice 0"
 function nicer_all {
   for x in "${(@f)$(pspidmine)}";
   do
    redecho "nicer ${x}"
    nicer ${x}
+ done
+}
+function unnice_all {
+  for x in "${(@f)$(pspidmine)}";
+  do
+   redecho "nicer ${x}"
+   unnice ${x}
  done
 }
 
