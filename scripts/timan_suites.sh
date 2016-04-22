@@ -20,6 +20,7 @@ wget -O /etc/yum.repos.d/slc6-devtoolset.repo http://linuxsoft.cern.ch/cern/devt
 yum install devtoolset-2
 source /opt/rh/devtoolset-2/enable
 yum install cmake clang boost rubygems curl-devel htop
+export PATH="/opt/rh/devtoolset-2/root/usr/bin:/usr/local/bin:/usr/local/sbin:/opt/rh/devtoolset-2/root/usr/bin:/software/matlab-R2011a-x86_64/bin:/software/sun-jdk-1.6.0-latest-el6-x86_64/bin:/srv/adm/bin:/usr/lib64/qt-3.3/bin:/usr/NX/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # timan-install-gist
 ## ==================================================

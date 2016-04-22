@@ -318,7 +318,7 @@ function init_tmux_tpm {
   if [[ ! -d ~/.tmux/plugins/tpm/.git ]] && \
      [[ ! -f ~/.tmux/plugins/tpm/.git ]]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    redecho "\n\tRead about tmux tpm configuration for vundle" \
+    redecho "\n\tRead about tmux tpm configuration for tmp" \
          " at https://github.com/tmux-plugins/tpm\n"
     cyanecho "prefix + I : install new plugins"
     cyanecho "prefix + U : updates plugin(s)"
