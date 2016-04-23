@@ -213,10 +213,9 @@ let g:session_autoload="no"
 let g:session_autosave="yes"
 let g:session_command_aliases = 1
 nnoremap <leader>so :OpenSession
-nnoremap <leader>ss :SaveSession<CR>
-nnoremap <leader>SS :SaveSession
-nnoremap <leader>sd :DeleteSession<CR>
-nnoremap <leader>sc :CloseSession<CR>
+nnoremap <leader>ss :SaveSession
+nnoremap <leader>sd :DeleteSession
+nnoremap <leader>sc :CloseSession
 
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-dispatch'
