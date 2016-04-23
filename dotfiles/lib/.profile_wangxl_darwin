@@ -376,7 +376,7 @@ function _list_task {
     redecho "  (5)	:   zsh"
   elif [[ $option -eq 6 ]]; then
     redecho "  (6)	:   ssh mac_mini"
-    _smart_ssh $is_inside_tmux mac_mini
+    ssh mac_mini
   fi
 }
 
