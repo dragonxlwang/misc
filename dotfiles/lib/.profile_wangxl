@@ -128,7 +128,7 @@ function nicer_all {
   for x in "${(@f)$(pspidmine)}";
   do
    redecho "renice $ni $x"
-   sudo renice ${x}
+   sudo renice ${ni} ${x}
  done
 }
 function unnice_all {
