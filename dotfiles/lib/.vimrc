@@ -255,6 +255,8 @@ map <C-a> :echoe "Use \<C-C\> to increase digits -- tmux has prefix \<C-A\>"<CR>
 noremap <C-C> <C-a>
 map <leader>zc :%foldc<cr>
 map <leader>zo :%foldo<cr>
+" Get full path of file
+cmap fp echo expand('%:p')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

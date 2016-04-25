@@ -124,10 +124,11 @@ function check_busy { lsof +D ${@:-.} }
 alias nicer="sudo renice -20"
 alias unnice="renice 0"
 function nicer_all {
+  local ni=${1:-"-20"}
   for x in "${(@f)$(pspidmine)}";
   do
-   redecho "nicer ${x}"
-   nicer ${x}
+   redecho "renice $ni $x"
+   sudo renice ${x}
  done
 }
 function unnice_all {
