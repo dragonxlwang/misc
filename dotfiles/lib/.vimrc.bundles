@@ -180,9 +180,11 @@ else
 endif
 let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
-let auto_format_type_list = ['c', 'cpp', 'python']
-autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
-      \ exe "Autoformat" | endif
+" let auto_format_type_list = ['c', 'cpp', 'python']
+" autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
+"       \ exe "Autoformat" | endif
+" Fast save
+cmap ww exe "Autoformat" \| :w!
 
 " ============================================================================="
 "                      _______  __   __       _______                          "

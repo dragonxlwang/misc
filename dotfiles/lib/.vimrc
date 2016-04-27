@@ -178,7 +178,7 @@ nnoremap <Leader>a c/[A-Z]<CR>
 nnoremap <Leader><Bar> 80<Bar>
 vnoremap <Leader><Bar> 80<Bar>
 
-" =========================- Keymap: Windows & Tabs -===========================
+" =====================- Keymap: Windows, buffers & Tabs -======================
 " tab
 map <leader>tt :tabnew<cr>
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -201,6 +201,8 @@ map <C-w>+ :resize +5<CR>
 map <C-w>< :vertical resize -10<CR>
 map <C-w>> :vertical resize +10<CR>
 cmap rw vert res 100
+" Open buffer vertically split
+cmap vsb :vert sb
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'
