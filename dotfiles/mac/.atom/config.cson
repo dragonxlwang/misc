@@ -41,7 +41,7 @@
     ]
     themes: [
       "one-dark-ui"
-      "dragonxlwang-seti-syntax"
+      "dragonxlwang-monokai"
     ]
   "cursor-history":
     searchAllPanes: false
