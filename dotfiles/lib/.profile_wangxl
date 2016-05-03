@@ -429,6 +429,7 @@ function init_oh_my_zsh {
   fi
 }
 function up_oh_my_zsh {
+  init_oh_my_zsh
   upgrade_oh_my_zsh
   pushd ~/.oh-my-zsh/custom/plugins/zsh-completions RNUL
   git pull --rebase
