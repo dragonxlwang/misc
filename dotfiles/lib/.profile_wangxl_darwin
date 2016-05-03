@@ -22,17 +22,6 @@
 #                      /  /----.----)   |   |  |  |  |                         #
 #                     /________|_______/    |__|  |__|                         #
 ## ========================================================================== ##
-# To activate these completions, add the following to your .zshrc:
-fpath=(/usr/local/share/zsh-completions $fpath)
-#You may also need to force rebuild `zcompdump`:
-#
-#  rm -f ~/.zcompdump; compinit
-#
-#Additionally, if you receive "zsh compinit: insecure directories" warnings
-#when attempting to load these completions, you may need to run this:
-#
-#  chmod go-w /usr/local/share
-
 #  source /usr/local/etc/bash_completion.d/password-store
 
 ## ========================================================================== ##
@@ -256,54 +245,6 @@ function convert_mov_to_gif {
 function markdown {
     local f=$(echo $1 | sed 's/\(md\|markdown\)$/htm/i')
     /usr/local/bin/markdown --html4tags $1 > $f
-}
-
-## ========================================================================== ##
-#     .______      ___       ______  __  ___      ___       _______  _______   #
-#     |   _  \    /   \     /      ||  |/  /     /   \     /  _____||   ____|  #
-#     |  |_)  |  /  ^  \   |  ,----'|  '  /     /  ^  \   |  |  __  |  |__     #
-#     |   ___/  /  /_\  \  |  |     |    <     /  /_\  \  |  | |_ | |   __|    #
-#     |  |     /  _____  \ |  `----.|  .  \   /  _____  \ |  |__| | |  |____   #
-#     |__|   ____.________\ _______||__|\____/__.___________._______|_______|  #
-#     |  |  |  | |   _  \  |       \     /   \  |           |   ____|          #
-#     |  |  |  | |  |_)  | |  .--.  |   /  ^  \ `---|  |----|  |__             #
-#     |  |  |  | |   ___/  |  |  |  |  /  /_\  \    |  |    |   __|            #
-#     |  `--'  | |  |      |  '--'  | /  _____  \   |  |    |  |____           #
-#      \______/  | _|      |_______/ /__/     \__\  |__|    |_______|          #
-## ========================================================================== ##
-##---------== update homebrew, oh-my-zsh, pip and source profile==------------##
-function update_scripts {
-  redecho "brew oh-my-zsh"
-  upgrade_oh_my_zsh
-  redecho "brew update"
-  brew update
-  redecho "brew outdated"
-  brew outdated
-  redecho "brew upgrade"
-  brew upgrade
-  redecho "brew cask update"
-  brew cask update
-  redecho "brew cask cleanup"
-  brew cask cleanup
-  redecho "brew cleanup"
-  brew cleanup
-  redecho "pip install --upgrade pip"
-  pip install --upgrade pip
-  # yellowecho "pip update package"
-  # pip freeze --local | grep -v '^\-e' | cut -d = -f 1  |\
-  # xargs -n1 pip install -U
-  redecho "vundle update"
-  up_vundle
-  redecho "vundle clean"
-  clean_vundle
-  redecho "tmux tpm update"
-  up_tmux_tpm
-  redecho "tmux tpm clean"
-  clean_tmux_tmp
-  redecho "source tmux conf"
-  tmux source ${HOME}/.tmux.conf
-  redecho "source profile_wangxl"
-  source ${HOME}/.profile_wangxl
 }
 
 ## ========================================================================== ##

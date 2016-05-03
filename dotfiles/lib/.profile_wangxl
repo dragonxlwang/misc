@@ -404,6 +404,75 @@ function build_vundle_ycm {
     /bin/rm -rf $build_dir
   fi
 }
+##------------------------------== oh-my-zsh ==-------------------------------##
+function init_oh_my_zsh {
+  if [[ ! -d ~/.oh-my-zsh/.git ]] && \
+     [[ ! -f ~/.oh-my-zsh/.git ]]; then
+    sh -c "$(curl -fsSL
+    https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    redecho "\n\tRead about oh-my-zsh" \
+         " at https://github.com/robbyrussell/oh-my-zsh\n"
+  fi
+  if [[ ! -d ~/.oh-my-zsh/custom/plugins/zsh-completions/.git ]] && \
+     [[ ! -f ~/.oh-my-zsh/custom/plugins/zsh-completions/.git ]]; then
+    git clone https://github.com/zsh-users/zsh-completions \
+      ~/.oh-my-zsh/custom/plugins/zsh-completions
+    redecho "\n\tRead about zsh-completions" \
+         " at https://github.com/zsh-users/zsh-completions\n"
+  fi
+  if [[ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/.git ]] && \
+     [[ ! -f ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/.git ]]; then
+    git clone git://github.com/zsh-users/zsh-autosuggestions
+      ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    redecho "\n\tRead about zsh-autosuggestions" \
+         " at https://github.com/zsh-users/zsh-autosuggestions\n"
+  fi
+}
+function up_oh_my_zsh {
+  upgrade_oh_my_zsh
+  pushd ~/.oh-my-zsh/custom/plugins/zsh-completions RNUL
+  git pull --rebase
+  popd > /dev/null
+  pushd ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions RNUL
+  git pull --rebase
+  popd > /dev/null
+}
+##---------== update homebrew, oh-my-zsh, pip and source profile==------------##
+function update_scripts {
+  redecho "upgrade oh-my-zsh"
+  up_oh_my_zsh
+  if [[ $(uname) == "Darwin" ]]; then
+    redecho "brew update"
+    brew update
+    redecho "brew outdated"
+    brew outdated
+    redecho "brew upgrade"
+    brew upgrade
+    redecho "brew cask update"
+    brew cask update
+    redecho "brew cask cleanup"
+    brew cask cleanup
+    redecho "brew cleanup"
+    brew cleanup
+    redecho "pip install --upgrade pip"
+    pip install --upgrade pip
+    # yellowecho "pip update package"
+    # pip freeze --local | grep -v '^\-e' | cut -d = -f 1  |\
+    # xargs -n1 pip install -U
+  fi
+  redecho "vundle update"
+  up_vundle
+  redecho "vundle clean"
+  clean_vundle
+  redecho "tmux tpm update"
+  up_tmux_tpm
+  redecho "tmux tpm clean"
+  clean_tmux_tmp
+  redecho "source tmux conf"
+  tmux source ${HOME}/.tmux.conf
+  redecho "source profile_wangxl"
+  source ${HOME}/.profile_wangxl
+}
 
 ## ========================================================================== ##
 #                     ________      _______. __    __                          #

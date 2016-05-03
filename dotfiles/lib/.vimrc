@@ -238,6 +238,10 @@ elseif g:osName == 'Timan'
 endif
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
+" Yankring remap Y to y$
+function! YRRunAfterMaps()
+  nnoremap Y :<C-U>YRYankCount 'y$'<CR>
+endfunction
 
 " ==============================- Keymap: Misc -================================
 " Text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
