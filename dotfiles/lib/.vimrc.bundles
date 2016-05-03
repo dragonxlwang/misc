@@ -27,7 +27,7 @@ map <leader>bd :Bdelete<cr>
 Plugin 'vim-scripts/YankRing.vim'
 let g:yankring_replace_n_pkey = '<leader><leader>p'
 let g:yankring_replace_n_nkey = '<leader><leader>n'
-nnoremap <leader><leader>y :YRShow<cr>
+nnoremap <leader>yr :YRShow<cr>
 
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'tpope/vim-surround'
@@ -208,7 +208,14 @@ nnoremap <leader>nf :NERDTreeFocus<CR>
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_cmd = 'CtrlPLastMode'
+let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:25'
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 Plugin 'majutsushi/tagbar'
 nmap <leader>gg

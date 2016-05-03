@@ -136,7 +136,9 @@ command! SyncUploadFile call SyncUploadFile()
 
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc
-map <leader>v :e ~/.vimrc \| vs ~/misc/dotfiles/lib/.vimrc.bundles<CR>
+map <leader>v :if g:NERDTree.GetWinNum() == winnr() \| wincmd w \| endif \|
+      \:e ~/.vimrc \| vs ~/misc/dotfiles/lib/.vimrc.bundles<CR>
+
 " Reloads it -- making all changes active (have to save first)
 map <silent> <leader>V
     \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
@@ -223,16 +225,19 @@ elseif g:osName == 'Timan'
   " this works only if vim is compiled with +clipboard or +xterm_clipboard
   nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
   set clipboard=unnamed
-  nnoremap <silent> <leader>y :.w !ssh mac_mini pbcopy<CR>
-  vnoremap <silent> <leader>y
+  nnoremap <silent> <leader><leader>y :.w !ssh mac_mini pbcopy<CR>
+  vnoremap <silent> <leader><leader>y
         \ :<CR>:let @a=@" \|
         \ execute "normal! vgvy" \|
         \ let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
+  nnoremap <silent> <leader>y :.w !tmux load-buffer -<CR><CR>
+  vnoremap <silent> <leader>y
+        \ :<CR>:let @a=@" \|
+        \ execute "normal! vgvy" \|
+        \ let res=system("tmux load-buffer -", @") \| let @"=@a<CR>
 endif
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
-" Y: from the cursor to the end of line
-nnoremap Y y$
 
 " ==============================- Keymap: Misc -================================
 " Text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
