@@ -55,6 +55,10 @@ let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme = 'molokai'
+let g:airline_section_c =
+      \"%{bufnr('%')}: ".
+      \"%<%f%m %#__accent_red#".
+      \"%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#"
 " https://gist.github.com/kevinis/c788f85a654b2d7581d8
 " https://gist.github.com/baopham/1838072
 if g:osName == 'Darwin' || g:osName == 'Timan'
