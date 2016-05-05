@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/xwang95/.oh-my-zsh
+export ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -50,32 +50,50 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages extract python web-search \
+plugins=(vi-mode git colored-man-pages extract python web-search \
          zsh-completions zsh-autosuggestions)
-autoload -U compinit && compinit
-bindkey '^ ' autosuggest-accept
 
 # User configuration
-## initial path
-export PATH="/software/matlab-R2011a-x86_64/bin:/software/sun-jdk-1.6.0-latest-el6-x86_64/bin:/srv/adm/bin:/usr/lib64/qt-3.3/bin:/usr/NX/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/resource/vowpal_wabbit"
-## path set by devtoolset-2
-source /opt/rh/devtoolset-2/enable
-## add /usr/local
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-## set by linuxbrew
-INCLUDE_LINUXBREW_PATHS=0
-if [[ INCLUDE_LINUXBREW_PATHS -eq 1 ]]; then
-  export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
-  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+if [[ $(uname) == 'Darwin' ]]; then
+  PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
+  PATH+="/opt/X11/bin:/Library/TeX/texbin"
+  export PATH
+  export MANPATH="/usr/local/man:$MANPATH"
+else
+  ## initial path
+  PATH="/software/matlab-R2011a-x86_64/bin:"
+  PATH+="/software/sun-jdk-1.6.0-latest-el6-x86_64/bin:"
+  PATH+="/srv/adm/bin:/usr/lib64/qt-3.3/bin:/usr/NX/bin:"
+  PATH+="/usr/bin:/bin:/usr/sbin:/sbin:$HOME/resource/vowpal_wabbit"
+  export PATH
+  ## path set by devtoolset-2
+  source /opt/rh/devtoolset-2/enable
+  ## add /usr/local before devtoolset-2
+  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+  export MANPATH="/usr/local/man:$MANPATH"
+  ## set by linuxbrew
+  INCLUDE_LINUXBREW_PATHS=0
+  if [[ INCLUDE_LINUXBREW_PATHS -eq 1 ]]; then
+    export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+  fi
 fi
 
 source $ZSH/oh-my-zsh.sh
 
+# enable zsh-completions
+autoload -U compinit && compinit
+# bind ctrl + space to accept the current suggestion
+bindkey '^ ' autosuggest-accept
+# map jk to the vi-cmd-mode widget
+bindkey -M viins 'jk' vi-cmd-mode
+# kill the lag
+export KEYTIMEOUT=10
+
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
