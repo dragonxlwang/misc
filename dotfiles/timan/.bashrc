@@ -1,11 +1,19 @@
 # interactive and non-login
 
 ## set locale
-export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 ## initial path
-export PATH="/software/matlab-R2011a-x86_64/bin:/software/sun-jdk-1.6.0-latest-el6-x86_64/bin:/srv/adm/bin:/usr/lib64/qt-3.3/bin:/usr/NX/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/resource/vowpal_wabbit"
+export PATH="/software/matlab-R2011a-x86_64/bin:\
+/software/sun-jdk-1.6.0-latest-el6-x86_64/bin:\
+/srv/adm/bin:\
+/usr/lib64/qt-3.3/bin:\
+/usr/NX/bin:\
+/usr/bin:\
+/bin:\
+/usr/sbin:\
+/sbin:\
+$HOME/resource/vowpal_wabbit"
 
 ## path set by devtoolset-2
 source /opt/rh/devtoolset-2/enable
