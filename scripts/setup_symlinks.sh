@@ -87,24 +87,26 @@ then
       echo "==> man symlink: skipping, $b doesn't exist"
     else
       ln -s /usr/local/opt/coreutils/libexec/gnuman/man1/$b.1 \
-            /usr/local/man/man1/$b.1
+        /usr/local/man/man1/$b.1
       echo "==> man symlink: $b -> g$b"
     fi
   done
 fi
 
 ## mac & timan suite
-files=( "$root_dir/lib/ys.zsh-theme"                                    \
-        "${HOME}/.oh-my-zsh/custom/themes/ys.zsh-theme"                 \
-        "$root_dir/lib/.vimrc"            "${HOME}/.vimrc"              \
-        "$root_dir/lib/.gitconfig"        "${HOME}/.gitconfig"        	\
-        "$root_dir/lib/config"            "${HOME}/.ssh/config"         \
-        "$root_dir/lib/ls_colors.zsh"     "${HOME}/ls_colors.zsh"       \
-        "$root_dir/lib/.profile_wangxl"   "${HOME}/.profile_wangxl"	    \
-        "$root_dir/lib/.bash_profile"     "${HOME}/.bash_profile"	      \
-        "$root_dir/lib/.tmux.conf"	      "${HOME}/.tmux.conf"          \
-        "$root_dir/lib/.zshrc"	          "${HOME}/.zshrc"              \
-        "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit")
+mkdir -p ${HOME}/.oh-my-zsh/custom/themes/
+files=(                                                           \
+  "$root_dir/lib/ys.zsh-theme"                                    \
+  "${HOME}/.oh-my-zsh/custom/themes/ys.zsh-theme"                 \
+  "$root_dir/lib/.vimrc"            "${HOME}/.vimrc"              \
+  "$root_dir/lib/.gitconfig"        "${HOME}/.gitconfig"          \
+  "$root_dir/lib/config"            "${HOME}/.ssh/config"         \
+  "$root_dir/lib/ls_colors.zsh"     "${HOME}/ls_colors.zsh"       \
+  "$root_dir/lib/.profile_wangxl"   "${HOME}/.profile_wangxl"     \
+  "$root_dir/lib/.bash_profile"     "${HOME}/.bash_profile"       \
+  "$root_dir/lib/.tmux.conf"        "${HOME}/.tmux.conf"          \
+  "$root_dir/lib/.zshrc"            "${HOME}/.zshrc"              \
+  "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit")
 
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
 do
