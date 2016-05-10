@@ -1106,6 +1106,20 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
+		<key>0x6a-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>2</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0x6b-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>0</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -1134,13 +1148,6 @@
 			<key>Text</key>
 			<string>B</string>
 		</dict>
-		<key>0xf702-0x300000</key>
-		<dict>
-			<key>Action</key>
-			<integer>2</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
 		<key>0xf702-0x320000</key>
 		<dict>
 			<key>Action</key>
@@ -1154,13 +1161,6 @@
 			<integer>10</integer>
 			<key>Text</key>
 			<string>F</string>
-		</dict>
-		<key>0xf703-0x300000</key>
-		<dict>
-			<key>Action</key>
-			<integer>0</integer>
-			<key>Text</key>
-			<string></string>
 		</dict>
 		<key>0xf703-0x320000</key>
 		<dict>
@@ -1293,7 +1293,7 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>-910 1138 620 392 -1200 0 1200 1897 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>551 883 570 452 0 0 2560 1417 </string>
+	<string>807 337 731 575 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>-1060 279 585 452 -1200 0 1200 1897 </string>
 	<key>New Bookmarks</key>
@@ -1919,6 +1919,12 @@
 	<true/>
 	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
 	<integer>1</integer>
+	<key>NoSyncInstallationId</key>
+	<string>273D09C1-8F82-46F6-8229-F8C61A4A12D7</string>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncSuppressAnnyoingBellOffer</key>
@@ -1993,11 +1999,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml</string>
+	<string>https://iterm2.com/appcasts/testing3.xml?shard=13</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-04-13T19:12:55Z</date>
+	<date>2016-05-10T19:58:00Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2045,7 +2051,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160313</string>
+	<string>2.9.20160426</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
