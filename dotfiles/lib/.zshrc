@@ -88,6 +88,8 @@ autoload -U compinit && compinit
 bindkey '^ ' autosuggest-accept
 # map jk to the vi-cmd-mode widget
 bindkey -M viins 'jk' vi-cmd-mode
+# allow shift-tab still to reverse completion (standard behaviour)
+bindkey '^[[Z' reverse-menu-complete
 # kill the lag
 export KEYTIMEOUT=10
 
