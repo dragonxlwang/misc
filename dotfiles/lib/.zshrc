@@ -50,7 +50,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git colored-man-pages extract python web-search \
+plugins=(git colored-man-pages extract python web-search \
          zsh-completions zsh-autosuggestions)
 
 # User configuration
@@ -86,10 +86,11 @@ source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
 # bind ctrl + space to accept the current suggestion
 bindkey '^ ' autosuggest-accept
-# map jk to the vi-cmd-mode widget
-bindkey -M viins 'jk' vi-cmd-mode
-# allow shift-tab still to reverse completion (standard behaviour)
-bindkey '^[[Z' reverse-menu-complete
+# vim-like move
+bindkey "^K" up-line-or-beginning-search
+bindkey "^J" down-line-or-beginning-search
+bindkey "^H" backward-char
+bindkey "^L" forward-char
 # kill the lag
 export KEYTIMEOUT=10
 
