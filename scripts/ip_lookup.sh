@@ -58,9 +58,11 @@ if [[ -z "$wan_ip" ]]; then
   [[ "$?" -eq "0" ]] &&  echo "${wan_ip}" > $tmp_file
 fi
 
-# echo "ⓛ ${lan_ip-N/a}"
-# echo "ⓦ ${wan_ip-N/a}"
-[[ $lan_ip == $wan_ip ]] && wan_ip=""
-[[ -n $lan_ip ]] && lan_ip="ⓛ ${lan_ip} "
-[[ -n $wan_ip ]] && wan_ip="ⓦ ${wan_ip} "
-echo "$lan_ip$wan_ip"
+if [[ $1 == 'all' ]]; then
+  echo "ⓛ ${lan_ip-N/a} ⓦ ${wan_ip-N/a}"
+else
+  [[ $lan_ip == $wan_ip ]] && wan_ip=""
+  [[ -n $lan_ip ]] && lan_ip="ⓛ ${lan_ip} "
+  [[ -n $wan_ip ]] && wan_ip="ⓦ ${wan_ip} "
+  echo "$lan_ip$wan_ip"
+fi

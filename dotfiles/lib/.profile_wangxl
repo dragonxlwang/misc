@@ -160,9 +160,10 @@ if [ -z "\${which tree}" ]; then
   }
 fi
 # gather external ip address
-alias showip="curl -s -S https://icanhazip.com"
+alias show_external_ip="curl -s -S https://icanhazip.com"
 alias showptr="curl -s -S -k https://icanhazptr.com"
-# determine local IP address
+# gather external/local ip address
+alias showip="${HOME}/misc/scripts/ip_lookup.sh all"
 ##--------------------------------== remove ==--------------------------------##
 # real remove
 alias rrm='/bin/rm -v'
