@@ -13,6 +13,7 @@
 #     |_______/    | _|      |_______| \______||__| |__|     |__|  \______|    #
 ## ========================================================================== ##
 alias killall="killall -u xwang95"
+alias ka="\killall -u xwang95"
 function kill_all_xwang95_proc {
     for i in $("ps" aux | grep xwang95 | awk '{print $2}' | tac)
     do
