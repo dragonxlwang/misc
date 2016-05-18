@@ -260,6 +260,18 @@ alias -g PPP="2>&1| pygmentize"
 alias -g RNE="2> /dev/null"
 alias -g RALL="2>&1"
 alias -g RNUL="> /dev/null 2>&1"
+##---------------------------------== vim ==----------------------------------##
+function vim_buffers {
+  local dir="$(sed '2q;d' ~/.vim/buffers.list)"
+  cd $dir
+  local -a filelist
+  filelist=()
+  for x in "${(f)$(sed '1,2d' ~/.vim/buffers.list)}"; do
+    local file="$(echo $x | sed 's/.*"\(.*\)".*/\1/')"
+    [[ -n $file ]] && { filelist+=($file); }
+  done
+  vim ${filelist[@]}
+}
 
 ## ========================================================================== ##
 #       _______.  ______ .______      __  .______   .___________.    _______.  #

@@ -131,6 +131,8 @@ command! CdPwd :cd %:p:h
 command! LcdPwd :lcd %:p:h
 " Automatically change directory
 "" autocmd BufEnter * silent! lcd %:p:h
+" Write ls to ~/.vim/buffers.list
+cmap wls redir! > ~/.vim/buffers.list \| :pwd \| :ls \| :redir END
 " Sync with servers
 command! SyncUploadFile call SyncUploadFile()
 
