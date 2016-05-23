@@ -108,9 +108,6 @@ Plugin 'nvie/vim-flake8'
 Plugin 'kchmck/vim-coffee-script'
 
 Plugin 'ntpeters/vim-better-whitespace'
-" add following to turn on when start
-let g:better_whitespace_enabled = 0
-autocmd VimEnter * EnableWhitespace
 " turn on by default for all filetypes
 autocmd BufWritePre * StripWhitespace
 
