@@ -243,8 +243,11 @@ function convert_mov_to_gif {
 }
 ##-----------------------------== markdown ==---------------------------------##
 function markdown {
-    local f=$(echo $1 | sed 's/\(md\|markdown\)$/htm/i')
-    /usr/local/bin/markdown --html4tags $1 > $f
+  local f=$(echo $1 | sed 's/\(md\|markdown\)$/htm/i')
+  /usr/local/bin/markdown --html4tags $1 > $f
+}
+function markdown_toc {
+  /usr/local/Cellar/github-markdown-toc/0.6.0/bin/gh-md-toc $1
 }
 
 ## ========================================================================== ##
