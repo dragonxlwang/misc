@@ -243,8 +243,24 @@ function convert_mov_to_gif {
 }
 ##-----------------------------== markdown ==---------------------------------##
 function markdown {
-  local f=$(echo $1 | sed 's/\(md\|markdown\)$/htm/i')
-  /usr/local/bin/markdown --html4tags $1 > $f
+  local f=$(echo $1 | sed 's/\(md\|markdown\)$/html/i')
+  local lr="https://raw.githubusercontent.com/daktales/Mou-Themes-Collection/"
+  lr+="master/Mou%20Themes%20Collection/CSS/"
+  local -a css
+  css=("Solarized%20(Light).css" "Solarized%20(Dark).css" "realm.css")
+  for c in "${css[@]}"
+  do
+    pushd ~/Library/Application\ Support/Mou/CSS/  > /dev/null
+    if [[ ! -r $c ]]; then
+      curl -OL $lr$c
+    fi
+    popd > /dev/null
+  done
+  local layout="Solarized%20(Light).css"
+  cp ~/Library/Application\ Support/Mou/CSS/$layout tmp.css
+  pandoc $1 -s -c tmp.css --self-contained --toc -o $f
+  command rm tmp.css
+  # /usr/local/bin/markdown --html4tags $1 > $f
 }
 function markdown_toc {
   /usr/local/Cellar/github-markdown-toc/0.6.0/bin/gh-md-toc $1
