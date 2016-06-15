@@ -51,7 +51,7 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git colored-man-pages extract python web-search \
-         zsh-completions zsh-autosuggestions)
+  zsh-completions zsh-autosuggestions)
 
 # User configuration
 if [[ $(uname) == 'Darwin' ]]; then
