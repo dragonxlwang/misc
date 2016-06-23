@@ -24,11 +24,11 @@ Plugin 'moll/vim-bbye'
 " Close the current buffer without closing windows
 map <leader>bd :Bdelete<cr>
 
-Plugin 'vim-scripts/YankRing.vim'
-let g:yankring_replace_n_pkey = '<leader><leader>p'
-let g:yankring_replace_n_nkey = '<leader><leader>n'
-nnoremap <leader>yr :YRShow<cr>
-let g:yankring_history_dir = '~/.vim'
+" Plugin 'vim-scripts/YankRing.vim'
+" let g:yankring_replace_n_pkey = '<leader><leader>p'
+" let g:yankring_replace_n_nkey = '<leader><leader>n'
+" nnoremap <leader>yr :YRShow<cr>
+" let g:yankring_history_dir = '~/.vim'
 
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'tpope/vim-surround'

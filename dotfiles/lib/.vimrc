@@ -143,7 +143,7 @@ map <leader>v :if g:NERDTree.GetWinNum() == winnr() \| wincmd w \| endif \|
 
 " Reloads it -- making all changes active (have to save first)
 map <silent> <leader>V
-    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+      \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " ==============================- Keymap: Diff -================================
 " ,do: Diff off
@@ -240,10 +240,11 @@ elseif g:osName == 'Timan'
 endif
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
-" Yankring remap Y to y$
-function! YRRunAfterMaps()
-  nnoremap Y :<C-U>YRYankCount 'y$'<CR>
-endfunction
+map Y y$
+" " Yankring remap Y to y$
+" function! YRRunAfterMaps()
+"   nnoremap Y :<C-U>YRYankCount 'y$'<CR>
+" endfunction
 
 " ==============================- Keymap: Misc -================================
 " Text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
