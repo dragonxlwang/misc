@@ -68,7 +68,7 @@ cd ~
 rm -rf libevent-$ver-stable
 # DOWNLOAD SOURCES FOR TMUX AND MAKE AND INSTALL
 cd ~
-ver=2.1
+ver=2.2
 curl -OL https://github.com/tmux/tmux/releases/download/$ver/tmux-$ver.tar.gz
 tar -xvzf tmux-$ver.tar.gz
 cd tmux-$ver
@@ -118,7 +118,7 @@ sudo yum install -y ruby ruby-devel lua lua-devel luajit \
     perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
     perl-ExtUtils-Embed
 cd ~
-ver=7.4.1724
+ver=7.4.1952
 curl -OL https://github.com/vim/vim/archive/v$ver.tar.gz
 tar -zxvf v$ver.tar.gz
 cd vim-$ver
