@@ -77,7 +77,7 @@ brew cask install xquartz
 brew cask install dropbox google-drive google-chrome adium qq skype
 brew cask install spotify neteasemusic graphviz inkscape gimp
 brew cask install iterm2-beta atom filezilla the-unarchiver flux
-brew cask install mactex texmaker textwrangler adobe-reader mou
+brew cask install mactex bibdesk texmaker textwrangler adobe-reader mou
 brew cask install cheatsheet suspicious-package
 brew cask install github-desktop
 brew cask install java tcl
