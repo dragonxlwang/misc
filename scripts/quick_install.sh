@@ -2,110 +2,16 @@
 
 # Ask for the administrator password upfront
 sudo -v
-
 # xcode
 xcode-select --install
 
-# homebrew
-sudo chown $(whoami):admin /usr/local \
-  && sudo chown -R $(whoami):admin /usr/local
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+local basedir=$(dirname "$0")
 
-brew tap homebrew/dupes
-brew tap homebrew/python
-brew tap homebrew/science
-brew tap homebrew/versions
-
-brew install coreutils # set mv by symlink
-brew install binutils diffutils
-brew install ed --with-default-names
-brew install findutils --with-default-names
-brew install gnu-indent --with-default-names
-brew install gnu-sed --with-default-names
-brew install gnu-tar --with-default-names
-brew install gnu-which --with-default-names
-brew install grep --with-default-names
-brew install wdiff --with-gettext
-brew install lua --with-completion
-brew install tmux curl clang-format tree
-brew install htop --with-ncurses
-brew install gnuplot --with-tex --with-pdflib-lite --with-qt --with-test --with-x11
-brew install make --with-default-names
-brew install hub gawk ascii_plots gzip screen watch wget pigz fpp
-brew install gcc node reattach-to-user-namespace zsh-completions ctags cmake
-brew install emacs gdb gpatch m4 nano markdown pandoc
-brew install file-formula git gist bfg less openssh perl518 rsync svn unzip
-brew install macvim --with-lua --with-override-system-vim
-brew linkapps macvim
-
-## brew install vim --override-system-vi
-## brew install zsh
-## brew install zsh-syntax-highlighting
-
-brew install pwgen gmp libtool pdflib-lite smpeg sqlite llvm mpfr
-brew install freetype fontconfig isl jpeg readline xz libevent openssl
-brew install boost boost-build pkg-config gnutls gnu-getopt go
-brew install webp --with-libtiff
-brew install ffmpeg
-brew install gifsicle --with-x11
-brew install imagemagick --with-x11 --with-webp --with-librsvg
-
-## python
-brew install python
-brew linkapps python
-brew install numpy scipy
-brew install matplotlib --with-tex --with-tcl-tk
-brew install matplotlib-basemap numba pillow pygame
-pip install --upgrade pip
-pip install "ipython[all]" --upgrade ## --force-reinstall
-sudo -H pip install -U nltk
-## python -m nltk.downloader all
-pip install -U jupyter
-pip install -U flake8
-pip install -U pep8
-pip install -U autopep8
-pip install -U yapf
-pip install -U jedi
-pip install -U psutil
-
-# homebrew caskroom/cask
-brew tap caskroom/cask
-brew tap caskroom/versions
-brew tap caskroom/fonts
-
-brew cask install xquartz
-brew cask install dropbox google-drive google-chrome adium qq skype
-brew cask install spotify neteasemusic graphviz inkscape gimp
-brew cask install iterm2-beta atom filezilla the-unarchiver flux
-brew cask install mactex bibdesk texmaker textwrangler adobe-reader mou
-brew cask install cheatsheet suspicious-package
-brew cask install github-desktop
-brew cask install java tcl
-
-brew cask install qlcolorcode
-brew cask install qlstephen
-brew cask install qlmarkdown
-brew cask install quicklook-json
-brew cask install qlprettypatch
-brew cask install quicklook-csv
-brew cask install betterzipql
-brew cask install webpquicklook
-
-brew cask install font-inconsolata
-brew cask install font-source-code-pro
-brew cask install font-profontx
-brew cask install font-andale-mono
-brew cask install font-droid-sans-mono
-brew cask install font-dejavu-sans-mono-for-powerline
-brew cask install font-m-plus
-brew cask install font-clear-sans
-brew cask install font-roboto
+source $basedir/install_brew_pkg.sh
+source $basedir/install_brewcask_pkg.sh
+source $basedir/install_pip_pkg.sh
 
 wget https://gist.githubusercontent.com/baopham/1838072/raw/616d338cea8b9dcc3a5b17c12fe3070df1b738c0/Monaco%2520for%2520Powerline.otf -O ~/Library/Fonts/"Monaco for Powerline.otf"
-
-## brew cask install brackets nvalt libreoffice
-## brew cask install sourcetree slack gisto
-## brew cask install alfred Skitch
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -142,7 +48,7 @@ compinit
 # http://stackoverflow.com/questions/21176731/automatically-run-matplotlib-inline-in-ipython-notebook
 ## cat "c = get_config()" >> ~/.ipython/profile_default/ipython_kernel_config.py
 ## cat 'c.InteractiveShellApp.matplotlib = "inline"' \
-## >> ~/.ipython/profile_default/ipython_kernel_config.py
+  ## >> ~/.ipython/profile_default/ipython_kernel_config.py
 
 # show hidden files by default
 ## defaults write com.apple.finder AppleShowAllFiles YES
@@ -242,14 +148,14 @@ compinit
 #
 # one time config for inline matplotlib:
 # http://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook\
-# -matplotlib-plot-inline
+  # -matplotlib-plot-inline
 # cat "c = get_config()" >> /Users/xiaolong/.ipython/profile_default
 # cat 'c.InteractiveShellApp.matplotlib = "inline"' \
-# >> /Users/xiaolong/.ipython/profile_default
+  # >> /Users/xiaolong/.ipython/profile_default
 
 # Homebrew permission problem
 ## sudo chown $(whoami):admin /usr/local \
-##  && sudo chown -R $(whoami):admin /usr/local
+  ##  && sudo chown -R $(whoami):admin /usr/local
 ## brew install coreutils
 
 # gdb
