@@ -142,6 +142,7 @@ if g:osName == 'Darwin' || g:osName == 'Timan'
   noremap <Leader>jd :YcmCompleter GoTo<CR>
   noremap <leader>jt :YcmCompleter GetType<CR>
   noremap <leader>jm :YcmCompleter GetDoc<CR>
+  noremap <leader>jf :YcmCompleter GoToReferences<CR>
   noremap <leader>jj :YcmForceCompileAndDiagnostics<CR> :YcmDiags<CR>
   noremap <Leader>ff :YcmCompleter FixIt<CR>
   let g:ycm_filetype_blacklist = {
