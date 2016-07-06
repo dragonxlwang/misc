@@ -269,6 +269,9 @@ map <C-a> :echoe "Use \<C-C\> to increase digits -- tmux has prefix \<C-A\>"<CR>
 noremap <C-C> <C-a>
 map <leader>zc :%foldc<cr>
 map <leader>zo :%foldo<cr>
+map zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
+      \ else \| set foldmethod=manual \| endif \|
+      \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
 cmap fp echo expand('%:p')
 
