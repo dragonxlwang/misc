@@ -20,6 +20,7 @@ set whichwrap+=<,>,h,l,[,]      " Move across lines
 set pastetoggle=<F2>            " No indent on paste
 set nrformats-=octal            " Set number format for C-A, C-X
 set synmaxcol=128               " No syntax color lines that are too long
+set noequalalways               " No resize after splitting or closing a window
 " ================================- Display -===================================
 set number                      " Line numbers are good
 set ruler                       " Bottom right corner of the status line
