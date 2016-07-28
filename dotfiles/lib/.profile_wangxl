@@ -618,6 +618,7 @@ function github_short_url_to_clipboard {
   echo $url | pbcopy
   echo $url
 }
+alias upld="${HOME}/misc/scripts/sync.sh"
 
 ## ========================================================================== ##
 #             .______   .______      ___________    __    ____                 #
