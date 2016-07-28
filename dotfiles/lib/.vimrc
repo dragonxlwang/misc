@@ -136,6 +136,7 @@ command! LcdPwd :lcd %:p:h
 cmap wls redir! > ~/.vim/buffers.list \| :pwd \| :ls \| :redir END
 " Sync with servers
 command! SyncUploadFile call SyncUploadFile()
+command! Upld :! ~/misc/scripts/sync.sh <CR>
 
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc
@@ -144,7 +145,7 @@ map <leader>v :if g:NERDTree.GetWinNum() == winnr() \| wincmd w \| endif \|
 
 " Reloads it -- making all changes active (have to save first)
 map <silent> <leader>V
-      \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " ==============================- Keymap: Diff -================================
 " ,do: Diff off
