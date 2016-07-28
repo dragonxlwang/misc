@@ -208,6 +208,10 @@ map <C-w>> :vertical resize +10<CR>
 cmap rw vert res 100
 " Open buffer vertically split
 cmap vsb vert sb
+" window
+map <C-w>w :wincmd p<cr>
+map <C-w><C-w> :wincmd p<cr>
+map <C-w>p :wincmd w<cr>
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'
