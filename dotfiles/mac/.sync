@@ -18,6 +18,7 @@ scr="$local_root/$proj/$inner_dir/$fp"
 dst="$remote_root/$proj/$inner_dir/$fp"
 dst_dir="$remote_root/$proj/$inner_dir"
 
-echo "Upload ${scr} => ${remote_host}:${dst}"
+echo -e "Upload \033[1;36m${scr}\033[0m =>" \
+     "\033[1;35m${remote_host}\033[0m:\033[1;36m${dst}\033[0m"
 ssh "$remote_host" "mkdir -p ${dst_dir}"
 scp "$scr" "$remote_host":"$dst"
