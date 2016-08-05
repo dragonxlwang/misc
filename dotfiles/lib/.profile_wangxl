@@ -263,11 +263,24 @@ alias -g RALL="2>&1"
 alias -g RNUL="> /dev/null 2>&1"
 ##---------------------------------== vim ==----------------------------------##
 function vim_buffers {
-  local dir="$(sed '2q;d' ~/.vim/buffers.list)"
+  found=0
+  curpwd=$(pwd)
+  while [[ ! -a $(pwd)/buffers.list && $(pwd) != $(dirname $(pwd)) ]]; do
+    cd $(dirname $(pwd))
+  done
+  if [[ -a $(pwd)/buffers.list ]]; then
+    exe_path=$(pwd)/buffers.list
+  else
+    exe_path="${HOME}/.vim/buffers.list"
+  fi
+  cd ${curpwd}
+  cyanecho $exe_path
+
+  local dir="$(sed '2q;d' $exe_path)"
   cd $dir
   local -a filelist
   filelist=()
-  for x in "${(f)$(sed '1,2d' ~/.vim/buffers.list)}"; do
+  for x in "${(f)$(sed '1,2d' $exe_path)}"; do
     local file="$(echo $x | sed 's/.*"\(.*\)".*/\1/')"
     file="${file/#\~/$HOME}"
     echo $file

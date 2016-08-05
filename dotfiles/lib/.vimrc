@@ -133,10 +133,12 @@ command! LcdPwd :lcd %:p:h
 " Automatically change directory
 "" autocmd BufEnter * silent! lcd %:p:h
 " Write ls to ~/.vim/buffers.list
-cmap wls redir! > ~/.vim/buffers.list \| :pwd \| :ls \| :redir END
+command! Wls call WriteListedFiles()
 " Sync with servers
-command! SyncUploadFile call SyncUploadFile()
-command! Upld :! ~/misc/scripts/sync.sh <CR>
+command! UpldFile call SyncUploadFile()
+command! UpldAll :! ~/misc/scripts/sync.sh <CR>
+cmap uf silent call SyncUploadFile() \| redraw!
+cmap ua silent exec "! ~/misc/scripts/sync.sh" \| redraw!
 
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc
@@ -331,3 +333,41 @@ function! SyncUploadFile()
     execute '!' . cmd
   endif
 endfunction
+
+function! WriteListedFiles()
+  let l:exe_path = getcwd()
+  let l:exe_file = l:exe_path . '/buffers.list'
+  let l:found_exe = ''
+  if filereadable(l:exe_file)
+    let l:found_exe = l:exe_file
+  else
+    while !filereadable(l:exe_file)
+      let slashindex = strridx(l:exe_path, '/')
+      if slashindex >= 0
+        let l:exe_path = l:exe_path[0:slashindex]
+        let l:exe_file = l:exe_path . 'buffers.list'
+        let l:exe_path = l:exe_path[0:slashindex-1]
+        if filereadable(l:exe_file)
+          let l:found_exe = l:exe_file
+          break
+        endif
+        if slashindex == 0 && !filereadable(l:exe_file)
+          break
+        endif
+      else
+        break
+      endif
+    endwhile
+  endif
+  if empty(l:found_exe)
+    let l:found_exe = expand('~/.vim/buffers.list')
+  endif
+  echohl Keyword
+  echo l:found_exe
+  echohl None
+  execute 'redir! >' . l:found_exe
+  pwd
+  ls
+  redir END
+endfunction
+
