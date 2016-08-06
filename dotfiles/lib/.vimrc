@@ -138,7 +138,7 @@ command! Wls call WriteListedFiles()
 command! UpldFile call SyncUploadFile()
 command! UpldAll :! ~/misc/scripts/sync.sh <CR>
 cmap uf silent call SyncUploadFile() \| redraw!
-cmap ua silent exec "! ~/misc/scripts/sync.sh" \| redraw!
+cmap ua silent exec "! ~/misc/scripts/sync.sh" \| !echo "" \| redraw!
 
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc
