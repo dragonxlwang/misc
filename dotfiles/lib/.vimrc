@@ -216,6 +216,7 @@ cmap vsb vert sb
 map <C-w>w :wincmd p<cr>
 map <C-w><C-w> :wincmd p<cr>
 map <C-w>p :wincmd w<cr>
+map <C-w>q :wincmd p \| :wincmd c<cr>
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'
