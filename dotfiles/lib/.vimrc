@@ -255,6 +255,8 @@ map Y y$
 " function! YRRunAfterMaps()
 "   nnoremap Y :<C-U>YRYankCount 'y$'<CR>
 " endfunction
+" nmap zh *``
+nmap zh :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 " ==============================- Keymap: Misc -================================
 " Text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
