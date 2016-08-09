@@ -124,7 +124,7 @@ map <leader>ba :1,1000 bd!<cr>
 " Open last edited file
 nnoremap <Leader><Leader> <C-^>
 " Sudo write
-cmap w!! w !sudo tee > /dev/null %
+cnoremap w!! w !sudo tee > /dev/null %
 " Switch WD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Change pwd to current dir
@@ -137,8 +137,8 @@ command! Wls call WriteListedFiles()
 " Sync with servers
 command! UpldFile call SyncUploadFile()
 command! UpldAll :! ~/misc/scripts/sync.sh <CR>
-cmap uf silent call SyncUploadFile() \| redraw!
-cmap ua silent exec "! ~/misc/scripts/sync.sh" \|
+cnoremap uf silent call SyncUploadFile() \| redraw!
+cnoremap ua silent exec "! ~/misc/scripts/sync.sh" \|
       \ silent exec "!echo " \| redraw!
 
 " =============================- Keymap: Vimrc -================================
@@ -148,7 +148,7 @@ map <leader>v :if g:NERDTree.GetWinNum() == winnr() \| wincmd w \| endif \|
 
 " Reloads it -- making all changes active (have to save first)
 map <silent> <leader>V
-    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+     \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " ==============================- Keymap: Diff -================================
 " ,do: Diff off
@@ -209,9 +209,9 @@ map <C-w>- :resize -5<CR>
 map <C-w>+ :resize +5<CR>
 map <C-w>< :vertical resize -10<CR>
 map <C-w>> :vertical resize +10<CR>
-cmap rw vert res 100
+cnoremap rw vert res 100
 " Open buffer vertically split
-cmap vsb vert sb
+cnoremap vsb vert sb
 " window
 map <C-w>w :wincmd p<cr>
 map <C-w><C-w> :wincmd p<cr>
@@ -285,7 +285,7 @@ map zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ else \| set foldmethod=manual \| endif \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
-cmap fp echo expand('%:p')
+cnoremap fp echo expand('%:p')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
