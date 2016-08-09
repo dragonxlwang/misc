@@ -126,7 +126,7 @@ nnoremap <Leader><Leader> <C-^>
 " Sudo write
 cnoremap w!! w !sudo tee > /dev/null %
 " Switch WD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Change pwd to current dir
 command! CdPwd :cd %:p:h
 command! LcdPwd :lcd %:p:h
@@ -143,12 +143,12 @@ cnoremap ua silent exec "! ~/misc/scripts/sync.sh" \|
 
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc
-map <leader>v :if g:NERDTree.GetWinNum() == winnr() \| wincmd w \| endif \|
+noremap <leader>v :if g:NERDTree.GetWinNum() == winnr() \| wincmd w \| endif \|
       \:e ~/.vimrc \| vs ~/misc/dotfiles/lib/.vimrc.bundles<CR>
 
 " Reloads it -- making all changes active (have to save first)
-map <silent> <leader>V
-     \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+noremap <silent> <leader>V
+    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " ==============================- Keymap: Diff -================================
 " ,do: Diff off
@@ -189,34 +189,34 @@ vnoremap <Leader><Bar> 80<Bar>
 
 " =====================- Keymap: Windows, buffers & Tabs -======================
 " tab
-map <leader>tt :tabnew<cr>
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+noremap <leader>tt :tabnew<cr>
+noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+noremap <leader>to :tabonly<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>tm :tabmove
 " Cycle between buffers
-map <leader>k :bnext<cr>
-map <leader>j :bprev<cr>
+noremap <leader>k :bnext<cr>
+noremap <leader>j :bprev<cr>
 " Cycle between tabs
-map <C-w><C-k> :tabn<cr>
-map <C-w><C-j> :tabp<cr>
-map <C-w><c-l> :tabl<cr>
+noremap <C-w><C-k> :tabn<cr>
+noremap <C-w><C-j> :tabp<cr>
+noremap <C-w><c-l> :tabl<cr>
 " Resize window to minimal
-map <C-w>0 :res 0<CR>
-map <C-w>) :vertical res 0<CR>
+noremap <C-w>0 :res 0<CR>
+noremap <C-w>) :vertical res 0<CR>
 " Resize stepsize 5 horizontally and 10 vertically
-map <C-w>- :resize -5<CR>
-map <C-w>+ :resize +5<CR>
-map <C-w>< :vertical resize -10<CR>
-map <C-w>> :vertical resize +10<CR>
+noremap <C-w>- :resize -5<CR>
+noremap <C-w>+ :resize +5<CR>
+noremap <C-w>< :vertical resize -10<CR>
+noremap <C-w>> :vertical resize +10<CR>
 cnoremap rw vert res 100
 " Open buffer vertically split
 cnoremap vsb vert sb
 " window
-map <C-w>w :wincmd p<cr>
-map <C-w><C-w> :wincmd p<cr>
-map <C-w>p :wincmd w<cr>
-map <C-w>q :wincmd p \| :wincmd c<cr>
+noremap <C-w>w :wincmd p<cr>
+noremap <C-w><C-w> :wincmd p<cr>
+noremap <C-w>p :wincmd w<cr>
+noremap <C-w>q :wincmd p \| :wincmd c<cr>
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'
@@ -249,14 +249,14 @@ elseif g:osName == 'Timan'
         \ let res=system("tmux load-buffer -", @") \| let @"=@a<CR>
 endif
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
-map Y y$
+noremap <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
+noremap Y y$
 " " Yankring remap Y to y$
 " function! YRRunAfterMaps()
 "   nnoremap Y :<C-U>YRYankCount 'y$'<CR>
 " endfunction
 " nmap zh *``
-nmap zh :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+nnoremap zh :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 " ==============================- Keymap: Misc -================================
 " Text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
@@ -269,19 +269,20 @@ nnoremap <Leader>] <C-]>
 nnoremap <Leader>: :<C-u>tab<Space>stj<Space><C-R>=expand('<cword>')<CR><CR>
 nnoremap <Leader>[ <C-o>
 " Spell checking
-map <leader>Ss :setlocal spell!<cr>
-map <leader>Sn ]s
-map <leader>Sp [s
-map <leader>Sa zg
-map <leader>S? z=
+noremap <leader>Ss :setlocal spell!<cr>
+noremap <leader>Sn ]s
+noremap <leader>Sp [s
+noremap <leader>Sa zg
+noremap <leader>S? z=
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Remap ctrl-A to ctrl-C, which is rarely used anyways
-map <C-a> :echoe "Use \<C-C\> to increase digits -- tmux has prefix \<C-A\>"<CR>
+noremap <C-a> :echoe
+      \ "Use \<C-C\> to increase digits -- tmux has prefix \<C-A\>"<CR>
 noremap <C-C> <C-a>
-map <leader>zc :%foldc<cr>
-map <leader>zo :%foldo<cr>
-map zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
+noremap <leader>zc :%foldc<cr>
+noremap <leader>zo :%foldo<cr>
+noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ else \| set foldmethod=manual \| endif \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
