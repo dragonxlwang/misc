@@ -47,7 +47,7 @@ Plugin 'dragonxlwang/vim-better-search'
 "             \__/     |__| |_______/     \______/  /__/     \__\ |_______|    "
 " ============================================================================="
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'dragonxlwang/vim-airline-themes'
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
