@@ -137,8 +137,8 @@ function unnice_all {
 ##    This is distinct from field splitting by the f, s or z flags, which still
 ##    applies within each array element.
 ## unix.stackexchange.com/questions/28854/list-elements-with-spaces-in-zsh
-alias dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
-alias ds='du -ahd1'
+alias ls_dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
+alias lds='du -ahd1'
 alias dls='find . -maxdepth 1 -type d'
 # ls
 alias ll="ls -alh"

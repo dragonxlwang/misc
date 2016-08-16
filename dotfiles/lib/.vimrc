@@ -217,6 +217,7 @@ noremap <C-w>w :wincmd p<cr>
 noremap <C-w><C-w> :wincmd p<cr>
 noremap <C-w>p :wincmd w<cr>
 noremap <C-w>q :wincmd p \| :wincmd c<cr>
+noremap <C-w>, :execute "res"  . &lines / 2<cr>
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'
