@@ -242,7 +242,13 @@ alias hsi='hs -i'
 ##---------------------------== search and find ==----------------------------##
 # grep: recursive, ln num, show file name, context
 alias gg="grep -R -n -H -C5"
+function ggs {
+  grep -R -l $1 | sed -i "s/$1/$2/g"
+}
 alias ggi="grep -R -n -H -C5 -i"
+function ggsi {
+  grep -R -l -i $1 | sed -i "s/$1/$2/gi"
+}
 alias ggt="grep -R -n -H -C5 --include"
 alias ggti="grep -R -n -H -C5 -i --include"
 # find: search file/directory
