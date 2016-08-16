@@ -140,7 +140,7 @@ function unnice_all {
 alias ls_dir_size='for f in "${(@f)$(ls -A)}"; do du -sh $f; done;'
 function lsds {
   local du_ver=$(echo $a | sed '1q;d' | sed 's/[^0-9.]*\([0-9.]*\).*/\1/')
-  if [[ du_ver -le 8.25 ]]; then
+  if [[ $du_ver -le 8.25 ]]; then
     du -ahd1
   else
     du -ah --max-depth 1
