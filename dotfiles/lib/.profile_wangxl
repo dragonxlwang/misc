@@ -95,7 +95,14 @@ function pspidmine { psmine | sed 1d | awk '{print $2}' }
 function pskill {
   ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs kill -9 }
 # kill from joblist
-function kill_jobs { for i in $(seq 1 $(jobs | wc -l)); do kill -9 %$i; done }
+function kill_jobs {
+  if [[ -n $(jobs) ]];
+  then
+    for i in $(seq 1 $(jobs | wc -l));
+    do kill -9 %$i;
+    done
+  fi
+}
 alias kill_tmux='tmux kill-session'
 function kill_zombies {
   ps -e -o pid,state | awk '{ if ($2 == "Z") {print $1} }' | xargs  kill -9 }
