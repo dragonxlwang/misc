@@ -236,7 +236,7 @@ if g:osName == 'Darwin'
         \ execute "normal! vgvy" \|
         \ let res=system("pbcopy", @") \| let @"=@a<CR>
   " nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
-  noremap <silent> <leader>p :r !pbpaste<CR><CR>
+  " noremap <silent> <leader>p :r !pbpaste<CR><CR>
 elseif g:osName == 'Timan'
   " this works only if vim is compiled with +clipboard or +xterm_clipboard
   nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
@@ -253,6 +253,7 @@ vnoremap <silent> <leader>y
       \ :<CR>:let @a=@" \|
       \ execute "normal! vgvy" \|
       \ let res=system("tmux load-buffer -", @") \| let @"=@a<CR>
+nnoremap <leader>p "0p
 
 " Toggle paste mode on and off
 noremap <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
