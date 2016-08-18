@@ -217,7 +217,10 @@ noremap <C-w>w :wincmd p<cr>
 noremap <C-w><C-w> :wincmd p<cr>
 noremap <C-w>p :wincmd w<cr>
 noremap <C-w>q :wincmd p \| :wincmd c<cr>
-noremap <C-w>, :execute "res"  . &lines / 2<cr>
+noremap <C-w>, :execute "res"  . &lines / 3 * 2<cr>
+noremap <C-w>< :execute "res"  . &lines / 2<cr>
+noremap <C-w>. :wincmd _<cr>
+noremap <C-w>> :res 0<cr>
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'
@@ -232,7 +235,7 @@ if g:osName == 'Darwin'
         \ :<CR>:let @a=@" \|
         \ execute "normal! vgvy" \|
         \ let res=system("pbcopy", @") \| let @"=@a<CR>
-  nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
+  " nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
   noremap <silent> <leader>p :r !pbpaste<CR><CR>
 elseif g:osName == 'Timan'
   " this works only if vim is compiled with +clipboard or +xterm_clipboard
@@ -243,12 +246,14 @@ elseif g:osName == 'Timan'
         \ :<CR>:let @a=@" \|
         \ execute "normal! vgvy" \|
         \ let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
-  nnoremap <silent> <leader>y :.w !tmux load-buffer -<CR><CR>
-  vnoremap <silent> <leader>y
-        \ :<CR>:let @a=@" \|
-        \ execute "normal! vgvy" \|
-        \ let res=system("tmux load-buffer -", @") \| let @"=@a<CR>
 endif
+
+nnoremap <silent> <leader>y :.w !tmux load-buffer -<CR><CR>
+vnoremap <silent> <leader>y
+      \ :<CR>:let @a=@" \|
+      \ execute "normal! vgvy" \|
+      \ let res=system("tmux load-buffer -", @") \| let @"=@a<CR>
+
 " Toggle paste mode on and off
 noremap <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
 noremap Y y$
