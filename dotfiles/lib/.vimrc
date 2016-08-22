@@ -115,8 +115,6 @@ if !empty(globpath(&rtp, 'colors/molokai.vim'))
 endif
 
 " ==========================- Keymap: Save & Close -============================
-" Fast saves
-noremap <leader>w :w!<cr>
 " Close window with buffer (:clo for window only)
 noremap <leader>q :bd<CR>
 " Close all the buffers
@@ -148,7 +146,7 @@ noremap <leader>v :if g:NERDTree.GetWinNum() == winnr() \| wincmd w \| endif \|
 
 " Reloads it -- making all changes active (have to save first)
 noremap <silent> <leader>V
-    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+      \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " ==============================- Keymap: Diff -================================
 " ,do: Diff off
@@ -213,14 +211,14 @@ cnoremap rw vert res 100
 " Open buffer vertically split
 cnoremap vsb vert sb
 " window
-noremap <C-w>w :wincmd p<cr>
-noremap <C-w><C-w> :wincmd p<cr>
-noremap <C-w>p :wincmd w<cr>
-noremap <C-w>q :wincmd p \| :wincmd c<cr>
-noremap <C-w>, :execute "res"  . &lines / 3 * 2<cr>
-noremap <C-w>< :execute "res"  . &lines / 2<cr>
-noremap <C-w>. :wincmd _<cr>
-noremap <C-w>> :res 0<cr>
+noremap <silent> <C-w>w :wincmd p<cr>
+noremap <silent> <C-w><C-w> :wincmd p<cr>
+noremap <silent> <C-w>p :wincmd w<cr>
+noremap <silent> <C-w>q :wincmd p \| :wincmd c<cr>
+noremap <silent> <C-w>, :execute "res"  . &lines / 3 * 2<cr>
+noremap <silent> <C-w>< :execute "res"  . &lines / 2<cr>
+noremap <silent> <C-w>. :wincmd _<cr>
+noremap <silent> <C-w>> :res 0<cr>
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'

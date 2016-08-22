@@ -22,7 +22,7 @@ Plugin 'VundleVim/Vundle.vim'
 " ============================================================================="
 Plugin 'moll/vim-bbye'
 " Close the current buffer without closing windows
-map <leader>bd :Bdelete<cr>
+noremap <leader>bd :Bdelete<cr>
 
 " Plugin 'vim-scripts/YankRing.vim'
 " let g:yankring_replace_n_pkey = '<leader><leader>p'
@@ -188,7 +188,7 @@ let g:formatters_c = ['my_custom_clang']
 " autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
 "       \ exe "Autoformat" | endif
 " Fast save
-cmap ww exe "Autoformat" \| :w!
+cnoremap ww exe "Autoformat" \| :w!
 
 " ============================================================================="
 "                      _______  __   __       _______                          "
@@ -223,7 +223,7 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 Plugin 'majutsushi/tagbar'
-nmap <leader>gg
+nnoremap <leader>gg
       \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
 
 Plugin 'xolox/vim-misc'
@@ -253,7 +253,9 @@ Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'tpope/vim-fugitive'
 cnoremap xg_diff exe "Gdiff" \| wincmd p \| wincmd x
-cmap www exe "Autoformat" \| :Gwrite
+cnoremap www exe "Autoformat" \| :Gwrite
+nnoremap <leader>ww :exe "Autoformat"  \| exe "!git commit -v -a -m 'message'"
+  \  \| exe "!git push"<CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
