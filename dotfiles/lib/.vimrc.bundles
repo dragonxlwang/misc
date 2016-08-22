@@ -254,7 +254,7 @@ Plugin 'mattn/webapi-vim'
 Plugin 'tpope/vim-fugitive'
 cnoremap xg_diff exe "Gdiff" \| wincmd p \| wincmd x
 cnoremap www exe "Autoformat" \| :Gwrite
-nnoremap <leader>ww :exe "Autoformat"  \|
+nnoremap <leader>ww :exe "Autoformat"  \| w!
   \ silent exe "!git commit -v -a -m 'message'" \|
   \ silent exe "!git push"  \| redraw! <CR>
 
