@@ -254,8 +254,9 @@ Plugin 'mattn/webapi-vim'
 Plugin 'tpope/vim-fugitive'
 cnoremap xg_diff exe "Gdiff" \| wincmd p \| wincmd x
 cnoremap www exe "Autoformat" \| :Gwrite
-nnoremap <leader>ww :exe "Autoformat"  \| exe "!git commit -v -a -m 'message'"
-  \  \| exe "!git push"<CR>
+nnoremap <leader>ww :exe "Autoformat"  \|
+  \ silent exe "!git commit -v -a -m 'message'" \|
+  \ silent exe "!git push"  \| redraw! <CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
