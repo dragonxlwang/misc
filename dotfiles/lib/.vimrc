@@ -219,6 +219,8 @@ noremap <silent> <C-w>, :execute "res"  . &lines / 3 * 2<cr>
 noremap <silent> <C-w>< :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-w>. :wincmd _<cr>
 noremap <silent> <C-w>> :res 0<cr>
+" go to files
+noremap <C-w>vf :vertical wincmd f<CR>
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'
