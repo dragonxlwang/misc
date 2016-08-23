@@ -122,7 +122,7 @@ map <leader>ba :1,1000 bd!<cr>
 " Open last edited file
 nnoremap <Leader><Leader> <C-^>
 " Sudo write
-cnoremap w!! w !sudo tee > /dev/null %
+command! W :w !sudo tee > /dev/null %
 " Switch WD to the directory of the open buffer
 noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Change pwd to current dir
@@ -135,8 +135,8 @@ command! Wls call WriteListedFiles()
 " Sync with servers
 command! UpldFile call SyncUploadFile()
 command! UpldAll :! ~/misc/scripts/sync.sh <CR>
-cnoremap uf silent call SyncUploadFile() \| redraw!
-cnoremap ua silent exec "! ~/misc/scripts/sync.sh" \|
+command! Uf silent call SyncUploadFile() \| redraw!
+command! Ua silent exec "! ~/misc/scripts/sync.sh" \|
       \ silent exec "!echo " \| redraw!
 
 " =============================- Keymap: Vimrc -================================
@@ -207,9 +207,9 @@ noremap <C-w>- :resize -5<CR>
 noremap <C-w>+ :resize +5<CR>
 noremap <C-w>< :vertical resize -10<CR>
 noremap <C-w>> :vertical resize +10<CR>
-cnoremap rw vert res 100
+command! Rw vert res 100
 " Open buffer vertically split
-cnoremap vsb vert sb
+command! Vsb vert sb
 " window
 noremap <silent> <C-w>w :wincmd p<cr>
 noremap <silent> <C-w><C-w> :wincmd p<cr>
@@ -220,7 +220,7 @@ noremap <silent> <C-w>< :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-w>. :wincmd _<cr>
 noremap <silent> <C-w>> :res 0<cr>
 " go to files
-noremap <C-w>vf :vertical wincmd f<CR>
+noremap <C-w>v :vertical wincmd f<CR>
 
 " ==========================- Keymap: Copy & Paste -============================
 if g:osName == 'Darwin'
@@ -293,7 +293,7 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ else \| set foldmethod=manual \| endif \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
-cnoremap fp echo expand('%:p')
+command! Fp echo expand('%:p')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
