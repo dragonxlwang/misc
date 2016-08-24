@@ -122,12 +122,12 @@ map <leader>ba :1,1000 bd!<cr>
 " Open last edited file
 nnoremap <Leader><Leader> <C-^>
 " Sudo write
-command! W :w !sudo tee > /dev/null %
+command! W w !sudo tee > /dev/null %
 " Switch WD to the directory of the open buffer
 noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Change pwd to current dir
-command! CdPwd :cd %:p:h
-command! LcdPwd :lcd %:p:h
+command! CdPwd cd %:p:h
+command! LcdPwd lcd %:p:h
 " Automatically change directory
 "" autocmd BufEnter * silent! lcd %:p:h
 " Write ls to ~/.vim/buffers.list
@@ -135,9 +135,9 @@ command! Wls call WriteListedFiles()
 " Sync with servers
 command! UpldFile call SyncUploadFile()
 command! UpldAll :! ~/misc/scripts/sync.sh <CR>
-command! Uf silent call SyncUploadFile() \| redraw!
-command! Ua silent exec "! ~/misc/scripts/sync.sh" \|
-      \ silent exec "!echo " \| redraw!
+command! Uf silent call SyncUploadFile() | redraw!
+command! Ua silent exec "! ~/misc/scripts/sync.sh" |
+      \ silent exec "!echo " | redraw!
 
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc

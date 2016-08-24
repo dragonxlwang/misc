@@ -252,7 +252,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'tpope/vim-fugitive'
-command! XGdiff :exe "Gdiff" \| wincmd p \| wincmd x
+command! XGdiff exe "Gdiff" | wincmd p | wincmd x
 nnoremap <leader>ww :exe "Autoformat" \| :Gwrite <CR>
 nnoremap <leader>www :exe "Autoformat" \| w! \|
       \ silent exe "!git commit -v -a -m 'message'" \|
