@@ -156,6 +156,7 @@ function lsds {
 alias dls='find . -maxdepth 1 -type d'
 # ls
 alias ll="ls -alh"
+alias llt="ll -t"
 function lll { ll $@ --color=always | less }
 alias lllt="lll -t"
 function lls { ll | grep $* }

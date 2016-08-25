@@ -209,7 +209,7 @@ noremap <C-w>< :vertical resize -10<CR>
 noremap <C-w>> :vertical resize +10<CR>
 command! Rw vert res 100
 " Open buffer vertically split
-command! Vsb vert sb
+command! -nargs=1 Vsb vert sb <args>
 " window
 noremap <silent> <C-w>w :wincmd p<cr>
 noremap <silent> <C-w><C-w> :wincmd p<cr>
