@@ -310,7 +310,8 @@ function vim_buffers {
 }
 alias vimb='vim_buffers'
 ##---------------------------------== tex ==----------------------------------##
-alias tm='latexmk -pvc -pdf'
+alias tm='latexmk -pdf'
+alias tp='latexmk -pvc -pdf'
 alias tc='latexmk -c'
 
 ## ========================================================================== ##
