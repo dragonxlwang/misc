@@ -22,6 +22,7 @@ brew cask install qlprettypatch
 brew cask install quicklook-csv
 brew cask install betterzipql
 brew cask install webpquicklook
+brew cask install skim
 
 brew cask install font-inconsolata
 brew cask install font-source-code-pro
@@ -36,3 +37,5 @@ brew cask install font-roboto
 ## brew cask install brackets nvalt libreoffice
 ## brew cask install sourcetree slack gisto
 ## brew cask install alfred Skitch
+
+defaults write -app Skim SKAutoReloadFileUpdate -boolean true

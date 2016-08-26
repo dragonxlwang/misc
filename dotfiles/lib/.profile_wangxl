@@ -310,15 +310,9 @@ function vim_buffers {
 }
 alias vimb='vim_buffers'
 ##---------------------------------== tex ==----------------------------------##
-function texmake {
-  if [[ $# -eq 0 && -a main.tex ]]; then
-    latexmk -pvc -pdf main.tex
-  else
-    latexmk -pvc -pdf $@
-  fi
-}
-alias tm='texmake'
+alias tm='latexmk -pvc -pdf'
 alias tc='latexmk -c'
+
 ## ========================================================================== ##
 #       _______.  ______ .______      __  .______   .___________.    _______.  #
 #      /       | /      ||   _  \    |  | |   _  \  |           |   /       |  #

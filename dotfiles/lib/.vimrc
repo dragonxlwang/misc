@@ -295,6 +295,10 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
 " Get full path of file
 command! Fp echo expand('%:p')
 
+" ==================================- tex -=====================================
+command! Texmake exe "! ~/misc/scripts/tex_make.sh make" | redraw!
+command! Texclean exe "! ~/misc/scripts/tex_make.sh clean" | redraw!
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
