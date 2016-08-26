@@ -63,6 +63,9 @@ set ignorecase                  " Ignore case when searching...
 set smartcase                   " ...unless we type a capital
 set showmatch                   " Set show matching parenthesis
 set magic                       " For regular expressions turn magic on
+" ==================================- Tex -=====================================
+let g:tex_flavor = "latex"
+autocmd FileType tex setlocal spell
 " ==================================- Misc -====================================
 syntax on                       " Turn on syntax highlighting
 let mapleader=","               " Change leader to a comma
