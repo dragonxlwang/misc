@@ -122,7 +122,7 @@ map <leader>ba :1,1000 bd!<cr>
 " Open last edited file
 nnoremap <Leader><Leader> <C-^>
 " Sudo write
-command! W w !sudo tee > /dev/null %
+command! WW w !sudo tee > /dev/null %
 " Switch WD to the directory of the open buffer
 noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Change pwd to current dir
