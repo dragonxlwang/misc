@@ -134,7 +134,6 @@ function unnice_all {
    unnice ${x}
  done
 }
-
 ##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
 ## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
@@ -310,7 +309,16 @@ function vim_buffers {
   vim ${filelist[@]}
 }
 alias vimb='vim_buffers'
-
+##---------------------------------== tex ==----------------------------------##
+function texmake {
+  if [[ $# -eq 0 && -a main.tex ]]; then
+    latexmk -pvc -pdf main.tex
+  else
+    latexmk -pvc -pdf $@
+  fi
+}
+alias tm='texmake'
+alias tc='latexmk -c'
 ## ========================================================================== ##
 #       _______.  ______ .______      __  .______   .___________.    _______.  #
 #      /       | /      ||   _  \    |  | |   _  \  |           |   /       |  #
