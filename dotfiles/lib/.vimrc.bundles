@@ -258,6 +258,30 @@ nnoremap <leader>www :exe "Autoformat" \| w! \|
       \ silent exe "!git commit -v -a -m 'message'" \|
       \ silent exe "!git push"  \| redraw! <CR>
 
+
+" ============================================================================ "
+"                __          ___   .___________. __________   ___              "
+"               |  |        /   \  |           ||   ____\  \ /  /              "
+"               |  |       /  ^  \ `---|  |----`|  |__   \  V  /               "
+"               |  |      /  /_\  \    |  |     |   __|   >   <                "
+"               |  `----./  _____  \   |  |     |  |____ /  .  \               "
+"               |_______/__/     \__\  |__|     |_______/__/ \__\              "
+" ============================================================================ "
+Plugin 'lervag/vimtex'
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+      \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+      \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+      \ 're!\\hyperref\[[^]]*',
+      \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+      \ 're!\\(include(only)?|input){[^}]*',
+      \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+      \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+      \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+      \ ]
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
