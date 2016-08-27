@@ -251,11 +251,18 @@ elseif g:osName == 'Timan'
         \ let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
 endif
 
-nnoremap <silent> <leader>y :.w !tmux load-buffer -<CR><CR>
+" nnoremap <silent> <leader>y :.w !tmux load-buffer -<CR><CR>
+" vnoremap <silent> <leader>y
+"       \ :<CR>:let @a=@" \|
+"       \ execute "normal! vgvy" \|
+"       \ let res=system("tmux load-buffer -", @") \| let @"=@a<CR>
+nnoremap <silent> <leader>y
+      \ :.w !~/misc/scripts/vim_tmux_load_buffer.sh -<CR><CR>
 vnoremap <silent> <leader>y
       \ :<CR>:let @a=@" \|
       \ execute "normal! vgvy" \|
-      \ let res=system("tmux load-buffer -", @") \| let @"=@a<CR>
+      \ let res=system("~/misc/scripts/vim_tmux_load_buffer.sh -", @") \|
+      \ let @"=@a<CR>
 nnoremap <leader>p "0p
 
 " Toggle paste mode on and off
