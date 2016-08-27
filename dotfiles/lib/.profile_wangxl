@@ -310,9 +310,9 @@ function vim_buffers {
 }
 alias vimb='vim_buffers'
 ##---------------------------------== tex ==----------------------------------##
-alias tm='latexmk -pdf'
-alias tp='latexmk -pvc -pdf'
-alias tc='latexmk -c'
+alias tm="${HOME}/misc/scripts/tex_make.sh make"
+alias tp="${HOME}/misc/scripts/tex_make.sh preview"
+alias tc="${HOME}/misc/scripts/tex_make.sh clean"
 
 ## ========================================================================== ##
 #       _______.  ______ .______      __  .______   .___________.    _______.  #
