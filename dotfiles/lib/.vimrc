@@ -66,6 +66,7 @@ set magic                       " For regular expressions turn magic on
 " ==================================- Tex -=====================================
 let g:tex_flavor = "latex"
 autocmd FileType tex setlocal spell
+let g:tex_conceal = ""          " no translation math symbols
 " ==================================- Misc -====================================
 syntax on                       " Turn on syntax highlighting
 let mapleader=","               " Change leader to a comma
