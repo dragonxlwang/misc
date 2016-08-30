@@ -303,6 +303,7 @@ function! UpdateSkim(status)
     call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
   endif
 endfunction
+nnoremap <leader>tv :VimtexView<CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
