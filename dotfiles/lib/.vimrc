@@ -107,6 +107,17 @@ autocmd BufReadPost *
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
+" " Highlight the current line only in current window
+" set cul
+" hi clear CursorLine
+" augroup CursorLineClear
+"     autocmd! ColorScheme * hi clear CursorLine
+"   augroup END
+" augroup CurrentWindowBackgroundHighlight
+"     autocmd!
+"     autocmd WinEnter * set cul
+"     autocmd WinLeave * set nocul
+" augroup END
 
 " =============================- Vundle Config -================================
 if !empty(glob('~/.vim/bundle/Vundle.vim'))
