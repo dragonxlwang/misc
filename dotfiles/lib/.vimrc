@@ -210,6 +210,8 @@ noremap <leader>tm :tabmove
 " Cycle between buffers
 noremap <leader>k :bnext<cr>
 noremap <leader>j :bprev<cr>
+noremap <leader>sk :sp \| bnext <cr>
+noremap <leader>sj :sp \| bprev <cr>
 " Cycle between tabs
 noremap <C-w><C-k> :tabn<cr>
 noremap <C-w><C-j> :tabp<cr>
@@ -290,7 +292,7 @@ nnoremap zh :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " ==============================- Keymap: Misc -================================
 " Text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
 nnoremap <leader>ttw gggwG``
-nnoremap <leader>tw gqip
+nnoremap <leader>tw gwip
 nnoremap <leader>nw :set nowrap<CR>
 " Git checkout current file
 nnoremap <Leader>o :!git checkout %<CR><CR>
