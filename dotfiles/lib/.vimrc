@@ -293,6 +293,7 @@ nnoremap zh :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " Text wrap: Hard wrap paragraph text (similar to TextMate Ctrl+Q)
 nnoremap <leader>ttw gggwG``
 nnoremap <leader>tw gwip
+vnoremap <leader>tw gw
 nnoremap <leader>nw :set nowrap<CR>
 " Git checkout current file
 nnoremap <Leader>o :!git checkout %<CR><CR>
