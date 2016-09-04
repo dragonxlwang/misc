@@ -65,7 +65,10 @@ set showmatch                   " Set show matching parenthesis
 set magic                       " For regular expressions turn magic on
 " ==================================- Tex -=====================================
 let g:tex_flavor = "latex"
-autocmd FileType tex setlocal spell
+autogroup TexAutoGroup
+  autocmd!
+  autocmd FileType tex setlocal spell
+autogroup END
 let g:tex_conceal = ""          " no translation math symbols
 " ==================================- Misc -====================================
 syntax on                       " Turn on syntax highlighting
@@ -99,10 +102,13 @@ endif
 " (happens when dropping a file on gvim).
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
-autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
+autogroup JumpLastCursorPosAutoGroup
+  autocmd!
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+autogroup END
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <c-u> <c-g>u<c-u>

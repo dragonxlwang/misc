@@ -110,7 +110,10 @@ Plugin 'kchmck/vim-coffee-script'
 
 Plugin 'ntpeters/vim-better-whitespace'
 " turn on by default for all filetypes
-autocmd BufWritePre * StripWhitespace
+autogroup StripWhiteSpaceAutoGroup
+  autocmd!
+  autocmd BufWritePre * StripWhitespace
+autogroup END
 
 if g:osName == 'Darwin' || g:osName == 'Timan'
   " export LC_ALL=en_US.UTF-8
@@ -199,11 +202,14 @@ nnoremap <leader>w :exe "Autoformat" \| :w!<CR>
 "                     |__|     |__| |_______||_______|                         "
 " ============================================================================="
 Plugin 'scrooloose/nerdtree'
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" \ | exe "normal! \<C-w>\<C-w>" | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
-      \ && b:NERDTree.isTabTree()) | q | endif
+autogroup NERDTreeAutoGroup
+  autocmd!
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  " \ | exe "normal! \<C-w>\<C-w>" | endif
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
+        \ && b:NERDTree.isTabTree()) | q | endif
+autogroup END
 let g:NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.pyc$', '\.swp$']
 nnoremap <leader>nn :NERDTreeToggle<CR>
