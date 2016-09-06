@@ -172,10 +172,12 @@ noremap <silent> <leader>V
 " ==============================- Keymap: Diff -================================
 " ,do: Diff off
 nnoremap <Leader>do :diffoff<CR><C-w><C-w>:diffoff<CR>
-" ,dd: Diff windows
-nnoremap <leader>dd :windo diffthis<CR>
+" ,da: Diff all windows
+nnoremap <leader>da :windo diffthis<CR>
 " ,dt: Diff two windows
 nnoremap <Leader>dt :diffthis<CR><C-w><C-w>:diffthis<CR>
+" ,dd: diffthis
+nnoremap <Leader>dd :diffthis<CR>
 " ,ds: Diff split another file
 nnoremap <Leader>ds :<C-u>diffsplit<Space>
 " ,du: Diff update
