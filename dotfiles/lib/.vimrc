@@ -221,9 +221,9 @@ noremap <leader>j :bprev<cr>
 noremap <leader>sk :sp \| bnext <cr>
 noremap <leader>sj :sp \| bprev <cr>
 " Cycle between tabs
-noremap <C-w><C-k> :tabn<cr>
-noremap <C-w><C-j> :tabp<cr>
-noremap <C-w><c-l> :tabl<cr>
+" noremap <C-w><C-k> :tabn<cr>
+" noremap <C-w><C-j> :tabp<cr>
+" noremap <C-w><c-l> :tabl<cr>
 " Resize window to minimal
 noremap <C-w>0 :res 0<CR>
 noremap <C-w>) :vertical res 0<CR>
@@ -244,6 +244,8 @@ noremap <silent> <C-w>, :execute "res"  . &lines / 3 * 2<cr>
 noremap <silent> <C-w>< :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-w>. :wincmd _<cr>
 noremap <silent> <C-w>> :res 0<cr>
+noremap <silent> <C-w><C-j> :100 wincmd j<cr>
+noremap <silent> <C-w><C-k> :100 wincmd k<cr>
 " go to files
 noremap <C-w>v :vertical wincmd f<CR>
 

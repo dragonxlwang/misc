@@ -5,7 +5,7 @@
 if [[ ! -a .latexmkrc ]]; then
   echo "\$pdf_previewer = \"open -a /Applications/Skim.app\";" >> .latexmkrc
   echo "@default_files = ('main.tex');" >> .latexmkrc
-  echo "\$pdflatex = 'pdflatex -pdf -verbose -file-line-error -synctex=1 -interaction=nonstopmode %O %S';" >> .latexmkrc
+  echo "\$pdflatex = 'pdflatex -file-line-error -synctex=1 -interaction=nonstopmode %O %S';" >> .latexmkrc
   echo "\$clean_ext = \"paux lox pdfsync out synctex.gz\";" >> .latexmkrc
 fi
 
