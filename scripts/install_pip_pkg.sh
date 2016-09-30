@@ -12,3 +12,4 @@ pip install -U autopep8
 pip install -U yapf
 pip install -U jedi
 pip install -U psutil
+pip install -U pysqlite
