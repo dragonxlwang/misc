@@ -122,3 +122,5 @@ export LANG=en_US.UTF-8
 
 source ${HOME}/ls_colors.zsh
 source ${HOME}/.profile_wangxl
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

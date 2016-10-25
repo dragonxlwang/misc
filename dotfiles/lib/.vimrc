@@ -230,8 +230,8 @@ noremap <C-w>) :vertical res 0<CR>
 " Resize stepsize 5 horizontally and 10 vertically
 noremap <C-w>- :resize -5<CR>
 noremap <C-w>+ :resize +5<CR>
-noremap <C-w>< :vertical resize -10<CR>
-noremap <C-w>> :vertical resize +10<CR>
+noremap <C-w>[ :vertical resize -10<CR>
+noremap <C-w>] :vertical resize +10<CR>
 command! Rw vert res 100
 " Open buffer vertically split
 command! -nargs=1 Vsb vert sb <args>
@@ -244,6 +244,7 @@ noremap <silent> <C-w>, :execute "res"  . &lines / 3 * 2<cr>
 noremap <silent> <C-w>< :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-w>. :wincmd _<cr>
 noremap <silent> <C-w>> :res 0<cr>
+noremap <silent> <C-w>/ :execute "vertical res"  . &columns / 2<cr>
 noremap <silent> <C-w><C-j> :100 wincmd j<cr>
 noremap <silent> <C-w><C-k> :100 wincmd k<cr>
 " go to files
