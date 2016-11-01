@@ -287,6 +287,9 @@ let g:ycm_semantic_triggers.tex = [
       \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
       \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
       \ ]
+let g:ycm_semantic_triggers.c = [
+  \ 're!\w\w\w\w+',
+  \ ]
 let g:vimtex_view_general_viewer
       \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 " let g:vimtex_view_general_options = '-r @line @pdf @tex'
