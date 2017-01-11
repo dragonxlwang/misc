@@ -30,15 +30,39 @@
     formatCPlusPlusOnSave: false
     style: "Google"
   core:
+    automaticallyUpdate: false
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".hgrc"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "TARGETS"
+        "cconf"
+        "cinc"
+        "ctw"
+        "mcconf"
+        "tw"
+        "thrift-cvalidator"
+        "BUCK"
+      ]
     disabledPackages: [
       "git-control"
       "git-diff-details"
       "fonts"
       "you-complete-me"
+      "fuzzy-finder"
+      "metrics"
+      "tree-view"
     ]
     packagesWithKeymapsDisabled: [
       "goto"
     ]
+    telemetryConsent: "no"
     themes: [
       "one-dark-ui"
       "dragonxlwang-monokai"
@@ -133,6 +157,34 @@
       "split-diffDecorationsZIndex": 0
   "minimap-selection":
     highlightCursorsLines: true
+  nuclide:
+    installRecommendedPackages: true
+    "nuclide-arcanist":
+      blacklistedLinters: [
+        "FBFLOW"
+        "FBRELAYFLOW"
+        "FBHACK"
+        "PEP8"
+        "FLAKE8"
+        "FlowLint"
+      ]
+    "nuclide-remote-projects":
+      connectionProfiles: [
+        {
+          deletable: true
+          displayTitle: "www"
+          params:
+            authMethod: "PRIVATE_KEY"
+            cwd: "/home/xlwang/www"
+            pathToPrivateKey: "/Users/xlwang/.ssh/fb_id_rsa"
+            remoteServerCommand: ""
+            server: "our.xlwang.sb.facebook.com"
+            sshPort: "22"
+            username: "xlwang"
+          saveable: true
+        }
+      ]
+      shutdownServerAfterDisconnection: false
   "one-dark-ui":
     layoutMode: "Compact"
   "python-autopep8":
@@ -145,6 +197,9 @@
     ]
   tabs:
     enableVcsColoring: true
+  "tool-bar":
+    iconSize: "16px"
+    position: "Left"
   "vim-mode":
     useSmartcaseForSearch: true
     wrapLeftRightMotion: true

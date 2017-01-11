@@ -14,3 +14,6 @@ Host mac_mini
     User xiaolong
     HostName 192.17.236.189
     Port 22
+Host dev
+    HostName devvm28514.prn1.facebook.com
+
