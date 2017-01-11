@@ -35,6 +35,7 @@
       "source.ini": [
         ".buckconfig"
         ".hgrc"
+        ".flowconfig"
       ]
       "source.json": [
         ".arcconfig"
@@ -168,6 +169,8 @@
         "FLAKE8"
         "FlowLint"
       ]
+    "nuclide-bookshelf":
+      changeActiveBookmarkBehavior: "Always Ignore"
     "nuclide-remote-projects":
       connectionProfiles: [
         {
