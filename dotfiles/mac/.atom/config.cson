@@ -196,7 +196,7 @@
       "text.tex.latex"
     ]
   tabs:
-    enableVcsColoring: true
+    enableVcsColoring: false
   "tool-bar":
     iconSize: "16px"
     position: "Left"
