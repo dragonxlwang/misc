@@ -53,15 +53,18 @@ ZSH_THEME="ys"
 plugins=(git colored-man-pages extract python web-search \
   zsh-completions zsh-autosuggestions)
 
+
 # User configuration
 if [[ $(uname) == 'Darwin' ]]; then
-  PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
+  PATH="/opt/facebook/bin:"
+  PATH+="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
   PATH+="/opt/X11/bin:/Library/TeX/texbin"
   export PATH
   export MANPATH="/usr/local/man:$MANPATH"
 else
   ## initial path
-  PATH="/software/matlab-R2011a-x86_64/bin:"
+  PATH="/opt/facebook/bin:"
+  PATH+="/software/matlab-R2011a-x86_64/bin:"
   PATH+="/software/sun-jdk-1.6.0-latest-el6-x86_64/bin:"
   PATH+="/srv/adm/bin:/usr/lib64/qt-3.3/bin:/usr/NX/bin:"
   PATH+="/usr/bin:/bin:/usr/sbin:/sbin:$HOME/resource/vowpal_wabbit"
@@ -124,6 +127,11 @@ source ${HOME}/ls_colors.zsh
 source ${HOME}/.profile_wangxl
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+PATH="${PATH}:/opt/homebrew/bin"
+PATH="${PATH}:/opt/facebook/nuclide/latest/nuclide/pkg/fb-biggrep-cli/bin"
+PATH="${PATH}:/opt/facebook/hg/bin"
+PATH="${PATH}:/usr/local/munki"
 
 export FBANDROID_DIR=/Users/xlwang/fbsource/fbandroid
 alias quicklog_update=/Users/xlwang/fbsource/fbandroid/scripts/quicklog/quicklog_update.sh
