@@ -1,6 +1,6 @@
 [user]
-	email = dragonxlwang@gmail.com
-	name = Xiaolong Wang
+	email = xlwang@fb.com
+	name = xlwang
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
