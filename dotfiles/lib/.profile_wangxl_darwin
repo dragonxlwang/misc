@@ -303,7 +303,7 @@ function _list_task {
     cyanecho "  (4/t) :   tmux new -AD -s $(hostname -s)-main"
     cyanecho "  (5/n) :   zsh"
     cyanecho "  (6)   :   ssh mac_mini"
-    cyanecho "  (7)   :   ssh dev"
+    cyanecho "  (7)   :   mosh dev"
     whiteecho $(printf '=%.0s' {1..50})
     yellowecho -n "Select One Option From (1) - (6): "
     read option
@@ -340,8 +340,8 @@ function _list_task {
     redecho "  (6)	:   ssh mac_mini"
     ssh mac_mini
   elif [[ $option -eq 7 ]]; then
-    redecho "  (7)	:   ssh dev"
-    ssh dev
+    redecho "  (7)	:   mosh dev"
+    mosh dev
   fi
 }
 
