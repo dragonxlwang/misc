@@ -15,5 +15,8 @@ Host mac_mini
     HostName 192.17.236.189
     Port 22
 Host dev
-    HostName devvm28514.prn1.facebook.com
+    User xlwang
+    HostName dev15039.prn1.facebook.com
+    # HostName devvm28514.prn1.facebook.com
+
 

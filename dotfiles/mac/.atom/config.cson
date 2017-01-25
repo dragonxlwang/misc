@@ -50,6 +50,7 @@
         "tw"
         "thrift-cvalidator"
         "BUCK"
+        "ctest"
       ]
     disabledPackages: [
       "git-control"
