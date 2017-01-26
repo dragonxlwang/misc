@@ -305,7 +305,7 @@ function _list_task {
     cyanecho "  (6)   :   ssh mac_mini"
     cyanecho "  (7)   :   mosh dev"
     whiteecho $(printf '=%.0s' {1..50})
-    yellowecho -n "Select One Option From (1) - (6): "
+    yellowecho -n "Select One Option From (1) - (7): "
     read option
     if [[ $option == 1* ]]; then option=1
     elif [[ $option == 2* ]]; then option=2
