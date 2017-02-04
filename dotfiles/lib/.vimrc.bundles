@@ -94,6 +94,7 @@ Plugin 'dragonxlwang/molokai'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 Plugin 'jeetsukumaran/vim-buffergator'
+nnoremap <leader>bb :BuffergatorToggle<CR>
 " Plugin 'vim-scripts/ScrollColors'
 
 " ============================================================================="
