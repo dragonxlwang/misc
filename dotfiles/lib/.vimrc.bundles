@@ -76,14 +76,11 @@ else
   let g:airline_right_alt_sep=''
 endif
 
-if g:osName == 'Darwin' || g:osName == 'Timan'
-  Plugin 'Yggdroot/indentLine'
-  let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
-else
-  Plugin 'nathanaelkane/vim-indent-guides'
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_guide_size = 1
-endif
+Plugin 'Yggdroot/indentLine'
+let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
+" Plugin 'nathanaelkane/vim-indent-guides'
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_guide_size = 1
 
 " Plugin 'severin-lemaignan/vim-minimap'
 " let g:minimap_highlight='String'
@@ -95,6 +92,8 @@ endif
 " Plugin 'flazz/vim-colorschemes'
 Plugin 'dragonxlwang/molokai'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
+Plugin 'jeetsukumaran/vim-buffergator'
 " Plugin 'vim-scripts/ScrollColors'
 
 " ============================================================================="
@@ -106,6 +105,10 @@ Plugin 'airblade/vim-gitgutter'
 "           |_______||__| |__| \__|     |__|    |_______|| _| `._____|         "
 " ============================================================================="
 Plugin 'nvie/vim-flake8'
+let g:flake8_show_in_file=1
+let g:flake8_show_in_gutter=1
+autocmd FileType python map <buffer> <leader>jj :call Flake8()<CR>
+
 Plugin 'kchmck/vim-coffee-script'
 
 Plugin 'ntpeters/vim-better-whitespace'
@@ -115,67 +118,80 @@ augroup StripWhiteSpaceAutoGroup
   autocmd BufWritePre * StripWhitespace
 augroup END
 
-if g:osName == 'Darwin' || g:osName == 'Timan'
-  " export LC_ALL=en_US.UTF-8
-  " export LANG=en_US.UTF-8
-  " cd ~/.vim/bundle/YouCompleteMe
-  " ./install.py --clang-completer
-  " cd ~/.vim/bundle/color_coded
-  " mkdir build && cd build
-  " cmake ..
-  " make && make install # Compiling with GCC is preferred, ironically
-  " # Clang works on OS X, but has mixed success on Linux and the BSDs
-  " # Cleanup afterward; frees several hundred megabytes
-  " make clean && make clean_clang
-  Plugin 'Valloric/YouCompleteMe' " <leader>d: diagnostic msg on current line
-  " Plugin 'oblitum/YouCompleteMe'
-  Plugin 'Valloric/ListToggle'
-  " Plugin 'jeaye/color_coded'        " not working right now
-  Plugin 'rdnetto/YCM-Generator'
-  " Track the engine.
-  Plugin 'SirVer/ultisnips'
-  " Snippets are separated from the engine. Add this if you want them:
-  Plugin 'honza/vim-snippets'
-  let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
-  let g:ycm_server_python_interpreter='/usr/local/bin/python'
-  let g:ycm_always_populate_location_list = 1
-  let g:ycm_complete_in_comments = 1
-  let g:ycm_goto_buffer_command = 'horizontal-split'
-  let g:lt_location_list_toggle_map = '<leader>ll' " toggle location list
-  let g:lt_quickfix_list_toggle_map = '<leader>qf' " toggle quickfix list
-  noremap <Leader>jd :YcmCompleter GoTo<CR>
-  noremap <leader>jt :YcmCompleter GetType<CR>
-  noremap <leader>jm :YcmCompleter GetDoc<CR>
-  noremap <leader>jf :YcmCompleter GoToReferences<CR>
-  noremap <leader>jj :YcmForceCompileAndDiagnostics<CR> :YcmDiags<CR>
-  noremap <Leader>ff :YcmCompleter FixIt<CR>
-  let g:ycm_filetype_blacklist = {
-        \ 'tagbar' : 1,
-        \ 'qf' : 1,
-        \ 'notes' : 1,
-        \ 'unite' : 1,
-        \ 'text' : 1,
-        \ 'vimwiki' : 1,
-        \ 'pandoc' : 1,
-        \ 'infolog' : 1,
-        \ 'mail' : 1
-        \} " \ 'markdown' : 1,
-  " Trigger configuration. Do not use <tab> if you use Valloric/YouCompleteMe.
-  let g:UltiSnipsExpandTrigger="<c-j>"
-  let g:UltiSnipsJumpForwardTrigger="<c-j>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-  " If you want :UltiSnipsEdit to split your window.
-  let g:UltiSnipsEditSplit="vertical"
-  " =============================================
-  " Plugin 'scrooloose/syntastic'
-  " set statusline+=%#warningmsg#
-  " set statusline+=%{SyntasticStatuslineFlag()}
-  " set statusline+=%*
-  " let g:syntastic_always_populate_loc_list = 1
-  " let g:syntastic_auto_loc_list = 1
-  " let g:syntastic_check_on_open = 1
-  " let g:syntastic_check_on_wq = 0
-endif
+" export LC_ALL=en_US.UTF-8
+" export LANG=en_US.UTF-8
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.py --clang-completer
+" cd ~/.vim/bundle/color_coded
+" mkdir build && cd build
+" cmake ..
+" make && make install # Compiling with GCC is preferred, ironically
+" # Clang works on OS X, but has mixed success on Linux and the BSDs
+" # Cleanup afterward; frees several hundred megabytes
+" make clean && make clean_clang
+Plugin 'Valloric/YouCompleteMe' " <leader>d: diagnostic msg on current line
+
+" Plugin 'YouCompleteMe', {'pinned': 1}
+" Plugin 'oblitum/YouCompleteMe'
+Plugin 'Valloric/ListToggle'
+" Plugin 'jeaye/color_coded'        " not working right now
+Plugin 'rdnetto/YCM-Generator'
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
+let g:ycm_server_python_interpreter='/usr/local/bin/python'
+
+" let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
+" let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py"
+" let g:ycm_confirm_extra_conf=0
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_min_num_identifier_candidate_chars = 4
+" let g:ycm_enable_diagnostic_signs = 0
+" let g:ycm_error_symbol = 'x'
+" let g:ycm_warning_symbol = '!'
+" let g:ycm_server_keep_logfiles = 1
+" let g:ycm_server_log_level = 'debug'
+
+let g:ycm_always_populate_location_list = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_goto_buffer_command = 'horizontal-split'
+let g:lt_location_list_toggle_map = '<leader>ll' " toggle location list
+let g:lt_quickfix_list_toggle_map = '<leader>qf' " toggle quickfix list
+noremap <Leader>jd :YcmCompleter GoTo<CR>
+noremap <leader>jt :YcmCompleter GetType<CR>
+noremap <leader>jm :YcmCompleter GetDoc<CR>
+noremap <leader>jf :YcmCompleter GoToReferences<CR>
+noremap <leader>jj :YcmForceCompileAndDiagnostics<CR> :YcmDiags<CR>
+noremap <Leader>ff :YcmCompleter FixIt<CR>
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1
+      \} " \ 'markdown' : 1,
+" Trigger configuration. Do not use <tab> if you use Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" =============================================
+" Plugin 'scrooloose/syntastic'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
 Plugin 'justinmk/vim-syntax-extra'  " temporal solution
 
 Plugin 'Chiel92/vim-autoformat'
@@ -187,6 +203,9 @@ else
 endif
 let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
+" let g:formatter_yapf_style = 'facebook'
+" let g:formatters_python = ['yapf']
+let g:formatdef_yapf = "'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:79}\""
 " let auto_format_type_list = ['c', 'cpp', 'python']
 " autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
 "       \ exe "Autoformat" | endif
