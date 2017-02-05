@@ -19,7 +19,7 @@ if is_osx; then
   done
 elif is_linux; then
   # Get the names of all attached NICs.
-  if [[ -z "$(which ip)" ]]; then
+  if [[ -n "$(which ip)" ]]; then
     all_nics="$(ip addr show | cut -d ' ' -f2 | tr -d :)"
     all_nics=(${all_nics[@]//lo/})	 # Remove lo interface.
     for nic in "${(f)all_nics[@]}"; do
