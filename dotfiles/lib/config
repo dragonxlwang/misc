@@ -18,5 +18,10 @@ Host dev
     User xlwang
     HostName dev15039.prn1.facebook.com
     # HostName devvm28514.prn1.facebook.com
+Host *.facebook.com dev dev*
+  IdentityFile ~/.ssh/fb_id_rsa
+  IdentityFile ~/.ssh/id_ecdsa
+  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_dsa
 
 
