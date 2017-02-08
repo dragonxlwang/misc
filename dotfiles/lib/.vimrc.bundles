@@ -206,7 +206,8 @@ let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
 " let g:formatter_yapf_style = 'facebook'
 " let g:formatters_python = ['yapf']
-let g:formatdef_yapf = "'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:79}\""
+let g:formatdef_yapf = "'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:79}\"'"
+let g:formatters_python=['yapf','autopep8']
 " let auto_format_type_list = ['c', 'cpp', 'python']
 " autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
 "       \ exe "Autoformat" | endif
