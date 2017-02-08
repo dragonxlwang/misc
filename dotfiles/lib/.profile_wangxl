@@ -40,6 +40,10 @@ function colorize_column {
   local s="$(sed "s/[^[:blank:]]\{1,\}/\\\\033[${1}&\\\\033[0m/${2}")"
   echo -e $s
 }
+function yapf {
+  $(which yapf) \
+    --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $@
+}
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then
