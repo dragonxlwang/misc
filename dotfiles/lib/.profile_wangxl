@@ -42,7 +42,7 @@ function colorize_column {
 }
 function yapf {
   $(whence -p yapf) \
-    --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $1
+    --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $@
 }
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
