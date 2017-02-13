@@ -1,0 +1,33 @@
+#############################  FACEBOOK SETTINGS  #############################
+# xlwang.sb
+Host dev
+    User xlwang
+    HostName dev11919.prn2.facebook.com
+Host dev2
+    User xlwang
+    HostName dev15039.prn1.facebook.com
+Host devvm
+    User xlwang
+    HostName devvm28514.prn1.facebook.com
+
+Host *.facebook.com dev dev*
+    IdentityFile ~/.ssh/fb_id_rsa
+    IdentityFile ~/.ssh/id_ecdsa
+    IdentityFile ~/.ssh/id_rsa
+    IdentityFile ~/.ssh/id_dsa
+
+
+#############################  ILLINOIS SETTINGS  #############################
+Host timan101
+    User xwang95
+    HostName timan101.cs.illinois.edu
+    Port 22
+Host timan102
+    User xwang95
+    HostName timan102.cs.illinois.edu
+    Port 22
+Host timan103
+    User xwang95
+    HostName timan103.cs.illinois.edu
+    Port 22
+
