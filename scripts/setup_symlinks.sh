@@ -91,7 +91,7 @@ if [[ ${#files[@]} -gt 0 ]]; then
     file=${files[j]}
     path=${files[k]}
     scr="$root_dir/${1}/${file}"
-    des="${path}/${file}"
+    des="${path}"
     mk_link $scr $des
   done
 fi
