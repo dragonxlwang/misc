@@ -24,6 +24,10 @@ mk_link() {
   src=$1
   des=$2
   cnt=$((cnt + 1))
+  if [[ ! -e ${scr} ]]; then
+    echo -e $ANSI_COLOR_RED "[$cnt]: ${scr} does not exist!" $ANSI_COLOR_RESET
+    exit 1
+  fi
   if [[ -e $des || -L $des ]];
   then
     echo -n "${des} already existed. Do you want to overwrite? [Y/N] "
@@ -108,7 +112,8 @@ files=(                                                           \
   "$root_dir/lib/.bash_profile"     "${HOME}/.bash_profile"       \
   "$root_dir/lib/.tmux.conf"        "${HOME}/.tmux.conf"          \
   "$root_dir/lib/.zshrc"            "${HOME}/.zshrc"              \
-  "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit")
+  "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit"            \
+  "${HOME}/fbsource/fbcode"         "${HOME}/fbcode")
 
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
 do

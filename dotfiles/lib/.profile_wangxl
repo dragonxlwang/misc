@@ -288,10 +288,10 @@ alias -g RNUL="> /dev/null 2>&1"
 function vim_buffers {
   found=0
   curpwd=$(pwd)
-  while [[ ! -a $(pwd)/buffers.list && $(pwd) != $(dirname $(pwd)) ]]; do
+  while [[ ! -e $(pwd)/buffers.list && $(pwd) != $(dirname $(pwd)) ]]; do
     cd $(dirname $(pwd))
   done
-  if [[ -a $(pwd)/buffers.list ]]; then
+  if [[ -e $(pwd)/buffers.list ]]; then
     exe_path=$(pwd)/buffers.list
   else
     exe_path="${HOME}/.vim/buffers.list"

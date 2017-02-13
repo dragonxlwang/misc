@@ -98,7 +98,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 ## set by linuxbrew
 INCLUDE_LINUXBREW_PATHS=0
-if [[ INCLUDE_LINUXBREW_PATHS -eq 1 && -a "${HOME}/.linuxbrew" ]]; then
+if [[ INCLUDE_LINUXBREW_PATHS -eq 1 && -e "${HOME}/.linuxbrew" ]]; then
   export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
   export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
   export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
@@ -145,7 +145,7 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ${HOME}/ls_colors.zsh
-if [[ -a "/usr/facebook/ops/rc/master.zshrc" ]]; then
+if [[ -e "/usr/facebook/ops/rc/master.zshrc" ]]; then
   # first source fb zshrc to avoid my own setting being overwritten
   source /usr/facebook/ops/rc/master.zshrc
 fi
