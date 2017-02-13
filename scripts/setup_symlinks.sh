@@ -89,7 +89,6 @@ files=(                                                                   \
   ".bashrc"                         "${HOME}/.bashrc"                     \
   ".ycm_extra_conf.py"              "${HOME}/.vim/.ycm_extra_conf.py"     \
   "config"                          "${HOME}/.ssh/config"                 \
-  ".curlrc"                         "${HOME}/.curlrc"                     \
   ".gitconfig"                      "${HOME}/.gitconfig")
 if [[ ${#files[@]} -gt 0 ]]; then
   for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );

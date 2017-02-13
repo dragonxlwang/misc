@@ -37,3 +37,57 @@ sudo ln -s /usr/lib64/libpython2.7.so.1.0 /usr/lib64/libpython2.6.so.1.0
 sudo yum install fb-ycm-1.1-fb4.x86_64
 /usr/share/vim/vim74/bundle/YouCompleteMe/setup-ycm.sh
 
+# proxy
+## ==================================================
+## wiki/Development_Environment/Internet_Proxy/
+if [[ ! -e ~/.curlrc ]]; then
+  str="proxy=fwdproxy:8080\n"
+  str+="noproxy=fbcdn.net,facebook.com,thefacebook.com,"
+  str+="tfbnw.net,fb.com,fburl.com,facebook.net,sb.fbsbx.com,localhost"
+  echo $str >> ~/.curlrc
+fi
+if [[ ! -e ~/.wgetrc ]]; then
+  str="http_proxy=fwdproxy:8080\n"
+  str+="https_proxy=fwdproxy:8080"
+  echo $str >> ~/.wgetrc
+fi
+sudo yum install -y socat &&
+if [[ ! -e ~/bin/git-proxy-wrapper ]]; then
+  mkdir -p ~/bin;
+  printf '%s\n' \
+      '#!/bin/sh' \
+      '# See https://fburl.com/DevInternetProxy' \
+      _proxy=fwdproxy \
+      _proxyport=1080 \
+      'exec socat -6 STDIO SOCKS4:$_proxy:$1:$2,socksport=$_proxyport' \
+    > ~/bin/git-proxy-wrapper &&
+  chmod a+x ~/bin/git-proxy-wrapper
+fi
+
+# ipython
+## ==================================================
+## dex/ifbpy-notebook-in-a-nutshell/
+ipython_setup
+cd ~/fbcode
+torch/fb/fbitorch/setup.sh
+buck build -c fbcode.platform=gcc-4.9-glibc-2.20 deeplearning/torch:cuth
+
+
+# pip
+## ==================================================
+mkdir -p ~/workspace
+
+cd ~/workspace
+git clone https://github.com/hhatto/autopep8.git
+cd autopep8
+python setup.py install
+
+cd ~/workspace
+git clone https://github.com/giampaolo/psutil.git
+cd psutil
+python setup.py install
+
+cd ~/workspace
+git clone https://github.com/google/yapf.git
+cd yapf
+python setup.py install
