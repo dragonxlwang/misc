@@ -14,21 +14,18 @@ function whiteecho    { _color_echo "1;37m" "${@}"; }
 
 # yum
 ## ==================================================
-sudo yum install cmake clang boost rubygems curl-devel htop
 sudo yum groupinstall "Development Tools"
-sudo yum install gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel \
-    curl-devel xorg-x11-xauth
-sudo yum install kernel-devel make ncurses-devel
-sudo yum install bzip2-devel sqlite-devel readline readline-devel
-sudo yum install python-devel openssl
-sudo yum install ruby ruby-devel lua lua-devel luajit \
-    luajit-devel ctags git python python-devel \
-    python3 python3-devel tcl-devel \
-    perl perl-devel perl-ExtUtils-ParseXS \
-    perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
-    perl-ExtUtils-Embed
-sudo yum install gcc gcc-c++
-sudo yum install wget tar gzip ncurses-devel texinfo svn python-devel
+sudo yum install cmake clang boost rubygems curl-devel htop \
+  gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel \
+  curl-devel xorg-x11-xauth kernel-devel make ncurses-devel \
+  bzip2-devel sqlite-devel readline readline-devel python-devel openssl \
+  ruby ruby-devel lua lua-devel luajit \
+  luajit-devel ctags git python python-devel \
+  python3 python3-devel tcl-devel \
+  perl perl-devel perl-ExtUtils-ParseXS \
+  perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
+  perl-ExtUtils-Embed gcc gcc-c++ \
+  wget tar gzip ncurses-devel texinfo svn python-devel
 
 # vim
 ## ==================================================
@@ -77,17 +74,17 @@ buck build -c fbcode.platform=gcc-4.9-glibc-2.20 deeplearning/torch:cuth
 ## ==================================================
 mkdir -p ~/workspace
 
-cd ~/workspace
-git clone https://github.com/hhatto/autopep8.git
-cd autopep8
-python setup.py install
+# cd ~/workspace
+# git clone https://github.com/hhatto/autopep8.git
+# cd autopep8
+# sudo python setup.py install
 
 cd ~/workspace
 git clone https://github.com/giampaolo/psutil.git
 cd psutil
-python setup.py install
+sudo python setup.py install
 
 cd ~/workspace
 git clone https://github.com/google/yapf.git
 cd yapf
-python setup.py install
+sudo python setup.py install
