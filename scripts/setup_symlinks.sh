@@ -82,6 +82,7 @@ fi
 files=(                                                                   \
   ".bashrc"                         "${HOME}/.bashrc"                     \
   ".ycm_extra_conf.py"              "${HOME}/.vim/.ycm_extra_conf.py"     \
+  "config"                          "${HOME}/.ssh/config"                 \
   ".gitconfig"                      "${HOME}/.gitconfig")
 if [[ ${#files[@]} -gt 0 ]]; then
   for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
@@ -102,7 +103,6 @@ files=(                                                           \
   "$root_dir/lib/ys.zsh-theme"                                    \
   "${HOME}/.oh-my-zsh/custom/themes/ys.zsh-theme"                 \
   "$root_dir/lib/.vimrc"            "${HOME}/.vimrc"              \
-  "$root_dir/lib/config"            "${HOME}/.ssh/config"         \
   "$root_dir/lib/ls_colors.zsh"     "${HOME}/ls_colors.zsh"       \
   "$root_dir/lib/.profile_wangxl"   "${HOME}/.profile_wangxl"     \
   "$root_dir/lib/.bash_profile"     "${HOME}/.bash_profile"       \
