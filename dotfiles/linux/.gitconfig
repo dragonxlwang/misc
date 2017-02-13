@@ -1,0 +1,15 @@
+[user]
+	email = xlwang@fb.com
+	name = Xiaolong Wang
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[github]
+	user = dragonxlwang
+[color "diff"]
+  meta = yellow bold
+[http]
+  proxy = fwdproxy:8080
+[https]
+  proxy = fwdproxy:8080

@@ -1,0 +1,114 @@
+# Your keymap
+#
+# Atom keymaps work similarly to style sheets. Just as style sheets use
+# selectors to apply styles to elements, Atom keymaps use selectors to associate
+# keystrokes with events in specific contexts. Unlike style sheets however,
+# each selector can only be declared once.
+#
+# You can create a new keybinding in this file by typing "key" and then hitting
+# tab.
+#
+# Here's an example taken from Atom's built-in keymap:
+#
+# 'atom-text-editor':
+#   'enter': 'editor:newline'
+#
+# 'atom-workspace':
+#   'ctrl-shift-p': 'core:move-up'
+#   'ctrl-p': 'core:move-down'
+#
+# You can find more information about keymaps in these guides:
+# * https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings
+# * https://atom.io/docs/latest/behind-atom-keymaps-in-depth
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# https://atom.io/docs/latest/using-atom-basic-customization#cson
+
+'.platform-darwin':
+  'ctrl-a m h':  'pane:split-left-moving-current-tab'
+  'ctrl-a m l': 'pane:split-right-moving-current-tab'
+  'ctrl-a m k':    'pane:split-up-moving-current-tab'
+  'ctrl-a m j':  'pane:split-down-moving-current-tab'
+
+  'ctrl-a n h':  'pane:split-left-creating-new-file'
+  'ctrl-a n l': 'pane:split-right-creating-new-file'
+  'ctrl-a n k':    'pane:split-up-creating-new-file'
+  'ctrl-a n j':  'pane:split-down-creating-new-file'
+
+  'ctrl-a d h':  'pane:split-left'
+  'ctrl-a d l': 'pane:split-right'
+  'ctrl-a d k':    'pane:split-up'
+  'ctrl-a d j':  'pane:split-down'
+
+  'ctrl-a m m':  'pane:merge-all-panes'
+
+'body':
+  'ctrl-a j': 'window:focus-pane-below'
+  'ctrl-a k': 'window:focus-pane-above'
+  'ctrl-a l': 'window:focus-pane-on-right'
+  'ctrl-a h': 'window:focus-pane-on-left'
+  'ctrl-a ctrl-j': 'pane:show-previous-item'
+  'ctrl-a ctrl-k': 'pane:show-next-item'
+
+'.advanced-open-file atom-text-editor':
+  'ctrl-l': 'unset!'
+  'ctrl-x': 'advanced-open-file:delete-path-component'
+  'enter' : 'advanced-open-file:confirm-selected-or-first'
+
+'.platform-darwin atom-text-editor:not([mini])':
+  'cmd-shift-V': 'clipboard-plus:toggle'
+
+'atom-text-editor.vim-mode.normal-mode':
+  'ctrl-a': 'unset!'
+'atom-text-editor:not([mini])':
+  'ctrl-a': 'unset!'
+
+'atom-workspace':
+  'ctrl-i':     'cursor-history:next'
+  'ctrl-o':     'cursor-history:prev'
+  'ctrl-cmd-i': 'cursor-history:next-within-editor'
+  'ctrl-cmd-o': 'cursor-history:prev-within-editor'
+  'alt-j':      'multi-cursor:expandDown'
+  'alt-k':      'multi-cursor:expandUp'
+  # 'ctrl-alt-j': 'multi-cursor:move-last-cursor-down'
+  # 'ctrl-alt-l':	'multi-cursor:move-last-cursor-right'
+  # 'ctrl-alt-h':	'multi-cursor:move-last-cursor-left'
+  # 'ctrl-alt-k':	'multi-cursor:move-last-cursor-up'
+
+'atom-text-editor.vim-mode.insert-mode:not(.mini)':
+  'j k': 'vim-mode:reset-normal-mode'
+
+'.platform-darwin atom-text-editor.vim-mode:not(.insert-mode)':
+  ', ,'             : 'vim-mode:activate-normal-mode'
+  '; ;'             : 'vim-mode:reset-normal-mode'
+  'ctrl-p'          : 'clipboard-plus:toggle'
+  'z a'             : 'editor:toggle-current-row-folding'
+  'z shift-A'       : 'editor:toggle-all-folding'
+  'g c'             : 'editor:toggle-line-comments'
+  'ctrl-w ctrl-j'   : 'pane:show-previous-item'
+  'ctrl-w ctrl-k'   : 'pane:show-next-item'
+  ', j j'           : 'goto:declaration'
+  ', j k'           : 'goto:file-symbol'
+  ', j h'           : 'goto:project-symbol'
+  ', j d'           : 'you-complete-me:go-to'
+  ', d d'           : 'split-diff:toggle'
+
+# 'atom-text-editor.vim-mode-plus.normal-mode':
+#   'ctrl-a': 'unset!'
+# 'atom-text-editor':
+#   'ctrl-a': 'unset!'
+#
+# 'atom-text-editor.vim-mode-plus.insert-mode':
+#   'j k'               : 'vim-mode-plus:reset-normal-mode'
+#
+# 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+#   ', ,'               : 'vim-mode-plus:activate-normal-mode'
+#   '; ;'               : 'vim-mode-plus:reset-normal-mode'
+#   'ctrl-p'            : 'clipboard-plus:toggle'
+#   'z shift-A'         : 'editor:toggle-all-folding'
+#   'g c'               : 'editor:toggle-line-comments'
+#   'ctrl-w ctrl-j'     : 'pane:show-previous-item'
+#   'ctrl-w ctrl-k'     : 'pane:show-next-item'
+#   ':'                 : 'ex-mode:open'
