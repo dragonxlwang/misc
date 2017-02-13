@@ -4,6 +4,7 @@ ANSI_COLOR_RED="\033[31m"
 ANSI_COLOR_GREEN="\033[32m"
 ANSI_COLOR_RESET="\033[0m"
 ANSI_COLOR_BLUE="\033[36m"
+ANSI_COLOR_YELLOW="\033[33m"
 
 root_dir=$(dirname $(dirname $(readlink -f $0)))/dotfiles
 
@@ -25,8 +26,9 @@ mk_link() {
   des=$2
   cnt=$((cnt + 1))
   if [[ ! -e ${scr} ]]; then
-    echo -e $ANSI_COLOR_RED "[$cnt]: ${scr} does not exist!" $ANSI_COLOR_RESET
-    exit 1
+    echo -e $ANSI_COLOR_YELLOW "[$cnt]: ${scr} does not exist!" \
+      $ANSI_COLOR_RESET
+    return 1
   fi
   if [[ -e $des || -L $des ]];
   then
@@ -87,6 +89,7 @@ files=(                                                                   \
   ".bashrc"                         "${HOME}/.bashrc"                     \
   ".ycm_extra_conf.py"              "${HOME}/.vim/.ycm_extra_conf.py"     \
   "config"                          "${HOME}/.ssh/config"                 \
+  ".curlrc"                         "${HOME}/.curlrc"                     \
   ".gitconfig"                      "${HOME}/.gitconfig")
 if [[ ${#files[@]} -gt 0 ]]; then
   for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
