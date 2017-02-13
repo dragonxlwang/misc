@@ -30,7 +30,8 @@ ZSH_THEME="ys"
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
+# Uncomment the following line to display red dots whilst waiting for
+#   completion.
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -46,7 +47,8 @@ ZSH_THEME="ys"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+#   (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
@@ -55,32 +57,51 @@ plugins=(git colored-man-pages extract python web-search \
 
 
 # User configuration
-if [[ $(uname) == 'Darwin' ]]; then
+if [[ $(uname) == 'Darwin' ]]; then                                    # mac os
   PATH="/opt/facebook/bin:"
   PATH+="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
   PATH+="/opt/X11/bin:/Library/TeX/texbin"
-  export PATH
-  export MANPATH="/usr/local/man:$MANPATH"
-else
+elif [[ $(hostname -s) =~ "timan" ]]; then                              # timan
   ## initial path
   PATH="/opt/facebook/bin:"
   PATH+="/software/matlab-R2011a-x86_64/bin:"
   PATH+="/software/sun-jdk-1.6.0-latest-el6-x86_64/bin:"
   PATH+="/srv/adm/bin:/usr/lib64/qt-3.3/bin:/usr/NX/bin:"
   PATH+="/usr/bin:/bin:/usr/sbin:/sbin:$HOME/resource/vowpal_wabbit"
-  export PATH
   ## path set by devtoolset-2
   source /opt/rh/devtoolset-2/enable
-  ## add /usr/local before devtoolset-2
-  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-  export MANPATH="/usr/local/man:$MANPATH"
-  ## set by linuxbrew
-  INCLUDE_LINUXBREW_PATHS=0
-  if [[ INCLUDE_LINUXBREW_PATHS -eq 1 ]]; then
-    export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
-    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-  fi
+else                                                                      # dev
+  PATH="/usr/local/bin:"
+  PATH+="/bin:"
+  PATH+="/usr/bin:"
+  PATH+="/usr/local/sbin:"
+  PATH+="/usr/sbin:"
+  PATH+="/usr/facebook/ops/scripts:"
+  PATH+="/usr/facebook/scripts:"
+  PATH+="/opt/local/bin:"
+  PATH+="/usr/facebook/ops/scripts:"
+  PATH+="/usr/facebook/scripts:"
+  PATH+="/usr/facebook/scripts:"
+  PATH+="/usr/facebook/scripts/db:"
+  PATH+="/usr/local/sbin:"
+  PATH+="/usr/sbin:/sbin:"
+  PATH+="/mnt/vol/engshare/svnroot/tfb/trunk/www/scripts/bin:"
+  PATH+="/mnt/vol/engshare/admin/scripts/hg:"
+  PATH+="/mnt/vol/engshare/admin/scripts/git:"
+  PATH+="/mnt/vol/engshare/admin/scripts:"
+  PATH+="/home/xlwang/www/scripts/bin:/home/xlwang/bin"
+fi
+
+export PATH
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export MANPATH="/usr/local/man:$MANPATH"
+
+## set by linuxbrew
+INCLUDE_LINUXBREW_PATHS=0
+if [[ INCLUDE_LINUXBREW_PATHS -eq 1 && -a "${HOME}/.linuxbrew" ]]; then
+  export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -124,9 +145,19 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ${HOME}/ls_colors.zsh
+if [[ -a "/usr/facebook/ops/rc/master.zshrc" ]]; then
+  # first source fb zshrc to avoid my own setting being overwritten
+  source /usr/facebook/ops/rc/master.zshrc
+fi
 source ${HOME}/.profile_wangxl
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+###############################################################################
+#                            Added by Other Scripts                           #
+###############################################################################
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && \
+  source "${HOME}/.iterm2_shell_integration.zsh"
 
 PATH="${PATH}:/opt/homebrew/bin"
 PATH="${PATH}:/opt/facebook/nuclide/latest/nuclide/pkg/fb-biggrep-cli/bin"
@@ -134,7 +165,8 @@ PATH="${PATH}:/opt/facebook/hg/bin"
 PATH="${PATH}:/usr/local/munki"
 
 export FBANDROID_DIR=/Users/xlwang/fbsource/fbandroid
-alias quicklog_update=/Users/xlwang/fbsource/fbandroid/scripts/quicklog/quicklog_update.sh
+alias quicklog_update="/Users/xlwang/fbsource/fbandroid/"`
+                      `"scripts/quicklog/quicklog_update.sh"
 alias qlu=quicklog_update
 
 # added by setup_fb4a.sh
@@ -142,3 +174,4 @@ export ANDROID_SDK=/opt/android_sdk
 export ANDROID_NDK_REPOSITORY=/opt/android_ndk
 export ANDROID_HOME=${ANDROID_SDK}
 export PATH=${PATH}:${ANDROID_SDK}/tools:${ANDROID_SDK}/platform-tools
+

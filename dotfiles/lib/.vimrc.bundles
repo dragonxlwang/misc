@@ -63,18 +63,8 @@ let g:airline_section_c =
       \"%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#"
 " https://gist.github.com/kevinis/c788f85a654b2d7581d8
 " https://gist.github.com/baopham/1838072
-if g:osName == 'Darwin' || g:osName == 'Timan'
-  set guifont=Monaco\ for\ Powerline:h12
-  let g:airline_powerline_fonts = 1
-else
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep=''
-  let g:airline_right_sep=''
-  let g:airline_left_alt_sep=''
-  let g:airline_right_alt_sep=''
-endif
+set guifont=Monaco\ for\ Powerline:h12
+let g:airline_powerline_fonts = 1
 
 Plugin 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
@@ -108,7 +98,10 @@ nnoremap <leader>bb :BuffergatorToggle<CR>
 Plugin 'nvie/vim-flake8'
 let g:flake8_show_in_file=1
 let g:flake8_show_in_gutter=1
-autocmd FileType python map <buffer> <leader>jj :call Flake8()<CR>
+augroup Flake8AutoGroup
+  autocmd!
+  autocmd FileType python map <buffer> <leader>jj :call Flake8()<CR>
+augroup END
 
 Plugin 'kchmck/vim-coffee-script'
 
@@ -130,10 +123,26 @@ augroup END
 " # Clang works on OS X, but has mixed success on Linux and the BSDs
 " # Cleanup afterward; frees several hundred megabytes
 " make clean && make clean_clang
-Plugin 'Valloric/YouCompleteMe' " <leader>d: diagnostic msg on current line
+if system("hostname -s") =~ 'dev'
+  Plugin 'YouCompleteMe', {'pinned': 1}
+  let g:ycm_global_ycm_extra_conf=
+        \ "~/.vim/.ycm_extra_conf.py"
+  let g:ycm_confirm_extra_conf=0
+  let g:ycm_server_keep_logfiles = 1
+  let g:ycm_server_log_level = 'debug'
+  " let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
+  " let g:ycm_min_num_identifier_candidate_chars = 4
+  " let g:ycm_enable_diagnostic_signs = 0
+  " let g:ycm_error_symbol = 'x'
+  " let g:ycm_warning_symbol = '!'
+  " nnoremap <leader>pg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+  " nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
+  " nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
+else
+  Plugin 'Valloric/YouCompleteMe' " <leader>d: diagnostic msg on current line
+  " Plugin 'oblitum/YouCompleteMe'
+endif
 
-" Plugin 'YouCompleteMe', {'pinned': 1}
-" Plugin 'oblitum/YouCompleteMe'
 Plugin 'Valloric/ListToggle'
 " Plugin 'jeaye/color_coded'        " not working right now
 Plugin 'rdnetto/YCM-Generator'
@@ -141,20 +150,10 @@ Plugin 'rdnetto/YCM-Generator'
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+
 let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
 let g:ycm_server_python_interpreter='/usr/local/bin/python'
-
-" let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
-" let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py"
-" let g:ycm_confirm_extra_conf=0
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_min_num_identifier_candidate_chars = 4
-" let g:ycm_enable_diagnostic_signs = 0
-" let g:ycm_error_symbol = 'x'
-" let g:ycm_warning_symbol = '!'
-" let g:ycm_server_keep_logfiles = 1
-" let g:ycm_server_log_level = 'debug'
-
+let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_goto_buffer_command = 'horizontal-split'
@@ -196,7 +195,7 @@ let g:UltiSnipsEditSplit="vertical"
 Plugin 'justinmk/vim-syntax-extra'  " temporal solution
 
 Plugin 'Chiel92/vim-autoformat'
-if g:osName == 'Timan'
+if !empty(glob("~/llvm/build/bin/clang-format"))
   let g:formatdef_my_custom_clang =
         \'"~/llvm/build/bin/clang-format -style=google"'
 else
@@ -204,15 +203,16 @@ else
 endif
 let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
+let g:formatdef_yapf =
+  \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:79}\"'"
+let g:formatters_python=['yapf','autopep8']
+nnoremap <leader>w :exe "Autoformat" \| :w!<CR>
 " let g:formatter_yapf_style = 'facebook'
 " let g:formatters_python = ['yapf']
-let g:formatdef_yapf = "'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:79}\"'"
-let g:formatters_python=['yapf','autopep8']
 " let auto_format_type_list = ['c', 'cpp', 'python']
 " autocmd BufWritePre * if index(auto_format_type_list, &ft) >= 0 |
 "       \ exe "Autoformat" | endif
 " Fast save
-nnoremap <leader>w :exe "Autoformat" \| :w!<CR>
 
 " ============================================================================="
 "                      _______  __   __       _______                          "
@@ -308,6 +308,7 @@ let g:ycm_semantic_triggers.tex = [
       \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
       \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
       \ ]
+let g:ycm_semantic_triggers.lua = ['.', ':']
 " let g:ycm_semantic_triggers.c = [
 "   \ 're!\w\w\w\w+',
 "   \ ]
@@ -331,7 +332,8 @@ function! UpdateSkim(status)
   elseif has('job')
     call job_start(l:cmd + [line('.'), l:out, l:tex])
   else
-    call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
+    call system(join(l:cmd + [line('.'),
+          \ shellescape(l:out), shellescape(l:tex)], ' '))
   endif
 endfunction
 nnoremap <leader>tv :VimtexView<CR>

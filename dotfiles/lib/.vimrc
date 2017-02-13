@@ -1,3 +1,5 @@
+" ==========================- Facebook -=======================================
+" source $LOCAL_ADMIN_SCRIPTS/master.vimrc
 " =============================- General Config -===============================
 set nocompatible                " Sse Vim settings, rather than Vi
 set autoread                    " Reload files changed outside vim
@@ -70,15 +72,16 @@ augroup TexAutoGroup
   autocmd FileType tex setlocal spell
 augroup END
 let g:tex_conceal = ""          " no translation math symbols
+" ================================- Python -===================================
+augroup PythonAutoGroup
+  autocmd!
+  autocmd FileType python set shiftwidth=4 softtabstop=4 tabstop=4
+augroup END
 " ==================================- Misc -====================================
 syntax on                       " Turn on syntax highlighting
 let mapleader=","               " Change leader to a comma
 let g:mapleader = ","           " Global leader to a comma
-if substitute(system('hostname -s'), "\n", "", "") =~ 'timan'
-  let g:osName = 'Timan'       " Platform
-else
-  let g:osName = substitute(system('uname'), "\n", "", "")
-end
+let g:osName = substitute(system('uname'), "\n", "", "")
 if &encoding ==# 'latin1' && has('gui_running')
   set encoding=utf-8            " Encoding
 endif
@@ -230,8 +233,8 @@ noremap <C-w>) :vertical res 0<CR>
 " Resize stepsize 5 horizontally and 10 vertically
 noremap <C-w>- :resize -5<CR>
 noremap <C-w>+ :resize +5<CR>
-noremap <C-w>[ :vertical resize -10<CR>
-noremap <C-w>] :vertical resize +10<CR>
+noremap <C-w>< :vertical resize -10<CR>
+noremap <C-w>> :vertical resize +10<CR>
 command! Rw vert res 100
 " Open buffer vertically split
 command! -nargs=1 Vsb vert sb <args>
@@ -240,11 +243,11 @@ noremap <silent> <C-w>w :wincmd p<cr>
 noremap <silent> <C-w><C-w> :wincmd p<cr>
 noremap <silent> <C-w>p :wincmd w<cr>
 noremap <silent> <C-w>q :wincmd p \| :wincmd c<cr>
-noremap <silent> <C-w>, :execute "res"  . &lines / 3 * 2<cr>
-noremap <silent> <C-w>< :execute "res"  . &lines / 2<cr>
-noremap <silent> <C-w>. :wincmd _<cr>
-noremap <silent> <C-w>> :res 0<cr>
-noremap <silent> <C-w>/ :execute "vertical res"  . &columns / 2<cr>
+noremap <silent> <C-w>{ :execute "res"  . &lines / 3 * 2<cr>
+noremap <silent> <C-w>[ :execute "res"  . &lines / 2<cr>
+noremap <silent> <C-w>] :wincmd _<cr>
+noremap <silent> <C-w>} :res 0<cr>
+noremap <silent> <C-w>\ :execute "vertical res"  . &columns / 2<cr>
 noremap <silent> <C-w><C-j> :100 wincmd j<cr>
 noremap <silent> <C-w><C-k> :100 wincmd k<cr>
 " go to files
@@ -265,7 +268,7 @@ if g:osName == 'Darwin'
         \ let res=system("pbcopy", @") \| let @"=@a<CR>
   " nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
   " noremap <silent> <leader>p :r !pbpaste<CR><CR>
-elseif g:osName == 'Timan'
+elseif g:osName == 'Linux'
   " this works only if vim is compiled with +clipboard or +xterm_clipboard
   nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
   set clipboard=unnamed
@@ -331,6 +334,14 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
 command! Fp echo expand('%:p')
+
+" ===========================- Detecting Filetype -=============================
+augroup FiletypeDetectAutoGroup
+  autocmd!
+  au BufNewFile,BufRead *.cinc set filetype=python
+  au BufNewFile,BufRead *.mcconf set filetype=python
+  au BufNewFile,BufRead *.thrift set filetype=thrift
+augroup END
 
 " ==================================- tex -=====================================
 command! Texmake exe "! ~/misc/scripts/tex_make.sh make" | redraw!

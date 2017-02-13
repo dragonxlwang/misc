@@ -1251,7 +1251,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/misc/dotfiles/mac</string>
+	<string>~/misc/dotfiles/darwin</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 459}</string>
 	<key>NSNavPanelExpandedSizeForSaveMode</key>
@@ -1993,7 +1993,8 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/xiaolong/misc/dotfiles/mac</string>
+	<string>/Users/xiaolong/misc/dotfiles/darwin</string>
+
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnQuit</key>

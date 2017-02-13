@@ -7,9 +7,9 @@ ANSI_COLOR_BLUE="\033[36m"
 
 root_dir=$(dirname $(dirname $(readlink -f $0)))/dotfiles
 
-if [[ ${1:l} != "mac" && ${1:l} != "timan" ]]; then
+if [[ ${1:l} != "darwin" && ${1:l} != "linux" ]]; then
   echo "specify which set of rules to apply"
-  echo "use mac or timan"
+  echo "use darwin or linux"
   exit 1
 else
   echo "building symlinks for ${1}"
@@ -44,28 +44,13 @@ mk_link() {
   fi
 }
 
-## mac/timan suite
-files=(".bashrc"        "${HOME}")
-if [[ ${#files[@]} -gt 0 ]]; then
-  for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
-  do
-    j=$(( i * 2 ))
-    k=$(( j + 1 ))
-    file=${files[j]}
-    path=${files[k]}
-    scr="$root_dir/${1}/${file}"
-    des="${path}/${file}"
-    mk_link $scr $des
-  done
-fi
-
-## mac suite: gnu coreutils and atom
+## darwin suite: gnu coreutils and atom
 bins=("mv" "readlink" "ls" "du")
-if [[ $1 == "mac" ]];
+if [[ $1 == "darwin" ]];
 then
-  for f in $(ls "$root_dir/mac/.atom");
+  for f in $(ls "$root_dir/darwin/.atom");
   do
-    scr="$root_dir/mac/.atom/$f"
+    scr="$root_dir/darwin/.atom/$f"
     des="${HOME}/.atom/$f"
     mk_link $scr $des
   done
@@ -93,13 +78,30 @@ then
   done
 fi
 
-## mac & timan suite
+## darwin/linux suite
+files=(                                                                   \
+  ".bashrc"                         "${HOME}/.bashrc"                     \
+  ".ycm_extra_conf.py"              "${HOME}/.vim/.ycm_extra_conf.py"     \
+  ".gitconfig"                      "${HOME}/.gitconfig")
+if [[ ${#files[@]} -gt 0 ]]; then
+  for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
+  do
+    j=$(( i * 2 ))
+    k=$(( j + 1 ))
+    file=${files[j]}
+    path=${files[k]}
+    scr="$root_dir/${1}/${file}"
+    des="${path}/${file}"
+    mk_link $scr $des
+  done
+fi
+
+## darwin & linux suite
 mkdir -p ${HOME}/.oh-my-zsh/custom/themes/
 files=(                                                           \
   "$root_dir/lib/ys.zsh-theme"                                    \
   "${HOME}/.oh-my-zsh/custom/themes/ys.zsh-theme"                 \
   "$root_dir/lib/.vimrc"            "${HOME}/.vimrc"              \
-  "$root_dir/lib/.gitconfig"        "${HOME}/.gitconfig"          \
   "$root_dir/lib/config"            "${HOME}/.ssh/config"         \
   "$root_dir/lib/ls_colors.zsh"     "${HOME}/ls_colors.zsh"       \
   "$root_dir/lib/.profile_wangxl"   "${HOME}/.profile_wangxl"     \

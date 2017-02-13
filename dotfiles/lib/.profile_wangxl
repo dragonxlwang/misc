@@ -40,10 +40,6 @@ function colorize_column {
   local s="$(sed "s/[^[:blank:]]\{1,\}/\\\\033[${1}&\\\\033[0m/${2}")"
   echo -e $s
 }
-function yapf {
-  $(whence -p yapf) \
-    --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $@
-}
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then
@@ -198,6 +194,9 @@ function rm {
   for l in ${(f)ret}; do
     reg='s/^(.*) -> (.*)$/\1/p'
     f1=$(echo $l | sed -rn $reg)
+    if [[ -z $f1 ]]; then
+      continue
+    fi
     f1=${f1:1:${#f1}-2}
     reg='s/^(.*) -> (.*)$/\2/p'
     f2=$(echo $l | sed -rn $reg)
@@ -410,8 +409,8 @@ function ed_scripts {
 }
 function up_symlinks {
   local opt=""
-  [[ $(uname) == "Darwin" ]] && opt="mac"
-  [[ $(uname) == "Linux" ]] && opt="timan"
+  [[ $(uname) == "Darwin" ]] && opt="darwin"
+  [[ $(uname) == "Linux" ]] && opt="linux"
   cyanecho "setup symlinks for $opt"
   ${HOME}/misc/scripts/setup_symlinks.sh $opt --no-confirm
 }
@@ -659,7 +658,9 @@ function github_short_url_to_clipboard {
   echo $url | pbcopy
   echo $url
 }
-alias upld="${HOME}/misc/scripts/sync.sh"
+# dev git proxy
+alias extgit='git -c http.proxy=fwdproxy:8080 -c'`
+             `'core.gitproxy=$HOME/bin/git-proxy-wrapper'
 
 ## ========================================================================== ##
 #             .______   .______      ___________    __    ____                 #
@@ -689,6 +690,61 @@ fi
 alias run_matlab="matlab -nodesktop -nosplash -r"
 alias mosh="mosh --family=prefer-inet6"
 export EDITOR="vim"
+function yapf {
+  $(whence -p yapf) \
+    --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $@
+}
+alias killall="killall -u $USER"
+alias ka="\killall -u $USER" #  disables the alias in interactive shell
+alias upld="${HOME}/misc/scripts/sync.sh"
+
+## ========================================================================== ##
+#     __  .______   ____    ____ .___________.__    __    ______   .__   __.   #
+#    |  | |   _  \  \   \  /   / |           |  |  |  |  /  __  \  |  \ |  |   #
+#    |  | |  |_)  |  \   \/   /  `---|  |----|  |__|  | |  |  |  | |   \|  |   #
+#    |  | |   ___/    \_    _/       |  |    |   __   | |  |  |  | |  . `  |   #
+#    |  | |  |          |  |         |  |    |  |  |  | |  `--'  | |  |\   |   #
+#    |__| | _|          |__|         |__|    |__|  |__|  \______/  |__| \__|   #
+## ========================================================================== ##
+function start_local_ipython {
+  [[ $# == 1 ]] && { pushd $1 } || { pushd ${HOME}/Dropbox/workspace/ipython }
+  jupyter notebook --port=8889;
+  popd;
+}
+function start_timan_tunnel { #silently starting
+  ssh -N -f -L localhost:8889:localhost:8889 timan101
+}
+function start_dev_tunnel { #silently starting
+  ssh -N -f -L localhost:8888:localhost:8888 dev
+}
+function kill_timan_tunnel_ipython {
+  # quote the command substitution
+  # stackoverflow.com/questions/31521221/zsh-local-keyword-not-an-identifier
+  local pids="$(ps aux | \
+               grep 'ssh -N -f -L localhost:8889:localhost:8889 timan101' | \
+               awk '{print $2}')"
+  for i in ${=pids};
+  do
+    local comm=$(ps -p $i -o comm=)
+    if [[ $comm == ssh* ]]; then
+      redecho "kill PID:($i) "$comm
+      kill -9 $i
+    fi
+  done
+}
+# # A function to launch ipython notebooks
+function ifbpynb {
+    pushd ~/python;
+    /usr/local/bin/ifbpy notebook --profile=nbserver;
+    popd;
+}
+# # ai_bb
+alias ai_bb="buck build -c fbcode.platform=gcc-4.9-glibc-2.20"
+function itorch {
+  pushd ~/fbcode;
+  torch/fb/fbitorch/run.sh notebook --notebook-dir=~/notebooks --no-browser;
+  popd;
+}
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #

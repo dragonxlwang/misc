@@ -137,32 +137,6 @@ function atom_sync_package_incremental {
 }
 
 ## ========================================================================== ##
-#     __  .______   ____    ____ .___________.__    __    ______   .__   __.   #
-#    |  | |   _  \  \   \  /   / |           |  |  |  |  /  __  \  |  \ |  |   #
-#    |  | |  |_)  |  \   \/   /  `---|  |----|  |__|  | |  |  |  | |   \|  |   #
-#    |  | |   ___/    \_    _/       |  |    |   __   | |  |  |  | |  . `  |   #
-#    |  | |  |          |  |         |  |    |  |  |  | |  `--'  | |  |\   |   #
-#    |__| | _|          |__|         |__|    |__|  |__|  \______/  |__| \__|   #
-## ========================================================================== ##
-alias start_ipython='cd ${HOME}/Dropbox/workspace/ipython; jupyter notebook'
-alias start_tunnel_ipython='ssh -N -f -L localhost:8889:localhost:8889 timan101'
-function kill_tunnel_ipython {
-  # quote the command substitution
-  # stackoverflow.com/questions/31521221/zsh-local-keyword-not-an-identifier
-  local pids="$(ps aux | \
-               grep 'ssh -N -f -L localhost:8889:localhost:8889 timan101' | \
-               awk '{print $2}')"
-  for i in ${=pids};
-  do
-    local comm=$(ps -p $i -o comm=)
-    if [[ $comm == ssh* ]]; then
-      redecho "kill PID:($i) "$comm
-      kill -9 $i
-    fi
-  done
-}
-
-## ========================================================================== ##
 #                  ______        _______.         ___   ___                    #
 #                 /  __  \      /       |         \  \ /  /                    #
 #                |  |  |  |    |   (----`          \  V  /                     #
@@ -293,28 +267,29 @@ function _list_task {
   local option=$2
   # finish if called from profile and inside tmux
   [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
+  local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
+  local str2="  (2/n) :   zsh"
+  local str3="  (3)   :   mosh dev11919.prn2.facebook.com (dev)"
+  local str4="  (4)   :   mosh dev15039.prn1.facebook.com (dev2)"
   # main loop
   while [[ -z $option ]]
   do
     redecho "Following starting options are available:"
-    cyanecho "  (1)   :   ssh timan101"
-    cyanecho "  (2)   :   ssh timan102"
-    cyanecho "  (3)   :   ssh timan103"
-    cyanecho "  (4/t) :   tmux new -AD -s $(hostname -s)-main"
-    cyanecho "  (5/n) :   zsh"
-    cyanecho "  (6)   :   ssh mac_mini"
-    cyanecho "  (7)   :   mosh dev"
+    cyanecho $str1
+    cyanecho $str2
+    cyanecho $str3
+    cyanecho $str4
     whiteecho $(printf '=%.0s' {1..50})
-    yellowecho -n "Select One Option From (1) - (7): "
+    yellowecho -n "Select One Option From (1) - (4): "
     read option
-    if [[ $option == 1* ]]; then option=1
-    elif [[ $option == 2* ]]; then option=2
+    if [[ $option == 1* || $option == t* ]]; then option=1
+    elif [[ $option == 2* || $option == n* ]]; then option=2
     elif [[ $option == 3* ]]; then option=3
-    elif [[ $option == 4* || $option == t* ]]; then option=4
-    elif [[ $option == 5* || $option == n* ]]; then option=5
-    elif [[ $option == 6* ]]; then option=6
-    elif [[ $option == 7* ]]; then option=7
-    else redecho "  Input Not Recognized..."
+    elif [[ $option == 4* ]]; then option=4
+    else
+      redecho "  Input Not Recognized..."
+      echo ""
+      option=""
     fi
   done
   whiteecho $(printf '=%.0s' {1..50})
@@ -322,26 +297,17 @@ function _list_task {
   greenecho "is_inside_tmux     :  $is_inside_tmux"
   greenecho "option             : (${option})"
   if [[ $option -eq 1 ]]; then
-    redecho "  (1)	:   ssh timan101"
-    _smart_ssh $is_inside_tmux timan101
-  elif [[ $option -eq 2 ]]; then
-    redecho "  (2)	:   ssh timan102"
-    _smart_ssh $is_inside_tmux timan102
-  elif [[ $option -eq 3 ]]; then
-    redecho "  (3)	:   ssh timan103"
-    _smart_ssh $is_inside_tmux timan103
-  elif [[ $option -eq 4 ]]; then
-    redecho "  (4)	:   tmux new -AD -s $(hostname -s)-main"
+    redecho $str1
     [[ $is_inside_tmux -eq 1 ]] && redecho "already in tmux" || \
       tmux new -AD -s $(hostname -s)-main
-  elif [[ $option -eq 5 ]]; then
-    redecho "  (5)	:   zsh"
-  elif [[ $option -eq 6 ]]; then
-    redecho "  (6)	:   ssh mac_mini"
-    ssh mac_mini
-  elif [[ $option -eq 7 ]]; then
-    redecho "  (7)	:   mosh dev"
+  elif [[ $option -eq 2 ]]; then
+    redecho $str2
+  elif [[ $option -eq 3 ]]; then
+    redecho $str3
     mosh dev
+  elif [[ $option -eq 4 ]]; then
+    redecho $str4
+    mosh dev2
   fi
 }
 
