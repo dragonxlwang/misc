@@ -87,7 +87,6 @@ fi
 ## darwin/linux suite
 files=(                                                                   \
   ".bashrc"                         "${HOME}/.bashrc"                     \
-  ".ycm_extra_conf.py"              "${HOME}/.vim/.ycm_extra_conf.py"     \
   "config"                          "${HOME}/.ssh/config"                 \
   ".gitconfig"                      "${HOME}/.gitconfig")
 if [[ ${#files[@]} -gt 0 ]]; then
@@ -115,6 +114,8 @@ files=(                                                           \
   "$root_dir/lib/.tmux.conf"        "${HOME}/.tmux.conf"          \
   "$root_dir/lib/.zshrc"            "${HOME}/.zshrc"              \
   "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit"            \
+  "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/.vim/.ycm_extra_conf.py"     \
+  "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/fbcode/.ycm_extra_conf.py"   \
   "${HOME}/fbsource/fbcode"         "${HOME}/fbcode")
 
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );

@@ -121,6 +121,7 @@ alias nicer="sudo renice -20"
 alias unnice="renice 0"
 function nicer_all {
   local ni=${1:-"-20"}
+  local x
   for x in "${(@f)$(pspidmine)}";
   do
    redecho "renice $ni $x"
@@ -128,6 +129,7 @@ function nicer_all {
  done
 }
 function unnice_all {
+  local x
   for x in "${(@f)$(pspidmine)}";
   do
    redecho "nicer ${x}"
@@ -183,6 +185,7 @@ alias showip="${HOME}/misc/scripts/ip_lookup.sh all"
 alias rrm='/bin/rm -v'
 function rm {
   local ret=""
+  local l
   ret=$(mv --verbose -f --backup=numbered \
         --target-directory ${HOME}/.Trash/ "$@")
   redecho $ret
@@ -286,8 +289,9 @@ alias -g RALL="2>&1"
 alias -g RNUL="> /dev/null 2>&1"
 ##---------------------------------== vim ==----------------------------------##
 function vim_buffers {
-  found=0
-  curpwd=$(pwd)
+  local found=0
+  local exe_path
+  local curpwd=$(pwd)
   while [[ ! -e $(pwd)/buffers.list && $(pwd) != $(dirname $(pwd)) ]]; do
     cd $(dirname $(pwd))
   done
@@ -699,6 +703,14 @@ function yapf {
 alias killall="killall -u $USER"
 alias ka="\killall -u $USER" #  disables the alias in interactive shell
 alias upld="${HOME}/misc/scripts/sync.sh"
+function gen_cdb {
+  local curdir=$(pwd)
+  cd ~/fbcode;
+  local json_file="$(buck build --show-output $1\#compilation-database \
+                    2>&/dev/null | tail -1)"
+  cat ${${=json_file}[2]} > ~/fbcode/compile_commands.json
+  cd $curdir
+}
 
 ## ========================================================================== ##
 #     __  .______   ____    ____ .___________.__    __    ______   .__   __.   #

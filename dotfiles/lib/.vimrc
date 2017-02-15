@@ -341,7 +341,7 @@ augroup FiletypeDetectAutoGroup
   au BufNewFile,BufRead *.cinc set filetype=python
   au BufNewFile,BufRead *.mcconf set filetype=python
   au BufNewFile,BufRead *.thrift set filetype=thrift
-  au BufNewFile,BufRead TARGETS filetype=python
+  au BufNewFile,BufRead TARGETS set filetype=python
 augroup END
 
 " ==================================- tex -=====================================
