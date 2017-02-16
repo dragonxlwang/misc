@@ -54,9 +54,15 @@ if platform.platform().startswith('Linux'):
     flags.extend(
         [
             '-isystem',
-            '/usr/local/include',
+            '/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5',
             '-isystem',
-            '/usr/bin/../lib/clang/3.4.2/include',
+            '/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/x86_64-redhat-linux',
+            '-isystem',
+            '/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../include/c++/4.8.5/backward',
+            '-isystem',
+            '/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include',
+            '-isystem',
+            '/usr/local/include',
             '-isystem',
             '/usr/include',
         ]
