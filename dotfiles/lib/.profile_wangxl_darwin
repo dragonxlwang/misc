@@ -264,7 +264,8 @@ function _list_task {
   local caller_is_profile=$1
   local is_inside_tmux=0
   [[ -n "$TMUX" ]] && is_inside_tmux=1
-  local option=$2
+  local argopt=$2
+  local option
   # finish if called from profile and inside tmux
   [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
   local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
@@ -281,15 +282,18 @@ function _list_task {
     cyanecho $str4
     whiteecho $(printf '=%.0s' {1..50})
     yellowecho -n "Select One Option From (1) - (4): "
-    read option
-    if [[ $option == 1* || $option == t* ]]; then option=1
-    elif [[ $option == 2* || $option == n* ]]; then option=2
-    elif [[ $option == 3* ]]; then option=3
-    elif [[ $option == 4* ]]; then option=4
+    if [[ -z $argopt ]]; then
+      read argopt
+    fi
+    if [[ $argopt == 1* || $argopt == t* ]]; then option=1
+    elif [[ $argopt == 2* || $argopt == n* ]]; then option=2
+    elif [[ $argopt == 3* ]]; then option=3
+    elif [[ $argopt == 4* ]]; then option=4
     else
       redecho "  Input Not Recognized..."
       echo ""
       option=""
+      argopt=""
     fi
   done
   whiteecho $(printf '=%.0s' {1..50})
