@@ -124,12 +124,16 @@ augroup END
 " # Cleanup afterward; frees several hundred megabytes
 " make clean && make clean_clang
 if system("hostname -s") =~ 'dev'
-  Plugin 'YouCompleteMe', {'pinned': 1}
+  Plugin 'Valloric/YouCompleteMe' " <leader>d: diagnostic msg on current line
+  " Plugin 'YouCompleteMe', {'pinned': 1}
   let g:ycm_global_ycm_extra_conf=
         \ "~/.vim/.ycm_extra_conf.py"
   let g:ycm_confirm_extra_conf=0
   let g:ycm_server_keep_logfiles = 1
   let g:ycm_server_log_level = 'debug'
+  let g:ycm_server_python_interpreter=
+      \'/home/xlwang/fbcode/third-party-buck/'.
+      \'gcc-5-glibc-2.23/build/python/2.7/bin/python2.7'
   " let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
   " let g:ycm_min_num_identifier_candidate_chars = 4
   " let g:ycm_enable_diagnostic_signs = 0
@@ -140,6 +144,7 @@ if system("hostname -s") =~ 'dev'
   " nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
 else
   Plugin 'Valloric/YouCompleteMe' " <leader>d: diagnostic msg on current line
+  let g:ycm_server_python_interpreter='/usr/local/bin/python'
   " Plugin 'oblitum/YouCompleteMe'
 endif
 
@@ -152,7 +157,6 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 let g:ycm_extra_conf_globlist = ['~/workspace/*','~/Dropbox/workspace/*']
-let g:ycm_server_python_interpreter='/usr/local/bin/python'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_complete_in_comments = 1

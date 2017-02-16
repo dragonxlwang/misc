@@ -709,6 +709,7 @@ function gen_cdb {
   local json_file="$(buck build --show-output $1\#compilation-database \
                     2>&/dev/null | tail -1)"
   cat ${${=json_file}[2]} > ~/fbcode/compile_commands.json
+  ~/misc/scripts/prune_fbcode_compiler_commands_json.py
   cd $curdir
 }
 
