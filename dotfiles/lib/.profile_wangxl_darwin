@@ -270,7 +270,7 @@ function _list_task {
   [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
   local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
   local str2="  (2/n) :   zsh"
-  local str3="  (3)   :   mosh dev11919.prn2.facebook.com (dev)"
+  local str3="  (3/d) :   mosh dev11919.prn2.facebook.com (dev)"
   local str4="  (4)   :   mosh dev15039.prn1.facebook.com (dev2)"
   # main loop
   while [[ -z $option ]]
@@ -287,7 +287,7 @@ function _list_task {
     fi
     if [[ $argopt == 1* || $argopt == t* ]]; then option=1
     elif [[ $argopt == 2* || $argopt == n* ]]; then option=2
-    elif [[ $argopt == 3* ]]; then option=3
+    elif [[ $argopt == 3* || $argopt == d* ]]; then option=3
     elif [[ $argopt == 4* ]]; then option=4
     else
       redecho "  Input Not Recognized..."
