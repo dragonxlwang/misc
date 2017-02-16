@@ -2,13 +2,14 @@
 # xlwang.sb
 Host dev
     User xlwang
-    HostName dev11919.prn2.facebook.com
+    HostName dev11733.prn2.facebook.com
 Host dev2
     User xlwang
-    HostName dev15039.prn1.facebook.com
-Host devvm
+    HostName dev11919.prn2.facebook.com
+Host dev3
     User xlwang
-    HostName devvm28514.prn1.facebook.com
+    HostName dev11973.prn2.facebook.com
+
 # On CentOS 7
 Host github.com
     ProxyCommand nc --proxy-type http --proxy fwdproxy:8080 %h %p
