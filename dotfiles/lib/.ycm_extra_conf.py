@@ -5,7 +5,8 @@ import ycm_core
 flags_fbcode = [
     '-DFBCODE_OPT_BUILD',
     '-DNDEBUG',
-    '-std=gnu++0x',
+    # '-std=gnu++0x',
+    '-std=c++1y',
     '-x',
     'c++',
     '-nostdinc',
