@@ -134,8 +134,8 @@ if system("hostname -s") =~ 'dev'
   let g:ycm_server_python_interpreter=
       \'/home/xlwang/fbcode/third-party-buck/'.
       \'gcc-5-glibc-2.23/build/python/2.7/bin/python2.7'
+  let g:ycm_min_num_identifier_candidate_chars = 4
   " let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
-  " let g:ycm_min_num_identifier_candidate_chars = 4
   " let g:ycm_enable_diagnostic_signs = 0
   " let g:ycm_error_symbol = 'x'
   " let g:ycm_warning_symbol = '!'
