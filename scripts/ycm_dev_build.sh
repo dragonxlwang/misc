@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cd ~/.vim/
+/bin/rm -rf ./bundle/YouCompleteMe
+vim +PluginInstall +qall
+
 DEST_ROOT=~/.vim/bundle/YouCompleteMe/third_party/ycmd # change this directory to your heart's cotent. Keep it in local disk, however.
 git clone https://github.com/Valloric/ycmd.git $DEST_ROOT
 cd $DEST_ROOT
@@ -36,3 +40,8 @@ env -i PATH=/bin:/usr/bin:/usr/local/bin \
 
 ln -s $TP2/glibc/lib64/libc.so.6 $DEST_ROOT/
 ln -s $TP2/libgcc/lib/libstdc++.so.6 $DEST_ROOT/
+
+mv ${HOME}/.vim/bundle/YouCompleteMe /data/users/${USER}/
+
+ln -s /data/users/${USER}/YouCompleteMe ${HOME}/.vim/bundle/YouCompleteMe
+
