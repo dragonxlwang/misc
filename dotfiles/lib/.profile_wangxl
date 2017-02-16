@@ -40,6 +40,9 @@ function colorize_column {
   local s="$(sed "s/[^[:blank:]]\{1,\}/\\\\033[${1}&\\\\033[0m/${2}")"
   echo -e $s
 }
+function get_hostname {
+  echo $(ssh -G $1 | awk '/^hostname / { print $2 }')
+}
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then

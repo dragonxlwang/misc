@@ -2,13 +2,13 @@
 # xlwang.sb
 Host dev
     User xlwang
-    HostName dev11919.prn2.facebook.com
+    HostName dev11733.prn2.facebook.com
 Host dev2
     User xlwang
-    HostName dev11733.prn2.facebook.com
+    HostName dev11919.prn2.facebook.com
 Host dev3
     User xlwang
-    HostName dev11947.prn2.facebook.com
+    HostName dev11973.prn2.facebook.com
 
 Host *.facebook.com dev dev*
     IdentityFile ~/.ssh/fb_id_rsa
