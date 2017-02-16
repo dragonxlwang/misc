@@ -37,5 +37,5 @@ alias paste_from_mac_mini="ssh mac_mini pbpaste"
 
 
 ## ========================================================================== ##
-work
+[[ -n "$TMUX" ]] || work
 
