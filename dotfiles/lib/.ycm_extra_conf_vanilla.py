@@ -34,18 +34,7 @@ import os
 import ycm_core
 import platform
 
-# flags = [
-#     '-x',
-#     'c',
-#     '-Wall',
-#     '-Wno-unused-variable',
-#     '-std=gnu++0x',
-#     # '-Wno-unused-value',
-# ]
-
 flags = [
-    '-DFBCODE_OPT_BUILD',
-    '-DNDEBUG',
     '-std=gnu++0x',
     '-x',
     'c++',
@@ -58,7 +47,20 @@ flags = [
     '-Wno-sign-compare',
     '-Wno-unused-variable',
     '-Woverloaded-virtual',
+    # '-Wno-unused-value',
 ]
+
+if platform.platform().startswith('Linux'):
+    flags.extend(
+        [
+            '-isystem',
+            '/usr/local/include',
+            '-isystem',
+            '/usr/bin/../lib/clang/3.4.2/include',
+            '-isystem',
+            '/usr/include',
+        ]
+    )
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for
@@ -70,7 +72,7 @@ flags = [
 #
 # Most projects will NOT need to set this to anything; you can just change the
 # 'flags' list of compilation flags. Notice that YCM itself uses that approach.
-compilation_database_folder = '/home/' + os.getenv('USER') + '/fbcode/'
+compilation_database_folder = ''
 
 if os.path.exists(compilation_database_folder):
     database = ycm_core.CompilationDatabase(compilation_database_folder)
