@@ -5,10 +5,10 @@ Host dev
     HostName dev11919.prn2.facebook.com
 Host dev2
     User xlwang
-    HostName dev15039.prn1.facebook.com
-Host devvm
+    HostName dev11947.prn2.facebook.com
+Host dev3
     User xlwang
-    HostName devvm28514.prn1.facebook.com
+    HostName dev15039.prn1.facebook.com
 
 Host *.facebook.com dev dev*
     IdentityFile ~/.ssh/fb_id_rsa

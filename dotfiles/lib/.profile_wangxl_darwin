@@ -271,7 +271,8 @@ function _list_task {
   local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
   local str2="  (2/n) :   zsh"
   local str3="  (3/d) :   mosh dev11919.prn2.facebook.com (dev)"
-  local str4="  (4)   :   mosh dev15039.prn1.facebook.com (dev2)"
+  local str4="  (4)   :   mosh dev11947.prn2.facebook.com (dev2)"
+  local str5="  (5)   :   mosh dev15039.prn1.facebook.com (dev3)"
   # main loop
   while [[ -z $option ]]
   do
@@ -280,6 +281,7 @@ function _list_task {
     cyanecho $str2
     cyanecho $str3
     cyanecho $str4
+    cyanecho $str5
     whiteecho $(printf '=%.0s' {1..50})
     yellowecho -n "Select One Option From (1) - (4): "
     if [[ -z $argopt ]]; then
@@ -289,6 +291,7 @@ function _list_task {
     elif [[ $argopt == 2* || $argopt == n* ]]; then option=2
     elif [[ $argopt == 3* || $argopt == d* ]]; then option=3
     elif [[ $argopt == 4* ]]; then option=4
+    elif [[ $argopt == 5* ]]; then option=5
     else
       redecho "  Input Not Recognized..."
       echo ""
@@ -312,6 +315,9 @@ function _list_task {
   elif [[ $option -eq 4 ]]; then
     redecho $str4
     mosh dev2
+  elif [[ $option -eq 5 ]]; then
+    redecho $str5
+    mosh dev3
   fi
 }
 
