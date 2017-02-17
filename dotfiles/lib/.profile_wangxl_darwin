@@ -273,6 +273,7 @@ function _list_task {
   local str3="  (3/d) :   mosh $(get_hostname dev) (dev)"
   local str4="  (4)   :   mosh $(get_hostname dev2) (dev2)"
   local str5="  (5)   :   mosh $(get_hostname dev3) (dev3)"
+  local str6="  (6/g) :   mosh $(get_hostname devgpu) (devgpu)"
   # main loop
   while [[ -z $option ]]
   do
@@ -282,8 +283,9 @@ function _list_task {
     cyanecho $str3
     cyanecho $str4
     cyanecho $str5
+    cyanecho $str6
     whiteecho $(printf '=%.0s' {1..50})
-    yellowecho -n "Select One Option From (1) - (5): "
+    yellowecho -n "Select One Option From (1) - (6): "
     if [[ -z $argopt ]]; then
       read argopt
     fi
@@ -292,6 +294,7 @@ function _list_task {
     elif [[ $argopt == 3* || $argopt == d* ]]; then option=3
     elif [[ $argopt == 4* ]]; then option=4
     elif [[ $argopt == 5* ]]; then option=5
+    elif [[ $argopt == 6* || $argopt == g* ]]; then option=6
     else
       redecho "  Input Not Recognized..."
       echo ""
@@ -318,6 +321,9 @@ function _list_task {
   elif [[ $option -eq 5 ]]; then
     redecho $str5
     mosh dev3
+  elif [[ $option -eq 6 ]]; then
+    redecho $str6
+    mosh devgpu
   fi
 }
 
