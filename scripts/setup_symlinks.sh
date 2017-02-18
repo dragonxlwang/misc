@@ -115,7 +115,6 @@ files=(                                                           \
   "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit"            \
   "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/.vim/.ycm_extra_conf.py"     \
   "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/fbcode/.ycm_extra_conf.py"   \
-  "$root_dir/lib/config"            "${HOME}/.ssh/config"         \
   "${HOME}/fbsource/fbcode"         "${HOME}/fbcode")
 
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
