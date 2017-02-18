@@ -127,16 +127,15 @@ do
   mk_link $src $des
 done
 
-mkdir -p ${HOME}/.ssh/config.d
-
 if [[ $(uname) == Darwin ]]; then
-  :
+  mk_link $root_dir/lib/ssh-config-darwin \
+    ${HOME}/.ssh/config
 elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 6* ]]; then
   mk_link $root_dir/lib/ssh-config-centos6 \
-    ${HOME}/.ssh/config.d/ssh-config-centos6
+    ${HOME}/.ssh/config
 elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 7* ]]; then
   mk_link $root_dir/lib/ssh-config-centos7 \
-    ${HOME}/.ssh/config.d/ssh-config-centos7
+    ${HOME}/.ssh/config
 fi
 
 echo "Finished!"
