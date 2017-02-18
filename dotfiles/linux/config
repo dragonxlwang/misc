@@ -13,7 +13,6 @@ Host devgpu
     User xlwang
     HostName devgpu199.prn2.facebook.com
 
-# On CentOS 7
 Host github.com
     ProxyCommand nc --proxy-type http --proxy fwdproxy:8080 %h %p
 
