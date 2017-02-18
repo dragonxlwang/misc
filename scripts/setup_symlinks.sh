@@ -85,9 +85,9 @@ then
 fi
 
 ## darwin/linux suite
-files=(                                                                   \
-  ".bashrc"                         "${HOME}/.bashrc"                     \
-  ".gitconfig"                      "${HOME}/.gitconfig")
+files=(                                                           \
+  "$root_dir/lib/.bashrc"               "${HOME}/.bashrc"         \
+  "$root_dir/lib/.gitconfig"            "${HOME}/.gitconfig")
 if [[ ${#files[@]} -gt 0 ]]; then
   for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
   do
@@ -95,10 +95,22 @@ if [[ ${#files[@]} -gt 0 ]]; then
     k=$(( j + 1 ))
     file=${files[j]}
     path=${files[k]}
-    src="$root_dir/${1}/${file}"
+    src="/${file}_${1}"
     des="${path}"
     mk_link $src $des
   done
+fi
+
+## system suite
+if [[ $(uname) == Darwin ]]; then
+  mk_link $root_dir/lib/ssh-config-darwin \
+    ${HOME}/.ssh/config
+elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 6* ]]; then
+  mk_link $root_dir/lib/ssh-config-centos6 \
+    ${HOME}/.ssh/config
+elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 7* ]]; then
+  mk_link $root_dir/lib/ssh-config-centos7 \
+    ${HOME}/.ssh/config
 fi
 
 ## darwin & linux suite
@@ -125,16 +137,5 @@ do
   des=${files[k]}
   mk_link $src $des
 done
-
-if [[ $(uname) == Darwin ]]; then
-  mk_link $root_dir/lib/ssh-config-darwin \
-    ${HOME}/.ssh/config
-elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 6* ]]; then
-  mk_link $root_dir/lib/ssh-config-centos6 \
-    ${HOME}/.ssh/config
-elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 7* ]]; then
-  mk_link $root_dir/lib/ssh-config-centos7 \
-    ${HOME}/.ssh/config
-fi
 
 echo "Finished!"
