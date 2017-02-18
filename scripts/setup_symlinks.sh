@@ -25,8 +25,8 @@ mk_link() {
   src=$1
   des=$2
   cnt=$((cnt + 1))
-  if [[ ! -e ${scr} ]]; then
-    echo -e $ANSI_COLOR_YELLOW "[$cnt]: ${scr} does not exist!" \
+  if [[ ! -e ${src} ]]; then
+    echo -e $ANSI_COLOR_YELLOW "[$cnt]: ${src} does not exist!" \
       $ANSI_COLOR_RESET
     return 1
   fi
@@ -39,14 +39,14 @@ mk_link() {
     then
       echo -e $ANSI_COLOR_RED "[$cnt]: rm ${des}" $ANSI_COLOR_RESET
       rm -rf ${des}
-      echo -e  $ANSI_COLOR_RED "[$cnt]: ln -s ${scr} ${des}" $ANSI_COLOR_RESET
-      ln -s ${scr} ${des}
+      echo -e  $ANSI_COLOR_RED "[$cnt]: ln -s ${src} ${des}" $ANSI_COLOR_RESET
+      ln -s ${src} ${des}
     else
       echo -e $ANSI_COLOR_BLUE "[$cnt]: skipping ${des}" $ANSI_COLOR_RESET
     fi
   else
-    echo -e $ANSI_COLOR_GREEN "[$cnt]: ln -s ${scr} ${des}" $ANSI_COLOR_RESET
-    ln -s ${scr} ${des}
+    echo -e $ANSI_COLOR_GREEN "[$cnt]: ln -s ${src} ${des}" $ANSI_COLOR_RESET
+    ln -s ${src} ${des}
   fi
 }
 
@@ -56,9 +56,9 @@ if [[ $1 == "darwin" ]];
 then
   for f in $(ls "$root_dir/darwin/.atom");
   do
-    scr="$root_dir/darwin/.atom/$f"
+    src="$root_dir/darwin/.atom/$f"
     des="${HOME}/.atom/$f"
-    mk_link $scr $des
+    mk_link $src $des
   done
   echo -e $ANSI_COLOR_GREEN "setting up /usr/local symlinks" $ANSI_COLOR_RESET
   for b in "${bins[@]}"
@@ -95,9 +95,9 @@ if [[ ${#files[@]} -gt 0 ]]; then
     k=$(( j + 1 ))
     file=${files[j]}
     path=${files[k]}
-    scr="$root_dir/${1}/${file}"
+    src="$root_dir/${1}/${file}"
     des="${path}"
-    mk_link $scr $des
+    mk_link $src $des
   done
 fi
 
@@ -122,9 +122,9 @@ for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
 do
   j=$(( i * 2 ))
   k=$(( j + 1 ))
-  scr=${files[j]}
+  src=${files[j]}
   des=${files[k]}
-  mk_link $scr $des
+  mk_link $src $des
 done
 
 mkdir -p ${HOME}/.ssh/config.d
