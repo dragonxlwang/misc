@@ -95,7 +95,7 @@ if [[ ${#files[@]} -gt 0 ]]; then
     k=$(( j + 1 ))
     file=${files[j]}
     path=${files[k]}
-    src="/${file}_${1}"
+    src="${file}_${1}"
     des="${path}"
     mk_link $src $des
   done
