@@ -1,0 +1,4 @@
+# On CentOS 7
+Host github.com
+    ProxyCommand nc --proxy-type http --proxy fwdproxy:8080 %h %p
+

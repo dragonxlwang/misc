@@ -1,5 +1,6 @@
 #############################  FACEBOOK SETTINGS  #############################
 # xlwang.sb
+
 Host dev
     User xlwang
     HostName dev11733.prn2.facebook.com
@@ -13,15 +14,13 @@ Host devgpu
     User xlwang
     HostName devgpu199.prn2.facebook.com
 
-Host github.com
-    ProxyCommand ~/misc/scripts/github_proxy.sh %h %p
-
 Host *.facebook.com dev dev*
     IdentityFile ~/.ssh/fb_id_rsa
     IdentityFile ~/.ssh/id_ecdsa
     IdentityFile ~/.ssh/id_rsa
     IdentityFile ~/.ssh/id_dsa
 
+Include config.d/*
 
 #############################  ILLINOIS SETTINGS  #############################
 Host timan101

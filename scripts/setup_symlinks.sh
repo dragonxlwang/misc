@@ -87,7 +87,6 @@ fi
 ## darwin/linux suite
 files=(                                                                   \
   ".bashrc"                         "${HOME}/.bashrc"                     \
-  "config"                          "${HOME}/.ssh/config"                 \
   ".gitconfig"                      "${HOME}/.gitconfig")
 if [[ ${#files[@]} -gt 0 ]]; then
   for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
@@ -116,6 +115,7 @@ files=(                                                           \
   "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit"            \
   "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/.vim/.ycm_extra_conf.py"     \
   "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/fbcode/.ycm_extra_conf.py"   \
+  "$root_dir/lib/config"            "${HOME}/.ssh/config"         \
   "${HOME}/fbsource/fbcode"         "${HOME}/fbcode")
 
 for i in $( seq 0 $(( ${#files[@]} / 2 - 1 )) );
@@ -126,5 +126,17 @@ do
   des=${files[k]}
   mk_link $scr $des
 done
+
+mkdir -p ${HOME}/.ssh/config.d
+
+if [[ $(uname) == Darwin ]]; then
+  :
+elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 6* ]]; then
+  mk_link $root_dir/lib/ssh-config-centos6 \
+    ${HOME}/.ssh/config.d/ssh-config-centos6
+elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 7* ]]; then
+  mk_link $root_dir/lib/ssh-config-centos7 \
+    ${HOME}/.ssh/config.d/ssh-config-centos7
+fi
 
 echo "Finished!"
