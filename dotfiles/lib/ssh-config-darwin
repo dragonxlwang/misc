@@ -20,8 +20,6 @@ Host *.facebook.com dev dev*
     IdentityFile ~/.ssh/id_rsa
     IdentityFile ~/.ssh/id_dsa
 
-Include config.d/*
-
 #############################  ILLINOIS SETTINGS  #############################
 Host timan101
     User xwang95
