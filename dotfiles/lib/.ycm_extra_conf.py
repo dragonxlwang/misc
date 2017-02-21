@@ -39,6 +39,7 @@ def DirectoryOfThisScript():
 
 
 def MakeRelativePathsInFlagsAbsolute(flags, working_directory):
+    # flags = [flag for flag in flags if ('wrappers' not in flag)]
     if not working_directory:
         return list(flags)
     new_flags = []
@@ -46,6 +47,7 @@ def MakeRelativePathsInFlagsAbsolute(flags, working_directory):
     path_flags = ['-isystem', '-I', '-iquote', '--sysroot=']
     for flag in flags:
         new_flag = None
+        # new_flag = flag
 
         if make_next_absolute:
             make_next_absolute = False
