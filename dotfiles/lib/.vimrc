@@ -342,7 +342,7 @@ augroup FiletypeDetectAutoGroup
   au BufNewFile,BufRead *.mcconf set filetype=python
   au BufNewFile,BufRead *.thrift set filetype=thrift
   au BufNewFile,BufRead TARGETS set filetype=python
-  au BufNewFile,BufRead *.cu set filetype=cpp
+  " au BufNewFile,BufRead *.cu set filetype=cpp
 augroup END
 
 " ==================================- tex -=====================================
