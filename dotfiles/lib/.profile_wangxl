@@ -706,13 +706,19 @@ function yapf {
 alias killall="killall -u $USER"
 alias ka="\killall -u $USER" #  disables the alias in interactive shell
 alias upld="${HOME}/misc/scripts/sync.sh"
+function buck_gen_cc {
+  buck build --show-output $1\#compilation-database
+}
+function buck_prune_cc {
+  cat $1 > ~/fbcode/compile_commands.json
+  ~/misc/scripts/prune_fbcode_compiler_commands_json.py
+}
 function gen_cdb {
   local curdir=$(pwd)
   cd ~/fbcode;
   local json_file="$(buck build --show-output $1\#compilation-database \
                     2>&/dev/null | tail -1)"
-  cat ${${=json_file}[2]} > ~/fbcode/compile_commands.json
-  ~/misc/scripts/prune_fbcode_compiler_commands_json.py
+  buck_prune_cc ${${=json_file}[2]}
   cd $curdir
 }
 
