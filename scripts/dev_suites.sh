@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 function _color_echo {
   if [[ "$2" == "-n" ]]; then echo -ne "\033[${1}${@:3}\033[0m"
