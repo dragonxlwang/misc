@@ -61,15 +61,6 @@ if [[ ! -e ~/bin/git-proxy-wrapper ]]; then
   chmod a+x ~/bin/git-proxy-wrapper
 fi
 
-# ipython
-## ==================================================
-## dex/ifbpy-notebook-in-a-nutshell/
-ipython_setup
-cd ~/fbcode
-torch/fb/fbitorch/setup.sh
-buck build -c fbcode.platform=gcc-4.9-glibc-2.20 deeplearning/torch:cuth
-
-
 # pip
 ## ==================================================
 mkdir -p ~/workspace
@@ -88,3 +79,11 @@ cd ~/workspace
 git clone https://github.com/google/yapf.git
 cd yapf
 sudo python setup.py install
+
+# ipython
+## ==================================================
+## dex/ifbpy-notebook-in-a-nutshell/
+ipython_setup
+cd ~/fbcode
+torch/fb/fbitorch/setup.sh
+buck build -c fbcode.platform=gcc-4.9-glibc-2.20 deeplearning/torch:cuth
