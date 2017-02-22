@@ -124,6 +124,7 @@ files=(                                                           \
   "$root_dir/lib/.bash_profile"     "${HOME}/.bash_profile"       \
   "$root_dir/lib/.tmux.conf"        "${HOME}/.tmux.conf"          \
   "$root_dir/lib/.zshrc"            "${HOME}/.zshrc"              \
+  "$root_dir/lib/.hgrc"             "${HOME}/.hgrc"               \
   "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit"            \
   "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/.vim/.ycm_extra_conf.py"     \
   "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/fbcode/.ycm_extra_conf.py"   \

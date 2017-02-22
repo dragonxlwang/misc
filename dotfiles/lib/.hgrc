@@ -1,0 +1,15 @@
+# example user config (see 'hg help config' for more info)
+[ui]
+# name and email, e.g.
+# username = Jane Doe <jdoe@example.com>
+username = Xiaolong Wang <xlwang@fb.com>
+
+[bookmarks]
+track.current = True
+
+[extensions]
+# uncomment these lines to enable some popular extensions
+# (see 'hg help extensions' for more info)
+#
+# pager =
+# color =
