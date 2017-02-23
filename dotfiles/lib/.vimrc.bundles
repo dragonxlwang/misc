@@ -24,6 +24,7 @@ Plugin 'moll/vim-bbye'
 " Close the current buffer without closing windows
 noremap <leader>bd :Bdelete<cr>
 
+Plugin 'vim-scripts/a.vim'
 " Plugin 'vim-scripts/YankRing.vim'
 " let g:yankring_replace_n_pkey = '<leader><leader>p'
 " let g:yankring_replace_n_nkey = '<leader><leader>n'
