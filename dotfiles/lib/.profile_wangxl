@@ -294,16 +294,20 @@ alias -g RNUL="> /dev/null 2>&1"
 function vim_buffers {
   local found=0
   local exe_path
-  local curpwd=$(pwd)
-  while [[ ! -e $(pwd)/buffers.list && $(pwd) != $(dirname $(pwd)) ]]; do
-    cd $(dirname $(pwd))
-  done
-  if [[ -e $(pwd)/buffers.list ]]; then
-    exe_path=$(pwd)/buffers.list
+  if [[ -z $1 ]]; then
+    local curpwd=$(pwd)
+    while [[ ! -e $(pwd)/buffers.list && $(pwd) != $(dirname $(pwd)) ]]; do
+      cd $(dirname $(pwd))
+    done
+    if [[ -e $(pwd)/buffers.list ]]; then
+      exe_path=$(pwd)/buffers.list
+    else
+      exe_path="${HOME}/.vim/buffers.list"
+    fi
+    cd ${curpwd}
   else
-    exe_path="${HOME}/.vim/buffers.list"
+    exe_path="$1"
   fi
-  cd ${curpwd}
   cyanecho $exe_path
 
   local dir="$(sed '2q;d' $exe_path)"
