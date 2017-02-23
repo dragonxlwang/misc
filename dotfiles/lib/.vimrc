@@ -116,6 +116,12 @@ augroup END
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
+" set rnu
+" augroup SwitchLineNumberAutoGroup
+"   autocmd!
+"   au WinLeave * set nornu
+"   au WinEnter * set rnu
+" augroup END
 " " Highlight the current line only in current window
 " set cul
 " hi clear CursorLine
@@ -334,6 +340,7 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
 command! Fp echo expand('%:p')
+nnoremap <C-n> :call NumberToggle()<cr>
 
 " ===========================- Detecting Filetype -=============================
 augroup FiletypeDetectAutoGroup
@@ -437,3 +444,10 @@ function! WriteListedFiles()
   redir END
 endfunction
 
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+  else
+    set rnu
+  endif
+endfunc
