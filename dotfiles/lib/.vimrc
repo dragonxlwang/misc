@@ -300,7 +300,7 @@ vnoremap <silent> <leader>y
 nnoremap <leader>p "0p
 
 " Toggle paste mode on and off
-noremap <leader>pp :setlocal paste!<cr>:echoe HasPaste()<cr>
+noremap <leader>pp :setlocal paste! \| :echoe "paste =" &paste<cr>
 noremap Y y$
 " " Yankring remap Y to y$
 " function! YRRunAfterMaps()
@@ -322,11 +322,11 @@ nnoremap <Leader>] <C-]>
 nnoremap <Leader>: :<C-u>tab<Space>stj<Space><C-R>=expand('<cword>')<CR><CR>
 nnoremap <Leader>[ <C-o>
 " Spell checking
-noremap <leader>Ss :setlocal spell!<cr>
-noremap <leader>Sn ]s
-noremap <leader>Sp [s
-noremap <leader>Sa zg
-noremap <leader>S? z=
+noremap <leader>ss :setlocal spell! \| echoe 'spell =' &spell<cr>
+noremap <leader>sn ]s
+noremap <leader>sp [s
+" noremap <leader>Sa zg
+" noremap <leader>S? z=
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Remap ctrl-A to ctrl-C, which is rarely used anyways
