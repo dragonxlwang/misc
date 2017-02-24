@@ -229,6 +229,8 @@ noremap <leader>k :bnext<cr>
 noremap <leader>j :bprev<cr>
 noremap <leader>sk :sp \| bnext <cr>
 noremap <leader>sj :sp \| bprev <cr>
+noremap <leader>vk :vs \| bnext <cr>
+noremap <leader>vj :vs \| bprev <cr>
 " Cycle between tabs
 " noremap <C-w><C-k> :tabn<cr>
 " noremap <C-w><C-j> :tabp<cr>
