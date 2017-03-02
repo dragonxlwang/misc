@@ -13,6 +13,9 @@ Host dev3
 Host devgpu
     User xlwang
     HostName devgpu199.prn2.facebook.com
+Host devbig
+    User xlwang
+    Hostname devbig160.frc2.facebook.com
 
 Host *.facebook.com dev dev*
     IdentityFile ~/.ssh/fb_id_rsa

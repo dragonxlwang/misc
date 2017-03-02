@@ -270,9 +270,9 @@ function _list_task {
   [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
   local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
   local str2="  (2/n) :   zsh"
-  local str3="  (3/d) :   mosh $(get_hostname dev) (dev)"
-  local str4="  (4)   :   mosh $(get_hostname dev2) (dev2)"
-  local str5="  (5)   :   mosh $(get_hostname dev3) (dev3)"
+  local str3="  (3/b) :   mosh $(get_hostname devbig) (devbig)"
+  local str3="  (4/d) :   mosh $(get_hostname dev) (dev)"
+  local str5="  (5)   :   mosh $(get_hostname dev2) (dev2)"
   local str6="  (6/g) :   mosh $(get_hostname devgpu) (devgpu)"
   # main loop
   while [[ -z $option ]]
@@ -289,11 +289,11 @@ function _list_task {
     if [[ -z $argopt ]]; then
       read argopt
     fi
-    if [[ $argopt == 1* || $argopt == t* ]]; then option=1
+    if   [[ $argopt == 1* || $argopt == t* ]]; then option=1
     elif [[ $argopt == 2* || $argopt == n* ]]; then option=2
-    elif [[ $argopt == 3* || $argopt == d* ]]; then option=3
-    elif [[ $argopt == 4* ]]; then option=4
-    elif [[ $argopt == 5* ]]; then option=5
+    elif [[ $argopt == 3* || $argopt == b* ]]; then option=3
+    elif [[ $argopt == 4* || $argopt == d* ]]; then option=4
+    elif [[ $argopt == 5* ]];                  then option=5
     elif [[ $argopt == 6* || $argopt == g* ]]; then option=6
     else
       redecho "  Input Not Recognized..."
@@ -314,13 +314,13 @@ function _list_task {
     redecho $str2
   elif [[ $option -eq 3 ]]; then
     redecho $str3
-    mosh dev
+    mosh devbig
   elif [[ $option -eq 4 ]]; then
     redecho $str4
-    mosh dev2
+    mosh dev
   elif [[ $option -eq 5 ]]; then
     redecho $str5
-    mosh dev3
+    mosh dev2
   elif [[ $option -eq 6 ]]; then
     redecho $str6
     mosh devgpu

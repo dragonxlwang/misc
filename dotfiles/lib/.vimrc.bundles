@@ -38,6 +38,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'dragonxlwang/vim-better-search'
+Plugin 'elzr/vim-json'
 
 " ============================================================================="
 "         ____    ____  __       _______. __    __       ___       __          "
