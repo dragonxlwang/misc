@@ -459,11 +459,17 @@ function! NumberToggle()
   elseif(&number == 1)
     setlocal nornu
     setlocal nonu
+    if exists("g:indentLine_loaded")
+      IndentLinesDisable
+    endif
     echohl Error
     echo "no line number"
     echohl None
   else
     setlocal nu
+    if exists("g:indentLine_loaded")
+      IndentLinesEnable
+    endif
     echohl Error
     echo "line number"
     echohl None
