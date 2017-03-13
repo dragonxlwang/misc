@@ -219,7 +219,7 @@ vnoremap <Leader><Bar> 80<Bar>
 
 " =====================- Keymap: Windows, buffers & Tabs -======================
 " tab
-noremap <leader>tt :tabnew<cr>
+noremap <leader>tt :tabnew %<cr>
 noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 noremap <leader>to :tabonly<cr>
 noremap <leader>tc :tabclose<cr>
