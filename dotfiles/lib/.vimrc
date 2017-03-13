@@ -231,6 +231,11 @@ noremap <leader>sk :sp \| bnext <cr>
 noremap <leader>sj :sp \| bprev <cr>
 noremap <leader>vk :vs \| bnext <cr>
 noremap <leader>vj :vs \| bprev <cr>
+nmap <silent> <C-K> :wincmd k<CR>
+nmap <silent> <C-J> :wincmd j<CR>
+nmap <silent> <C-H> :wincmd h<CR>
+nmap <silent> <C-L> :wincmd l<CR>
+
 " Cycle between tabs
 " noremap <C-w><C-k> :tabn<cr>
 " noremap <C-w><C-j> :tabp<cr>
@@ -445,9 +450,22 @@ function! WriteListedFiles()
 endfunction
 
 function! NumberToggle()
-  if(&relativenumber == 1)
-    set nornu
+  " number -> rnu -> nonumber
+  if(&number == 1 && &relativenumber == 0)
+    setlocal rnu
+    echohl Error
+    echo "relative"
+    echohl None
+  elseif(&number == 1)
+    setlocal nornu
+    setlocal nonu
+    echohl Error
+    echo "no line number"
+    echohl None
   else
-    set rnu
+    setlocal nu
+    echohl Error
+    echo "line number"
+    echohl None
   endif
 endfunc
