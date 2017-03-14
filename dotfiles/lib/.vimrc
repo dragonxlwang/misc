@@ -75,7 +75,7 @@ let g:tex_conceal = ""          " no translation math symbols
 " ================================- Python -===================================
 augroup PythonAutoGroup
   autocmd!
-  autocmd FileType python set shiftwidth=4 softtabstop=4 tabstop=4
+  autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4
 augroup END
 " ==================================- Misc -====================================
 syntax on                       " Turn on syntax highlighting
