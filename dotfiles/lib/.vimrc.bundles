@@ -205,7 +205,8 @@ if !empty(glob("~/llvm/build/bin/clang-format"))
   let g:formatdef_my_custom_clang =
         \'"~/llvm/build/bin/clang-format -style=google"'
 else
-  let g:formatdef_my_custom_clang = '"clang-format -style=file"'
+  let g:formatdef_my_custom_clang =
+        \'"clang-format -style=file -fallback-style=Google"'
 endif
 let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
