@@ -783,6 +783,8 @@ function itorch {
 #                              |__|     |______/                               #
 ## ========================================================================== ##
 alias arc_lint="arc lint --engine HowtoevenLintEngine"
+alias hg_ls_files="hg log --stat -l1"
+alias arc_up_msg="hg commit --amend && arc diff --verbatim"
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
