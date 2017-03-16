@@ -261,6 +261,11 @@ noremap <silent> <C-w>[ :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-w>] :wincmd _<cr>
 noremap <silent> <C-w>} :res 0<cr>
 noremap <silent> <C-w>\ :execute "vertical res"  . &columns / 2<cr>
+
+noremap <silent> <C-u> :execute "res"  . &lines / 2<cr>
+noremap <silent> <C-i> :wincmd _<cr>
+noremap <silent> <C-o> :vert res 100<cr>
+
 noremap <silent> <C-w><C-j> :100 wincmd j<cr>
 noremap <silent> <C-w><C-k> :100 wincmd k<cr>
 " go to files
