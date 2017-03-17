@@ -685,7 +685,7 @@ alias extgit='git -c http.proxy=fwdproxy:8080 -c'`
 #             |______/  | _| `._____|_______|   \__/  \__/                     #
 ## ========================================================================== ##
 # homebrew api token
-if [[ -n "$(which brew 2>/dev/null)"  ]]; then
+if [[ $(uname) == "Darwin" ]] && [[ -n "$(which brew 2>/dev/null)"  ]]; then;
   if [[ -f  ~/Dropbox/Tools/secrets/homebrew_github_api_token ]]; then
     export HOMEBREW_GITHUB_API_TOKEN=$(cat \
       ~/Dropbox/Tools/secrets/homebrew_github_api_token)
