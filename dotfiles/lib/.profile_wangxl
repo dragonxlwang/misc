@@ -293,6 +293,7 @@ alias -g PPP="2>&1| pygmentize"
 alias -g RNE="2> /dev/null"
 alias -g RALL="2>&1"
 alias -g RNUL="> /dev/null 2>&1"
+alias -g FPP="| fpp"
 ##---------------------------------== vim ==----------------------------------##
 function vim_buffers {
   local found=0
@@ -788,6 +789,20 @@ function itorch {
 alias arc_lint="arc lint --engine HowtoevenLintEngine"
 alias hg_ls_files="hg log --stat -l1"
 alias arc_up_msg="hg commit --amend && arc diff --verbatim"
+function hn {
+  local num=${1:=1}
+  for i in $(seq 1 $1);
+  do
+    hg next
+  done
+}
+function hp {
+  local num=${1:=1}
+  for i in $(seq 1 $1);
+  do
+    hg prev
+  done
+}
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
