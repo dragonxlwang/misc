@@ -43,6 +43,9 @@ function colorize_column {
 function get_hostname {
   echo $(ssh -G $1 | awk '/^hostname / { print $2 }')
 }
+function rvmv {
+  mv $2 $1
+}
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then
