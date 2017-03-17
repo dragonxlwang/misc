@@ -1,8 +1,12 @@
 #!/usr/bin/env zsh
 
 function _color_echo {
-  if [[ "$2" == "-n" ]]; then echo -ne "\033[${1}${@:3}\033[0m"
-  else echo -e "\033[${1}${@:2}\033[0m"; fi }
+  if [[ "$2" == "-n" ]]; then
+    echo -ne "\033[${1}${@:3}\033[0m"
+  else
+    echo -e "\033[${1}${@:2}\033[0m";
+  fi
+}
 function blackecho    { _color_echo "1;30m" "${@}"; }
 function redecho      { _color_echo "1;31m" "${@}"; }
 function greenecho    { _color_echo "1;32m" "${@}"; }
@@ -25,7 +29,7 @@ sudo yum install cmake clang boost rubygems curl-devel htop \
   perl perl-devel perl-ExtUtils-ParseXS \
   perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
   perl-ExtUtils-Embed gcc gcc-c++ \
-  wget tar gzip ncurses-devel texinfo svn python-devel
+  wget tar gzip ncurses-devel texinfo svn python-devel the_silver_searcher
 
 # vim
 ## ==================================================
