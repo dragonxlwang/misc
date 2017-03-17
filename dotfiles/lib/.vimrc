@@ -262,9 +262,9 @@ noremap <silent> <C-w>] :wincmd _<cr>
 noremap <silent> <C-w>} :res 0<cr>
 noremap <silent> <C-w>\ :execute "vertical res"  . &columns / 2<cr>
 
-noremap <silent> <C-u> :execute "res"  . &lines / 2<cr>
-noremap <silent> <C-i> :wincmd _<cr>
-noremap <silent> <C-o> :vert res 100<cr>
+noremap <silent> <C-n> :execute "res"  . &lines / 2<cr>
+noremap <silent> <C-m> :wincmd _<cr>
+noremap <silent> <C-g> :vert res 100<cr>
 
 noremap <silent> <C-w><C-j> :100 wincmd j<cr>
 noremap <silent> <C-w><C-k> :100 wincmd k<cr>
@@ -312,7 +312,7 @@ vnoremap <silent> <leader>y
 nnoremap <leader>p "0p
 
 " Toggle paste mode on and off
-noremap <leader>pp :setlocal paste! \| :echoe "paste =" &paste<cr>
+noremap <ESC>p :setlocal paste! \| :echoe "paste =" &paste<cr>
 noremap Y y$
 " " Yankring remap Y to y$
 " function! YRRunAfterMaps()
@@ -332,7 +332,7 @@ nnoremap <Leader>] <C-]>
 nnoremap <Leader>: :<C-u>tab<Space>stj<Space><C-R>=expand('<cword>')<CR><CR>
 nnoremap <Leader>[ <C-o>
 " Spell checking
-noremap <leader>ss :setlocal spell! \| echoe 'spell =' &spell<cr>
+noremap <ESC>s :setlocal spell! \| echoe 'spell =' &spell<cr>
 noremap <leader>sn ]s
 noremap <leader>sp [s
 " noremap <leader>Sa zg
@@ -350,7 +350,7 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
 command! Fp echo expand('%:p')
-nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <ESC>n :call NumberToggle()<cr>
 
 " ===========================- Detecting Filetype -=============================
 augroup FiletypeDetectAutoGroup
