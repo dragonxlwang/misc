@@ -262,8 +262,10 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 Plugin 'majutsushi/tagbar'
-nnoremap <leader>gg
-      \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
+let g:tagbar_autofocus = 1
+nnoremap <leader>gg :TagbarToggle<CR>
+" nnoremap <leader>gg
+"   \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
 
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
