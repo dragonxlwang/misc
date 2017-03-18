@@ -805,6 +805,8 @@ function hp {
 }
 alias ha="hg amend --rebase"
 alias hf="hg log --stat -l1 | fpp"
+alias hs="hg st && hg ssl"
+alias hdh='hg diff -r ".^"'
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
