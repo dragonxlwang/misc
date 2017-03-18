@@ -274,7 +274,7 @@ function _list_task {
   local str4="  (4/b) :   mosh $(get_hostname devbig2) (devbig2)"
   local str5="  (5/g) :   mosh $(get_hostname devgpu) (devgpu)"
   local str6="  (6/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
-  local str7="  (7/d) :   mosh $(get_hostname dev) (dev)"
+  local str7="  (7/d) :   mosh $(get_hostname dev)  (dev)"
   # main loop
   while [[ -z $option ]]
   do
@@ -285,8 +285,9 @@ function _list_task {
     cyanecho $str4
     cyanecho $str5
     cyanecho $str6
-    whiteecho $(printf '=%.0s' {1..50})
-    yellowecho -n "Select One Option From (1) - (6): "
+    cyanecho $str7
+    whiteecho $(printf '=%.0s' {1..80})
+    yellowecho -n "Select One Option From (1) - (7): "
     if [[ -z $argopt ]]; then
       read argopt
     else
