@@ -1,21 +1,21 @@
 #############################  FACEBOOK SETTINGS  #############################
-# xlwang.sb
 
 Host dev
     User xlwang
     HostName dev11733.prn2.facebook.com
-Host dev2
+# xlwang.sb
+Host devbig
     User xlwang
-    HostName dev11919.prn2.facebook.com
-Host dev3
+    Hostname devbig470.prn2.facebook.com
+Host devbig2
     User xlwang
-    HostName dev11973.prn2.facebook.com
+    Hostname devbig421.prn1.facebook.com
 Host devgpu
     User xlwang
     HostName devgpu199.prn2.facebook.com
-Host devbig
+Host devgpu2
     User xlwang
-    Hostname devbig160.frc2.facebook.com
+    HostName devgpu166.prn2.facebook.com
 
 Host *.facebook.com dev dev*
     IdentityFile ~/.ssh/fb_id_rsa
