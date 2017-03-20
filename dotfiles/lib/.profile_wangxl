@@ -787,7 +787,6 @@ function itorch {
 #                              |__|     |______/                               #
 ## ========================================================================== ##
 alias arc_lint="arc lint --engine HowtoevenLintEngine"
-alias hg_ls_files="hg log --stat -l1"
 alias arc_up_msg="hg commit --amend && arc diff --verbatim"
 function hn {
   local num=${1:=1}
@@ -804,8 +803,10 @@ function hp {
   done
 }
 alias ha="hg amend --rebase"
-alias hf="hg log --stat -l1 | fpp"
+alias hls="hg log --stat -l1 | fpp"
+alias hlsf="hg log --stat -l1 | fpp"
 alias hs="hg st && hg ssl"
+alias hsf="hg st | fpp"
 alias hdh='hg diff -r ".^"'
 
 ## ========================================================================== ##
