@@ -366,6 +366,15 @@ augroup END
 command! Texmake exe "! ~/misc/scripts/tex_make.sh make" | redraw!
 command! Texclean exe "! ~/misc/scripts/tex_make.sh clean" | redraw!
 
+
+" ==================================- fb  -=====================================
+function! Duf()
+  echo expand('%:p:s?.*/fbcode/?https://phabricator.intern.facebook.com/'.
+        \'diffusion/FBS/browse/master/fbcode/?'.
+        \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
+        \. '%24' . line('.')
+endfunction
+command! -nargs=* Duf call Duf()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

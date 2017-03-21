@@ -833,7 +833,7 @@ function get_blamef() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--height 40% --reverse --border --multi --cycle \
 --bind=ctrl-h:backward-char,ctrl-l:forward-char,\
-ctrl-f:page-down,ctrl-b:page-up,f:toggle --inline-info"
+ctrl-f:page-down,ctrl-b:page-up,ctrl-s:toggle --inline-info"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 function vfzf { vim $(fzf) }
 function fe() {
