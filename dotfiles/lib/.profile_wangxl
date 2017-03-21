@@ -808,6 +808,50 @@ alias hlsf="hg log --stat -l1 | fpp"
 alias hs="hg st && hg ssl"
 alias hsf="hg st | fpp"
 alias hdh='hg diff -r ".^"'
+function get_duf() {
+  local f=$1
+  f=$(readlink -f ${f})
+  local u
+  if [[ ${f} == *fbcode* ]]; then
+    u="https://phabricator.intern.facebook.com/diffusion/FBS/browse/master/"
+    u+="fbcode/"
+    u+=$(echo ${f} | sed 's/.*fbcode\/\(.*\)/\1/')
+  fi
+  echo $u
+}
+function get_blamef() {
+  local f=$1
+  f=$(readlink -f ${f})
+  local u
+  if [[ ${f} == *fbcode* ]]; then
+    u="https://phabricator.intern.facebook.com/diffusion/FBS/browse/master/"
+    u+="fbcode/"
+    u+=$(echo ${f} | sed 's/.*fbcode\/\(.*\)/\1/')"?blame=1"
+  fi
+  echo $u
+}
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="--height 40% --reverse --border --multi --cycle \
+--bind=ctrl-h:backward-char,ctrl-l:forward-char,\
+ctrl-f:page-down,ctrl-b:page-up,f:toggle --inline-info"
+export FZF_DEFAULT_COMMAND='ag -g ""'
+function vfzf { vim $(fzf) }
+function fe() {
+  local files
+  IFS=$'\n' out=($(fzf --query="$1" --expect=ctrl-o,ctrl-e))
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  echo $key
+  if [ -n "$file" ]; then
+    if [[ "$key" = ctrl-o ]]; then
+      get_duf "$file"
+    elif [[ "$key" == ctrl-e ]]; then
+      get_blamef "$file"
+    else
+      ${EDITOR:-vim} "$file"
+    fi
+  fi
+}
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
