@@ -803,10 +803,11 @@ function hp {
   done
 }
 alias ha="hg amend --rebase"
-alias hls="hg log --stat -l1 | fpp"
+alias hls="hg log --stat -l1"
 alias hlsf="hg log --stat -l1 | fpp"
 alias hs="hg st && hg ssl"
 alias hsf="hg st | fpp"
+alias hd='hg diff'
 alias hdh='hg diff -r ".^"'
 function get_duf() {
   local f=$1

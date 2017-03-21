@@ -263,32 +263,8 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-let s:fzf_action= {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit',
-  \ 'enter' : 'edit'}
-let s:expect_keys = join(keys(s:fzf_action), ',')
-function! s:line_handler(lines)
-  if len(a:lines) < 2
-    return
-  endif
-  normal! m'
-  let cmd = get(s:fzf_action, a:lines[0], '')
-  if !empty(cmd)
-    let i = 1
-    while i < len(a:lines)
-      execute cmd a:lines[i]
-      let i = i + 1
-    endwhile
-  endif
-  normal! ^zz
-endfunction
-command! FZFfbcode call fzf#run({
-\  'source':  'find ~/fbcode/{sigrid,fblearner,caffe2} -type f',
-\  'sink*':    function('s:line_handler'),
-\  'options': '-m -x --expect='.s:expect_keys,
-\  'down':    '40%'})
+command! FZFfbcode call fzf#run(fzf#wrap(
+    \ {'source': 'find ~/fbcode/{sigrid,fblearner,caffe2} -type f'}))
 command! FZFMru call fzf#run({
 \  'source':  oldfiles,
 \  'sink':    'e',
