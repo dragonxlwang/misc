@@ -266,7 +266,8 @@ Plugin 'junegunn/fzf.vim'
 let s:fzf_action= {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+  \ 'ctrl-v': 'vsplit',
+  \ 'enter' : 'edit'}
 let s:expect_keys = join(keys(s:fzf_action), ',')
 function! s:line_handler(lines)
   if len(a:lines) < 2
@@ -274,7 +275,7 @@ function! s:line_handler(lines)
   endif
   normal! m'
   let cmd = get(s:fzf_action, a:lines[0], '')
-  if !empty(cmd) && stridx('edit', cmd) < 0
+  if !empty(cmd)
     let i = 1
     while i < len(a:lines)
       execute cmd a:lines[i]
