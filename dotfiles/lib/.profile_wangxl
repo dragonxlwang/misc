@@ -190,6 +190,7 @@ alias showip="${HOME}/misc/scripts/ip_lookup.sh all"
 # real remove
 alias rrm='/bin/rm -v'
 function rm {
+  [[ ! -d ~/.Trash ]] && mkdir ~/.Trash
   local ret=""
   local l
   ret=$(mv --verbose -f --backup=numbered \

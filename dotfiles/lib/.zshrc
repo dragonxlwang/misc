@@ -108,6 +108,9 @@ source $ZSH/oh-my-zsh.sh
 
 # enable zsh-completions
 autoload -U compinit && compinit
+
+# Use vi mode.
+bindkey -v
 # bind ctrl + space to accept the current suggestion
 bindkey '^ ' autosuggest-accept
 # vim-like move
@@ -117,6 +120,7 @@ bindkey "^H" backward-char
 bindkey "^L" forward-char
 bindkey "^B" backward-word
 bindkey "^F" forward-word
+bindkey "^X" delete-char
 # kill the lag
 export KEYTIMEOUT=10
 
