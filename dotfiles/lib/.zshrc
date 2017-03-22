@@ -115,6 +115,8 @@ bindkey "^K" up-line-or-beginning-search
 bindkey "^J" down-line-or-beginning-search
 bindkey "^H" backward-char
 bindkey "^L" forward-char
+bindkey "^B" backward-word
+bindkey "^F" forward-word
 # kill the lag
 export KEYTIMEOUT=10
 
