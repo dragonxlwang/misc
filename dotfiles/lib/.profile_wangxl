@@ -876,7 +876,11 @@ function fe {
 # fd - search directory including hidden directories
 fd() {
   local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+  local input
+   [[ $# -gt 0 && -d $1 ]] && \
+     { [[ $1 == */ ]] && { input=$1 } || { input=$1/ } } || \
+     { input=. }
+  dir=$(find ${input} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 # v - open files in ~/.viminfo
 v() {
