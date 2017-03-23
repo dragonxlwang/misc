@@ -114,13 +114,14 @@ bindkey -v
 # bind ctrl + space to accept the current suggestion
 bindkey '^ ' autosuggest-accept
 # vim-like move
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Widgets
 bindkey "^K" up-line-or-beginning-search
 bindkey "^J" down-line-or-beginning-search
 bindkey "^H" backward-char
 bindkey "^L" forward-char
 bindkey "^B" backward-word
 bindkey "^F" forward-word
-bindkey "^X" delete-char
+bindkey "^X" backward-delete-char
 # kill the lag
 export KEYTIMEOUT=10
 
