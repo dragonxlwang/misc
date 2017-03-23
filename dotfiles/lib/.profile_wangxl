@@ -873,6 +873,23 @@ function fe {
     fi
   fi
 }
+function fefb {
+  local files
+  IFS=$'\n' out=($(find ~/fbcode/{sigrid,fblearner,caffe2} -type f | \
+    fzf --query="$1" --expect=ctrl-o,ctrl-e))
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  echo $key
+  if [ -n "$file" ]; then
+    if [[ "$key" = ctrl-o ]]; then
+      get_duf "$file"
+    elif [[ "$key" == ctrl-e ]]; then
+      get_blamef "$file"
+    else
+      ${EDITOR:-vim} "$file"
+    fi
+  fi
+}
 # fd - search directory including hidden directories
 fd() {
   local dir
