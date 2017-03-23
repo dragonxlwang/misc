@@ -199,6 +199,7 @@ let g:UltiSnipsEditSplit="vertical"
 " let g:syntastic_check_on_wq = 0
 
 Plugin 'justinmk/vim-syntax-extra'  " temporal solution
+Plugin 'dragonxlwang/python-syntax'
 
 Plugin 'Chiel92/vim-autoformat'
 if !empty(glob("~/llvm/build/bin/clang-format"))

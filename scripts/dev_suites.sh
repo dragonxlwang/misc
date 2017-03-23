@@ -29,7 +29,8 @@ sudo yum install cmake clang boost rubygems curl-devel htop \
   perl perl-devel perl-ExtUtils-ParseXS \
   perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
   perl-ExtUtils-Embed gcc gcc-c++ \
-  wget tar gzip ncurses-devel texinfo svn python-devel the_silver_searcher
+  wget tar gzip ncurses-devel texinfo svn python-devel the_silver_searcher \
+  yasd
 
 # vim
 ## ==================================================
