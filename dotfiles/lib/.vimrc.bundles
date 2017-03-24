@@ -266,12 +266,16 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 command! FZFfbcode call fzf#run(fzf#wrap(
     \ {'source': 'find ~/fbcode/{sigrid,fblearner,caffe2} -type f'}))
-command! FZFMru call fzf#run({
-\  'source':  oldfiles,
-\  'sink':    'e',
-\  'options': '-m -x +s',
-\  'down':    '40%'})
+command! FZFMru call fzf#run(fzf#wrap(
+    \ {'source': reverse(s:all_files()) }))
+function! s:all_files()
+  return extend(
+  \ filter(copy(v:oldfiles),
+  \        "v:val !~ 'fugitive:\\|NERD_tree\\|^/tmp/\\|.git/'"),
+  \ map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'))
+endfunction
 nnoremap <C-[> :FZFfbcode<CR>
+nnoremap <C-]> :FZFMru<CR>
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_autofocus = 1

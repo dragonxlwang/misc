@@ -851,7 +851,7 @@ alias v="~/misc/scripts/v"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--height 40% --reverse --border --multi --cycle \
 --bind=ctrl-h:backward-char,ctrl-l:forward-char,ctrl-space:accept,\
-ctrl-x:backward-delete-char,ctrl-f:page-down,ctrl-b:page-up,ctrl-s:toggle \
+ctrl-d:backward-delete-char,ctrl-f:page-down,ctrl-b:page-up,ctrl-s:toggle \
 --inline-info \
 --color fg:252,bg:233,hl:81,fg+:252,bg+:235,hl+:118 \
 --color info:144,prompt:161,spinner:135,pointer:196,marker:208"
