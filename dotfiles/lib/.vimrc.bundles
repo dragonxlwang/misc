@@ -265,14 +265,17 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 command! FZFfbcode call fzf#run(fzf#wrap(
-    \ {'source': 'find ~/fbcode/{sigrid,fblearner,caffe2} -type f'}))
+    \ {'source': 'find ~/fbcode/{sigrid,fblearner,caffe2} -type f',
+    \  'options': '--prompt "fbcode> "'  }))
 command! FZFMru call fzf#run(fzf#wrap(
-    \ {'source': reverse(s:all_files()) }))
-function! s:all_files()
+    \ {'source': reverse(GetOldFiles()),
+    \  'options': '--prompt "hist> "'  }))
+function! GetOldFiles()
   return extend(
-  \ filter(copy(v:oldfiles),
-  \        "v:val !~ 'fugitive:\\|NERD_tree\\|^/tmp/\\|.git/'"),
-  \ map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'))
+  \ filter(reverse(copy(v:oldfiles)), "filereadable(expand(v:val)) && ".
+  \        "v:val !~ 'fugitive:\\|__Tagbar__\\|NERD_tree\\|^/tmp/\\|.git/'"),
+  \ filter(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'),
+  \        'bufname(v:val)'), '!empty(v:val)'))
 endfunction
 nnoremap <C-[> :FZFfbcode<CR>
 nnoremap <C-]> :FZFMru<CR>
