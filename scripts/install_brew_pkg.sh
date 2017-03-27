@@ -21,7 +21,7 @@ brew install gnu-which --with-default-names
 brew install grep --with-default-names
 brew install wdiff --with-gettext
 brew install lua --with-completion
-brew install mosh tmux curl clang-format tree
+brew install mosh tmux curl clang-format tree fzf
 brew install htop --with-ncurses
 brew install gnuplot --with-tex --with-pdflib-lite --with-qt --with-test --with-x11
 brew install make --with-default-names
