@@ -66,6 +66,11 @@ if [[ ! -e ~/bin/git-proxy-wrapper ]]; then
   chmod a+x ~/bin/git-proxy-wrapper
 fi
 
+# fzf
+cd ~
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 # pip
 ## ==================================================
 mkdir -p ~/workspace
