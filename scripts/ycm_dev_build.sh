@@ -47,7 +47,7 @@ env -i PATH=/bin:/usr/bin:/usr/local/bin \
   cmake --build . --target ycm_core --config Release -- -j55
 
 [[ -e /data/users/${USER}/YouCompleteMe ]] && \
-  rm /data/users/${USER}/YouCompleteMe
+  rm -rf /data/users/${USER}/YouCompleteMe
 mv ${HOME}/.vim/bundle/YouCompleteMe /data/users/${USER}/
 
 ln -s /data/users/${USER}/YouCompleteMe ${HOME}/.vim/bundle/YouCompleteMe
