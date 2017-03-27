@@ -23,24 +23,31 @@ FBCODE_DIR="$(hg root --cwd ~/fbsource/fbcode)"/fbcode # set this
 FBCODE_PLATFORM=gcc-5-glibc-2.23
 TP2="$FBCODE_DIR"/third-party-buck/"$FBCODE_PLATFORM"/build
 
+# -DPATH_TO_LLVM_ROOT="$TP2"/llvm-fb \
+
+  ln -s $TP2/glibc/lib64/libc.so.6 $DEST_ROOT/
+ln -s $TP2/libgcc/lib/libstdc++.so.6 $DEST_ROOT/
+ln -s $TP2/llvm-fb/lib/libclang.so $DEST_ROOT/
+ln -s $TP2/llvm-fb/lib/libclang.so $DEST_ROOT/libclang.so.4
+ln -s $TP2/llvm-fb/lib/libclang.so $DEST_ROOT/libclang.so.4.0
+
 env -i PATH=/bin:/usr/bin:/usr/local/bin \
-   cmake \
-   -G "Unix Makefiles" \
+  cmake \
+  -G "Unix Makefiles" \
   -DCMAKE_C_COMPILER=gcc.par \
   -DCMAKE_CXX_COMPILER=g++.par \
   -DCMAKE_C_FLAGS="--platform=$FBCODE_PLATFORM" \
   -DCMAKE_CXX_FLAGS="--platform=$FBCODE_PLATFORM" \
   -DPYTHON_LIBRARY="$TP2"/python/2.7/lib/libpython2.7.so \
-  -DPATH_TO_LLVM_ROOT="$TP2"/llvm-fb \
-   . $DEST_ROOT/cpp
+  -DEXTERNAL_LIBCLANG_PATH="$DEST_ROOT"/libclang.so \
+  . $DEST_ROOT/cpp
 
 cmake -G Ninja
 env -i PATH=/bin:/usr/bin:/usr/local/bin \
   cmake --build . --target ycm_core --config Release -- -j55
 
-ln -s $TP2/glibc/lib64/libc.so.6 $DEST_ROOT/
-ln -s $TP2/libgcc/lib/libstdc++.so.6 $DEST_ROOT/
-
+[[ -e /data/users/${USER}/YouCompleteMe ]] && \
+  rm /data/users/${USER}/YouCompleteMe
 mv ${HOME}/.vim/bundle/YouCompleteMe /data/users/${USER}/
 
 ln -s /data/users/${USER}/YouCompleteMe ${HOME}/.vim/bundle/YouCompleteMe
