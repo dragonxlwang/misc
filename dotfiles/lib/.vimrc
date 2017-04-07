@@ -375,6 +375,7 @@ function! Duf()
         \. '%24' . line('.')
 endfunction
 command! -nargs=* Duf call Duf()
+set path=.,/usr/include,,/home/xlwang/fbcode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
