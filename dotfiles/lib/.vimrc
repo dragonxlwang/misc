@@ -375,6 +375,13 @@ function! Duf()
         \. '%24' . line('.')
 endfunction
 command! -nargs=* Duf call Duf()
+function! Blamef()
+  echo expand('%:p:s?.*/fbcode/?https://phabricator.intern.facebook.com/'.
+        \'diffusion/FBS/browse/master/fbcode/?'.
+        \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
+        \. '%24' . line('.') . '?blame=1'
+endfunction
+command! -nargs=* Blamef call Blamef()
 set path=.,/usr/include,,/home/xlwang/fbcode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
