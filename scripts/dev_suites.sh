@@ -71,6 +71,10 @@ cd ~
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+# bd
+cd ~/.oh-my-zsh/custom/plugins
+git clone https://github.com/Tarrasch/zsh-bd bd
+
 # pip
 ## ==================================================
 mkdir -p ~/workspace
