@@ -113,6 +113,10 @@ elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 7* ]]; then
     ${HOME}/.ssh/config
 fi
 
+[[ $(tmux -V) == *2.2 ]] && \
+  tmux_conf=".tmux.v2.2.conf" || tmux_conf=".tmux.conf"
+tmux_conf="$root_dir/lib/"$tmux_conf
+
 ## darwin & linux suite
 mkdir -p ${HOME}/.oh-my-zsh/custom/themes/
 files=(                                                           \
@@ -122,7 +126,7 @@ files=(                                                           \
   "$root_dir/lib/ls_colors.zsh"     "${HOME}/ls_colors.zsh"       \
   "$root_dir/lib/.profile_wangxl"   "${HOME}/.profile_wangxl"     \
   "$root_dir/lib/.bash_profile"     "${HOME}/.bash_profile"       \
-  "$root_dir/lib/.tmux.conf"        "${HOME}/.tmux.conf"          \
+  "$tmux_conf"                      "${HOME}/.tmux.conf"          \
   "$root_dir/lib/.zshrc"            "${HOME}/.zshrc"              \
   "$root_dir/lib/.hgrc"             "${HOME}/.hgrc"               \
   "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit"            \
