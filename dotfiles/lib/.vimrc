@@ -139,6 +139,12 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
   source ~/misc/dotfiles/lib/.vimrc.bundles
 endif
 
+" ==========================- Facebook -=======================================
+if !empty(glob('/usr/facebook/ops/rc/vim'))
+  source /usr/facebook/ops/rc/vim/biggrep.vim
+  source /usr/facebook/ops/rc/vim/fbvim.vim
+endif
+
 " ==============================- Color Themes -================================
 if !empty(globpath(&rtp, 'colors/molokai.vim'))
   colorscheme molokai
