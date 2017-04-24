@@ -140,9 +140,9 @@ if !empty(glob('~/.vim/bundle/Vundle.vim'))
 endif
 
 " ==========================- Facebook -=======================================
-if !empty(glob('/usr/facebook/ops/rc/vim'))
-  source /usr/facebook/ops/rc/vim/biggrep.vim
-  source /usr/facebook/ops/rc/vim/fbvim.vim
+if !empty(glob('/home/engshare/admin/scripts/vim'))
+  source /home/engshare/admin/scripts/vim/biggrep.vim
+  source /home/engshare/admin/scripts/vim/fbvim.vim
 endif
 
 " ==============================- Color Themes -================================
