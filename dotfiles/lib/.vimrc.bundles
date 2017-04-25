@@ -39,6 +39,11 @@ Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'dragonxlwang/vim-better-search'
 Plugin 'elzr/vim-json'
+Plugin 'yssl/QFEnter'
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.vopen = ['<C-v>']
+let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_keymap.topen = ['<C-t>']
 
 " ============================================================================="
 "         ____    ____  __       _______. __    __       ___       __          "
