@@ -257,7 +257,7 @@ Plugin 'tacahiroy/ctrlp-funky'
 let g:ctrlp_show_hidden = 1
 " let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_cmd = 'CtrlPBuffer'
-let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
+let g:ctrlp_extensions = ['line', 'dir', 'buffertag', 'tag', 'mixed']
 " let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:25'
 let g:ctrlp_custom_ignore = '(node_modules|_build|buck-out)'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -284,7 +284,8 @@ function! GetOldFiles()
   \        'bufname(v:val)'), '!empty(v:val)'))
 endfunction
 nnoremap <C-[> :FZFfbcode<CR>
-nnoremap <C-]> :FZFMru<CR>
+" nnoremap <C-]> :FZFMru<CR>
+nnoremap <C-]> :Lines<CR>
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_autofocus = 1
