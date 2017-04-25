@@ -255,7 +255,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_cmd = 'CtrlPLastMode'
+" let g:ctrlp_cmd = 'CtrlPLastMode'
+let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 " let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:25'
 let g:ctrlp_custom_ignore = '(node_modules|_build|buck-out)'
