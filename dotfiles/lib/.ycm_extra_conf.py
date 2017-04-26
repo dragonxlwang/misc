@@ -140,7 +140,14 @@ def FlagsForFile(filename, **kwargs):
                 if not compilation_info or len(
                     compilation_info.compiler_flags_
                 ) == 0:
-                    return None
+                    relative_to = DirectoryOfThisScript()
+                    final_flags = MakeRelativePathsInFlagsAbsolute(
+                        flags_fbcode, relative_to
+                    )
+                    return {
+                        'flags': flags_fbcode + final_flags,
+                        'do_cache': True
+                    }
 
         final_flags = MakeRelativePathsInFlagsAbsolute(
             compilation_info.compiler_flags_,
@@ -151,7 +158,7 @@ def FlagsForFile(filename, **kwargs):
         # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
         # ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.
         try:
-            #final_flags.remove( '-stdlib=libc++' )
+            # final_flags.remove( '-stdlib=libc++' )
             final_flags.remove('-Werror')
         except ValueError:
             pass

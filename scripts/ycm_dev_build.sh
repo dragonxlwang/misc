@@ -25,11 +25,12 @@ TP2="$FBCODE_DIR"/third-party-buck/"$FBCODE_PLATFORM"/build
 
 # -DPATH_TO_LLVM_ROOT="$TP2"/llvm-fb \
 
-  ln -s $TP2/glibc/lib64/libc.so.6 $DEST_ROOT/
+ln -s $TP2/glibc/lib64/libc.so.6 $DEST_ROOT/
 ln -s $TP2/libgcc/lib/libstdc++.so.6 $DEST_ROOT/
 ln -s $TP2/llvm-fb/lib/libclang.so $DEST_ROOT/
 ln -s $TP2/llvm-fb/lib/libclang.so $DEST_ROOT/libclang.so.4
 ln -s $TP2/llvm-fb/lib/libclang.so $DEST_ROOT/libclang.so.4.0
+ln -s $TP2/llvm-fb/lib/libclang.so $DEST_ROOT/libclang.so.5
 
 env -i PATH=/bin:/usr/bin:/usr/local/bin \
   cmake \
