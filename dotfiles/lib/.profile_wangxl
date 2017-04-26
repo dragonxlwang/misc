@@ -812,7 +812,8 @@ function hp {
     hg prev
   done
 }
-alias ha="hg amend --rebase"
+alias ha="hg amend"
+alias har="hg amend --rebase"
 alias hls="hg log --stat -l1"
 alias hlsf="hg log --stat -l1 | fpp"
 alias hs="hg st && hg ssl"
@@ -821,6 +822,7 @@ alias hsl="hg ssl"
 alias hsf="hg st | fpp"
 alias hd='hg diff'
 alias hdh='hg diff -r ".^"'
+alias hg_help="cat ~/misc/scripts/hg_help.txt"
 function get_duf {
   local f=$1
   f=$(readlink -f ${f})

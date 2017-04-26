@@ -1,0 +1,22 @@
+hg and arc:
+
+Dependent/Stacked Diffs
+=======================
+- arc detect-depends
+  record dependencies between diffs in Phabicator
+- hg amend --rebase
+  amending stacked bottom diffs
+- hg restack
+  restack children left behind;
+- hg rebase -s xxxxxx -d yyyyyy
+  hg strip -r zzzzzz
+  hg histedit / hg fold
+- More tips: https://fburl.com/7fgmafh1
+
+Splitting a Large Diff
+=====================
+- hg split
+  It will show you a ncurses interface, inside which you can use arrow and space
+  keys to select which files, hunks or lines you want to commit. After
+  selection, press C to make a commit. The resulting commit will become a direct
+  ancestor of your current commit. Repeat the step until the splitting is done.
