@@ -285,7 +285,8 @@ function! GetOldFiles()
 endfunction
 nnoremap <C-[> :FZFfbcode<CR>
 " nnoremap <C-]> :FZFMru<CR>
-nnoremap <C-]> :Lines<CR>
+" nnoremap <C-]> :Lines<CR>
+nnoremap <C-]> :CtrlPLine<CR>
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_autofocus = 1
