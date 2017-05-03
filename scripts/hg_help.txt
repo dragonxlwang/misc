@@ -20,3 +20,13 @@ Splitting a Large Diff
   keys to select which files, hunks or lines you want to commit. After
   selection, press C to make a commit. The resulting commit will become a direct
   ancestor of your current commit. Repeat the step until the splitting is done.
+
+Modifying the Phabricator Message
+=================================
+- arc diff --edit
+  Modify diff summary
+- arc diff --verbatim
+  Add revision message
+- arc amend
+  Amend the working copy, and synchronizing the local commit message from
+  Differential.
