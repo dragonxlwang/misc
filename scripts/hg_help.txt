@@ -30,3 +30,8 @@ Modifying the Phabricator Message
 - arc amend
   Amend the working copy, and synchronizing the local commit message from
   Differential.
+
+Bad Arcrc
+=========
+- arc install-certificate
+  install certificate: https://fburl.com/0nudtnlk

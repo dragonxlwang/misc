@@ -727,18 +727,7 @@ alias upld="${HOME}/misc/scripts/sync.sh"
 function buck_gen_cc {
   buck build --show-output $1\#compilation-database
 }
-function buck_prune_cc {
-  cat $1 > ~/fbcode/compile_commands.json
-  ~/misc/scripts/prune_fbcode_compiler_commands_json.py
-}
-function gen_cdb {
-  local curdir=$(pwd)
-  cd ~/fbcode;
-  local json_file="$(buck build --show-output $1\#compilation-database \
-                    2>&/dev/null | tail -1)"
-  buck_prune_cc ${${=json_file}[2]}
-  cd $curdir
-}
+alias buck_util='~/misc/scripts/buck_utils.py'
 
 ## ========================================================================== ##
 #     __  .______   ____    ____ .___________.__    __    ______   .__   __.   #
