@@ -807,6 +807,7 @@ alias hls="hg log --stat -l1"
 alias hlsf="hg log --stat -l1 | fpp"
 alias hs="hg st && hg ssl"
 alias hss="hg st"
+alias hssf="hg st | fpp"
 alias hsl="hg ssl"
 alias hsf="hg st | fpp"
 alias hd='hg diff'
