@@ -83,11 +83,14 @@ def buck_add_cdb_to_dict(cdb_dict, cdb_fp):
         print '\033[1;31mCannot find file at {}\033[0m'.format(cdb_fp)
         return cdb_dict
 
+    old_cnt = len(cdb_dict)
     for entry in json_content:
         entry.pop('arguments', None)
         f = entry['file']
         if f not in cdb_dict:
             cdb_dict[f] = entry
+    new_cnt = len(cdb_dict)
+    print 'Compile DB Size: {0} -> {1}'.format(old_cnt, new_cnt)
     return cdb_dict
 
 
