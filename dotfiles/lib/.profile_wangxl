@@ -330,6 +330,7 @@ function vim_buffers {
   vim ${filelist[@]}
 }
 alias vimb='vim_buffers'
+alias vimfb=' vim +FBVimLoadSession'
 ##---------------------------------== tex ==----------------------------------##
 alias tm="${HOME}/misc/scripts/tex_make.sh make"
 alias tp="${HOME}/misc/scripts/tex_make.sh preview"
