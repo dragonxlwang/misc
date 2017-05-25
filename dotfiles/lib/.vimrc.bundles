@@ -276,6 +276,9 @@ command! FZFfbcode call fzf#run(fzf#wrap(
 command! FZFMru call fzf#run(fzf#wrap(
     \ {'source': reverse(GetOldFiles()),
     \  'options': '--prompt "hist> "'  }))
+command! FZFfullfbcode call fzf#run(fzf#wrap(
+    \ {'source': 'find ~/fbcode/ -type f',
+    \  'options': '--prompt "fbcode> "'  }))
 function! GetOldFiles()
   return extend(
   \ filter(reverse(copy(v:oldfiles)), "filereadable(expand(v:val)) && ".
