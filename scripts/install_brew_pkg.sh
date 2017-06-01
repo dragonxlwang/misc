@@ -50,3 +50,6 @@ brew linkapps python
 brew install numpy scipy
 brew install matplotlib --with-tex --with-tcl-tk
 brew install matplotlib-basemap numba pillow pygame
+
+# fzf
+/usr/local/opt/fzf/install

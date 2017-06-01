@@ -4,12 +4,15 @@
 brew tap caskroom/cask
 brew tap caskroom/versions
 brew tap caskroom/fonts
+brew tap homebrew/core
+
+brew install graphviz --with-app
 
 brew cask install xquartz
 brew cask install dropbox google-drive google-chrome adium qq skype
-brew cask install spotify neteasemusic graphviz inkscape gimp
+brew cask install spotify neteasemusic inkscape gimp
 brew cask install iterm2-beta atom filezilla the-unarchiver flux
-brew cask install mactex bibdesk texmaker textwrangler adobe-reader mou
+brew cask install mactex bibdesk texmaker bbedit adobe-acrobat-reader mou
 brew cask install cheatsheet suspicious-package
 brew cask install github-desktop
 brew cask install java tcl
