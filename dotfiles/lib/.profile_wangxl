@@ -777,6 +777,12 @@ function itorch {
   torch/fb/fbitorch/run.sh notebook --notebook-dir=~/notebooks --no-browser;
   popd;
 }
+# # Caffe2 ifbpy
+function ifbpynb_c2 {
+  pushd ~/fbcode
+  caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
+  popd
+}
 
 ## ========================================================================== ##
 #                               _______ .______                                #

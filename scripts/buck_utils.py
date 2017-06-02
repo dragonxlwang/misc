@@ -122,7 +122,7 @@ def buck_print():
 
 if __name__ == '__main__':
     args = sys.argv
-    cmd = str(args[1])
+    cmd = str(args[1]) if len(args) > 1 else "help"
     if cmd == 'query':
         buck_query(args[2])
     if cmd == 'gen':
@@ -138,3 +138,13 @@ if __name__ == '__main__':
         buck_check(args[2])
     if cmd == 'print':
         buck_print()
+    if cmd.endswith("help"):
+        print("== buck utilities == ")
+        print("options:")
+        print("* query [FILE] : query target rules related to a file")
+        print("* gen   [rule] : generate compiled_commands for a rule")
+        print("* clean        : delete compiled_commands")
+        print("* add   [rule] : add a rule to compiled_commands")
+        print("* check [file] : check if a file is already added")
+        print("* print        : print added files in compiled_commands")
+
