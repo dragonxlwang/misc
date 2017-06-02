@@ -72,7 +72,10 @@ def buck_gen(arg0, arg1=None):
 def buck_add_cdb_to_dict(cdb_dict, cdb_fp):
     try:
         print '\033[1;32mAdd Compiled DB:\033[0m'
+        if not os.path.isabs(cdb_fp):
+            cdb_fp = os.path.join(os.path.expanduser("~"), 'fbcode', cdb_fp)
         print cdb_fp
+
         with open(cdb_fp) as f:
             try:
                 json_content = json.loads(f.read())
@@ -147,4 +150,3 @@ if __name__ == '__main__':
         print("* add   [rule] : add a rule to compiled_commands")
         print("* check [file] : check if a file is already added")
         print("* print        : print added files in compiled_commands")
-
