@@ -808,13 +808,16 @@ function hp {
     hg prev
   done
 }
-alias ha="hg amend"
-alias har="hg amend --rebase"
+alias ha="hg add"
+alias hc="hg commit"
+alias hc!="hg amend --rebase"
+alias hca="hg add; hg commit"
+alias hca!="hg add; hg amend --rebase"
 alias hls="hg log --stat -l1"
 alias hlsf="hg log --stat -l1 | fpp"
 alias hs="hg st && hg ssl"
-alias hss="hg st"
-alias hssf="hg st | fpp"
+alias hst="hg st"
+alias hstf="hg st | fpp"
 alias hsl="hg ssl"
 alias hsf="hg st | fpp"
 alias hd='hg diff'
@@ -913,6 +916,12 @@ z() {
   [ $# -gt 0 ] && _z "$*" && return
   cd "$(_z -l 2>&1 | fzf --prompt="dir-hist> " +s +m --tac --query "$*" \
     | sed 's/^[0-9,.]* *//')"
+}
+# Kerberos
+function krefresh() {
+  kdestroy
+  kinit
+  klist
 }
 
 
