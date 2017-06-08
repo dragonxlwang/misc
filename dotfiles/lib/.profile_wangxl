@@ -794,14 +794,14 @@ function ifbpynb_c2 {
 ## ========================================================================== ##
 alias arc_lint="arc lint --engine HowtoevenLintEngine"
 alias arc_up_msg="hg commit --amend && arc diff --verbatim"
-function hn {
+function hnext {
   local num=${1:=1}
   for i in $(seq 1 $1);
   do
     hg next
   done
 }
-function hp {
+function hprev {
   local num=${1:=1}
   for i in $(seq 1 $1);
   do
@@ -822,6 +822,9 @@ alias hsl="hg ssl"
 alias hsf="hg st | fpp"
 alias hd='hg diff'
 alias hdh='hg diff -r ".^"'
+alias hhl='hg pull'
+alias hhp='arc diff'
+alias hhpur='hg pull && hg rebase -d master'
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 function get_duf {
   local f=$1
@@ -877,7 +880,8 @@ function fe {
 }
 function fb {
   local files
-  IFS=$'\n' out=($(find ~/fbcode/{sigrid,fblearner,caffe2} -type f | \
+  IFS=$'\n' out=($(find \
+    ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang} -type f | \
     fzf --query="$1" --expect=ctrl-o,ctrl-e --prompt="fbcode> "))
   key=$(head -1 <<< "$out")
   file=$(head -2 <<< "$out" | tail -1)

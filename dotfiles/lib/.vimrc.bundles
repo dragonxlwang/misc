@@ -271,7 +271,8 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 command! FZFfbcode call fzf#run(fzf#wrap(
-    \ {'source': 'find ~/fbcode/{sigrid,fblearner,caffe2} -type f',
+    \ {'source':
+    \  'find ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang} -type f',
     \  'options': '--prompt "fbcode> "'  }))
 command! FZFMru call fzf#run(fzf#wrap(
     \ {'source': reverse(GetOldFiles()),
