@@ -23,7 +23,7 @@ Host *.facebook.com dev dev*
     IdentityFile ~/.ssh/id_rsa
     IdentityFile ~/.ssh/id_dsa
 
-Host *github.com
+Host github.com *.github.com
     IdentityFile ~/.ssh/id_rsa
 
 #############################  ILLINOIS SETTINGS  #############################
