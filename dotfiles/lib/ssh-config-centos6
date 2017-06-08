@@ -23,6 +23,9 @@ Host *.facebook.com dev dev*
     IdentityFile ~/.ssh/id_rsa
     IdentityFile ~/.ssh/id_dsa
 
+Host *github.com
+    IdentityFile ~/.ssh/id_rsa
+
 #############################  ILLINOIS SETTINGS  #############################
 Host timan101
     User xwang95
