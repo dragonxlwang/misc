@@ -725,10 +725,6 @@ function yapf {
 alias killall="killall -u $USER"
 alias ka="\killall -u $USER" #  disables the alias in interactive shell
 alias upld="${HOME}/misc/scripts/sync.sh"
-function buck_gen_cc {
-  buck build --show-output $1\#compilation-database
-}
-alias buck_util='~/misc/scripts/buck_utils.py'
 
 ## ========================================================================== ##
 #     __  .______   ____    ____ .___________.__    __    ______   .__   __.   #
@@ -783,6 +779,36 @@ function ifbpynb_c2 {
   caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
   popd
 }
+function ifbpy_c2 {
+  pushd ~/fbcode
+  #!/bin/bash
+  # This launches an ipython notebook. Usage:
+  #    run_ifbpy.sh [slim]
+  # Slim is without facebook dependencies so it compiles faster.
+
+  TARGET=caffe2/caffe2/fb/ifbpy
+  EXT=$1
+  if [[ "$EXT" == "slim" ]]; then
+    EXT="_slim"
+  fi
+
+  export OMP_NUM_THREADS=8
+
+  # symb link the aiplatform files so that we can access them without exposing
+  # the aiplatform gfsai path should we need to open source the tutorials.
+  NOTEBOOKS=$HOME/caffe2_notebooks
+  mkdir -p $NOTEBOOKS
+  ln -sfT /mnt/vol/gfsai-oregon/aml/users/aiplatform $NOTEBOOKS/tutorial_data
+
+  # We can't use buck run here because it will block all other attempts to build
+  # with buck while ifbpy notebook is running.
+  buck build @mode/opt -c fbcode.platform=gcc-4.9-glibc-2.20 \
+        -c python.package_style=inplace \
+        ${TARGET}:ifbpy${EXT}
+
+  ./buck-out/gen/${TARGET}/ifbpy${EXT}.par
+  popd
+}
 
 ## ========================================================================== ##
 #                               _______ .______                                #
@@ -826,6 +852,11 @@ alias hhl='hg pull'
 alias hhp='arc diff'
 alias hhpur='hg pull && hg rebase -d master'
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
+alias bbt='buck test'
+function buck_gen_cc {
+  buck build --show-output $1\#compilation-database
+}
+alias buck_util='~/misc/scripts/buck_utils.py'
 function get_duf {
   local f=$1
   f=$(readlink -f ${f})
