@@ -51,7 +51,7 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map f <Plug>(easymotion-bd-jk)
-nmap f <Plug>(easymotion-overwin-line)
+nmap F <Plug>(easymotion-overwin-line)
 
 " ============================================================================="
 "         ____    ____  __       _______. __    __       ___       __          "
