@@ -337,6 +337,8 @@ nnoremap <leader>ww :exe "Autoformat" \| :Gwrite <CR>
 nnoremap <leader>www :exe "Autoformat" \| w! \|
       \ silent exe "!git commit -v -a -m 'message'" \|
       \ silent exe "!git push"  \| redraw! <CR>
+" Plugin 'jlfwong/vim-mercenary'
+" Plugin 'ludovicchabant/vim-lawrencium'
 
 
 " ============================================================================ "
