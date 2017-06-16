@@ -17,3 +17,9 @@ track.current = True
 
 [templatealias]
 xg_sl = "{label(sl_label, separate('\n', separate('  ', sl_node_info, '{date|age}', sl_user, ssl_diff_labeled, sl_tasks, sl_books, sl_branch, sl_troubles), '{sl_desc}', '\n'))}"
+
+[extensions]
+hgext.extdiff =
+
+[extdiff]
+cmd.vimdiff =
