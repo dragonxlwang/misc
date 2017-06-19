@@ -143,6 +143,8 @@ endif
 if !empty(glob('/home/engshare/admin/scripts/vim'))
   source /home/engshare/admin/scripts/vim/biggrep.vim
   source /home/engshare/admin/scripts/vim/fbvim.vim
+  set rtp+=/home/engshare/admin/scripts/vim
+  set rtp+=/home/engshare/admin/scripts/vim/after
 endif
 
 " ==============================- Color Themes -================================

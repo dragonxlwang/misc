@@ -853,6 +853,8 @@ alias hhp='arc diff'
 alias hhpur='hg pull && hg rebase -d master'
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias bbt='buck test'
+alias bbb='buck build'
+alias bbr='buck run'
 function buck_gen_cc {
   buck build --show-output $1\#compilation-database
 }
