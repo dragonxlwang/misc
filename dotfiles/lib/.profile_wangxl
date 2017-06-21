@@ -834,6 +834,7 @@ function hprev {
     hg prev
   done
 }
+alias hum="hg up master"
 alias ha="hg add"
 alias hc="hg commit"
 alias hc!="hg amend --rebase"
@@ -855,6 +856,14 @@ alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias bbt='buck test'
 alias bbb='buck build'
 alias bbr='buck run'
+function run_dper_integration_tests {
+  ~/fbcode/fblearner/flow/run_integration_tests \
+    --mode opt \
+    --timeout 7200 \
+    --entitlement 'integration_tests' \
+    --owner fblearner_realtime \
+    --project-name aml.dper2
+}
 function buck_gen_cc {
   buck build --show-output $1\#compilation-database
 }
