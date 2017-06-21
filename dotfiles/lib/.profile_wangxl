@@ -857,12 +857,14 @@ alias bbt='buck test'
 alias bbb='buck build'
 alias bbr='buck run'
 function run_dper_integration_tests {
+  pushd ~/fbcode
   ~/fbcode/fblearner/flow/run_integration_tests \
     --mode opt \
     --timeout 7200 \
     --entitlement 'integration_tests' \
     --owner fblearner_realtime \
-    --project-name aml.dper2
+    --project-name aml.dper2 $@
+  popd
 }
 function buck_gen_cc {
   buck build --show-output $1\#compilation-database
