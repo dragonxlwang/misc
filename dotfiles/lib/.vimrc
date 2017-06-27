@@ -172,6 +172,8 @@ command! LcdPwd lcd %:p:h
 command! Wls call WriteListedFiles()
 " Wipe out inactive buffers
 command! Wipeout call Wipeout()
+" Wipe out and only keep current window
+command! Wipeonly only | Wipeout
 " Sync with servers
 command! UpldFile call SyncUploadFile()
 command! UpldAll :! ~/misc/scripts/sync.sh <CR>
