@@ -305,7 +305,7 @@ let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
 " nnoremap <leader>gg :TagbarToggle<CR>
 nnoremap <leader>gg :TagbarOpen -j<CR>
-nnoremap <leader>gc :TagbarClose -j<CR>
+nnoremap <leader>gc :TagbarClose<CR>
 " nnoremap <leader>gg
 "   \ <Esc>"zyiw:TagbarOpenAutoClose<CR>:exe "/".@z.""<CR><CR>:nohlsearch<CR>
 
