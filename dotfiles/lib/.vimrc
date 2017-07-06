@@ -394,7 +394,7 @@ function! Blamef()
         \. '%24' . line('.') . '?blame=1'
 endfunction
 command! -nargs=* Blamef call Blamef()
-set path=.,/usr/include,,/home/xlwang/fbcode
+set path=.,/usr/include,,/home/xlwang/fbcode,/home/xlwang/fbcode/caffe2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
