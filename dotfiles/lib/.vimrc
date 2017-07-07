@@ -151,7 +151,7 @@ if !empty(glob('/usr/local/share/clang/clang-format.py'))
     autocmd!
     autocmd FileType cpp,c
           \ map <buffer> <leader>w
-          \ :pyf /usr/local/share/clang/clang-format.py<CR>
+          \ :exe ":pyf /usr/local/share/clang/clang-format.py" \| :w!<CR>
   augroup END
 endif
 
