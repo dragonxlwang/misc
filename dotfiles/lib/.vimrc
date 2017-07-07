@@ -146,6 +146,14 @@ if !empty(glob('/home/engshare/admin/scripts/vim'))
   set rtp+=/home/engshare/admin/scripts/vim
   set rtp+=/home/engshare/admin/scripts/vim/after
 endif
+if !empty(glob('/usr/local/share/clang/clang-format.py'))
+  augroup FBClangAutoGroup
+    autocmd!
+    autocmd FileType cpp,c
+          \ map <buffer> <leader>w
+          \ :pyf /usr/local/share/clang/clang-format.py<CR>
+  augroup END
+endif
 
 " ==============================- Color Themes -================================
 if !empty(globpath(&rtp, 'colors/molokai.vim'))
