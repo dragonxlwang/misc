@@ -779,6 +779,11 @@ function ifbpynb_c2 {
   caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
   popd
 }
+function ifb2pynb_c2 {
+  pushd ~/fbcode2
+  caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
+  popd
+}
 function ifbpy_c2 {
   pushd ~/fbcode
   #!/bin/bash
@@ -835,6 +840,7 @@ function hprev {
   done
 }
 alias hum="hg up master"
+alias hu="hg up"
 alias ha="hg add"
 alias hc="hg commit"
 alias hc!="hg amend --rebase"
