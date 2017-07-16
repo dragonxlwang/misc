@@ -271,8 +271,8 @@ function _list_task {
   local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
   local str2="  (2/n) :   zsh"
   local str3="  (3/s) :   mosh $(get_hostname devbig) (devbig)"
-  local str5="  (4/g) :   mosh $(get_hostname devgpu) (devgpu)"
-  local str6="  (5/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
+  local str4="  (4/g) :   mosh $(get_hostname devgpu) (devgpu)"
+  local str5="  (5/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
   # local str7="  (7/d) :   mosh $(get_hostname dev)  (dev)"
   # main loop
   while [[ -z $option ]]
