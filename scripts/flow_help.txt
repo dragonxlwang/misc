@@ -1,0 +1,6 @@
+flow:
+
+Dump flow plan to file
+======================
+- FLOW_CAFFE2_DUMP_JOB
+  FLOW_CAFFE2_DUMP_JOB=/tmp/xlwang/log flow-cli clone-locally XXXXXX
