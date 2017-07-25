@@ -182,6 +182,10 @@ command! Wls call WriteListedFiles()
 command! Wipeout call Wipeout()
 " Wipe out and only keep current window
 command! Wipeonly only | Wipeout
+" Remove all windows of the same buffer and focus
+command! -nargs=1 Fbs :call FocusBuffer(<f-args>, "s")
+command! -nargs=1 Fbv :call FocusBuffer(<f-args>, "v")
+command! -nargs=1 Fb  :call FocusBuffer(<f-args>, "r")
 " Sync with servers
 command! UpldFile call SyncUploadFile()
 command! UpldAll :! ~/misc/scripts/sync.sh <CR>
@@ -196,7 +200,7 @@ noremap <leader>v :if g:NERDTree.GetWinNum() == winnr() \| wincmd w \| endif \|
 
 " Reloads it -- making all changes active (have to save first)
 noremap <silent> <leader>V
-      \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " ==============================- Keymap: Diff -================================
 " ,do: Diff off
@@ -549,4 +553,17 @@ function! Wipeout()
     " go back to our original tab page
     execute 'tabnext' l:currentTab
   endtry
+endfunction
+
+function! FocusBuffer(bn, opt)
+  let l:fp = expand("#" . a:bn . ":p")
+  echo l:fp
+  exec "bd ". a:bn
+  if a:opt == 'v'
+    exec "vs ". l:fp
+  elseif a:opt == 's'
+    exec "sp ". l:fp
+  elseif a:opt == 'r'
+    exec "e ". l:fp
+  endif
 endfunction
