@@ -113,6 +113,10 @@ elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 7* ]]; then
     ${HOME}/.ssh/config
 fi
 
+if [[ $(uname) == Linux ]]; then
+  mk_link /tmp/$USER ${HOME}/tmp
+fi
+
 [[ $(tmux -V) == *2.2 ]] && \
   tmux_conf=".tmux.v2.2.conf" || tmux_conf=".tmux.conf"
 tmux_conf="$root_dir/lib/"$tmux_conf
