@@ -109,12 +109,11 @@ function kill_jobs {
     done
   fi
 }
-alias kill_tmux='tmux kill-session'
 function kill_zombies {
   ps -e -o pid,state | awk '{ if ($2 == "Z") {print $1} }' | xargs  kill -9; }
 alias cls='printf "\033c"'
-alias kt='kill_tmux'
-alias ht='tmux detach'
+alias tmux_kill='tmux kill-session'
+alias tmux_halt='tmux detach'
 function q {
   if [[ -z $TMUX ]]; then
     exit
@@ -858,6 +857,8 @@ alias hdh='hg diff -r ".^"'
 alias hhl='hg pull'
 alias hhp='arc diff'
 alias hhpur='hg pull && hg rebase -d master'
+alias hrb='hg rebase'
+alias hrv='hg revert'
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias flow_help="cat ~/misc/scripts/flow_help.txt"
 alias bbt='buck test'
