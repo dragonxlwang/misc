@@ -914,38 +914,88 @@ ctrl-d:backward-delete-char,ctrl-f:page-down,ctrl-b:page-up,ctrl-s:toggle \
 --color info:144,prompt:161,spinner:135,pointer:196,marker:208"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 function vfzf { vim $(fzf); }
-function fe {
+function ffzf {
+  IFS=$'\n' out=($(eval "$1" | \
+    fzf --query="$3" --expect=ctrl-o,ctrl-e,ctrl-v,ctrl-x --prompt="$2"))
+  local first_line=$(head -n 1 <<< "$out")
   local files
-  IFS=$'\n' out=($(fzf --query="$1" --expect=ctrl-o,ctrl-e --prompt="files> "))
-  key=$(head -1 <<< "$out")
-  file=$(head -2 <<< "$out" | tail -1)
-  echo $key
-  if [ -n "$file" ]; then
-    if [[ "$key" = ctrl-o ]]; then
-      get_duf "$file"
-    elif [[ "$key" == ctrl-e ]]; then
-      get_blamef "$file"
+  local opt
+  local file
+  local key
+  if [[ "$first_line" == ctrl* ]]; then
+    files=$(tail -n +2 <<< "$out")
+    key="$first_line"
+  else
+    files="$out"
+    key=""
+  fi
+  if [ -z "$files" ]; then
+    return
+  fi
+  if [[ -z "$key" || "$key" == ctrl-x || "$key" == ctrl-v ]]; then
+    if [[ "$key" == ctrl-x ]]; then
+      opt="-o"
+    elif [[ "$key" == ctrl-v ]]; then
+      opt="-O"
     else
-      ${EDITOR:-vim} "$file"
+      opt=""
     fi
+    local cmd="${EDITOR:-vim} $opt $(echo ${files} |  tr '\n' ' ')"
+    echo $cmd
+    eval ${cmd}
+  else
+    for file in ${(f)files}; do
+      if [[ "$key" = ctrl-o ]]; then
+        get_duf "$file"
+      elif [[ "$key" == ctrl-e ]]; then
+        get_blamef "$file"
+      fi
+    done
   fi
 }
 function fb {
+  local query="find \
+    ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang} -type f"
+  local prompt="fbcode> "
+  ffzf $query $prompt $1
+}
+function ff {
+  IFS=$'\n' out=($(fzf --query="$1" \
+    --expect=ctrl-o,ctrl-e,ctrl-v,ctrl-x --prompt="files> "))
+  local first_line=$(head -n 1 <<< "$out")
   local files
-  IFS=$'\n' out=($(find \
-    ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang} -type f | \
-    fzf --query="$1" --expect=ctrl-o,ctrl-e --prompt="fbcode> "))
-  key=$(head -1 <<< "$out")
-  file=$(head -2 <<< "$out" | tail -1)
-  echo $key
-  if [ -n "$file" ]; then
-    if [[ "$key" = ctrl-o ]]; then
-      get_duf "$file"
-    elif [[ "$key" == ctrl-e ]]; then
-      get_blamef "$file"
+  local opt
+  local file
+  local key
+  if [[ "$first_line" == ctrl* ]]; then
+    files=$(tail -n +2 <<< "$out")
+    key="$first_line"
+  else
+    files="$out"
+    key=""
+  fi
+  if [ -z "$files" ]; then
+    return
+  fi
+  if [[ -z "$key" || "$key" == ctrl-x || "$key" == ctrl-v ]]; then
+    if [[ "$key" == ctrl-x ]]; then
+      opt="-o"
+    elif [[ "$key" == ctrl-v ]]; then
+      opt="-O"
     else
-      ${EDITOR:-vim} "$file"
+      opt=""
     fi
+    local cmd="${EDITOR:-vim} $opt $(echo ${files} |  tr '\n' ' ')"
+    echo $cmd
+    eval ${cmd}
+  else
+    for file in ${(f)files}; do
+      if [[ "$key" = ctrl-o ]]; then
+        get_duf "$file"
+      elif [[ "$key" == ctrl-e ]]; then
+        get_blamef "$file"
+      fi
+    done
   fi
 }
 # fd - search directory including hidden directories
