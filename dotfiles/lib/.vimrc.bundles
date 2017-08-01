@@ -116,6 +116,8 @@ let g:flake8_show_in_gutter=1
 augroup Flake8AutoGroup
   autocmd!
   autocmd FileType python map <buffer> <leader>jj :call Flake8()<CR>
+  autocmd FileType python map <buffer> <leader>jo
+        \:call flake8#Flake8UnplaceMarkers()
 augroup END
 
 Plugin 'kchmck/vim-coffee-script'
