@@ -864,6 +864,8 @@ alias flow_help="cat ~/misc/scripts/flow_help.txt"
 alias bbt='buck test'
 alias bbb='buck build'
 alias bbr='buck run'
+alias fbc='cd ~/fbcode'
+alias fbc2='cd ~/fbcode2'
 function run_dper_integration_tests {
   pushd ~/fbcode
   ~/fbcode/fblearner/flow/run_integration_tests \
@@ -956,6 +958,12 @@ function ffzf {
 function fb {
   local query="find \
     ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang} -type f"
+  local prompt="fbcode> "
+  ffzf $query $prompt $1
+}
+function fb2 {
+  local query="find \
+    ~/fbcode2/{sigrid,fblearner,caffe2} -type f"
   local prompt="fbcode> "
   ffzf $query $prompt $1
 }
