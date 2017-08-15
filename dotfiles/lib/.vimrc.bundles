@@ -230,6 +230,7 @@ let g:formatdef_yapf =
   \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:79}\"'"
 let g:formatters_python=['yapf','autopep8']
 nnoremap <leader>w :exe "Autoformat" \| :w!<CR>
+command! W exe "Autoformat" | w!
 " let g:formatter_yapf_style = 'facebook'
 " let g:formatters_python = ['yapf']
 " let auto_format_type_list = ['c', 'cpp', 'python']
