@@ -31,6 +31,10 @@ Modifying the Phabricator Message
   Amend the working copy, and synchronizing the local commit message from
   Differential.
 
+Repo sharing
+============
+hg-new-workdir <src> <dst>
+
 Bad Arcrc
 =========
 - arc install-certificate
