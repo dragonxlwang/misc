@@ -964,7 +964,7 @@ function fb {
 function fb2 {
   local query="find \
     ~/fbcode2/{sigrid,fblearner,caffe2} -type f"
-  local prompt="fbcode> "
+  local prompt="fbcode2> "
   ffzf $query $prompt $1
 }
 function ff {
