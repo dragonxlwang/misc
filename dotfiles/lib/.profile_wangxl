@@ -868,6 +868,14 @@ alias fbc='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'
 function run_dper_integration_tests {
   pushd ~/fbcode
+  cyanecho """
+  ~/fbcode/fblearner/flow/run_integration_tests
+    --mode opt
+    --timeout 7200
+    --entitlement 'integration_tests'
+    --owner fblearner_realtime
+    --project-name aml.dper2
+  """
   ~/fbcode/fblearner/flow/run_integration_tests \
     --mode opt \
     --timeout 7200 \

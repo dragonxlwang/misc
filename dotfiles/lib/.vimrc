@@ -65,18 +65,6 @@ set ignorecase                  " Ignore case when searching...
 set smartcase                   " ...unless we type a capital
 set showmatch                   " Set show matching parenthesis
 set magic                       " For regular expressions turn magic on
-" ==================================- Tex -=====================================
-let g:tex_flavor = "latex"
-augroup TexAutoGroup
-  autocmd!
-  autocmd FileType tex setlocal spell
-augroup END
-let g:tex_conceal = ""          " no translation math symbols
-" ================================- Python -===================================
-augroup PythonAutoGroup
-  autocmd!
-  autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4
-augroup END
 " ==================================- Misc -====================================
 syntax on                       " Turn on syntax highlighting
 let mapleader=","               " Change leader to a comma
@@ -138,6 +126,27 @@ inoremap <c-w> <c-g>u<c-w>
 if !empty(glob('~/.vim/bundle/Vundle.vim'))
   source ~/misc/dotfiles/lib/.vimrc.bundles
 endif
+
+" ==================================- Tex -=====================================
+let g:tex_flavor = "latex"
+augroup TexAutoGroup
+  autocmd!
+  autocmd FileType tex setlocal spell
+augroup END
+let g:tex_conceal = ""          " no translation math symbols
+" ===========================- FileType Specific -==============================
+augroup PythonAutoGroup
+  autocmd!
+  autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4
+augroup END
+augroup ClangAutoGroup
+  autocmd!
+  autocmd FileType cpp,c setlocal fo+=t
+augroup END
+augroup VimAutoGroup
+  autocmd!
+  autocmd FileType vim setlocal fo+=t
+augroup END
 
 " ==========================- Facebook -=======================================
 if !empty(glob('/home/engshare/admin/scripts/vim'))
