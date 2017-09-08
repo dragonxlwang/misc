@@ -294,8 +294,8 @@ function _list_task {
     if   [[ $argopt == 1* || $argopt == t* ]]; then option=1
     elif [[ $argopt == 2* || $argopt == n* ]]; then option=2
     elif [[ $argopt == 3* || $argopt == s* ]]; then option=3
-    elif [[ $argopt == 4* || $argopt == g* ]]; then option=5
-    elif [[ $argopt == 5* || $argopt == x* ]]; then option=6
+    elif [[ $argopt == 4* || $argopt == g* ]]; then option=4
+    elif [[ $argopt == 5* || $argopt == x* ]]; then option=5
     # elif [[ $argopt == 7* || $argopt == d* ]]; then option=7
     else
       redecho "  Input Not Recognized..."
