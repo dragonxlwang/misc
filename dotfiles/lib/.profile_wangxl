@@ -472,8 +472,8 @@ function build_vundle_ycm {
 function init_oh_my_zsh {
   if [[ ! -d ~/.oh-my-zsh/.git ]] && \
      [[ ! -f ~/.oh-my-zsh/.git ]]; then
-    sh -c "$(curl -fsSL
-    https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL \
+      https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     redecho "\n\tRead about oh-my-zsh" \
          " at https://github.com/robbyrussell/oh-my-zsh\n"
   fi
@@ -486,7 +486,8 @@ function init_oh_my_zsh {
   fi
   if [[ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/.git ]] && \
      [[ ! -f ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/.git ]]; then
-    git clone git://github.com/zsh-users/zsh-autosuggestions \
+    # git://github.com/zsh-users/zsh-autosuggestions \
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git \
       ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     redecho "\n\tRead about zsh-autosuggestions" \
          " at https://github.com/zsh-users/zsh-autosuggestions\n"
