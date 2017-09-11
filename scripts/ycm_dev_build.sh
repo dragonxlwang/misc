@@ -5,6 +5,7 @@ cd ~/.vim/
 vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
 # git reset --hard 41fb6537e290256fc3ca585bcd54860e67f1d7e5
+# git reset --hard 2e5b2e1cef09efb67365e02737424746a62d7d62
 git reset --hard 2e5b2e1cef09efb67365e02737424746a62d7d62
 
 DEST_ROOT=~/.vim/bundle/YouCompleteMe/third_party/ycmd # change this directory to your heart's cotent. Keep it in local disk, however.
