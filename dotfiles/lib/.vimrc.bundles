@@ -281,16 +281,52 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+
 command! FZFfbcode call fzf#run(fzf#wrap(
     \ {'source':
     \  'find ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang} -type f',
     \  'options': '--prompt "fbcode> "'  }))
-command! FZFMru call fzf#run(fzf#wrap(
-    \ {'source': reverse(GetOldFiles()),
-    \  'options': '--prompt "hist> "'  }))
+command! FZFfbcode2 call fzf#run(fzf#wrap(
+    \ {'source':
+    \  'find ~/fbcode2/{sigrid,fblearner,caffe2,experimental/xlwang} -type f',
+    \  'options': '--prompt "fbcode2> "'  }))
+command! FZFfbcode3 call fzf#run(fzf#wrap(
+    \ {'source':
+    \  'find ~/fbcode3/{sigrid,fblearner,caffe2,experimental/xlwang} -type f',
+    \  'options': '--prompt "fbcode3> "'  }))
 command! FZFfullfbcode call fzf#run(fzf#wrap(
     \ {'source': 'find ~/fbcode/ -type f',
     \  'options': '--prompt "fbcode> "'  }))
+command! FZFfullfbcode2 call fzf#run(fzf#wrap(
+    \ {'source': 'find ~/fbcode2/ -type f',
+    \  'options': '--prompt "fbcode2> "'  }))
+command! FZFfullfbcode3 call fzf#run(fzf#wrap(
+    \ {'source': 'find ~/fbcode3/ -type f',
+    \  'options': '--prompt "fbcode3> "'  }))
+function! FZFfbcodeFunc()
+  let l:parts = split(resolve(expand('%:p')), '/')
+  let l:fbcode = 'FZFfbcode'
+  for x in l:parts
+    if x =~ 'fbsource*'
+      if x == 'fbsource'
+        let l:fbcode = 'FZFfbcode'
+      elseif x == 'fbsource2'
+        let l:fbcode = 'FZFfbcode2'
+      elseif x == 'fbsource3'
+        let l:fbcode = 'FZFfbcode3'
+      else
+        echom 'found path cannot handle: ' . resolve(expand('%:p'))
+      endif
+      break
+    endif
+  endfor
+  exec l:fbcode
+endfunction
+
+
+command! FZFMru call fzf#run(fzf#wrap(
+    \ {'source': reverse(GetOldFiles()),
+    \  'options': '--prompt "hist> "'  }))
 function! GetOldFiles()
   return extend(
   \ filter(reverse(copy(v:oldfiles)), "filereadable(expand(v:val)) && ".
@@ -298,7 +334,7 @@ function! GetOldFiles()
   \ filter(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'),
   \        'bufname(v:val)'), '!empty(v:val)'))
 endfunction
-nnoremap <C-[> :FZFfbcode<CR>
+nnoremap <C-[> :call FZFfbcodeFunc()<CR>
 " nnoremap <C-]> :FZFMru<CR>
 " nnoremap <C-]> :Lines<CR>
 nnoremap <C-]> :CtrlPLine<CR>
