@@ -298,7 +298,7 @@ noremap <silent> <C-w>\ :execute "vertical res"  . &columns / 2<cr>
 noremap <silent> <C-n> :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-t> :wincmd _<cr>
 noremap <silent> <C-g> :vert res 100<cr>
-noremap <silent> <C-d> :100 wincmd h \| vert res 100 \| wincmd l \|
+noremap <silent> <C-m> :100 wincmd h \| vert res 100 \| wincmd l \|
       \ vert res 100 \| wincmd h<cr>
 
 noremap <silent> <C-w><C-j> :100 wincmd j<cr>
