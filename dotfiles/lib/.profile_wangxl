@@ -871,6 +871,7 @@ alias bbt='buck test'
 alias bbb='buck build'
 alias bbr='buck run'
 alias fbc='cd ~/fbcode'
+alias fbc1='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
 function run_dper_integration_tests {
@@ -970,7 +971,7 @@ function ffzf {
     done
   fi
 }
-function fb {
+function fb1 {
   local query="find \
     ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang} -type f"
   local prompt="fbcode> "
@@ -987,6 +988,16 @@ function fb3 {
     ~/fbcode3/{sigrid,fblearner,caffe2} -type f"
   local prompt="fbcode3> "
   ffzf $query $prompt $1
+}
+function fb {
+  local cwd=$(readlink -f .)
+  local cmd="fb1"
+  if [[ $cwd == *"fbsource2"* ]]; then
+    cmd="fb2"
+  elif [[ $cwd == *"fbsource3"* ]]; then
+    cmd="fb3"
+  fi
+  $cmd
 }
 function ff {
   IFS=$'\n' out=($(fzf --query="$1" \
