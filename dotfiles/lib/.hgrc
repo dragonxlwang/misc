@@ -4,6 +4,8 @@
 # username = Jane Doe <jdoe@example.com>
 username = Xiaolong Wang <xlwang@fb.com>
 ignore = /data/users/xlwang/fbsource/fbcode/experimental/xlwang/.hgignore
+ignore.fbc2 = /data/users/xlwang/fbsource2/fbcode/experimental/xlwang/.hgignore
+ignore.fbc3 = /data/users/xlwang/fbsource3/fbcode/experimental/xlwang/.hgignore
 
 [bookmarks]
 track.current = True
