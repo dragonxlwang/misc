@@ -1,0 +1,10 @@
+syntax: glob
+
+experimental/xlwang/*.*
+experimental/xlwang/*
+experimental/xlwang/**
+experimental/xlwang/*~
+experimental/xlwang/.hgignore
+experimental/xlwang/*/**
+experimental/xlwang/**
+flow/projects/dper/workflows/test_workflow.py

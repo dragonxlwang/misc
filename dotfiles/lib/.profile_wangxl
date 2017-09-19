@@ -979,7 +979,7 @@ function fb1 {
 }
 function fb2 {
   local query="find \
-    ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang} -type f"
+    ~/fbcode2/{sigrid,fblearner,caffe2,experimental/xlwang} -type f"
   local prompt="fbcode2> "
   ffzf $query $prompt $1
 }
