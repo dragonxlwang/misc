@@ -227,7 +227,7 @@ endif
 let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
 let g:formatdef_yapf =
-  \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:79}\" -l '.a:firstline.'-'.a:lastline"
+  \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:80}\" -l '.a:firstline.'-'.a:lastline"
 let g:formatters_python=['yapf','autopep8']
 nnoremap <leader>w :Autoformat \| :w!<CR>
 vnoremap <leader>w :Autoformat \| :w!<CR>
