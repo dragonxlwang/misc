@@ -219,17 +219,18 @@ Plugin 'dragonxlwang/python-syntax'
 Plugin 'Chiel92/vim-autoformat'
 if !empty(glob("~/llvm/build/bin/clang-format"))
   let g:formatdef_my_custom_clang =
-        \'"~/llvm/build/bin/clang-format -style=google"'
+        \"'~/llvm/build/bin/clang-format -lines='.a:firstline.':'.a:lastline.' -style=google'"
 else
   let g:formatdef_my_custom_clang =
-        \'"clang-format -style=file -fallback-style=Google"'
+        \"'clang-format -lines='.a:firstline.':'.a:lastline.' -style=file -fallback-style=Google'"
 endif
 let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
 let g:formatdef_yapf =
-  \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:79}\"'"
+  \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:79}\" -l '.a:firstline.'-'.a:lastline"
 let g:formatters_python=['yapf','autopep8']
-nnoremap <leader>w :exe "Autoformat" \| :w!<CR>
+nnoremap <leader>w :Autoformat \| :w!<CR>
+vnoremap <leader>w :Autoformat \| :w!<CR>
 command! W exe "Autoformat" | w!
 " let g:formatter_yapf_style = 'facebook'
 " let g:formatters_python = ['yapf']
