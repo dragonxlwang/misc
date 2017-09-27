@@ -896,6 +896,26 @@ function buck_gen_cc {
   buck build --show-output $1\#compilation-database
 }
 alias buck_util='~/misc/scripts/buck_utils.py'
+function flow_util {
+  local bin=~/fbcode/buck-out/gen/experimental/xlwang/flow_util.par
+  local pyf=~/fbcode/experimental/xlwang/flow_util.py
+  local src=~/misc/scripts/flow_util.py
+  cur_pwd=$(pwd)
+  if [[ ! -e "$bin" ]]; then
+    redecho "missing $bin! build!"
+    if [[ ! -e "$pyf" ]]; then
+      if [[ ! -e "$src" ]]; then
+        redecho "$src does not exist! abort!"
+        exit
+      fi
+      ln -s "$src" "$pyf"
+    fi
+    cd ~/fbcode
+    buck build //experimental/xlwang:flow_util
+    cd $cur_pwd
+  fi
+  "$bin" $@
+}
 function get_duf {
   local f=$1
   f=$(readlink -f ${f})
