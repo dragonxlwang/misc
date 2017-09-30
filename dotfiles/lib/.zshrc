@@ -110,7 +110,7 @@ source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
 
 # Use vi mode.
-bindkey -v
+# bindkey -v
 # bind ctrl + space to accept the current suggestion
 bindkey '^ ' autosuggest-accept
 # vim-like move
