@@ -231,7 +231,6 @@ let g:formatdef_yapf =
 let g:formatters_python=['yapf','autopep8']
 nnoremap <leader>w :Autoformat \| :w!<CR>
 vnoremap <leader>w :Autoformat \| :w!<CR>
-command! W exe "Autoformat" | w!
 " let g:formatter_yapf_style = 'facebook'
 " let g:formatters_python = ['yapf']
 " let auto_format_type_list = ['c', 'cpp', 'python']
