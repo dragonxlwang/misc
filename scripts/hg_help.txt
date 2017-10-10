@@ -29,7 +29,7 @@ Modifying the Phabricator Message
   Add revision message
 - arc amend
   Amend the working copy, and synchronizing the local commit message from
-  Differential.
+  differential. (It also retrieves the diff number back if it was missing)
 
 Repo sharing
 ============
