@@ -307,44 +307,45 @@ noremap <silent> <C-w><C-k> :100 wincmd k<cr>
 noremap <C-w>v :vertical wincmd f<CR>
 
 " ==========================- Keymap: Copy & Paste -============================
-if g:osName == 'Darwin'
-  " Add some Mac specific bindings
-  " so we use external commands instead to avoid recompiling vim
-  " swap vim default register and clipboard
-  nnoremap <silent> <leader>x
-        \ :let @a=@" \|
-        \ let @"=system("pbpaste") \|
-        \ let res=system("pbcopy", @a)<CR>
-  vnoremap <silent> <leader>y
-        \ :<CR>:let @a=@" \|
-        \ execute "normal! vgvy" \|
-        \ let res=system("pbcopy", @") \| let @"=@a<CR>
-  " nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
-  " noremap <silent> <leader>p :r !pbpaste<CR><CR>
-elseif g:osName == 'Linux'
-  " this works only if vim is compiled with +clipboard or +xterm_clipboard
-  nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
-  set clipboard=unnamed
-  nnoremap <silent> <leader><leader>y :.w !ssh mac_mini pbcopy<CR>
-  vnoremap <silent> <leader><leader>y
-        \ :<CR>:let @a=@" \|
-        \ execute "normal! vgvy" \|
-        \ let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
-endif
+" if g:osName == 'Darwin'
+"   " Add some Mac specific bindings
+"   " so we use external commands instead to avoid recompiling vim
+"   " swap vim default register and clipboard
+"   nnoremap <silent> <leader>x
+"         \ :let @a=@" \|
+"         \ let @"=system("pbpaste") \|
+"         \ let res=system("pbcopy", @a)<CR>
+"   vnoremap <silent> <leader>y
+"         \ :<CR>:let @a=@" \|
+"         \ execute "normal! vgvy" \|
+"         \ let res=system("pbcopy", @") \| let @"=@a<CR>
+"   " nnoremap <silent> <leader>y :.w !pbcopy<CR><CR>
+"   " noremap <silent> <leader>p :r !pbpaste<CR><CR>
+" elseif g:osName == 'Linux'
+"   " this works only if vim is compiled with +clipboard or +xterm_clipboard
+"   nnoremap <silent> <leader>x :let @a=@" \| let @"=@+ \| let @+=@a<CR>
+"   set clipboard=unnamed
+"   nnoremap <silent> <leader><leader>y :.w !ssh mac_mini pbcopy<CR>
+"   vnoremap <silent> <leader><leader>y
+"         \ :<CR>:let @a=@" \|
+"         \ execute "normal! vgvy" \|
+"         \ let res=system("ssh mac_mini pbcopy", @") \| let @"=@a<CR>
+" endif
 
 " nnoremap <silent> <leader>y :.w !tmux load-buffer -<CR><CR>
 " vnoremap <silent> <leader>y
 "       \ :<CR>:let @a=@" \|
 "       \ execute "normal! vgvy" \|
 "       \ let res=system("tmux load-buffer -", @") \| let @"=@a<CR>
-nnoremap <silent> <leader>y
-      \ :.w !~/misc/scripts/vim_tmux_load_buffer.sh -<CR><CR>
-vnoremap <silent> <leader>y
-      \ :<CR>:let @a=@" \|
-      \ execute "normal! vgvy" \|
-      \ let res=system("~/misc/scripts/vim_tmux_load_buffer.sh -", @") \|
-      \ let @"=@a<CR>
+" nnoremap <silent> <leader>y
+"       \ :.w !~/misc/scripts/vim_tmux_load_buffer.sh -<CR><CR>
+" vnoremap <silent> <leader>y
+"       \ :<CR>:let @a=@" \|
+"       \ execute "normal! vgvy" \|
+"       \ let res=system("~/misc/scripts/vim_tmux_load_buffer.sh -", @") \|
+"       \ let @"=@a<CR>
 nnoremap <leader>p "0p
+nnoremap <leader>y "0y
 
 " Toggle paste mode on and off
 noremap <ESC>p :setlocal paste! \| :echoe "paste =" &paste<cr>

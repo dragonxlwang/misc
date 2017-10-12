@@ -39,3 +39,7 @@ Bad Arcrc
 =========
 - arc install-certificate
   install certificate: https://fburl.com/0nudtnlk
+
+Common Reviewer
+===============
+chocjy, amalevich, kittipat, volkhin, ninghz, cxj
