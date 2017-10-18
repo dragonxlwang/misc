@@ -24,7 +24,7 @@ flags_fbcode = [
     # 'buck-out/dev/gen/ccif/string/ccif_string-cpp2#default,headers,veef279d.hmap',
 ]
 
-compilation_database_folder = '/home/' + os.environ.get('USER') + '/fbcode'
+compilation_database_folder = os.path.expanduser('~/fbcode')
 
 if os.path.exists(compilation_database_folder):
     database = ycm_core.CompilationDatabase(compilation_database_folder)

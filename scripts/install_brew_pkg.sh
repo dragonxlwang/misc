@@ -44,6 +44,8 @@ brew install ffmpeg
 brew install gifsicle --with-x11
 brew install imagemagick --with-x11 --with-webp --with-librsvg
 
+ln -s /usr/local/opt/curl/bin/curl /usr/local/bin/curl
+
 ## python
 brew install python
 brew linkapps python
