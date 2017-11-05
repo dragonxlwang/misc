@@ -346,6 +346,8 @@ noremap <C-w>v :vertical wincmd f<CR>
 "       \ let @"=@a<CR>
 nnoremap <leader>p "0p
 nnoremap <leader>y "0y
+vnoremap <leader>p "0p
+vnoremap <leader>y "0y
 
 " Toggle paste mode on and off
 noremap <ESC>p :setlocal paste! \| :echoe "paste =" &paste<cr>
