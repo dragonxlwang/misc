@@ -94,6 +94,11 @@ git clone https://github.com/google/yapf.git
 cd yapf
 sudo python setup.py install
 
+cd ~/workspace
+git clone https://github.com/PythonCharmers/python-future.git
+cd python-future
+sudo python setup.py install
+
 # ipython
 ## ==================================================
 ## dex/ifbpy-notebook-in-a-nutshell/
