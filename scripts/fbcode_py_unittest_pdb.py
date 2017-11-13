@@ -1,3 +1,9 @@
+################################################################################
+####        Remove following before landing                                 ####
+####        Below adds the functionality to select the test functions       ####
+####        and support of pdb                                              ####
+################################################################################
+
 tests = ['***'] # replace with test functions
 test_class = *** # replace with test class
 for attr in dir(test_class):
