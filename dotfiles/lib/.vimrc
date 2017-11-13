@@ -581,3 +581,8 @@ function! FocusBuffer(bn, opt)
     exec "e ". l:fp
   endif
 endfunction
+
+function! FbcodePyTestPdb()
+  let l:code=readfile(glob('~/misc/scripts/fbcode_py_unittest_pdb.py'))
+  call append(line("."), l:code)
+endfunction
