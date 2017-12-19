@@ -1017,7 +1017,7 @@ function fb {
   elif [[ $cwd == *"fbsource3"* ]]; then
     cmd="fb3"
   fi
-  $cmd
+  $cmd $@
 }
 function ff {
   IFS=$'\n' out=($(fzf --query="$1" \
