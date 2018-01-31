@@ -35,6 +35,10 @@ Repo sharing
 ============
 hg-new-workdir <src> <dst>
 
+Undo last hg action
+===================
+hg undo
+
 Bad Arcrc
 =========
 - arc install-certificate

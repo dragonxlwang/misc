@@ -1,0 +1,6 @@
+When encounter "Failed to connect to bus: Connection refused":
+==============================================================
+If the error message shows up when executing:
+  systemctl --user list-timers
+Solution:
+  loginctl terminate-user $USER
