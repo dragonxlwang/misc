@@ -780,6 +780,7 @@ function ifbpynb_c2 {
   popd
 }
 function ifb2pynb_c2 {
+  # ipython_setup
   pushd ~/fbcode2
   caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
   popd
