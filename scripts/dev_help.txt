@@ -4,3 +4,8 @@ If the error message shows up when executing:
   systemctl --user list-timers
 Solution:
   loginctl terminate-user $USER
+
+Chrome has problem opening the ipython:
+=======================================
+Solution:
+  ipython_setup
