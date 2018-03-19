@@ -831,6 +831,7 @@ function ifbpy_c2 {
 ## ========================================================================== ##
 alias arc_lint="arc lint --engine HowtoevenLintEngine"
 alias arc_up_msg="hg commit --amend && arc diff --verbatim"
+alias arc_stack_diff="for-each-stacked submit-stacked-diff"
 function hnext {
   local num=${1:=1}
   for i in $(seq 1 $1);
