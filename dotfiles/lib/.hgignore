@@ -7,4 +7,5 @@ experimental/xlwang/*~
 experimental/xlwang/.hgignore
 experimental/xlwang/*/**
 experimental/xlwang/**
+buck-out/bin/metadata.type
 flow/projects/dper/workflows/test_workflow.py
