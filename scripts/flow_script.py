@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
-def run_flow(
+def flow_run(
     args,
     title='test',
     owner='xlwang',
