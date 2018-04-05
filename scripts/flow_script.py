@@ -4,6 +4,8 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from fblearner.flow.core.attrdict import from_dict
+from fblearner.flow.core.types_lib.type import encode as encode_flow_type
+from fblearner.flow.core.types_lib.gettype import gettype
 from fblearner.flow.external_api import FlowSession, WorkflowRun
 from fblearner.flow.util.runner_utilities import load_config
 from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
@@ -16,8 +18,12 @@ from fblearner.flow.storage.models import (
     WorkflowRegistration,
     Workflow,
 )
+import fblearner.flow.projects.dper.flow_types as T
 # add this to enable get default input
 import fblearner.flow.facebook.plugins.all_plugins  # noqa
+from caffe2.python.fb.dper.layer_models.model_definition import ttypes
+from thrift.protocol import TSimpleJSONProtocol
+from thrift.transport.TTransport import TMemoryBuffer
 
 from pprint import pprint
 import logging
@@ -151,3 +157,18 @@ def get_flow_default_inputs(
             WorkflowRegistration.fbpackage_version == pkg_version
         ).one()
         return json.loads(registration.default_inputs)
+
+
+def tt_to_json(obj):
+    trans = TMemoryBuffer()
+    proto = TSimpleJSONProtocol.TSimpleJSONProtocol(trans)
+    obj.write(proto)
+    return trans.getvalue()
+
+
+def tt_to_dict(obj):
+    return json.loads(tt_to_json(obj))
+
+
+def ft_to_dict(obj):
+    return encode_flow_type(None, obj)
