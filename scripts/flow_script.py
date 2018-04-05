@@ -3,10 +3,23 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from fblearner.flow.core.attrdict import from_dict
 from fblearner.flow.external_api import FlowSession, WorkflowRun
+from fblearner.flow.util.runner_utilities import load_config
 from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
-from pprint import pprint
+from fblearner.flow.storage.models import (
+    ModelType,
+    Session,
+    SessionContext,
+    initialize_session,
+    WorkflowRun,
+    WorkflowRegistration,
+    Workflow,
+)
+# add this to enable get default input
+import fblearner.flow.facebook.plugins.all_plugins  # noqa
 
+from pprint import pprint
 import logging
 import json
 
@@ -117,3 +130,24 @@ def flow_metrics(workflow_run_ids_or_results):
                 eval_auc
             )
         )
+
+
+def get_flow_default_inputs(
+    workflow_run_id=None, workflow_name=None, pkg_version=None
+):
+    if workflow_run_id is not None:
+        info = flow_info(workflow_run_id)
+        workflow_name = info.workflow_name
+        pkg_version = info.packageVersion
+    else:
+        assert workflow_name is not None
+        assert pkg_version is not None
+    initialize_session(load_config())
+    with SessionContext(Session) as session:
+        registration = session.query(WorkflowRegistration).join(
+            Workflow, WorkflowRegistration.workflow
+        ).filter(
+            Workflow.workflow_name == workflow_name,
+            WorkflowRegistration.fbpackage_version == pkg_version
+        ).one()
+        return registration.default_inputs
