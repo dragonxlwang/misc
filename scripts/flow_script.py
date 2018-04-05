@@ -46,6 +46,7 @@ def flow_result(workflow_run_id, print_return=False):
 
 
 def flow_input_args(workflow_run_id, print_return=False):
+    fl = FlowSession()
     input_args = fl.get_workflow_run_inputs_summary(
         workflow_run_id=workflow_run_id
     )
@@ -55,22 +56,27 @@ def flow_input_args(workflow_run_id, print_return=False):
 
 
 def flow_info(workflow_run_id):
+    fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id)
 
 
 def flow_name(workflow_run_id):
+    fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).workflow_name
 
 
 def flow_entitlement(workflow_run_id):
+    fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).entitlement
 
 
 def flow_package(workflow_run_id):
+    fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).packageVersion
 
 
 def flow_clone(workflow_run_id):
+    fl = FlowSession()
     args = flow_input_args(workflow_run_id)
     name = flow_name(workflow_run_id)
     title = '%s: cloned from f%s' % (name, str(workflow_run_id))
@@ -79,11 +85,13 @@ def flow_clone(workflow_run_id):
 
 
 def flow_kill(workflow_run_id, reason='murdered'):
+    fl = FlowSession()
     fl.kill_workflow(workflow_run_id, reason=reason)
     logger.info('flow f%s killed (%s)' % (str(workflow_run_id), reason))
 
 
 def flow_metrics(workflow_run_ids_or_results):
+    fl = FlowSession()
     if not isinstance(workflow_run_ids_or_results, list):
         workflow_run_ids_or_results = [workflow_run_ids_or_results]
     logger.info('Tne, Tcali, Tqps, Ene, Ecali, Eauc')
