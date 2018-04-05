@@ -150,4 +150,4 @@ def get_flow_default_inputs(
             Workflow.workflow_name == workflow_name,
             WorkflowRegistration.fbpackage_version == pkg_version
         ).one()
-        return registration.default_inputs
+        return json.loads(registration.default_inputs)
