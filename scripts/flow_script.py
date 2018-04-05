@@ -133,7 +133,7 @@ def flow_metrics(workflow_run_ids_or_results):
 
 
 def get_flow_default_inputs(
-    workflow_run_id=None, workflow_name=None, pkg_version=None
+    workflow_name=None, pkg_version=None, workflow_run_id=None
 ):
     if workflow_run_id is not None:
         info = flow_info(workflow_run_id)
