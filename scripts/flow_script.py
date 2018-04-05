@@ -26,6 +26,7 @@ from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
 
 from pprint import pprint
+from copy import deepcopy
 import logging
 import json
 
