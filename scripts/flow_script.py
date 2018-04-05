@@ -51,7 +51,13 @@ def flow_run(
         package_version=package,
         metadata=WorkflowRunMetadataMutation(name=title, notes='', add_tags=[]),
     )
-    logger.info('flow "%s" launched: id=f%s' % (title, str(run.id)))
+    logger.info(
+        'flow "%s" launched: id=f%s \n    %s' % (
+            title, str(run.id),
+            'https://our.intern.facebook.com/intern/fblearner/details/%s' % run.
+            id
+        )
+    )
     return run
 
 
