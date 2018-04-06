@@ -27,11 +27,50 @@ from thrift.transport.TTransport import TMemoryBuffer
 
 from pprint import pprint
 from copy import deepcopy
+from collections import OrderedDict
 import logging
 import json
 
 logger = logging.getLogger(__name__)
+
+
+def clean_logging(logger):
+    handlers = logger.handlers[:]
+    for h in handlers:
+        h.close()
+        logger.removeHandler(h)
+
+
+clean_logging(logger)
 logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(levelname)s %(asctime)s : %(message)s')
+fh = logging.FileHandler(
+    r'/home/xlwang/fbcode/experimental/xlwang/ipy_flow_debug.log'
+)
+fh.setFormatter(formatter)
+logger.addHandler(fh)
+for h in logging.root.handlers:
+    h.setFormatter(formatter)
+
+################################################################################
+
+
+def tt_to_json(obj):
+    trans = TMemoryBuffer()
+    proto = TSimpleJSONProtocol.TSimpleJSONProtocol(trans)
+    obj.write(proto)
+    return trans.getvalue()
+
+
+def tt_to_dict(obj):
+    return json.loads(tt_to_json(obj))
+
+
+def ft_to_dict(obj):
+    return encode_flow_type(None, obj)
+
+
+################################################################################
 
 
 def flow_run(
@@ -91,6 +130,12 @@ def flow_name(workflow_run_id):
     return fl.get_workflow_run_info(workflow_run_id).workflow_name
 
 
+def flow_title(workflow_run_id):
+    fl = FlowSession()
+    title = fl.get_workflow_run_metadata(workflow_run_id).name
+    return title
+
+
 def flow_entitlement(workflow_run_id):
     fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).entitlement
@@ -99,6 +144,37 @@ def flow_entitlement(workflow_run_id):
 def flow_package(workflow_run_id):
     fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).packageVersion
+
+
+def flow_status(workflow_run_id, add_log=True):
+    fl = FlowSession()
+    st = fl.get_workflow_run_status(workflow_run_id)
+    status = {
+        1: 'SCHEDULED',
+        2: 'RUNNING',
+        3: 'SUCCEEDED',
+        4: 'FAILED',
+        6: 'KILLED',
+        5: 'NOT_AVAILABLE'
+    }[st]
+    if add_log:
+        logger.info('f%s: %s' % (workflow_run_id, status))
+    return status
+
+
+def flow_summary(workflow_run_id):
+    name = flow_name(workflow_run_id)
+    title = flow_title(workflow_run_id)
+    owner = flow_info(workflow_run_id).owner
+    status = flow_status(workflow_run_id, add_log=False)
+    lines = []
+    ln = '[%s]: %s (%s), %s' % (workflow_run_id, name, owner, status)
+    lines.append(ln)
+    logger.info(ln)
+    ln = '    %s' % title
+    lines.append(ln)
+    logger.info(ln)
+    return '\n'.join(lines)
 
 
 def flow_clone(workflow_run_id):
@@ -114,35 +190,6 @@ def flow_kill(workflow_run_id, reason='murdered'):
     fl = FlowSession()
     fl.kill_workflow(workflow_run_id, reason=reason)
     logger.info('flow f%s killed (%s)' % (str(workflow_run_id), reason))
-
-
-def flow_metrics(workflow_run_ids_or_results):
-    fl = FlowSession()
-    if not isinstance(workflow_run_ids_or_results, list):
-        workflow_run_ids_or_results = [workflow_run_ids_or_results]
-    logger.info('Tne, Tcali, Tqps, Ene, Ecali, Eauc')
-    for id_or_result in workflow_run_ids_or_results:
-        if isinstance(id_or_result, int):
-            result = flow_result(id_or_result)
-        else:
-            result = id_or_result
-        train_ne = result['training_metrics']['model']['numeric']['ne']
-        train_cali = result['training_metrics']['model']['numeric'
-                                                        ]['calibration']
-        train_qps = result['training_metrics']['qps_metric']['numeric'
-                                                            ]['lifetime_qps']
-        eval_ne = result['eval_metrics']['model']['numeric']['ne']
-        eval_cali = result['eval_metrics']['model']['numeric']['calibration']
-        try:
-            eval_auc = result['eval_metrics']['AUC']['numeric']['auc']
-        except:
-            eval_auc = None
-        logger.info(
-            'f%s %s %s %s %s %s %s' % (
-                fid, train_ne, train_cali, train_qps, eval_ne, eval_cali,
-                eval_auc
-            )
-        )
 
 
 def get_flow_default_inputs(
@@ -166,16 +213,104 @@ def get_flow_default_inputs(
         return json.loads(registration.default_inputs)
 
 
-def tt_to_json(obj):
-    trans = TMemoryBuffer()
-    proto = TSimpleJSONProtocol.TSimpleJSONProtocol(trans)
-    obj.write(proto)
-    return trans.getvalue()
+def flow_metrics(workflow_run_id_or_result):
+    if isinstance(workflow_run_id_or_result, int):
+        flow_id = workflow_run_id_or_result
+        result = flow_result(flow_id)
+    else:
+        result = workflow_run_id_or_result
+        try:
+            flow_id = int(result['model_id'].split('_')[0])
+        except:
+            flow_id = -1
+    metrics = OrderedDict()
+    metrics['flow_id'] = flow_id
+    try:
+        train_ne = result['training_metrics']['model']['numeric']['ne']
+    except:
+        train_ne = None
+    metrics['train_ne'] = train_ne
+    try:
+        train_cali = result['training_metrics']['model']['numeric'
+                                                        ]['calibration']
+    except:
+        train_cali = None
+    metrics['train_cali'] = train_cali
+    try:
+        train_qps = result['training_metrics']['qps_metric']['numeric'
+                                                            ]['lifetime_qps']
+    except:
+        train_qps = None
+    metrics['train_qps'] = train_qps
+    try:
+        eval_ne = result['eval_metrics']['model']['numeric']['ne']
+    except:
+        eval_ne = None
+    metrics['eval_ne'] = eval_ne
+    try:
+        eval_cali = result['eval_metrics']['model']['numeric']['calibration']
+    except:
+        eval_cali = None
+    metrics['eval_cali'] = eval_cali
+    try:
+        eval_auc = result['eval_metrics']['AUC']['numeric']['auc']
+    except:
+        eval_auc = None
+    metrics['eval_auc'] = eval_auc
+    return metrics
 
 
-def tt_to_dict(obj):
-    return json.loads(tt_to_json(obj))
+def flow_report(
+    workflow_run_ids_or_results, separator=' ', first_as_baseline=False
+):
+    lines = []
+    if not isinstance(workflow_run_ids_or_results, list):
+        workflow_run_ids_or_results = [workflow_run_ids_or_results]
+    metrics_list = [flow_metrics(x) for x in workflow_run_ids_or_results]
+    assert len(metrics_list) > 0
+    column_names = metrics_list[0].keys()
+    filtered_column_names = [
+        c for c in column_names if any(m[c] is not None for m in metrics_list)
+    ]
+    column_widths = {
+        c: max([len(str(m[c])) for m in metrics_list])
+        for c in filtered_column_names
+    }
+
+    def str_fmt(c, v):
+        return ('{' + ':^' + str(column_widths[c]) + '}').format(v)
+
+    def diff(m, bm, c):
+        if c == 'flow_id':
+            return ''
+        else:
+            try:
+                return '{:+.6}%'.format((m[c] - bm[c]) / bm[c] * 100.)
+            except:
+                return '-'
+
+    ln = separator.join([str_fmt(c, c) for c in filtered_column_names])
+    lines.append(ln)
+    logger.info(ln)
+    lines.append(''.join(len(ln) * ['=']))
+    logger.info(''.join(len(ln) * ['=']))
+    for m in metrics_list:
+        ln = separator.join([str_fmt(c, m[c]) for c in filtered_column_names])
+        lines.append(ln)
+        logger.info(ln)
+        if first_as_baseline:
+            ln = separator.join(
+                [
+                    str_fmt(c, diff(m, metrics_list[0], c))
+                    for c in filtered_column_names
+                ]
+            )
+            lines.append(ln)
+            logger.info(ln)
+    return '\n'.join(lines)
 
 
-def ft_to_dict(obj):
-    return encode_flow_type(None, obj)
+def flow_compare(workflow_run_ids, separator=' '):
+    summary = '\n'.join([flow_summary(i) for i in workflow_run_ids])
+    report = flow_report(workflow_run_ids, separator, True)
+    return '\n'.join([summary, report])
