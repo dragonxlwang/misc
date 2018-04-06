@@ -28,8 +28,11 @@ from thrift.transport.TTransport import TMemoryBuffer
 from pprint import pprint
 from copy import deepcopy
 from collections import OrderedDict
+
 import logging
 import json
+import numpy
+
 
 logger = logging.getLogger(__name__)
 
@@ -72,6 +75,7 @@ def ft_to_dict(obj):
 
 ################################################################################
 
+APOLLO_XIII_TAG_ID=325182364673414
 
 def flow_run(
     args,
@@ -88,7 +92,7 @@ def flow_run(
         input_arguments=args,
         entitlement=entitlement,
         package_version=package,
-        metadata=WorkflowRunMetadataMutation(name=title, notes='', add_tags=[]),
+        metadata=WorkflowRunMetadataMutation(name=title, notes='', add_tags=[APOLLO_XIII_TAG_ID]),
     )
     logger.info(
         'flow "%s" launched: id=f%s \n    %s' % (
@@ -145,6 +149,8 @@ def flow_package(workflow_run_id):
     fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).packageVersion
 
+def flow_owner(workflow_run_id):
+    return flow_info(workflow_run_id).owner
 
 def flow_status(workflow_run_id, add_log=True):
     fl = FlowSession()
