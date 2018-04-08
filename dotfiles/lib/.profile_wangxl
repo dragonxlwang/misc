@@ -820,6 +820,12 @@ function ifbpy_c2 {
   ./buck-out/gen/${TARGET}/ifbpy${EXT}.par
   popd
 }
+alias cat_flow_log='cat ~/fbcode/experimental/xlwang/ipy_flow_debug.log'
+function less_flow_log {
+  pygmentize -O full,style=monokai -l ocaml \
+    ~/fbcode/experimental/xlwang/ipy_flow_debug.log | less -R +G
+}
+
 
 ## ========================================================================== ##
 #                               _______ .______                                #
