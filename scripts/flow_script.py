@@ -432,6 +432,11 @@ def fbl_compare_link(*workflow_run_ids):
     print(link)
 
 
+logger.info('')
+logger.info('')
+logger.info('')
+logger.info('')
+logger.info('')
 logger.info('============================================')
 logger.info('========== NEW IPYTHON, START LOG ==========')
 logger.info('============================================')
