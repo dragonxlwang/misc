@@ -35,6 +35,7 @@ import numpy
 
 # --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
+formatter = logging.Formatter('%(levelname)s %(asctime)s : %(message)s')
 
 
 def clean_logging(logger):
@@ -44,14 +45,15 @@ def clean_logging(logger):
         logger.removeHandler(h)
 
 
+def add_logging(file_name):
+    fh = logging.FileHandler(file_name)
+    fh.setFormatter(formatter)
+    logger.addHandler(fh)
+
+
 clean_logging(logger)
 logger.setLevel(logging.INFO)
-formatter = logging.Formatter('%(levelname)s %(asctime)s : %(message)s')
-fh = logging.FileHandler(
-    r'/home/xlwang/fbcode/experimental/xlwang/ipy_flow_debug.log'
-)
-fh.setFormatter(formatter)
-logger.addHandler(fh)
+add_logging(r'/home/xlwang/fbcode/experimental/xlwang/ipy_flow_debug.log')
 for h in logging.root.handlers:
     h.setFormatter(formatter)
 
@@ -284,7 +286,7 @@ def flow_kill(workflow_run_id, reason='murdered'):
     logger.info('flow f%s killed (%s)' % (str(workflow_run_id), reason))
 
 
-def get_flow_default_inputs(
+def flow_default_input_args(
     workflow_name=None, pkg_version=None, workflow_run_id=None
 ):
     """get the default input args for a (workflow, pkg), or a flow id"""
