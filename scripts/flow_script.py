@@ -33,7 +33,7 @@ import logging
 import json
 import numpy
 
-
+# --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
 
 
@@ -55,10 +55,11 @@ logger.addHandler(fh)
 for h in logging.root.handlers:
     h.setFormatter(formatter)
 
-################################################################################
+# --------------------------------- utility ----------------------------------
 
 
 def tt_to_json(obj):
+    """thrift to json"""
     trans = TMemoryBuffer()
     proto = TSimpleJSONProtocol.TSimpleJSONProtocol(trans)
     obj.write(proto)
@@ -66,16 +67,17 @@ def tt_to_json(obj):
 
 
 def tt_to_dict(obj):
+    """thrift to dictionary, as for flow input argument"""
     return json.loads(tt_to_json(obj))
 
 
 def ft_to_dict(obj):
+    """flow type to dictionary"""
     return encode_flow_type(None, obj)
 
 
-################################################################################
+APOLLO_XIII_TAG_ID = 325182364673414
 
-APOLLO_XIII_TAG_ID=325182364673414
 
 def flow_run(
     args,
@@ -85,6 +87,7 @@ def flow_run(
     package='aml.dper2:73',
     workflow='dper.workflows.ads.train_eval_workflow',
 ):
+    """schedule a flow run, and return the WorkflowRun instance"""
     fl = FlowSession()
     run = fl.schedule_workflow(
         owner=owner,
@@ -92,7 +95,9 @@ def flow_run(
         input_arguments=args,
         entitlement=entitlement,
         package_version=package,
-        metadata=WorkflowRunMetadataMutation(name=title, notes='', add_tags=[APOLLO_XIII_TAG_ID]),
+        metadata=WorkflowRunMetadataMutation(
+            name=title, notes='', add_tags=[APOLLO_XIII_TAG_ID]
+        ),
     )
     logger.info(
         'flow "%s" launched: id=f%s \n    %s' % (
@@ -105,6 +110,10 @@ def flow_run(
 
 
 def flow_result(workflow_run_id, print_return=False):
+    """return flow result, such as 'model_id', 'checkpoint_path',
+    'model_tb_graph', 'adv_eval_metrics', 'training_metrics',
+    'model_predictor_path', 'model_graph', 'model_path', 'eval_metrics',
+    'eval_learning_curves', 'training_learning_curves'"""
     fl = FlowSession()
     result = fl.get_workflow_run_results_summary(
         workflow_run_id, update_gluster_access_time_for_output=False
@@ -115,6 +124,7 @@ def flow_result(workflow_run_id, print_return=False):
 
 
 def flow_input_args(workflow_run_id, print_return=False):
+    """input arguments for flow"""
     fl = FlowSession()
     input_args = fl.get_workflow_run_inputs_summary(
         workflow_run_id=workflow_run_id
@@ -125,50 +135,101 @@ def flow_input_args(workflow_run_id, print_return=False):
 
 
 def flow_info(workflow_run_id):
+    """return flow info, e.g., owner, packageVersion, childrenRunIDs,
+    workflow_name, entitlement"""
     fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id)
 
 
 def flow_name(workflow_run_id):
+    """return workflow_name in flow_info"""
     fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).workflow_name
 
 
-def flow_title(workflow_run_id):
-    fl = FlowSession()
-    title = fl.get_workflow_run_metadata(workflow_run_id).name
-    return title
-
-
 def flow_entitlement(workflow_run_id):
+    """return entitlement in flow_info"""
     fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).entitlement
 
 
 def flow_package(workflow_run_id):
+    """return packageVersion in flow_info"""
     fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).packageVersion
 
+
 def flow_owner(workflow_run_id):
+    """return owner in flow_info"""
     return flow_info(workflow_run_id).owner
 
-def flow_status(workflow_run_id, add_log=True):
+
+def flow_title(workflow_run_id):
+    """return flow name/title in WorkflowRunMetadata, e.g. name, notes, tags,
+    subscriber_ids"""
+    fl = FlowSession()
+    title = fl.get_workflow_run_metadata(workflow_run_id).name
+    return title
+
+
+def flow_training_progress(workflow_run_id):
+    """if a flow is a training workflow such as _train_workflow_impl, and is
+    still running in progress, it returns ne, cali, and example num as a string
+    to show its progress"""
+    try:
+        fl = FlowSession()
+        results = fl.get_workflow_run_results_summary(workflow_run_id)
+        ne = result['training_metrics']['model']['numeric']['ne']
+        num = result['training_metrics']['model']['numeric']['num_add_times']
+        cali = result['training_metrics']['model']['numeric']['calibration']
+        progress = 'ne=%.6f, cali=%.6f, example=%.2fM' % (ne, cali, num * 1e-6)
+        return progress
+    except:
+        return None
+
+
+def flow_status(workflow_run_id, add_log=True, inspect_children=True):
+    """flow status, and default to output to logger and also checks running
+    instance's children"""
     fl = FlowSession()
     st = fl.get_workflow_run_status(workflow_run_id)
-    status = {
+    status_map = {
         1: 'SCHEDULED',
         2: 'RUNNING',
         3: 'SUCCEEDED',
         4: 'FAILED',
         6: 'KILLED',
         5: 'NOT_AVAILABLE'
-    }[st]
+    }
+    status = status_map[st]
     if add_log:
         logger.info('f%s: %s' % (workflow_run_id, status))
+    if status == 'RUNNING':
+        info = fl.get_workflow_run_info(workflow_run_id)
+        children = list(info.childrenRunIDs)
+        if len(children) > 0:
+            for child in children:
+                child_name = flow_name(child)
+                child_st = fl.get_workflow_run_status(child)
+                if add_log:
+                    indent = '    |'
+                    beg = ('-> f%s:' % child)
+                    logger.info(
+                        '%s%s %s (%s)' %
+                        (indent, beg, status_map[child_st], child_name)
+                    )
+                    if ('train_workflow' in child_name):
+                        child_progress = flow_training_progress(child)
+                        if child_progress is not None:
+                            logger.info(
+                                '%s%s %s' %
+                                (indent, ' ' * len(beg), child_progress)
+                            )
     return status
 
 
 def flow_summary(workflow_run_id):
+    """show flow summary: workflow_run_id, name, owner, status, and title"""
     name = flow_name(workflow_run_id)
     title = flow_title(workflow_run_id)
     owner = flow_info(workflow_run_id).owner
@@ -183,16 +244,41 @@ def flow_summary(workflow_run_id):
     return '\n'.join(lines)
 
 
-def flow_clone(workflow_run_id):
+def flow_short_summary(workflow_run_id):
+    """easy to crop out the flow ids and return status"""
+    title = flow_title(workflow_run_id)
+    owner = flow_info(workflow_run_id).owner
+    status = flow_status(workflow_run_id, add_log=False)
+    ln = '%s, # %-12s "%s", %s' % (workflow_run_id, owner, title, status)
+    logger.info(ln)
+    return ln
+
+
+def flow_check_runs(*workflow_run_ids):
+    finished_runs = OrderedDict()
+    lns = []
+    for i in workflow_run_ids:
+        lns += [flow_short_summary(i)]
+        st = flow_status(i, add_log=False)
+        if st != 'RUNNING':
+            finished_runs[i] = st
+    print('\n'.join(lns))
+    return finished_runs
+
+
+def flow_clone(workflow_run_id, *args, **kwargs):
+    """clone a flow"""
     fl = FlowSession()
     args = flow_input_args(workflow_run_id)
     name = flow_name(workflow_run_id)
+    pkg = flow_package(workflow_run_id)
     title = '%s: cloned from f%s' % (name, str(workflow_run_id))
-    run = run_flow(args, title)
+    run = flow_run(args, title, package=pkg, workflow=name, *args, **kwargs)
     return run
 
 
 def flow_kill(workflow_run_id, reason='murdered'):
+    """kill a flow with a reason"""
     fl = FlowSession()
     fl.kill_workflow(workflow_run_id, reason=reason)
     logger.info('flow f%s killed (%s)' % (str(workflow_run_id), reason))
@@ -201,6 +287,7 @@ def flow_kill(workflow_run_id, reason='murdered'):
 def get_flow_default_inputs(
     workflow_name=None, pkg_version=None, workflow_run_id=None
 ):
+    """get the default input args for a (workflow, pkg), or a flow id"""
     if workflow_run_id is not None:
         info = flow_info(workflow_run_id)
         workflow_name = info.workflow_name
@@ -220,6 +307,7 @@ def get_flow_default_inputs(
 
 
 def flow_metrics(workflow_run_id_or_result):
+    """return a dict of train/eval metrics"""
     if isinstance(workflow_run_id_or_result, int):
         flow_id = workflow_run_id_or_result
         result = flow_result(flow_id)
@@ -269,6 +357,7 @@ def flow_metrics(workflow_run_id_or_result):
 def flow_report(
     workflow_run_ids_or_results, separator=' ', first_as_baseline=False
 ):
+    """given multiple flow ids/results, generate a report of their metrices"""
     lines = []
     if not isinstance(workflow_run_ids_or_results, list):
         workflow_run_ids_or_results = [workflow_run_ids_or_results]
@@ -316,7 +405,38 @@ def flow_report(
     return '\n'.join(lines)
 
 
-def flow_compare(workflow_run_ids, separator=' '):
-    summary = '\n'.join([flow_summary(i) for i in workflow_run_ids])
+def flow_compare(workflow_run_ids, separator=' ', summary_style='short'):
+    """compare multiple flow runs: 1) print summary; 2) report metrics"""
+    summary = '\n'.join(
+        [
+            (
+                flow_short_summary(i)
+                if summary_style == 'short' else flow_summary(i)
+            ) for i in workflow_run_ids
+        ]
+    )
     report = flow_report(workflow_run_ids, separator, True)
     return '\n'.join([summary, report])
+
+
+def fbl_compare_link(*workflow_run_ids):
+    """print the link to compare (at most 3) flows"""
+    beg = 'https://our.intern.facebook.com/intern/fblearner/run/compare/?'
+    parts = []
+    for (i, fid) in enumerate(workflow_run_ids):
+        parts.append('compare_to[%s]=%s' % (i, fid))
+    parts.append('baseline_run=%s' % workflow_run_ids[0])
+    for (i, fid) in enumerate(workflow_run_ids):
+        parts.append('all_runs[%s]=%s' % (i, fid))
+    link = beg + '&'.join(parts)
+    print(link)
+
+
+logger.info('============================================')
+logger.info('========== NEW IPYTHON, START LOG ==========')
+logger.info('============================================')
+logger.info('')
+logger.info('')
+logger.info('')
+logger.info('')
+logger.info('')
