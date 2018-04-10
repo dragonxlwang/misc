@@ -188,6 +188,11 @@ def flow_title(workflow_run_id):
     return title
 
 
+def flow_set_title(workflow_run_id, title):
+    fl = FlowSession()
+    fl.set_name(workflow_run_id, title)
+
+
 def flow_training_progress(workflow_run_id):
     """if a flow is a training workflow such as _train_workflow_impl, and is
     still running in progress, it returns ne, cali, and example num as a string
@@ -387,13 +392,13 @@ def flow_metrics(workflow_run_id_or_result):
 
 
 def flow_report(
-    workflow_run_ids_or_results, separator=' ', first_as_baseline=False
+    workflow_run_ids, separator=' ', first_as_baseline=False, show_title=True
 ):
     """given multiple flow ids/results, generate a report of their metrices"""
     lines = []
-    if not isinstance(workflow_run_ids_or_results, list):
-        workflow_run_ids_or_results = [workflow_run_ids_or_results]
-    metrics_list = [flow_metrics(x) for x in workflow_run_ids_or_results]
+    if not isinstance(workflow_run_ids, list):
+        workflow_run_ids = [workflow_run_ids]
+    metrics_list = [flow_metrics(x) for x in workflow_run_ids]
     assert len(metrics_list) > 0
     column_names = metrics_list[0].keys()
     filtered_column_names = [
@@ -421,8 +426,11 @@ def flow_report(
     logger.info(ln)
     lines.append(''.join(len(ln) * ['=']))
     logger.info(''.join(len(ln) * ['=']))
-    for m in metrics_list:
-        ln = separator.join([str_fmt(c, m[c]) for c in filtered_column_names])
+    for i, m in enumerate(metrics_list):
+        ln = separator.join(
+            [str_fmt(c, m[c]) for c in filtered_column_names] +
+            ([flow_title(workflow_run_ids[i])] if show_title else [])
+        )
         lines.append(ln)
         logger.info(ln)
         if first_as_baseline:
@@ -437,7 +445,9 @@ def flow_report(
     return '\n'.join(lines)
 
 
-def flow_compare(workflow_run_ids, separator=' ', summary_style='short'):
+def flow_compare(
+    workflow_run_ids, separator=' ', summary_style='short', show_title=True
+):
     """compare multiple flow runs: 1) print summary; 2) report metrics"""
     summary = '\n'.join(
         [
@@ -447,7 +457,7 @@ def flow_compare(workflow_run_ids, separator=' ', summary_style='short'):
             ) for i in workflow_run_ids
         ]
     )
-    report = flow_report(workflow_run_ids, separator, True)
+    report = flow_report(workflow_run_ids, separator, True, show_title=True)
     return '\n'.join([summary, report])
 
 
