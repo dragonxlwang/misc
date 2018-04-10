@@ -25,7 +25,7 @@ from caffe2.python.fb.dper.layer_models.model_definition import ttypes
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
 
-from pprint import pprint
+from pprint import pprint, pformat
 from copy import deepcopy
 from collections import OrderedDict
 
