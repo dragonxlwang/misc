@@ -51,6 +51,20 @@ def add_logging(file_name):
     logger.addHandler(fh)
 
 
+def log_blank():
+    logger.info('')
+    logger.info('')
+    logger.info('')
+    logger.info('## -----------------------------------------------')
+    logger.info('## -----------------------------------------------')
+    logger.info('## -----------------------------------------------')
+    logger.info('## -----------------------------------------------')
+    logger.info('## -----------------------------------------------')
+    logger.info('')
+    logger.info('')
+    logger.info('')
+
+
 clean_logging(logger)
 logger.setLevel(logging.INFO)
 add_logging(r'/home/xlwang/fbcode/experimental/xlwang/ipy_flow_debug.log')
@@ -257,6 +271,10 @@ def flow_short_summary(workflow_run_id):
 
 
 def flow_check_runs(*workflow_run_ids):
+    """
+    print out a copy-friendly list of flow_ids with info;
+    and return a list of finished (not running) flows
+    """
     finished_runs = OrderedDict()
     lns = []
     for i in workflow_run_ids:
@@ -268,14 +286,26 @@ def flow_check_runs(*workflow_run_ids):
     return finished_runs
 
 
-def flow_clone(workflow_run_id, *args, **kwargs):
+def flow_clone(
+    workflow_run_id,
+    title=None,
+    owner=None,
+    entitlement=None,
+    package=None,
+):
     """clone a flow"""
-    fl = FlowSession()
-    args = flow_input_args(workflow_run_id)
-    name = flow_name(workflow_run_id)
-    pkg = flow_package(workflow_run_id)
-    title = '%s: cloned from f%s' % (name, str(workflow_run_id))
-    run = flow_run(args, title, package=pkg, workflow=name, *args, **kwargs)
+    default_title = ', '.join(
+        [flow_title(workflow_run_id), 'clf%s' % str(workflow_run_id)]
+    )
+    run = flow_run(
+        args=flow_input_args(workflow_run_id),
+        title=title or default_title,
+        owner=owner or 'xlwang',
+        entitlement=entitlement or 'ads_ftw',
+        package=package or flow_package(workflow_run_id),
+        workflow=flow_name(workflow_run_id)
+    )
+
     return run
 
 
