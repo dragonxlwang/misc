@@ -117,9 +117,10 @@ def flow_run(
     )
     logger.info(
         'flow "%s" launched: id=f%s \n    %s' % (
-            title, str(run.id),
-            'https://our.intern.facebook.com/intern/fblearner/details/%s' % run.
-            id
+            title, str(run.id), (
+                'https://our.intern.facebook.com/intern/fblearner/details/%s' %
+                run.id
+            )
         )
     )
     return run
@@ -199,13 +200,13 @@ def flow_training_progress(workflow_run_id):
     to show its progress"""
     try:
         fl = FlowSession()
-        results = fl.get_workflow_run_results_summary(workflow_run_id)
-        ne = result['training_metrics']['model']['numeric']['ne']
-        num = result['training_metrics']['model']['numeric']['num_add_times']
-        cali = result['training_metrics']['model']['numeric']['calibration']
+        result = fl.get_workflow_run_results_summary(workflow_run_id)
+        ne = result['learning_curves']['model/ne']['data'][-1][1]
+        num = result['learning_curves']['model/ne']['data'][-1][0]
+        cali = result['learning_curves']['model/calibration']['data'][-1][1]
         progress = 'ne=%.6f, cali=%.6f, example=%.2fM' % (ne, cali, num * 1e-6)
         return progress
-    except:
+    except Exception:
         return None
 
 
@@ -224,7 +225,10 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
     }
     status = status_map[st]
     if add_log:
-        logger.info('f%s: %s' % (workflow_run_id, status))
+        logger.info(
+            'f%s # %s %s' %
+            (workflow_run_id, status, flow_title(workflow_run_id))
+        )
     if status == 'RUNNING':
         info = fl.get_workflow_run_info(workflow_run_id)
         children = list(info.childrenRunIDs)
@@ -246,32 +250,54 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
                                 '%s%s %s' %
                                 (indent, ' ' * len(beg), child_progress)
                             )
+                        # check grandchildren
+                        grandchildren = list(
+                            fl.get_workflow_run_info(child).childrenRunIDs
+                        )
+                        for gc in grandchildren:
+                            gc_name = flow_name(gc)
+                            gc_st = fl.get_workflow_run_status(gc)
+                            gc_tt = flow_title(gc)
+                            if ('run_dist_job' in gc_name and
+                                    'Distributed Trainer' in gc_tt):
+                                beg = ('-> f%s:' % gc)
+                                logger.info(
+                                    '%s%s %s (%s)' %
+                                    (indent, beg, status_map[gc_st], gc_name)
+                                )
+                                gc_progress = flow_training_progress(gc)
+                                if gc_progress is not None:
+                                    logger.info(
+                                        '%s%s %s' %
+                                        (indent, ' ' * len(beg), gc_progress)
+                                    )
     return status
 
 
-def flow_summary(workflow_run_id):
+def flow_summary(workflow_run_id, add_log=True):
     """show flow summary: workflow_run_id, name, owner, status, and title"""
     name = flow_name(workflow_run_id)
     title = flow_title(workflow_run_id)
     owner = flow_info(workflow_run_id).owner
     status = flow_status(workflow_run_id, add_log=False)
-    lines = []
-    ln = '[%s]: %s (%s), %s' % (workflow_run_id, name, owner, status)
-    lines.append(ln)
-    logger.info(ln)
-    ln = '    %s' % title
-    lines.append(ln)
-    logger.info(ln)
+    lines = [
+        '[%s]: %s (%s), %s' % (workflow_run_id, name, owner, status),
+        '    %s' % title
+    ]
+    if add_log:
+        for ln in lines:
+            logger.info(ln)
     return '\n'.join(lines)
 
 
-def flow_short_summary(workflow_run_id):
+def flow_short_summary(workflow_run_id, add_log=True):
     """easy to crop out the flow ids and return status"""
     title = flow_title(workflow_run_id)
     owner = flow_info(workflow_run_id).owner
     status = flow_status(workflow_run_id, add_log=False)
     ln = '%s, # %-12s "%s", %s' % (workflow_run_id, owner, title, status)
-    logger.info(ln)
+    if add_log:
+        logger.info(ln)
     return ln
 
 
@@ -283,8 +309,8 @@ def flow_check_runs(*workflow_run_ids):
     finished_runs = OrderedDict()
     lns = []
     for i in workflow_run_ids:
-        lns += [flow_short_summary(i)]
-        st = flow_status(i, add_log=False)
+        lns += [flow_short_summary(i, add_log=False)]
+        st = flow_status(i, add_log=True, inspect_children=True)
         if st != 'RUNNING':
             finished_runs[i] = st
     print('\n'.join(lns))
@@ -352,40 +378,42 @@ def flow_metrics(workflow_run_id_or_result):
         result = workflow_run_id_or_result
         try:
             flow_id = int(result['model_id'].split('_')[0])
-        except:
+        except Exception:
             flow_id = -1
     metrics = OrderedDict()
     metrics['flow_id'] = flow_id
     try:
         train_ne = result['training_metrics']['model']['numeric']['ne']
-    except:
+    except Exception:
         train_ne = None
     metrics['train_ne'] = train_ne
     try:
-        train_cali = result['training_metrics']['model']['numeric'
-                                                        ]['calibration']
-    except:
+        train_cali = (
+            result['training_metrics']['model']['numeric']['calibration']
+        )
+    except Exception:
         train_cali = None
     metrics['train_cali'] = train_cali
     try:
-        train_qps = result['training_metrics']['qps_metric']['numeric'
-                                                            ]['lifetime_qps']
-    except:
+        train_qps = (
+            result['training_metrics']['qps_metric']['numeric']['lifetime_qps']
+        )
+    except Exception:
         train_qps = None
     metrics['train_qps'] = train_qps
     try:
         eval_ne = result['eval_metrics']['model']['numeric']['ne']
-    except:
+    except Exception:
         eval_ne = None
     metrics['eval_ne'] = eval_ne
     try:
         eval_cali = result['eval_metrics']['model']['numeric']['calibration']
-    except:
+    except Exception:
         eval_cali = None
     metrics['eval_cali'] = eval_cali
     try:
         eval_auc = result['eval_metrics']['AUC']['numeric']['auc']
-    except:
+    except Exception:
         eval_auc = None
     metrics['eval_auc'] = eval_auc
     return metrics
@@ -405,7 +433,7 @@ def flow_report(
         c for c in column_names if any(m[c] is not None for m in metrics_list)
     ]
     column_widths = {
-        c: max([len(str(m[c])) for m in metrics_list])
+        c: max(len(str(m[c])) for m in metrics_list)
         for c in filtered_column_names
     }
 
@@ -418,7 +446,7 @@ def flow_report(
         else:
             try:
                 return '{:+.6}%'.format((m[c] - bm[c]) / bm[c] * 100.)
-            except:
+            except Exception:
                 return '-'
 
     ln = separator.join([str_fmt(c, c) for c in filtered_column_names])
