@@ -186,7 +186,8 @@ def flow_title(workflow_run_id):
     subscriber_ids"""
     fl = FlowSession()
     title = fl.get_workflow_run_metadata(workflow_run_id).name
-    return title
+    # could be None if canary
+    return str(title)
 
 
 def flow_set_title(workflow_run_id, title):
