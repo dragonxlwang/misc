@@ -22,6 +22,7 @@ import fblearner.flow.projects.dper.flow_types as T
 # add this to enable get default input
 import fblearner.flow.facebook.plugins.all_plugins  # noqa
 from caffe2.python.fb.dper.layer_models.model_definition import ttypes
+from caffe2.python.fb.dper.layer_models.utils import vis_utils
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
 
@@ -499,7 +500,11 @@ def flow_report(
 
 
 def flow_compare(
-    workflow_run_ids, separator=' ', summary_style='short', show_title=True
+    workflow_run_ids,
+    separator=' ',
+    summary_style='short',
+    show_title=True,
+    everpaste_title=None,
 ):
     """compare multiple flow runs: 1) print summary; 2) report metrics"""
     summary = '\n'.join(
@@ -511,7 +516,12 @@ def flow_compare(
         ]
     )
     report = flow_report(workflow_run_ids, separator, True, show_title=True)
-    print('\n'.join([summary, report]))
+    content = '\n'.join([summary, report])
+    print(content)
+    if everpaste_title is not None:
+        content = ('%s\n\n\n' % str(everpaste_title)) + content
+        url = vis_utils.get_everpaste_url(str(content))
+        logger.info('Flow compare \"%s\" url: %s' % (str(everpaste_title), url))
 
 
 def fbl_compare_link(*workflow_run_ids):
