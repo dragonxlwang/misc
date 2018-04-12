@@ -102,6 +102,7 @@ def flow_run(
     entitlement='ads_ftw',
     package='aml.dper2:73',
     workflow='dper.workflows.ads.train_eval_workflow',
+    model_type_id=None,
 ):
     """schedule a flow run, and return the WorkflowRun instance"""
     fl = FlowSession()
@@ -112,7 +113,10 @@ def flow_run(
         entitlement=entitlement,
         package_version=package,
         metadata=WorkflowRunMetadataMutation(
-            name=title, notes='', add_tags=[APOLLO_XIII_TAG_ID]
+            name=title,
+            notes='',
+            add_tags=[APOLLO_XIII_TAG_ID],
+            model_type_id=model_type_id,
         ),
     )
     logger.info(
@@ -190,7 +194,26 @@ def flow_title(workflow_run_id):
     return str(title)
 
 
+def flow_metadata(workflow_run_id):
+    """return flow metadata (name, notes, tags, model type id)"""
+    fl = FlowSession()
+    metadata = fl.get_workflow_run_metadata(workflow_run_id)
+    return metadata
+
+
+def flow_model_type_id(workflow_run_id):
+    """return flow model type id in metadata"""
+    return flow_metadata(workflow_run_id).model_type_id
+
+
+def flow_set_model_type_id(workflow_run_id, model_type_id):
+    """set flow model type id"""
+    fl = FlowSession()
+    fl.set_model_type_id(workflow_run_id, model_type_id)
+
+
 def flow_set_title(workflow_run_id, title):
+    """set flow title"""
     fl = FlowSession()
     fl.set_name(workflow_run_id, title)
 
@@ -335,7 +358,8 @@ def flow_clone(
         owner=owner or 'xlwang',
         entitlement=entitlement or 'ads_ftw',
         package=package or flow_package(workflow_run_id),
-        workflow=flow_name(workflow_run_id)
+        workflow=flow_name(workflow_run_id),
+        model_type_id=flow_model_type_id(workflow_run_id),
     )
 
     return run
