@@ -511,7 +511,7 @@ def flow_compare(
         ]
     )
     report = flow_report(workflow_run_ids, separator, True, show_title=True)
-    return '\n'.join([summary, report])
+    print('\n'.join([summary, report]))
 
 
 def fbl_compare_link(*workflow_run_ids):
