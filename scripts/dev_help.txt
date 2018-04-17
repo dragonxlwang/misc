@@ -7,5 +7,8 @@ Solution:
 
 Chrome has problem opening the ipython:
 =======================================
+I get an SSL certificate error ("Your connection is not private") when
+connecting to my sandbox: ERR_CERT_COMMON_NAME_INVALID
+
 Solution:
   ipython_setup
