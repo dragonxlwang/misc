@@ -960,6 +960,10 @@ ctrl-d:backward-delete-char,ctrl-f:page-down,ctrl-b:page-up,ctrl-s:toggle \
 --color fg:252,bg:233,hl:81,fg+:252,bg+:235,hl+:118 \
 --color info:144,prompt:161,spinner:135,pointer:196,marker:208"
 export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null \
+|| cat {} || tree -C {}) 2> /dev/null | head -200'"
+# export FZF_CTRL_R_OPTS="--preview 'echo {}' \
+  # --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 function vfzf { vim $(fzf); }
 function ffzf {
   IFS=$'\n' out=($(eval "$1" | \
