@@ -30,6 +30,7 @@ from pprint import pprint, pformat
 from copy import deepcopy
 from collections import OrderedDict
 
+import subprocess
 import logging
 import json
 import numpy
@@ -336,10 +337,25 @@ def flow_check_runs(*workflow_run_ids):
     for i in workflow_run_ids:
         lns += [flow_short_summary(i, add_log=False)]
         st = flow_status(i, add_log=True, inspect_children=True)
-        if st != 'RUNNING':
+        if st not in ['RUNNING', 'SCHEDULED']:
             finished_runs[i] = st
     print('\n'.join(lns))
     return finished_runs
+
+
+def flow_pkg_extend(workflow_run_id):
+    logger.info(
+        'extend expiration of package %s (flow %s)' %
+        (flow_package(workflow_run_id), workflow_run_id)
+    )
+    logger.info(
+        subprocess.check_output(
+            [
+                'fbpkg', 'expire', '--extend-only',
+                flow_package(workflow_run_id), '28d'
+            ]
+        )
+    )
 
 
 def flow_clone(
