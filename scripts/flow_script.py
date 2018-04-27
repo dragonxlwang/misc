@@ -23,6 +23,8 @@ import fblearner.flow.projects.dper.flow_types as T
 import fblearner.flow.facebook.plugins.all_plugins  # noqa
 from caffe2.python.fb.dper.layer_models.model_definition import ttypes
 from caffe2.python.fb.dper.layer_models.utils import vis_utils
+from libfb.py.decorators import retryable
+from libfb.py import fburl
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
 
@@ -94,7 +96,14 @@ def ft_to_dict(obj):
     return encode_flow_type(None, obj)
 
 
+@retryable(num_tries=3, sleep_time=1)
+def get_fburl(raw_url):
+    return fburl.get_fburl(raw_url)
+
+
 APOLLO_XIII_TAG_ID = 325182364673414
+
+# --------------------------------- Flow Lib ---------------------------------
 
 
 def flow_run(
@@ -220,6 +229,7 @@ def flow_set_title(workflow_run_id, title):
     fl.set_name(workflow_run_id, title)
 
 
+@retryable(num_tries=3, sleep_time=1)
 def flow_training_progress(workflow_run_id):
     """if a flow is a training workflow such as _train_workflow_impl, and is
     still running in progress, it returns ne, cali, and example num as a string
@@ -521,8 +531,13 @@ def flow_compare(
     summary_style='short',
     show_title=True,
     everpaste_title=None,
+    shorten_to_fburl=True,
 ):
     """compare multiple flow runs: 1) print summary; 2) report metrics"""
+    workflow_run_ids = [i for i in workflow_run_ids]
+    if len(workflow_run_ids) == 0:
+        logger.info('nothing to compare -- exit')
+        return
     summary = '\n'.join(
         [
             (
@@ -537,7 +552,11 @@ def flow_compare(
     if everpaste_title is not None:
         content = ('%s\n\n\n' % str(everpaste_title)) + content
         url = vis_utils.get_everpaste_url(str(content))
-        logger.info('Flow compare \"%s\" url: %s' % (str(everpaste_title), url))
+        if shorten_to_fburl:
+            url = get_fburl(url)
+        logger.info(
+            'Flow compare \"%s\", url: %s' % (str(everpaste_title), url)
+        )
 
 
 def fbl_compare_link(*workflow_run_ids):
