@@ -353,6 +353,7 @@ def flow_check_runs(*workflow_run_ids):
     return finished_runs
 
 
+@retryable(num_tries=3, sleep_time=1)
 def flow_pkg_extend(workflow_run_id):
     logger.info(
         'extend expiration of package %s (flow %s)' %

@@ -291,6 +291,7 @@ alias -g PF="| fpp"
 alias -g PLL="2>&1 | less"
 alias -g PCC="2>&1 | cat -A"
 alias -g PPP="2>&1| pygmentize"
+alias -g PPL="| pygmentize -O full,style=monokai -l ocaml | less -R +G"
 # redirection
 alias -g RNE="2> /dev/null"
 alias -g RALL="2>&1"
@@ -722,7 +723,8 @@ function yapf {
   $(whence -p yapf) \
     --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $@
 }
-alias killall="killall -u $USER"
+# alias killall="killall -u $USER"
+alias killall="loginctl terminate-user $USER"
 alias ka="\killall -u $USER" #  disables the alias in interactive shell
 alias upld="${HOME}/misc/scripts/sync.sh"
 
@@ -872,6 +874,7 @@ alias hhl='hg pull'
 alias hhp='arc diff'
 alias hhpur='hg pull && hg rebase -d master'
 alias hrb='hg rebase'
+alias hrf='hhl && arc cleanup-features && hum && hs'
 alias hrv='hg revert'
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias flow_help="cat ~/misc/scripts/flow_help.txt"
@@ -883,6 +886,23 @@ alias fbc='cd ~/fbcode'
 alias fbc1='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
+function fbtmux {
+  fbc2
+  tmux new-window -t 2 -c $(readlink -f ~/fbcode)
+  tmux new-window -t 3 -c $(readlink -f ~/fbcode)
+  tmux new-window -t 4 -c $(readlink -f ~/fbcode3)
+  tmux setw -t 1 allow-rename off
+  tmux rename-window -t 1 "ipy"
+  tmux setw -t 2 allow-rename off
+  tmux rename-window -t 2 "fbc"
+  tmux setw -t 3 allow-rename off
+  tmux rename-window -t 3 "run"
+  tmux setw -t 4 allow-rename off
+  tmux rename-window -t 4 "fbc3"
+  tmux send-keys -t 1.1 "tmux split-window -t 1.1" C-m
+  tmux send-keys -t 1.1 "tmux send-keys -t 1.2 ifb2pynb_c2 C-m" C-m
+  tmux send-keys -t 1.1 "tmux send-keys -t 1.1 -R; tmux clear-history" C-m
+}
 function run_dper_integration_tests {
   pushd ~/fbcode
   cyanecho """
