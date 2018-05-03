@@ -901,7 +901,9 @@ function fbtmux {
   tmux rename-window -t 4 "fbc3"
   tmux send-keys -t 1.1 "tmux split-window -t 1.1" C-m
   tmux send-keys -t 1.1 "tmux send-keys -t 1.2 ifb2pynb_c2 C-m" C-m
-  tmux send-keys -t 1.1 "tmux send-keys -t 1.1 -R; tmux clear-history" C-m
+  tmux send-keys -t 1.1 \
+    "tmux send-keys -t 1.1 -R; tmux clear-history -t 1.1" C-m
+  tmux send-keys -t 1.1 "happy_coding" C-m
 }
 function run_dper_integration_tests {
   pushd ~/fbcode
@@ -920,6 +922,12 @@ function run_dper_integration_tests {
     --owner fblearner_realtime \
     --project-name aml.dper2 $@
   popd
+}
+function happy_coding {
+  local happy=$(cat ~/misc/scripts/happy_coding.txt | head -n 9)
+  local coding=$(cat ~/misc/scripts/happy_coding.txt | tail -n 10)
+  cyanecho $happy
+  yellowecho $coding
 }
 function buck_gen_cc {
   buck build --show-output $1\#compilation-database
