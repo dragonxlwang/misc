@@ -64,7 +64,7 @@ env -i PATH=/bin:/usr/bin:/usr/local/bin \
   -DEXTERNAL_LIBCLANG_PATH="$DEST_ROOT"/libclang.so \
   . $DEST_ROOT/cpp
 
-cmake -G Ninja
+# cmake -G Ninja
 env -i PATH=/bin:/usr/bin:/usr/local/bin \
   cmake --build . --target ycm_core --config Release -- -j55
 

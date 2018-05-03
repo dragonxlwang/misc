@@ -20,7 +20,7 @@ sudo yum install -y ruby ruby-devel lua lua-devel luajit \
     perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
     perl-ExtUtils-Embed
 cd ~
-ver=8.0.1098
+ver=8.0.1780
 curl -OL https://github.com/vim/vim/archive/v$ver.tar.gz
 tar -zxvf v$ver.tar.gz
 cd ~/vim-$ver
