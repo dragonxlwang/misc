@@ -294,8 +294,10 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
                             gc_name = flow_name(gc)
                             gc_st = fl.get_workflow_run_status(gc)
                             gc_tt = flow_title(gc)
-                            if ('run_dist_job' in gc_name and
-                                    'Distributed Trainer' in gc_tt):
+                            if (
+                                'run_dist_job' in gc_name and
+                                'Distributed Trainer' in gc_tt
+                            ):
                                 beg = ('-> f%s:' % gc)
                                 logger.info(
                                     '%s%s %s (%s)' %
@@ -378,7 +380,8 @@ def flow_clone(
 ):
     """clone a flow"""
     default_title = ', '.join(
-        [flow_title(workflow_run_id), 'clf%s' % str(workflow_run_id)]
+        [flow_title(workflow_run_id),
+         'clf%s' % str(workflow_run_id)]
     )
     run = flow_run(
         args=flow_input_args(workflow_run_id),
