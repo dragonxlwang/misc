@@ -32,6 +32,7 @@ from pprint import pprint, pformat
 from copy import deepcopy
 from collections import OrderedDict
 
+import os
 import subprocess
 import logging
 import json
@@ -357,6 +358,9 @@ def flow_check_runs(*workflow_run_ids):
 
 @retryable(num_tries=3, sleep_time=1)
 def flow_pkg_extend(workflow_run_id):
+    # reset env
+    my_env = os.environ.copy()
+    my_env.pop('LD_LIBRARY_PATH')
     logger.info(
         'extend expiration of package %s (flow %s)' %
         (flow_package(workflow_run_id), workflow_run_id)
@@ -366,7 +370,8 @@ def flow_pkg_extend(workflow_run_id):
             [
                 'fbpkg', 'expire', '--extend-only',
                 flow_package(workflow_run_id), '28d'
-            ]
+            ],
+            env=my_env
         )
     )
 
