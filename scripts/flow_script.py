@@ -527,6 +527,12 @@ def flow_metrics(workflow_run_id_or_result):
         train_qps = None
     metrics['train_qps'] = train_qps
     try:
+        train_num = (result['training_metrics']['qps_metric']
+                     ['numeric']['lifetime_examples'])
+    except Exception:
+        train_ne = None
+    metrics['train_num'] = train_num
+    try:
         eval_ne = result['eval_metrics']['model']['numeric']['ne']
     except Exception:
         eval_ne = None
