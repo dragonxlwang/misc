@@ -527,8 +527,10 @@ def flow_metrics(workflow_run_id_or_result):
         train_qps = None
     metrics['train_qps'] = train_qps
     try:
-        train_num = (result['training_metrics']['qps_metric']
-                     ['numeric']['lifetime_examples'])
+        train_num = (
+            result['training_metrics']['qps_metric']['numeric']
+            ['lifetime_examples']
+        )
     except Exception:
         train_ne = None
     metrics['train_num'] = train_num
@@ -611,6 +613,7 @@ def flow_compare(
     show_title=True,
     everpaste_title=None,
     shorten_to_fburl=True,
+    log_summary=False,
 ):
     """compare multiple flow runs: 1) print summary; 2) report metrics"""
     workflow_run_ids = [i for i in workflow_run_ids]
@@ -620,8 +623,9 @@ def flow_compare(
     summary = '\n'.join(
         [
             (
-                flow_short_summary(i)
-                if summary_style == 'short' else flow_summary(i)
+                flow_short_summary(i, add_log=log_summary)
+                if summary_style == 'short' else
+                flow_summary(i, add_log=log_summary)
             ) for i in workflow_run_ids
         ]
     )
@@ -689,7 +693,11 @@ def hive_dataset(path, backshift=0, days=1):
         meta = metastore(namespace=namespace)
         bad_ds = get_blacklisted_dates(path)
         all_ds = meta.get_partition_dates(table, ps=ps)
-        return [ds for ds in all_ds if ds not in bad_ds]
+        dss = []
+        for ds in all_ds:
+            if ds not in dss and ds not in bad_ds:
+                dss.append(ds)
+        return dss
 
     ds = get_valid_dates(path)[::-1]
     return [
