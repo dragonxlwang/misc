@@ -887,6 +887,7 @@ alias fbc='cd ~/fbcode'
 alias fbc1='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
+alias cf='cd ~/configerator'
 function fbtmux {
   fbc2
   tmux new-window -t 2 -c $(readlink -f ~/fbcode)

@@ -3,10 +3,14 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from caffe2.python.fb.dper.layer_models.model_definition import ttypes
+from caffe2.python.fb.dper.layer_models.utils import vis_utils
 from fblearner.flow.core.attrdict import from_dict
 from fblearner.flow.core.types_lib.type import encode as encode_flow_type
 from fblearner.flow.core.types_lib.gettype import gettype
 from fblearner.flow.external_api import FlowSession, WorkflowRun
+from fblearner.flow.ml.runners.chronosscheduler import get_workflow_run_status
+from fblearner.flow.plugin_definitions.driver import Drivers
 from fblearner.flow.util.runner_utilities import load_config
 from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
 from fblearner.flow.storage.models import (
@@ -18,11 +22,14 @@ from fblearner.flow.storage.models import (
     WorkflowRegistration,
     Workflow,
 )
+from fblearner.flow.service.flow_client import get_flow_indexing_client
+from metastore import metastore
+
 import fblearner.flow.projects.dper.flow_types as T
 # add this to enable get default input
 import fblearner.flow.facebook.plugins.all_plugins  # noqa
-from caffe2.python.fb.dper.layer_models.model_definition import ttypes
-from caffe2.python.fb.dper.layer_models.utils import vis_utils
+import datetime
+
 from libfb.py.decorators import retryable
 from libfb.py import fburl
 from thrift.protocol import TSimpleJSONProtocol
@@ -31,7 +38,6 @@ from thrift.transport.TTransport import TMemoryBuffer
 from pprint import pprint, pformat
 from copy import deepcopy
 from collections import OrderedDict
-
 import os
 import subprocess
 import logging
@@ -100,6 +106,10 @@ def ft_to_dict(obj):
 @retryable(num_tries=3, sleep_time=1)
 def get_fburl(raw_url):
     return fburl.get_fburl(raw_url)
+
+
+def timedelta_rep(td):
+    return str(td).replace(' day, ', ':').replace(' days, ', ':')
 
 
 APOLLO_XIII_TAG_ID = 325182364673414
@@ -263,8 +273,10 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
     status = status_map[st]
     if add_log:
         logger.info(
-            'f%s # %s %s' %
-            (workflow_run_id, status, flow_title(workflow_run_id))
+            'f%s # %s %s, %s' % (
+                workflow_run_id, status, flow_title(workflow_run_id),
+                flow_elapsed_time_str(workflow_run_id)
+            )
         )
     if status == 'RUNNING':
         info = fl.get_workflow_run_info(workflow_run_id)
@@ -277,8 +289,10 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
                     indent = '    |'
                     beg = ('-> f%s:' % child)
                     logger.info(
-                        '%s%s %s (%s)' %
-                        (indent, beg, status_map[child_st], child_name)
+                        '%s%s %s (%s), %s' % (
+                            indent, beg, status_map[child_st], child_name,
+                            flow_elapsed_time_str(child)
+                        )
                     )
                     if ('train_workflow' in child_name):
                         child_progress = flow_training_progress(child)
@@ -301,8 +315,10 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
                             ):
                                 beg = ('-> f%s:' % gc)
                                 logger.info(
-                                    '%s%s %s (%s)' %
-                                    (indent, beg, status_map[gc_st], gc_name)
+                                    '%s%s %s (%s), %s' % (
+                                        indent, beg, status_map[gc_st], gc_name,
+                                        flow_elapsed_time_str(gc)
+                                    )
                                 )
                                 gc_progress = flow_training_progress(gc)
                                 if gc_progress is not None:
@@ -313,14 +329,59 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
     return status
 
 
+def flow_detailed_status(workflow_run_id):
+    """show flow detailed status:
+    workflow_run_id, status, run_ts, scheduler_type, job_instance_id"""
+    initialize_session(load_config())
+    ret = Drivers.get(Drivers.GET_WORKFLOW_DETAILED_STATUS)([workflow_run_id])
+    detailed_st = ret[workflow_run_id]
+    return detailed_st
+
+
+def flow_start_time(workflow_run_id):
+    """return flow start time or None"""
+    try:
+        return datetime.datetime.fromtimestamp(
+            flow_detailed_status(workflow_run_id).run_ts
+        )
+    except Exception:
+        return None
+
+
+def flow_end_time(workflow_run_id):
+    """return flow end time or None"""
+    try:
+        return datetime.datetime.fromtimestamp(
+            flow_detailed_status(workflow_run_id).end_time
+        )
+    except Exception:
+        return None
+
+
+def flow_elapsed_time(workflow_run_id):
+    """time elapsed from the time of flow creation"""
+    return (
+        (
+            flow_end_time(workflow_run_id) or
+            datetime.datetime.now().replace(microsecond=0)
+        ) - flow_start_time(workflow_run_id)
+    )
+
+
+def flow_elapsed_time_str(workflow_run_id):
+    """time duration as a string"""
+    return timedelta_rep(flow_elapsed_time(workflow_run_id))
+
+
 def flow_summary(workflow_run_id, add_log=True):
     """show flow summary: workflow_run_id, name, owner, status, and title"""
     name = flow_name(workflow_run_id)
     title = flow_title(workflow_run_id)
     owner = flow_info(workflow_run_id).owner
     status = flow_status(workflow_run_id, add_log=False)
+    time = flow_elapsed_time_str(workflow_run_id)
     lines = [
-        '[%s]: %s (%s), %s' % (workflow_run_id, name, owner, status),
+        '[%s]: %s (%s), %s, %s' % (workflow_run_id, name, owner, status, time),
         '    %s' % title
     ]
     if add_log:
@@ -334,7 +395,10 @@ def flow_short_summary(workflow_run_id, add_log=True):
     title = flow_title(workflow_run_id)
     owner = flow_info(workflow_run_id).owner
     status = flow_status(workflow_run_id, add_log=False)
-    ln = '%s, # %-12s "%s", %s' % (workflow_run_id, owner, title, status)
+    time = flow_elapsed_time_str(workflow_run_id)
+    ln = '%s, # %-12s "%s", %s, %s' % (
+        workflow_run_id, owner, title, status, time
+    )
     if add_log:
         logger.info(ln)
     return ln
@@ -579,6 +643,53 @@ def fbl_compare_link(*workflow_run_ids):
         parts.append('all_runs[%s]=%s' % (i, fid))
     link = beg + '&'.join(parts)
     print(link)
+
+
+# --------------------------------- Experiments -------------------------------
+def hive_dataset(path, backshift=0, days=1):
+    def get_blacklisted_dates(path):
+        client = get_flow_indexing_client()
+        namespace, table, partition = parse_hive_path(path)
+        blackout = client.getBlackoutPartitions(
+            namespace, table
+        ).partition_specs
+
+        def match(x):
+            for k, v in x.items():
+                if k != 'ds' and v != partition.get(k, None):
+                    return False
+            return True
+
+        blackout = [b.get('ds', None) for b in blackout if match(b)]
+        return blackout
+
+    def parse_hive_path(path):
+        namespace, table, partition = path[7:].split(
+            '/', 2
+        )  # len("hive://") == 7
+        partition = OrderedDict(
+            [part.split('=') for part in partition.split('/')]
+        )
+        return namespace, table, partition
+
+    def get_valid_dates(path):
+        namespace, table, partition = parse_hive_path(path)
+        ps = '/'.join(
+            [
+                k + '=' + v
+                for k, v in partition.items() if k != 'ds' and v != '*'
+            ]
+        )
+        meta = metastore(namespace=namespace)
+        bad_ds = get_blacklisted_dates(path)
+        all_ds = meta.get_partition_dates(table, ps=ps)
+        return [ds for ds in all_ds if ds not in bad_ds]
+
+    ds = get_valid_dates(path)[::-1]
+    return [
+        path.replace('ds=*', 'ds={}'.format(ds[i]))
+        for i in range(backshift, days)
+    ][::-1]
 
 
 logger.info('')
