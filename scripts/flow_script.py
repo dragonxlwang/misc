@@ -28,7 +28,6 @@ from metastore import metastore
 import fblearner.flow.projects.dper.flow_types as T
 # add this to enable get default input
 import fblearner.flow.facebook.plugins.all_plugins  # noqa
-import datetime
 
 from libfb.py.decorators import retryable
 from libfb.py import fburl
@@ -45,6 +44,7 @@ import json
 import numpy
 import uuid
 import shutil
+import datetime
 
 # --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
@@ -116,6 +116,9 @@ def timedelta_rep(td):
 
 def datetime_now():
     return str(datetime.datetime.now().replace(microsecond=0)).replace(' ', '-')
+
+
+today = datetime.date.today
 
 
 def file_st_time(f, mode):
@@ -451,13 +454,10 @@ def flow_check_runs(*workflow_run_ids):
     and return a list of finished (not running) flows
     """
     finished_runs = OrderedDict()
-    lns = []
     for i in workflow_run_ids:
-        lns += [flow_short_summary(i, add_log=False)]
         st = flow_status(i, add_log=True, inspect_children=True)
         if st not in ['RUNNING', 'SCHEDULED']:
             finished_runs[i] = st
-    print('\n'.join(lns))
     return finished_runs
 
 
@@ -914,6 +914,10 @@ def ads_train_eval_arg_update(
         if eval_cap:
             args['eval_reader_options']['max_examples'] = eval_cap
     return args
+
+
+def rep_func(func, rep, *args, **kwargs):
+    return [func(*args, **kwargs) for _ in range(rep)]
 
 
 logger.info('')
