@@ -43,6 +43,8 @@ import subprocess
 import logging
 import json
 import numpy
+import uuid
+import shutil
 
 # --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
@@ -112,6 +114,44 @@ def timedelta_rep(td):
     return str(td).replace(' day, ', ':').replace(' days, ', ':')
 
 
+def datetime_now():
+    return str(datetime.datetime.now().replace(microsecond=0)).replace(' ', '-')
+
+
+def file_st_time(f, mode):
+    try:
+        st = os.stat(f)
+        return getattr(st, 'st_%stime' % mode, -1)
+    except Exception:
+        return -1
+
+
+def file_delete(f):
+    try:
+        shutil.rmtree(f)
+        logger.info('delete directory: %s' % f)
+    except Exception:
+        os.remove(f)
+        logger.info('delete file: %s' % f)
+
+
+def file_life_days(f):
+    st_time = max(file_st_time(f, 'c'), file_st_time(f, 'm'))
+    td = datetime.datetime.now() - datetime.datetime.fromtimestamp(st_time)
+    one_day = datetime.timedelta(days=1)
+    return td.total_seconds() / one_day.total_seconds()
+
+
+def dir_purge(dir, max_file_num=100, min_retention_days=30):
+    days = {}
+    for f in os.listdir(dir):
+        fp = os.path.join(dir, f)
+        days[fp] = file_life_days(fp)
+    for i, f in enumerate(sorted(days, key=lambda k: days[k])):
+        if i >= max_file_num and days[f] > min_retention_days:
+            file_delete(f)
+
+
 APOLLO_XIII_TAG_ID = 325182364673414
 
 # --------------------------------- Flow Lib ---------------------------------
@@ -172,6 +212,7 @@ def flow_input_args(workflow_run_id, print_return=False):
     input_args = fl.get_workflow_run_inputs_summary(
         workflow_run_id=workflow_run_id
     )
+    input_args = deepcopy(input_args)
     if print_return:
         pprint(input_args)
     return input_args
@@ -494,7 +535,7 @@ def flow_default_input_args(
         return json.loads(registration.default_inputs)
 
 
-def flow_metrics(workflow_run_id_or_result):
+def flow_metrics(workflow_run_id_or_result, with_ext=True):
     """return a dict of train/eval metrics"""
     if isinstance(workflow_run_id_or_result, int):
         flow_id = workflow_run_id_or_result
@@ -505,117 +546,147 @@ def flow_metrics(workflow_run_id_or_result):
             flow_id = int(result['model_id'].split('_')[0])
         except Exception:
             flow_id = -1
+
+    def quote(s):
+        return '"' + s + '"'
+
     metrics = OrderedDict()
+    ext_metrics = OrderedDict()
     metrics['flow_id'] = flow_id
-    try:
-        train_ne = result['training_metrics']['model']['numeric']['ne']
-    except Exception:
-        train_ne = None
-    metrics['train_ne'] = train_ne
-    try:
-        train_cali = (
-            result['training_metrics']['model']['numeric']['calibration']
-        )
-    except Exception:
-        train_cali = None
-    metrics['train_cali'] = train_cali
-    try:
-        train_qps = (
-            result['training_metrics']['qps_metric']['numeric']['lifetime_qps']
-        )
-    except Exception:
-        train_qps = None
-    metrics['train_qps'] = train_qps
-    try:
-        train_num = (
-            result['training_metrics']['qps_metric']['numeric']
-            ['lifetime_examples']
-        )
-    except Exception:
-        train_ne = None
-    metrics['train_num'] = train_num
-    try:
-        eval_ne = result['eval_metrics']['model']['numeric']['ne']
-    except Exception:
-        eval_ne = None
-    metrics['eval_ne'] = eval_ne
-    try:
-        eval_cali = result['eval_metrics']['model']['numeric']['calibration']
-    except Exception:
-        eval_cali = None
-    metrics['eval_cali'] = eval_cali
-    try:
-        eval_auc = result['eval_metrics']['AUC']['numeric']['auc']
-    except Exception:
-        eval_auc = None
-    metrics['eval_auc'] = eval_auc
-    return metrics
+    metrics['flow_name'] = '"%s"' % flow_title(flow_id)
+
+    def get_metric(*keys):
+        try:
+            r = result
+            for k in keys:
+                r = r[k]
+            return r
+        except Exception:
+            return None
+
+    def add_ranking(mode):
+        try:
+            d = result[mode + '_metrics']['ranking']['numeric']
+            for k in sorted(d):
+                v = d[k]
+                if k != 'num_add_times':
+                    ext_metrics[mode + '_' + k] = v
+        except Exception:
+            return
+
+    metrics['train_ne'] = get_metric(
+        'training_metrics', 'model', 'numeric', 'ne'
+    )
+    metrics['train_cali'] = get_metric(
+        'training_metrics', 'model', 'numeric', 'calibration'
+    )
+    metrics['train_qps'] = get_metric(
+        'training_metrics', 'qps_metric', 'numeric', 'lifetime_qps'
+    )
+    metrics['train_num'] = get_metric(
+        'training_metrics', 'qps_metric', 'numeric', 'lifetime_examples'
+    )
+    metrics['eval_ne'] = get_metric('eval_metrics', 'model', 'numeric', 'ne')
+    metrics['eval_cali'] = get_metric(
+        'eval_metrics', 'model', 'numeric', 'calibration'
+    )
+    metrics['eval_auc'] = get_metric('eval_metrics', 'AUC', 'numeric', 'auc')
+
+    if with_ext:
+        add_ranking('training')
+        add_ranking('eval')
+    return (metrics, ext_metrics if with_ext else metrics)
 
 
 def flow_report(
-    workflow_run_ids, separator=' ', first_as_baseline=False, show_title=True
+    workflow_run_ids,
+    first_as_baseline=False,
+    add_log=False,
 ):
     """given multiple flow ids/results, generate a report of their metrices"""
-    lines = []
     if not isinstance(workflow_run_ids, list):
         workflow_run_ids = [workflow_run_ids]
-    metrics_list = [flow_metrics(x) for x in workflow_run_ids]
-    assert len(metrics_list) > 0
-    column_names = metrics_list[0].keys()
-    filtered_column_names = [
-        c for c in column_names if any(m[c] is not None for m in metrics_list)
-    ]
-    column_widths = {
-        c: max(len(str(m[c])) for m in metrics_list)
-        for c in filtered_column_names
-    }
+    metrics_list = [flow_metrics(x, True) for x in workflow_run_ids]
 
-    def str_fmt(c, v):
-        return ('{' + ':^' + str(column_widths[c]) + '}').format(v)
+    def metrics_to_text(metrics_list, separator=' ', with_format=True):
+        lines = []
+        assert len(metrics_list) > 0
+        column_names = metrics_list[0].keys()
+        filtered_column_names = [
+            c for c in column_names
+            if any(m[c] is not None for m in metrics_list)
+        ]
+        column_widths = {
+            c: max(len(str(m[c])) for m in metrics_list)
+            for c in filtered_column_names
+        }
 
-    def diff(m, bm, c):
-        if c == 'flow_id':
-            return ''
-        else:
-            try:
-                return '{:+.6}%'.format((m[c] - bm[c]) / bm[c] * 100.)
-            except Exception:
-                return '-'
-
-    ln = separator.join([str_fmt(c, c) for c in filtered_column_names])
-    lines.append(ln)
-    logger.info(ln)
-    lines.append(''.join(len(ln) * ['=']))
-    logger.info(''.join(len(ln) * ['=']))
-    for i, m in enumerate(metrics_list):
-        ln = separator.join(
-            [str_fmt(c, m[c]) for c in filtered_column_names] +
-            ([flow_title(workflow_run_ids[i])] if show_title else [])
-        )
-        lines.append(ln)
-        logger.info(ln)
-        if first_as_baseline:
-            ln = separator.join(
-                [
-                    str_fmt(c, diff(m, metrics_list[0], c))
-                    for c in filtered_column_names
-                ]
+        def str_fmt(c, v):
+            return (
+                ('{' + ':^' + str(column_widths[c]) + '}').format(v)
+                if with_format else str(v)
             )
+
+        def diff(m, bm, c):
+            if c in ['flow_id', 'flow_name']:
+                return ''
+            else:
+                try:
+                    return '{:+.6}%'.format((m[c] - bm[c]) / bm[c] * 100.)
+                except Exception:
+                    return '-'
+
+        def add_line(ln):
             lines.append(ln)
-            logger.info(ln)
-    return '\n'.join(lines)
+            if add_log:
+                logger.info(ln)
+
+        ln = separator.join([str_fmt(c, c) for c in filtered_column_names])
+        add_line(ln)
+        # lines.append(''.join(len(ln) * ['=']))
+        # logger.info(''.join(len(ln) * ['=']))
+        for i, m in enumerate(metrics_list):
+            ln = separator.join(
+                [str_fmt(c, m[c]) for c in filtered_column_names]
+            )
+            add_line(ln)
+            if first_as_baseline:
+                ln = separator.join(
+                    [
+                        str_fmt(c, diff(m, metrics_list[0], c))
+                        for c in filtered_column_names
+                    ]
+                )
+                add_line(ln)
+        return '\n'.join(lines)
+
+    def merge_dict(a, b):
+        c = OrderedDict()
+        for k, v in a.items():
+            c[k] = v
+        for k, v in b.items():
+            if k not in c:
+                c[k] = v
+        return c
+
+    basic_metrics = [x[0] for x in metrics_list]
+    ext_metrics = [x[1] for x in metrics_list]
+    full_metrics = [merge_dict(x[0], x[1]) for x in metrics_list]
+    brief_report = metrics_to_text(basic_metrics)
+    detailed_report = metrics_to_text(full_metrics, ',', False)
+    return brief_report, detailed_report
 
 
 def flow_compare(
     workflow_run_ids,
     separator=' ',
     summary_style='short',
-    show_title=True,
-    everpaste_title=None,
-    shorten_to_fburl=True,
-    log_summary=False,
+    title=None,
+    everpaste_shorten_to_fburl=True,
+    home_shorten_to_fburl=True,
 ):
     """compare multiple flow runs: 1) print summary; 2) report metrics"""
+    compare_start_time = datetime.datetime.now()
     workflow_run_ids = [i for i in workflow_run_ids]
     if len(workflow_run_ids) == 0:
         logger.info('nothing to compare -- exit')
@@ -623,23 +694,44 @@ def flow_compare(
     summary = '\n'.join(
         [
             (
-                flow_short_summary(i, add_log=log_summary)
-                if summary_style == 'short' else
-                flow_summary(i, add_log=log_summary)
+                flow_short_summary(i, add_log=False)
+                if summary_style == 'short' else flow_summary(i, add_log=False)
             ) for i in workflow_run_ids
         ]
     )
-    report = flow_report(workflow_run_ids, separator, True, show_title=True)
-    content = '\n'.join([summary, report])
-    print(content)
-    if everpaste_title is not None:
-        content = ('%s\n\n\n' % str(everpaste_title)) + content
-        url = vis_utils.get_everpaste_url(str(content))
-        if shorten_to_fburl:
-            url = get_fburl(url)
-        logger.info(
-            'Flow compare \"%s\", url: %s' % (str(everpaste_title), url)
+    brief_report, detailed_report = flow_report(
+        workflow_run_ids, first_as_baseline=True, add_log=False
+    )
+    title = str(title) if title else (
+        'FlowCompare:%s' % str(datetime.datetime.now().replace(microsecond=0)
+                              ).replace(' ', '-')
+    )
+    # everpaste
+    everpaste_body = '\n\n\n'.join([summary, brief_report])
+    everpaste_content = '%s\n\n\n%s' % (title, everpaste_body)
+    everpaste_url = vis_utils.get_everpaste_url(str(everpaste_content))
+    if everpaste_shorten_to_fburl:
+        everpaste_url = get_fburl(everpaste_url)
+    # home
+    xls_content = '%s\n\n\n%s' % (title, detailed_report)
+    filename = ('%s_%s.csv' % (title, uuid.uuid4()))
+    dump_dir = '/home/xlwang/public_html/flows/'
+    dir_purge(dump_dir)
+    with open(os.path.join(dump_dir, filename), 'w') as f:
+        f.write(xls_content)
+    home_url = 'https://home.fburl.com/~xlwang/flows/' + filename
+    if home_shorten_to_fburl:
+        home_url = get_fburl(home_url)
+    compare_finish_time = datetime.datetime.now()
+    logger.info('Flow Report \"%s\"' % title)
+    logger.info('     Everpaste url : %s' % everpaste_url)
+    logger.info('     Home url      : %s' % home_url)
+    logger.info(
+        '     Took : %ds' % int(
+            (compare_finish_time - compare_start_time).total_seconds()
         )
+    )
+    return everpaste_url, home_url
 
 
 def fbl_compare_link(*workflow_run_ids):
@@ -704,6 +796,124 @@ def hive_dataset(path, backshift=0, days=1):
         path.replace('ds=*', 'ds={}'.format(ds[i]))
         for i in range(backshift, days)
     ][::-1]
+
+
+def ads_train_eval_arg_update(
+    args_or_workflow_id,
+    use_hive2=True,
+    metrics={'ne', 'auc', 'jsd', 'ranking'},
+    checkpoint=True,
+    dataset=None,
+):
+    args = (
+        flow_input_args(args_or_workflow_id)
+        if type(args_or_workflow_id) == int else args_or_workflow_id
+    )
+    if use_hive2:
+        args['train_reader_options']['reader_type'] = 'hiveio2'
+        args['eval_reader_options']['reader_type'] = 'hiveio2'
+    if metrics:
+        args['metric_options']['metrics'] = []
+        if 'ne' in metrics:
+            args['metric_options']['metrics'].append(
+                {
+                    "binary_ne":
+                        {
+                            "weight_name":
+                                "supervision:weight",
+                            "window_size":
+                                1000000,
+                            "name":
+                                "model",
+                            "learning_curves":
+                                ["ne", "calibration", "window_ne"],
+                            "plot_jsd": ('jsd' in metrics)
+                        }
+                }
+            )
+        if 'auc' in metrics:
+            args['metric_options']['metrics'].append(
+                {
+                    "auc":
+                        {
+                            "weight_name": "supervision:weight",
+                            "name": "AUC",
+                        }
+                }
+            )
+        if 'ranking' in metrics:
+            args['metric_options']['metrics'].append(
+                {
+                    "ranking_metric":
+                        {
+                            "learning_curves":
+                                [
+                                    "PV_window_positive_20000",
+                                    "PV_window_negative_20000",
+                                    "PV_window_positive_40000",
+                                    "PV_window_negative_40000",
+                                    "PV_window_positive_60000",
+                                    "PV_window_negative_60000",
+                                    "PV_window_positive_80000",
+                                    "PV_window_negative_80000",
+                                    "PV_window_positive_100000",
+                                    "PV_window_negative_100000",
+                                    "NDCG_window_positive_20000",
+                                    "NDCG_window_negative_20000",
+                                    "NDCG_window_positive_40000",
+                                    "NDCG_window_negative_40000",
+                                    "NDCG_window_positive_60000",
+                                    "NDCG_window_negative_60000",
+                                    "NDCG_window_positive_80000",
+                                    "NDCG_window_negative_80000",
+                                    "NDCG_window_positive_100000",
+                                    "NDCG_window_negative_100000",
+                                ],
+                            "name":
+                                "ranking",
+                            "weight_name":
+                                "supervision:weight",
+                            "window_size":
+                                120000,
+                            "max_window_k":
+                                100000,
+                            "window_gl":
+                                0.2,
+                            "max_lifetime_k":
+                                0,
+                            "lifetime_gl":
+                                0.2,
+                            "compute_negative":
+                                True,
+                            "predictive_value_at_top_k":
+                                True,
+                            "ndcg_at_k":
+                                True
+                        }
+                }
+            )
+    if checkpoint:
+        args['checkpoint_options'] = {
+            'aggressive_cleanup': True,
+            'checkpoint_every_examples': None,
+            'checkpoint_feature_strategy': u'default',
+            'checkpoint_path': None,
+            'epoch_duration_minutes': None,
+            'resume_from_epoch': None
+        }
+    if dataset:
+        hive_path, train_days, train_cap, eval_days, eval_cap = dataset
+        args['train_reader_options']['dataset'] = hive_dataset(
+            hive_path, backshift=1, days=train_days
+        )
+        args['eval_reader_options']['dataset'] = hive_dataset(
+            hive_path, backshift=0, days=eval_days
+        )
+        if train_cap:
+            args['train_reader_options']['max_examples'] = train_cap
+        if eval_cap:
+            args['eval_reader_options']['max_examples'] = eval_cap
+    return args
 
 
 logger.info('')
