@@ -929,6 +929,7 @@ def chronos_top_user(
     rank_by_count=True,
     add_log=True
 ):
+    """list top users of the host pool"""
     from RockfortExpress import RockfortExpress as rfe
     from RockfortExpress import constants as rfe_const
     from rfe import client as rfe_client
