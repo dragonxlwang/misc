@@ -1009,7 +1009,7 @@ def chronos_top_user(
     top_ranks = range(1, 1 + len(top_users))
     if include_myself:
         for rank, user in enumerate(user_by_count):
-            if 'user' == 'xlwang':
+            if user == 'xlwang':
                 top_users.append('xlwang')
                 top_ranks.append(rank + 1)
                 break
