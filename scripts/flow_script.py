@@ -24,19 +24,16 @@ from fblearner.flow.storage.models import (
 )
 from fblearner.flow.service.flow_client import get_flow_indexing_client
 from metastore import metastore
-
-import fblearner.flow.projects.dper.flow_types as T
-# add this to enable get default input
-import fblearner.flow.facebook.plugins.all_plugins  # noqa
-
 from libfb.py.decorators import retryable
 from libfb.py import fburl
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
 
-from pprint import pprint, pformat
-from copy import deepcopy
-from collections import OrderedDict
+import fblearner.flow.projects.dper.flow_types as T
+# add this to enable get default input
+import fblearner.flow.facebook.plugins.all_plugins  # noqa
+
+import collections
 import os
 import subprocess
 import logging
@@ -45,44 +42,114 @@ import numpy
 import uuid
 import shutil
 import datetime
+import time
+import pprint as py_pprint
+from copy import deepcopy
+from collections import OrderedDict
+from future.utils import viewitems, viewkeys, viewvalues
+from itertools import islice
 
 # --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
 formatter = logging.Formatter('%(levelname)s %(asctime)s : %(message)s')
 
 
-def clean_logging(logger):
+def log_clean(logger):
     handlers = logger.handlers[:]
     for h in handlers:
         h.close()
         logger.removeHandler(h)
 
 
-def add_logging(file_name):
+def log_add_fh(file_name):
     fh = logging.FileHandler(file_name)
     fh.setFormatter(formatter)
     logger.addHandler(fh)
 
 
 def log_blank():
-    logger.info('')
-    logger.info('')
-    logger.info('')
-    logger.info('## -----------------------------------------------')
-    logger.info('## -----------------------------------------------')
-    logger.info('## -----------------------------------------------')
-    logger.info('## -----------------------------------------------')
-    logger.info('## -----------------------------------------------')
-    logger.info('')
-    logger.info('')
-    logger.info('')
+    logger.info('## ---------------------------------------')
+    logger.info('## ---------------------------------------')
+    logger.info('## ---------------------------------------')
+    logger.info('## ---------------------------------------')
+    logger.info('## ---------------------------------------\n\n\n')
 
 
-clean_logging(logger)
-logger.setLevel(logging.INFO)
-add_logging(r'/home/xlwang/fbcode/experimental/xlwang/ipy_flow_debug.log')
-for h in logging.root.handlers:
-    h.setFormatter(formatter)
+def log_reset(file_names=None, max_ln_num=1e5):
+    log_clean(logger)
+    logger.setLevel(logging.INFO)
+    if file_names is None:
+        file_names = [
+            r'/home/xlwang/fbcode/experimental/xlwang/ipy_flow_debug.log'
+        ]
+    elif isinstance(file_names, str):
+        file_names = [file_names]
+    for f in file_names:
+        file_purge(f, max_ln_num)
+        log_add_fh(f)
+    for h in logging.root.handlers:
+        h.setFormatter(formatter)
+    logger.info('==========================================')
+    logger.info('========== NEW IPYTHON, START LOG ========')
+    logger.info('==========================================')
+
+
+def pprint(s, add_log=False, lvl='info', raw=False, multiline=False):
+    if not multiline:
+        lns = s.split('\n')
+    if not raw:
+        lns = [py_pprint.pformat(ln) for ln in lns]
+    for ln in lns:
+        if add_log:
+            getattr(logger, lvl)(ln)
+        print(ln)
+
+
+def pprint_tabular(
+    fields, fmt={}, title={}, col_sep='\n', row_sep=' ', add_log=False
+):
+    def add_max_width_to_fmt(fmt, width):
+        i = fmt.find(':')
+        if fmt[i + 1] == '-' or fmt[i + 1] == '^':
+            i = i + 1
+        return fmt[:i + 1] + str(width) + fmt[i + 1:]
+
+    def max_col_width(fields, title='', fmt='{:}'):
+        llen = fmt.find('{')
+        rlen = fmt[::-1].find('}')
+        width = max([len(fmt.format(f)) for f in fields] + [len(title)])
+        return width - (llen + rlen), width
+
+    def fmt_col(fields, fmt='{:}', title=None):
+        width, title_width = max_col_width(fields, title or '', fmt)
+        fmt = add_max_width_to_fmt(fmt, width)
+        return (
+            [add_max_width_to_fmt('{:^}', title_width).format(title)]
+            if title is not None else []
+        ) + [fmt.format(f) for f in fields]
+
+    def fmt_tbl(fields, fmt={}):
+        def transpose(fields):
+            r = len(fields)
+            c = len(fields[0])
+            return [[fields[j][i] for j in range(r)] for i in range(c)]
+
+        tf = transpose(fields)
+        default_title = None if len(title) == 0 else ''
+        columns = [
+            fmt_col(col, fmt.get(j, '{:}'), title.get(j, default_title))
+            for j, col in enumerate(tf)
+        ]
+        return transpose(columns)
+
+    def rep_tbl(fields, c_sep='\n', r_sep=' '):
+        return c_sep.join([r_sep.join(r) for r in fields])
+
+    formatted_fields = fmt_tbl(fields, fmt)
+    pprint(
+        rep_tbl(formatted_fields, col_sep, row_sep), add_log=add_log, raw=True
+    )
+
 
 # --------------------------------- utility ----------------------------------
 
@@ -114,11 +181,15 @@ def timedelta_rep(td):
     return str(td).replace(' day, ', ':').replace(' days, ', ':')
 
 
-def datetime_now():
-    return str(datetime.datetime.now().replace(microsecond=0)).replace(' ', '-')
+def now():
+    return str(datetime.datetime.now().replace(microsecond=0)).replace(' ', '.')
 
 
 today = datetime.date.today
+
+
+def short_today():
+    return datetime.date.today().strftime("%m-%d")
 
 
 def file_st_time(f, mode):
@@ -145,6 +216,23 @@ def file_life_days(f):
     return td.total_seconds() / one_day.total_seconds()
 
 
+def file_touch(f):
+    with open(f, 'a'):
+        os.utime(f, None)
+
+
+def file_purge(f, ln_num=1e5):
+    if ln_num is None or ln_num < 0:
+        return
+    ln_num = max(int(ln_num), 1000)
+    file_touch(f)
+    with open(f, 'r') as fh:
+        lines = fh.readlines()
+    lines = lines[-ln_num:]
+    with open(f, 'w') as fh:
+        fh.writelines(lines)
+
+
 def dir_purge(dir, max_file_num=100, min_retention_days=30):
     days = {}
     for f in os.listdir(dir):
@@ -153,6 +241,17 @@ def dir_purge(dir, max_file_num=100, min_retention_days=30):
     for i, f in enumerate(sorted(days, key=lambda k: days[k])):
         if i >= max_file_num and days[f] > min_retention_days:
             file_delete(f)
+
+
+def center_with_padding(s, pad='=', length=80):
+    if len(s) > 0:
+        s = ' ' + s + ' '
+    pad_len = length - len(s)
+    assert pad_len > 0
+    assert len(pad) == 1
+    lp_len = int(pad_len / 2)
+    rp_len = pad_len - lp_len
+    return '{}{}{}'.format(pad * lp_len, s, pad * rp_len)
 
 
 APOLLO_XIII_TAG_ID = 325182364673414
@@ -294,11 +393,23 @@ def flow_training_progress(workflow_run_id):
         result = fl.get_workflow_run_results_summary(workflow_run_id)
         ne = result['learning_curves']['model/ne']['data'][-1][1]
         num = result['learning_curves']['model/ne']['data'][-1][0]
-        cali = result['learning_curves']['model/calibration']['data'][-1][1]
-        progress = 'ne=%.6f, cali=%.6f, example=%.2fM' % (ne, cali, num * 1e-6)
+        cali = 1.0 - (
+            result['learning_curves']['model/calibration']['data'][-1][1]
+        )
+        progress = 'ne=%.6f, cali=%+.2g, example=%.2fM' % (ne, cali, num * 1e-6)
         return progress
     except Exception:
         return None
+
+
+_FLOW_STATUS_MAP = {
+    1: 'SCHEDULED',
+    2: 'RUNNING',
+    3: 'SUCCEEDED',
+    4: 'FAILED',
+    6: 'KILLED',
+    5: 'NOT_AVAILABLE'
+}
 
 
 def flow_status(workflow_run_id, add_log=True, inspect_children=True):
@@ -306,14 +417,7 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
     instance's children"""
     fl = FlowSession()
     st = fl.get_workflow_run_status(workflow_run_id)
-    status_map = {
-        1: 'SCHEDULED',
-        2: 'RUNNING',
-        3: 'SUCCEEDED',
-        4: 'FAILED',
-        6: 'KILLED',
-        5: 'NOT_AVAILABLE'
-    }
+    status_map = _FLOW_STATUS_MAP
     status = status_map[st]
     if add_log:
         logger.info(
@@ -382,6 +486,40 @@ def flow_detailed_status(workflow_run_id):
     return detailed_st
 
 
+def flow_list(owner='xlwang', status='RUNNING'):
+    """list the flows owned by the owner and in the specified status"""
+    # fblearner/flow/driver/queries.py
+    # fblearner/flow/storage/models.py
+    from sqlalchemy.sql import text
+    status_id = (
+        [k for k in _FLOW_STATUS_MAP if _FLOW_STATUS_MAP[k] == status][0]
+    )
+    initialize_session(load_config())
+    with SessionContext(Session) as session:
+        rows = session.execute(
+            text(
+                """
+                SELECT
+                    run.id AS workflow_run_id,
+                    st.status AS status,
+                    run.time_created AS run_ts,
+                    st.end_time AS end_time,
+                    info.scheduler_type AS scheduler_type,
+                    st.job_instance_id AS job_instance_id
+                FROM workflow_runs run
+                LEFT OUTER JOIN workflow_run_scheduler_info info ON
+                    run.id = info.workflow_run_id
+                LEFT OUTER JOIN job_instance_status st ON
+                    st.scheduler_type = info.scheduler_type AND
+                    st.job_instance_id = info.scheduler_job_instance_id
+               WHERE
+                    (run.owner_unixname = '{owner}' and st.status = {status})
+                """.format(owner=owner, status=status_id)
+            )
+        ).fetchall()
+    return [r[0] for r in rows]
+
+
 def flow_start_time(workflow_run_id):
     """return flow start time or None"""
     try:
@@ -437,12 +575,9 @@ def flow_summary(workflow_run_id, add_log=True):
 def flow_short_summary(workflow_run_id, add_log=True):
     """easy to crop out the flow ids and return status"""
     title = flow_title(workflow_run_id)
-    owner = flow_info(workflow_run_id).owner
     status = flow_status(workflow_run_id, add_log=False)
     time = flow_elapsed_time_str(workflow_run_id)
-    ln = '%s, # %-12s "%s", %s, %s' % (
-        workflow_run_id, owner, title, status, time
-    )
+    ln = '%s, # "%s", %s, %s' % (workflow_run_id, title, status, time)
     if add_log:
         logger.info(ln)
     return ln
@@ -496,8 +631,8 @@ def flow_clone(
     run = flow_run(
         args=flow_input_args(workflow_run_id),
         title=title or default_title,
-        owner=owner or 'xlwang',
-        entitlement=entitlement or 'ads_ftw',
+        owner=owner or flow_owner(workflow_run_id),
+        entitlement=entitlement or flow_entitlement(workflow_run_id),
         package=package or flow_package(workflow_run_id),
         workflow=flow_name(workflow_run_id),
         model_type_id=flow_model_type_id(workflow_run_id),
@@ -577,7 +712,7 @@ def flow_metrics(workflow_run_id_or_result, with_ext=True):
     metrics['train_ne'] = get_metric(
         'training_metrics', 'model', 'numeric', 'ne'
     )
-    metrics['train_cali'] = get_metric(
+    metrics['train_cali'] = 1.0 - get_metric(
         'training_metrics', 'model', 'numeric', 'calibration'
     )
     metrics['train_qps'] = get_metric(
@@ -587,7 +722,7 @@ def flow_metrics(workflow_run_id_or_result, with_ext=True):
         'training_metrics', 'qps_metric', 'numeric', 'lifetime_examples'
     )
     metrics['eval_ne'] = get_metric('eval_metrics', 'model', 'numeric', 'ne')
-    metrics['eval_cali'] = get_metric(
+    metrics['eval_cali'] = 1.0 - get_metric(
         'eval_metrics', 'model', 'numeric', 'calibration'
     )
     metrics['eval_auc'] = get_metric('eval_metrics', 'AUC', 'numeric', 'auc')
@@ -677,6 +812,16 @@ def flow_report(
     return brief_report, detailed_report
 
 
+def flow_log_compare_result(everpaste_url, home_url, title, time):
+    if everpaste_url is None or home_url is None:
+        logger.info('nothing to compare -- exit')
+    else:
+        logger.info('Flow Report \"%s\"' % title)
+        logger.info('     Everpaste url : %s' % everpaste_url)
+        logger.info('     Home url      : %s' % home_url)
+        logger.info('     Took : %ds' % int(time))
+
+
 def flow_compare(
     workflow_run_ids,
     separator=' ',
@@ -689,8 +834,8 @@ def flow_compare(
     compare_start_time = datetime.datetime.now()
     workflow_run_ids = [i for i in workflow_run_ids]
     if len(workflow_run_ids) == 0:
-        logger.info('nothing to compare -- exit')
-        return
+        flow_log_compare_result(None, None, None, None)
+        return None, None
     summary = '\n'.join(
         [
             (
@@ -702,10 +847,7 @@ def flow_compare(
     brief_report, detailed_report = flow_report(
         workflow_run_ids, first_as_baseline=True, add_log=False
     )
-    title = str(title) if title else (
-        'FlowCompare:%s' % str(datetime.datetime.now().replace(microsecond=0)
-                              ).replace(' ', '-')
-    )
+    title = str(title) if title else ('FlowCompare:%s' % now())
     # everpaste
     everpaste_body = '\n\n\n'.join([summary, brief_report])
     everpaste_content = '%s\n\n\n%s' % (title, everpaste_body)
@@ -723,15 +865,47 @@ def flow_compare(
     if home_shorten_to_fburl:
         home_url = get_fburl(home_url)
     compare_finish_time = datetime.datetime.now()
-    logger.info('Flow Report \"%s\"' % title)
-    logger.info('     Everpaste url : %s' % everpaste_url)
-    logger.info('     Home url      : %s' % home_url)
-    logger.info(
-        '     Took : %ds' % int(
-            (compare_finish_time - compare_start_time).total_seconds()
-        )
+    flow_log_compare_result(
+        everpaste_url, home_url, title,
+        (compare_finish_time - compare_start_time).total_seconds()
     )
     return everpaste_url, home_url
+
+
+def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800):
+    num_finished_runs = 0
+    everpaste_url = None
+    home_url = None
+    report_title = None
+    while (True):
+        logger.info(center_with_padding(title))
+        finished_runs = flow_check_runs(*workflow_run_ids)
+        failed_runs = [i for i in finished_runs if finished_runs[i] == 'FAILED']
+        for i in failed_runs:
+            logger.warning(
+                'FAILED RUN: %s' % flow_short_summary(i, add_log=False)
+            )
+        logger.info(
+            '%d/%d RUNS FINISHED' % (len(finished_runs), len(workflow_run_ids))
+        )
+        if len(finished_runs) != num_finished_runs:
+            num_finished_runs = len(finished_runs)
+            report_title = ('%s @ %s' % (title, now()))
+            everpaste_url, home_url = flow_compare(
+                finished_runs, title=report_title
+            )
+        else:
+            logger.info('NO MORE NEW FINISHED RUNS...')
+            flow_log_compare_result(everpaste_url, home_url, report_title, 0)
+        logger.info(center_with_padding('') + '\n\n\n')
+        if len(finished_runs) == len(workflow_run_ids):
+            logger.info('FLOW CHECK/COMPARE LOOP FINISHED...\n')
+            break
+        else:
+            logger.info(
+                'FLOW CHECK/COMPARE LOOP HIBERNATE for %ds\n' % interval
+            )
+            time.sleep(interval)
 
 
 def fbl_compare_link(*workflow_run_ids):
@@ -745,6 +919,126 @@ def fbl_compare_link(*workflow_run_ids):
         parts.append('all_runs[%s]=%s' % (i, fid))
     link = beg + '&'.join(parts)
     print(link)
+
+
+def chronos_top_user(
+    host_pool='fblearner_ftw',
+    num=10,
+    show_cpu_usage=True,
+    include_myself=True,
+    rank_by_count=True,
+    add_log=True
+):
+    from RockfortExpress import RockfortExpress as rfe
+    from RockfortExpress import constants as rfe_const
+    from rfe import client as rfe_client
+    from libfb.py.dateutil import parse_time
+
+    # check following files for reference:
+    # fbcode/schedulers/chronos/py/libs/scubahelper.py
+    # fbcode/schedulers/chronos/py/scripts/chronos/query_scuba.py
+
+    def _get_base_query(tablename):
+        import libfb.py.employee
+        import getpass
+        return rfe.QueryCommon(
+            user_name=getpass.getuser(),
+            user_id=libfb.py.employee.unixname_to_uid(getpass.getuser()),
+            instance=tablename
+        )
+
+    SCUBA_TABLES = {
+        'running': 'chronos_resource_logs',
+        'finished': 'chronos_job_instance_states',
+        'pending': 'chronos_pending_job_instances',
+    }
+    table = SCUBA_TABLES['running']
+    query_common = _get_base_query(table)
+    view = rfe.View(
+        begin=int(parse_time('-2m')),
+        end=int(parse_time('now')),
+        filters=[
+            rfe.Filter(
+                key='host_pool',
+                key_type=rfe.DataType.NORMAL,
+                string_vals=[str(host_pool)],
+                operation=rfe_const.OP_IN,
+            )
+        ]
+    )
+
+    def get_top_users():
+        query_param = rfe.QueryParams(
+            dimensions=['owner'],
+            bucket_dimensions=[],
+            bucket_sizes=[],
+            collect=['job_instance_id'],
+            limit=0,
+            metric=rfe.Metric.DISTINCT
+        )
+        result = rfe_client.getClient().queryRollup(
+            query_common, view, query_param
+        )
+        return OrderedDict([(r.dimensions[0], r.count) for r in result.rows])
+
+    def get_cpu_usage():
+        query_param = rfe.QueryParams(
+            dimensions=['owner'],
+            bucket_dimensions=[],
+            bucket_sizes=[],
+            collect=['cpu'],
+            limit=0,
+            metric=rfe.Metric.SUM
+        )
+        result = rfe_client.getClient().queryRollup(
+            query_common, view, query_param
+        )
+        return OrderedDict(
+            [(r.dimensions[0], r.values[0]) for r in result.rows]
+        )
+
+    user_by_count = get_top_users()
+    user_by_cpu = get_cpu_usage()
+    count_sum = sum(user_by_count.values())
+    cpu_sum = sum(user_by_cpu.values())
+
+    fields = []
+    user_rank = user_by_count if rank_by_count else user_by_cpu
+    top_users = list(islice(user_rank, 0, min(num, len(user_rank))))
+    top_ranks = range(1, 1 + len(top_users))
+    if include_myself:
+        for rank, user in enumerate(user_by_count):
+            if 'user' == 'xlwang':
+                top_users.append('xlwang')
+                top_ranks.append(rank + 1)
+                break
+    for rank, user in zip(top_ranks, top_users):
+        fields.append(
+            [
+                rank,
+                user,
+                user_by_count[user],
+                float(user_by_count[user]) / count_sum * 100,
+                user_by_cpu[user],
+                float(user_by_cpu[user]) / cpu_sum * 100,
+            ]
+        )
+    pprint_tabular(
+        fields,
+        fmt={1: '{:^}',
+             3: '{:.2g}%',
+             5: '{:.2g}%'},
+        title={
+            0: 'RANK',
+            1: 'USER',
+            2: 'COUNT',
+            4: 'CPU',
+        },
+        col_sep='\n',
+        row_sep=' ',
+        add_log=add_log
+    )
+    return fields
 
 
 # --------------------------------- Experiments -------------------------------
@@ -920,16 +1214,4 @@ def rep_func(func, rep, *args, **kwargs):
     return [func(*args, **kwargs) for _ in range(rep)]
 
 
-logger.info('')
-logger.info('')
-logger.info('')
-logger.info('')
-logger.info('')
-logger.info('============================================')
-logger.info('========== NEW IPYTHON, START LOG ==========')
-logger.info('============================================')
-logger.info('')
-logger.info('')
-logger.info('')
-logger.info('')
-logger.info('')
+log_reset()
