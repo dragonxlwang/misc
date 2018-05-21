@@ -16,7 +16,7 @@ track.current = True
 # color =
 
 [templatealias]
-xg_sl = "{label(sl_label, separate('\n', separate('  ', sl_node_info, '{date|age}', sl_user, ssl_diff_labeled, sl_tasks, sl_books, sl_branch, sl_troubles), '{sl_desc}', '\n'))}"
+xg_sl = "{label(sl_label, separate('\n', separate('  ', sl_node_info, '{date|age}', sl_user, sl_diff_super, sl_tasks, sl_books, sl_branch, sl_troubles), '{sl_desc}', '\n'))}"
 
 [extensions]
 hgext.extdiff =
