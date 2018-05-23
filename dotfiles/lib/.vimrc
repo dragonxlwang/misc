@@ -27,8 +27,8 @@ set noequalalways               " No resize after splitting or closing a window
 set number                      " Line numbers are good
 set ruler                       " Bottom right corner of the status line
 set wrap                        " Wrap lines visually
-set textwidth=80                " Maximum line text width
-set colorcolumn=80              " Highlight column at 80 char
+set textwidth=88                " Maximum line text width
+set colorcolumn=88              " Highlight column at 80 char
 set title                       " Change the terminal's title
 set showcmd                     " Show incomplete cmds down the bottom
 set showmode                    " Show current mode down the bottom
