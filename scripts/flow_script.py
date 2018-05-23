@@ -45,7 +45,7 @@ import datetime
 import time
 import pprint as py_pprint
 from copy import deepcopy
-from collections import OrderedDict
+from collections import OrderedDict, namedtuple
 from future.utils import viewitems, viewkeys, viewvalues
 from itertools import islice
 
@@ -95,6 +95,7 @@ def log_reset(file_names=None, max_ln_num=1e5):
 
 
 def pprint(s, add_log=False, lvl='info', raw=False, multiline=False):
+    s = str(s)
     if not multiline:
         lns = s.split('\n')
     if not raw:
@@ -486,7 +487,7 @@ def flow_detailed_status(workflow_run_id):
     return detailed_st
 
 
-def flow_list(owner='xlwang', status='RUNNING'):
+def flow_list(owner='xlwang', status='RUNNING', print_short_summary=True):
     """list the flows owned by the owner and in the specified status"""
     # fblearner/flow/driver/queries.py
     # fblearner/flow/storage/models.py
@@ -505,7 +506,8 @@ def flow_list(owner='xlwang', status='RUNNING'):
                     run.time_created AS run_ts,
                     st.end_time AS end_time,
                     info.scheduler_type AS scheduler_type,
-                    st.job_instance_id AS job_instance_id
+                    st.job_instance_id AS job_instance_id,
+                    run.part_of_run_id AS part_of_run_id
                 FROM workflow_runs run
                 LEFT OUTER JOIN workflow_run_scheduler_info info ON
                     run.id = info.workflow_run_id
@@ -517,7 +519,21 @@ def flow_list(owner='xlwang', status='RUNNING'):
                 """.format(owner=owner, status=status_id)
             )
         ).fetchall()
-    return [r[0] for r in rows]
+    workflow_run_ids = [r[0] for r in rows]
+    top_lvl_run_ids = [r[0] for r in rows if r[-1] == None]
+    if print_short_summary:
+        for workflow_run_id in top_lvl_run_ids:
+            print(flow_short_summary(workflow_run_id, add_log=False))
+    return workflow_run_ids
+
+
+def flow_kill_stale(owner='xlwang', days=10):
+    workflow_run_ids = flow_list(owner, print_short_summary=False)
+    for workflow_run_id in workflow_run_ids:
+        elapsed_time = flow_elapsed_time(workflow_run_id)
+        if elapsed_time > datetime.timedelta(days=days):
+            print(flow_short_summary(workflow_run_id, add_log=False))
+            flow_kill(workflow_run_id)
 
 
 def flow_start_time(workflow_run_id):
@@ -872,27 +888,36 @@ def flow_compare(
     return everpaste_url, home_url
 
 
-def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800):
+def flow_check_and_compare_loop(
+    workflow_run_ids, title, interval=1800, max_iter=-1
+):
     num_finished_runs = 0
     everpaste_url = None
     home_url = None
     report_title = None
+    iter = 0
     while (True):
         logger.info(center_with_padding(title))
         finished_runs = flow_check_runs(*workflow_run_ids)
         failed_runs = [i for i in finished_runs if finished_runs[i] == 'FAILED']
-        for i in failed_runs:
-            logger.warning(
-                'FAILED RUN: %s' % flow_short_summary(i, add_log=False)
-            )
         logger.info(
             '%d/%d RUNS FINISHED' % (len(finished_runs), len(workflow_run_ids))
         )
+        if len(failed_runs) > 0:
+            logger.info('%d RUNS FAILED' % len(failed_runs))
+            for i in failed_runs:
+                logger.warning(
+                    '    FAILED RUN: %s' % flow_short_summary(i, add_log=False)
+                )
         if len(finished_runs) != num_finished_runs:
             num_finished_runs = len(finished_runs)
             report_title = ('%s @ %s' % (title, now()))
+            # only compare succeeded runs
+            succeeded_runs = [
+                i for i in finished_runs if finished_runs[i] == 'SUCCEEDED'
+            ]
             everpaste_url, home_url = flow_compare(
-                finished_runs, title=report_title
+                succeeded_runs, title=report_title
             )
         else:
             logger.info('NO MORE NEW FINISHED RUNS...')
@@ -906,6 +931,10 @@ def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800):
                 'FLOW CHECK/COMPARE LOOP HIBERNATE for %ds\n' % interval
             )
             time.sleep(interval)
+        iter += 1
+        if iter >= max_iter:
+            logger.info('%d ITER REACHED...\n' % max_iter)
+            break
 
 
 def fbl_compare_link(*workflow_run_ids):
@@ -938,6 +967,7 @@ def chronos_top_user(
     # check following files for reference:
     # fbcode/schedulers/chronos/py/libs/scubahelper.py
     # fbcode/schedulers/chronos/py/scripts/chronos/query_scuba.py
+    # fbcode/aml/chronos_job_stats/
 
     def _get_base_query(tablename):
         import libfb.py.employee
