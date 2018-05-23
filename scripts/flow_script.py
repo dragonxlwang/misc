@@ -1,57 +1,48 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
+import collections
+import datetime
+import json
+import logging
+import os
+import pprint as py_pprint
+import shutil
+import subprocess
+import time
+import uuid
+from collections import OrderedDict, namedtuple
+from copy import deepcopy
+from itertools import islice
+
+# add this to enable get default input
+import fblearner.flow.facebook.plugins.all_plugins  # noqa
+import fblearner.flow.projects.dper.flow_types as T
+import numpy
 from caffe2.python.fb.dper.layer_models.model_definition import ttypes
 from caffe2.python.fb.dper.layer_models.utils import vis_utils
 from fblearner.flow.core.attrdict import from_dict
-from fblearner.flow.core.types_lib.type import encode as encode_flow_type
 from fblearner.flow.core.types_lib.gettype import gettype
+from fblearner.flow.core.types_lib.type import encode as encode_flow_type
 from fblearner.flow.external_api import FlowSession, WorkflowRun
 from fblearner.flow.ml.runners.chronosscheduler import get_workflow_run_status
 from fblearner.flow.plugin_definitions.driver import Drivers
-from fblearner.flow.util.runner_utilities import load_config
-from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
-from fblearner.flow.storage.models import (
-    ModelType,
-    Session,
-    SessionContext,
-    initialize_session,
-    WorkflowRun,
-    WorkflowRegistration,
-    Workflow,
-)
 from fblearner.flow.service.flow_client import get_flow_indexing_client
-from metastore import metastore
-from libfb.py.decorators import retryable
+from fblearner.flow.storage.models import (ModelType, Session, SessionContext,
+                                           Workflow, WorkflowRegistration,
+                                           WorkflowRun, initialize_session)
+from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
+from fblearner.flow.util.runner_utilities import load_config
+from future.utils import viewitems, viewkeys, viewvalues
 from libfb.py import fburl
+from libfb.py.decorators import retryable
+from metastore import metastore
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
 
-import fblearner.flow.projects.dper.flow_types as T
-# add this to enable get default input
-import fblearner.flow.facebook.plugins.all_plugins  # noqa
-
-import collections
-import os
-import subprocess
-import logging
-import json
-import numpy
-import uuid
-import shutil
-import datetime
-import time
-import pprint as py_pprint
-from copy import deepcopy
-from collections import OrderedDict, namedtuple
-from future.utils import viewitems, viewkeys, viewvalues
-from itertools import islice
-
 # --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
-formatter = logging.Formatter('%(levelname)s %(asctime)s : %(message)s')
+formatter = logging.Formatter("%(levelname)s %(asctime)s : %(message)s")
 
 
 def log_clean(logger):
@@ -68,20 +59,18 @@ def log_add_fh(file_name):
 
 
 def log_blank():
-    logger.info('## ---------------------------------------')
-    logger.info('## ---------------------------------------')
-    logger.info('## ---------------------------------------')
-    logger.info('## ---------------------------------------')
-    logger.info('## ---------------------------------------\n\n\n')
+    logger.info("## ---------------------------------------")
+    logger.info("## ---------------------------------------")
+    logger.info("## ---------------------------------------")
+    logger.info("## ---------------------------------------")
+    logger.info("## ---------------------------------------\n\n\n")
 
 
 def log_reset(file_names=None, max_ln_num=1e5):
     log_clean(logger)
     logger.setLevel(logging.INFO)
     if file_names is None:
-        file_names = [
-            r'/home/xlwang/fbcode/experimental/xlwang/ipy_flow_debug.log'
-        ]
+        file_names = [r"/home/xlwang/fbcode/experimental/xlwang/ipy_flow_debug.log"]
     elif isinstance(file_names, str):
         file_names = [file_names]
     for f in file_names:
@@ -89,15 +78,15 @@ def log_reset(file_names=None, max_ln_num=1e5):
         log_add_fh(f)
     for h in logging.root.handlers:
         h.setFormatter(formatter)
-    logger.info('==========================================')
-    logger.info('========== NEW IPYTHON, START LOG ========')
-    logger.info('==========================================')
+    logger.info("==========================================")
+    logger.info("========== NEW IPYTHON, START LOG ========")
+    logger.info("==========================================")
 
 
-def pprint(s, add_log=False, lvl='info', raw=False, multiline=False):
+def pprint(s, add_log=False, lvl="info", raw=False, multiline=False):
     s = str(s)
     if not multiline:
-        lns = s.split('\n')
+        lns = s.split("\n")
     if not raw:
         lns = [py_pprint.pformat(ln) for ln in lns]
     for ln in lns:
@@ -106,50 +95,49 @@ def pprint(s, add_log=False, lvl='info', raw=False, multiline=False):
         print(ln)
 
 
-def pprint_tabular(
-    fields, fmt={}, title={}, col_sep='\n', row_sep=' ', add_log=False
-):
-    def add_max_width_to_fmt(fmt, width):
-        i = fmt.find(':')
-        if fmt[i + 1] == '-' or fmt[i + 1] == '^':
-            i = i + 1
-        return fmt[:i + 1] + str(width) + fmt[i + 1:]
+def pprint_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" ", add_log=False):
 
-    def max_col_width(fields, title='', fmt='{:}'):
-        llen = fmt.find('{')
-        rlen = fmt[::-1].find('}')
+    def add_max_width_to_fmt(fmt, width):
+        i = fmt.find(":")
+        if fmt[i + 1] == "-" or fmt[i + 1] == "^":
+            i = i + 1
+        return fmt[: i + 1] + str(width) + fmt[i + 1 :]
+
+    def max_col_width(fields, title="", fmt="{:}"):
+        llen = fmt.find("{")
+        rlen = fmt[::-1].find("}")
         width = max([len(fmt.format(f)) for f in fields] + [len(title)])
         return width - (llen + rlen), width
 
-    def fmt_col(fields, fmt='{:}', title=None):
-        width, title_width = max_col_width(fields, title or '', fmt)
+    def fmt_col(fields, fmt="{:}", title=None):
+        width, title_width = max_col_width(fields, title or "", fmt)
         fmt = add_max_width_to_fmt(fmt, width)
         return (
-            [add_max_width_to_fmt('{:^}', title_width).format(title)]
-            if title is not None else []
+            [add_max_width_to_fmt("{:^}", title_width).format(title)]
+            if title is not None
+            else []
         ) + [fmt.format(f) for f in fields]
 
     def fmt_tbl(fields, fmt={}):
+
         def transpose(fields):
             r = len(fields)
             c = len(fields[0])
             return [[fields[j][i] for j in range(r)] for i in range(c)]
 
         tf = transpose(fields)
-        default_title = None if len(title) == 0 else ''
+        default_title = None if len(title) == 0 else ""
         columns = [
-            fmt_col(col, fmt.get(j, '{:}'), title.get(j, default_title))
+            fmt_col(col, fmt.get(j, "{:}"), title.get(j, default_title))
             for j, col in enumerate(tf)
         ]
         return transpose(columns)
 
-    def rep_tbl(fields, c_sep='\n', r_sep=' '):
+    def rep_tbl(fields, c_sep="\n", r_sep=" "):
         return c_sep.join([r_sep.join(r) for r in fields])
 
     formatted_fields = fmt_tbl(fields, fmt)
-    pprint(
-        rep_tbl(formatted_fields, col_sep, row_sep), add_log=add_log, raw=True
-    )
+    pprint(rep_tbl(formatted_fields, col_sep, row_sep), add_log=add_log, raw=True)
 
 
 # --------------------------------- utility ----------------------------------
@@ -179,11 +167,11 @@ def get_fburl(raw_url):
 
 
 def timedelta_rep(td):
-    return str(td).replace(' day, ', ':').replace(' days, ', ':')
+    return str(td).replace(" day, ", ":").replace(" days, ", ":")
 
 
 def now():
-    return str(datetime.datetime.now().replace(microsecond=0)).replace(' ', '.')
+    return str(datetime.datetime.now().replace(microsecond=0)).replace(" ", ".")
 
 
 today = datetime.date.today
@@ -196,7 +184,7 @@ def short_today():
 def file_st_time(f, mode):
     try:
         st = os.stat(f)
-        return getattr(st, 'st_%stime' % mode, -1)
+        return getattr(st, "st_%stime" % mode, -1)
     except Exception:
         return -1
 
@@ -204,21 +192,21 @@ def file_st_time(f, mode):
 def file_delete(f):
     try:
         shutil.rmtree(f)
-        logger.info('delete directory: %s' % f)
+        logger.info("delete directory: %s" % f)
     except Exception:
         os.remove(f)
-        logger.info('delete file: %s' % f)
+        logger.info("delete file: %s" % f)
 
 
 def file_life_days(f):
-    st_time = max(file_st_time(f, 'c'), file_st_time(f, 'm'))
+    st_time = max(file_st_time(f, "c"), file_st_time(f, "m"))
     td = datetime.datetime.now() - datetime.datetime.fromtimestamp(st_time)
     one_day = datetime.timedelta(days=1)
     return td.total_seconds() / one_day.total_seconds()
 
 
 def file_touch(f):
-    with open(f, 'a'):
+    with open(f, "a"):
         os.utime(f, None)
 
 
@@ -227,10 +215,10 @@ def file_purge(f, ln_num=1e5):
         return
     ln_num = max(int(ln_num), 1000)
     file_touch(f)
-    with open(f, 'r') as fh:
+    with open(f, "r") as fh:
         lines = fh.readlines()
     lines = lines[-ln_num:]
-    with open(f, 'w') as fh:
+    with open(f, "w") as fh:
         fh.writelines(lines)
 
 
@@ -244,15 +232,15 @@ def dir_purge(dir, max_file_num=100, min_retention_days=30):
             file_delete(f)
 
 
-def center_with_padding(s, pad='=', length=80):
+def center_with_padding(s, pad="=", length=80):
     if len(s) > 0:
-        s = ' ' + s + ' '
+        s = " " + s + " "
     pad_len = length - len(s)
     assert pad_len > 0
     assert len(pad) == 1
     lp_len = int(pad_len / 2)
     rp_len = pad_len - lp_len
-    return '{}{}{}'.format(pad * lp_len, s, pad * rp_len)
+    return "{}{}{}".format(pad * lp_len, s, pad * rp_len)
 
 
 APOLLO_XIII_TAG_ID = 325182364673414
@@ -262,11 +250,11 @@ APOLLO_XIII_TAG_ID = 325182364673414
 
 def flow_run(
     args,
-    title='test',
-    owner='xlwang',
-    entitlement='ads_ftw',
-    package='aml.dper2:73',
-    workflow='dper.workflows.ads.train_eval_workflow',
+    title="test",
+    owner="xlwang",
+    entitlement="ads_ftw",
+    package="aml.dper2:73",
+    workflow="dper.workflows.ads.train_eval_workflow",
     model_type_id=None,
 ):
     """schedule a flow run, and return the WorkflowRun instance"""
@@ -279,17 +267,17 @@ def flow_run(
         package_version=package,
         metadata=WorkflowRunMetadataMutation(
             name=title,
-            notes='',
+            notes="",
             add_tags=[APOLLO_XIII_TAG_ID],
             model_type_id=model_type_id,
         ),
     )
     logger.info(
-        'flow "%s" launched: id=f%s \n    %s' % (
-            title, str(run.id), (
-                'https://our.intern.facebook.com/intern/fblearner/details/%s' %
-                run.id
-            )
+        'flow "%s" launched: id=f%s \n    %s'
+        % (
+            title,
+            str(run.id),
+            ("https://our.intern.facebook.com/intern/fblearner/details/%s" % run.id),
         )
     )
     return run
@@ -312,9 +300,7 @@ def flow_result(workflow_run_id, print_return=False):
 def flow_input_args(workflow_run_id, print_return=False):
     """input arguments for flow"""
     fl = FlowSession()
-    input_args = fl.get_workflow_run_inputs_summary(
-        workflow_run_id=workflow_run_id
-    )
+    input_args = fl.get_workflow_run_inputs_summary(workflow_run_id=workflow_run_id)
     input_args = deepcopy(input_args)
     if print_return:
         pprint(input_args)
@@ -392,24 +378,22 @@ def flow_training_progress(workflow_run_id):
     try:
         fl = FlowSession()
         result = fl.get_workflow_run_results_summary(workflow_run_id)
-        ne = result['learning_curves']['model/ne']['data'][-1][1]
-        num = result['learning_curves']['model/ne']['data'][-1][0]
-        cali = 1.0 - (
-            result['learning_curves']['model/calibration']['data'][-1][1]
-        )
-        progress = 'ne=%.6f, cali=%+.2g, example=%.2fM' % (ne, cali, num * 1e-6)
+        ne = result["learning_curves"]["model/ne"]["data"][-1][1]
+        num = result["learning_curves"]["model/ne"]["data"][-1][0]
+        cali = 1.0 - (result["learning_curves"]["model/calibration"]["data"][-1][1])
+        progress = "ne=%.6f, cali=%+.2g, example=%.2fM" % (ne, cali, num * 1e-6)
         return progress
     except Exception:
         return None
 
 
 _FLOW_STATUS_MAP = {
-    1: 'SCHEDULED',
-    2: 'RUNNING',
-    3: 'SUCCEEDED',
-    4: 'FAILED',
-    6: 'KILLED',
-    5: 'NOT_AVAILABLE'
+    1: "SCHEDULED",
+    2: "RUNNING",
+    3: "SUCCEEDED",
+    4: "FAILED",
+    6: "KILLED",
+    5: "NOT_AVAILABLE",
 }
 
 
@@ -422,12 +406,15 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
     status = status_map[st]
     if add_log:
         logger.info(
-            'f%s # %s %s, %s' % (
-                workflow_run_id, status, flow_title(workflow_run_id),
-                flow_elapsed_time_str(workflow_run_id)
+            "f%s # %s %s, %s"
+            % (
+                workflow_run_id,
+                status,
+                flow_title(workflow_run_id),
+                flow_elapsed_time_str(workflow_run_id),
             )
         )
-    if status == 'RUNNING':
+    if status == "RUNNING":
         info = fl.get_workflow_run_info(workflow_run_id)
         children = list(info.childrenRunIDs)
         if len(children) > 0:
@@ -435,20 +422,23 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
                 child_name = flow_name(child)
                 child_st = fl.get_workflow_run_status(child)
                 if add_log:
-                    indent = '    |'
-                    beg = ('-> f%s:' % child)
+                    indent = "    |"
+                    beg = "-> f%s:" % child
                     logger.info(
-                        '%s%s %s (%s), %s' % (
-                            indent, beg, status_map[child_st], child_name,
-                            flow_elapsed_time_str(child)
+                        "%s%s %s (%s), %s"
+                        % (
+                            indent,
+                            beg,
+                            status_map[child_st],
+                            child_name,
+                            flow_elapsed_time_str(child),
                         )
                     )
-                    if ('train_workflow' in child_name):
+                    if "train_workflow" in child_name:
                         child_progress = flow_training_progress(child)
                         if child_progress is not None:
                             logger.info(
-                                '%s%s %s' %
-                                (indent, ' ' * len(beg), child_progress)
+                                "%s%s %s" % (indent, " " * len(beg), child_progress)
                             )
                         # check grandchildren
                         grandchildren = list(
@@ -459,21 +449,25 @@ def flow_status(workflow_run_id, add_log=True, inspect_children=True):
                             gc_st = fl.get_workflow_run_status(gc)
                             gc_tt = flow_title(gc)
                             if (
-                                'run_dist_job' in gc_name and
-                                'Distributed Trainer' in gc_tt
+                                "run_dist_job" in gc_name
+                                and "Distributed Trainer" in gc_tt
                             ):
-                                beg = ('-> f%s:' % gc)
+                                beg = "-> f%s:" % gc
                                 logger.info(
-                                    '%s%s %s (%s), %s' % (
-                                        indent, beg, status_map[gc_st], gc_name,
-                                        flow_elapsed_time_str(gc)
+                                    "%s%s %s (%s), %s"
+                                    % (
+                                        indent,
+                                        beg,
+                                        status_map[gc_st],
+                                        gc_name,
+                                        flow_elapsed_time_str(gc),
                                     )
                                 )
                                 gc_progress = flow_training_progress(gc)
                                 if gc_progress is not None:
                                     logger.info(
-                                        '%s%s %s' %
-                                        (indent, ' ' * len(beg), gc_progress)
+                                        "%s%s %s"
+                                        % (indent, " " * len(beg), gc_progress)
                                     )
     return status
 
@@ -487,14 +481,13 @@ def flow_detailed_status(workflow_run_id):
     return detailed_st
 
 
-def flow_list(owner='xlwang', status='RUNNING', print_short_summary=True):
+def flow_list(owner="xlwang", status="RUNNING", print_short_summary=True):
     """list the flows owned by the owner and in the specified status"""
     # fblearner/flow/driver/queries.py
     # fblearner/flow/storage/models.py
     from sqlalchemy.sql import text
-    status_id = (
-        [k for k in _FLOW_STATUS_MAP if _FLOW_STATUS_MAP[k] == status][0]
-    )
+
+    status_id = [k for k in _FLOW_STATUS_MAP if _FLOW_STATUS_MAP[k] == status][0]
     initialize_session(load_config())
     with SessionContext(Session) as session:
         rows = session.execute(
@@ -516,7 +509,9 @@ def flow_list(owner='xlwang', status='RUNNING', print_short_summary=True):
                     st.job_instance_id = info.scheduler_job_instance_id
                WHERE
                     (run.owner_unixname = '{owner}' and st.status = {status})
-                """.format(owner=owner, status=status_id)
+                """.format(
+                    owner=owner, status=status_id
+                )
             )
         ).fetchall()
     workflow_run_ids = [r[0] for r in rows]
@@ -527,7 +522,7 @@ def flow_list(owner='xlwang', status='RUNNING', print_short_summary=True):
     return workflow_run_ids
 
 
-def flow_kill_stale(owner='xlwang', days=10):
+def flow_kill_stale(owner="xlwang", days=10):
     workflow_run_ids = flow_list(owner, print_short_summary=False)
     for workflow_run_id in workflow_run_ids:
         elapsed_time = flow_elapsed_time(workflow_run_id)
@@ -559,11 +554,8 @@ def flow_end_time(workflow_run_id):
 def flow_elapsed_time(workflow_run_id):
     """time elapsed from the time of flow creation"""
     return (
-        (
-            flow_end_time(workflow_run_id) or
-            datetime.datetime.now().replace(microsecond=0)
-        ) - flow_start_time(workflow_run_id)
-    )
+        flow_end_time(workflow_run_id) or datetime.datetime.now().replace(microsecond=0)
+    ) - flow_start_time(workflow_run_id)
 
 
 def flow_elapsed_time_str(workflow_run_id):
@@ -579,13 +571,13 @@ def flow_summary(workflow_run_id, add_log=True):
     status = flow_status(workflow_run_id, add_log=False)
     time = flow_elapsed_time_str(workflow_run_id)
     lines = [
-        '[%s]: %s (%s), %s, %s' % (workflow_run_id, name, owner, status, time),
-        '    %s' % title
+        "[%s]: %s (%s), %s, %s" % (workflow_run_id, name, owner, status, time),
+        "    %s" % title,
     ]
     if add_log:
         for ln in lines:
             logger.info(ln)
-    return '\n'.join(lines)
+    return "\n".join(lines)
 
 
 def flow_short_summary(workflow_run_id, add_log=True):
@@ -607,7 +599,7 @@ def flow_check_runs(*workflow_run_ids):
     finished_runs = OrderedDict()
     for i in workflow_run_ids:
         st = flow_status(i, add_log=True, inspect_children=True)
-        if st not in ['RUNNING', 'SCHEDULED']:
+        if st not in ["RUNNING", "SCHEDULED"]:
             finished_runs[i] = st
     return finished_runs
 
@@ -616,33 +608,23 @@ def flow_check_runs(*workflow_run_ids):
 def flow_pkg_extend(workflow_run_id):
     # reset env
     my_env = os.environ.copy()
-    my_env.pop('LD_LIBRARY_PATH')
+    my_env.pop("LD_LIBRARY_PATH")
     logger.info(
-        'extend expiration of package %s (flow %s)' %
-        (flow_package(workflow_run_id), workflow_run_id)
+        "extend expiration of package %s (flow %s)"
+        % (flow_package(workflow_run_id), workflow_run_id)
     )
     logger.info(
         subprocess.check_output(
-            [
-                'fbpkg', 'expire', '--extend-only',
-                flow_package(workflow_run_id), '28d'
-            ],
-            env=my_env
+            ["fbpkg", "expire", "--extend-only", flow_package(workflow_run_id), "28d"],
+            env=my_env,
         )
     )
 
 
-def flow_clone(
-    workflow_run_id,
-    title=None,
-    owner=None,
-    entitlement=None,
-    package=None,
-):
+def flow_clone(workflow_run_id, title=None, owner=None, entitlement=None, package=None):
     """clone a flow"""
-    default_title = ', '.join(
-        [flow_title(workflow_run_id),
-         'clf%s' % str(workflow_run_id)]
+    default_title = ", ".join(
+        [flow_title(workflow_run_id), "clf%s" % str(workflow_run_id)]
     )
     run = flow_run(
         args=flow_input_args(workflow_run_id),
@@ -657,16 +639,14 @@ def flow_clone(
     return run
 
 
-def flow_kill(workflow_run_id, reason='murdered'):
+def flow_kill(workflow_run_id, reason="murdered"):
     """kill a flow with a reason"""
     fl = FlowSession()
     fl.kill_workflow(workflow_run_id, reason=reason)
-    logger.info('flow f%s killed (%s)' % (str(workflow_run_id), reason))
+    logger.info("flow f%s killed (%s)" % (str(workflow_run_id), reason))
 
 
-def flow_default_input_args(
-    workflow_name=None, pkg_version=None, workflow_run_id=None
-):
+def flow_default_input_args(workflow_name=None, pkg_version=None, workflow_run_id=None):
     """get the default input args for a (workflow, pkg), or a flow id"""
     if workflow_run_id is not None:
         info = flow_info(workflow_run_id)
@@ -677,12 +657,15 @@ def flow_default_input_args(
         assert pkg_version is not None
     initialize_session(load_config())
     with SessionContext(Session) as session:
-        registration = session.query(WorkflowRegistration).join(
-            Workflow, WorkflowRegistration.workflow
-        ).filter(
-            Workflow.workflow_name == workflow_name,
-            WorkflowRegistration.fbpackage_version == pkg_version
-        ).one()
+        registration = (
+            session.query(WorkflowRegistration)
+            .join(Workflow, WorkflowRegistration.workflow)
+            .filter(
+                Workflow.workflow_name == workflow_name,
+                WorkflowRegistration.fbpackage_version == pkg_version,
+            )
+            .one()
+        )
         return json.loads(registration.default_inputs)
 
 
@@ -694,7 +677,7 @@ def flow_metrics(workflow_run_id_or_result, with_ext=True):
     else:
         result = workflow_run_id_or_result
         try:
-            flow_id = int(result['model_id'].split('_')[0])
+            flow_id = int(result["model_id"].split("_")[0])
         except Exception:
             flow_id = -1
 
@@ -703,8 +686,8 @@ def flow_metrics(workflow_run_id_or_result, with_ext=True):
 
     metrics = OrderedDict()
     ext_metrics = OrderedDict()
-    metrics['flow_id'] = flow_id
-    metrics['flow_name'] = '"%s"' % flow_title(flow_id)
+    metrics["flow_id"] = flow_id
+    metrics["flow_name"] = '"%s"' % flow_title(flow_id)
 
     def get_metric(*keys):
         try:
@@ -717,75 +700,68 @@ def flow_metrics(workflow_run_id_or_result, with_ext=True):
 
     def add_ranking(mode):
         try:
-            d = result[mode + '_metrics']['ranking']['numeric']
+            d = result[mode + "_metrics"]["ranking"]["numeric"]
             for k in sorted(d):
                 v = d[k]
-                if k != 'num_add_times':
-                    ext_metrics[mode + '_' + k] = v
+                if k != "num_add_times":
+                    ext_metrics[mode + "_" + k] = v
         except Exception:
             return
 
-    metrics['train_ne'] = get_metric(
-        'training_metrics', 'model', 'numeric', 'ne'
+    metrics["train_ne"] = get_metric("training_metrics", "model", "numeric", "ne")
+    metrics["train_cali"] = 1.0 - get_metric(
+        "training_metrics", "model", "numeric", "calibration"
     )
-    metrics['train_cali'] = 1.0 - get_metric(
-        'training_metrics', 'model', 'numeric', 'calibration'
+    metrics["train_qps"] = get_metric(
+        "training_metrics", "qps_metric", "numeric", "lifetime_qps"
     )
-    metrics['train_qps'] = get_metric(
-        'training_metrics', 'qps_metric', 'numeric', 'lifetime_qps'
+    metrics["train_num"] = get_metric(
+        "training_metrics", "qps_metric", "numeric", "lifetime_examples"
     )
-    metrics['train_num'] = get_metric(
-        'training_metrics', 'qps_metric', 'numeric', 'lifetime_examples'
+    metrics["eval_ne"] = get_metric("eval_metrics", "model", "numeric", "ne")
+    metrics["eval_cali"] = 1.0 - get_metric(
+        "eval_metrics", "model", "numeric", "calibration"
     )
-    metrics['eval_ne'] = get_metric('eval_metrics', 'model', 'numeric', 'ne')
-    metrics['eval_cali'] = 1.0 - get_metric(
-        'eval_metrics', 'model', 'numeric', 'calibration'
-    )
-    metrics['eval_auc'] = get_metric('eval_metrics', 'AUC', 'numeric', 'auc')
+    metrics["eval_auc"] = get_metric("eval_metrics", "AUC", "numeric", "auc")
 
     if with_ext:
-        add_ranking('training')
-        add_ranking('eval')
+        add_ranking("training")
+        add_ranking("eval")
     return (metrics, ext_metrics if with_ext else metrics)
 
 
-def flow_report(
-    workflow_run_ids,
-    first_as_baseline=False,
-    add_log=False,
-):
+def flow_report(workflow_run_ids, first_as_baseline=False, add_log=False):
     """given multiple flow ids/results, generate a report of their metrices"""
     if not isinstance(workflow_run_ids, list):
         workflow_run_ids = [workflow_run_ids]
     metrics_list = [flow_metrics(x, True) for x in workflow_run_ids]
 
-    def metrics_to_text(metrics_list, separator=' ', with_format=True):
+    def metrics_to_text(metrics_list, separator=" ", with_format=True):
         lines = []
         assert len(metrics_list) > 0
         column_names = metrics_list[0].keys()
         filtered_column_names = [
-            c for c in column_names
-            if any(m[c] is not None for m in metrics_list)
+            c for c in column_names if any(m[c] is not None for m in metrics_list)
         ]
         column_widths = {
-            c: max(len(str(m[c])) for m in metrics_list)
-            for c in filtered_column_names
+            c: max(len(str(m[c])) for m in metrics_list) for c in filtered_column_names
         }
 
         def str_fmt(c, v):
             return (
-                ('{' + ':^' + str(column_widths[c]) + '}').format(v)
-                if with_format else str(v)
+                ("{" + ":^" + str(column_widths[c]) + "}").format(v)
+                if with_format
+                else str(v)
             )
 
         def diff(m, bm, c):
-            if c in ['flow_id', 'flow_name']:
-                return ''
+            if c in ["flow_id", "flow_name"]:
+                return ""
             else:
                 try:
-                    return '{:+.6}%'.format((m[c] - bm[c]) / bm[c] * 100.)
+                    return "{:+.6}%".format((m[c] - bm[c]) / bm[c] * 100.)
                 except Exception:
-                    return '-'
+                    return "-"
 
         def add_line(ln):
             lines.append(ln)
@@ -797,9 +773,7 @@ def flow_report(
         # lines.append(''.join(len(ln) * ['=']))
         # logger.info(''.join(len(ln) * ['=']))
         for i, m in enumerate(metrics_list):
-            ln = separator.join(
-                [str_fmt(c, m[c]) for c in filtered_column_names]
-            )
+            ln = separator.join([str_fmt(c, m[c]) for c in filtered_column_names])
             add_line(ln)
             if first_as_baseline:
                 ln = separator.join(
@@ -809,7 +783,7 @@ def flow_report(
                     ]
                 )
                 add_line(ln)
-        return '\n'.join(lines)
+        return "\n".join(lines)
 
     def merge_dict(a, b):
         c = OrderedDict()
@@ -824,24 +798,24 @@ def flow_report(
     ext_metrics = [x[1] for x in metrics_list]
     full_metrics = [merge_dict(x[0], x[1]) for x in metrics_list]
     brief_report = metrics_to_text(basic_metrics)
-    detailed_report = metrics_to_text(full_metrics, ',', False)
+    detailed_report = metrics_to_text(full_metrics, ",", False)
     return brief_report, detailed_report
 
 
 def flow_log_compare_result(everpaste_url, home_url, title, time):
     if everpaste_url is None or home_url is None:
-        logger.info('nothing to compare -- exit')
+        logger.info("nothing to compare -- exit")
     else:
-        logger.info('Flow Report \"%s\"' % title)
-        logger.info('     Everpaste url : %s' % everpaste_url)
-        logger.info('     Home url      : %s' % home_url)
-        logger.info('     Took : %ds' % int(time))
+        logger.info('Flow Report "%s"' % title)
+        logger.info("     Everpaste url : %s" % everpaste_url)
+        logger.info("     Home url      : %s" % home_url)
+        logger.info("     Took : %ds" % int(time))
 
 
 def flow_compare(
     workflow_run_ids,
-    separator=' ',
-    summary_style='short',
+    separator=" ",
+    summary_style="short",
     title=None,
     everpaste_shorten_to_fburl=True,
     home_shorten_to_fburl=True,
@@ -852,111 +826,107 @@ def flow_compare(
     if len(workflow_run_ids) == 0:
         flow_log_compare_result(None, None, None, None)
         return None, None
-    summary = '\n'.join(
+    summary = "\n".join(
         [
             (
                 flow_short_summary(i, add_log=False)
-                if summary_style == 'short' else flow_summary(i, add_log=False)
-            ) for i in workflow_run_ids
+                if summary_style == "short"
+                else flow_summary(i, add_log=False)
+            )
+            for i in workflow_run_ids
         ]
     )
     brief_report, detailed_report = flow_report(
         workflow_run_ids, first_as_baseline=True, add_log=False
     )
-    title = str(title) if title else ('FlowCompare:%s' % now())
+    title = str(title) if title else ("FlowCompare:%s" % now())
     # everpaste
-    everpaste_body = '\n\n\n'.join([summary, brief_report])
-    everpaste_content = '%s\n\n\n%s' % (title, everpaste_body)
+    everpaste_body = "\n\n\n".join([summary, brief_report])
+    everpaste_content = "%s\n\n\n%s" % (title, everpaste_body)
     everpaste_url = vis_utils.get_everpaste_url(str(everpaste_content))
     if everpaste_shorten_to_fburl:
         everpaste_url = get_fburl(everpaste_url)
     # home
-    xls_content = '%s\n\n\n%s' % (title, detailed_report)
-    filename = ('%s_%s.csv' % (title, uuid.uuid4()))
-    dump_dir = '/home/xlwang/public_html/flows/'
+    xls_content = "%s\n\n\n%s" % (title, detailed_report)
+    filename = "%s_%s.csv" % (title, uuid.uuid4())
+    dump_dir = "/home/xlwang/public_html/flows/"
     dir_purge(dump_dir)
-    with open(os.path.join(dump_dir, filename), 'w') as f:
+    with open(os.path.join(dump_dir, filename), "w") as f:
         f.write(xls_content)
-    home_url = 'https://home.fburl.com/~xlwang/flows/' + filename
+    home_url = "https://home.fburl.com/~xlwang/flows/" + filename
     if home_shorten_to_fburl:
         home_url = get_fburl(home_url)
     compare_finish_time = datetime.datetime.now()
     flow_log_compare_result(
-        everpaste_url, home_url, title,
-        (compare_finish_time - compare_start_time).total_seconds()
+        everpaste_url,
+        home_url,
+        title,
+        (compare_finish_time - compare_start_time).total_seconds(),
     )
     return everpaste_url, home_url
 
 
-def flow_check_and_compare_loop(
-    workflow_run_ids, title, interval=1800, max_iter=-1
-):
+def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800, max_iter=-1):
     num_finished_runs = 0
     everpaste_url = None
     home_url = None
     report_title = None
     iter = 0
-    while (True):
+    while True:
         logger.info(center_with_padding(title))
         finished_runs = flow_check_runs(*workflow_run_ids)
-        failed_runs = [i for i in finished_runs if finished_runs[i] == 'FAILED']
-        logger.info(
-            '%d/%d RUNS FINISHED' % (len(finished_runs), len(workflow_run_ids))
-        )
+        failed_runs = [i for i in finished_runs if finished_runs[i] == "FAILED"]
+        logger.info("%d/%d RUNS FINISHED" % (len(finished_runs), len(workflow_run_ids)))
         if len(failed_runs) > 0:
-            logger.info('%d RUNS FAILED' % len(failed_runs))
+            logger.info("%d RUNS FAILED" % len(failed_runs))
             for i in failed_runs:
                 logger.warning(
-                    '    FAILED RUN: %s' % flow_short_summary(i, add_log=False)
+                    "    FAILED RUN: %s" % flow_short_summary(i, add_log=False)
                 )
         if len(finished_runs) != num_finished_runs:
             num_finished_runs = len(finished_runs)
-            report_title = ('%s @ %s' % (title, now()))
+            report_title = "%s @ %s" % (title, now())
             # only compare succeeded runs
             succeeded_runs = [
-                i for i in finished_runs if finished_runs[i] == 'SUCCEEDED'
+                i for i in finished_runs if finished_runs[i] == "SUCCEEDED"
             ]
-            everpaste_url, home_url = flow_compare(
-                succeeded_runs, title=report_title
-            )
+            everpaste_url, home_url = flow_compare(succeeded_runs, title=report_title)
         else:
-            logger.info('NO MORE NEW FINISHED RUNS...')
+            logger.info("NO MORE NEW FINISHED RUNS...")
             flow_log_compare_result(everpaste_url, home_url, report_title, 0)
-        logger.info(center_with_padding('') + '\n\n\n')
+        logger.info(center_with_padding("") + "\n\n\n")
         if len(finished_runs) == len(workflow_run_ids):
-            logger.info('FLOW CHECK/COMPARE LOOP FINISHED...\n')
+            logger.info("FLOW CHECK/COMPARE LOOP FINISHED...\n")
             break
         else:
-            logger.info(
-                'FLOW CHECK/COMPARE LOOP HIBERNATE for %ds\n' % interval
-            )
+            logger.info("FLOW CHECK/COMPARE LOOP HIBERNATE for %ds\n" % interval)
             time.sleep(interval)
         iter += 1
-        if iter >= max_iter:
-            logger.info('%d ITER REACHED...\n' % max_iter)
+        if max_iter > 0 and iter >= max_iter:
+            logger.info("%d ITER REACHED...\n" % max_iter)
             break
 
 
 def fbl_compare_link(*workflow_run_ids):
     """print the link to compare (at most 3) flows"""
-    beg = 'https://our.intern.facebook.com/intern/fblearner/run/compare/?'
+    beg = "https://our.intern.facebook.com/intern/fblearner/run/compare/?"
     parts = []
     for (i, fid) in enumerate(workflow_run_ids):
-        parts.append('compare_to[%s]=%s' % (i, fid))
-    parts.append('baseline_run=%s' % workflow_run_ids[0])
+        parts.append("compare_to[%s]=%s" % (i, fid))
+    parts.append("baseline_run=%s" % workflow_run_ids[0])
     for (i, fid) in enumerate(workflow_run_ids):
-        parts.append('all_runs[%s]=%s' % (i, fid))
-    link = beg + '&'.join(parts)
+        parts.append("all_runs[%s]=%s" % (i, fid))
+    link = beg + "&".join(parts)
     print(link)
 
 
 def chronos_top_user(
-    host_pool='fblearner_ftw',
+    host_pool="fblearner_ftw",
     num=10,
     show_cpu_usage=True,
     include_myself=True,
     rank_by_count=True,
-    add_log=True
+    add_log=True,
 ):
     """list top users of the host pool"""
     from RockfortExpress import RockfortExpress as rfe
@@ -972,61 +942,56 @@ def chronos_top_user(
     def _get_base_query(tablename):
         import libfb.py.employee
         import getpass
+
         return rfe.QueryCommon(
             user_name=getpass.getuser(),
             user_id=libfb.py.employee.unixname_to_uid(getpass.getuser()),
-            instance=tablename
+            instance=tablename,
         )
 
     SCUBA_TABLES = {
-        'running': 'chronos_resource_logs',
-        'finished': 'chronos_job_instance_states',
-        'pending': 'chronos_pending_job_instances',
+        "running": "chronos_resource_logs",
+        "finished": "chronos_job_instance_states",
+        "pending": "chronos_pending_job_instances",
     }
-    table = SCUBA_TABLES['running']
+    table = SCUBA_TABLES["running"]
     query_common = _get_base_query(table)
     view = rfe.View(
-        begin=int(parse_time('-2m')),
-        end=int(parse_time('now')),
+        begin=int(parse_time("-2m")),
+        end=int(parse_time("now")),
         filters=[
             rfe.Filter(
-                key='host_pool',
+                key="host_pool",
                 key_type=rfe.DataType.NORMAL,
                 string_vals=[str(host_pool)],
                 operation=rfe_const.OP_IN,
             )
-        ]
+        ],
     )
 
     def get_top_users():
         query_param = rfe.QueryParams(
-            dimensions=['owner'],
+            dimensions=["owner"],
             bucket_dimensions=[],
             bucket_sizes=[],
-            collect=['job_instance_id'],
+            collect=["job_instance_id"],
             limit=0,
-            metric=rfe.Metric.DISTINCT
+            metric=rfe.Metric.DISTINCT,
         )
-        result = rfe_client.getClient().queryRollup(
-            query_common, view, query_param
-        )
+        result = rfe_client.getClient().queryRollup(query_common, view, query_param)
         return OrderedDict([(r.dimensions[0], r.count) for r in result.rows])
 
     def get_cpu_usage():
         query_param = rfe.QueryParams(
-            dimensions=['owner'],
+            dimensions=["owner"],
             bucket_dimensions=[],
             bucket_sizes=[],
-            collect=['cpu'],
+            collect=["cpu"],
             limit=0,
-            metric=rfe.Metric.SUM
+            metric=rfe.Metric.SUM,
         )
-        result = rfe_client.getClient().queryRollup(
-            query_common, view, query_param
-        )
-        return OrderedDict(
-            [(r.dimensions[0], r.values[0]) for r in result.rows]
-        )
+        result = rfe_client.getClient().queryRollup(query_common, view, query_param)
+        return OrderedDict([(r.dimensions[0], r.values[0]) for r in result.rows])
 
     user_by_count = get_top_users()
     user_by_cpu = get_cpu_usage()
@@ -1039,8 +1004,8 @@ def chronos_top_user(
     top_ranks = range(1, 1 + len(top_users))
     if include_myself:
         for rank, user in enumerate(user_by_count):
-            if user == 'xlwang':
-                top_users.append('xlwang')
+            if user == "xlwang":
+                top_users.append("xlwang")
                 top_ranks.append(rank + 1)
                 break
     for rank, user in zip(top_ranks, top_users):
@@ -1056,56 +1021,41 @@ def chronos_top_user(
         )
     pprint_tabular(
         fields,
-        fmt={1: '{:^}',
-             3: '{:.2g}%',
-             5: '{:.2g}%'},
-        title={
-            0: 'RANK',
-            1: 'USER',
-            2: 'COUNT',
-            4: 'CPU',
-        },
-        col_sep='\n',
-        row_sep=' ',
-        add_log=add_log
+        fmt={1: "{:^}", 3: "{:.2g}%", 5: "{:.2g}%"},
+        title={0: "RANK", 1: "USER", 2: "COUNT", 4: "CPU"},
+        col_sep="\n",
+        row_sep=" ",
+        add_log=add_log,
     )
     return fields
 
 
 # --------------------------------- Experiments -------------------------------
 def hive_dataset(path, backshift=0, days=1):
+
     def get_blacklisted_dates(path):
         client = get_flow_indexing_client()
         namespace, table, partition = parse_hive_path(path)
-        blackout = client.getBlackoutPartitions(
-            namespace, table
-        ).partition_specs
+        blackout = client.getBlackoutPartitions(namespace, table).partition_specs
 
         def match(x):
             for k, v in x.items():
-                if k != 'ds' and v != partition.get(k, None):
+                if k != "ds" and v != partition.get(k, None):
                     return False
             return True
 
-        blackout = [b.get('ds', None) for b in blackout if match(b)]
+        blackout = [b.get("ds", None) for b in blackout if match(b)]
         return blackout
 
     def parse_hive_path(path):
-        namespace, table, partition = path[7:].split(
-            '/', 2
-        )  # len("hive://") == 7
-        partition = OrderedDict(
-            [part.split('=') for part in partition.split('/')]
-        )
+        namespace, table, partition = path[7:].split("/", 2)  # len("hive://") == 7
+        partition = OrderedDict([part.split("=") for part in partition.split("/")])
         return namespace, table, partition
 
     def get_valid_dates(path):
         namespace, table, partition = parse_hive_path(path)
-        ps = '/'.join(
-            [
-                k + '=' + v
-                for k, v in partition.items() if k != 'ds' and v != '*'
-            ]
+        ps = "/".join(
+            [k + "=" + v for k, v in partition.items() if k != "ds" and v != "*"]
         )
         meta = metastore(namespace=namespace)
         bad_ds = get_blacklisted_dates(path)
@@ -1118,126 +1068,103 @@ def hive_dataset(path, backshift=0, days=1):
 
     ds = get_valid_dates(path)[::-1]
     return [
-        path.replace('ds=*', 'ds={}'.format(ds[i]))
-        for i in range(backshift, days)
+        path.replace("ds=*", "ds={}".format(ds[i])) for i in range(backshift, days)
     ][::-1]
 
 
 def ads_train_eval_arg_update(
     args_or_workflow_id,
     use_hive2=True,
-    metrics={'ne', 'auc', 'jsd', 'ranking'},
+    metrics={"ne", "auc", "jsd", "ranking"},
     checkpoint=True,
     dataset=None,
 ):
     args = (
         flow_input_args(args_or_workflow_id)
-        if type(args_or_workflow_id) == int else args_or_workflow_id
+        if type(args_or_workflow_id) == int
+        else args_or_workflow_id
     )
     if use_hive2:
-        args['train_reader_options']['reader_type'] = 'hiveio2'
-        args['eval_reader_options']['reader_type'] = 'hiveio2'
+        args["train_reader_options"]["reader_type"] = "hiveio2"
+        args["eval_reader_options"]["reader_type"] = "hiveio2"
     if metrics:
-        args['metric_options']['metrics'] = []
-        if 'ne' in metrics:
-            args['metric_options']['metrics'].append(
+        args["metric_options"]["metrics"] = []
+        if "ne" in metrics:
+            args["metric_options"]["metrics"].append(
                 {
-                    "binary_ne":
-                        {
-                            "weight_name":
-                                "supervision:weight",
-                            "window_size":
-                                1000000,
-                            "name":
-                                "model",
-                            "learning_curves":
-                                ["ne", "calibration", "window_ne"],
-                            "plot_jsd": ('jsd' in metrics)
-                        }
+                    "binary_ne": {
+                        "weight_name": "supervision:weight",
+                        "window_size": 1000000,
+                        "name": "model",
+                        "learning_curves": ["ne", "calibration", "window_ne"],
+                        "plot_jsd": ("jsd" in metrics),
+                    }
                 }
             )
-        if 'auc' in metrics:
-            args['metric_options']['metrics'].append(
-                {
-                    "auc":
-                        {
-                            "weight_name": "supervision:weight",
-                            "name": "AUC",
-                        }
-                }
+        if "auc" in metrics:
+            args["metric_options"]["metrics"].append(
+                {"auc": {"weight_name": "supervision:weight", "name": "AUC"}}
             )
-        if 'ranking' in metrics:
-            args['metric_options']['metrics'].append(
+        if "ranking" in metrics:
+            args["metric_options"]["metrics"].append(
                 {
-                    "ranking_metric":
-                        {
-                            "learning_curves":
-                                [
-                                    "PV_window_positive_20000",
-                                    "PV_window_negative_20000",
-                                    "PV_window_positive_40000",
-                                    "PV_window_negative_40000",
-                                    "PV_window_positive_60000",
-                                    "PV_window_negative_60000",
-                                    "PV_window_positive_80000",
-                                    "PV_window_negative_80000",
-                                    "PV_window_positive_100000",
-                                    "PV_window_negative_100000",
-                                    "NDCG_window_positive_20000",
-                                    "NDCG_window_negative_20000",
-                                    "NDCG_window_positive_40000",
-                                    "NDCG_window_negative_40000",
-                                    "NDCG_window_positive_60000",
-                                    "NDCG_window_negative_60000",
-                                    "NDCG_window_positive_80000",
-                                    "NDCG_window_negative_80000",
-                                    "NDCG_window_positive_100000",
-                                    "NDCG_window_negative_100000",
-                                ],
-                            "name":
-                                "ranking",
-                            "weight_name":
-                                "supervision:weight",
-                            "window_size":
-                                120000,
-                            "max_window_k":
-                                100000,
-                            "window_gl":
-                                0.2,
-                            "max_lifetime_k":
-                                0,
-                            "lifetime_gl":
-                                0.2,
-                            "compute_negative":
-                                True,
-                            "predictive_value_at_top_k":
-                                True,
-                            "ndcg_at_k":
-                                True
-                        }
+                    "ranking_metric": {
+                        "learning_curves": [
+                            "PV_window_positive_20000",
+                            "PV_window_negative_20000",
+                            "PV_window_positive_40000",
+                            "PV_window_negative_40000",
+                            "PV_window_positive_60000",
+                            "PV_window_negative_60000",
+                            "PV_window_positive_80000",
+                            "PV_window_negative_80000",
+                            "PV_window_positive_100000",
+                            "PV_window_negative_100000",
+                            "NDCG_window_positive_20000",
+                            "NDCG_window_negative_20000",
+                            "NDCG_window_positive_40000",
+                            "NDCG_window_negative_40000",
+                            "NDCG_window_positive_60000",
+                            "NDCG_window_negative_60000",
+                            "NDCG_window_positive_80000",
+                            "NDCG_window_negative_80000",
+                            "NDCG_window_positive_100000",
+                            "NDCG_window_negative_100000",
+                        ],
+                        "name": "ranking",
+                        "weight_name": "supervision:weight",
+                        "window_size": 120000,
+                        "max_window_k": 100000,
+                        "window_gl": 0.2,
+                        "max_lifetime_k": 0,
+                        "lifetime_gl": 0.2,
+                        "compute_negative": True,
+                        "predictive_value_at_top_k": True,
+                        "ndcg_at_k": True,
+                    }
                 }
             )
     if checkpoint:
-        args['checkpoint_options'] = {
-            'aggressive_cleanup': True,
-            'checkpoint_every_examples': None,
-            'checkpoint_feature_strategy': u'default',
-            'checkpoint_path': None,
-            'epoch_duration_minutes': None,
-            'resume_from_epoch': None
+        args["checkpoint_options"] = {
+            "aggressive_cleanup": True,
+            "checkpoint_every_examples": None,
+            "checkpoint_feature_strategy": "default",
+            "checkpoint_path": None,
+            "epoch_duration_minutes": None,
+            "resume_from_epoch": None,
         }
     if dataset:
         hive_path, train_days, train_cap, eval_days, eval_cap = dataset
-        args['train_reader_options']['dataset'] = hive_dataset(
+        args["train_reader_options"]["dataset"] = hive_dataset(
             hive_path, backshift=1, days=train_days
         )
-        args['eval_reader_options']['dataset'] = hive_dataset(
+        args["eval_reader_options"]["dataset"] = hive_dataset(
             hive_path, backshift=0, days=eval_days
         )
         if train_cap:
-            args['train_reader_options']['max_examples'] = train_cap
+            args["train_reader_options"]["max_examples"] = train_cap
         if eval_cap:
-            args['eval_reader_options']['max_examples'] = eval_cap
+            args["eval_reader_options"]["max_examples"] = eval_cap
     return args
 
 
