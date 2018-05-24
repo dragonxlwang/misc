@@ -18,7 +18,8 @@ from itertools import islice
 # add this to enable get default input
 import fblearner.flow.facebook.plugins.all_plugins  # noqa
 import fblearner.flow.projects.dper.flow_types as T
-import numpy
+import matplotlib.pyplot as plt
+import numpy as np
 from caffe2.python.fb.dper.layer_models.model_definition import ttypes
 from caffe2.python.fb.dper.layer_models.utils import vis_utils
 from fblearner.flow.core.attrdict import from_dict
@@ -37,6 +38,7 @@ from future.utils import viewitems, viewkeys, viewvalues
 from libfb.py import fburl
 from libfb.py.decorators import retryable
 from metastore import metastore
+from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
 
@@ -83,12 +85,17 @@ def log_reset(file_names=None, max_ln_num=1e5):
     logger.info("==========================================")
 
 
-def pprint(s, add_log=False, lvl="info", raw=False, multiline=False):
-    s = str(s)
-    if not multiline:
-        lns = s.split("\n")
+def pprint(obj, add_log=False, lvl="info", raw=False, multiline=False):
+    if isinstance(obj, string_types):
+        if not multiline:
+            lns = obj.split("\n")
+        else:
+            lns = [obj]
     if not raw:
-        lns = [py_pprint.pformat(ln) for ln in lns]
+        lns = [
+            py_pprint.pformat(ln) if not isinstance(ln, string_types) else ln
+            for ln in lns
+        ]
     for ln in lns:
         if add_log:
             getattr(logger, lvl)(ln)
@@ -222,7 +229,7 @@ def file_purge(f, ln_num=1e5):
         fh.writelines(lines)
 
 
-def dir_purge(dir, max_file_num=100, min_retention_days=30):
+def dir_purge(dir, max_file_num=1000, min_retention_days=30):
     days = {}
     for f in os.listdir(dir):
         fp = os.path.join(dir, f)
@@ -241,6 +248,24 @@ def center_with_padding(s, pad="=", length=80):
     lp_len = int(pad_len / 2)
     rp_len = pad_len - lp_len
     return "{}{}{}".format(pad * lp_len, s, pad * rp_len)
+
+
+def gen_home_file(filename="", purge_home=True):
+    # home
+    dump_dir = "/home/xlwang/public_html/flows/"
+
+    filename, ext = os.path.splitext(filename)
+    filename = "%s%s%s" % (filename, uuid.uuid4(), ext)
+    if purge_home:
+        dir_purge(dump_dir)
+
+    filepath = os.path.join(dump_dir, filename)
+    url = get_fburl("https://home.fburl.com/~xlwang/flows/" + filename)
+    return filepath, url
+
+
+def map_inv(m):
+    return {v: k for k, v in m.items()}
 
 
 APOLLO_XIII_TAG_ID = 325182364673414
@@ -312,6 +337,39 @@ def flow_info(workflow_run_id):
     workflow_name, entitlement"""
     fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id)
+
+
+def flow_parent_id(workflow_run_id):
+    """return parent id"""
+    return flow_info(workflow_run_id).parentID
+
+
+def flow_ancestor_id(workflow_run_id):
+    """return top level flow id"""
+    while True:
+        p = flow_parent_id(workflow_run_id)
+        if p is None:
+            return workflow_run_id
+        else:
+            workflow_run_id = p
+
+
+def flow_children_ids(workflow_run_id):
+    """return children flow ids as a set"""
+    return flow_info(workflow_run_id).childrenRunIDs
+
+
+def flow_offspring_ids(workflow_run_id):
+    """return offspring ids as a set"""
+    children = flow_children_ids(workflow_run_id)
+    offspring = deepcopy(list(children))
+    for c in children:
+        offspring += list(flow_offspring_ids(c))
+    return set(offspring)
+
+
+def flow_rep(workflow_run_id):
+    return "f%d" % workflow_run_id
 
 
 def flow_name(workflow_run_id):
@@ -481,7 +539,9 @@ def flow_detailed_status(workflow_run_id):
     return detailed_st
 
 
-def flow_list(owner="xlwang", status="RUNNING", print_short_summary=True):
+def flow_list(
+    owner="xlwang", status="RUNNING", print_short_summary=False, check_runs=False
+):
     """list the flows owned by the owner and in the specified status"""
     # fblearner/flow/driver/queries.py
     # fblearner/flow/storage/models.py
@@ -517,6 +577,10 @@ def flow_list(owner="xlwang", status="RUNNING", print_short_summary=True):
     workflow_run_ids = [r[0] for r in rows]
     top_lvl_run_ids = [r[0] for r in rows if r[-1] == None]
     if print_short_summary:
+        for workflow_run_id in top_lvl_run_ids:
+            print(flow_short_summary(workflow_run_id, add_log=False))
+    if check_runs:
+        flow_check_runs(*top_lvl_run_ids)
         for workflow_run_id in top_lvl_run_ids:
             print(flow_short_summary(workflow_run_id, add_log=False))
     return workflow_run_ids
@@ -580,12 +644,18 @@ def flow_summary(workflow_run_id, add_log=True):
     return "\n".join(lines)
 
 
-def flow_short_summary(workflow_run_id, add_log=True):
+def flow_short_summary(workflow_run_id, add_log=True, with_fburl=False):
     """easy to crop out the flow ids and return status"""
     title = flow_title(workflow_run_id)
     status = flow_status(workflow_run_id, add_log=False)
     time = flow_elapsed_time_str(workflow_run_id)
-    ln = '%s, # "%s", %s, %s' % (workflow_run_id, title, status, time)
+    ln = '%s, # %s"%s", %s, %s' % (
+        workflow_run_id,
+        str(fbl_flow_link(workflow_run_id)) + " " if with_fburl else "",
+        title,
+        status,
+        time,
+    )
     if add_log:
         logger.info(ln)
     return ln
@@ -621,29 +691,49 @@ def flow_pkg_extend(workflow_run_id):
     )
 
 
-def flow_clone(workflow_run_id, title=None, owner=None, entitlement=None, package=None):
+def flow_clone(
+    workflow_run_id,
+    title=None,
+    owner=None,
+    entitlement=None,
+    package=None,
+    arg_modifier=None,
+    title_suffix="",
+):
     """clone a flow"""
     default_title = ", ".join(
         [flow_title(workflow_run_id), "clf%s" % str(workflow_run_id)]
     )
     run = flow_run(
-        args=flow_input_args(workflow_run_id),
-        title=title or default_title,
+        args=(lambda a: arg_modifier(a) if arg_modifier else a)(
+            flow_input_args(workflow_run_id)
+        ),
+        title=(title or default_title) + title_suffix,
         owner=owner or flow_owner(workflow_run_id),
         entitlement=entitlement or flow_entitlement(workflow_run_id),
         package=package or flow_package(workflow_run_id),
         workflow=flow_name(workflow_run_id),
         model_type_id=flow_model_type_id(workflow_run_id),
     )
-
+    if arg_modifier is not None:
+        logger.info(
+            "flow compare: %s"
+            % fbl_compare_link(run.id, workflow_run_id, print_fburl=False)
+        )
     return run
 
 
-def flow_kill(workflow_run_id, reason="murdered"):
+def flow_kill(workflow_run_id_or_ids, reason="murdered"):
     """kill a flow with a reason"""
     fl = FlowSession()
-    fl.kill_workflow(workflow_run_id, reason=reason)
-    logger.info("flow f%s killed (%s)" % (str(workflow_run_id), reason))
+    workflow_run_ids = (
+        [workflow_run_id_or_ids]
+        if isinstance(workflow_run_id_or_ids, int)
+        else workflow_run_id_or_ids
+    )
+    for workflow_run_id in workflow_run_ids:
+        fl.kill_workflow(workflow_run_id, reason=reason)
+        logger.info("flow f%s killed (%s)" % (str(workflow_run_id), reason))
 
 
 def flow_default_input_args(workflow_name=None, pkg_version=None, workflow_run_id=None):
@@ -881,7 +971,8 @@ def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800, max_iter
             logger.info("%d RUNS FAILED" % len(failed_runs))
             for i in failed_runs:
                 logger.warning(
-                    "    FAILED RUN: %s" % flow_short_summary(i, add_log=False)
+                    "    FAILED RUN: %s"
+                    % flow_short_summary(i, add_log=False, with_fburl=True)
                 )
         if len(finished_runs) != num_finished_runs:
             num_finished_runs = len(finished_runs)
@@ -895,19 +986,26 @@ def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800, max_iter
             logger.info("NO MORE NEW FINISHED RUNS...")
             flow_log_compare_result(everpaste_url, home_url, report_title, 0)
         logger.info(center_with_padding("") + "\n\n\n")
+        iter += 1
         if len(finished_runs) == len(workflow_run_ids):
             logger.info("FLOW CHECK/COMPARE LOOP FINISHED...\n")
+            break
+        elif max_iter > 0 and iter >= max_iter:
+            logger.info("FLOW CHECK/COMPARE LOOP REACHED %d ITER...\n" % max_iter)
             break
         else:
             logger.info("FLOW CHECK/COMPARE LOOP HIBERNATE for %ds\n" % interval)
             time.sleep(interval)
-        iter += 1
-        if max_iter > 0 and iter >= max_iter:
-            logger.info("%d ITER REACHED...\n" % max_iter)
-            break
 
 
-def fbl_compare_link(*workflow_run_ids):
+def fbl_flow_link(workflow_run_id, shorten_to_fburl=True):
+    url = (
+        "https://our.intern.facebook.com/intern/fblearner/details/%s" % workflow_run_id
+    )
+    return get_fburl(url) if shorten_to_fburl else url
+
+
+def fbl_compare_link(*workflow_run_ids, **kwargs):
     """print the link to compare (at most 3) flows"""
     beg = "https://our.intern.facebook.com/intern/fblearner/run/compare/?"
     parts = []
@@ -917,7 +1015,10 @@ def fbl_compare_link(*workflow_run_ids):
     for (i, fid) in enumerate(workflow_run_ids):
         parts.append("all_runs[%s]=%s" % (i, fid))
     link = beg + "&".join(parts)
-    print(link)
+    fburl = get_fburl(link)
+    if kwargs.get("print_fburl", True):
+        pprint(fburl)
+    return fburl
 
 
 def chronos_top_user(
@@ -1170,6 +1271,72 @@ def ads_train_eval_arg_update(
 
 def rep_func(func, rep, *args, **kwargs):
     return [func(*args, **kwargs) for _ in range(rep)]
+
+
+def mlt_plot(x, y):
+    plt.plot(x, y)
+    plt.show()
+
+
+def mlt_plot_curves(curves, modifiers={}, names={}, beg=None, end=None, title=None):
+    beg = int(beg) if beg is not None else beg
+    end = int(end) if end is not None else end
+    if isinstance(curves, list):
+        curves = {"unnamed": curves}
+
+    def get_data(points, modifier=None):
+        x = []
+        y = []
+        modifier = modifier or (lambda x, y: (x, y))
+        for (px, py) in points:
+            if (beg is None or px >= beg) and (end is None or px < end):
+                _x, _y = modifier(px, py)
+                x.append(_x)
+                y.append(_y)
+        return x, y
+
+    data = {
+        name: get_data(points, modifiers.get(name, None))
+        for name, points in curves.items()
+    }
+    fig = plt.figure()
+    sample_nums = []
+    for name, (x, y) in data.items():
+        plt.plot(x, y, linestyle="-", marker=".", label=names.get(name, name))
+        sample_nums.append(len(x))
+    plt.legend(loc="best")
+    if title is not None:
+        plt.title(title)
+    plt.text(
+        0.5,
+        0.0,
+        "samples: {}+/-{}".format(np.average(sample_nums), np.std(sample_nums)),
+        horizontalalignment="center",
+        transform=fig.transFigure,
+    )
+    plt.show()
+
+    return fig
+
+
+def mlt_plot_learning_curves_from_result(
+    result,
+    curve_names,
+    modifiers={},
+    names={},
+    beg=None,
+    end=None,
+    title=None,
+    publish=False,
+):
+    curves = OrderedDict()
+    for name in curve_names:
+        curves[name] = result["learning_curves"][name]["data"]
+    fig = mlt_plot_curves(curves, modifiers, names, beg, end, title)
+    if publish:
+        fp, url = gen_home_file("%s.png" % title)
+        fig.savefig(fp)
+        pprint("image saved to: %s" % url)
 
 
 log_reset()
