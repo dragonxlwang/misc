@@ -36,7 +36,7 @@ from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
 from fblearner.flow.util.runner_utilities import load_config
 from future.utils import viewitems, viewkeys, viewvalues
 from libfb.py import fburl
-from libfb.py.decorators import retryable
+from libfb.py.decorators import retryable, memoize_timed
 from metastore import metastore
 from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
@@ -674,14 +674,15 @@ def flow_check_runs(*workflow_run_ids):
     return finished_runs
 
 
+@memoize_timed(24*60*60)
 @retryable(num_tries=3, sleep_time=1)
 def flow_pkg_extend(workflow_run_id):
+    package = flow_package(workflow_run_id)
     # reset env
     my_env = os.environ.copy()
     my_env.pop("LD_LIBRARY_PATH")
     logger.info(
-        "extend expiration of package %s (flow %s)"
-        % (flow_package(workflow_run_id), workflow_run_id)
+        "extend expiration of package %s (flow %s)" % (package, workflow_run_id)
     )
     logger.info(
         subprocess.check_output(
@@ -689,6 +690,7 @@ def flow_pkg_extend(workflow_run_id):
             env=my_env,
         )
     )
+    return package
 
 
 def flow_clone(
