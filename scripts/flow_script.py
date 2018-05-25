@@ -36,7 +36,7 @@ from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
 from fblearner.flow.util.runner_utilities import load_config
 from future.utils import viewitems, viewkeys, viewvalues
 from libfb.py import fburl
-from libfb.py.decorators import retryable, memoize_timed
+from libfb.py.decorators import memoize_timed, retryable
 from metastore import metastore
 from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
@@ -674,7 +674,7 @@ def flow_check_runs(*workflow_run_ids):
     return finished_runs
 
 
-@memoize_timed(24*60*60)
+@memoize_timed(24 * 60 * 60)
 @retryable(num_tries=3, sleep_time=1)
 def flow_pkg_extend(workflow_run_id):
     package = flow_package(workflow_run_id)
@@ -1030,12 +1030,15 @@ def chronos_top_user(
     include_myself=True,
     rank_by_count=True,
     add_log=True,
+    ago="-1h",
 ):
     """list top users of the host pool"""
     from RockfortExpress import RockfortExpress as rfe
     from RockfortExpress import constants as rfe_const
     from rfe import client as rfe_client
     from libfb.py.dateutil import parse_time
+    import libfb.py.employee
+    import getpass
 
     # check following files for reference:
     # fbcode/schedulers/chronos/py/libs/scubahelper.py
@@ -1043,9 +1046,6 @@ def chronos_top_user(
     # fbcode/aml/chronos_job_stats/
 
     def _get_base_query(tablename):
-        import libfb.py.employee
-        import getpass
-
         return rfe.QueryCommon(
             user_name=getpass.getuser(),
             user_id=libfb.py.employee.unixname_to_uid(getpass.getuser()),
@@ -1060,7 +1060,7 @@ def chronos_top_user(
     table = SCUBA_TABLES["running"]
     query_common = _get_base_query(table)
     view = rfe.View(
-        begin=int(parse_time("-2m")),
+        begin=int(parse_time(ago)),
         end=int(parse_time("now")),
         filters=[
             rfe.Filter(
@@ -1071,61 +1071,56 @@ def chronos_top_user(
             )
         ],
     )
+    query_param = rfe.QueryParams(
+        bucket_dimensions=["job_instance_id"],
+        bucket_sizes=[1],
+        dimensions=["owner"],
+        collect=["cpu", "rss_memory"],  # aggregation columns
+        limit=0,
+        metric=rfe.Metric.AVG,
+    )
+    result = rfe_client.getClient().queryRollup(query_common, view, query_param).rows
+    cpu = {}
+    mem = {}
+    cnt = {}
+    for entry in result:
+        o = entry.dimensions[1]
+        if libfb.py.employee.unixname_to_uid(o) == 0:
+            continue
+        c = entry.values[0]
+        m = entry.values[1]
+        cpu[o] = cpu.get(o, 0.0) + c
+        mem[o] = mem.get(o, 0.0) + m
+        cnt[o] = cnt.get(o, 0) + 1
 
-    def get_top_users():
-        query_param = rfe.QueryParams(
-            dimensions=["owner"],
-            bucket_dimensions=[],
-            bucket_sizes=[],
-            collect=["job_instance_id"],
-            limit=0,
-            metric=rfe.Metric.DISTINCT,
-        )
-        result = rfe_client.getClient().queryRollup(query_common, view, query_param)
-        return OrderedDict([(r.dimensions[0], r.count) for r in result.rows])
-
-    def get_cpu_usage():
-        query_param = rfe.QueryParams(
-            dimensions=["owner"],
-            bucket_dimensions=[],
-            bucket_sizes=[],
-            collect=["cpu"],
-            limit=0,
-            metric=rfe.Metric.SUM,
-        )
-        result = rfe_client.getClient().queryRollup(query_common, view, query_param)
-        return OrderedDict([(r.dimensions[0], r.values[0]) for r in result.rows])
-
-    user_by_count = get_top_users()
-    user_by_cpu = get_cpu_usage()
-    count_sum = sum(user_by_count.values())
-    cpu_sum = sum(user_by_cpu.values())
+    cpu_sum = sum(cpu.values())
+    mem_sum = sum(mem.values())
+    cnt_sum = sum(cnt.values())
 
     fields = []
-    user_rank = user_by_count if rank_by_count else user_by_cpu
-    top_users = list(islice(user_rank, 0, min(num, len(user_rank))))
-    top_ranks = range(1, 1 + len(top_users))
-    if include_myself:
-        for rank, user in enumerate(user_by_count):
-            if user == "xlwang":
-                top_users.append("xlwang")
-                top_ranks.append(rank + 1)
-                break
-    for rank, user in zip(top_ranks, top_users):
+    metric = cnt if rank_by_count else cpu
+    user = list(sorted(metric, key=lambda o: -metric[o]))
+    rank = dict(zip(user, range(1, 1 + len(user))))
+    myself = getpass.getuser()
+    for o in list(islice(user, 0, min(num, len(user)))) + (
+        [myself] if myself in user else []
+    ):
         fields.append(
             [
-                rank,
-                user,
-                user_by_count[user],
-                float(user_by_count[user]) / count_sum * 100,
-                user_by_cpu[user],
-                float(user_by_cpu[user]) / cpu_sum * 100,
+                rank[o],
+                o,
+                cnt[o],
+                float(cnt[o]) / cnt_sum * 100,
+                cpu[o],
+                float(cpu[o]) / cpu_sum * 100,
+                mem[o],
+                float(mem[o]) / mem_sum * 100,
             ]
         )
     pprint_tabular(
         fields,
-        fmt={1: "{:^}", 3: "{:.2g}%", 5: "{:.2g}%"},
-        title={0: "RANK", 1: "USER", 2: "COUNT", 4: "CPU"},
+        fmt={1: "{:^}", 3: "{:.2g}%", 5: "{:.2g}%", 7: "{:.2g}%"},
+        title={0: "RANK", 1: "USER", 2: "COUNT", 4: "CPU", 6: "MEM"},
         col_sep="\n",
         row_sep=" ",
         add_log=add_log,
