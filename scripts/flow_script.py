@@ -1,5 +1,4 @@
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import collections
 import datetime
@@ -29,9 +28,15 @@ from fblearner.flow.external_api import FlowSession, WorkflowRun
 from fblearner.flow.ml.runners.chronosscheduler import get_workflow_run_status
 from fblearner.flow.plugin_definitions.driver import Drivers
 from fblearner.flow.service.flow_client import get_flow_indexing_client
-from fblearner.flow.storage.models import (ModelType, Session, SessionContext,
-                                           Workflow, WorkflowRegistration,
-                                           WorkflowRun, initialize_session)
+from fblearner.flow.storage.models import (
+    ModelType,
+    Session,
+    SessionContext,
+    Workflow,
+    WorkflowRegistration,
+    WorkflowRun,
+    initialize_session,
+)
 from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
 from fblearner.flow.util.runner_utilities import load_config
 from future.utils import viewitems, viewkeys, viewvalues
@@ -41,6 +46,7 @@ from metastore import metastore
 from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
+
 
 # --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
@@ -103,7 +109,6 @@ def pprint(obj, add_log=False, lvl="info", raw=False, multiline=False):
 
 
 def pprint_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" ", add_log=False):
-
     def add_max_width_to_fmt(fmt, width):
         i = fmt.find(":")
         if fmt[i + 1] == "-" or fmt[i + 1] == "^":
@@ -126,7 +131,6 @@ def pprint_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" ", add_log=
         ) + [fmt.format(f) for f in fields]
 
     def fmt_tbl(fields, fmt={}):
-
         def transpose(fields):
             r = len(fields)
             c = len(fields[0])
@@ -539,6 +543,38 @@ def flow_detailed_status(workflow_run_id):
     return detailed_st
 
 
+def flow_find_by_title(title, owner=None):
+    """list the flows owned by the owner and in the specified status"""
+    # fblearner/flow/driver/queries.py
+    # fblearner/flow/storage/models.py
+    from sqlalchemy.sql import text
+
+    initialize_session(load_config())
+    with SessionContext(Session) as session:
+        rows = session.execute(
+            text(
+                """
+                SELECT
+                    run.id AS workflow_run_id,
+                    metadata.name AS workflow_title
+                FROM workflow_runs run
+                LEFT OUTER JOIN workflow_run_metadata metadata ON
+                    run.id = metadata.workflow_run_id
+               WHERE
+                    (metadata.name = '{title}'{owner_condition})
+                """.format(
+                    title=title,
+                    owner_condition=(
+                        ""
+                        if owner is None
+                        else " and run.owner_unixname = '{owner}'".format(owner=owner)
+                    ),
+                )
+            )
+        ).fetchall()
+    return [r[0] for r in rows]
+
+
 def flow_list(
     owner="xlwang", status="RUNNING", print_short_summary=False, check_runs=False
 ):
@@ -691,6 +727,39 @@ def flow_pkg_extend(workflow_run_id):
         )
     )
     return package
+
+
+def flow_pkg_build():
+    my_env = os.environ.copy()
+    my_env.pop("LD_LIBRARY_PATH")
+    diff_info = (
+        subprocess.check_output(
+            ["hg", "log", "-r", ".", "--template", "'{xg_sl_normal}'"],
+            cwd=os.path.expanduser("~/fbcode"),
+        )
+        .replace('"', "")
+        .replace("'", "")
+    )
+    title = "CANARY: %s" % diff_info
+    workflow_run_ids = flow_find_by_title(title)
+    if len(workflow_run_ids) > 0:
+        print("pkg previously canaried with run: {}".format(title))
+    else:
+        output = subprocess.check_output(
+            [os.path.expanduser("~/misc/scripts/canary_workflow.sh"), "-t", title],
+            env=my_env,
+        )
+        print(output)
+        try:
+            m = re.search("our.intern.facebook.com/intern/fblearner/details/(\d+)", x)
+            workflow_run_ids = [int(m.group(1))]
+        except:
+            workflow_run_ids = flow_find_by_title(title)
+    for workflow_run_id in workflow_run_ids:
+        print(
+            "FBL: %s, %s" % (flow_rep(workflow_run_id), fbl_flow_link(workflow_run_id))
+        )
+    return workflow_run_ids
 
 
 def flow_clone(
@@ -1130,7 +1199,6 @@ def chronos_top_user(
 
 # --------------------------------- Experiments -------------------------------
 def hive_dataset(path, backshift=0, days=1):
-
     def get_blacklisted_dates(path):
         client = get_flow_indexing_client()
         namespace, table, partition = parse_hive_path(path)

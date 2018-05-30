@@ -46,6 +46,9 @@ function get_hostname {
 function rvmv {
   mv $2 $1
 }
+function uncolor {
+  echo "$1" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"
+}
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then
@@ -874,6 +877,8 @@ alias hhl='hg pull'
 alias hhp='arc diff'
 alias hrb='hg rebase'
 alias hid='hg id -i'
+alias hg_query_author="hg log -r . --template '{sl_user}'"
+alias hg_query_diff="hg log -r . --template '{sl_diff_super}'"
 alias hrf='hhl && arc cleanup-features && hum && hs'
 alias hhpur='hhl && arc cleanup-features && hrb -d master && hs'
 alias hrv='hg revert'
@@ -888,6 +893,7 @@ alias fbc1='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
 alias cf='cd ~/configerator'
+alias canary_workflow='~/misc/scripts/canary_workflow.sh'
 function fbtmux {
   fbc2
   tmux new-window -t 2 -c $(readlink -f ~/fbcode)
