@@ -10,7 +10,7 @@ import shutil
 import subprocess
 import time
 import uuid
-from collections import OrderedDict, namedtuple
+from collections import Iterable, OrderedDict, namedtuple
 from copy import deepcopy
 from itertools import islice
 
@@ -92,16 +92,12 @@ def log_reset(file_names=None, max_ln_num=1e5):
 
 
 def pprint(obj, add_log=False, lvl="info", raw=False, multiline=False):
-    if isinstance(obj, string_types):
-        if not multiline:
-            lns = obj.split("\n")
-        else:
-            lns = [obj]
-    if not raw:
-        lns = [
-            py_pprint.pformat(ln) if not isinstance(ln, string_types) else ln
-            for ln in lns
-        ]
+    if not isinstance(obj, string_types):
+        obj = py_pprint.pformat(obj) if not raw else str(obj)
+    if not multiline:
+        lns = obj.split("\n")
+    else:
+        lns = [obj]
     for ln in lns:
         if add_log:
             getattr(logger, lvl)(ln)
@@ -177,6 +173,11 @@ def get_fburl(raw_url):
     return fburl.get_fburl(raw_url)
 
 
+@retryable(num_tries=3, sleep_time=1)
+def resolve_fburl(url):
+    return fburl.resolve_fburl(url)
+
+
 def timedelta_rep(td):
     return str(td).replace(" day, ", ":").replace(" days, ", ":")
 
@@ -217,6 +218,7 @@ def file_life_days(f):
 
 
 def file_touch(f):
+    """update file modify/access time"""
     with open(f, "a"):
         os.utime(f, None)
 
@@ -266,6 +268,25 @@ def gen_home_file(filename="", purge_home=True):
     filepath = os.path.join(dump_dir, filename)
     url = get_fburl("https://home.fburl.com/~xlwang/flows/" + filename)
     return filepath, url
+
+
+def get_home_file_from_url(url):
+    # home
+    dump_dir = "/home/xlwang/public_html/flows/"
+    prefix = "https://home.fburl.com/~xlwang/flows/"
+    try:
+        url = fburl.resolve_fburl(url)
+    except Exception:
+        pass
+    assert url.startswith(prefix), url
+    filepath = os.path.join(dump_dir, url.replace(prefix, ""))
+    return filepath
+
+
+def url_touch(url):
+    filepath = get_home_file_from_url(url)
+    file_touch(filepath)
+    return
 
 
 def map_inv(m):
@@ -1343,11 +1364,19 @@ def mlt_plot(x, y):
     plt.show()
 
 
-def mlt_plot_curves(curves, modifiers={}, names={}, beg=None, end=None, title=None):
+def mlt_plot_curves(
+    multi_curves, modifiers={}, names={}, beg=None, end=None, title=None
+):
     beg = int(beg) if beg is not None else beg
     end = int(end) if end is not None else end
-    if isinstance(curves, list):
-        curves = {"unnamed": curves}
+    if isinstance(multi_curves, list):
+        points = multi_curves
+        multi_curves = {"unnamed_curve": points}
+    if isinstance(multi_curves, dict) and all(
+        isinstance(v, list) for v in multi_curves.values()
+    ):
+        curves = multi_curves
+        multi_curves = {"unnamed_subplot": curves}
 
     def get_data(points, modifier=None):
         x = []
@@ -1360,33 +1389,40 @@ def mlt_plot_curves(curves, modifiers={}, names={}, beg=None, end=None, title=No
                 y.append(_y)
         return x, y
 
-    data = {
-        name: get_data(points, modifiers.get(name, None))
-        for name, points in curves.items()
-    }
-    fig = plt.figure()
-    sample_nums = []
-    for name, (x, y) in data.items():
-        plt.plot(x, y, linestyle="-", marker=".", label=names.get(name, name))
-        sample_nums.append(len(x))
-    plt.legend(loc="best")
+    figsize = deepcopy(plt.rcParams["figure.figsize"])
+    nrow = len(multi_curves)
+    figsize[1] *= nrow
+    fig, axs = plt.subplots(nrow, 1, figsize=figsize)
+    if not isinstance(axs, Iterable):
+        axs = [axs]
+    for i, (subplot_title, curves) in enumerate(multi_curves.items()):
+        data = {
+            name: get_data(points, modifiers.get(name, None))
+            for name, points in curves.items()
+        }
+        sample_nums = []
+        for name, (x, y) in data.items():
+            axs[i].plot(x, y, linestyle="-", marker=".", label=names.get(name, name))
+            sample_nums.append(len(x))
+        axs[i].legend(loc="best")
+        axs[i].set_title(subplot_title)
+        axs[i].text(
+            0.5,
+            -0.15,
+            "samples: {}+/-{}".format(np.average(sample_nums), np.std(sample_nums)),
+            horizontalalignment="center",
+            transform=axs[i].transAxes,
+        )
     if title is not None:
-        plt.title(title)
-    plt.text(
-        0.5,
-        0.0,
-        "samples: {}+/-{}".format(np.average(sample_nums), np.std(sample_nums)),
-        horizontalalignment="center",
-        transform=fig.transFigure,
-    )
+        plt.suptitle(title, y=0.99)
+    plt.tight_layout(rect=[0, 0.0, 1, 0.98])
     plt.show()
-
     return fig
 
 
 def mlt_plot_learning_curves_from_result(
     result,
-    curve_names,
+    subplot_curve_names,
     modifiers={},
     names={},
     beg=None,
@@ -1394,14 +1430,26 @@ def mlt_plot_learning_curves_from_result(
     title=None,
     publish=False,
 ):
-    curves = OrderedDict()
-    for name in curve_names:
-        curves[name] = result["learning_curves"][name]["data"]
-    fig = mlt_plot_curves(curves, modifiers, names, beg, end, title)
+    def get_curve(curve):
+        return result["learning_curves"][curve]["data"]
+
+    multi_curves = OrderedDict()
+    if isinstance(subplot_curve_names, dict):
+        for subplot_title, curves in subplot_curve_names.items():
+            multi_curves[subplot_title] = OrderedDict()
+            for curve in curves:
+                multi_curves[subplot_title][curve] = get_curve(curve)
+    else:
+        subplot_title = ""
+        multi_curves[subplot_title] = OrderedDict()
+        for curve in subplot_curve_names:
+            multi_curves[subplot_title][curve] = get_curve(curve)
+    fig = mlt_plot_curves(multi_curves, modifiers, names, beg, end, title)
     if publish:
         fp, url = gen_home_file("%s.png" % title)
         fig.savefig(fp)
         pprint("image saved to: %s" % url)
+        return url
 
 
 log_reset()

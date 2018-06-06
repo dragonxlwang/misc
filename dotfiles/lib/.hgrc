@@ -18,6 +18,7 @@ track.current = True
 [templatealias]
 xg_sl = "{label(sl_label, separate('\n', separate('  ', sl_node_info, '{date|age}', sl_user, sl_diff_super, sl_tasks, sl_books, sl_branch, sl_troubles), '{sl_desc}', '\n'))}"
 xg_sl_normal = "{separate('  ', sl_userdefined_prefix, shortest(node, sl_hash_maxlen), date(date), sl_user, sl_diff, sl_tasks, sl_books, sl_branch, sl_userdefined_suffix)}"
+xg_sl_files = "{separate(' ', label(cyan, node), label(yellow, phabdiff))}:\n{separate('', join(file_adds % ' {label(green, \'+\')} {file}\n', ''), join(file_dels % ' {label(red, \'-\')} {file}\n', ''), join(file_mods % ' {label(blue, \'*\')} {file}\n', ''))}"
 
 
 [extensions]

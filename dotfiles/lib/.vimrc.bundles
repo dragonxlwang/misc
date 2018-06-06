@@ -228,8 +228,12 @@ let g:formatdef_yapf =
   \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:80}\" -l '.a:firstline.'-'.a:lastline"
 let g:formatdef_black = "'black -q - | isort -'"
 let g:formatters_python=['black', 'yapf','autopep8']
+let g:formatters_yapf=['yapf', 'autopep8']
 nnoremap <leader>w :Autoformat \| :w!<CR>
 vnoremap <leader>w :Autoformat \| :w!<CR>
+noremap <leader>W
+  \ :Autoformat yapf \| :w! \|
+  \ :setl textwidth=80 \| :setl colorcolumn=80 <CR>
 " let g:formatter_yapf_style = 'facebook'
 " let g:formatters_python = ['yapf']
 " let auto_format_type_list = ['c', 'cpp', 'python']
