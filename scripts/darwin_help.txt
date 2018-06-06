@@ -1,0 +1,3 @@
+Reset Audio:
+============
+sudo killall coreaudiod
