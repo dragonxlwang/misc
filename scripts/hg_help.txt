@@ -48,6 +48,8 @@ Link Commit to Diff
 ===================
 jf link -d DXXXXXXX
 
-Common Reviewer
-===============
+Reviewer:
+=========
+- hg_authors [dir|current_directory]
+
 chocjy, amalevich, kittipat, volkhin, ninghz, cxj

@@ -381,6 +381,7 @@ function up_profile {
   cyanecho "sourcing ${HOME}/.tmux.conf"
   tmux source-file ${HOME}/.tmux.conf
 }
+alias darwin_help="cat ~/misc/scripts/darwin_help.txt"
 ##----------------------------== tmux conf, tmp ==----------------------------##
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 function init_tmux_tpm {
@@ -882,6 +883,13 @@ alias hg_query_diff="hg log -r . --template '{sl_diff_super}'"
 alias hrf='hhl && arc cleanup-features && hum && hs'
 alias hhpur='hhl && arc cleanup-features && hrb -d master && hs'
 alias hrv='hg revert'
+function hg_authors {
+  # hg --pager=off log --template "{xg_sl_authors}" -- ${1:-$(pwd)}
+  hg log --template "{xg_sl_authors}" -- ${1:-$(readlink -f .)}
+}
+function hg_files {
+  hg log --template "{xg_sl_files}" -- ${1:-$(readlink -f .)}
+}
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias flow_help="cat ~/misc/scripts/flow_help.txt"
 alias dev_help="cat ~/misc/scripts/dev_help.txt"
