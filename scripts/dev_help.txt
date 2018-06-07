@@ -12,3 +12,20 @@ connecting to my sandbox: ERR_CERT_COMMON_NAME_INVALID
 
 Solution:
   ipython_setup
+
+List HDFS FBL files:
+====================
+- drhdfscli list -lh fblearner://user/facebook/admarket/sigrid/54199196/28/
+
+Tupperware:
+===========
+- tw ssh ads_global/admarket/sigrid_online_trainer.ads_global_28CPU_248GB/94
+- tw scp -r ads_global/admarket/caffe2_online_trainer_canary.one/1:/logs/ ~/tmp
+- tw log ads_global/admarket/sigrid_online_trainer.ads_global_28CPU_248GB/94 --file stderr --num-lines 20000 > /tmp/log
+- twcanary stop tupperware/config/admarket/caffe2/online_trainer/online_trainer_canary.ctw $experiment_id
+
+
+Mail:
+=====
+- echo body | Mail -s subject recipient
+- echo body | Mail -a attachment -s subject receiptent

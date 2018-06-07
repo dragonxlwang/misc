@@ -287,7 +287,7 @@ alias -g PT='| tail'
 alias -g PG='| grep'
 alias -g PGI='| grep -i'
 alias -g PL="| less"
-alias -g PCL="--color=always | less"
+alias -g PCL="--color=always | less -r"
 alias -g PP="| pygmentize"
 alias -g PC="| cat -A"
 alias -g PF="| fpp"

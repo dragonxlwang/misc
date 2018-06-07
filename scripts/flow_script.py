@@ -1,4 +1,5 @@
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 import collections
 import datetime
@@ -28,15 +29,9 @@ from fblearner.flow.external_api import FlowSession, WorkflowRun
 from fblearner.flow.ml.runners.chronosscheduler import get_workflow_run_status
 from fblearner.flow.plugin_definitions.driver import Drivers
 from fblearner.flow.service.flow_client import get_flow_indexing_client
-from fblearner.flow.storage.models import (
-    ModelType,
-    Session,
-    SessionContext,
-    Workflow,
-    WorkflowRegistration,
-    WorkflowRun,
-    initialize_session,
-)
+from fblearner.flow.storage.models import (ModelType, Session, SessionContext,
+                                           Workflow, WorkflowRegistration,
+                                           WorkflowRun, initialize_session)
 from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
 from fblearner.flow.util.runner_utilities import load_config
 from future.utils import viewitems, viewkeys, viewvalues
@@ -46,7 +41,6 @@ from metastore import metastore
 from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
-
 
 # --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
@@ -291,6 +285,15 @@ def url_touch(url):
 
 def map_inv(m):
     return {v: k for k, v in m.items()}
+
+
+def human_readable_file_size_str(fp):
+    fs = os.path.getsize(fp)
+    for count in ["Bytes", "KB", "MB", "GB"]:
+        if fs > -1024.0 and fs < 1024.0:
+            return "%3.1f%s" % (fs, count)
+        fs /= 1024.0
+    return "%3.1f%s" % (fs, "TB")
 
 
 APOLLO_XIII_TAG_ID = 325182364673414
@@ -1450,6 +1453,136 @@ def mlt_plot_learning_curves_from_result(
         fig.savefig(fp)
         pprint("image saved to: %s" % url)
         return url
+
+
+def send_email(
+    subject,
+    to,
+    frm=None,
+    body="",
+    reply_to=None,
+    cc=None,
+    attachment_file_paths=None,
+    add_attachment_list=True,
+    auto_sig=True,
+):
+    """
+    Send emails with fields:
+     subject, to
+    and optional:
+     from, body, reply_to, cc, attachments
+    """
+    import mimetypes
+    from email.mime.base import MIMEBase
+    from email import encoders
+    from email.mime.text import MIMEText
+    from email.mime.image import MIMEImage
+    from email.mime.multipart import MIMEMultipart
+    import smtplib
+    import socket
+    import getpass
+    import libfb.py.employee
+
+    COMMASPACE = ", "
+
+    def attachment(path, ctype=None, encoding=None, filename=None):
+        if ctype is None and encoding is None:
+            # Guess the content type based on the file's extension.  Encoding
+            # will be ignored, although we should check for simple things like
+            # gzip'd or compressed files.
+            ctype, encoding = mimetypes.guess_type(path)
+        if ctype is None or encoding is not None:
+            # No guess could be made, or the file is encoded (compressed), so
+            # use a generic bag-of-bits type.
+            ctype = "application/octet-stream"
+        maintype, subtype = ctype.split("/", 1)
+        filename = filename or os.path.basename(path)
+        if maintype == "text":
+            fp = open(path)
+            # Note: we should handle calculating the charset
+            att = MIMEText(fp.read(), _subtype=subtype)
+            fp.close()
+        elif maintype == "image":
+            fp = open(path, "rb")
+            att = MIMEImage(fp.read(), _subtype=subtype)
+            fp.close()
+        elif maintype == "audio":
+            fp = open(path, "rb")
+            att = MIMEAudio(fp.read(), _subtype=subtype)
+            fp.close()
+        else:
+            fp = open(path, "rb")
+            att = MIMEBase(maintype, subtype)
+            att.set_payload(fp.read())
+            fp.close()
+            # Encode the payload using Base64
+            encoders.encode_base64(att)
+        # Set the filename parameter
+        att.add_header("Content-Disposition", "attachment", filename=filename)
+        return att, ctype, filename
+
+    def get_default_frm():
+        unix_name = getpass.getuser()
+        host_name = socket.gethostname()
+        full_name = libfb.py.employee.unixname_to_fullname(unix_name)
+        frm = "{full_name} on {host_name} <{unix_name}@{host_name}>".format(
+            full_name=full_name, host_name=host_name, unix_name=unix_name
+        )
+        return frm
+
+    def stringfy_emails(recipients):
+        if isinstance(recipients, string_types):
+            return recipients
+        elif isinstance(recipients, Iterable):
+            return COMMASPACE.join([str(r) for r in recipients])
+        else:
+            raise TypeError
+
+    def decode_recipients(s):
+        return s.split(COMMASPACE)
+
+    dest_list = []
+    preamble = ""
+    postscript = ""
+    msg = MIMEMultipart()
+    msg["Subject"] = str(subject)
+    msg["From"] = str(frm) if frm else get_default_frm()
+    msg["To"] = stringfy_emails(to)
+    dest_list += decode_recipients(msg["To"])
+    if reply_to is not None:
+        msg["Reply-To"] = stringfy_emails(reply_to)
+    if cc is not None:
+        msg["Cc"] = stringfy_emails(cc)
+        dest_list += decode_recipients(msg["Cc"])
+
+    attachment_info = []
+    if attachment_file_paths is not None:
+        if isinstance(attachment_file_paths, string_types):
+            attachment_file_paths = [attachment_file_paths]
+        for fp in attachment_file_paths:
+            att, ctype, name = attachment(fp)
+            size = human_readable_file_size_str(fp)
+            attachment_info.append((att, ctype, name, size))
+    if add_attachment_list:
+        postscript += "\n\n"
+        postscript += "List of Attachments:\n"
+        postscript += "====================\n"
+        for i, (att, ctype, name, size) in enumerate(attachment_info):
+            postscript += '    {i}: "{name}" [{ctype}, {size}]\n'.format(
+                i=i, ctype=ctype, name=name, size=size
+            )
+    if auto_sig:
+        postscript += "\n\n"
+        postscript += "====\n".format(now=now())
+        postscript += "Email Auto Sent on {now} by {host_name}\n".format(
+            now=now(), host_name=socket.gethostname()
+        )
+    msg.attach(MIMEText("\n".join([preamble, str(body), postscript])))
+    for (att, ctype, name, size) in attachment_info:
+        msg.attach(att)
+    mail_server = smtplib.SMTP("localhost")
+    mail_server.sendmail(msg["From"], dest_list, msg.as_string())
+    return msg
 
 
 log_reset()
