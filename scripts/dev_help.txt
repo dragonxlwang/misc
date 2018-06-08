@@ -29,3 +29,9 @@ Mail:
 =====
 - echo body | Mail -s subject recipient
 - echo body | Mail -a attachment -s subject receiptent
+
+Redirect both stdout and stderr to a file:
+==========================================
+- command >> log_file 2>&1
+or
+- command &> logfile

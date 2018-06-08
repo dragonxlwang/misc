@@ -288,6 +288,7 @@ alias -g PG='| grep'
 alias -g PGI='| grep -i'
 alias -g PL="| less"
 alias -g PCL="--color=always | less -r"
+alias -g PNC="| sed 's/\x1b\[[0-9;]*m//g'"
 alias -g PP="| pygmentize"
 alias -g PC="| cat -A"
 alias -g PF="| fpp"

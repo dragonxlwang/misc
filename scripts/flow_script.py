@@ -15,13 +15,26 @@ from collections import Iterable, OrderedDict, namedtuple
 from copy import deepcopy
 from itertools import islice
 
+import caffe2.caffe2.fb.predictor.predictor_py_utils as pred_utils
+import caffe2.caffe2.fb.predictor.sigrid.constants as sc
+import caffe2.python.fb.dper.layer_models.utils.utils as utils
+import caffe2.python.fb.dper.utils as dper_utils
 # add this to enable get default input
 import fblearner.flow.facebook.plugins.all_plugins  # noqa
 import fblearner.flow.projects.dper.flow_types as T
 import matplotlib.pyplot as plt
 import numpy as np
+from caffe2.caffe2.fb.predictor import predictor_exporter as pe
+from caffe2.caffe2.fb.predictor.model_exporter import ModelExporter
+from caffe2.fb.python.fb_predictor_constants import \
+    fb_predictor_constants as fpc
+from caffe2.proto import caffe2_pb2
+from caffe2.python import core, dyndep, memonger, net_drawer, workspace
 from caffe2.python.fb.dper.layer_models.model_definition import ttypes
 from caffe2.python.fb.dper.layer_models.utils import vis_utils
+# from caffe2.caffe2.fb.predictor.Predic tor import constants as predictor_constants
+from caffe2.python.fb.predictor import serde
+from caffe2.python.predictor_constants import predictor_constants as pc
 from fblearner.flow.core.attrdict import from_dict
 from fblearner.flow.core.types_lib.gettype import gettype
 from fblearner.flow.core.types_lib.type import encode as encode_flow_type
@@ -38,9 +51,14 @@ from future.utils import viewitems, viewkeys, viewvalues
 from libfb.py import fburl
 from libfb.py.decorators import memoize_timed, retryable
 from metastore import metastore
+from model_id.ttypes import ModelId
 from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
+
+dyndep.InitOpsLibrary("@/caffe2/caffe2/fb/transforms:sigrid_transforms_ops")
+dyndep.InitOpsLibrary("@/caffe2/caffe2/fb:hdfs_log_file_db")
+core.GlobalInit(["python", "--caffe2_log_level=-3", "--vmodule=load_save_op=3"])
 
 # --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
@@ -98,7 +116,7 @@ def pprint(obj, add_log=False, lvl="info", raw=False, multiline=False):
         print(ln)
 
 
-def pprint_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" ", add_log=False):
+def format_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" "):
     def add_max_width_to_fmt(fmt, width):
         i = fmt.find(":")
         if fmt[i + 1] == "-" or fmt[i + 1] == "^":
@@ -138,7 +156,13 @@ def pprint_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" ", add_log=
         return c_sep.join([r_sep.join(r) for r in fields])
 
     formatted_fields = fmt_tbl(fields, fmt)
-    pprint(rep_tbl(formatted_fields, col_sep, row_sep), add_log=add_log, raw=True)
+    return rep_tbl(formatted_fields, col_sep, row_sep)
+
+
+def pprint_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" ", add_log=False):
+    pprint(
+        format_tabular(fields, fmt, title, col_sep, row_sep), add_log=add_log, raw=True
+    )
 
 
 # --------------------------------- utility ----------------------------------
@@ -1554,31 +1578,41 @@ def send_email(
     if cc is not None:
         msg["Cc"] = stringfy_emails(cc)
         dest_list += decode_recipients(msg["Cc"])
-
     attachment_info = []
+    attachment_mime = []
     if attachment_file_paths is not None:
         if isinstance(attachment_file_paths, string_types):
             attachment_file_paths = [attachment_file_paths]
         for fp in attachment_file_paths:
             att, ctype, name = attachment(fp)
             size = human_readable_file_size_str(fp)
-            attachment_info.append((att, ctype, name, size))
-    if add_attachment_list:
+            attachment_info.append((len(attachment_info), ctype, size, name))
+            attachment_mime.append(att)
+    if len(attachment_info) > 0 and add_attachment_list:
         postscript += "\n\n"
         postscript += "List of Attachments:\n"
         postscript += "====================\n"
-        for i, (att, ctype, name, size) in enumerate(attachment_info):
-            postscript += '    {i}: "{name}" [{ctype}, {size}]\n'.format(
-                i=i, ctype=ctype, name=name, size=size
-            )
+
+        postscript += (
+            format_tabular(
+                attachment_info,
+                fmt={0: "({:^})", 1: "{:^}", 2: "{:^}", 3: '"{:^}"'},
+                title={0: "ID", 1: "TYPE", 2: "SIZE", 3: "NAME"},
+                col_sep="\n",
+                row_sep="\t",
+            ).expandtabs(4)
+            + "\n"
+        )
     if auto_sig:
         postscript += "\n\n"
         postscript += "====\n".format(now=now())
         postscript += "Email Auto Sent on {now} by {host_name}\n".format(
             now=now(), host_name=socket.gethostname()
         )
-    msg.attach(MIMEText("\n".join([preamble, str(body), postscript])))
-    for (att, ctype, name, size) in attachment_info:
+
+    mail_text = str("\n").join([str(x) for x in [preamble, body, postscript]])
+    msg.attach(MIMEText(mail_text, "plain", "utf-8"))
+    for att in attachment_mime:
         msg.attach(att)
     mail_server = smtplib.SMTP("localhost")
     mail_server.sendmail(msg["From"], dest_list, msg.as_string())

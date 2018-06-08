@@ -1,3 +1,7 @@
 Reset Audio:
 ============
 sudo killall coreaudiod
+
+Reset Wifi:
+===========
+sudo ifconfig en0 down && sudo ifconfig en0 up
