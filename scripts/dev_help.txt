@@ -35,3 +35,11 @@ Redirect both stdout and stderr to a file:
 - command >> log_file 2>&1
 or
 - command &> logfile
+
+Strip color/control codes:
+==========================
+- command | sed 's/\x1b\[[0-9;]*m//g'
+
+Process substitution:
+=====================
+- command  > >(cat) > >(strip_color PMM)

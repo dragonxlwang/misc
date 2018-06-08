@@ -281,6 +281,7 @@ alias sf='find . -type f -name'
 alias sdi='find . -type d -iname'
 alias sfi='find . -type f -iname'
 ##------------------------== pipes and redirection ==-------------------------##
+alias strip_color="sed 's/\x1b\[[0-9;]*m//g'"
 # pipes
 alias -g PH='| head'
 alias -g PT='| tail'
@@ -288,7 +289,9 @@ alias -g PG='| grep'
 alias -g PGI='| grep -i'
 alias -g PL="| less"
 alias -g PCL="--color=always | less -r"
-alias -g PNC="| sed 's/\x1b\[[0-9;]*m//g'"
+alias -g PNC="| strip_color"
+alias -g PM="| strip_color | Mail"
+alias -g PMM="PM -s \"Auto notification from $(hostname) on $(date)\" $(whoami)@fb.com"
 alias -g PP="| pygmentize"
 alias -g PC="| cat -A"
 alias -g PF="| fpp"
@@ -301,6 +304,7 @@ alias -g RNE="2> /dev/null"
 alias -g RALL="2>&1"
 alias -g RNUL="> /dev/null 2>&1"
 alias -g FPP="| fpp"
+alias -g send_email_notification=" > >(cat) > >(strip_color PMM)"
 ##---------------------------------== vim ==----------------------------------##
 function vim_buffers {
   local found=0
