@@ -907,8 +907,19 @@ function diff_test {
   yellowecho "DIFF    = ${diff}"
   yellowecho "TEST    = ${test_file}"
   if [[ $@ == 'clear' ]]; then
+    echo "DELETE TESTS:"
+    echo "============="
+    greenecho "$(cat $test_file)"
     redecho "delete test $test_file"
     /bin/rm $test_file
+    return 0
+  elif [[ $@ == 'list' ]]; then
+    echo "LIST TESTS:"
+    echo "==========="
+    greenecho "$(cat $test_file)"
+    return 0
+  elif [[ $@ == 'edit' ]]; then
+    vim $test_file
     return 0
   fi
   if [[ $# -eq 0 ]]; then
@@ -942,6 +953,9 @@ function diff_test {
           echo "EXISTING TESTS:"
           echo "==============="
           greenecho "$(cat $test_file)"
+          local cmd="bbt $@"
+          cyanecho "${cmd}"
+          eval ${cmd}
           return 0
         fi
       fi
@@ -951,7 +965,7 @@ function diff_test {
     echo "EXISTING TESTS:"
     echo "==============="
     greenecho "$(cat $test_file)"
-    local cmd="bbt $x"
+    local cmd="bbt $@"
     cyanecho "${cmd}"
     eval ${cmd}
   fi
