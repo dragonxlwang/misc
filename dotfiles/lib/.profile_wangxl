@@ -885,6 +885,7 @@ alias hrb='hg rebase'
 alias hid='hg id -i'
 alias hg_query_author="hg log -r . --template '{sl_user}'"
 alias hg_query_diff="hg log -r . --template '{sl_diff_super}'"
+alias hld="hg log --rev . --template '{phabdiff}'"
 alias hrf='hhl && arc cleanup-features && hum && hs'
 alias hhpur='hhl && arc cleanup-features && hrb -d master && hs'
 alias hrv='hg revert'
@@ -894,6 +895,62 @@ function hg_authors {
 }
 function hg_files {
   hg log --template "{xg_sl_files}" -- ${1:-$(readlink -f .)}
+}
+function diff_test {
+  local diff=$(hld)
+  if [[ ${#diff} -eq 0 ]]; then
+    redecho "abort: diff number not found"
+    return 1
+  fi
+  local test_file="${HOME}/fbcode/experimental/xlwang/${diff}.test"
+  touch $test_file
+  yellowecho "DIFF    = ${diff}"
+  yellowecho "TEST    = ${test_file}"
+  if [[ $@ == 'clear' ]]; then
+    redecho "delete test $test_file"
+    /bin/rm $test_file
+    return 0
+  fi
+  if [[ $# -eq 0 ]]; then
+    local test_number=$(cat $test_file | wc -l)
+    if [[ $test_number -eq 0 ]]; then
+      redecho "abort: no tests found!"
+    else
+      echo "RUNNING TESTS:"
+      echo "==============="
+      greenecho "$(cat $test_file)"
+      echo ""
+    fi
+    for x in "${(f)$(cat $test_file)}"; do
+      if [[ ! -z $x ]]; then
+        local cmd="bbt $x"
+        cyanecho "${cmd}"
+        eval ${cmd}
+        local rv=$?
+        if [[ $rv -ne 0 ]]; then
+          redecho "abort: test $x failed with return value $rv!"
+          return 1
+        fi
+      fi
+    done
+  else
+    for x in "${(f)$(cat $test_file)}"; do
+      if [[ ! -z $x ]]; then
+        if [[ "$x" == "$@" ]]; then
+          cyanecho "test" "$x" "is already added"
+          echo "EXISTING TESTS:"
+          echo "==============="
+          greenecho "$(cat $test_file)"
+          return 0
+        fi
+      fi
+    done
+    greenecho "add test" "$@" "to test file" "$test_file"
+    echo "$@" >> $test_file
+    echo "EXISTING TESTS:"
+    echo "==============="
+    greenecho "$(cat $test_file)"
+  fi
 }
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias flow_help="cat ~/misc/scripts/flow_help.txt"
