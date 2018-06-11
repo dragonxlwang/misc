@@ -165,6 +165,10 @@ def pprint_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" ", add_log=
     )
 
 
+def everpaste_publish(body):
+    return get_fburl(vis_utils.get_everpaste_url(str(body)))
+
+
 # --------------------------------- utility ----------------------------------
 
 
