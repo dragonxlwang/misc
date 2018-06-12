@@ -896,6 +896,7 @@ function hg_authors {
 function hg_files {
   hg log --template "{xg_sl_files}" -- ${1:-$(readlink -f .)}
 }
+alias hg_rev_date="hg log -T '{sl_date}, [{date}]' --rev"
 function diff_test {
   local diff=$(hld)
   if [[ ${#diff} -eq 0 ]]; then
