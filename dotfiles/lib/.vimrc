@@ -347,6 +347,7 @@ nnoremap <leader>p "0p
 nnoremap <leader>y "0y
 vnoremap <leader>p "0p
 vnoremap <leader>y "0y
+command TmuxPaste :read !tmux saveb - | cat | sed 's/\x1b\[[0-9;]*m//g'
 
 " Toggle paste mode on and off
 noremap <ESC>p :setlocal paste! \| :echoe "paste =" &paste<cr>

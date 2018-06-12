@@ -909,6 +909,10 @@ function diff_test {
   local test_file="${HOME}/fbcode/experimental/xlwang/${diff}.test"
   local tmp_file="${HOME}/fbcode/experimental/xlwang/$(whoami).test"
   touch $test_file
+  if [[ $@ == 'tmux' ]]; then
+    cat $test_file | tmux loadb -
+    return 0
+  fi
   yellowecho "DIFF    = ${diff}"
   yellowecho "TEST    = ${test_file}"
   if [[ $@ == 'gen' ]]; then
