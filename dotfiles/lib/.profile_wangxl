@@ -897,17 +897,29 @@ function hg_files {
   hg log --template "{xg_sl_files}" -- ${1:-$(readlink -f .)}
 }
 alias hg_rev_date="hg log -T '{sl_date}, [{date}]' --rev"
+alias hg_rev_author="hg log -T '{author|user}' --rev"
 function diff_test {
   local diff=$(hld)
+  local author=$(hg_rev_author .)
+  [[ ${author} == $(whoami) ]] && diff=${diff:=${author}}
   if [[ ${#diff} -eq 0 ]]; then
     redecho "abort: diff number not found"
     return 1
   fi
   local test_file="${HOME}/fbcode/experimental/xlwang/${diff}.test"
+  local tmp_file="${HOME}/fbcode/experimental/xlwang/$(whoami).test"
   touch $test_file
   yellowecho "DIFF    = ${diff}"
   yellowecho "TEST    = ${test_file}"
-  if [[ $@ == 'clear' ]]; then
+  if [[ $@ == 'gen' ]]; then
+    echo "GENERATE TESTS:"
+    echo "==============="
+    touch $tmp_file
+    mv $tmp_file $test_file
+    greenecho "$(cat $test_file)"
+    redecho "moving $(whoami) => ${diff}"
+    return 0
+  elif [[ $@ == 'delete' ]]; then
     echo "DELETE TESTS:"
     echo "============="
     greenecho "$(cat $test_file)"
@@ -949,7 +961,7 @@ function diff_test {
   else
     for x in "${(f)$(cat $test_file)}"; do
       if [[ ! -z $x ]]; then
-        if [[ "$x" == "$@" ]]; then
+        if [[ "$@" == "$x"* ]]; then
           cyanecho "test" "$x" "is already added"
           echo "EXISTING TESTS:"
           echo "==============="
@@ -971,6 +983,7 @@ function diff_test {
     eval ${cmd}
   fi
 }
+alias dft="diff_test"
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias flow_help="cat ~/misc/scripts/flow_help.txt"
 alias dev_help="cat ~/misc/scripts/dev_help.txt"

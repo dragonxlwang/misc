@@ -96,7 +96,8 @@ let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
 
 " Plugin 'flazz/vim-colorschemes'
 Plugin 'dragonxlwang/molokai'
-Plugin 'airblade/vim-gitgutter'
+" Disable gitgutter since it's incompatible with mhinz/vim-signify
+" Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 Plugin 'jeetsukumaran/vim-buffergator'
 nnoremap <leader>bb :BuffergatorToggle<CR>
