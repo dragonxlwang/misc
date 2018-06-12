@@ -893,11 +893,23 @@ function hg_authors {
   # hg --pager=off log --template "{xg_sl_authors}" -- ${1:-$(pwd)}
   hg log --template "{xg_sl_authors}" -- ${1:-$(readlink -f .)}
 }
+function hg_reviewers {
+  # hg log -T '{desc}' --rev ${1:-"."} | grep "^Reviewers"
+  arc amend --show | grep "^Reviewers: "
+}
 function hg_files {
   hg log --template "{xg_sl_files}" -- ${1:-$(readlink -f .)}
 }
 alias hg_rev_date="hg log -T '{sl_date}, [{date}]' --rev"
 alias hg_rev_author="hg log -T '{author|user}' --rev"
+function hlk {
+  local diff=$(hld)
+  if [[ -z ${diff} ]]; then
+    redecho "abort: no diff found"
+    return 1
+  fi
+  echo "https://our.intern.facebook.com/intern/diff/${diff}/"
+}
 function diff_test {
   local diff=$(hld)
   local author=$(hg_rev_author .)
@@ -910,7 +922,10 @@ function diff_test {
   local tmp_file="${HOME}/fbcode/experimental/xlwang/$(whoami).test"
   touch $test_file
   if [[ $@ == 'tmux' ]]; then
-    cat $test_file | tmux loadb -
+    echo "LOAD TESTS TO TMUX BUFFER:"
+    echo "========================="
+    greenecho "$(cat $test_file)"
+    cat $test_file | strip_color | tmux loadb -
     return 0
   fi
   yellowecho "DIFF    = ${diff}"
@@ -987,7 +1002,7 @@ function diff_test {
     eval ${cmd}
   fi
 }
-alias dft="diff_test"
+alias dtt="diff_test"
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias flow_help="cat ~/misc/scripts/flow_help.txt"
 alias dev_help="cat ~/misc/scripts/dev_help.txt"
