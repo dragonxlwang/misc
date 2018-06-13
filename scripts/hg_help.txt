@@ -53,3 +53,7 @@ Reviewer:
 - hg_authors [dir|current_directory]
 
 chocjy, amalevich, kittipat, volkhin, ninghz, cxj
+
+show changes since last `arc diff`:
+===================================
+- hg diff --since-last-arc-diff
