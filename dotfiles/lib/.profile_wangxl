@@ -1253,6 +1253,15 @@ z() {
   cd "$(_z -l 2>&1 | fzf --prompt="dir-hist> " +s +m --tac --query "$*" \
     | sed 's/^[0-9,.]* *//')"
 }
+h() {
+  local tmp="${HOME}/misc/tmp/hg.revs"
+  local rev="$(hg smartlog -T '#{xg_sl_one_line}\n' 2>/dev/null | sed -n '/.*#/p' | sed 's/^[^#]*#//g'  |  fzf --prompt='hg> ' | cut -d ' ' -f 1)"
+  [[ -z $rev ]] && return 1
+  local cmd="hg update $rev"
+  hg log -T '{xg_sl}' --rev $rev
+  cyanecho ${cmd}
+  eval ${cmd}
+}
 # Kerberos
 function krefresh() {
   kdestroy
