@@ -900,6 +900,25 @@ function hg_reviewers {
 function hg_files {
   hg log --template "{xg_sl_files}" -- ${1:-$(readlink -f .)}
 }
+function hg_stack_query {
+  local current=$(hg id --rev .)
+  local master=$(hg id --rev master)
+  local cnt=0
+  while :; do
+    echo $(hg log -T $@ --rev .)
+    hg prev 2>/dev/null 1>&2
+    local id=$(hg id --rev .)
+    if [[ $id == $master ]]; then
+      hg up --rev $current 2>/dev/null 1>&2
+      return 0
+    fi
+    cnt=$((cnt + 1))
+    if [[ $cnt -ge 10 ]]; then
+      hg up --rev $current 2>/dev/null 1>&2
+      return 1
+    fi
+  done
+}
 alias hg_rev_date="hg log -T '{sl_date}, [{date}]' --rev"
 alias hg_rev_author="hg log -T '{author|user}' --rev"
 function hlk {
