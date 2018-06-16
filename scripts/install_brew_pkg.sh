@@ -6,7 +6,7 @@ sudo chown $(whoami):admin /usr/local \
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew tap homebrew/dupes
-brew tap homebrew/python
+brew tap homebrew/python@2
 brew tap homebrew/science
 brew tap homebrew/versions
 
