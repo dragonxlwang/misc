@@ -1,8 +1,8 @@
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import collections
 import datetime
+import getpass
 import json
 import logging
 import os
@@ -26,8 +26,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from caffe2.caffe2.fb.predictor import predictor_exporter as pe
 from caffe2.caffe2.fb.predictor.model_exporter import ModelExporter
-from caffe2.fb.python.fb_predictor_constants import \
-    fb_predictor_constants as fpc
+from caffe2.fb.python.fb_predictor_constants import fb_predictor_constants as fpc
 from caffe2.proto import caffe2_pb2
 from caffe2.python import core, dyndep, memonger, net_drawer, workspace
 from caffe2.python.fb.dper.layer_models.model_definition import ttypes
@@ -42,9 +41,15 @@ from fblearner.flow.external_api import FlowSession, WorkflowRun
 from fblearner.flow.ml.runners.chronosscheduler import get_workflow_run_status
 from fblearner.flow.plugin_definitions.driver import Drivers
 from fblearner.flow.service.flow_client import get_flow_indexing_client
-from fblearner.flow.storage.models import (ModelType, Session, SessionContext,
-                                           Workflow, WorkflowRegistration,
-                                           WorkflowRun, initialize_session)
+from fblearner.flow.storage.models import (
+    ModelType,
+    Session,
+    SessionContext,
+    Workflow,
+    WorkflowRegistration,
+    WorkflowRun,
+    initialize_session,
+)
 from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
 from fblearner.flow.util.runner_utilities import load_config
 from future.utils import viewitems, viewkeys, viewvalues
@@ -56,9 +61,63 @@ from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
 
+
 dyndep.InitOpsLibrary("@/caffe2/caffe2/fb/transforms:sigrid_transforms_ops")
 dyndep.InitOpsLibrary("@/caffe2/caffe2/fb:hdfs_log_file_db")
 core.GlobalInit(["python", "--caffe2_log_level=-3", "--vmodule=load_save_op=3"])
+
+# -------------------------------- decorator ----------------------------------
+
+
+def email():
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            email_return = kwargs.pop("email_return", False)
+            func_name = func.__name__
+            ret = func(*args, **kwargs)
+            if email_return:
+                send_email(
+                    subject="Return from {}".format(func_name),
+                    to=my_email_addr(),
+                    body=str(ret),
+                    auto_sig=True,
+                )
+            return ret
+
+        return wrapper
+
+    return decorator
+
+
+# --------------------------------- system ------------------------------------
+
+
+def whoami():
+    return getpass.getuser()
+
+
+def my_email_addr():
+    return "{}@fb.com".format(whoami())
+
+
+def everpaste_publish(body):
+    return get_fburl(vis_utils.get_everpaste_url(str(body)))
+
+
+def timedelta_rep(td):
+    return str(td).replace(" day, ", ":").replace(" days, ", ":")
+
+
+def now_str():
+    return str(datetime.datetime.now().replace(microsecond=0)).replace(" ", ".")
+
+
+today = datetime.date.today
+
+
+def short_today():
+    return datetime.date.today().strftime("%m-%d")
+
 
 # --------------------------------- logging -----------------------------------
 logger = logging.getLogger(__name__)
@@ -90,7 +149,9 @@ def log_reset(file_names=None, max_ln_num=1e5):
     log_clean(logger)
     logger.setLevel(logging.INFO)
     if file_names is None:
-        file_names = [r"/home/xlwang/fbcode/experimental/xlwang/ipy_flow_debug.log"]
+        file_names = [
+            r"/home/{0}/fbcode/experimental/{0}/ipy_flow_debug.log".format(whoami())
+        ]
     elif isinstance(file_names, str):
         file_names = [file_names]
     for f in file_names:
@@ -103,7 +164,7 @@ def log_reset(file_names=None, max_ln_num=1e5):
     logger.info("==========================================")
 
 
-def pprint(obj, add_log=False, lvl="info", raw=False, multiline=False):
+def pprint(obj, add_log=False, to_std=True, lvl="info", raw=False, multiline=False):
     if not isinstance(obj, string_types):
         obj = py_pprint.pformat(obj) if not raw else str(obj)
     if not multiline:
@@ -113,7 +174,8 @@ def pprint(obj, add_log=False, lvl="info", raw=False, multiline=False):
     for ln in lns:
         if add_log:
             getattr(logger, lvl)(ln)
-        print(ln)
+        if to_std:
+            print(ln)
 
 
 def format_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" "):
@@ -165,10 +227,6 @@ def pprint_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" ", add_log=
     )
 
 
-def everpaste_publish(body):
-    return get_fburl(vis_utils.get_everpaste_url(str(body)))
-
-
 # --------------------------------- utility ----------------------------------
 
 
@@ -198,21 +256,6 @@ def get_fburl(raw_url):
 @retryable(num_tries=3, sleep_time=1)
 def resolve_fburl(url):
     return fburl.resolve_fburl(url)
-
-
-def timedelta_rep(td):
-    return str(td).replace(" day, ", ":").replace(" days, ", ":")
-
-
-def now():
-    return str(datetime.datetime.now().replace(microsecond=0)).replace(" ", ".")
-
-
-today = datetime.date.today
-
-
-def short_today():
-    return datetime.date.today().strftime("%m-%d")
 
 
 def file_st_time(f, mode):
@@ -280,7 +323,7 @@ def center_with_padding(s, pad="=", length=80):
 
 def gen_home_file(filename="", purge_home=True):
     # home
-    dump_dir = "/home/xlwang/public_html/flows/"
+    dump_dir = "/home/{}/public_html/flows/".format(whoami())
 
     filename, ext = os.path.splitext(filename)
     filename = "%s%s%s" % (filename, uuid.uuid4(), ext)
@@ -288,14 +331,14 @@ def gen_home_file(filename="", purge_home=True):
         dir_purge(dump_dir)
 
     filepath = os.path.join(dump_dir, filename)
-    url = get_fburl("https://home.fburl.com/~xlwang/flows/" + filename)
+    url = get_fburl("https://home.fburl.com/~{}/flows/".format(whoami()) + filename)
     return filepath, url
 
 
 def get_home_file_from_url(url):
     # home
-    dump_dir = "/home/xlwang/public_html/flows/"
-    prefix = "https://home.fburl.com/~xlwang/flows/"
+    dump_dir = "/home/{}/public_html/flows/".format(whoami())
+    prefix = "https://home.fburl.com/~{}/flows/".format(whoami())
     try:
         url = fburl.resolve_fburl(url)
     except Exception:
@@ -332,12 +375,13 @@ APOLLO_XIII_TAG_ID = 325182364673414
 def flow_run(
     args,
     title="test",
-    owner="xlwang",
+    owner=None,
     entitlement="ads_ftw",
     package="aml.dper2:73",
     workflow="dper.workflows.ads.train_eval_workflow",
     model_type_id=None,
 ):
+    owner = owner if owner is not None else whoami()
     """schedule a flow run, and return the WorkflowRun instance"""
     fl = FlowSession()
     run = fl.schedule_workflow(
@@ -511,79 +555,107 @@ _FLOW_STATUS_MAP = {
 }
 
 
-def flow_status(workflow_run_id, add_log=True, inspect_children=True):
-    """flow status, and default to output to logger and also checks running
-    instance's children"""
+def flow_status(workflow_run_id):
+    """flow status"""
     fl = FlowSession()
     st = fl.get_workflow_run_status(workflow_run_id)
     status_map = _FLOW_STATUS_MAP
     status = status_map[st]
-    if add_log:
-        logger.info(
-            "f%s # %s %s, %s"
-            % (
-                workflow_run_id,
-                status,
-                flow_title(workflow_run_id),
-                flow_elapsed_time_str(workflow_run_id),
-            )
-        )
-    if status == "RUNNING":
-        info = fl.get_workflow_run_info(workflow_run_id)
-        children = list(info.childrenRunIDs)
-        if len(children) > 0:
-            for child in children:
-                child_name = flow_name(child)
-                child_st = fl.get_workflow_run_status(child)
-                if add_log:
-                    indent = "    |"
-                    beg = "-> f%s:" % child
-                    logger.info(
-                        "%s%s %s (%s), %s"
-                        % (
-                            indent,
-                            beg,
-                            status_map[child_st],
-                            child_name,
-                            flow_elapsed_time_str(child),
-                        )
-                    )
-                    if "train_workflow" in child_name:
-                        child_progress = flow_training_progress(child)
-                        if child_progress is not None:
-                            logger.info(
-                                "%s%s %s" % (indent, " " * len(beg), child_progress)
-                            )
-                        # check grandchildren
-                        grandchildren = list(
-                            fl.get_workflow_run_info(child).childrenRunIDs
-                        )
-                        for gc in grandchildren:
-                            gc_name = flow_name(gc)
-                            gc_st = fl.get_workflow_run_status(gc)
-                            gc_tt = flow_title(gc)
-                            if (
-                                "run_dist_job" in gc_name
-                                and "Distributed Trainer" in gc_tt
-                            ):
-                                beg = "-> f%s:" % gc
-                                logger.info(
-                                    "%s%s %s (%s), %s"
-                                    % (
-                                        indent,
-                                        beg,
-                                        status_map[gc_st],
-                                        gc_name,
-                                        flow_elapsed_time_str(gc),
-                                    )
-                                )
-                                gc_progress = flow_training_progress(gc)
-                                if gc_progress is not None:
-                                    logger.info(
-                                        "%s%s %s"
-                                        % (indent, " " * len(beg), gc_progress)
-                                    )
     return status
+
+
+@email()
+def flow_summary(
+    workflow_run_id,
+    with_fburl=False,
+    inspect_children=False,
+    add_log=False,
+    to_std=False,
+):
+    status = flow_status(workflow_run_id)
+    lines = '%s, # %s, "%s", %s%s' % (
+        flow_rep(workflow_run_id),
+        status,
+        flow_title(workflow_run_id),
+        flow_elapsed_time_str(workflow_run_id),
+        " " + fbl_flow_link(workflow_run_id) + " " if with_fburl else "",
+    )
+    indent = "#   |"
+    arrow = "-> "
+    sub_indent = " " * (len(arrow) + len("%s # " % flow_rep(workflow_run_id)))
+    if status == "RUNNING" and inspect_children:
+        for child in flow_children_ids(workflow_run_id):
+            lines += "\n%s%s%s" % (
+                indent,
+                arrow,
+                flow_summary(child, with_fburl=with_fburl),
+            )
+            if "train_workflow" in flow_name(child):
+                child_progress = flow_training_progress(child)
+                if child_progress is not None:
+                    lines += "\n%s%s%s" % (indent, sub_indent, child_progress)
+                for gc in flow_children_ids(child):
+                    if "run_dist_job" in flow_name(
+                        gc
+                    ) and "Distributed Trainer" in flow_title(gc):
+                        lines += "\n%s%s%s" % (
+                            indent,
+                            arrow,
+                            flow_summary(gc, with_fburl=with_fburl),
+                        )
+                        gc_progress = flow_training_progress(gc)
+                        if gc_progress is not None:
+                            lines += "\n%s%s%s" % (indent, sub_indent, gc_progress)
+    pprint(lines, add_log=add_log, to_std=to_std)
+    return lines
+
+
+@email()
+def flow_one_line_summary(workflow_run_id_or_ids, **kwargs):
+    add_log = kwargs.pop("add_log", False)
+    to_std = kwargs.pop("to_std", False)
+    workflow_run_ids = (
+        [workflow_run_id_or_ids]
+        if isinstance(workflow_run_id_or_ids, int)
+        else workflow_run_id_or_ids
+    )
+    return "\n".join(
+        [
+            flow_summary(
+                workflow_run_id,
+                with_fburl=True,
+                inspect_children=False,
+                add_log=add_log,
+                to_std=to_std,
+                **kwargs
+            )
+            for workflow_run_id in workflow_run_ids
+        ]
+    )
+
+
+@email()
+def flow_detailed_summary(workflow_run_id_or_ids, **kwargs):
+    add_log = kwargs.pop("add_log", False)
+    to_std = kwargs.pop("to_std", False)
+    workflow_run_ids = (
+        [workflow_run_id_or_ids]
+        if isinstance(workflow_run_id_or_ids, int)
+        else workflow_run_id_or_ids
+    )
+    return "\n".join(
+        [
+            flow_summary(
+                workflow_run_id,
+                with_fburl=True,
+                inspect_children=True,
+                add_log=add_log,
+                to_std=to_std,
+                **kwargs
+            )
+            for workflow_run_id in workflow_run_ids
+        ]
+    )
 
 
 def flow_detailed_status(workflow_run_id):
@@ -628,8 +700,13 @@ def flow_find_by_title(title, owner=None):
 
 
 def flow_list(
-    owner="xlwang", status="RUNNING", print_short_summary=False, check_runs=False
+    owner=None,
+    status="RUNNING",
+    top_lvl_only=False,
+    sort_by_recency=False,
+    to_std=False,
 ):
+    owner = owner if owner is not None else whoami()
     """list the flows owned by the owner and in the specified status"""
     # fblearner/flow/driver/queries.py
     # fblearner/flow/storage/models.py
@@ -663,23 +740,32 @@ def flow_list(
             )
         ).fetchall()
     workflow_run_ids = [r[0] for r in rows]
-    top_lvl_run_ids = [r[0] for r in rows if r[-1] == None]
-    if print_short_summary:
-        for workflow_run_id in top_lvl_run_ids:
-            print(flow_short_summary(workflow_run_id, add_log=False))
-    if check_runs:
-        flow_check_runs(*top_lvl_run_ids)
-        for workflow_run_id in top_lvl_run_ids:
-            print(flow_short_summary(workflow_run_id, add_log=False))
-    return workflow_run_ids
+    top_lvl_run_ids = [r[0] for r in rows if r[-1] is None]
+    if sort_by_recency:
+        if top_lvl_only:
+            top_lvl_run_ids = flow_sort_by_recency(top_lvl_run_ids)
+        else:
+            workflow_run_ids = flow_sort_by_recency(workflow_run_ids)
+            top_lvl_run_ids = [i for i in workflow_run_ids if i in top_lvl_run_ids]
+    if to_std:
+        flow_one_line_summary(top_lvl_run_ids, to_std=to_std)
+    return workflow_run_ids if not top_lvl_only else top_lvl_run_ids
 
 
-def flow_kill_stale(owner="xlwang", days=10):
-    workflow_run_ids = flow_list(owner, print_short_summary=False)
+def flow_sort_by_recency(workflow_run_ids):
+    recency = {}
+    for workflow_run_id in workflow_run_ids:
+        recency[workflow_run_id] = flow_elapsed_time(workflow_run_id)
+    return sorted(recency, key=lambda x: recency[x])
+
+
+def flow_kill_stale(owner=None, days=10, add_log=False, to_std=True):
+    owner = owner if owner is not None else whoami()
+    workflow_run_ids = flow_list(owner)
     for workflow_run_id in workflow_run_ids:
         elapsed_time = flow_elapsed_time(workflow_run_id)
         if elapsed_time > datetime.timedelta(days=days):
-            print(flow_short_summary(workflow_run_id, add_log=False))
+            flow_one_line_summary(workflow_run_id, to_std=to_std, add_log=add_log)
             flow_kill(workflow_run_id)
 
 
@@ -715,51 +801,38 @@ def flow_elapsed_time_str(workflow_run_id):
     return timedelta_rep(flow_elapsed_time(workflow_run_id))
 
 
-def flow_summary(workflow_run_id, add_log=True):
-    """show flow summary: workflow_run_id, name, owner, status, and title"""
-    name = flow_name(workflow_run_id)
-    title = flow_title(workflow_run_id)
-    owner = flow_info(workflow_run_id).owner
-    status = flow_status(workflow_run_id, add_log=False)
-    time = flow_elapsed_time_str(workflow_run_id)
-    lines = [
-        "[%s]: %s (%s), %s, %s" % (workflow_run_id, name, owner, status, time),
-        "    %s" % title,
-    ]
-    if add_log:
-        for ln in lines:
-            logger.info(ln)
-    return "\n".join(lines)
-
-
-def flow_short_summary(workflow_run_id, add_log=True, with_fburl=False):
-    """easy to crop out the flow ids and return status"""
-    title = flow_title(workflow_run_id)
-    status = flow_status(workflow_run_id, add_log=False)
-    time = flow_elapsed_time_str(workflow_run_id)
-    ln = '%s, # %s"%s", %s, %s' % (
-        workflow_run_id,
-        str(fbl_flow_link(workflow_run_id)) + " " if with_fburl else "",
-        title,
-        status,
-        time,
-    )
-    if add_log:
-        logger.info(ln)
-    return ln
-
-
-def flow_check_runs(*workflow_run_ids):
+def flow_check_runs(workflow_run_ids, add_log=False, to_std=False):
     """
     print out a copy-friendly list of flow_ids with info;
     and return a list of finished (not running) flows
     """
     finished_runs = OrderedDict()
+    running_runs = OrderedDict()
+    succeeded_runs = OrderedDict()
+    failed_runs = OrderedDict()
     for i in workflow_run_ids:
-        st = flow_status(i, add_log=True, inspect_children=True)
+        st = flow_status(i)
         if st not in ["RUNNING", "SCHEDULED"]:
             finished_runs[i] = st
-    return finished_runs
+        if st == "RUNNING":
+            running_runs[i] = st
+        if st == "SUCCEEDED":
+            succeeded_runs[i] = st
+        if st == "FAILED":
+            failed_runs[i] = st
+    pprint(
+        "%d/%d/%d FINISHED/SUCCEEDED/FAILED, %d/%d ALL/RUNNING"
+        % (
+            len(finished_runs),
+            len(succeeded_runs),
+            len(failed_runs),
+            len(workflow_run_ids),
+            len(running_runs),
+        ),
+        to_std=to_std,
+        add_log=add_log,
+    )
+    return finished_runs, running_runs, succeeded_runs, failed_runs
 
 
 @memoize_timed(24 * 60 * 60)
@@ -781,7 +854,7 @@ def flow_pkg_extend(workflow_run_id):
     return package
 
 
-def flow_pkg_build():
+def flow_pkg_build(send_email_notification=False):
     my_env = os.environ.copy()
     my_env.pop("LD_LIBRARY_PATH")
     diff_info = (
@@ -807,11 +880,20 @@ def flow_pkg_build():
             workflow_run_ids = [int(m.group(1))]
         except:
             workflow_run_ids = flow_find_by_title(title)
-    for workflow_run_id in workflow_run_ids:
-        print(
-            "FBL: %s, %s" % (flow_rep(workflow_run_id), fbl_flow_link(workflow_run_id))
+    assert len(workflow_run_ids) == 1, workflow_run_ids
+    workflow_run_id = workflow_run_ids[0]
+    print("FBL: %s, %s" % (flow_rep(workflow_run_id), fbl_flow_link(workflow_run_id)))
+    if send_email_notification:
+        send_email(
+            subject="{}: {}".format(flow_rep(workflow_run_id), title),
+            to=my_email_addr(),
+            body="flow pkg is build: \n {}".format(
+                "FBL: %s, %s"
+                % (flow_rep(workflow_run_id), fbl_flow_link(workflow_run_id))
+            ),
+            auto_sig=True,
         )
-    return workflow_run_ids
+    return workflow_run_id
 
 
 def flow_clone(
@@ -1028,7 +1110,7 @@ def flow_log_compare_result(everpaste_url, home_url, title, time):
 def flow_compare(
     workflow_run_ids,
     separator=" ",
-    summary_style="short",
+    detailed_summary=False,
     title=None,
     everpaste_shorten_to_fburl=True,
     home_shorten_to_fburl=True,
@@ -1041,18 +1123,14 @@ def flow_compare(
         return None, None
     summary = "\n".join(
         [
-            (
-                flow_short_summary(i, add_log=False)
-                if summary_style == "short"
-                else flow_summary(i, add_log=False)
-            )
+            flow_detailed_summary(i) if detailed_summary else flow_one_line_summary(i)
             for i in workflow_run_ids
         ]
     )
     brief_report, detailed_report = flow_report(
         workflow_run_ids, first_as_baseline=True, add_log=False
     )
-    title = str(title) if title else ("FlowCompare:%s" % now())
+    title = str(title) if title else ("FlowCompare:%s" % now_str())
     # everpaste
     everpaste_body = "\n\n\n".join([summary, brief_report])
     everpaste_content = "%s\n\n\n%s" % (title, everpaste_body)
@@ -1062,11 +1140,11 @@ def flow_compare(
     # home
     xls_content = "%s\n\n\n%s" % (title, detailed_report)
     filename = "%s_%s.csv" % (title, uuid.uuid4())
-    dump_dir = "/home/xlwang/public_html/flows/"
+    dump_dir = "/home/{}/public_html/flows/".format(whoami())
     dir_purge(dump_dir)
     with open(os.path.join(dump_dir, filename), "w") as f:
         f.write(xls_content)
-    home_url = "https://home.fburl.com/~xlwang/flows/" + filename
+    home_url = "https://home.fburl.com/~{}/flows/".format(whoami()) + filename
     if home_shorten_to_fburl:
         home_url = get_fburl(home_url)
     compare_finish_time = datetime.datetime.now()
@@ -1080,33 +1158,25 @@ def flow_compare(
 
 
 def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800, max_iter=-1):
-    num_finished_runs = 0
+    num_runs = 0
     everpaste_url = None
     home_url = None
     report_title = None
     iter = 0
     while True:
         logger.info(center_with_padding(title))
-        finished_runs = flow_check_runs(*workflow_run_ids)
-        failed_runs = [i for i in finished_runs if finished_runs[i] == "FAILED"]
-        logger.info("%d/%d RUNS FINISHED" % (len(finished_runs), len(workflow_run_ids)))
-        if len(failed_runs) > 0:
-            logger.info("%d RUNS FAILED" % len(failed_runs))
-            for i in failed_runs:
-                logger.warning(
-                    "    FAILED RUN: %s"
-                    % flow_short_summary(i, add_log=False, with_fburl=True)
-                )
-        if len(finished_runs) != num_finished_runs:
-            num_finished_runs = len(finished_runs)
-            report_title = "%s @ %s" % (title, now())
+        finished_runs, running_runs, succeeded_runs, failed_runs = flow_check_runs(
+            workflow_run_ids, add_log=True
+        )
+        for i in failed_runs:
+            logger.warning("FAILED: %s" % flow_one_line_summary(i))
+        if len(succeeded_runs) != num_runs:
+            num_runs = len(succeeded_runs)
+            report_title = "%s @ %s" % (title, now_str())
             # only compare succeeded runs
-            succeeded_runs = [
-                i for i in finished_runs if finished_runs[i] == "SUCCEEDED"
-            ]
             everpaste_url, home_url = flow_compare(succeeded_runs, title=report_title)
         else:
-            logger.info("NO MORE NEW FINISHED RUNS...")
+            logger.info("NO MORE NEW SUCCEEDED RUNS...")
             flow_log_compare_result(everpaste_url, home_url, report_title, 0)
         logger.info(center_with_padding("") + "\n\n\n")
         iter += 1
@@ -1609,9 +1679,9 @@ def send_email(
         )
     if auto_sig:
         postscript += "\n\n"
-        postscript += "====\n".format(now=now())
+        postscript += "====\n".format(now=now_str())
         postscript += "Email Auto Sent on {now} by {host_name}\n".format(
-            now=now(), host_name=socket.gethostname()
+            now=now_str(), host_name=socket.gethostname()
         )
 
     mail_text = str("\n").join([str(x) for x in [preamble, body, postscript]])

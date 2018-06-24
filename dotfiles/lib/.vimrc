@@ -389,6 +389,8 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
 " Get full path of file
 command! Fp echo expand('%:p')
 nnoremap <ESC>n :call NumberToggle()<cr>
+cnoreabbrev <expr> vsf
+      \ (getcmdtype() == ':' && getcmdline() =~ '^vsf$')? 'vert sf' : 'vsf'
 
 " ===========================- Detecting Filetype -=============================
 augroup FiletypeDetectAutoGroup
