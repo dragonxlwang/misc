@@ -1037,6 +1037,7 @@ alias dev_help="cat ~/misc/scripts/dev_help.txt"
 alias bbt='buck test'
 alias bbb='buck build'
 alias bbr='buck run'
+alias misc='cd ~/misc'
 alias fbc='cd ~/fbcode'
 alias fbc1='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'

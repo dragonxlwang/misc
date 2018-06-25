@@ -18,9 +18,10 @@ track.current = True
 # ~/fbsource/fbcode/scm/hg/fb/staticfiles/etc/mercurial/facebook.rc
 
 [templatealias]
+xg_sl_diff_link = "{ifeq(phabdiff, '', '', label("underline", 'https://our.intern.facebook.com/intern/diff/{phabdiff}'))}"
 xg_sl_node = "{label(cyan, '{shortest(node, sl_hash_maxlen)}')}"
 xg_sl = "{label(sl_label, separate('\n', separate('  ', sl_node_info, '{date|age}', sl_user, sl_diff_super, sl_tasks, sl_books, sl_branch, sl_troubles), '{sl_desc}', '\n'))}"
-xg_sl_one_line = "{label(sl_label, separate('  ', sl_node_info, '#', '{date|age}', sl_user, sl_diff_super, sl_tasks, sl_books, sl_branch, sl_troubles, '{sl_desc}'))}"
+xg_sl_one_line = "{label(sl_label, separate('  ', sl_node_info, '#', '{date|age}', sl_user, sl_diff_super, sl_tasks, sl_books, sl_branch, sl_troubles, '{sl_desc}', xg_sl_diff_link))}"
 xg_sl_normal = "{separate('  ', sl_userdefined_prefix, xg_sl_node, date(date), sl_user, sl_diff, sl_tasks, sl_books, sl_branch, sl_userdefined_suffix)}"
 xg_sl_files = "{separate(' ', xg_sl_node, label(yellow, phabdiff), sl_user, label(green, '{date|age}'))}:\n{separate('', join(file_adds % ' {label(green, \'+\')} {file}\n', ''), join(file_dels % ' {label(red, \'-\')} {file}\n', ''), join(file_mods % ' {label(blue, \'*\')} {file}\n', ''))}"
 xg_sl_authors = "{separate(' ', xg_sl_node, label(yellow, phabdiff), sl_user, label(green, sl_desc), '{date|age}')}\n"
