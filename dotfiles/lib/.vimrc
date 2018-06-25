@@ -591,6 +591,8 @@ function! PasteFbcodePyUnittestPdb()
 endfunction
 
 command! -nargs=? ReorgBuf :call ReorganizeBuffer(<f-args>)
+cnoreabbrev <expr> rb
+      \ (getcmdtype() == ':' && getcmdline() =~ '^rb$')? 'ReorgBuf' : 'rb'
 function! ReorganizeBuffer(...)
   if a:0 == 0
     let l:col = 0

@@ -930,6 +930,15 @@ function hlk {
   echo "https://our.intern.facebook.com/intern/diff/${diff}/"
 }
 function diff_test {
+  if [[ $@ == 'help' ]]; then
+    redecho "List of options:"
+    echo "  tmux    : load tests to tmux buffer"
+    echo "  gen     : generate tests from tmp file"
+    echo "  delete  : delete tests"
+    echo "  list    : list tests"
+    echo "  edit    : edit test file"
+    return 0
+  fi
   local diff=$(hld)
   local author=$(hg_rev_author .)
   [[ ${author} == $(whoami) ]] && diff=${diff:=${author}}
