@@ -589,3 +589,44 @@ function! PasteFbcodePyUnittestPdb()
   let l:code=readfile(glob('~/misc/scripts/fbcode_py_unittest_pdb.py'))
   call append(line("."), l:code)
 endfunction
+
+command! -nargs=? ReorgBuf :call ReorganizeBuffer(<f-args>)
+function! ReorganizeBuffer(...)
+  if a:0 == 0
+    let l:col = 0
+  else
+    let l:col = a:1
+  endif
+  if l:col == 0
+    let l:col = &columns / (&textwidth + 10)
+    if l:col > 3
+      let l:col = 3
+    endif
+    if l:col == 0
+      let l:col = 1
+    endif
+  endif
+
+  let l:bfs = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+  let l:num = len(l:bfs)
+  let l:cn = float2nr(ceil((l:num + 0.0) / l:col))
+  for i in range(l:num)
+    let l:b = l:bfs[i]
+    if i == 0
+      exec "sb ". l:b
+      only
+    else
+      let l:cid = i / l:cn
+      let l:rid = i % l:cn
+      if l:rid == 0
+        exec "vert botright sb ". l:b
+        let l:vsz = &columns * (l:col - l:cid) / l:col
+        exec "vert res ". l:vsz
+      else
+        exec "sb ". l:b
+        let l:hsz = &lines * (l:cn - l:rid) / l:cn
+        exec "res ". l:hsz
+      endif
+    endif
+  endfor
+endfunction
