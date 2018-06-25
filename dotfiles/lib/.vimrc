@@ -594,41 +594,54 @@ command! -nargs=? ReorgBuf :call ReorganizeBuffer(<f-args>)
 cnoreabbrev <expr> rb
       \ (getcmdtype() == ':' && getcmdline() =~ '^rb$')? 'ReorgBuf' : 'rb'
 function! ReorganizeBuffer(...)
+  let l:bfs = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+  let l:num = len(l:bfs)
+
   if a:0 == 0
     let l:col = 0
   else
     let l:col = a:1
   endif
+  " adaptive adjust
   if l:col == 0
     let l:col = &columns / (&textwidth + 10)
     if l:col > 3
       let l:col = 3
     endif
-    if l:col == 0
+    if l:col < 1
       let l:col = 1
     endif
   endif
+  " adjust if l:col too large
+  if l:col > l:num
+    let l:col = l:num
+  endif
 
-  let l:bfs = filter(range(1, bufnr('$')), 'buflisted(v:val)')
-  let l:num = len(l:bfs)
-  let l:cn = float2nr(ceil((l:num + 0.0) / l:col))
-  for i in range(l:num)
-    let l:b = l:bfs[i]
-    if i == 0
-      exec "sb ". l:b
-      only
-    else
-      let l:cid = i / l:cn
-      let l:rid = i % l:cn
-      if l:rid == 0
+  let l:rem = l:num % l:col
+  let l:quo = l:num / l:col
+
+  " n = r + q * col, q > 0
+  let l:i = -1
+  for c in range(l:col)
+    let l:row = l:quo
+    if c < l:rem
+      let l:row = l:row + 1
+    endif
+    for r in range(l:row)
+      let l:i = l:i + 1
+      let l:b = l:bfs[i]
+      if c == 0 && r == 0
+        exec "sb ". l:b
+        only
+      elseif r == 0
         exec "vert botright sb ". l:b
-        let l:vsz = &columns * (l:col - l:cid) / l:col
+        let l:vsz = &columns * (l:col - c) / l:col
         exec "vert res ". l:vsz
       else
         exec "sb ". l:b
-        let l:hsz = &lines * (l:cn - l:rid) / l:cn
+        let l:hsz = &lines * (l:row - r) / l:row
         exec "res ". l:hsz
       endif
-    endif
+    endfor
   endfor
 endfunction
