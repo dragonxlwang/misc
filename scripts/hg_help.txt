@@ -54,6 +54,10 @@ Reviewer:
 
 chocjy, amalevich, kittipat, volkhin, ninghz, cxj
 
-show changes since last `arc diff`:
+Show changes since last `arc diff`:
 ===================================
 - hg diff --since-last-arc-diff
+
+Show commit messages and details:
+=================================
+- hg log -v --rev .

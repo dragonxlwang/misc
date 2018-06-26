@@ -889,6 +889,7 @@ alias hld="hg log --rev . --template '{phabdiff}'"
 alias hrf='hhl && arc cleanup-features && hum && hs'
 alias hhpur='hhl && arc cleanup-features && hrb -d master && hs'
 alias hrv='hg revert'
+alias hmsg='arc amend --show 2>/dev/null || hg log -T {desc} --rev .'
 function hg_authors {
   # hg --pager=off log --template "{xg_sl_authors}" -- ${1:-$(pwd)}
   hg log --template "{xg_sl_authors}" -- ${1:-$(readlink -f .)}
