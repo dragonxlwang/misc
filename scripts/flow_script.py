@@ -179,7 +179,7 @@ def format_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" "):
         i = fmt.find(":")
         if fmt[i + 1] == "-" or fmt[i + 1] == "^":
             i = i + 1
-        return fmt[: i + 1] + str(width) + fmt[i + 1:]
+        return fmt[: i + 1] + str(width) + fmt[i + 1 :]
 
     def max_col_width(fields, title="", fmt="{:}"):
         llen = fmt.find("{")
