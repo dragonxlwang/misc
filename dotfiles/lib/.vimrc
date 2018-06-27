@@ -645,3 +645,23 @@ function! ReorganizeBuffer(...)
     endfor
   endfor
 endfunction
+
+command! Dedup :call DedupWindows()
+cnoreabbrev <expr> dd
+      \ (getcmdtype() == ':' && getcmdline() =~ '^dd$')? 'Dedup' : 'dd'
+function DedupWindows()
+  let l:i = 1
+  while l:i <= winnr('$')
+    let l:buf = winbufnr(l:i)
+    let l:j = 1
+    while l:j < l:i
+      if winbufnr(l:j) == l:buf
+        exec l:i . 'close'
+        let l:i = l:i - 1
+        break
+      endif
+      let l:j = l:j + 1
+    endwhile
+    let l:i = l:i + 1
+  endwhile
+endfunction

@@ -574,7 +574,7 @@ def flow_summary(
 ):
     status = flow_status(workflow_run_id)
     lines = '%s, # %s, "%s", %s%s' % (
-        flow_rep(workflow_run_id),
+        workflow_run_id,
         status,
         flow_title(workflow_run_id),
         flow_elapsed_time_str(workflow_run_id),
@@ -582,7 +582,7 @@ def flow_summary(
     )
     indent = "#   |"
     arrow = "-> "
-    sub_indent = " " * (len(arrow) + len("%s # " % flow_rep(workflow_run_id)))
+    sub_indent = " " * (len(arrow) + len("%s, # " % workflow_run_id))
     if status == "RUNNING" and inspect_children:
         for child in flow_children_ids(workflow_run_id):
             lines += "\n%s%s%s" % (
