@@ -1046,6 +1046,10 @@ alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
 alias cf='cd ~/configerator'
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
+function tmp {
+  mkdir -p /tmp/$(whoami)
+  cd ~/tmp
+}
 function fbtmux {
   fbc2
   tmux new-window -t 2 -c $(readlink -f ~/fbcode)
