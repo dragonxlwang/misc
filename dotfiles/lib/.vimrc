@@ -154,6 +154,9 @@ if !empty(glob('/home/engshare/admin/scripts/vim'))
   source /home/engshare/admin/scripts/vim/fbvim.vim
   set rtp+=/home/engshare/admin/scripts/vim
   set rtp+=/home/engshare/admin/scripts/vim/after
+  cnoreabbrev <expr> vimfb
+        \ (getcmdtype() == ':' && getcmdline() =~ '^vimfb$')?
+        \ 'FBVimSaveSession' : 'vimfb'
 endif
 " if !empty(glob('/usr/local/share/clang/clang-format.py'))
 "   augroup FBClangAutoGroup

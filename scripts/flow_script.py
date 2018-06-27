@@ -1,4 +1,5 @@
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 import collections
 import datetime
@@ -7,6 +8,7 @@ import json
 import logging
 import os
 import pprint as py_pprint
+import re
 import shutil
 import subprocess
 import time
@@ -26,7 +28,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from caffe2.caffe2.fb.predictor import predictor_exporter as pe
 from caffe2.caffe2.fb.predictor.model_exporter import ModelExporter
-from caffe2.fb.python.fb_predictor_constants import fb_predictor_constants as fpc
+from caffe2.fb.python.fb_predictor_constants import \
+    fb_predictor_constants as fpc
 from caffe2.proto import caffe2_pb2
 from caffe2.python import core, dyndep, memonger, net_drawer, workspace
 from caffe2.python.fb.dper.layer_models.model_definition import ttypes
@@ -41,15 +44,9 @@ from fblearner.flow.external_api import FlowSession, WorkflowRun
 from fblearner.flow.ml.runners.chronosscheduler import get_workflow_run_status
 from fblearner.flow.plugin_definitions.driver import Drivers
 from fblearner.flow.service.flow_client import get_flow_indexing_client
-from fblearner.flow.storage.models import (
-    ModelType,
-    Session,
-    SessionContext,
-    Workflow,
-    WorkflowRegistration,
-    WorkflowRun,
-    initialize_session,
-)
+from fblearner.flow.storage.models import (ModelType, Session, SessionContext,
+                                           Workflow, WorkflowRegistration,
+                                           WorkflowRun, initialize_session)
 from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
 from fblearner.flow.util.runner_utilities import load_config
 from future.utils import viewitems, viewkeys, viewvalues
@@ -60,7 +57,6 @@ from model_id.ttypes import ModelId
 from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
-
 
 dyndep.InitOpsLibrary("@/caffe2/caffe2/fb/transforms:sigrid_transforms_ops")
 dyndep.InitOpsLibrary("@/caffe2/caffe2/fb:hdfs_log_file_db")
@@ -183,7 +179,7 @@ def format_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" "):
         i = fmt.find(":")
         if fmt[i + 1] == "-" or fmt[i + 1] == "^":
             i = i + 1
-        return fmt[: i + 1] + str(width) + fmt[i + 1 :]
+        return fmt[: i + 1] + str(width) + fmt[i + 1:]
 
     def max_col_width(fields, title="", fmt="{:}"):
         llen = fmt.find("{")
@@ -876,7 +872,9 @@ def flow_pkg_build(send_email_notification=False):
         )
         print(output)
         try:
-            m = re.search("our.intern.facebook.com/intern/fblearner/details/(\d+)", x)
+            m = re.search(
+                "our.intern.facebook.com/intern/fblearner/details/(\d+)", output
+            )
             workflow_run_ids = [int(m.group(1))]
         except:
             workflow_run_ids = flow_find_by_title(title)
@@ -914,7 +912,7 @@ def flow_clone(
             flow_input_args(workflow_run_id)
         ),
         title=(title or default_title) + title_suffix,
-        owner=owner or flow_owner(workflow_run_id),
+        owner=owner if owner is not None else whoami(),
         entitlement=entitlement or flow_entitlement(workflow_run_id),
         package=package or flow_package(workflow_run_id),
         workflow=flow_name(workflow_run_id),
@@ -1575,6 +1573,7 @@ def send_email(
     from email import encoders
     from email.mime.text import MIMEText
     from email.mime.image import MIMEImage
+    from email.mime.audio import MIMEAudio
     from email.mime.multipart import MIMEMultipart
     import smtplib
     import socket
