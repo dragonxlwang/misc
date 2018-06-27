@@ -48,9 +48,9 @@ dir=$(pwd)
 FBC=${FBC:-~/fbcode}
 cd $FBC
 DIFF="$(hg log -r . --template '{xg_sl_normal}' | tr -s ' ')"
-TITLE=${TITLE:-"${PREFIX:+${PREFIX}, }""${DIFF}""${SUFFIX:+, ${SUFFIX}}"}
 WF="${WF:-dper.workflows.ads.train_eval_workflow}"
 MODE=${MODE:-opt}
+TITLE=${TITLE:-"${PREFIX:+${PREFIX}, }""${DIFF} ${MODE}""${SUFFIX:+, ${SUFFIX}}"}
 
 echo "FBC            = ${FBC}"
 echo "PREFIX         = ${PREFIX}"
