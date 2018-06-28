@@ -63,10 +63,12 @@ if [[ -n $@ ]]; then
   echo $# POSITIONAL ARGUMENTS: $@
 fi
 
+if [[ $MODE == "default" ]]; then
+  CMD="flow-cli canary $WF --name \"$TITLE\""
+else
+  CMD="flow-cli canary --mode $MODE $WF --name \"$TITLE\""
+fi
 
-CMD="flow-cli canary\
-  --mode $MODE $WF\
-  --name \"$TITLE\""
 echo "$CMD"
 eval "$CMD"
 

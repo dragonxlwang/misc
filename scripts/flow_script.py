@@ -850,7 +850,7 @@ def flow_pkg_extend(workflow_run_id):
     return package
 
 
-def flow_pkg_build(is_dev=False, send_email_notification=False):
+def flow_pkg_build(mode="opt", send_email_notification=False):
     my_env = os.environ.copy()
     my_env.pop("LD_LIBRARY_PATH")
     diff_info = (
@@ -861,14 +861,19 @@ def flow_pkg_build(is_dev=False, send_email_notification=False):
         .replace('"', "")
         .replace("'", "")
     )
-    title = "CANARY: %s %s" % (diff_info, "dev" if is_dev else "opt")
+    mode = "default" if mode is None else mode
+    title = "CANARY: %s @mode/%s" % (diff_info, mode)
     workflow_run_ids = flow_find_by_title(title)
     if len(workflow_run_ids) > 0:
         print("pkg previously canaried with run: {}".format(title))
     else:
-        cmd = [os.path.expanduser("~/misc/scripts/canary_workflow.sh"), "-t", title]
-        if is_dev:
-            cmd.extend(["-m", "dev"])
+        cmd = [
+            os.path.expanduser("~/misc/scripts/canary_workflow.sh"),
+            "-t",
+            title,
+            "-m",
+            mode,
+        ]
         output = subprocess.check_output(cmd, env=my_env)
         print(output)
         try:
