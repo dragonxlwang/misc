@@ -26,6 +26,7 @@ import fblearner.flow.facebook.plugins.all_plugins  # noqa
 import fblearner.flow.projects.dper.flow_types as T
 import matplotlib.pyplot as plt
 import numpy as np
+from bunch import Bunch
 from caffe2.caffe2.fb.predictor import predictor_exporter as pe
 from caffe2.caffe2.fb.predictor.model_exporter import ModelExporter
 from caffe2.fb.python.fb_predictor_constants import \
@@ -179,7 +180,7 @@ def format_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" "):
         i = fmt.find(":")
         if fmt[i + 1] == "-" or fmt[i + 1] == "^":
             i = i + 1
-        return fmt[: i + 1] + str(width) + fmt[i + 1 :]
+        return fmt[: i + 1] + str(width) + fmt[i + 1:]
 
     def max_col_width(fields, title="", fmt="{:}"):
         llen = fmt.find("{")
@@ -667,6 +668,7 @@ def flow_find_by_title(title, owner=None):
     """list the flows owned by the owner and in the specified status"""
     # fblearner/flow/driver/queries.py
     # fblearner/flow/storage/models.py
+    # daiquery: database=MySQL, DB_Name=xdb.fblearner_vnext, table_name=workflow_runs
     from sqlalchemy.sql import text
 
     initialize_session(load_config())
@@ -1363,6 +1365,130 @@ def hive_dataset(path, backshift=0, days=1):
     ][::-1]
 
 
+@memoize_timed(24 * 60 * 60)
+@retryable(num_tries=3, sleep_time=1)
+def ads_v0_models():
+    import smc_db
+
+    DB_TIER = "xdb.ads_ranking_metadata"
+    READ = "scriptro"
+    with smc_db.SmcConnection(DB_TIER, READ) as conn:
+        sql = """
+                SELECT
+                    `v0_run_id`,
+                    `timestamp`,
+                    `model_type`
+                FROM model_type_v0_updates
+                ORDER BY
+                    `timestamp` DESC
+            """
+        sql_ret = list(conn.query_all_dict(sql))
+        models = {}
+        for m in sql_ret:
+            model_type = m["model_type"]
+            prod_model = Bunch()
+            prod_model.v0 = m["v0_run_id"]
+            prod_model.dt = datetime.datetime.fromtimestamp(x["timestamp"])
+            if model_type not in models:
+                models[model_type] = prod_model
+    return models
+
+
+class AdsTrainEvalArgModifer(object):
+    def clear_metrics(self, args):
+        args["metric_options"]["metrics"] = []
+        return args
+
+    def add_x_metric(self, args, x, opt):
+        metrics = args["metric_options"]["metrics"]
+        metrics = [m for m in metrics if m.keys() != [x]]
+        metrics.append({x: opt})
+        args["metric_options"]["metrics"] = metrics
+        return args
+
+    def add_ne_metric(self, args):
+        return self.add_x_metric(
+            args,
+            "binary_ne",
+            {
+                "name": "model",
+                "weight_name": "supervision:weight",
+                "window_size": 10000000,
+                "learning_curves": ["ne", "calibration", "window_ne"],
+                "plot_jsd": False,
+            },
+        )
+
+    def add_jsd_metric(self, args):
+        return self.add_x_metric(
+            "jsd",
+            {
+                "name": "jsd",
+                "weight_name": "supervision:weight",
+                "window_size": 10000000,
+                "learning_curves": ["jsd", "window_jsd"],
+            },
+        )
+
+    def add_auc_metric(self, args):
+        return self.add_x_metric(
+            "auc",
+            {
+                "name": "auc",
+                "weight_name": "supervision:weight",
+                "window_size": 10000000,
+                "learning_curves": ["auc"],
+            },
+        )
+
+    def add_ranking_metric(self, args):
+        return self.add_x_metric(
+            "ranking",
+            {
+                "name": "ranking",
+                "weight_name": "supervision:weight",
+                "window_size": 10000000,
+                "max_report_k": 100000,
+                "report_granuality_level": 0.5,
+                "compute_negative": True,
+            },
+        )
+
+    def add_metrics(self, ne=True, jsd=True, auc=True, ranking=True):
+        if ne:
+            args = self.add_ne_metric(args)
+        if jsd:
+            args = self.add_jsd_metric(args)
+        if auc:
+            args = self.add_auc_metric(args)
+        if ranking:
+            args = self.add_ranking_metric(args)
+        return args
+
+    def set_train_eval_dataset(dataset=None, use_hive2=True)
+        if use_hive2:
+            args["train_reader_options"]["reader_type"] = "hiveio2"
+            args["eval_reader_options"]["reader_type"] = "hiveio2"
+        if dataset:
+            hive_path, train_days, train_cap, eval_days, eval_cap = dataset
+            args["train_reader_options"]["dataset"] = hive_dataset(
+                hive_path, backshift=1, days=train_days
+            )
+            args["eval_reader_options"]["dataset"] = hive_dataset(
+                hive_path, backshift=0, days=eval_days
+            )
+            if train_cap:
+                args["train_reader_options"]["max_examples"] = train_cap
+            if eval_cap:
+                args["eval_reader_options"]["max_examples"] = eval_cap
+        return args
+
+
+def get_v0_args(model_type):
+    v0 = ads_v0_models[model_type].v0
+    return flow_input_args(v0)
+
+
 def ads_train_eval_arg_update(
     args_or_workflow_id,
     use_hive2=True,
@@ -1388,7 +1514,18 @@ def ads_train_eval_arg_update(
                         "window_size": 1000000,
                         "name": "model",
                         "learning_curves": ["ne", "calibration", "window_ne"],
-                        "plot_jsd": ("jsd" in metrics),
+                        "plot_jsd": False,
+                    }
+                }
+            )
+        if "jsd" in metrics:
+            args["metric_options"]["metrics"].append(
+                {
+                    "jsd": {
+                        "name": "jsd",
+                        "weight_name": "supervision:weight",
+                        "window_size": 1000000,
+                        "learning_curves": ["jsd", "window_jsd"],
                     }
                 }
             )
@@ -1400,38 +1537,12 @@ def ads_train_eval_arg_update(
             args["metric_options"]["metrics"].append(
                 {
                     "ranking_metric": {
-                        "learning_curves": [
-                            "PV_window_positive_20000",
-                            "PV_window_negative_20000",
-                            "PV_window_positive_40000",
-                            "PV_window_negative_40000",
-                            "PV_window_positive_60000",
-                            "PV_window_negative_60000",
-                            "PV_window_positive_80000",
-                            "PV_window_negative_80000",
-                            "PV_window_positive_100000",
-                            "PV_window_negative_100000",
-                            "NDCG_window_positive_20000",
-                            "NDCG_window_negative_20000",
-                            "NDCG_window_positive_40000",
-                            "NDCG_window_negative_40000",
-                            "NDCG_window_positive_60000",
-                            "NDCG_window_negative_60000",
-                            "NDCG_window_positive_80000",
-                            "NDCG_window_negative_80000",
-                            "NDCG_window_positive_100000",
-                            "NDCG_window_negative_100000",
-                        ],
                         "name": "ranking",
                         "weight_name": "supervision:weight",
-                        "window_size": 120000,
-                        "max_window_k": 100000,
-                        "window_gl": 0.2,
-                        "max_lifetime_k": 0,
-                        "lifetime_gl": 0.2,
+                        "window_size": 10000000,
+                        "max_report_k": 100000,
+                        "report_granuality_level": 0.5,
                         "compute_negative": True,
-                        "predictive_value_at_top_k": True,
-                        "ndcg_at_k": True,
                     }
                 }
             )
