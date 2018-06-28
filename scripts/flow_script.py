@@ -1365,211 +1365,6 @@ def hive_dataset(path, backshift=0, days=1):
     ][::-1]
 
 
-@memoize_timed(24 * 60 * 60)
-@retryable(num_tries=3, sleep_time=1)
-def ads_v0_models():
-    import smc_db
-
-    DB_TIER = "xdb.ads_ranking_metadata"
-    READ = "scriptro"
-    with smc_db.SmcConnection(DB_TIER, READ) as conn:
-        sql = """
-                SELECT
-                    `v0_run_id`,
-                    `timestamp`,
-                    `model_type`
-                FROM model_type_v0_updates
-                ORDER BY
-                    `timestamp` DESC
-            """
-        sql_ret = list(conn.query_all_dict(sql))
-        models = {}
-        for m in sql_ret:
-            model_type = m["model_type"]
-            prod_model = Bunch()
-            prod_model.v0 = m["v0_run_id"]
-            prod_model.dt = datetime.datetime.fromtimestamp(x["timestamp"])
-            if model_type not in models:
-                models[model_type] = prod_model
-    return models
-
-
-class AdsTrainEvalArgModifer(object):
-    def clear_metrics(self, args):
-        args["metric_options"]["metrics"] = []
-        return args
-
-    def add_x_metric(self, args, x, opt):
-        metrics = args["metric_options"]["metrics"]
-        metrics = [m for m in metrics if m.keys() != [x]]
-        metrics.append({x: opt})
-        args["metric_options"]["metrics"] = metrics
-        return args
-
-    def add_ne_metric(self, args):
-        return self.add_x_metric(
-            args,
-            "binary_ne",
-            {
-                "name": "model",
-                "weight_name": "supervision:weight",
-                "window_size": 10000000,
-                "learning_curves": ["ne", "calibration", "window_ne"],
-                "plot_jsd": False,
-            },
-        )
-
-    def add_jsd_metric(self, args):
-        return self.add_x_metric(
-            "jsd",
-            {
-                "name": "jsd",
-                "weight_name": "supervision:weight",
-                "window_size": 10000000,
-                "learning_curves": ["jsd", "window_jsd"],
-            },
-        )
-
-    def add_auc_metric(self, args):
-        return self.add_x_metric(
-            "auc",
-            {
-                "name": "auc",
-                "weight_name": "supervision:weight",
-                "window_size": 10000000,
-                "learning_curves": ["auc"],
-            },
-        )
-
-    def add_ranking_metric(self, args):
-        return self.add_x_metric(
-            "ranking",
-            {
-                "name": "ranking",
-                "weight_name": "supervision:weight",
-                "window_size": 10000000,
-                "max_report_k": 100000,
-                "report_granuality_level": 0.5,
-                "compute_negative": True,
-            },
-        )
-
-    def add_metrics(self, ne=True, jsd=True, auc=True, ranking=True):
-        if ne:
-            args = self.add_ne_metric(args)
-        if jsd:
-            args = self.add_jsd_metric(args)
-        if auc:
-            args = self.add_auc_metric(args)
-        if ranking:
-            args = self.add_ranking_metric(args)
-        return args
-
-    def set_train_eval_dataset(dataset=None, use_hive2=True)
-        if use_hive2:
-            args["train_reader_options"]["reader_type"] = "hiveio2"
-            args["eval_reader_options"]["reader_type"] = "hiveio2"
-        if dataset:
-            hive_path, train_days, train_cap, eval_days, eval_cap = dataset
-            args["train_reader_options"]["dataset"] = hive_dataset(
-                hive_path, backshift=1, days=train_days
-            )
-            args["eval_reader_options"]["dataset"] = hive_dataset(
-                hive_path, backshift=0, days=eval_days
-            )
-            if train_cap:
-                args["train_reader_options"]["max_examples"] = train_cap
-            if eval_cap:
-                args["eval_reader_options"]["max_examples"] = eval_cap
-        return args
-
-
-def get_v0_args(model_type):
-    v0 = ads_v0_models[model_type].v0
-    return flow_input_args(v0)
-
-
-def ads_train_eval_arg_update(
-    args_or_workflow_id,
-    use_hive2=True,
-    metrics={"ne", "auc", "jsd", "ranking"},
-    checkpoint=True,
-    dataset=None,
-):
-    args = (
-        flow_input_args(args_or_workflow_id)
-        if type(args_or_workflow_id) == int
-        else args_or_workflow_id
-    )
-    if use_hive2:
-        args["train_reader_options"]["reader_type"] = "hiveio2"
-        args["eval_reader_options"]["reader_type"] = "hiveio2"
-    if metrics:
-        args["metric_options"]["metrics"] = []
-        if "ne" in metrics:
-            args["metric_options"]["metrics"].append(
-                {
-                    "binary_ne": {
-                        "weight_name": "supervision:weight",
-                        "window_size": 1000000,
-                        "name": "model",
-                        "learning_curves": ["ne", "calibration", "window_ne"],
-                        "plot_jsd": False,
-                    }
-                }
-            )
-        if "jsd" in metrics:
-            args["metric_options"]["metrics"].append(
-                {
-                    "jsd": {
-                        "name": "jsd",
-                        "weight_name": "supervision:weight",
-                        "window_size": 1000000,
-                        "learning_curves": ["jsd", "window_jsd"],
-                    }
-                }
-            )
-        if "auc" in metrics:
-            args["metric_options"]["metrics"].append(
-                {"auc": {"weight_name": "supervision:weight", "name": "AUC"}}
-            )
-        if "ranking" in metrics:
-            args["metric_options"]["metrics"].append(
-                {
-                    "ranking_metric": {
-                        "name": "ranking",
-                        "weight_name": "supervision:weight",
-                        "window_size": 10000000,
-                        "max_report_k": 100000,
-                        "report_granuality_level": 0.5,
-                        "compute_negative": True,
-                    }
-                }
-            )
-    if checkpoint:
-        args["checkpoint_options"] = {
-            "aggressive_cleanup": True,
-            "checkpoint_every_examples": None,
-            "checkpoint_feature_strategy": "default",
-            "checkpoint_path": None,
-            "epoch_duration_minutes": None,
-            "resume_from_epoch": None,
-        }
-    if dataset:
-        hive_path, train_days, train_cap, eval_days, eval_cap = dataset
-        args["train_reader_options"]["dataset"] = hive_dataset(
-            hive_path, backshift=1, days=train_days
-        )
-        args["eval_reader_options"]["dataset"] = hive_dataset(
-            hive_path, backshift=0, days=eval_days
-        )
-        if train_cap:
-            args["train_reader_options"]["max_examples"] = train_cap
-        if eval_cap:
-            args["eval_reader_options"]["max_examples"] = eval_cap
-    return args
-
-
 def rep_func(func, rep, *args, **kwargs):
     return [func(*args, **kwargs) for _ in range(rep)]
 
@@ -1806,6 +1601,211 @@ def send_email(
     mail_server = smtplib.SMTP("localhost")
     mail_server.sendmail(msg["From"], dest_list, msg.as_string())
     return msg
+
+
+# ------------------------------------ Ads ------------------------------------
+@memoize_timed(24 * 60 * 60)
+@retryable(num_tries=3, sleep_time=1)
+def ads_v0_models():
+    import smc_db
+    DB_TIER = "xdb.ads_ranking_metadata"
+    READ = "scriptro"
+    with smc_db.SmcConnection(DB_TIER, READ) as conn:
+        sql = """
+                SELECT
+                    `v0_run_id`,
+                    `timestamp`,
+                    `model_type`
+                FROM model_type_v0_updates
+                ORDER BY
+                    `timestamp` DESC
+            """
+        sql_ret = list(conn.query_all_dict(sql))
+        models = {}
+        for m in sql_ret:
+            model_type = m["model_type"]
+            prod_model = Bunch()
+            prod_model.v0 = m["v0_run_id"]
+            prod_model.dt = datetime.datetime.fromtimestamp(x["timestamp"])
+            if model_type not in models:
+                models[model_type] = prod_model
+    return models
+
+
+class AdsTrainEvalArgModifer(object):
+    def clear_metrics(self, args):
+        args["metric_options"]["metrics"] = []
+        return args
+
+    def add_x_metric(self, args, x, opt):
+        metrics = args["metric_options"]["metrics"]
+        metrics = [m for m in metrics if m.keys() != [x]]
+        metrics.append({x: opt})
+        args["metric_options"]["metrics"] = metrics
+        return args
+
+    def add_ne_metric(self, args):
+        return self.add_x_metric(
+            args,
+            "binary_ne",
+            {
+                "name": "model",
+                "weight_name": "supervision:weight",
+                "window_size": 10000000,
+                "learning_curves": ["ne", "calibration", "window_ne"],
+                "plot_jsd": False,
+            },
+        )
+
+    def add_jsd_metric(self, args):
+        return self.add_x_metric(
+            "jsd",
+            {
+                "name": "jsd",
+                "weight_name": "supervision:weight",
+                "window_size": 10000000,
+                "learning_curves": ["jsd", "window_jsd"],
+            },
+        )
+
+    def add_auc_metric(self, args):
+        return self.add_x_metric(
+            "auc",
+            {
+                "name": "auc",
+                "weight_name": "supervision:weight",
+                "window_size": 10000000,
+                "learning_curves": ["auc"],
+            },
+        )
+
+    def add_ranking_metric(self, args):
+        return self.add_x_metric(
+            "ranking",
+            {
+                "name": "ranking",
+                "weight_name": "supervision:weight",
+                "window_size": 10000000,
+                "max_report_k": 100000,
+                "report_granuality_level": 0.5,
+                "compute_negative": True,
+            },
+        )
+
+    def add_metrics(self, ne=True, jsd=True, auc=True, ranking=True):
+        if ne:
+            args = self.add_ne_metric(args)
+        if jsd:
+            args = self.add_jsd_metric(args)
+        if auc:
+            args = self.add_auc_metric(args)
+        if ranking:
+            args = self.add_ranking_metric(args)
+        return args
+
+    def set_train_eval_dataset(dataset=None, use_hive2=True)
+        if use_hive2:
+            args["train_reader_options"]["reader_type"] = "hiveio2"
+            args["eval_reader_options"]["reader_type"] = "hiveio2"
+        if dataset:
+            hive_path, train_days, train_cap, eval_days, eval_cap = dataset
+            args["train_reader_options"]["dataset"] = hive_dataset(
+                hive_path, backshift=1, days=train_days
+            )
+            args["eval_reader_options"]["dataset"] = hive_dataset(
+                hive_path, backshift=0, days=eval_days
+            )
+            if train_cap:
+                args["train_reader_options"]["max_examples"] = train_cap
+            if eval_cap:
+                args["eval_reader_options"]["max_examples"] = eval_cap
+        return args
+
+
+def flow_ads_v0_args(model_type):
+    v0 = ads_v0_models[model_type].v0
+    return flow_input_args(v0)
+
+
+def ads_train_eval_arg_update(
+    args_or_workflow_id,
+    use_hive2=True,
+    metrics={"ne", "auc", "jsd", "ranking"},
+    checkpoint=True,
+    dataset=None,
+):
+    args = (
+        flow_input_args(args_or_workflow_id)
+        if type(args_or_workflow_id) == int
+        else args_or_workflow_id
+    )
+    if use_hive2:
+        args["train_reader_options"]["reader_type"] = "hiveio2"
+        args["eval_reader_options"]["reader_type"] = "hiveio2"
+    if metrics:
+        args["metric_options"]["metrics"] = []
+        if "ne" in metrics:
+            args["metric_options"]["metrics"].append(
+                {
+                    "binary_ne": {
+                        "weight_name": "supervision:weight",
+                        "window_size": 1000000,
+                        "name": "model",
+                        "learning_curves": ["ne", "calibration", "window_ne"],
+                        "plot_jsd": False,
+                    }
+                }
+            )
+        if "jsd" in metrics:
+            args["metric_options"]["metrics"].append(
+                {
+                    "jsd": {
+                        "name": "jsd",
+                        "weight_name": "supervision:weight",
+                        "window_size": 1000000,
+                        "learning_curves": ["jsd", "window_jsd"],
+                    }
+                }
+            )
+        if "auc" in metrics:
+            args["metric_options"]["metrics"].append(
+                {"auc": {"weight_name": "supervision:weight", "name": "AUC"}}
+            )
+        if "ranking" in metrics:
+            args["metric_options"]["metrics"].append(
+                {
+                    "ranking_metric": {
+                        "name": "ranking",
+                        "weight_name": "supervision:weight",
+                        "window_size": 10000000,
+                        "max_report_k": 100000,
+                        "report_granuality_level": 0.5,
+                        "compute_negative": True,
+                    }
+                }
+            )
+    if checkpoint:
+        args["checkpoint_options"] = {
+            "aggressive_cleanup": True,
+            "checkpoint_every_examples": None,
+            "checkpoint_feature_strategy": "default",
+            "checkpoint_path": None,
+            "epoch_duration_minutes": None,
+            "resume_from_epoch": None,
+        }
+    if dataset:
+        hive_path, train_days, train_cap, eval_days, eval_cap = dataset
+        args["train_reader_options"]["dataset"] = hive_dataset(
+            hive_path, backshift=1, days=train_days
+        )
+        args["eval_reader_options"]["dataset"] = hive_dataset(
+            hive_path, backshift=0, days=eval_days
+        )
+        if train_cap:
+            args["train_reader_options"]["max_examples"] = train_cap
+        if eval_cap:
+            args["eval_reader_options"]["max_examples"] = eval_cap
+    return args
 
 
 log_reset()

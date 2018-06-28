@@ -30,6 +30,7 @@ mk_link() {
       $ANSI_COLOR_RESET
     return 1
   fi
+  mkdir -p $(dirname $des)
   if [[ -e $des || -L $des ]];
   then
     echo -n "${des} already existed. Do you want to overwrite? [Y/N] "
@@ -133,6 +134,7 @@ files=(                                                           \
   "$tmux_conf"                      "${HOME}/.tmux.conf"          \
   "$root_dir/lib/.zshrc"            "${HOME}/.zshrc"              \
   "$root_dir/lib/.hgrc"             "${HOME}/.hgrc"               \
+  "$root_dir/lib/flake8"            "${HOME}/.config/flake8"      \
   "$root_dir/lib/.hgignore"         "${HOME}/.hgignore"           \
   "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit"            \
   "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/.vim/.ycm_extra_conf.py"     \
