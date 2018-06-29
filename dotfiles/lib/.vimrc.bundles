@@ -385,7 +385,22 @@ nnoremap <leader>www :exe "Autoformat" \| w! \|
       \ silent exe "!git push"  \| redraw! <CR>
 " Plugin 'jlfwong/vim-mercenary'
 Plugin 'ludovicchabant/vim-lawrencium'
-
+command! -nargs=? HgVertSplitDiff :call HgVsDiff(<f-args>)
+cnoreabbrev <expr> hd
+      \ (getcmdtype() == ':' && getcmdline() =~ '^hd$')? 'HgVertSplitDiff' : 'hd'
+function! HgVsDiff(...)
+  let l:ft = &filetype
+  if a:0 == 0
+    let l:rev = ".^"
+  else
+    let l:rev = a:1
+  endif
+  exec "Hgvdiff". l:rev
+  " move to left (rev file)
+  wincmd h
+  exec "set filetype=". l:ft
+  wincmd x
+endfunction
 
 " ============================================================================ "
 "                __          ___   .___________. __________   ___              "

@@ -652,7 +652,7 @@ endfunction
 command! Dedup :call DedupWindows()
 cnoreabbrev <expr> dd
       \ (getcmdtype() == ':' && getcmdline() =~ '^dd$')? 'Dedup' : 'dd'
-function DedupWindows()
+function! DedupWindows()
   let l:i = 1
   while l:i <= winnr('$')
     let l:buf = winbufnr(l:i)
