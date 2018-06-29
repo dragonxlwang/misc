@@ -180,7 +180,7 @@ def format_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" "):
         i = fmt.find(":")
         if fmt[i + 1] == "-" or fmt[i + 1] == "^":
             i = i + 1
-        return fmt[: i + 1] + str(width) + fmt[i + 1:]
+        return fmt[: i + 1] + str(width) + fmt[i + 1 :]
 
     def max_col_width(fields, title="", fmt="{:}"):
         llen = fmt.find("{")
@@ -374,12 +374,19 @@ def flow_run(
     title="test",
     owner=None,
     entitlement="ads_ftw",
-    package="aml.dper2:73",
+    package=None,
     workflow="dper.workflows.ads.train_eval_workflow",
     model_type_id=None,
 ):
-    owner = owner if owner is not None else whoami()
     """schedule a flow run, and return the WorkflowRun instance"""
+    owner = owner if owner is not None else whoami()
+    if package is None or package.lower() == "canary":
+        # build opt package
+        canary_workflow_run_id = flow_pkg_build()
+        package = flow_package(canary_workflow_run_id)
+    elif package.lower() == "default":
+        # get latest package: aml.dper2:73
+        package = flow_latest_pkg_version()
     fl = FlowSession()
     run = fl.schedule_workflow(
         owner=owner,
@@ -485,6 +492,15 @@ def flow_package(workflow_run_id):
     """return packageVersion in flow_info"""
     fl = FlowSession()
     return fl.get_workflow_run_info(workflow_run_id).packageVersion
+
+
+def flow_pkg_infer(workflow_run_id_or_tag):
+    if isinstance(workflow_run_id_or_tag, string_types):
+        tag = workflow_run_id_or_tag
+        return tag
+    else:
+        workflow_run_id = workflow_run_id_or_tag
+        return flow_package(workflow_run_id)
 
 
 def flow_owner(workflow_run_id):
@@ -852,6 +868,33 @@ def flow_pkg_extend(workflow_run_id):
     return package
 
 
+@memoize_timed(24 * 60 * 60)
+@retryable(num_tries=3, sleep_time=1)
+def flow_pkg_versions(package="aml.dper2"):
+    my_env = os.environ.copy()
+    my_env.pop("LD_LIBRARY_PATH")
+    output = subprocess.check_output(
+        ["fbpkg", "versions", "--no-ephemerals", package], env=my_env
+    )
+    lines = filter(lambda l: l.startswith(package), output.split("\n"))
+    versions = [ln.split()[0] for ln in lines]
+    return versions
+
+
+@memoize_timed(24 * 60 * 60)
+@retryable(num_tries=3, sleep_time=1)
+def flow_latest_pkg_version(package="aml.dper2"):
+    my_env = os.environ.copy()
+    my_env.pop("LD_LIBRARY_PATH")
+    output = subprocess.check_output(
+        ["fbpkg", "versions", "--no-ephemerals", package], env=my_env
+    )
+    lines = filter(lambda l: l.startswith(package), output.split("\n"))
+    versions = [ln.split()[0] for ln in lines if "DEFAULT" in ln]
+    assert len(versions) == 1
+    return versions[0]
+
+
 def flow_pkg_build(mode="opt", send_email_notification=False):
     my_env = os.environ.copy()
     my_env.pop("LD_LIBRARY_PATH")
@@ -866,8 +909,10 @@ def flow_pkg_build(mode="opt", send_email_notification=False):
     mode = "default" if mode is None else mode
     title = "CANARY: %s @mode/%s" % (diff_info, mode)
     workflow_run_ids = flow_find_by_title(title)
+    previously_built = False
     if len(workflow_run_ids) > 0:
         print("pkg previously canaried with run: {}".format(title))
+        previously_built = True
     else:
         cmd = [
             os.path.expanduser("~/misc/scripts/canary_workflow.sh"),
@@ -883,7 +928,7 @@ def flow_pkg_build(mode="opt", send_email_notification=False):
                 "our.intern.facebook.com/intern/fblearner/details/(\d+)", output
             )
             workflow_run_ids = [int(m.group(1))]
-        except:
+        except Exception:
             workflow_run_ids = flow_find_by_title(title)
     assert len(workflow_run_ids) == 1, workflow_run_ids
     workflow_run_id = workflow_run_ids[0]
@@ -892,9 +937,10 @@ def flow_pkg_build(mode="opt", send_email_notification=False):
         send_email(
             subject="{}: {}".format(flow_rep(workflow_run_id), title),
             to=my_email_addr(),
-            body="flow pkg is build: \n {}".format(
+            body="flow pkg is {} built: \n {}".format(
+                "previously" if previously_built else "",
                 "FBL: %s, %s"
-                % (flow_rep(workflow_run_id), fbl_flow_link(workflow_run_id))
+                % (flow_rep(workflow_run_id), fbl_flow_link(workflow_run_id)),
             ),
             auto_sig=True,
         )
@@ -1194,6 +1240,22 @@ def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800, max_iter
         else:
             logger.info("FLOW CHECK/COMPARE LOOP HIBERNATE for %ds\n" % interval)
             time.sleep(interval)
+
+
+def flow_dist_train_child(top_lvl_run_id):
+    assert flow_name(top_lvl_run_id) == "dper.workflows.ads.train_eval_workflow"
+    # find train workflow
+    t_id = None
+    for x in flow_children_ids(top_lvl_run_id):
+        if flow_name(x) == "dper.workflows.ads._train_workflow_impl":
+            t_id = x
+            break
+    assert t_id is not None
+    dt_id = None
+    for x in flow_children_ids(t_id):
+        if flow_title(x) == "Distributed Trainer":
+            return x
+    raise Exception
 
 
 def fbl_flow_link(workflow_run_id, shorten_to_fburl=True):
@@ -1608,6 +1670,7 @@ def send_email(
 @retryable(num_tries=3, sleep_time=1)
 def ads_v0_models():
     import smc_db
+
     DB_TIER = "xdb.ads_ranking_metadata"
     READ = "scriptro"
     with smc_db.SmcConnection(DB_TIER, READ) as conn:
@@ -1626,13 +1689,13 @@ def ads_v0_models():
             model_type = m["model_type"]
             prod_model = Bunch()
             prod_model.v0 = m["v0_run_id"]
-            prod_model.dt = datetime.datetime.fromtimestamp(x["timestamp"])
+            prod_model.dt = datetime.datetime.fromtimestamp(m["timestamp"])
             if model_type not in models:
                 models[model_type] = prod_model
     return models
 
 
-class AdsTrainEvalArgModifer(object):
+class AdsTrainEvalArgModifier(object):
     def clear_metrics(self, args):
         args["metric_options"]["metrics"] = []
         return args
@@ -1659,6 +1722,7 @@ class AdsTrainEvalArgModifer(object):
 
     def add_jsd_metric(self, args):
         return self.add_x_metric(
+            args,
             "jsd",
             {
                 "name": "jsd",
@@ -1670,6 +1734,7 @@ class AdsTrainEvalArgModifer(object):
 
     def add_auc_metric(self, args):
         return self.add_x_metric(
+            args,
             "auc",
             {
                 "name": "auc",
@@ -1681,7 +1746,8 @@ class AdsTrainEvalArgModifer(object):
 
     def add_ranking_metric(self, args):
         return self.add_x_metric(
-            "ranking",
+            args,
+            "ranking_metric",
             {
                 "name": "ranking",
                 "weight_name": "supervision:weight",
@@ -1692,7 +1758,7 @@ class AdsTrainEvalArgModifer(object):
             },
         )
 
-    def add_metrics(self, ne=True, jsd=True, auc=True, ranking=True):
+    def add_metrics(self, args, ne=True, jsd=True, auc=True, ranking=True):
         if ne:
             args = self.add_ne_metric(args)
         if jsd:
@@ -1703,7 +1769,12 @@ class AdsTrainEvalArgModifer(object):
             args = self.add_ranking_metric(args)
         return args
 
-    def set_train_eval_dataset(dataset=None, use_hive2=True)
+    def set_metrics(self, args, ne=True, jsd=True, auc=True, ranking=True):
+        args = self.clear_metrics(args)
+        args = self.add_metrics(args, ne, jsd, auc, ranking)
+        return args
+
+    def set_train_eval_dataset(self, args, dataset=None, use_hive2=True):
         if use_hive2:
             args["train_reader_options"]["reader_type"] = "hiveio2"
             args["eval_reader_options"]["reader_type"] = "hiveio2"
@@ -1721,12 +1792,46 @@ class AdsTrainEvalArgModifer(object):
                 args["eval_reader_options"]["max_examples"] = eval_cap
         return args
 
+    def set_checkpoint(self, args):
+        args["checkpoint_options"] = {
+            "aggressive_cleanup": True,
+            "checkpoint_every_examples": None,
+            "checkpoint_feature_strategy": "default",
+            "checkpoint_path": None,
+            "epoch_duration_minutes": None,
+            "resume_from_epoch": None,
+        }
+        return args
 
-def flow_ads_v0_args(model_type):
-    v0 = ads_v0_models[model_type].v0
-    return flow_input_args(v0)
+
+ads_train_eval_arg_modifier = AdsTrainEvalArgModifier()
 
 
+def ads_v0_workflow_run_id(model_type):
+    v0_models = ads_v0_models()
+    v0 = v0_models[model_type].v0
+    return v0
+
+
+def ads_v0_flow_input_args(model_type):
+    return flow_input_args(ads_v0_workflow_run_id(model_type))
+
+
+def ads_model_type_id(model_type):
+    initialize_session(load_config())
+    with SessionContext(Session) as session:
+        return session.query(ModelType).filter(ModelType.name == model_type).one().id
+
+
+def ads_hive_path(
+    namespace="ad_delivery", table="ad_prefiltered_training_data_orc", pipeline=None
+):
+    return "hive://{namespace}/{table}/ds=*/pipeline={pipeline}/ts=*".format(
+        namespace=namespace, table=table, pipeline=pipeline
+    )
+
+
+# deprecated
 def ads_train_eval_arg_update(
     args_or_workflow_id,
     use_hive2=True,

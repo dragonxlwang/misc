@@ -1053,6 +1053,9 @@ function tmp {
 function flow_script {
   vim ~/misc/scripts/flow_script.py
 }
+function fb_latest_pkg {
+  fbpkg versions "$*" --no-ephemerals | grep DEFAULT | cut -d' ' -f1
+}
 function fbtmux {
   fbc2
   tmux new-window -t 2 -c $(readlink -f ~/fbcode)
