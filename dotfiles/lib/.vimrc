@@ -668,3 +668,25 @@ function! DedupWindows()
     let l:i = l:i + 1
   endwhile
 endfunction
+
+command! DoublePane :call ResizeVertByScale(2)
+cnoreabbrev <expr> dp
+      \ (getcmdtype() == ':' && getcmdline() =~ '^dp$')? 'DoublePane' : 'dp'
+function! ResizeVertByScale(s)
+  exec "vert res". (&textwidth + 10) * a:s
+endfunction
+
+function! MakeRoomForLowestPane()
+  let l:nr = winnr()
+  100 wincmd j
+  let l:ln = &lines / 5
+  if l:ln < 20
+    let l:ln = 20
+  endif
+  exec "res ". l:ln
+  exec l:nr . "wincmd w"
+endfunction
+
+if exists(":FBGW")
+  command! FBGW call MakeRoomForLowestPane() | call BigGrep("f", "s", expand("<cword>"))
+endif

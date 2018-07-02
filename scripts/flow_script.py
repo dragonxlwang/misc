@@ -162,6 +162,9 @@ def log_reset(file_names=None, max_ln_num=1e5):
 
 
 def pprint(obj, add_log=False, to_std=True, lvl="info", raw=False, multiline=False):
+    # json obj removes bunch hook
+    if isinstance(obj, Bunch):
+        obj = Bunch.toDict(obj)
     if not isinstance(obj, string_types):
         obj = py_pprint.pformat(obj) if not raw else str(obj)
     if not multiline:
@@ -232,7 +235,7 @@ def tt_to_json(obj):
     trans = TMemoryBuffer()
     proto = TSimpleJSONProtocol.TSimpleJSONProtocol(trans)
     obj.write(proto)
-    return trans.getvalue()
+    return Bunch.fromDict(trans.getvalue())
 
 
 def tt_to_dict(obj):
@@ -430,7 +433,7 @@ def flow_input_args(workflow_run_id, print_return=False):
     """input arguments for flow"""
     fl = FlowSession()
     input_args = fl.get_workflow_run_inputs_summary(workflow_run_id=workflow_run_id)
-    input_args = deepcopy(input_args)
+    input_args = deepcopy(Bunch.fromDict(input_args))
     if print_return:
         pprint(input_args)
     return input_args
@@ -1786,10 +1789,9 @@ class AdsTrainEvalArgModifier(object):
             args["eval_reader_options"]["dataset"] = hive_dataset(
                 hive_path, backshift=0, days=eval_days
             )
-            if train_cap:
-                args["train_reader_options"]["max_examples"] = train_cap
-            if eval_cap:
-                args["eval_reader_options"]["max_examples"] = eval_cap
+            # None as no cap
+            args["train_reader_options"]["max_examples"] = train_cap
+            args["eval_reader_options"]["max_examples"] = eval_cap
         return args
 
     def set_checkpoint(self, args):
