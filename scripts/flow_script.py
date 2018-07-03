@@ -1283,6 +1283,9 @@ def fbl_compare_link(*workflow_run_ids, **kwargs):
         pprint(fburl)
     return fburl
 
+def fbl_find_workflow_run_ids_from_int_test_fburl(url):
+    url = resolve_fburl(url)
+    return [int(workflow_run_id) for workflow_run_id in re.findall(r"\d{8}", url)]
 
 def chronos_top_user(
     host_pool="fblearner_ftw",
