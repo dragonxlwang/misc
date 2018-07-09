@@ -1,5 +1,4 @@
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import collections
 import datetime
@@ -15,7 +14,8 @@ import time
 import uuid
 from collections import Iterable, OrderedDict, namedtuple
 from copy import deepcopy
-from itertools import islice
+from itertools import islice, product
+from numbers import Number
 
 import caffe2.caffe2.fb.predictor.predictor_py_utils as pred_utils
 import caffe2.caffe2.fb.predictor.sigrid.constants as sc
@@ -29,8 +29,7 @@ import numpy as np
 from bunch import Bunch
 from caffe2.caffe2.fb.predictor import predictor_exporter as pe
 from caffe2.caffe2.fb.predictor.model_exporter import ModelExporter
-from caffe2.fb.python.fb_predictor_constants import \
-    fb_predictor_constants as fpc
+from caffe2.fb.python.fb_predictor_constants import fb_predictor_constants as fpc
 from caffe2.proto import caffe2_pb2
 from caffe2.python import core, dyndep, memonger, net_drawer, workspace
 from caffe2.python.fb.dper.layer_models.model_definition import ttypes
@@ -45,9 +44,15 @@ from fblearner.flow.external_api import FlowSession, WorkflowRun
 from fblearner.flow.ml.runners.chronosscheduler import get_workflow_run_status
 from fblearner.flow.plugin_definitions.driver import Drivers
 from fblearner.flow.service.flow_client import get_flow_indexing_client
-from fblearner.flow.storage.models import (ModelType, Session, SessionContext,
-                                           Workflow, WorkflowRegistration,
-                                           WorkflowRun, initialize_session)
+from fblearner.flow.storage.models import (
+    ModelType,
+    Session,
+    SessionContext,
+    Workflow,
+    WorkflowRegistration,
+    WorkflowRun,
+    initialize_session,
+)
 from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
 from fblearner.flow.util.runner_utilities import load_config
 from future.utils import viewitems, viewkeys, viewvalues
@@ -58,6 +63,7 @@ from model_id.ttypes import ModelId
 from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
+
 
 dyndep.InitOpsLibrary("@/caffe2/caffe2/fb/transforms:sigrid_transforms_ops")
 dyndep.InitOpsLibrary("@/caffe2/caffe2/fb:hdfs_log_file_db")
@@ -380,6 +386,7 @@ def flow_run(
     package=None,
     workflow="dper.workflows.ads.train_eval_workflow",
     model_type_id=None,
+    dry_run=False,
 ):
     """schedule a flow run, and return the WorkflowRun instance"""
     owner = owner if owner is not None else whoami()
@@ -391,28 +398,35 @@ def flow_run(
         # get latest package: aml.dper2:73
         package = flow_latest_pkg_version()
     fl = FlowSession()
-    run = fl.schedule_workflow(
-        owner=owner,
-        workflow_name=workflow,
-        input_arguments=args,
-        entitlement=entitlement,
-        package_version=package,
-        metadata=WorkflowRunMetadataMutation(
-            name=title,
-            notes="",
-            add_tags=[APOLLO_XIII_TAG_ID],
-            model_type_id=model_type_id,
-        ),
-    )
-    logger.info(
-        'flow "%s" launched: id=f%s \n    %s'
-        % (
-            title,
-            str(run.id),
-            ("https://our.intern.facebook.com/intern/fblearner/details/%s" % run.id),
+
+    def runner():
+        run = fl.schedule_workflow(
+            owner=owner,
+            workflow_name=workflow,
+            input_arguments=args,
+            entitlement=entitlement,
+            package_version=package,
+            metadata=WorkflowRunMetadataMutation(
+                name=title,
+                notes="",
+                add_tags=[APOLLO_XIII_TAG_ID],
+                model_type_id=model_type_id,
+            ),
         )
-    )
-    return run
+        logger.info(
+            'flow "%s" launched: id=f%s \n    %s'
+            % (
+                title,
+                str(run.id),
+                (
+                    "https://our.intern.facebook.com/intern/fblearner/details/%s"
+                    % run.id
+                ),
+            )
+        )
+        return run
+
+    return runner if dry_run else runner()
 
 
 def flow_result(workflow_run_id, print_return=False):
@@ -426,6 +440,7 @@ def flow_result(workflow_run_id, print_return=False):
     )
     if print_return:
         pprint(result)
+    result = Bunch.fromDict(result)
     return result
 
 
@@ -632,7 +647,7 @@ def flow_one_line_summary(workflow_run_id_or_ids, **kwargs):
     to_std = kwargs.pop("to_std", False)
     workflow_run_ids = (
         [workflow_run_id_or_ids]
-        if isinstance(workflow_run_id_or_ids, int)
+        if isinstance(workflow_run_id_or_ids, Number)
         else workflow_run_id_or_ids
     )
     return "\n".join(
@@ -656,7 +671,7 @@ def flow_detailed_summary(workflow_run_id_or_ids, **kwargs):
     to_std = kwargs.pop("to_std", False)
     workflow_run_ids = (
         [workflow_run_id_or_ids]
-        if isinstance(workflow_run_id_or_ids, int)
+        if isinstance(workflow_run_id_or_ids, Number)
         else workflow_run_id_or_ids
     )
     return "\n".join(
@@ -987,7 +1002,7 @@ def flow_kill(workflow_run_id_or_ids, reason="murdered"):
     fl = FlowSession()
     workflow_run_ids = (
         [workflow_run_id_or_ids]
-        if isinstance(workflow_run_id_or_ids, int)
+        if isinstance(workflow_run_id_or_ids, Number)
         else workflow_run_id_or_ids
     )
     for workflow_run_id in workflow_run_ids:
@@ -1020,7 +1035,7 @@ def flow_default_input_args(workflow_name=None, pkg_version=None, workflow_run_i
 
 def flow_metrics(workflow_run_id_or_result, with_ext=True):
     """return a dict of train/eval metrics"""
-    if isinstance(workflow_run_id_or_result, int):
+    if isinstance(workflow_run_id_or_result, Number):
         flow_id = workflow_run_id_or_result
         result = flow_result(flow_id)
     else:
@@ -1283,9 +1298,11 @@ def fbl_compare_link(*workflow_run_ids, **kwargs):
         pprint(fburl)
     return fburl
 
+
 def fbl_find_workflow_run_ids_from_int_test_fburl(url):
     url = resolve_fburl(url)
     return [int(workflow_run_id) for workflow_run_id in re.findall(r"\d{8}", url)]
+
 
 def chronos_top_user(
     host_pool="fblearner_ftw",

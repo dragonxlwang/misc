@@ -195,9 +195,9 @@ command! Wipeout call Wipeout()
 " Wipe out and only keep current window
 command! Wipeonly only | Wipeout
 " Remove all windows of the same buffer and focus
-command! -nargs=1 Fbs :call FocusBuffer(<f-args>, "s")
-command! -nargs=1 Fbv :call FocusBuffer(<f-args>, "v")
-command! -nargs=1 Fb  :call FocusBuffer(<f-args>, "r")
+command! -nargs=1 -bang Fbs :call FocusBuffer(<f-args>, "s", <bang>0)
+command! -nargs=1 -bang Fbv :call FocusBuffer(<f-args>, "v", <bang>0)
+command! -nargs=1 -bang Fb  :call FocusBuffer(<f-args>, "r", <bang>0)
 " Sync with servers
 command! UpldFile call SyncUploadFile()
 command! UpldAll :! ~/misc/scripts/sync.sh <CR>
@@ -574,10 +574,14 @@ function! Wipeout()
   endtry
 endfunction
 
-function! FocusBuffer(bn, opt)
+function! FocusBuffer(bn, opt, wipe)
   let l:fp = expand("#" . a:bn . ":p")
   echo l:fp
-  exec "bd ". a:bn
+  if a:wipe
+    exec "bw ". a:bn
+  else
+    exec "bd ". a:bn
+  endif
   if a:opt == 'v'
     exec "vs ". l:fp
   elseif a:opt == 's'
@@ -585,6 +589,17 @@ function! FocusBuffer(bn, opt)
   elseif a:opt == 'r'
     exec "e ". l:fp
   endif
+endfunction
+
+function! ReorderBufToEnd(...)
+  if a:0 == 0
+    let l:bn = bufnr("%")
+  else
+    let l:bn = a:1
+  endif
+  let l:fn = expand("#" . l:bn .":p")
+  exec "bwipeout" . l:bn
+  exec "sp" . l:fn
 endfunction
 
 command! PasteFbPyTestPdb call PasteFbcodePyUnittestPdb()
