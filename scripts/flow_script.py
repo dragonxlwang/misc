@@ -1033,7 +1033,7 @@ def flow_default_input_args(workflow_name=None, pkg_version=None, workflow_run_i
         return json.loads(registration.default_inputs)
 
 
-def flow_metrics(workflow_run_id_or_result, with_ext=True):
+def flow_metrics(workflow_run_id_or_result, with_basic=True, with_ext=True, ad_hoc={}):
     """return a dict of train/eval metrics"""
     if isinstance(workflow_run_id_or_result, Number):
         flow_id = workflow_run_id_or_result
@@ -1044,6 +1044,7 @@ def flow_metrics(workflow_run_id_or_result, with_ext=True):
             flow_id = int(result["model_id"].split("_")[0])
         except Exception:
             flow_id = -1
+            logger.warning("cannot get model id from flow result")
 
     def quote(s):
         return '"' + s + '"'
@@ -1072,43 +1073,63 @@ def flow_metrics(workflow_run_id_or_result, with_ext=True):
         except Exception:
             return
 
-    metrics["train_ne"] = get_metric("training_metrics", "model", "numeric", "ne")
-    metrics["train_cali"] = 1.0 - get_metric(
-        "training_metrics", "model", "numeric", "calibration"
-    )
-    metrics["train_qps"] = get_metric(
-        "training_metrics", "qps_metric", "numeric", "lifetime_qps"
-    )
-    metrics["train_num"] = get_metric(
-        "training_metrics", "qps_metric", "numeric", "lifetime_examples"
-    )
-    metrics["eval_ne"] = get_metric("eval_metrics", "model", "numeric", "ne")
-    metrics["eval_cali"] = 1.0 - get_metric(
-        "eval_metrics", "model", "numeric", "calibration"
-    )
-    metrics["eval_auc"] = get_metric("eval_metrics", "AUC", "numeric", "auc")
-
+    if with_basic:
+        metrics["train_ne"] = get_metric("training_metrics", "model", "numeric", "ne")
+        metrics["train_cali"] = 1.0 - get_metric(
+            "training_metrics", "model", "numeric", "calibration"
+        )
+        metrics["train_auc"] = get_metric("training_metrics", "auc", "numeric", "auc")
+        metrics["train_qps"] = get_metric(
+            "training_metrics", "qps_metric", "numeric", "lifetime_qps"
+        )
+        metrics["train_num"] = get_metric(
+            "training_metrics", "qps_metric", "numeric", "lifetime_examples"
+        )
+        metrics["eval_ne"] = get_metric("eval_metrics", "model", "numeric", "ne")
+        metrics["eval_cali"] = 1.0 - get_metric(
+            "eval_metrics", "model", "numeric", "calibration"
+        )
+        metrics["eval_auc"] = get_metric("eval_metrics", "auc", "numeric", "auc")
     if with_ext:
         add_ranking("training")
         add_ranking("eval")
-    return (metrics, ext_metrics if with_ext else metrics)
+    if ad_hoc:
+        for metric_key in ad_hoc:
+            try:
+                metric_value = ad_hoc[metric_key](result)
+            except Exception:
+                metric_value = None
+            metrics[metric_key] = metric_value
+    return (metrics, ext_metrics if with_ext else {})
 
 
-def flow_report(workflow_run_ids, first_as_baseline=False, add_log=False):
+def flow_report(
+    workflow_run_ids,
+    first_as_baseline=False,
+    add_log=False,
+    with_basic_metric=True,
+    with_ext_metric=True,
+    ad_hoc_metrics={},
+):
     """given multiple flow ids/results, generate a report of their metrices"""
     if not isinstance(workflow_run_ids, list):
         workflow_run_ids = [workflow_run_ids]
-    metrics_list = [flow_metrics(x, True) for x in workflow_run_ids]
+    results = [flow_result(workflow_run_id) for workflow_run_id in workflow_run_ids]
+    metrics_list = [
+        flow_metrics(x, with_basic_metric, with_ext_metric, ad_hoc_metrics)
+        for x in results
+    ]
 
     def metrics_to_text(metrics_list, separator=" ", with_format=True):
         lines = []
         assert len(metrics_list) > 0
-        column_names = metrics_list[0].keys()
-        filtered_column_names = [
-            c for c in column_names if any(m[c] is not None for m in metrics_list)
-        ]
+        column_names = []
+        for m in metrics_list:
+            for c in m:
+                if c not in column_names and m[c] is not None:
+                    column_names.append(c)
         column_widths = {
-            c: max(len(str(m[c])) for m in metrics_list) for c in filtered_column_names
+            c: max(len(str(m[c])) for m in metrics_list) for c in column_names
         }
 
         def str_fmt(c, v):
@@ -1132,19 +1153,16 @@ def flow_report(workflow_run_ids, first_as_baseline=False, add_log=False):
             if add_log:
                 logger.info(ln)
 
-        ln = separator.join([str_fmt(c, c) for c in filtered_column_names])
+        ln = separator.join([str_fmt(c, c) for c in column_names])
         add_line(ln)
         # lines.append(''.join(len(ln) * ['=']))
         # logger.info(''.join(len(ln) * ['=']))
         for i, m in enumerate(metrics_list):
-            ln = separator.join([str_fmt(c, m[c]) for c in filtered_column_names])
+            ln = separator.join([str_fmt(c, m[c]) for c in column_names])
             add_line(ln)
             if first_as_baseline:
                 ln = separator.join(
-                    [
-                        str_fmt(c, diff(m, metrics_list[0], c))
-                        for c in filtered_column_names
-                    ]
+                    [str_fmt(c, diff(m, metrics_list[0], c)) for c in column_names]
                 )
                 add_line(ln)
         return "\n".join(lines)
@@ -1179,7 +1197,11 @@ def flow_log_compare_result(everpaste_url, home_url, title, time):
 def flow_compare(
     workflow_run_ids,
     separator=" ",
+    add_summary=False,
     detailed_summary=False,
+    with_basic_metric=True,
+    with_ext_metric=True,
+    ad_hoc_metrics={},
     title=None,
     everpaste_shorten_to_fburl=True,
     home_shorten_to_fburl=True,
@@ -1190,18 +1212,29 @@ def flow_compare(
     if len(workflow_run_ids) == 0:
         flow_log_compare_result(None, None, None, None)
         return None, None
-    summary = "\n".join(
-        [
-            flow_detailed_summary(i) if detailed_summary else flow_one_line_summary(i)
-            for i in workflow_run_ids
-        ]
+    summary = (
+        "\n".join(
+            [
+                flow_detailed_summary(i)
+                if detailed_summary
+                else flow_one_line_summary(i)
+                for i in workflow_run_ids
+            ]
+        )
+        if add_summary
+        else None
     )
     brief_report, detailed_report = flow_report(
-        workflow_run_ids, first_as_baseline=True, add_log=False
+        workflow_run_ids,
+        first_as_baseline=True,
+        add_log=False,
+        with_basic_metric=with_basic_metric,
+        with_ext_metric=with_ext_metric,
+        ad_hoc_metrics=ad_hoc_metrics,
     )
     title = str(title) if title else ("FlowCompare:%s" % now_str())
     # everpaste
-    everpaste_body = "\n\n\n".join([summary, brief_report])
+    everpaste_body = "\n\n\n".join(filter(None, [summary, brief_report]))
     everpaste_content = "%s\n\n\n%s" % (title, everpaste_body)
     everpaste_url = vis_utils.get_everpaste_url(str(everpaste_content))
     if everpaste_shorten_to_fburl:
@@ -1243,7 +1276,13 @@ def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800, max_iter
             num_runs = len(succeeded_runs)
             report_title = "%s @ %s" % (title, now_str())
             # only compare succeeded runs
-            everpaste_url, home_url = flow_compare(succeeded_runs, title=report_title)
+            everpaste_url, home_url = flow_compare(
+                succeeded_runs,
+                title=report_title,
+                add_summary=True,
+                everpaste_shorten_to_fburl=True,
+                home_shorten_to_fburl=True,
+            )
         else:
             logger.info("NO MORE NEW SUCCEEDED RUNS...")
             flow_log_compare_result(everpaste_url, home_url, report_title, 0)

@@ -300,7 +300,7 @@ noremap <silent> <C-w>\ :execute "vertical res"  . &columns / 2<cr>
 
 noremap <silent> <C-n> :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-t> :wincmd _<cr>
-noremap <silent> <C-g> :vert res 100<cr>
+noremap <silent> <C-g> :execute "vert res" . (&textwidth + 20)<cr>
 noremap <silent> <C-m> :100 wincmd h \| execute "vert res" . &columns / 3 \|
       \ wincmd l \| execute "vert res" . &columns / 3 \| wincmd h<cr>
 noremap <silent> <C-w><C-j> :100 wincmd j<cr>
@@ -417,14 +417,32 @@ function! Duf()
         \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
         \. '%24' . line('.')
 endfunction
+function! Dufburl()
+  let l:url = expand('%:p:s?.*/fbcode/?https://phabricator.intern.facebook.com/'.
+        \'diffusion/FBS/browse/master/fbcode/?'.
+        \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
+        \. '%24' . line('.')
+  let l:fburl = substitute(system('fburl "' . l:url . '" 2> /dev/null'), "\n", "", "")
+  echo l:fburl
+endfunction
 command! -nargs=* Duf call Duf()
+command! -nargs=* Dufburl call Dufburl()
 function! Blamef()
   echo expand('%:p:s?.*/fbcode/?https://phabricator.intern.facebook.com/'.
         \'diffusion/FBS/browse/master/fbcode/?'.
         \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
         \. '%24' . line('.') . '?blame=1'
 endfunction
+function! Blamefburl()
+  let l:url = expand('%:p:s?.*/fbcode/?https://phabricator.intern.facebook.com/'.
+        \'diffusion/FBS/browse/master/fbcode/?'.
+        \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
+        \. '%24' . line('.') . '?blame=1'
+  let l:fburl = substitute(system('fburl "' . l:url . '" 2> /dev/null'), "\n", "", "")
+  echo l:fburl
+endfunction
 command! -nargs=* Blamef call Blamef()
+command! -nargs=* Blamefburl call Blamefburl()
 set path=.,/usr/include,,/home/xlwang/fbcode,/home/xlwang/fbcode/caffe2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
