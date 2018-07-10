@@ -1565,7 +1565,10 @@ def mlt_plot_learning_curves_from_result(
     publish=False,
 ):
     def get_curve(curve):
-        return result["learning_curves"][curve]["data"]
+        try:
+            return result["learning_curves"][curve]["data"]
+        except Exception:
+            return result["training_learning_curves"][curve]["data"]
 
     multi_curves = OrderedDict()
     if isinstance(subplot_curve_names, dict):
