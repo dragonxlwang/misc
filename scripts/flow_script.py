@@ -74,9 +74,10 @@ core.GlobalInit(["python", "--caffe2_log_level=-3", "--vmodule=load_save_op=3"])
 
 def email():
     def decorator(func):
+        func_name = func.__name__
+
         def wrapper(*args, **kwargs):
             email_return = kwargs.pop("email_return", False)
-            func_name = func.__name__
             ret = func(*args, **kwargs)
             if email_return:
                 send_email(
@@ -87,6 +88,28 @@ def email():
                 )
             return ret
 
+        setattr(wrapper, "__name__", func_name)
+        return wrapper
+
+    return decorator
+
+
+def everpaste():
+    def decorator(func):
+        func_name = func.__name__
+
+        def wrapper(*args, **kwargs):
+            everpaste = kwargs.pop("everpaste", False)
+            func_name = func.__name__
+            ret = func(*args, **kwargs)
+            if everpaste:
+                url = everpaste_publish(
+                    "%s\n\n%s" % ("Return from {}".format(func_name), ret)
+                )
+                logger.info("Everpaste: %s" % url)
+            return ret
+
+        setattr(wrapper, "__name__", func_name)
         return wrapper
 
     return decorator
@@ -373,6 +396,15 @@ def human_readable_file_size_str(fp):
     return "%3.1f%s" % (fs, "TB")
 
 
+def get_os_env():
+    my_env = os.environ.copy()
+    try:
+        my_env.pop("LD_LIBRARY_PATH")
+    except Exception:
+        pass
+    return my_env
+
+
 APOLLO_XIII_TAG_ID = 325182364673414
 
 # --------------------------------- Flow Lib ---------------------------------
@@ -595,6 +627,7 @@ def flow_status(workflow_run_id):
     return status
 
 
+@everpaste()
 @email()
 def flow_summary(
     workflow_run_id,
@@ -641,6 +674,7 @@ def flow_summary(
     return lines
 
 
+@everpaste()
 @email()
 def flow_one_line_summary(workflow_run_id_or_ids, **kwargs):
     add_log = kwargs.pop("add_log", False)
@@ -665,6 +699,7 @@ def flow_one_line_summary(workflow_run_id_or_ids, **kwargs):
     )
 
 
+@everpaste()
 @email()
 def flow_detailed_summary(workflow_run_id_or_ids, **kwargs):
     add_log = kwargs.pop("add_log", False)
@@ -872,8 +907,7 @@ def flow_check_runs(workflow_run_ids, add_log=False, to_std=False):
 def flow_pkg_extend(workflow_run_id):
     package = flow_package(workflow_run_id)
     # reset env
-    my_env = os.environ.copy()
-    my_env.pop("LD_LIBRARY_PATH")
+    my_env = get_os_env()
     logger.info(
         "extend expiration of package %s (flow %s)" % (package, workflow_run_id)
     )
@@ -889,8 +923,7 @@ def flow_pkg_extend(workflow_run_id):
 @memoize_timed(24 * 60 * 60)
 @retryable(num_tries=3, sleep_time=1)
 def flow_pkg_versions(package="aml.dper2"):
-    my_env = os.environ.copy()
-    my_env.pop("LD_LIBRARY_PATH")
+    my_env = get_os_env()
     output = subprocess.check_output(
         ["fbpkg", "versions", "--no-ephemerals", package], env=my_env
     )
@@ -902,8 +935,7 @@ def flow_pkg_versions(package="aml.dper2"):
 @memoize_timed(24 * 60 * 60)
 @retryable(num_tries=3, sleep_time=1)
 def flow_latest_pkg_version(package="aml.dper2"):
-    my_env = os.environ.copy()
-    my_env.pop("LD_LIBRARY_PATH")
+    my_env = get_os_env()
     output = subprocess.check_output(
         ["fbpkg", "versions", "--no-ephemerals", package], env=my_env
     )
@@ -914,8 +946,7 @@ def flow_latest_pkg_version(package="aml.dper2"):
 
 
 def flow_pkg_build(mode="opt", send_email_notification=False):
-    my_env = os.environ.copy()
-    my_env.pop("LD_LIBRARY_PATH")
+    my_env = get_os_env()
     diff_info = (
         subprocess.check_output(
             ["hg", "log", "-r", ".", "--template", "'{xg_sl_normal}'"],
