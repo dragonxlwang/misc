@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-#   This file echoes a bunch of color codes to the 
-#   terminal to demonstrate what's available.  Each 
+#   This file echoes a bunch of color codes to the
+#   terminal to demonstrate what's available.  Each
 #   line is the color code of one forground color,
-#   out of 17 (default + 16 escapes), followed by a 
-#   test use of that color on all nine background 
+#   out of 17 (default + 16 escapes), followed by a
+#   test use of that color on all nine background
 #   colors (default + 8 escapes).
 #
 
@@ -25,12 +25,12 @@ for FGs in '    m' '   1m' '  30m' '1;30m' '  31m' '1;31m' '  32m' \
 done
 echo
 
-echo -en "\033[31m" abc "\033[0m"
-echo -en "\e[31m" abc "\e[0m"
+# echo -en "\033[31m" abc "\033[0m"
+# echo -en "\e[31m" abc "\e[0m"
 #gecho -e "\033[31m" abc "\033[0m"
 #gecho -e "\e[31m" abc "\e[0m"
 
-echo  "\033[31m" abc "\033[0m"
-echo  "\e[31m" abc "\e[0m"
+# echo  "\033[31m" abc "\033[0m"
+# echo  "\e[31m" abc "\e[0m"
 #gecho  "\033[31m" abc "\033[0m"
 #gecho  "\e[31m" abc "\e[0m"

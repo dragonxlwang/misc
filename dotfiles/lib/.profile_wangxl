@@ -19,6 +19,33 @@ function blueecho     { _color_echo "1;34m" "${@}"; }
 function magentaecho  { _color_echo "1;35m" "${@}"; }
 function cyanecho     { _color_echo "1;36m" "${@}"; }
 function whiteecho    { _color_echo "1;37m" "${@}"; }
+function fromhex(){
+  local hex=${1#"#"}
+  local r=$(printf '0x%0.2s' "$hex")
+  local g=$(printf '0x%0.2s' ${hex#??})
+  local b=$(printf '0x%0.2s' ${hex#????})
+  printf '%03d' "$(( (r<75?0:(r-35)/40)*6*6   +
+                      (g<75?0:(g-35)/40)*6    +
+                      (b<75?0:(b-35)/40)      + 16 ))"
+}
+function print_256_color {
+  if [[ $# -eq 0 ]]; then
+    echo "Color Schema 1"
+    ${HOME}/misc/scripts/color_test.sh
+    echo "Color Schema 2"
+    ${HOME}/misc/scripts/256-colors.sh
+    return
+  fi
+  local color=$1
+  if [[ $color == "#"* ]]; then
+    color=$(echo $color | cut -c 2-)
+    color=$(fromhex $color)
+  fi
+  echo -en "\033[38;5;${color}m ${color}\t\033[0m"
+  echo ""
+  echo -en "\033[48;5;${color}m ${color}\t\033[0m"
+  echo ""
+}
 
 ## ========================================================================== ##
 #               ___       __       __       ___           _______.             #
