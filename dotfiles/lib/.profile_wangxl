@@ -193,7 +193,7 @@ alias dls='find . -maxdepth 1 -type d'
 # ls
 alias ll="ls -alh"
 alias llt="ll -t"
-function lll { ll $@ --color=always | less; }
+function lll { ll $@ --color=always | less -r; }
 alias lllt="lll -t"
 function lls { ll | grep $*; }
 alias llsi='lls -i'
@@ -247,6 +247,7 @@ function rm {
     echo "echo \"\\033[1;33mmv \\\"$f2\\\" \\\"$f1\\\"\\033[0m\"" >> $fp
   done
 }
+alias rm=rm
 function undo {
   local fp="${HOME}/.Trash/rm.undo"
   /bin/sh $fp
