@@ -945,7 +945,7 @@ def flow_latest_pkg_version(package="aml.dper2"):
     return versions[0]
 
 
-def flow_pkg_build(mode="opt", send_email_notification=False):
+def flow_pkg_build(mode="opt", force_build=False, send_email_notification=False):
     my_env = get_os_env()
     diff_info = (
         subprocess.check_output(
@@ -970,6 +970,8 @@ def flow_pkg_build(mode="opt", send_email_notification=False):
             "-m",
             mode,
         ]
+        if force_build:
+            cmd += ["-fb"]
         output = subprocess.check_output(cmd, env=my_env)
         print(output)
         try:

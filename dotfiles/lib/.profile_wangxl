@@ -1341,6 +1341,30 @@ function krefresh() {
   kinit
   klist
 }
+function everpaste_url_gen() {
+  ${HOME}/misc/scripts/everpaste_url_gen.sh $*
+}
+function parse_everpaste_handle() {
+  less $* | grep "everpaste" | grep -Eo '(http|https)://\S+' \
+    | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
+}
+function parse_everpaste_url_from_file() {
+  for x in $(parse_everpaste_handle $*); do; everpaste_url_gen $x ; done
+}
+function parse_flow_net_everpaste_handle() {
+  less $* | grep "everpaste" | grep "net" | grep -Eo '(http|https)://\S+' \
+    | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
+}
+function parse_flow_net_everpaste_url_from_file() {
+  for x in $(parse_flow_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
+}
+function parse_flow_train_net_everpaste_handle() {
+  less $* | grep "everpaste" | grep "net" | grep "train" \
+    | grep -Eo '(http|https)://\S+' | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
+}
+function parse_flow_train_net_everpaste_url_from_file() {
+  for x in $(parse_flow_train_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
+}
 
 
 ## ========================================================================== ##

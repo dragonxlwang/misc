@@ -1,5 +1,7 @@
 #!/bin/sh
 
+FORCE_BUILD=false
+
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -36,6 +38,10 @@ do
       shift # past argument
       shift # past value
       ;;
+    -fb|--FORCE_BUILD)
+      FORCE_BUILD=true
+      shift # past argument
+      ;;
     *)    # unknown option
       POSITIONAL+=("$1") # save it in an array for later
       shift # past argument
@@ -59,6 +65,7 @@ echo "DIFF           = ${DIFF}"
 echo "TITLE          = ${TITLE}"
 echo "WORKFLOW       = ${WF}"
 echo "MODE           = ${MODE}"
+echo "FORCE_BUILD    = ${FORCE_BUILD}"
 if [[ -n $@ ]]; then
   echo $# POSITIONAL ARGUMENTS: $@
 fi
@@ -67,6 +74,10 @@ if [[ $MODE == "default" ]]; then
   CMD="flow-cli canary $WF --name \"$TITLE\""
 else
   CMD="flow-cli canary --mode $MODE $WF --name \"$TITLE\""
+fi
+
+if $FORCE_BUILD; then
+  CMD="FLOW_FORCE_BUILD=1 ""$CMD"
 fi
 
 echo "$CMD"
