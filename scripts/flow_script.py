@@ -988,8 +988,8 @@ def flow_pkg_build(mode="opt", force_build=False, send_email_notification=False)
         send_email(
             subject="{}: {}".format(flow_rep(workflow_run_id), title),
             to=my_email_addr(),
-            body="flow pkg is {} built: \n {}".format(
-                "previously" if previously_built else "",
+            body="flow pkg is {}built: \n {}".format(
+                "previously " if previously_built else "",
                 "FBL: %s, %s"
                 % (flow_rep(workflow_run_id), fbl_flow_link(workflow_run_id)),
             ),
@@ -1878,8 +1878,9 @@ class AdsTrainEvalArgModifier(object):
             args["eval_reader_options"]["reader_type"] = "hiveio2"
         if dataset:
             hive_path, train_days, train_cap, eval_days, eval_cap = dataset
+            assert eval_days > 0
             args["train_reader_options"]["dataset"] = hive_dataset(
-                hive_path, backshift=1, days=train_days
+                hive_path, backshift=eval_days, days=train_days
             )
             args["eval_reader_options"]["dataset"] = hive_dataset(
                 hive_path, backshift=0, days=eval_days
