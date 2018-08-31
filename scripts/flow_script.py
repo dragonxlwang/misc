@@ -988,7 +988,8 @@ def flow_pkg_build(mode="opt", force_build=False, send_email_notification=False)
         send_email(
             subject="{}: {}".format(flow_rep(workflow_run_id), title),
             to=my_email_addr(),
-            body="flow pkg is {}built: \n {}".format(
+            body="flow pkg {} is {}built: \n {}".format(
+                flow_package(workflow_run_id),
                 "previously " if previously_built else "",
                 "FBL: %s, %s"
                 % (flow_rep(workflow_run_id), fbl_flow_link(workflow_run_id)),
