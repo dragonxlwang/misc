@@ -1157,6 +1157,13 @@
 			<key>Text</key>
 			<string>B</string>
 		</dict>
+		<key>0xf702-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x01 0x01</string>
+		</dict>
 		<key>0xf702-0x320000</key>
 		<dict>
 			<key>Action</key>
@@ -1170,6 +1177,13 @@
 			<integer>10</integer>
 			<key>Text</key>
 			<string>F</string>
+		</dict>
+		<key>0xf703-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x05 0x05</string>
 		</dict>
 		<key>0xf703-0x320000</key>
 		<dict>
@@ -1296,16 +1310,14 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
-	<key>NSWindow Frame SUStatusFrame</key>
-	<string>-1760 797 400 129 -2560 0 2560 1600 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 898 620 392 0 0 2560 1577 </string>
+	<string>410 381 620 392 0 0 1440 900 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-1765 -104 770 429 -2560 -390 2560 1440 </string>
+	<string>2974 839 796 486 2560 0 2560 1600 </string>
+	<key>NSWindow Frame UKCrashReporter</key>
+	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>924 85 570 402 0 0 1680 1027 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
-	<string>176 73 570 402 0 0 1440 900 </string>
+	<string>2817 475 570 402 2560 0 2560 1600 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1924,11 +1936,11 @@
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>1CFCB51C-E86C-481A-B5AC-17F49529C955</string>
+	<string>F5079B7B-2CAE-48CC-8560-E1C2882B7366</string>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>529962281.8193</real>
+	<real>533686840.13584101</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1995,11 +2007,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml?shard=35</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=68</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-11-03T16:39:43Z</date>
+	<date>2018-09-18T18:09:38Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2028,6 +2040,8 @@
 	<integer>10</integer>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
+	<key>UKCrashReporterLastCrashReportDate</key>
+	<real>1511994240</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
@@ -2049,7 +2063,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.5.beta.1</string>
+	<string>3.2.1beta5</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
