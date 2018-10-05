@@ -71,9 +71,9 @@ if [[ -n $@ ]]; then
 fi
 
 if [[ $MODE == "default" ]]; then
-  CMD="flow-cli canary $WF --name \"$TITLE\""
+  CMD="flow-cli canary --entitlement ads_ftw $WF --name \"$TITLE\""
 else
-  CMD="flow-cli canary --mode $MODE $WF --name \"$TITLE\""
+  CMD="flow-cli canary --entitlement ads_ftw --mode $MODE $WF --name \"$TITLE\""
 fi
 
 if $FORCE_BUILD; then

@@ -1038,12 +1038,12 @@ function diff_test {
   else
     for x in "${(f)$(cat $test_file)}"; do
       if [[ ! -z $x ]]; then
-        if [[ "$@" == "$x"* ]]; then
+        if [[ "$*" == "$x"* ]]; then
           cyanecho "test" "$x" "is already added"
           echo "EXISTING TESTS:"
           echo "==============="
           greenecho "$(cat $test_file)"
-          local cmd="bbt $@"
+          local cmd="bbt $*"
           cyanecho "${cmd}"
           eval ${cmd}
           return 0
