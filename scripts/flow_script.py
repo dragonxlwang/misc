@@ -350,6 +350,13 @@ def center_with_padding(s, pad="=", length=80):
     return "{}{}{}".format(pad * lp_len, s, pad * rp_len)
 
 
+def gen_home_fburl(filename=None, filepath=None):
+    assert (filename is None) != (filepath is None)
+    if filepath is not None:
+        filename = re.search("public_html/flows/(.*)", filepath).group(1)
+    return get_fburl("https://home.fburl.com/~{}/flows/".format(whoami()) + filename)
+
+
 def gen_home_file(filename="", purge_home=True):
     # home
     dump_dir = "/home/{}/public_html/flows/".format(whoami())
@@ -362,6 +369,22 @@ def gen_home_file(filename="", purge_home=True):
     filepath = os.path.join(dump_dir, filename)
     url = get_fburl("https://home.fburl.com/~{}/flows/".format(whoami()) + filename)
     return filepath, url
+
+
+def glob_home_file(filename):
+    dump_dir = "/home/{}/public_html/flows/".format(whoami())
+    return [os.path.join(dump_dir, f) for f in os.listdir(dump_dir) if filename in f]
+
+
+def find_latest_file(file_paths):
+    try:
+        return min(file_paths, key=lambda x: file_life_days(x))
+    except Exception:
+        return None
+
+
+def glob_latest_home_file(filename):
+    return find_latest_file(glob_home_file(filename))
 
 
 def get_home_file_from_url(url):
@@ -403,6 +426,14 @@ def get_os_env():
     except Exception:
         pass
     return my_env
+
+
+def normalize_workflow_run_ids(workflow_run_id_or_ids):
+    return (
+        [workflow_run_id_or_ids]
+        if isinstance(workflow_run_id_or_ids, Number)
+        else workflow_run_id_or_ids
+    )
 
 
 APOLLO_XIII_TAG_ID = 325182364673414
@@ -1178,7 +1209,7 @@ def flow_report(
                 return ""
             else:
                 try:
-                    return "{:+.6}%".format((m[c] - bm[c]) / bm[c] * 100.)
+                    return "{:+.6}%".format((m[c] - bm[c]) / bm[c] * 100.0)
                 except Exception:
                     return "-"
 
@@ -2010,6 +2041,45 @@ def ads_train_eval_arg_update(
         if eval_cap:
             args["eval_reader_options"]["max_examples"] = eval_cap
     return args
+
+
+class FlowManager(object):
+    def __init__(self, name="flow_manager", filepath=None):
+        if filepath is None:
+            self.fp, self.url = gen_home_file(name, purge_home=False)
+            self.workflow_run_ids = []
+        else:
+            self.fp = filepath
+            self.load()
+            self.url = gen_home_fburl(filepath=filepath)
+        logger.info(
+            "FLOW MANAGER: file path = {}; fburl = {}".format(self.fp, self.url)
+        )
+
+    def load(self):
+        with open(self.fp, "r") as f:
+            self.workflow_run_ids = json.loads(f.read())
+
+    def dump(self):
+        with open(self.fp, "w") as f:
+            f.write(json.dumps(self.workflow_run_ids))
+
+    def add(self, workflow_run_id_or_ids):
+        for workflow_run_id in normalize_workflow_run_ids(workflow_run_id_or_ids):
+            assert workflow_run_id not in self.workflow_run_ids
+            self.workflow_run_ids.append(workflow_run_id)
+
+    def rm(self, workflow_run_id_or_ids):
+        for workflow_run_id in normalize_workflow_run_ids(workflow_run_id_or_ids):
+            assert workflow_run_id in self.workflow_run_ids
+            self.workflow_run_ids = [
+                i for i in self.workflow_run_ids if i != workflow_run_id
+            ]
+
+    @classmethod
+    def glob_latest_flow_manager(cls, name="flow_manager"):
+        fp = glob_latest_home_file(name)
+        return FlowManager(filepath=fp)
 
 
 log_reset()
