@@ -815,18 +815,21 @@ function itorch {
 # # Caffe2 ifbpy
 function ifbpynb_c2 {
   pushd ~/fbcode
-  caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
+  # caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
+  ./fblearner/flow/projects/dper/notebook.sh
   popd
 }
 function ifb2pynb_c2 {
   # ipython_setup
   pushd ~/fbcode2
-  caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
+  # caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
+  ./fblearner/flow/projects/dper/notebook.sh
   popd
 }
 function ifb3pynb_c2 {
   pushd ~/fbcode3
-  caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
+  # caffe2/caffe2/fb/ifbpy/run_ifbpy.sh
+  ./fblearner/flow/projects/dper/notebook.sh
   popd
 }
 function ifbpy_c2 {
