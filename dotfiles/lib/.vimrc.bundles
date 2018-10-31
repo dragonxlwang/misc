@@ -288,15 +288,15 @@ Plugin 'junegunn/fzf.vim'
 
 command! FZFfbcode call fzf#run(fzf#wrap(
     \ {'source':
-    \  'find ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang} -type f',
+    \  'find ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang,search} -type f',
     \  'options': '--prompt "fbcode> "'  }))
 command! FZFfbcode2 call fzf#run(fzf#wrap(
     \ {'source':
-    \  'find ~/fbcode2/{sigrid,fblearner,caffe2,experimental/xlwang} -type f',
+    \  'find ~/fbcode2/{sigrid,fblearner,caffe2,experimental/xlwang,search} -type f',
     \  'options': '--prompt "fbcode2> "'  }))
 command! FZFfbcode3 call fzf#run(fzf#wrap(
     \ {'source':
-    \  'find ~/fbcode3/{sigrid,fblearner,caffe2,experimental/xlwang} -type f',
+    \  'find ~/fbcode3/{sigrid,fblearner,caffe2,experimental/xlwang,search} -type f',
     \  'options': '--prompt "fbcode3> "'  }))
 command! FZFfullfbcode call fzf#run(fzf#wrap(
     \ {'source': 'find ~/fbcode/ -type f',

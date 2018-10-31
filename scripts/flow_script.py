@@ -207,6 +207,11 @@ def pprint(obj, add_log=False, to_std=True, lvl="info", raw=False, multiline=Fal
             print(ln)
 
 
+def str_bunch(obj):
+    assert isinstance(obj, Bunch)
+    return str(re.sub(r"Bunch\((.*)\)", r"\1", str(obj)))
+
+
 def format_tabular(fields, fmt={}, title={}, col_sep="\n", row_sep=" "):
     def add_max_width_to_fmt(fmt, width):
         i = fmt.find(":")
@@ -623,7 +628,7 @@ def flow_set_title(workflow_run_id, title):
 
 
 @retryable(num_tries=3, sleep_time=1)
-def flow_training_progress(workflow_run_id):
+def flow_training_progress(workflow_run_id, return_dict=False):
     """if a flow is a training workflow such as _train_workflow_impl, and is
     still running in progress, it returns ne, cali, and example num as a string
     to show its progress"""
@@ -633,10 +638,20 @@ def flow_training_progress(workflow_run_id):
         ne = result["learning_curves"]["model/ne"]["data"][-1][1]
         num = result["learning_curves"]["model/ne"]["data"][-1][0]
         cali = 1.0 - (result["learning_curves"]["model/calibration"]["data"][-1][1])
-        progress = "ne=%.6f, cali=%+.2g, example=%.2fM" % (ne, cali, num * 1e-6)
-        return progress
+        if return_dict:
+            return Bunch.fromDict({"ne": ne, "cali": cali, "example": num})
+        else:
+            progress = "ne=%.6f, cali=%+.2g, example=%.2fM" % (ne, cali, num * 1e-6)
+            return progress
     except Exception:
-        return None
+        try:
+            workflow_run_id = flow_dist_train_child(workflow_run_id)
+        except Exception:
+            workflow_run_id = None
+        if workflow_run_id is not None:
+            return flow_training_progress(workflow_run_id, return_dict)
+        else:
+            return None
 
 
 _FLOW_STATUS_MAP = {
@@ -661,11 +676,7 @@ def flow_status(workflow_run_id):
 @everpaste()
 @email()
 def flow_summary(
-    workflow_run_id,
-    with_fburl=False,
-    inspect_children=False,
-    add_log=False,
-    to_std=False,
+    workflow_run_id, with_fburl=False, show_progress=False, add_log=False, to_std=False
 ):
     status = flow_status(workflow_run_id)
     lines = '%s, # %s, "%s", %s%s' % (
@@ -678,29 +689,34 @@ def flow_summary(
     indent = "#   |"
     arrow = "-> "
     sub_indent = " " * (len(arrow) + len("%s, # " % workflow_run_id))
-    if status == "RUNNING" and inspect_children:
-        for child in flow_children_ids(workflow_run_id):
-            lines += "\n%s%s%s" % (
-                indent,
-                arrow,
-                flow_summary(child, with_fburl=with_fburl),
-            )
-            if "train_workflow" in flow_name(child):
-                child_progress = flow_training_progress(child)
-                if child_progress is not None:
-                    lines += "\n%s%s%s" % (indent, sub_indent, child_progress)
-                for gc in flow_children_ids(child):
-                    if "run_dist_job" in flow_name(
-                        gc
-                    ) and "Distributed Trainer" in flow_title(gc):
-                        lines += "\n%s%s%s" % (
-                            indent,
-                            arrow,
-                            flow_summary(gc, with_fburl=with_fburl),
-                        )
-                        gc_progress = flow_training_progress(gc)
-                        if gc_progress is not None:
-                            lines += "\n%s%s%s" % (indent, sub_indent, gc_progress)
+    prog_indent = " " * len("%s, # " % workflow_run_id)
+    if show_progress:
+        # if status == "RUNNING":
+        #     for child in flow_children_ids(workflow_run_id):
+        #         lines += "\n%s%s%s" % (
+        #             indent,
+        #             arrow,
+        #             flow_summary(child, with_fburl=with_fburl),
+        #         )
+        #         if "train_workflow" in flow_name(child):
+        #             child_progress = flow_training_progress(child)
+        #             if child_progress is not None:
+        #                 lines += "\n%s%s%s" % (indent, sub_indent, child_progress)
+        #             for gc in flow_children_ids(child):
+        #                 if "run_dist_job" in flow_name(
+        #                     gc
+        #                 ) and "Distributed Trainer" in flow_title(gc):
+        #                     lines += "\n%s%s%s" % (
+        #                         indent,
+        #                         arrow,
+        #                         flow_summary(gc, with_fburl=with_fburl),
+        #                     )
+        #                     gc_progress = flow_training_progress(gc)
+        #                     if gc_progress is not None:
+        #                         lines += "\n%s%s%s" % (indent, sub_indent, gc_progress)
+        prog = flow_training_progress(workflow_run_id)
+        if prog:
+            lines += "\n%s%s" % (prog_indent, prog)
     pprint(lines, add_log=add_log, to_std=to_std)
     return lines
 
@@ -720,7 +736,7 @@ def flow_one_line_summary(workflow_run_id_or_ids, **kwargs):
             flow_summary(
                 workflow_run_id,
                 with_fburl=True,
-                inspect_children=False,
+                show_progress=False,
                 add_log=add_log,
                 to_std=to_std,
                 **kwargs
@@ -745,7 +761,7 @@ def flow_detailed_summary(workflow_run_id_or_ids, **kwargs):
             flow_summary(
                 workflow_run_id,
                 with_fburl=True,
-                inspect_children=True,
+                show_progress=True,
                 add_log=add_log,
                 to_std=to_std,
                 **kwargs
@@ -1367,17 +1383,20 @@ def flow_check_and_compare_loop(workflow_run_ids, title, interval=1800, max_iter
 def flow_dist_train_child(top_lvl_run_id):
     assert flow_name(top_lvl_run_id) == "dper.workflows.ads.train_eval_workflow"
     # find train workflow
-    t_id = None
-    for x in flow_children_ids(top_lvl_run_id):
-        if flow_name(x) == "dper.workflows.ads._train_workflow_impl":
-            t_id = x
-            break
-    assert t_id is not None
-    dt_id = None
-    for x in flow_children_ids(t_id):
-        if flow_title(x) == "Distributed Trainer":
-            return x
-    raise Exception
+    try:
+        t_id = None
+        for x in flow_children_ids(top_lvl_run_id):
+            if flow_name(x) == "dper.workflows.ads._train_workflow_impl":
+                t_id = x
+                break
+        assert t_id is not None
+        dt_id = None
+        for x in flow_children_ids(t_id):
+            if flow_title(x) == "Distributed Trainer":
+                return x
+        raise Exception
+    except Exception:
+        return None
 
 
 def fbl_flow_link(workflow_run_id, shorten_to_fburl=True):
@@ -1922,6 +1941,29 @@ class AdsTrainEvalArgModifier(object):
             args["eval_reader_options"]["max_examples"] = eval_cap
         return args
 
+    def copy_train_eval_dataset(self, args, workflow_run_id):
+        copy_args = flow_input_args(workflow_run_id)
+        args["train_reader_options"]["reader_type"] = copy_args["train_reader_options"][
+            "reader_type"
+        ]
+        args["eval_reader_options"]["reader_type"] = copy_args["eval_reader_options"][
+            "reader_type"
+        ]
+        args["train_reader_options"]["dataset"] = copy_args["train_reader_options"][
+            "dataset"
+        ]
+        args["eval_reader_options"]["dataset"] = copy_args["eval_reader_options"][
+            "dataset"
+        ]
+        # None as no cap
+        args["train_reader_options"]["max_examples"] = copy_args[
+            "train_reader_options"
+        ]["max_examples"]
+        args["eval_reader_options"]["max_examples"] = copy_args["eval_reader_options"][
+            "max_examples"
+        ]
+        return args
+
     def set_checkpoint(self, args):
         args["checkpoint_options"] = {
             "aggressive_cleanup": True,
@@ -2068,6 +2110,7 @@ class FlowManager(object):
         for workflow_run_id in normalize_workflow_run_ids(workflow_run_id_or_ids):
             assert workflow_run_id not in self.workflow_run_ids
             self.workflow_run_ids.append(workflow_run_id)
+        self.dump()
 
     def rm(self, workflow_run_id_or_ids):
         for workflow_run_id in normalize_workflow_run_ids(workflow_run_id_or_ids):
@@ -2075,6 +2118,66 @@ class FlowManager(object):
             self.workflow_run_ids = [
                 i for i in self.workflow_run_ids if i != workflow_run_id
             ]
+        self.dump()
+
+    def summary(self, detailed=False):
+        if detailed:
+            flow_detailed_summary(self.workflow_run_ids, to_std=True)
+        else:
+            flow_one_line_summary(self.workflow_run_ids, to_std=True)
+
+    def kill(self):
+        flow_kill(self.workflow_run_ids)
+
+    def rm_by_status(self, statuses, quiet=False):
+        failed_runs = [
+            workflow_run_id
+            for workflow_run_id in self.workflow_run_ids
+            if flow_status(workflow_run_id) in statuses
+        ]
+        if not quiet:
+            flow_one_line_summary(failed_runs, to_std=True)
+        self.rm(failed_runs)
+        self.dump()
+
+    def rm_failed(self, quiet=False):
+        self.rm_by_status(["FAILED"], quiet)
+
+    def rm_killed(self, quiet=False):
+        self.rm_by_status(["KILLED"], quiet)
+
+    def rm_failed_or_killed(self, quiet=False):
+        self.rm_by_status(["FAILED", "KILLED"], quiet)
+
+    def filter_bad_progress(
+        self, ne_upper_bound=1.5, cali_abs_upper_bound=0.2, kill=False, quiet=False
+    ):
+        def is_bad(prog):
+            if prog is None:
+                return False
+            bad = False
+            if ne_upper_bound is not None and prog.ne > ne_upper_bound:
+                bad = True
+            elif (
+                cali_abs_upper_bound is not None
+                and abs(prog.cali) > cali_abs_upper_bound
+            ):
+                bad = True
+            return bad
+
+        bad_ids = []
+        for i in self.workflow_run_ids:
+            prog = flow_training_progress(i, return_dict=True)
+            bad = is_bad(prog)
+            if bad:
+                bad_ids += [i]
+                if not quiet:
+                    pprint("%s: %s" % (flow_rep(i), flow_title(i)), to_std=True)
+                    pprint(str_bunch(prog), to_std=True)
+        if kill:
+            flow_kill(bad_ids)
+            self.rm(bad_ids)
+        return bad_ids
 
     @classmethod
     def glob_latest_flow_manager(cls, name="flow_manager"):
