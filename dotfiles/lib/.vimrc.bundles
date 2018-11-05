@@ -286,17 +286,15 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
+let g:fbdirs = 'sigrid,fblearner,caffe2,experimental/xlwang,search,unicorn,nlp_tools'
 command! FZFfbcode call fzf#run(fzf#wrap(
-    \ {'source':
-    \  'find ~/fbcode/{sigrid,fblearner,caffe2,experimental/xlwang,search} -type f',
+    \ {'source':  'find '. '~/fbcode/{'. g:fbdirs. '} -type f',
     \  'options': '--prompt "fbcode> "'  }))
 command! FZFfbcode2 call fzf#run(fzf#wrap(
-    \ {'source':
-    \  'find ~/fbcode2/{sigrid,fblearner,caffe2,experimental/xlwang,search} -type f',
+    \ {'source':  'find '. '~/fbcode2/{'. g:fbdirs. '} -type f',
     \  'options': '--prompt "fbcode2> "'  }))
 command! FZFfbcode3 call fzf#run(fzf#wrap(
-    \ {'source':
-    \  'find ~/fbcode3/{sigrid,fblearner,caffe2,experimental/xlwang,search} -type f',
+    \ {'source':  'find '. '~/fbcode3/{'. g:fbdirs. '} -type f',
     \  'options': '--prompt "fbcode3> "'  }))
 command! FZFfullfbcode call fzf#run(fzf#wrap(
     \ {'source': 'find ~/fbcode/ -type f',

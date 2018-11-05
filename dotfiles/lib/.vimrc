@@ -443,7 +443,17 @@ function! Blamefburl()
 endfunction
 command! -nargs=* Blamef call Blamef()
 command! -nargs=* Blamefburl call Blamefburl()
-set path=.,/usr/include,,/home/xlwang/fbcode,/home/xlwang/fbcode/caffe2
+set path=.,/usr/include,,
+      \/home/xlwang/fbcode,
+      \/home/xlwang/fbcode/caffe2,
+      \/home/xlwang/fbcode/sigrid,
+      \/home/xlwang/fbcode/fblearner,
+      \/home/xlwang/fbcode/caffe2,
+      \/home/xlwang/fbcode/experimental/xlwang,
+      \/home/xlwang/fbcode/search,
+      \/home/xlwang/fbcode/unicorn,
+      \/home/xlwang/fbcode/nlp_tools
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
