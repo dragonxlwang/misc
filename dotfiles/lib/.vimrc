@@ -444,6 +444,7 @@ endfunction
 command! -nargs=* Blamef call Blamef()
 command! -nargs=* Blamefburl call Blamefburl()
 set path=.,/usr/include,,
+      \/home/xlwang/,
       \/home/xlwang/fbcode,
       \/home/xlwang/fbcode/caffe2,
       \/home/xlwang/fbcode/sigrid,
