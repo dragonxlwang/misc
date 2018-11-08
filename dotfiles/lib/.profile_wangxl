@@ -1069,6 +1069,7 @@ alias flow_help="cat ~/misc/scripts/flow_help.txt"
 alias dev_help="cat ~/misc/scripts/dev_help.txt"
 alias bbt='buck test'
 alias bbb='buck build'
+alias bua='buck_util add'
 alias bbr='buck run'
 alias misc='cd ~/misc'
 alias fbc='cd ~/fbcode'
@@ -1233,15 +1234,22 @@ function ffzf {
     done
   fi
 }
-_fbcode_path="sigrid,fblearner,caffe2,experimental/xlwang,search,nlp_tools,unicorn"
-_cconf_path="~/configerator/source/unicorn/import/"
+_fbcode_path="experimental/xlwang,\
+sigrid,\
+fblearner,\
+caffe2,\
+search,\
+nlp_tools,\
+unicorn,\
+"
+_cconf_path="unicorn,search"
 function ccf {
   local query="find $_cconf_path -type f"
   local prompt="cconf> "
   ffzf $query $prompt $1
 }
 function fb1 {
-  local query="find ~/fbcode/{$_fbcode_path} $_cconf_path -type f"
+  local query="find  ~/fbcode/{$_fbcode_path} -type f"
   local prompt="fbcode> "
   ffzf $query $prompt $1
 }
@@ -1257,13 +1265,9 @@ function fb3 {
 }
 function fb {
   local cwd=$(readlink -f .)
-  local cmd="fb1"
-  if [[ $cwd == *"fbsource2"* ]]; then
-    cmd="fb2"
-  elif [[ $cwd == *"fbsource3"* ]]; then
-    cmd="fb3"
-  fi
-  $cmd $@
+  local prompt="$(~/misc/scripts/fb_repo_version.sh)> "
+  local query="~/misc/scripts/find_in_fb.sh"
+  ffzf $query $prompt $1
 }
 function ff {
   IFS=$'\n' out=($(fzf --query="$1" \

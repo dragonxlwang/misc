@@ -287,10 +287,13 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
 let g:fbdirs = 'sigrid,fblearner,caffe2,experimental/xlwang,search,unicorn,nlp_tools'
-let g:cconf="~/configerator/source/unicorn/import/"
+let g:cconf="unicorn,nlp_tools"
 command! FZFfbcode call fzf#run(fzf#wrap(
-    \ {'source':  'find '. '~/fbcode/{'. g:fbdirs. '} '. g:cconf. ' -type f',
-    \  'options': '--prompt "fbcode> "'  }))
+    \ {'source':  'find '.
+    \ '~/fbcode/{'. g:fbdirs. '} '.
+    \ '~/configerator/source/{'.  g:cconf. '} '.
+    \ '-type f',
+    \ 'options': '--prompt "fbcode> "'  }))
 command! FZFfbcode2 call fzf#run(fzf#wrap(
     \ {'source':  'find '. '~/fbcode2/{'. g:fbdirs. '} -type f',
     \  'options': '--prompt "fbcode2> "'  }))
@@ -307,23 +310,13 @@ command! FZFfullfbcode3 call fzf#run(fzf#wrap(
     \ {'source': 'find ~/fbcode3/ -type f',
     \  'options': '--prompt "fbcode3> "'  }))
 function! FZFfbcodeFunc()
-  let l:parts = split(resolve(expand('%:p')), '/')
-  let l:fbcode = 'FZFfbcode'
-  for x in l:parts
-    if x =~ 'fbsource*'
-      if x == 'fbsource'
-        let l:fbcode = 'FZFfbcode'
-      elseif x == 'fbsource2'
-        let l:fbcode = 'FZFfbcode2'
-      elseif x == 'fbsource3'
-        let l:fbcode = 'FZFfbcode3'
-      else
-        echom 'found path cannot handle: ' . resolve(expand('%:p'))
-      endif
-      break
-    endif
-  endfor
-  exec l:fbcode
+  let b:fbver = substitute(
+        \system('~/misc/scripts/fb_repo_version.sh '.  resolve(expand('%:p'))),
+        \"\n", "", "")
+  let b:prompt = b:fbver. '> '
+  call fzf#run(fzf#wrap(
+    \ {'source': '~/misc/scripts/find_in_fb.sh '.  resolve(expand('%:p')),
+    \  'options': '--prompt "'. b:prompt. '"'  }))
 endfunction
 
 
