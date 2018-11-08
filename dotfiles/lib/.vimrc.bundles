@@ -221,7 +221,7 @@ if !empty(glob("~/llvm/build/bin/clang-format"))
         \"'~/llvm/build/bin/clang-format -lines='.a:firstline.':'.a:lastline.' -style=google'"
 else
   let g:formatdef_my_custom_clang =
-        \"'clang-format -lines='.a:firstline.':'.a:lastline.' -style=file -fallback-style=Google'"
+        \"'clang-format -lines='.a:firstline.':'.a:lastline.' --assume-filename=\"'.expand('%:p').'\" -style=file -fallback-style=Google'"
 endif
 let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
@@ -287,8 +287,9 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
 let g:fbdirs = 'sigrid,fblearner,caffe2,experimental/xlwang,search,unicorn,nlp_tools'
+let g:cconf="~/configerator/source/unicorn/import/"
 command! FZFfbcode call fzf#run(fzf#wrap(
-    \ {'source':  'find '. '~/fbcode/{'. g:fbdirs. '} -type f',
+    \ {'source':  'find '. '~/fbcode/{'. g:fbdirs. '} '. g:cconf. ' -type f',
     \  'options': '--prompt "fbcode> "'  }))
 command! FZFfbcode2 call fzf#run(fzf#wrap(
     \ {'source':  'find '. '~/fbcode2/{'. g:fbdirs. '} -type f',

@@ -1075,7 +1075,7 @@ alias fbc='cd ~/fbcode'
 alias fbc1='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
-alias cf='cd ~/configerator'
+alias cconf='cd ~/configerator'
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
 function tmp {
   mkdir -p /tmp/$(whoami)
@@ -1234,8 +1234,14 @@ function ffzf {
   fi
 }
 _fbcode_path="sigrid,fblearner,caffe2,experimental/xlwang,search,nlp_tools,unicorn"
+_cconf_path="~/configerator/source/unicorn/import/"
+function ccf {
+  local query="find $_cconf_path -type f"
+  local prompt="cconf> "
+  ffzf $query $prompt $1
+}
 function fb1 {
-  local query="find ~/fbcode/{$_fbcode_path} -type f"
+  local query="find ~/fbcode/{$_fbcode_path} $_cconf_path -type f"
   local prompt="fbcode> "
   ffzf $query $prompt $1
 }
