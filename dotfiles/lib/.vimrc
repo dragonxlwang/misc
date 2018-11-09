@@ -147,6 +147,12 @@ augroup VimAutoGroup
   autocmd!
   autocmd FileType vim setlocal fo+=t
 augroup END
+augroup ConfigeratorGroup
+  autocmd!
+  autocmd BufNewFile,BufRead *.cinc set filetype=cinc | set syntax=python
+  autocmd BufNewFile,BufRead *.cconf set filetype=cconf | set syntax=python
+  autocmd BufNewFile,BufRead *.mcconf set filetype=mcconf | set syntax=python
+augroup END
 
 " ==========================- Facebook -=======================================
 if !empty(glob('/home/engshare/admin/scripts/vim'))
