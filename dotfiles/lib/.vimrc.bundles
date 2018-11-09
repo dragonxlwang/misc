@@ -288,6 +288,7 @@ Plugin 'junegunn/fzf.vim'
 
 let g:fbdirs = 'sigrid,fblearner,caffe2,experimental/xlwang,search,unicorn,nlp_tools'
 let g:cconf="unicorn,nlp_tools"
+let g:fzf_layout= { 'down': '~20%' }
 command! FZFfbcode call fzf#run(fzf#wrap(
     \ {'source':  'find '.
     \ '~/fbcode/{'. g:fbdirs. '} '.
@@ -316,7 +317,7 @@ function! FZFfbcodeFunc()
   let b:prompt = b:fbver. '> '
   call fzf#run(fzf#wrap(
     \ {'source': '~/misc/scripts/find_in_fb.sh '.  resolve(expand('%:p')),
-    \  'options': '--prompt "'. b:prompt. '"'  }))
+    \  'options': '--prompt "'. b:prompt. '"'}))
 endfunction
 
 
