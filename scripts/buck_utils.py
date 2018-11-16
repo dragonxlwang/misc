@@ -93,14 +93,29 @@ def _dump_json(cdb_dict, cdb_fp):
 
 
 def buck_gen(arg0, arg1=None):
-    targets = _find_target(arg0, arg1)
-    assert len(targets) == 1
-    target = targets[0]
-    cmd = ["buck", "build", "--show-output", "%s#compilation-database" % target]
-    [out, err] = subp(cmd)
-    cdb_fp = out.strip().split()[-1]
-    print("\033[1;32mCompiled DB:\033[0m")
-    print(cdb_fp)
+    try:
+        targets = _find_target(arg0, arg1)
+        assert len(targets) == 1
+        target = targets[0]
+        cmd = ["buck", "build", "--show-output", "%s#compilation-database" % target]
+        [out, err] = subp(cmd)
+        cdb_fp = out.strip().split()[-1]
+        print("\033[1;32mCompiled DB:\033[0m")
+        print(cdb_fp)
+    except Exception:
+        print(
+            "\033[1;31m"
+            + "Failed to Generate: "
+            + "'"
+            + " ".join(cmd)
+            + "'"
+            + "\033[0m"
+        )
+        print("\033[1;31mStdout:\033[0m")
+        print(out)
+        print("\033[1;31mStderr:\033[0m")
+        print(err)
+        cdb_fp = None
     return cdb_fp
 
 
@@ -146,7 +161,8 @@ def buck_add(arg0, arg1=None):
     targets = set(targets)
     for target in targets:
         cdb_fp = buck_gen(target)
-        buck_add_cdb_to_dict(cdb_dict, cdb_fp)
+        if cdb_fp is not None:
+            buck_add_cdb_to_dict(cdb_dict, cdb_fp)
     buck_add_cdb_to_dict(cdb_dict, fb_cdb_fp)
     _dump_json(cdb_dict, fb_cdb_fp)
 
