@@ -367,6 +367,7 @@ function vim_buffers {
 }
 alias vimb='vim_buffers'
 alias vimfb=' vim +FBVimLoadSession'
+alias fbvim=' vim +FBVimLoadSession'
 ##---------------------------------== tex ==----------------------------------##
 alias tm="${HOME}/misc/scripts/tex_make.sh make"
 alias tp="${HOME}/misc/scripts/tex_make.sh preview"
@@ -877,6 +878,7 @@ function less_flow_log {
 #                              |  |     |  |_)  |                              #
 #                              |__|     |______/                               #
 ## ========================================================================== ##
+export BUCKOUT="${HOME}/fbcode/buck-out/gen"
 alias arc_lint="arc lint --engine HowtoevenLintEngine"
 alias arc_up_msg="hg commit --amend && arc diff --verbatim"
 alias arc_stack_diff="for-each-stacked submit-stacked-diff"
@@ -1390,7 +1392,16 @@ function parse_flow_train_net_everpaste_handle() {
 function parse_flow_train_net_everpaste_url_from_file() {
   for x in $(parse_flow_train_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
 }
-
+function export_fbid() {
+  local fbid
+  if [[ -e  $BUCKOUT/experimental/xlwang/fbid.par ]]; then
+    fbid=$($BUCKOUT/experimental/xlwang/fbid.par $*)
+  else
+    fbid=$(bbr //experimental/xlwang:fbid -- $*)
+  fi
+  export FB_UID=$fbid
+}
+export_fbid
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
