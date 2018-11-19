@@ -146,7 +146,8 @@ alias tmux_kill='tmux kill-session'
 alias tmux_halt='tmux detach'
 function q {
   if [[ -z $TMUX ]]; then
-    exit
+    return 0
+
   else
     tmux detach
   fi
@@ -1392,16 +1393,31 @@ function parse_flow_train_net_everpaste_handle() {
 function parse_flow_train_net_everpaste_url_from_file() {
   for x in $(parse_flow_train_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
 }
-function export_fbid() {
+function get_FB_UID() {
   local fbid
   if [[ -e  $BUCKOUT/experimental/xlwang/fbid.par ]]; then
     fbid=$($BUCKOUT/experimental/xlwang/fbid.par $*)
   else
     fbid=$(bbr //experimental/xlwang:fbid -- $*)
   fi
-  export FB_UID=$fbid
+  echo $fbid
 }
-export_fbid
+function export_env_variables() {
+  var=$1
+  if [[ -n $(printenv $var) ]]; then
+    return 0
+  fi
+  cmd=$(tmux showenv -s $var 2>/dev/null)
+  if [[ $? -ne 0  || $cmd == unset* ]]; then
+    cmd="get_$var"
+    val=$($cmd)
+    tmux setenv $var "$val"
+  fi
+  eval $(tmux showenv -s FB_UID)
+  return 0
+}
+export_env_variables "FB_UID"
+
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #

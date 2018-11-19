@@ -27,7 +27,6 @@ deep_cconf_dirs=(         \
   )
 
 shallow_cconf_dirs=(      \
-  .                       \
   )
 
 function _find {
@@ -53,6 +52,8 @@ _find $fbcode_repo shallow ${shallow_fbcode_dirs[@]}
 _find $fbcode_repo deep ${deep_fbcode_dirs[@]}
 _find $cconf_repo shallow ${shallow_cconf_dirs[@]}
 _find $cconf_repo deep ${deep_cconf_dirs[@]}
+find ~/$fbcode_repo/ -maxdepth 1 -type f
+find ~/$cconf_repo/ -maxdepth 1 -type f
 find ~/misc -type f
 find ~/ -maxdepth 1 -type f
 
