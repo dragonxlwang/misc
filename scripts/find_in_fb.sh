@@ -4,19 +4,24 @@
 
 fb_repo=$(~/misc/scripts/fb_repo_version.sh $*)
 
-fbcode_repo="~/$fb_repo"
-cconf_repo="~/configerator/source"
+fbcode_repo="${HOME}/$fb_repo"
+cconf_repo="${HOME}/configerator/source"
 
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
 deep_fbcode_dirs=(        \
-  search                  \
+  search/voyager          \
+  search/sgs              \
+  search/entities/            \
+  search/posts/if             \
+  search/lib/                 \
   nlp_tools               \
   unicorn                 \
   experimental/xlwang     \
   sigrid                  \
   fblearner               \
   caffe2                  \
+  ccif                    \
   )
 
 shallow_fbcode_dirs=()
@@ -24,6 +29,7 @@ shallow_fbcode_dirs=()
 deep_cconf_dirs=(         \
   search                  \
   nlp_tools               \
+  unicorn/import          \
   )
 
 shallow_cconf_dirs=(      \
@@ -52,8 +58,8 @@ _find $fbcode_repo shallow ${shallow_fbcode_dirs[@]}
 _find $fbcode_repo deep ${deep_fbcode_dirs[@]}
 _find $cconf_repo shallow ${shallow_cconf_dirs[@]}
 _find $cconf_repo deep ${deep_cconf_dirs[@]}
-find ~/$fbcode_repo/ -maxdepth 1 -type f
-find ~/$cconf_repo/ -maxdepth 1 -type f
+find $fbcode_repo/ -maxdepth 1 -type f
+find $cconf_repo/ -maxdepth 1 -type f
 find ~/misc -type f
 find ~/ -maxdepth 1 -type f
 

@@ -229,6 +229,9 @@ let g:formatdef_yapf =
   \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:80}\" -l '.a:firstline.'-'.a:lastline"
 let g:formatdef_black = "'black -q - | isort -'"
 let g:formatters_python=['black', 'yapf','autopep8']
+let g:formatters_cconf=['black', 'yapf','autopep8']
+let g:formatters_mcconf=['black', 'yapf','autopep8']
+let g:formatters_cinc=['black', 'yapf','autopep8']
 let g:formatters_yapf=['yapf', 'autopep8']
 nnoremap <leader>w :Autoformat \| :w!<CR>
 vnoremap <leader>w :Autoformat \| :w!<CR>
