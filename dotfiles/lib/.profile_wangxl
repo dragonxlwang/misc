@@ -762,7 +762,7 @@ function yapf {
   $(whence -p yapf) \
     --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $@
 }
-# alias killall="killall -u $USER"
+# alias killall="eden start; killall -u $USER"
 alias killall="loginctl terminate-user $USER"
 alias ka="\killall -u $USER" #  disables the alias in interactive shell
 alias upld="${HOME}/misc/scripts/sync.sh"
@@ -1080,6 +1080,7 @@ alias fbc1='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
 alias cconf='cd ~/configerator'
+alias ds='cd ~/dataswarm/tasks'
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
 function tmp {
   mkdir -p /tmp/$(whoami)
@@ -1398,7 +1399,9 @@ function get_FB_UID() {
   if [[ -e  $BUCKOUT/experimental/xlwang/fbid.par ]]; then
     fbid=$($BUCKOUT/experimental/xlwang/fbid.par $*)
   else
+    pushd  ${HOME}/fbcode
     fbid=$(bbr //experimental/xlwang:fbid -- $*)
+    popd
   fi
   echo $fbid
 }

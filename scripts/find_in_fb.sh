@@ -12,9 +12,11 @@ function join_by { local IFS="$1"; shift; echo "$*"; }
 deep_fbcode_dirs=(        \
   search/voyager          \
   search/sgs              \
+  search/ultimate         \
   search/entities/            \
   search/posts/if             \
   search/lib/                 \
+  search/dufusion         \
   nlp_tools               \
   unicorn                 \
   experimental/xlwang     \
