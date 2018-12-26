@@ -25,10 +25,13 @@ brew install mosh tmux curl clang-format tree fzf ag
 brew install htop --with-ncurses
 brew install gnuplot --with-tex --with-pdflib-lite --with-qt --with-test --with-x11
 brew install make --with-default-names
-brew install hub gawk ascii_plots gzip screen watch wget pigz fpp
-brew install gcc node reattach-to-user-namespace zsh-completions ctags cmake
-brew install emacs gdb gpatch m4 nano markdown pandoc
-brew install file-formula git gist bfg less openssh perl518 rsync svn unzip
+for app in hub gawk ascii_plots gzip screen watch wget pigz fpp \
+           gcc node reattach-to-user-namespace zsh-completions ctags cmake \
+           emacs gdb gpatch m4 nano markdown pandoc \
+           file-formula git gist bfg less openssh perl518 rsync svn unzip;
+do
+  brew install $app
+done
 brew install macvim --with-lua --with-override-system-vim
 brew linkapps macvim
 

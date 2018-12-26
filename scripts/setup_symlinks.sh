@@ -39,15 +39,15 @@ mk_link() {
     if [[ $ans == yes || $ans == y ]]
     then
       echo -e $ANSI_COLOR_RED "[$cnt]: rm ${des}" $ANSI_COLOR_RESET
-      rm -rf ${des}
+      rm -rf "${des}"
       echo -e  $ANSI_COLOR_RED "[$cnt]: ln -s ${src} ${des}" $ANSI_COLOR_RESET
-      ln -s ${src} ${des}
+      ln -s "${src}" "${des}"
     else
       echo -e $ANSI_COLOR_BLUE "[$cnt]: skipping ${des}" $ANSI_COLOR_RESET
     fi
   else
     echo -e $ANSI_COLOR_GREEN "[$cnt]: ln -s ${src} ${des}" $ANSI_COLOR_RESET
-    ln -s ${src} ${des}
+    ln -s "${src}" "${des}"
   fi
 }
 
@@ -61,6 +61,7 @@ then
     des="${HOME}/.atom/$f"
     mk_link $src $des
   done
+  mk_link ${HOME}/Dropbox\ \(Personal\) ${HOME}/Dropbox
   echo -e $ANSI_COLOR_GREEN "setting up /usr/local symlinks" $ANSI_COLOR_RESET
   for b in "${bins[@]}"
   do

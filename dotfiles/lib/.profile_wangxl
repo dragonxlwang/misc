@@ -1419,7 +1419,7 @@ function export_env_variables() {
   eval $(tmux showenv -s FB_UID)
   return 0
 }
-export_env_variables "FB_UID"
+[[ $(uname) == "Linux" ]] && export_env_variables "FB_UID"
 
 
 ## ========================================================================== ##
