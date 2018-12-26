@@ -11,7 +11,8 @@ brew tap homebrew/science
 brew tap homebrew/versions
 
 brew install coreutils # set mv by symlink
-brew install binutils diffutils
+brew install binutils
+brew install diffutils
 brew install ed --with-default-names
 brew install findutils --with-default-names
 brew install gnu-indent --with-default-names
@@ -21,7 +22,10 @@ brew install gnu-which --with-default-names
 brew install grep --with-default-names
 brew install wdiff --with-gettext
 brew install lua --with-completion
-brew install mosh tmux curl clang-format tree fzf ag
+for app in mosh tmux curl clang-format tree fzf ag;
+do
+  brew install $app
+done
 brew install htop --with-ncurses
 brew install gnuplot --with-tex --with-pdflib-lite --with-qt --with-test --with-x11
 brew install make --with-default-names

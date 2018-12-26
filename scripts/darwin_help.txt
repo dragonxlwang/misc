@@ -5,3 +5,9 @@ sudo killall coreaudiod
 Reset Wifi:
 ===========
 sudo ifconfig en0 down && sudo ifconfig en0 up
+
+Chef:
+=====
+up_symlinks
+- or `misc/scripts/setup_symlinks.sh Darwin --no-confirm`
+update_scripts
