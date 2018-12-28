@@ -294,7 +294,7 @@ HISTSIZE=130000
 SAVEHIST=130000
 ##---------------------------== search and find ==----------------------------##
 # grep: recursive, ln num, show file name, context
-alias gg="grep -R -n -H -C5"
+alias ggrep="grep -R -n -H -C5"
 function ggs {
   grep -R -l $1 | xargs sed -i "s/$1/$2/g"
 }
@@ -1314,8 +1314,21 @@ function ff {
     done
   fi
 }
-# fd - search directory including hidden directories
-fd() {
+gg() {
+  local file
+  local line
+  read -r file line \
+    <<<"$(ag --nobreak --noheading ${1:=.} \
+          | fzf --nth=2 --prompt="ag> " \
+          | awk -F: '{print $1, $2}')"
+
+  if [[ -n $file ]]
+  then
+     vim $file +$line
+  fi
+}
+# dd - search directory including hidden directories
+dd() {
   local dir
   local input
    [[ $# -gt 0 && -d $1 ]] && \
@@ -1324,8 +1337,8 @@ fd() {
   dir=$(find ${input} -type d 2> /dev/null | fzf --query="$*" +m --prompt="dir> ") \
     && cd "$dir"
 }
-# fd - search directory including hidden directories
-fbd() {
+# ddd - search directory including hidden directories
+ddd() {
   local cwd=$(readlink -f .)
   local repo="fbcode"
   local dir
@@ -1352,7 +1365,7 @@ v() {
 unalias z 2> /dev/null
 z() {
   [ $# -gt 0 ] && _z "$*" && return
-  cd "$(_z -l 2>&1 | fzf --prompt="dir-hist> " +s +m --tac --query "$*" \
+  cd "$(_z -l 2>&1 | fzf --nth=2 --prompt="dir-hist> " +s +m --tac --query "$*" \
     | sed 's/^[0-9,.]* *//')"
 }
 h() {
