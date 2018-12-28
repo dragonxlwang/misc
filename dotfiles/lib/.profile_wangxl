@@ -516,6 +516,8 @@ function init_oh_my_zsh {
       https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     redecho "\n\tRead about oh-my-zsh" \
          " at https://github.com/robbyrussell/oh-my-zsh\n"
+  else
+    greenecho "\n\toh-my-zsh is already installed. Skipping..."
   fi
   local zsh_custom="${HOME}/.oh-my-zsh/custom/plugins"
   function install_custom_plugin() {
@@ -524,6 +526,8 @@ function init_oh_my_zsh {
     if [[ ! -e $zsh_custom/$plugin/.git ]]; then
       git clone $url $zsh_custom/$plugin
       redecho "\n\tRead about $plugin at $url"
+    else
+      greenecho "\n\tCustom Git Plugin $1/$2 is already installed. Skipping..."
     fi
   }
   install_custom_plugin zsh-users zsh-completions
