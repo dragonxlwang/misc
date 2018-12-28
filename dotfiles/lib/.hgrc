@@ -27,7 +27,7 @@ xg_sl_files = "{separate(' ', xg_sl_node, label(yellow, phabdiff), sl_user, labe
 xg_sl_authors = "{separate(' ', xg_sl_node, label(yellow, phabdiff), sl_user, label(green, sl_desc), '{date|age}')}\n"
 
 [extensions]
-hgext.extdiff =
+extdiff =
 
 [extdiff]
 cmd.vimdiff =

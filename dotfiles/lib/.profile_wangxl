@@ -1420,6 +1420,20 @@ function export_env_variables() {
   return 0
 }
 [[ $(uname) == "Linux" ]] && export_env_variables "FB_UID"
+function presto() {
+  local presto=/usr/local/bin/presto
+  local namespace=search
+  if [[ $# -eq 0 ]]; then
+    $presto $namespace
+  else
+    $presto $namespace --execute $*
+  fi
+}
+function presto_sample() {
+  local limit=${2:=10}
+  presto "select * from $1 limit $limit"
+}
+alias today="date +%F"
 
 
 ## ========================================================================== ##
