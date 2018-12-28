@@ -58,7 +58,7 @@ plugins=(\
   extract python web-search       \
   zsh-completions                 \
   zsh-autosuggestions             \
-  zsh-bd                          \
+  bd                              \
   #zsh-syntax-highlighting         \
   #command-not-found               \
 )

@@ -522,8 +522,10 @@ function init_oh_my_zsh {
   local zsh_custom="${HOME}/.oh-my-zsh/custom/plugins"
   function install_custom_plugin() {
     local url=https://github.com/$1/$2
-    local plugin=$2
+    local plugin=${3:=$2}
+    echo $plugin
     if [[ ! -e $zsh_custom/$plugin/.git ]]; then
+      echo "git clone $url $zsh_custom/$plugin"
       git clone $url $zsh_custom/$plugin
       redecho "\n\tRead about $plugin at $url"
     else
@@ -533,7 +535,7 @@ function init_oh_my_zsh {
   install_custom_plugin zsh-users zsh-completions
   install_custom_plugin zsh-users zsh-autosuggestions
   install_custom_plugin zsh-users zsh-syntax-highlighting
-  install_custom_plugin Tarrasch zsh-bd
+  install_custom_plugin Tarrasch zsh-bd bd
 }
 function up_oh_my_zsh {
   init_oh_my_zsh
@@ -683,6 +685,7 @@ function xg_slf5 { # show changes against file/directory, last 5 changes only
 function xg_ls {  # list all file tracked under master
   git ls-tree -r --name-only ${@:-HEAD}
 }
+unalias gg
 alias xg_ls_ignored="git ls-files --ignored --exclude-standard --others"
 alias xg_ls_untracked="git ls-files --exclude-standard --others"
 alias xg_st='git status'
