@@ -52,8 +52,16 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages extract python web-search \
-  zsh-completions zsh-autosuggestions bd)
+plugins=(\
+  git                             \
+  colored-man-pages               \
+  extract python web-search       \
+  zsh-completions                 \
+  zsh-autosuggestions             \
+  zsh-bd                          \
+  #zsh-syntax-highlighting         \
+  #command-not-found               \
+)
 
 
 # User configuration

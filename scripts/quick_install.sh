@@ -15,9 +15,6 @@ wget https://gist.githubusercontent.com/baopham/1838072/raw/616d338cea8b9dcc3a5b
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-# bd
-cd ~/.oh-my-zsh/custom/plugins
-git clone https://github.com/Tarrasch/zsh-bd bd
 
 
 # zsh set to default shell

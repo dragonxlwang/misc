@@ -517,21 +517,19 @@ function init_oh_my_zsh {
     redecho "\n\tRead about oh-my-zsh" \
          " at https://github.com/robbyrussell/oh-my-zsh\n"
   fi
-  if [[ ! -d ~/.oh-my-zsh/custom/plugins/zsh-completions/.git ]] && \
-     [[ ! -f ~/.oh-my-zsh/custom/plugins/zsh-completions/.git ]]; then
-    git clone https://github.com/zsh-users/zsh-completions \
-      ~/.oh-my-zsh/custom/plugins/zsh-completions
-    redecho "\n\tRead about zsh-completions" \
-         " at https://github.com/zsh-users/zsh-completions\n"
-  fi
-  if [[ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/.git ]] && \
-     [[ ! -f ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/.git ]]; then
-    # git://github.com/zsh-users/zsh-autosuggestions \
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git \
-      ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-    redecho "\n\tRead about zsh-autosuggestions" \
-         " at https://github.com/zsh-users/zsh-autosuggestions\n"
-  fi
+  local zsh_custom="${HOME}/.oh-my-zsh/custom/plugins"
+  function install_custom_plugin() {
+    local url=https://github.com/$1/$2
+    local plugin=$2
+    if [[ ! -e $zsh_custom/$plugin/.git ]]; then
+      git clone $url $zsh_custom/$plugin
+      redecho "\n\tRead about $plugin at $url"
+    fi
+  }
+  install_custom_plugin zsh-users zsh-completions
+  install_custom_plugin zsh-users zsh-autosuggestions
+  install_custom_plugin zsh-users zsh-syntax-highlighting
+  install_custom_plugin Tarrasch zsh-bd
 }
 function up_oh_my_zsh {
   init_oh_my_zsh
