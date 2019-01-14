@@ -26,6 +26,7 @@ import fblearner.flow.facebook.plugins.all_plugins  # noqa
 import fblearner.flow.projects.dper.flow_types as T
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from bunch import Bunch
 from caffe2.caffe2.fb.predictor import predictor_exporter as pe
 from caffe2.caffe2.fb.predictor.model_exporter import ModelExporter
@@ -37,6 +38,7 @@ from caffe2.python.fb.dper.layer_models.utils import vis_utils
 # from caffe2.caffe2.fb.predictor.Predic tor import constants as predictor_constants
 from caffe2.python.fb.predictor import serde
 from caffe2.python.predictor_constants import predictor_constants as pc
+from datainfra.presto.client_lib import getPrismBatchPrestoClient, getPrismPrestoClient
 from fblearner.flow.core.attrdict import from_dict
 from fblearner.flow.core.types_lib.gettype import gettype
 from fblearner.flow.core.types_lib.type import encode as encode_flow_type
@@ -2183,6 +2185,116 @@ class FlowManager(object):
     def glob_latest_flow_manager(cls, name="flow_manager"):
         fp = glob_latest_home_file(name)
         return FlowManager(filepath=fp)
+
+
+def presto_map_enum_id2str(type, id):
+    return """
+        element_at(
+            (
+                SELECT
+                    map_agg(CAST(v AS BIGINT), k)
+                FROM
+                    hive_enum_map:di
+                WHERE
+                    name='{type}'
+            ),
+            CAST({id} AS BIGINT)
+        )
+    """.format(
+        type=type, id=id
+    )
+
+
+def presto_map_enum_str2id(type, str_name):
+    return """
+        element_at(
+            (
+                SELECT
+                    map_agg(k, CAST(v AS BIGINT))
+                FROM
+                    hive_enum_map:di
+                WHERE
+                    name='{type}'
+            ),
+            '{str_name}'
+        )
+    """.format(
+        type=type, str_name=str_name
+    )
+
+
+def get_fbtype_map_enum_str2id():
+    x = query_presto(
+        """
+        SELECT map_agg(k, CAST(v AS BIGINT))
+        FROM hive_enum_map:di
+        WHERE name = 'FBType'
+        """
+    ).values[0][0]
+    return {str(k): int(v) for k, v in x.items()}
+
+
+def get_fbtype_map_enum_id2str():
+    x = query_presto(
+        """
+        SELECT map_agg(CAST(v AS BIGINT), k)
+        FROM hive_enum_map:di
+        WHERE name = 'FBType'
+        """
+    ).values[0][0]
+    return {int(k): str(v) for k, v in x.items()}
+
+
+def query_macro_substitute(query):
+    return query.replace("<DATEID>", str(today() - datetime.timedelta(days=1)))
+
+
+def print_with_line_number(doc):
+    for i, s in enumerate(doc.split("\n")):
+        print("%3s: %s" % (i + 1, s))
+
+
+def process_query(query, **kwargs):
+    query = query_macro_substitute(query)
+    query = query.format(**kwargs)
+    return query
+
+
+def presto_data_frame(t, c=None):
+    df = pd.DataFrame(t, columns=c)
+    return df
+
+
+def query_presto(
+    query, namespace="search", batch_mode=False, with_line_number=False, **kwargs
+):
+    query = process_query(query, **kwargs)
+
+    # client = (getPrismPrestoClient if not batch_mode else getPrismBatchPrestoClient)(
+    #     namespace=namespace, query=query, source=__name__
+    # )
+    # # columns = client.columns
+    # try:
+    #     return list(client.execute())
+    # except Exception:
+    #     print(" === failed query ==== ")
+    #     (print_with_line_number if with_line_number else print)(query)
+    # finally:
+    #     client.cancel()
+    #     client = None
+    from analytics.bamboo import Bamboo as bb
+
+    return bb.query_presto(namespace, query)
+
+
+def get_presto_map_enum_id2str(type, id):
+    return str(query_presto("select " + presto_map_enum_id2str(type, id)).values[0][0])
+
+
+def get_presto_map_enum_str2id(type, str_name):
+    return str(
+        query_presto("select " + presto_map_enum_str2id(type, str_name)).values[0][0]
+    )
 
 
 log_reset()
