@@ -911,7 +911,11 @@ alias hca="hg add; hg commit"
 alias hca!="hg add; hg amend --rebase"
 alias hed="hg commit --amend"
 alias hls="hg log --stat -l1"
-alias hlsf="hg log --stat -l1 | fpp"
+function hlsf {
+  pushd $(hg root)
+  hg log --stat -l1 | fpp
+  popd
+}
 alias hs="hg st && hg smartlog -T '{xg_sl}'"
 alias hst="hg st"
 alias hstf="hg st | fpp"

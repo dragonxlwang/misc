@@ -1675,6 +1675,14 @@ def mlt_plot_learning_curves_from_result(
         return url
 
 
+def plt_publish_fig(fig, title=None):
+    title = "fig"
+    fp, url = gen_home_file("%s.png" % title)
+    fig.savefig(fp)
+    pprint("image saved to: %s" % url)
+    return url
+
+
 def send_email(
     subject,
     to,
@@ -2265,9 +2273,13 @@ def presto_data_frame(t, c=None):
     return df
 
 
-def query_presto(
-    query, namespace="search", batch_mode=False, with_line_number=False, **kwargs
-):
+def query_expand(query, namespace="search"):
+    from infrastrategy.platypus import presto_utils
+
+    return presto_utils._expand_query(namespace, query)
+
+
+def query_presto(query, namespace="search", **kwargs):
     query = process_query(query, **kwargs)
 
     # client = (getPrismPrestoClient if not batch_mode else getPrismBatchPrestoClient)(
