@@ -547,6 +547,23 @@ function up_oh_my_zsh {
   git pull --rebase
   popd > /dev/null
 }
+##------------------------------== git repo download ==-----------------------##
+function git_clone {
+  local gh=$1
+  local repo=$2
+  local dest=$3
+  local name=${4:=$repo}
+
+  local url=https://github.com/$gh/$repo
+  if [[ ! -e $dest/$name/.git ]]; then
+    makedir -p $dest
+    echo "git clone $url $dest/$name"
+    git clone $url $dest/$name
+    redecho "\n\tRead about $name at $url"
+  else
+    greenecho "\n\tGit Repo $gh/$repo is already installed. Skipping..."
+  fi
+}
 ##---------== update homebrew, oh-my-zsh, pip and source profile==------------##
 function update_scripts {
   redecho "upgrade oh-my-zsh"
@@ -578,6 +595,10 @@ function update_scripts {
   up_tmux_tpm
   redecho "tmux tpm clean"
   clean_tmux_tmp
+  if [[ $(uname) == "Linux" ]]
+    redecho "git clone facebook/PathPicker.git"
+    git_clone facebook PathPicker ~/local fpp
+    # sudo ln -s ~/local/fpp/fpp /usr/local/bin/fpp
   redecho "source tmux conf"
   tmux source ${HOME}/.tmux.conf
   redecho "source profile_wangxl"
@@ -685,7 +706,7 @@ function xg_slf5 { # show changes against file/directory, last 5 changes only
 function xg_ls {  # list all file tracked under master
   git ls-tree -r --name-only ${@:-HEAD}
 }
-unalias gg
+# unalias gg
 alias xg_ls_ignored="git ls-files --ignored --exclude-standard --others"
 alias xg_ls_untracked="git ls-files --exclude-standard --others"
 alias xg_st='git status'
