@@ -598,7 +598,7 @@ function update_scripts {
   if [[ $(uname) == "Linux" ]]
     redecho "git clone facebook/PathPicker.git"
     git_clone facebook PathPicker ~/local fpp
-    # sudo ln -s ~/local/fpp/fpp /usr/local/bin/fpp
+    sudo ln -s ~/local/fpp/fpp /usr/local/bin/fpp
   redecho "source tmux conf"
   tmux source ${HOME}/.tmux.conf
   redecho "source profile_wangxl"
@@ -706,7 +706,6 @@ function xg_slf5 { # show changes against file/directory, last 5 changes only
 function xg_ls {  # list all file tracked under master
   git ls-tree -r --name-only ${@:-HEAD}
 }
-# unalias gg
 alias xg_ls_ignored="git ls-files --ignored --exclude-standard --others"
 alias xg_ls_untracked="git ls-files --exclude-standard --others"
 alias xg_st='git status'
@@ -1338,6 +1337,7 @@ function ff {
     done
   fi
 }
+alias gg > /dev/null 2>&1 && unalias gg
 gg() {
   local file
   local line
@@ -1473,6 +1473,18 @@ function presto_sample() {
   presto "select * from $1 limit $limit"
 }
 alias today="date +%F"
+super_shell_find() {
+  local cmd=$1
+  redecho "type $cmd"
+  type $cmd
+  redecho "declare -f $cmd"
+  declare -f $cmd
+  redecho "alias $cmd"
+  alias $cmd
+  redecho "whereis $cmd"
+  whereis $cmd
+  #command $cmd
+}
 
 
 ## ========================================================================== ##
