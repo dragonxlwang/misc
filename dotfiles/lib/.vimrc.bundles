@@ -34,6 +34,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-abolish'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147
 " Plugin 'dhruvasagar/vim-table-mode'
@@ -263,6 +264,7 @@ augroup NERDTreeAutoGroup
         \ && b:NERDTree.isTabTree()) | q | endif
 augroup END
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeSplitFromPreviousWindow = 1
 let NERDTreeIgnore = ['\.pyc$', '\.swp$']
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>n. :NERDTreeFind<cr>

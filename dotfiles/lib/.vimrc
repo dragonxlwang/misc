@@ -397,6 +397,8 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
 command! Fp echo expand('%:p')
+command! Fpp put expand('%:p')
+command! SBTarget exec "sb " . expand('%:p:h') . '/TARGETS'
 nnoremap <ESC>n :call NumberToggle()<cr>
 cnoreabbrev <expr> vsf
       \ (getcmdtype() == ':' && getcmdline() =~ '^vsf$')? 'vert sf' : 'vsf'

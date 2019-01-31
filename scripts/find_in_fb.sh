@@ -10,6 +10,9 @@ cconf_repo="${HOME}/configerator/source"
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
 deep_fbcode_dirs=(        \
+  folly                   \
+  dataswarm/dataswarm     \
+  dataswarm-pipelines/tasks   \
   search/voyager          \
   search/sgs              \
   search/ultimate         \
