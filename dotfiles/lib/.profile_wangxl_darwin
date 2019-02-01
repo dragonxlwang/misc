@@ -266,6 +266,12 @@ function _list_task {
   [[ -n "$TMUX" ]] && is_inside_tmux=1
   local argopt=$2
   local option
+  local is_on_dc=0
+  [[ $(hostname) == "DragonCavesMini.localdomain" ]] && is_on_dc=1
+  if [[ $is_on_dc -eq 1 ]]; then
+    [[ $is_inside_tmux -eq 1 ]] && redecho "already in tmux" || \
+        tmux new -AD -s $(hostname -s)-main
+  fi
   # finish if called from profile and inside tmux
   [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
   local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
@@ -274,6 +280,7 @@ function _list_task {
   local str4="  (4/g) :   mosh $(get_hostname devgpu) (devgpu)"
   local str5="  (5/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
   local str6="  (6/a) :   mosh $(get_hostname devgpu3) (devgpu3)"
+  local str7="  (7/d) :   mosh $(get_hostname dragoncave) (dragoncave)"
   # main loop
   while [[ -z $option ]]
   do
@@ -284,9 +291,11 @@ function _list_task {
     cyanecho $str4
     cyanecho $str5
     cyanecho $str6
-    # cyanecho $str7
+    [[ $is_on_dc -eq 0 ]] && cyanecho $str7
     whiteecho $(printf '=%.0s' {1..80})
-    yellowecho -n "Select One Option From (1) - (7): "
+    local total_options=6
+    [[ $is_on_dc -eq 0 ]] && total_options=7
+    yellowecho -n "Select One Option From (1) - ("$total_options"): "
     if [[ -z $argopt ]]; then
       read argopt
     else
@@ -298,6 +307,7 @@ function _list_task {
     elif [[ $argopt == 4* || $argopt == g* ]]; then option=4
     elif [[ $argopt == 5* || $argopt == x* ]]; then option=5
     elif [[ $argopt == 6* || $argopt == a* ]]; then option=6
+    elif [[ $is_on_dc -eq 0 && ($argopt == 7* || $argopt == d*) ]]; then option=7
     else
       redecho "  Input Not Recognized..."
       echo ""
@@ -327,6 +337,8 @@ function _list_task {
   elif [[ $option -eq 6 ]]; then
     redecho $str6
     mosh devgpu3
+  elif [[ $option -eq 7 ]]; then
+    mosh dragoncave --server="/usr/local/bin/mosh-server"
   fi
 }
 
