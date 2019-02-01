@@ -261,8 +261,6 @@ function _smart_ssh {
 }
 
 function _list_task {
-    redecho $TMUX
-    redecho "===="
   local caller_is_profile=$1
   local is_inside_tmux=0
   [[ -n "$TMUX" ]] && is_inside_tmux=1
@@ -270,15 +268,11 @@ function _list_task {
   local option
   local is_on_dc=0
   [[ $(hostname) == "DragonCavesMini.localdomain" ]] && is_on_dc=1
-  if [[ $is_on_dc -eq 1 ]]; then
-    # return
-    echo $TMUX
-    return
-    # [[ $is_inside_tmux -eq 1 ]] && redecho "already in tmux" || \
-    #     tmux new -AD -s $(hostname -s)-main
-  fi
   # finish if called from profile and inside tmux
   [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
+  if [[ $is_on_dc -eq 1 ]]; then
+    tmux new -AD -s $(hostname -s)-main
+  fi
   local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
   local str2="  (2/n) :   zsh"
   local str3="  (3/s) :   mosh $(get_hostname devbig) (devbig)"
