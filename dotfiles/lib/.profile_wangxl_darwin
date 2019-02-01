@@ -271,6 +271,7 @@ function _list_task {
   if [[ $is_on_dc -eq 1 ]]; then
     # return
     echo $TMUX
+    return
     # [[ $is_inside_tmux -eq 1 ]] && redecho "already in tmux" || \
     #     tmux new -AD -s $(hostname -s)-main
   fi
