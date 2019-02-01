@@ -261,6 +261,7 @@ function _smart_ssh {
 }
 
 function _list_task {
+    redecho $TMUX
   local caller_is_profile=$1
   local is_inside_tmux=0
   [[ -n "$TMUX" ]] && is_inside_tmux=1
