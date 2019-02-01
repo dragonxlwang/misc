@@ -269,8 +269,9 @@ function _list_task {
   local is_on_dc=0
   [[ $(hostname) == "DragonCavesMini.localdomain" ]] && is_on_dc=1
   if [[ $is_on_dc -eq 1 ]]; then
-    [[ $is_inside_tmux -eq 1 ]] && redecho "already in tmux" || \
-        tmux new -AD -s $(hostname -s)-main
+    return
+    # [[ $is_inside_tmux -eq 1 ]] && redecho "already in tmux" || \
+    #     tmux new -AD -s $(hostname -s)-main
   fi
   # finish if called from profile and inside tmux
   [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
