@@ -397,10 +397,13 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
 command! Fp echo expand('%:p')
+command! Tp echo expand('%:t')
 command! Fpp put expand('%:p')
-command! T exec "b " . expand('%:p:h') . '/TARGETS'
-command! TS exec "sb " . expand('%:p:h') . '/TARGETS'
-command! TV exec "vsb " . expand('%:p:h') . '/TARGETS'
+command! Fpy :let @" = expand('%:p')
+command! Tpy :let @" = expand('%:t')
+command! T exec "e " . expand('%:p:h') . '/TARGETS'
+command! TS exec "sp " . expand('%:p:h') . '/TARGETS'
+command! TV exec "vsp " . expand('%:p:h') . '/TARGETS'
 nnoremap <ESC>n :call NumberToggle()<cr>
 cnoreabbrev <expr> vsf
       \ (getcmdtype() == ':' && getcmdline() =~ '^vsf$')? 'vert sf' : 'vsf'

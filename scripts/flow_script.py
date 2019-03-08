@@ -20,9 +20,9 @@ from numbers import Number
 import caffe2.caffe2.fb.predictor.predictor_py_utils as pred_utils
 import caffe2.caffe2.fb.predictor.sigrid.constants as sc
 import caffe2.python.fb.dper.layer_models.utils.utils as utils
-import caffe2.python.fb.dper.utils as dper_utils
+# import caffe2.python.fb.dper.utils as dper_utils
 # add this to enable get default input
-import fblearner.flow.facebook.plugins.all_plugins  # noqa
+# import fblearner.flow.facebook.plugins.all_plugins  # noqa
 import fblearner.flow.projects.dper.flow_types as T
 import matplotlib.pyplot as plt
 import numpy as np

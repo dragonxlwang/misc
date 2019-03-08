@@ -157,6 +157,8 @@ def buck_add_cdb_to_dict(cdb_dict, cdb_fp):
 
 def buck_add(arg0, arg1=None):
     targets = _find_target(arg0, arg1)
+    print("\033[1;32mInferred TARGETS:\033[0m")
+    print(targets)
     cdb_dict = {}
     targets = set(targets)
     for target in targets:

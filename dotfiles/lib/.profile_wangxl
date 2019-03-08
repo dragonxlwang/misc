@@ -826,6 +826,9 @@ function kill_timan_tunnel_ipython {
     fi
   done
 }
+function build_bento {
+  buck build @mode/opt //experimental/xlwang:bento_kernel_devbig470_local
+}
 # # A function to launch ipython notebooks
 function ifbpynb {
     pushd ~/python;
@@ -1135,6 +1138,31 @@ function fbtmux {
   tmux send-keys -t 1.1 \
     "tmux send-keys -t 1.1 -R; tmux clear-history -t 1.1" C-m
   tmux send-keys -t 1.1 "happy_coding" C-m
+}
+function tmux_fbc {
+  tmux new-window -c $(readlink -f ~/fbcode) \
+    && tmux setw allow-rename off \
+    && tmux rename-window "fbc"
+}
+function tmux_fbc2 {
+  tmux new-window -c $(readlink -f ~/fbcode2) \
+    && tmux setw allow-rename off \
+    && tmux rename-window "fbc2"
+}
+function tmux_fbc3 {
+  tmux new-window -c $(readlink -f ~/fbcode3) \
+    && tmux setw allow-rename off \
+    && tmux rename-window "fbc3"
+}
+function tmux_ds {
+  tmux new-window -c $(readlink -f ~/fbcode/dataswarm-pipelines/tasks) \
+    && tmux setw allow-rename off \
+    && tmux rename-window "ds"
+}
+function tmux_cconf {
+  tmux new-window -c $(readlink -f ~/configerator) \
+    && tmux setw allow-rename off \
+    && tmux rename-window "cf"
 }
 function run_dper_integration_tests {
   pushd ~/fbcode
