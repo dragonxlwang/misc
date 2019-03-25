@@ -76,6 +76,9 @@ function rvmv {
 function uncolor {
   echo "$1" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"
 }
+if [[ -n $(command -v python3) ]]; then
+  alias python='python3'
+fi
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then
@@ -828,6 +831,8 @@ function kill_timan_tunnel_ipython {
 }
 function build_bento {
   buck build @mode/opt //experimental/xlwang:bento_kernel_devbig470_local
+  yellowecho "start bento https://our.intern.facebook.com/intern/bunny/?bento " \
+             "and select bento_kernel_devbig470_local"
 }
 # # A function to launch ipython notebooks
 function ifbpynb {
@@ -1111,7 +1116,7 @@ alias cconf='cd ~/configerator'
 alias ds='cd ~/fbcode/dataswarm-pipelines/tasks'
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
 function tmp {
-  mkdir -p /tmp/$(whoami)
+  mkdir -p /tmp/$(whoami) > /dev/null 2>&1
   cd ~/tmp
 }
 function flow_script {
