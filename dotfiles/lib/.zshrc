@@ -175,10 +175,42 @@ source ${HOME}/.profile_wangxl
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
   source "${HOME}/.iterm2_shell_integration.zsh"
 
-PATH="${PATH}:/opt/homebrew/bin"
-PATH="${PATH}:/opt/facebook/nuclide/latest/nuclide/pkg/fb-biggrep-cli/bin"
-PATH="${PATH}:/opt/facebook/hg/bin"
-PATH="${PATH}:/usr/local/munki"
+function _PREPEND_PATH {
+  local dir=$1
+  if [[ -e $dir ]]; then
+    echo "$dir:$PATH"
+  else
+    echo "$PATH"
+  fi
+}
+function _APPEND_PATH {
+  local dir=$1
+  if [[ -e $dir ]]; then
+    echo "$PATH:$dir"
+  else
+    echo "$PATH"
+  fi
+}
+for _path in  "/opt/homebrew/bin" \
+              "/opt/facebook/nuclide/latest/nuclide/pkg/fb-biggrep-cli/bin" \
+              "/opt/facebook/hg/bin" \
+              "/usr/local/munki";
+do
+  PATH=$(_APPEND_PATH ${_path})
+done
+for _path in "/usr/local/opt/ed/libexec/gnubin" \
+             "/usr/local/opt/findutils/libexec/gnubin" \
+             "/usr/local/opt/gnu-indent/libexec/gnubin" \
+             "/usr/local/opt/gnu-sed/libexec/gnubin" \
+             "/usr/local/opt/gnu-tar/libexec/gnubin" \
+             "/usr/local/opt/gnu-which/libexec/gnubin" \
+             "/usr/local/opt/grep/libexec/gnubin" \
+             "/usr/local/opt/qt/bin" \
+             "/usr/local/opt/curl/bin" \
+             "/usr/local/opt/python/libexec/bin";
+do
+  PATH=$(_PREPEND_PATH ${_path})
+done
 
 export FBANDROID_DIR=/Users/xlwang/fbsource/fbandroid
 alias quicklog_update="/Users/xlwang/fbsource/fbandroid/"`

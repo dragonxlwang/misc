@@ -6,7 +6,7 @@ brew tap caskroom/versions
 brew tap caskroom/fonts
 brew tap homebrew/core
 
-brew install graphviz --with-app
+brew install graphviz
 
 brew cask install xquartz
 brew cask install dropbox google-drive google-chrome adium qq skype
