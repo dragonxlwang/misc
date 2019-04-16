@@ -830,7 +830,7 @@ function kill_timan_tunnel_ipython {
   done
 }
 function build_bento {
-  buck build @mode/opt //experimental/xlwang:bento_kernel_devbig470_local
+  buck build ${1:-@mode/opt} //experimental/xlwang:bento_kernel_devbig470_local
   yellowecho "start bento https://our.intern.facebook.com/intern/bunny/?bento " \
              "and select bento_kernel_devbig470_local"
 }
@@ -958,6 +958,8 @@ alias hrf='hhl && arc cleanup-features && hum && hs'
 alias hhpur='hhl && arc cleanup-features && hrb -d master && hs'
 alias hrv='hg revert'
 alias hmsg='arc amend --show 2>/dev/null || hg log -T {desc} --rev .'
+alias hg_latest_publish_commit="hg log -r 'first(reverse(::.) & public())' -T '{node}'"
+alias hg_current_commit="hg log -r '.' -T '{node}'"
 function hg_authors {
   # hg --pager=off log --template "{xg_sl_authors}" -- ${1:-$(pwd)}
   hg log --template "{xg_sl_authors}" -- ${1:-$(readlink -f .)}
@@ -1506,6 +1508,7 @@ function presto_sample() {
   presto "select * from $1 limit $limit"
 }
 alias today="date +%F"
+alias yesterday="date --date='yesterday' +%F"
 super_shell_find() {
   local cmd=$1
   redecho "type $cmd"
