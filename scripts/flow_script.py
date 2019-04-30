@@ -1,4 +1,5 @@
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
 import collections
 import datetime
@@ -22,7 +23,7 @@ import caffe2.caffe2.fb.predictor.sigrid.constants as sc
 import caffe2.python.fb.dper.layer_models.utils.utils as utils
 # import caffe2.python.fb.dper.utils as dper_utils
 # add this to enable get default input
-# import fblearner.flow.facebook.plugins.all_plugins  # noqa
+import fblearner.flow.facebook.plugins.all_plugins  # noqa
 import fblearner.flow.projects.dper.flow_types as T
 import matplotlib.pyplot as plt
 import numpy as np
@@ -30,7 +31,8 @@ import pandas as pd
 from bunch import Bunch
 from caffe2.caffe2.fb.predictor import predictor_exporter as pe
 from caffe2.caffe2.fb.predictor.model_exporter import ModelExporter
-from caffe2.fb.python.fb_predictor_constants import fb_predictor_constants as fpc
+from caffe2.fb.python.fb_predictor_constants import \
+    fb_predictor_constants as fpc
 from caffe2.proto import caffe2_pb2
 from caffe2.python import core, dyndep, memonger, net_drawer, workspace
 from caffe2.python.fb.dper.layer_models.model_definition import ttypes
@@ -38,7 +40,8 @@ from caffe2.python.fb.dper.layer_models.utils import vis_utils
 # from caffe2.caffe2.fb.predictor.Predic tor import constants as predictor_constants
 from caffe2.python.fb.predictor import serde
 from caffe2.python.predictor_constants import predictor_constants as pc
-from datainfra.presto.client_lib import getPrismBatchPrestoClient, getPrismPrestoClient
+from datainfra.presto.client_lib import (getPrismBatchPrestoClient,
+                                         getPrismPrestoClient)
 from fblearner.flow.core.attrdict import from_dict
 from fblearner.flow.core.types_lib.gettype import gettype
 from fblearner.flow.core.types_lib.type import encode as encode_flow_type
@@ -46,15 +49,9 @@ from fblearner.flow.external_api import FlowSession, WorkflowRun
 from fblearner.flow.ml.runners.chronosscheduler import get_workflow_run_status
 from fblearner.flow.plugin_definitions.driver import Drivers
 from fblearner.flow.service.flow_client import get_flow_indexing_client
-from fblearner.flow.storage.models import (
-    ModelType,
-    Session,
-    SessionContext,
-    Workflow,
-    WorkflowRegistration,
-    WorkflowRun,
-    initialize_session,
-)
+from fblearner.flow.storage.models import (ModelType, Session, SessionContext,
+                                           Workflow, WorkflowRegistration,
+                                           WorkflowRun, initialize_session)
 from fblearner.flow.thrift.indexing.ttypes import WorkflowRunMetadataMutation
 from fblearner.flow.util.runner_utilities import load_config
 from future.utils import viewitems, viewkeys, viewvalues
@@ -65,7 +62,6 @@ from model_id.ttypes import ModelId
 from six import string_types
 from thrift.protocol import TSimpleJSONProtocol
 from thrift.transport.TTransport import TMemoryBuffer
-
 
 dyndep.InitOpsLibrary("@/caffe2/caffe2/fb/transforms:sigrid_transforms_ops")
 dyndep.InitOpsLibrary("@/caffe2/caffe2/fb:hdfs_log_file_db")
@@ -2307,6 +2303,11 @@ def get_presto_map_enum_str2id(type, str_name):
     return str(
         query_presto("select " + presto_map_enum_str2id(type, str_name)).values[0][0]
     )
+
+
+def get_tables_belong_to(user, namespace):
+    m = metastore(namespace=namespace)
+    return m.get_table_names_by_filter('hive_filter_field_owner__="{}"'.format(user))
 
 
 log_reset()

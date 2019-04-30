@@ -1116,6 +1116,9 @@ alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
 alias cconf='cd ~/configerator'
 alias ds='cd ~/fbcode/dataswarm-pipelines/tasks'
+alias jfe="jf s && hed"
+alias jfp="jf s --update-fields && jf publish"
+alias jfu="jf s --update-fields"
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
 function tmp {
   mkdir -p /tmp/$(whoami) > /dev/null 2>&1
@@ -1468,6 +1471,26 @@ function parse_flow_train_net_everpaste_handle() {
 function parse_flow_train_net_everpaste_url_from_file() {
   for x in $(parse_flow_train_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
 }
+function _maybe_buck_run_exp() {
+  local target=$1
+  local par_path="$BUCKOUT/experimental/xlwang/$target.par"
+  local target_path="//experimental/xlwang:$target"
+  if [[ $2 == "force_build_buck" ]]; then
+    pushd ${HOME}/fbcode > /dev/null
+    bbr @mode/opt $target_path -- "${@:3}"
+    popd > /dev/null
+  elif [[ -e ${par_path} ]]; then
+    ${par_path} "${@:2}"
+  else
+    pushd ${HOME}/fbcode > /dev/null
+    bbr @mode/opt $target_path  -- "${@:2}"
+    popd > /dev/null
+  fi
+}
+function list_my_tables() {
+  _maybe_buck_run_exp metastore_util list_table
+}
+
 function get_FB_UID() {
   local fbid
   if [[ -e  $BUCKOUT/experimental/xlwang/fbid.par ]]; then
@@ -1475,6 +1498,17 @@ function get_FB_UID() {
   else
     pushd  ${HOME}/fbcode
     fbid=$(bbr //experimental/xlwang:fbid -- $*)
+    popd
+  fi
+  echo $fbid
+}
+function get_metastore_tables() {
+  local tables
+  if [[ -e $BUCKOUT/experimental/xlwang/metastore_util.par ]]; then
+    fbid=$($BUCKOUT/experimental/xlwang/metastore_util.par $*)
+  else
+    pushd  ${HOME}/fbcode
+    fbid=$(bbr //experimental/xlwang:metastore_util -- $*)
     popd
   fi
   echo $fbid
