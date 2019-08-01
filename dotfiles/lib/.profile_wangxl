@@ -76,9 +76,9 @@ function rvmv {
 function uncolor {
   echo "$1" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"
 }
-if [[ -n $(command -v python3) ]]; then
-  alias python='python3'
-fi
+# if [[ -n $(command -v python3) ]]; then
+#   alias python='python3'
+# fi
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then
@@ -956,6 +956,7 @@ alias hg_query_diff="hg log -r . --template '{sl_diff_super}'"
 alias hld="hg log --rev . --template '{phabdiff}'"
 alias hrf='hhl && arc cleanup-features && hum && hs'
 alias hhpur='hhl && arc cleanup-features && hrb -d master && hs'
+alias har='hg addremove'
 alias hrv='hg revert'
 alias hmsg='arc amend --show 2>/dev/null || hg log -T {desc} --rev .'
 alias hg_latest_publish_commit="hg log -r 'first(reverse(::.) & public())' -T '{node}'"
@@ -1122,7 +1123,7 @@ alias ds='cd ~/fbcode/dataswarm-pipelines/tasks'
 alias jfe="jf s && hed"
 alias jfp="jf s --update-fields && jf publish"
 alias jfu="jf s --update-fields"
-alias cb="arc build && arc canary --ttl 86400"
+alias abac="arc build && arc canary --ttl 86400"
 alias al="arc lint"
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
 function tmp {
@@ -1559,6 +1560,12 @@ super_shell_find() {
   redecho "whereis $cmd"
   whereis $cmd
   #command $cmd
+}
+function cp_to_public() {
+  local fp=$1
+  local f=$(basename $fp)
+  cp $fp ~/public/
+  yellowecho "url: https://home.fburl.com/~xlwang/$f"
 }
 
 

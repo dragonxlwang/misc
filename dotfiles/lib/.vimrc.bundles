@@ -152,7 +152,7 @@ if system("hostname -s") =~ 'dev'
   " Plugin 'YouCompleteMe', {'pinned': 1}
   let g:ycm_server_python_interpreter=
       \'/home/xlwang/fbcode/third-party-buck/'.
-      \'gcc-5-glibc-2.23/build/python/2.7/bin/python2.7'
+      \'platform007/build/python/2.7/bin/python2.7'
 else
   let g:ycm_server_python_interpreter='/usr/local/bin/python'
 endif

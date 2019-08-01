@@ -150,8 +150,9 @@ augroup END
 augroup ConfigeratorGroup
   autocmd!
   autocmd BufNewFile,BufRead *.cinc set filetype=cinc | set syntax=python
-  autocmd BufNewFile,BufRead *.cconf set filetype=cconf | set syntax=python
-  autocmd BufNewFile,BufRead *.mcconf set filetype=mcconf | set syntax=python
+  autocmd BufNewFile,BufRead *.cconf set filetype=python | set syntax=python
+  autocmd BufNewFile,BufRead *.mcconf set filetype=python | set syntax=python
+  autocmd BufNewFile,BufRead *.thrift-cvalidator set filetype=python | set syntax=python
 augroup END
 
 " ==========================- Facebook -=======================================
@@ -466,7 +467,8 @@ set path=.,/usr/include,,
       \/home/xlwang/fbcode/experimental/xlwang,
       \/home/xlwang/fbcode/search,
       \/home/xlwang/fbcode/unicorn,
-      \/home/xlwang/fbcode/nlp_tools
+      \/home/xlwang/fbcode/nlp_tools,
+      \/home/xlwang/configerator/source
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
