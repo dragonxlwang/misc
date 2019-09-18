@@ -1549,6 +1549,10 @@ function presto_sample() {
 }
 alias today="date +%F"
 alias yesterday="date --date='yesterday' +%F"
+function date_eval() {
+  date --date="$*" +%F
+}
+
 super_shell_find() {
   local cmd=$1
   redecho "type $cmd"
