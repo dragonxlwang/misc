@@ -67,9 +67,9 @@ local exit_code="%(?,%?,%{$fg[red]%}%?%{$reset_color%})"
 
 PROMPT="
 "
-PROMPT+="%{$fg_bold[yellow]%}➜ %{$reset_color%}\
-%(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},\
-%{$fg_bold[cyan]%}%n%{$reset_color%}) \
+# PROMPT+="%{$fg_bold[yellow]%}➜ %{$reset_color%}\
+PROMPT+="%{$fg_bold[yellow]%}▶ %{$reset_color%}\
+%(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n) \
 %{$fg_bold[white]%}at%{$reset_color%} \
 %{$fg_bold[magenta]%}%M%{$reset_color%} \
 %{$fg_bold[white]%}in%{$reset_color%} \
