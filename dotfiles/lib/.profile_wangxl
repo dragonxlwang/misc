@@ -1122,6 +1122,7 @@ alias fbc3='cd ~/fbcode3'
 alias cconf='cd ~/configerator'
 alias dsi='cd ~/configerator-dsi'
 alias ds='cd ~/fbcode/dataswarm-pipelines/tasks'
+alias dsb='cd ~/fbcode/dataswarm-pipelines'
 alias jfe="jf s && hed"
 alias jfp="jf s --update-fields && jf publish"
 alias jfu="jf s --update-fields"
