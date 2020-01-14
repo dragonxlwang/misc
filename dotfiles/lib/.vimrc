@@ -156,15 +156,16 @@ augroup ConfigeratorGroup
 augroup END
 
 " ==========================- Facebook -=======================================
-if !empty(glob('/home/engshare/admin/scripts/vim'))
-  source /home/engshare/admin/scripts/vim/biggrep.vim
-  source /home/engshare/admin/scripts/vim/fbvim.vim
-  set rtp+=/home/engshare/admin/scripts/vim
-  set rtp+=/home/engshare/admin/scripts/vim/after
+if !empty(glob('~/fbcode/shellconfigs/vim/vim'))
+  source ~/fbcode/shellconfigs/rc/vim/biggrep.vim
+  source ~/fbcode/shellconfigs/rc/vim/fbvim.vim
+  set rtp+=~/fbcode/shellconfigs/vim/vim
+  set rtp+=~/fbcode/shellconfigs/vim/vim/after
   cnoreabbrev <expr> fbvim
         \ (getcmdtype() == ':' && getcmdline() =~ '^fbvim$')?
         \ 'FBVimSaveSession' : 'fbvim'
 endif
+
 " if !empty(glob('/usr/local/share/clang/clang-format.py'))
 "   augroup FBClangAutoGroup
 "     autocmd!
@@ -311,7 +312,9 @@ noremap <silent> <C-g> :execute "vert res" . (&textwidth + 20)<cr>
 noremap <silent> <C-m> :100 wincmd h \| execute "vert res" . &columns / 3 \|
       \ wincmd l \| execute "vert res" . &columns / 3 \| wincmd h<cr>
 noremap <silent> <C-w><C-j> :100 wincmd j<cr>
+noremap <silent> <C-w><C-h> :100 wincmd h<cr>
 noremap <silent> <C-w><C-k> :100 wincmd k<cr>
+noremap <silent> <C-w><C-l> :100 wincmd l<cr>
 " go to files
 noremap <C-w>v :vertical wincmd f<CR>
 

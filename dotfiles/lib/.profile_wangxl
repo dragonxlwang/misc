@@ -1125,10 +1125,13 @@ alias ds='cd ~/fbcode/dataswarm-pipelines/tasks'
 alias dsb='cd ~/fbcode/dataswarm-pipelines'
 alias jfe="jf s && hed"
 alias jfp="jf s --update-fields && jf publish"
+alias jfs="jf s"
+alias jfss="jf s --stack"
 alias jfu="jf s --update-fields"
 alias abac="arc build && arc canary --ttl 86400"
 alias al="arc lint"
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
+alias fbsf='/usr/local/bin/sf'
 function tmp {
   mkdir -p /tmp/$(whoami) > /dev/null 2>&1
   cd ~/tmp
