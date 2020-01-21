@@ -57,7 +57,7 @@ brew install macvim # --with-lua --with-override-system-vim
 
 for app in pwgen gmp libtool pdflib-lite smpeg sqlite llvm mpfr \
            freetype fontconfig isl jpeg readline xz libevent openssl \
-           boost boost-build pkg-config gnutls gnu-getopt go \
+           boost boost-build pkg-config gnutls gnu-getopt go ;
 do
   brew install $app
 done

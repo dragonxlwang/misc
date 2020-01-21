@@ -1,1 +1,3 @@
 # interactive and non-login
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

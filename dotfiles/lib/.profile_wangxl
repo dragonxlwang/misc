@@ -1388,7 +1388,7 @@ function ff {
   fi
 }
 alias gg > /dev/null 2>&1 && unalias gg
-gg() {
+function gg() {
   local file
   local line
   read -r file line \
@@ -1402,7 +1402,7 @@ gg() {
   fi
 }
 # dd - search directory including hidden directories
-dd() {
+function dd() {
   local dir
   local input
    [[ $# -gt 0 && -d $1 ]] && \
@@ -1412,7 +1412,7 @@ dd() {
     && cd "$dir"
 }
 # ddd - search directory including hidden directories
-ddd() {
+function ddd() {
   local cwd=$(readlink -f .)
   local repo="fbcode"
   local dir
@@ -1426,7 +1426,7 @@ ddd() {
     && cd "$dir"
 }
 # v - open files in ~/.viminfo
-v() {
+function v() {
   local files
   files=$(grep '^>' ~/.viminfo | cut -c3- |
     while read line; do
@@ -1437,12 +1437,12 @@ v() {
 }
 # z - open directories
 unalias z 2> /dev/null
-z() {
+function z() {
   [ $# -gt 0 ] && _z "$*" && return
   cd "$(_z -l 2>&1 | fzf --nth=2 --prompt="dir-hist> " +s +m --tac --query "$*" \
     | sed 's/^[0-9,.]* *//')"
 }
-h() {
+function h() {
   local tmp="${HOME}/misc/tmp/hg.revs"
   local rev="$(hg smartlog -T '#{xg_sl_one_line}\n' 2>/dev/null --color=always \
     | sed -n '/.*#/p' | sed 's/^[^#]*#//g'  \
