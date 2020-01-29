@@ -21,6 +21,8 @@ deep_fbcode_dirs=(        \
   search/posts/if             \
   search/lib/                 \
   search/dufusion         \
+  search/posts/indexer    \
+  search/keyword_extraction   \
   nlp_tools               \
   unicorn                 \
   experimental/xlwang     \
@@ -35,7 +37,7 @@ shallow_fbcode_dirs=()
 deep_cconf_dirs=(         \
   search                  \
   nlp_tools               \
-  unicorn/import          \
+  unicorn                 \
   )
 
 shallow_cconf_dirs=(      \

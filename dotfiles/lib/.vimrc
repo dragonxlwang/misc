@@ -150,8 +150,8 @@ augroup END
 augroup ConfigeratorGroup
   autocmd!
   autocmd BufNewFile,BufRead *.cinc set filetype=cinc | set syntax=python
-  autocmd BufNewFile,BufRead *.cconf set filetype=python | set syntax=python
-  autocmd BufNewFile,BufRead *.mcconf set filetype=python | set syntax=python
+  autocmd BufNewFile,BufRead *.cconf set filetype=cconf | set syntax=python
+  autocmd BufNewFile,BufRead *.mcconf set filetype=mcconf | set syntax=python
   autocmd BufNewFile,BufRead *.thrift-cvalidator set filetype=python | set syntax=python
 augroup END
 
@@ -411,16 +411,6 @@ command! TV exec "vsp " . expand('%:p:h') . '/TARGETS'
 nnoremap <ESC>n :call NumberToggle()<cr>
 cnoreabbrev <expr> vsf
       \ (getcmdtype() == ':' && getcmdline() =~ '^vsf$')? 'vert sf' : 'vsf'
-
-" ===========================- Detecting Filetype -=============================
-augroup FiletypeDetectAutoGroup
-  autocmd!
-  au BufNewFile,BufRead *.cinc set filetype=python
-  au BufNewFile,BufRead *.mcconf set filetype=python
-  au BufNewFile,BufRead *.thrift set filetype=thrift
-  au BufNewFile,BufRead TARGETS set filetype=python
-  " au BufNewFile,BufRead *.cu set filetype=cuda.c
-augroup END
 
 " ==================================- tex -=====================================
 command! Texmake exe "! ~/misc/scripts/tex_make.sh make" | redraw!

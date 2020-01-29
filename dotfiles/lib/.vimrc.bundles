@@ -215,6 +215,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 Plugin 'justinmk/vim-syntax-extra'  " temporal solution
 Plugin 'dragonxlwang/python-syntax'
+Plugin 'solarnz/thrift.vim'
 
 Plugin 'Chiel92/vim-autoformat'
 if !empty(glob("~/llvm/build/bin/clang-format"))
