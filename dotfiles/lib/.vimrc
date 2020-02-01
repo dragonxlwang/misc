@@ -153,6 +153,7 @@ augroup ConfigeratorGroup
   autocmd BufNewFile,BufRead *.cconf set filetype=cconf | set syntax=python
   autocmd BufNewFile,BufRead *.mcconf set filetype=mcconf | set syntax=python
   autocmd BufNewFile,BufRead *.thrift-cvalidator set filetype=python | set syntax=python
+  autocmd BufNewFile,BufRead *TARGETS set filetype=python | set syntax=python
 augroup END
 
 " ==========================- Facebook -=======================================
@@ -264,6 +265,8 @@ vnoremap <Leader><Bar> 80<Bar>
 " =====================- Keymap: Windows, buffers & Tabs -======================
 " tab
 noremap <leader>tt :tabnew %<cr>
+noremap <leader>tn :tabnext <cr>
+noremap <leader>tp :tabprevious <cr>
 noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 noremap <leader>to :tabonly<cr>
 noremap <leader>tc :tabclose<cr>

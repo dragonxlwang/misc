@@ -341,6 +341,11 @@ nnoremap <C-[> :call FZFfbcodeFunc()<CR>
 " nnoremap <C-]> :FZFMru<CR>
 " nnoremap <C-]> :Lines<CR>
 nnoremap <C-]> :CtrlPLine<CR>
+vnoremap <leader>rg
+        \ :<CR>:let @a=@" \|
+        \ :execute "normal! vgvy" \|
+        \ :execute "Rg ". @"  \|
+        \ let @"=@a <CR>
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_autofocus = 1

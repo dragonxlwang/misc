@@ -23,6 +23,10 @@ deep_fbcode_dirs=(        \
   search/dufusion         \
   search/posts/indexer    \
   search/keyword_extraction   \
+  search/keyword_vertical \
+  search/indexing         \
+  search/griffin          \
+  search/mudslide         \
   nlp_tools               \
   unicorn                 \
   experimental/xlwang     \
