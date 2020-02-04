@@ -60,6 +60,7 @@ plugins=(\
   zsh-autosuggestions             \
   bd                              \
   autojump                        \
+  z                               \
   #zsh-syntax-highlighting         \
   #command-not-found               \
 )

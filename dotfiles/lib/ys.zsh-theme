@@ -65,11 +65,23 @@ local exit_code="%(?,%?,%{$fg[red]%}%?%{$reset_color%})"
 # For more info
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
-PROMPT="
-"
+# PROMPT="
+# "
 # PROMPT+="%{$fg_bold[yellow]%}➜ %{$reset_color%}\
-PROMPT+="%{$fg_bold[yellow]%}▶ %{$reset_color%}\
-%(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n) \
+
+# %(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n) \
+# %{$fg_bold[white]%}at%{$reset_color%} \
+# %{$fg_bold[magenta]%}%M%{$reset_color%} \
+# %{$fg_bold[white]%}in%{$reset_color%} \
+# %{$fg_bold[green]%}%~%{$reset_color%}\
+# %{$terminfo[bold]%}${hg_info}${git_info}%{$reset_color%} \
+# %{$fg[yellow]%}[%*] \
+# %{$fg[blue]%}tty:%l L:%L N:%i C:$exit_code
+# %{$fg_bold[yellow]%}$%{$reset_color%} "
+
+PROMPT="
+%{$fg_bold[yellow]%}#%{$reset_color%} \
+%(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n%{$reset_color%}) \
 %{$fg_bold[white]%}at%{$reset_color%} \
 %{$fg_bold[magenta]%}%M%{$reset_color%} \
 %{$fg_bold[white]%}in%{$reset_color%} \

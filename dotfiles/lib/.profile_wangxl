@@ -1255,8 +1255,7 @@ function get_blamef {
   fi
   echo $u
 }
-# bookmark management z and v
-[ -f ~/misc/scripts/z.sh ] && source ~/misc/scripts/z.sh
+# bookmark management v (z is oh-my-zsh plugin)
 [ -f ~/misc/scripts/v.sh ] && source ~/misc/scripts/v
 alias v="~/misc/scripts/v"
 # zsh
