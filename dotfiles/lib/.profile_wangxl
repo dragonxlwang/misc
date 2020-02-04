@@ -943,7 +943,6 @@ alias hlsf="hg log --stat -l1 | fpp"
 # need to refresh for missing lines in tmux
 alias hs="hg st && hg smartlog -T '{xg_sl}'; [[ -n $TMUX ]] && tmux refresh-client"
 alias hst="hg st"
-alias hstf="hg st | fpp"
 alias hsl=" hg smartlog -T '{xg_sl}'"
 alias hsf="hg st | fpp"
 alias hd='hg diff'

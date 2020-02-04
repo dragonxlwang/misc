@@ -67,3 +67,7 @@ Package deploy:
 '[{"ephemeralPackageId": "pkg_version", "name": "pkg_name"}]' tw job update --force --fast xxx.tw <job_name>
 - config:
 arc canary --tier search.du_fusion_scan.service.altoona.canary.0 --ttl $((2*24*60*60)) --allow-overlap
+
+Cron:
+=====
+checkout hg_cron.sh

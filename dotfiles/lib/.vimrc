@@ -464,7 +464,8 @@ set path=.,/usr/include,,
       \/home/xlwang/fbcode/search,
       \/home/xlwang/fbcode/unicorn,
       \/home/xlwang/fbcode/nlp_tools,
-      \/home/xlwang/configerator/source
+      \/home/xlwang/configerator/source,
+      \/home/xlwang/fbcode/dataswarm-pipelines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

@@ -346,6 +346,7 @@ vnoremap <leader>rg
         \ :execute "normal! vgvy" \|
         \ :execute "Rg ". @"  \|
         \ let @"=@a <CR>
+nnoremap <leader>rg :Rg <CR>
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_autofocus = 1
