@@ -80,7 +80,7 @@ local exit_code="%(?,%?,%{$fg[red]%}%?%{$reset_color%})"
 # %{$fg_bold[yellow]%}$%{$reset_color%} "
 
 PROMPT="
-%{$fg_bold[yellow]%}#%{$reset_color%} \
+%{$fg_bold[red]%}#%{$reset_color%} \
 %(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n%{$reset_color%}) \
 %{$fg_bold[white]%}at%{$reset_color%} \
 %{$fg_bold[magenta]%}%M%{$reset_color%} \
