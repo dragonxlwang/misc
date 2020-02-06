@@ -2280,6 +2280,39 @@
 			<string>xterm-256color</string>
 			<key>Transparency</key>
 			<real>0.0</real>
+			<key>Triggers</key>
+			<array>
+				<dict>
+					<key>action</key>
+					<string>iTermHyperlinkTrigger</string>
+					<key>parameter</key>
+					<string>https://our.intern.facebook.com/intern/diff/\0</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>[D]([1-9][0-9]{5,})</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>iTermHyperlinkTrigger</string>
+					<key>parameter</key>
+					<string>https://our.intern.facebook.com/intern/tasks/?t=\1</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>[T]([1-9][0-9]{5,})</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>iTermHyperlinkTrigger</string>
+					<key>parameter</key>
+					<string>https://our.intern.facebook.com/intern/paste/\0</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>[P]([1-9][0-9]{5,})</string>
+				</dict>
+			</array>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -2345,7 +2378,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>A6BD3493-6618-40C6-A6AE-04D7426F5DC4</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>68</integer>
+	<integer>69</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>575354630.723966</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
@@ -3138,7 +3171,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-04T18:27:01Z</date>
+	<date>2020-02-06T19:03:04Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
