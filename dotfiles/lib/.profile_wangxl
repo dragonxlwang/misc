@@ -1442,7 +1442,7 @@ function z() {
 }
 function h() {
   local tmp="${HOME}/misc/tmp/hg.revs"
-  local rev="$(hg smartlog -T '#{xg_sl_one_line}\n' 2>/dev/null --color=always \
+  local rev="$(hg smartlog -T '#{xg_sl_one_line_no_link}\n' 2>/dev/null --color=always \
     | sed -n '/.*#/p' | sed 's/^[^#]*#//g'  \
     | fzf --query="$*" --prompt='hg> ' --ansi | cut -d ' ' -f 1)"
   [[ -z $rev ]] && return 1
