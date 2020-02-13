@@ -159,7 +159,6 @@ augroup END
 " ==========================- Facebook -=======================================
 if !empty(glob('~/fbcode/shellconfigs/vim/vim'))
   source ~/fbcode/shellconfigs/rc/vim/biggrep.vim
-  source ~/fbcode/shellconfigs/rc/vim/fbvim.vim
   set rtp+=~/fbcode/shellconfigs/vim/vim
   set rtp+=~/fbcode/shellconfigs/vim/vim/after
   cnoreabbrev <expr> fbvim
@@ -167,6 +166,9 @@ if !empty(glob('~/fbcode/shellconfigs/vim/vim'))
         \ 'FBVimSaveSession' : 'fbvim'
 endif
 
+if g:osName == 'Linux'
+  source ~/misc/scripts/fbvim.vim
+endif
 " if !empty(glob('/usr/local/share/clang/clang-format.py'))
 "   augroup FBClangAutoGroup
 "     autocmd!

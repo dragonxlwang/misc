@@ -151,8 +151,7 @@ let g:ycm_min_num_identifier_candidate_chars = 4
 if system("hostname -s") =~ 'dev'
   " Plugin 'YouCompleteMe', {'pinned': 1}
   let g:ycm_server_python_interpreter=
-      \'/home/xlwang/fbcode/third-party-buck/'.
-      \'platform007/build/python/2.7/bin/python2.7'
+      \'/usr/local/fbcode/bin/python3.6'
 else
   let g:ycm_server_python_interpreter='/usr/local/bin/python'
 endif

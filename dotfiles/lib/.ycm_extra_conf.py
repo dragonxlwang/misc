@@ -79,10 +79,10 @@ def GetAlternativeFileAtCurDir(filename):
     if database:
         directory = os.path.split(filename)[0]
         for f in os.listdir(directory):
-            print f
+            print(f)
             if f.endswith(".cpp"):
                 filename = os.path.join(directory, f)
-                print filename
+                print(filename)
                 info = database.GetCompilationInfoForFile(filename)
                 if info and len(info.compiler_flags_) > 0:
                     return info
@@ -98,7 +98,7 @@ def GetAlternativeFileAtPeerDirectories(filename):
                 for f in files:
                     if f.endswith(".cpp"):
                         filename = os.path.join(root, f)
-                        print filename
+                        print(filename)
                         info = database.GetCompilationInfoForFile(filename)
                         if info and len(info.compiler_flags_) > 0:
                             return info

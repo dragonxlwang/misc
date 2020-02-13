@@ -19,24 +19,29 @@ sudo yum install -y ruby ruby-devel lua lua-devel luajit \
     perl perl-devel perl-ExtUtils-ParseXS \
     perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
     perl-ExtUtils-Embed
+sudo yum install cscope ncurses ncurses-devel ncurses-libs ncurses-base lua lua-devel python36-devel python-libs ruby ruby-devel
+
+#--with-python-command=/usr/local/fbcode/platform007/bin/python2.7 \
+#--enable-pythoninterp \
+#--with-python-config-dir=/usr/local/fbcode/platform007/lib/python2.7/config \
+
 cd ~
-ver=8.0.1780
+ver=8.2.0251
 curl -OL https://github.com/vim/vim/archive/v$ver.tar.gz
 tar -zxvf v$ver.tar.gz
 cd ~/vim-$ver
 ./configure --prefix=/usr/local \
             --with-features=huge \
             --enable-multibyte \
-            --enable-rubyinterp=yes \
-            --enable-pythoninterp=yes \
-            --with-python-config-dir=/local/fbcode/gcc-5-glibc-2.23/lib/python2.7/config/ \
-            # --enable-python3interp=yes \
-            # --with-python3-config-dir=/usr/local/fbcode/gcc-5-glibc-2.23/lib/python3.6/config-3.6m-fb-gcc5-x86_64/ \
-            --enable-perlinterp=yes \
-            --enable-luainterp=yes \
+            --enable-rubyinterp \
+            --with-python3-command=/usr/local/fbcode/platform007/bin/python3.6 \
+            --enable-python3interp \
+            --with-python3-config-dir=/usr/local/fbcode/platform007/lib/python3.6/config-3.6m-fb-007-x86_64/ \
+            --enable-perlinterp \
+            --enable-luainterp \
             --enable-gui=gtk2 \
             --enable-cscope
-make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
+make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
 
 # sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
 # sudo update-alternatives --set editor /usr/bin/vim

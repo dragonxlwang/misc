@@ -15,6 +15,7 @@ deep_fbcode_dirs=(        \
   dataswarm/dataswarm     \
   dataswarm-pipelines/tasks   \
   search/voyager          \
+  search/blender          \
   search/sgs              \
   search/ultimate         \
   search/entities/            \

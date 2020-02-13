@@ -1122,6 +1122,11 @@ alias cconf='cd ~/configerator'
 alias dsi='cd ~/configerator-dsi'
 alias ds='cd ~/fbcode/dataswarm-pipelines/tasks'
 alias dsb='cd ~/fbcode/dataswarm-pipelines'
+alias nbf='cd ~/fbcode/dataswarm-pipelines; ./nbackfill3 --remote'
+function nbfq {
+  cd ~/fbcode/dataswarm-pipelines;
+  ./nbackfill3 --yes-i-know-what-im-doing --remote "$@"
+}
 alias jfe="jf s && hed"
 alias jfp="jf s --update-fields && jf publish"
 alias jfs="jf s"

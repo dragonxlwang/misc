@@ -38,9 +38,10 @@ mkdir -p $BUILD_DIR
 cd $BUILD_DIR
 
 FBCODE_DIR="$(hg root --cwd ~/fbsource/fbcode)"/fbcode # set this
-FBCODE_PLATFORM=gcc-5-glibc-2.23
+FBCODE_PLATFORM=platform007
 TP2="$FBCODE_DIR"/third-party-buck/"$FBCODE_PLATFORM"/build
-PYTHON_VERSION=2.7
+PYTHON_VERSION=3.6
+PYTHON_MAJOR_VERSION=3
 PYTHON_DIR=${TP2}/python/${PYTHON_VERSION}
 
 
@@ -60,7 +61,7 @@ env -i PATH=/bin:/usr/bin:/usr/local/bin \
   -DCMAKE_CXX_COMPILER=g++.par \
   -DCMAKE_C_FLAGS="--platform=$FBCODE_PLATFORM" \
   -DCMAKE_CXX_FLAGS="--platform=$FBCODE_PLATFORM" \
-  -DPYTHON_LIBRARY=${PYTHON_DIR}/lib/libpython${PYTHON_VERSION}.so \
+  -DPYTHON_LIBRARY=${PYTHON_DIR}/lib/libpython${PYTHON_MAJOR_VERSION}.so \
   -DEXTERNAL_LIBCLANG_PATH="$DEST_ROOT"/libclang.so \
   . $DEST_ROOT/cpp
 
