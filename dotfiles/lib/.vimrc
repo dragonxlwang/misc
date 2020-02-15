@@ -161,13 +161,13 @@ if !empty(glob('~/fbcode/shellconfigs/vim/vim'))
   source ~/fbcode/shellconfigs/rc/vim/biggrep.vim
   set rtp+=~/fbcode/shellconfigs/vim/vim
   set rtp+=~/fbcode/shellconfigs/vim/vim/after
-  cnoreabbrev <expr> fbvim
-        \ (getcmdtype() == ':' && getcmdline() =~ '^fbvim$')?
-        \ 'FBVimSaveSession' : 'fbvim'
 endif
 
 if g:osName == 'Linux'
   source ~/misc/scripts/fbvim.vim
+  cnoreabbrev <expr> fbvim
+        \ (getcmdtype() == ':' && getcmdline() =~ '^fbvim$')?
+        \ 'FBVimSaveSession' : 'fbvim'
 endif
 " if !empty(glob('/usr/local/share/clang/clang-format.py'))
 "   augroup FBClangAutoGroup

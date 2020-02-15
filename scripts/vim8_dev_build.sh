@@ -40,7 +40,8 @@ cd ~/vim-$ver
             --enable-perlinterp \
             --enable-luainterp \
             --enable-gui=gtk2 \
-            --enable-cscope
+            --enable-cscope  \ 
+            --enable-fail-if-missing
 make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
 
 # sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
