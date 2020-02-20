@@ -67,7 +67,7 @@ env -i PATH=/bin:/usr/bin:/usr/local/bin \
 
 # cmake -G Ninja
 env -i PATH=/bin:/usr/bin:/usr/local/bin \
-  cmake --build . --target ycm_core --config Release -- -j55
+  cmake --build . --target ycm_core
 
 [[ -e /data/users/${USER}/YouCompleteMe ]] && \
   rm -rf /data/users/${USER}/YouCompleteMe
