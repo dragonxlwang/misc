@@ -324,6 +324,12 @@ function! FZFfbcodeFunc()
     \ {'source': '~/misc/scripts/find_in_fb.sh '.  resolve(expand('%:p')),
     \  'options': '--prompt "'. b:prompt. '"'}))
 endfunction
+function! FZFCwdFunc()
+  let b:prompt ='files> '
+  call fzf#run(fzf#wrap(
+    \ {'source': 'find '. getcwd(). " -type f -not -path '*/\.*'",
+    \  'options': '--prompt "'. b:prompt. '"'}))
+endfunction
 
 
 command! FZFMru call fzf#run(fzf#wrap(
@@ -337,6 +343,7 @@ function! GetOldFiles()
   \        'bufname(v:val)'), '!empty(v:val)'))
 endfunction
 nnoremap <C-[> :call FZFfbcodeFunc()<CR>
+nnoremap <C-[><c-[> :call FZFCwdFunc()<CR>
 " nnoremap <C-]> :FZFMru<CR>
 " nnoremap <C-]> :Lines<CR>
 nnoremap <C-]> :CtrlPLine<CR>
