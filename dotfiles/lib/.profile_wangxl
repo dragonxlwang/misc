@@ -1352,44 +1352,49 @@ function fb {
   ffzf $query $prompt $1
 }
 function ff {
-  IFS=$'\n' out=($(fzf --query="$1" \
-    --expect=ctrl-o,ctrl-e,ctrl-v,ctrl-x --prompt="files> "))
-  local first_line=$(head -n 1 <<< "$out")
-  local files
-  local opt
-  local file
-  local key
-  if [[ "$first_line" == ctrl* ]]; then
-    files=$(tail -n +2 <<< "$out")
-    key="$first_line"
-  else
-    files="$out"
-    key=""
-  fi
-  if [ -z "$files" ]; then
-    return
-  fi
-  if [[ -z "$key" || "$key" == ctrl-x || "$key" == ctrl-v ]]; then
-    if [[ "$key" == ctrl-x ]]; then
-      opt="-o"
-    elif [[ "$key" == ctrl-v ]]; then
-      opt="-O"
-    else
-      opt=""
-    fi
-    local cmd="${EDITOR:-vim} $opt $(echo ${files} |  tr '\n' ' ')"
-    echo $cmd
-    eval ${cmd}
-  else
-    for file in ${(f)files}; do
-      if [[ "$key" = ctrl-o ]]; then
-        get_duf "$file"
-      elif [[ "$key" == ctrl-e ]]; then
-        get_blamef "$file"
-      fi
-    done
-  fi
+  local query="find . -type f"
+  local prompt="files> "
+  ffzf $query $prompt $1
 }
+# function ff {
+#   IFS=$'\n' out=($(fzf --query="$1" \
+#     --expect=ctrl-o,ctrl-e,ctrl-v,ctrl-x --prompt="files> "))
+#   local first_line=$(head -n 1 <<< "$out")
+#   local files
+#   local opt
+#   local file
+#   local key
+#   if [[ "$first_line" == ctrl* ]]; then
+#     files=$(tail -n +2 <<< "$out")
+#     key="$first_line"
+#   else
+#     files="$out"
+#     key=""
+#   fi
+#   if [ -z "$files" ]; then
+#     return
+#   fi
+#   if [[ -z "$key" || "$key" == ctrl-x || "$key" == ctrl-v ]]; then
+#     if [[ "$key" == ctrl-x ]]; then
+#       opt="-o"
+#     elif [[ "$key" == ctrl-v ]]; then
+#       opt="-O"
+#     else
+#       opt=""
+#     fi
+#     local cmd="${EDITOR:-vim} $opt $(echo ${files} |  tr '\n' ' ')"
+#     echo $cmd
+#     eval ${cmd}
+#   else
+#     for file in ${(f)files}; do
+#       if [[ "$key" = ctrl-o ]]; then
+#         get_duf "$file"
+#       elif [[ "$key" == ctrl-e ]]; then
+#         get_blamef "$file"
+#       fi
+#     done
+#   fi
+# }
 alias gg > /dev/null 2>&1 && unalias gg
 function gg() {
   local file
