@@ -26,7 +26,7 @@ sudo yum install cscope ncurses ncurses-devel ncurses-libs ncurses-base lua lua-
 #--with-python-config-dir=/usr/local/fbcode/platform007/lib/python2.7/config \
 
 cd ~
-ver=8.2.0251
+ver=8.2.0360
 curl -OL https://github.com/vim/vim/archive/v$ver.tar.gz
 tar -zxvf v$ver.tar.gz
 cd ~/vim-$ver
@@ -40,7 +40,7 @@ cd ~/vim-$ver
             --enable-perlinterp \
             --enable-luainterp \
             --enable-gui=gtk2 \
-            --enable-cscope  \ 
+            --enable-cscope  \
             --enable-fail-if-missing
 make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
 

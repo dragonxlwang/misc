@@ -950,6 +950,7 @@ alias hdh='hg diff -r ".^"'
 alias hhl='hg pull'
 alias hhp='arc diff'
 alias hrb='hg rebase'
+alias hrbm='hg rebase -d master'
 alias hid='hg id -i'
 alias hg_query_author="hg log -r . --template '{sl_user}'"
 alias hg_query_diff="hg log -r . --template '{sl_diff_super}'"
