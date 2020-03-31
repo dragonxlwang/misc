@@ -1262,8 +1262,8 @@ function get_blamef {
   echo $u
 }
 # bookmark management v (z is oh-my-zsh plugin)
-[ -f ~/misc/scripts/v.sh ] && source ~/misc/scripts/v
-alias v="~/misc/scripts/v"
+# [ -f ~/misc/scripts/v.sh ] && source ~/misc/scripts/v
+# alias v="~/misc/scripts/v"
 # zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--height 10% --reverse --border --multi --cycle \
@@ -1436,13 +1436,16 @@ function ddd() {
 }
 # v - open files in ~/.viminfo
 function v() {
-  local files
-  files=$(grep '^>' ~/.viminfo | cut -c3- |
+  local lines
+  lines=$(grep '^>' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
+  lines+=$(grep '^:sp' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
+  lines=$(echo $lines |
     while read line; do
-    [ -f "${line/\~/$HOME}" ] && echo "$line"
-    done \
-    | fzf --query="$*" --prompt="vim-hist> " -d -m -q "$*" -1) && \
-    vim ${files//\~/$HOME}
+      [ -f "${line/\~/$HOME}" ] && echo "$line";
+    done
+  )
+  local files=$(echo $lines | uniq | fzf --query="$*" --prompt="vim-hist> " -m -1)
+  vim ${files//\~/$HOME}
 }
 # z - open directories
 unalias z 2> /dev/null
@@ -1586,6 +1589,8 @@ function cp_to_public() {
   cp $fp ~/public/
   yellowecho "url: https://home.fburl.com/~xlwang/$f"
 }
+alias ccat="pygmentize"
+alias jscat="pygmentize -l json"
 
 
 ## ========================================================================== ##

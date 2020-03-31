@@ -99,6 +99,11 @@ git clone https://github.com/PythonCharmers/python-future.git
 cd python-future
 sudo python setup.py install
 
+cd ~/workspace
+git clone https://github.com/orb/pygments-json/
+cd pygments-json
+sudo python setup.py install
+
 # ipython
 ## ==================================================
 ## dex/ifbpy-notebook-in-a-nutshell/

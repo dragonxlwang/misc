@@ -8,7 +8,7 @@ set ttyfast                     " Optimize for fast terminal connections
 set ttimeout                    " Set timeout on key codes
 set timeoutlen=500              " How long it wait for mapped commands
 set ttimeoutlen=100             " Faster timeout for escape key and others
-set history=1000                " Store lots of :cmdline history
+set history=8000                " Store lots of :cmdline history
 set undolevels=1000             " Use many muchos levels of undo
 set tabpagemax=50               " Max 50 tabs
 set mouse=a                     " Enable mouse
@@ -149,9 +149,9 @@ augroup VimAutoGroup
 augroup END
 augroup ConfigeratorGroup
   autocmd!
-  autocmd BufNewFile,BufRead *.cinc set filetype=cinc | set syntax=python
-  autocmd BufNewFile,BufRead *.cconf set filetype=cconf | set syntax=python
-  autocmd BufNewFile,BufRead *.mcconf set filetype=mcconf | set syntax=python
+  autocmd BufNewFile,BufRead *.cinc set filetype=python | set syntax=python
+  autocmd BufNewFile,BufRead *.cconf set filetype=python | set syntax=python
+  autocmd BufNewFile,BufRead *.mcconf set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *.thrift-cvalidator set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *TARGETS set filetype=python | set syntax=python
 augroup END
