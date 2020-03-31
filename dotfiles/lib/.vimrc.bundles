@@ -276,7 +276,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 let g:ctrlp_show_hidden = 1
 " let g:ctrlp_cmd = 'CtrlPLastMode'
-let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_extensions = ['line', 'dir', 'buffertag', 'tag', 'mixed']
 " let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:25'
 let g:ctrlp_custom_ignore = '(node_modules|_build|buck-out)'
@@ -347,6 +347,7 @@ nnoremap <C-[><c-[> :call FZFCwdFunc()<CR>
 " nnoremap <C-]> :FZFMru<CR>
 " nnoremap <C-]> :Lines<CR>
 nnoremap <C-]> :CtrlPLine<CR>
+nnoremap <C-]><C-]> :CtrlPBuffer<CR>
 vnoremap <leader>rg
         \ :<CR>:let @a=@" \|
         \ :execute "normal! vgvy" \|

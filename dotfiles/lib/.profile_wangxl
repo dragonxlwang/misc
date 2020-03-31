@@ -959,6 +959,7 @@ alias hrf='hhl && arc cleanup-features && hum && hs'
 alias hhpur='hhl && arc cleanup-features && hrb -d master && hs'
 alias har='hg addremove'
 alias hrv='hg revert'
+alias hrvh='hg revert -r ".^"'
 alias hmsg='arc amend --show 2>/dev/null || hg log -T {desc} --rev .'
 alias hg_latest_publish_commit="hg log -r 'first(reverse(::.) & public())' -T '{node}'"
 alias hg_current_commit="hg log -r '.' -T '{node}'"
