@@ -467,7 +467,8 @@ set path=.,/usr/include,,
       \/home/xlwang/fbcode/unicorn,
       \/home/xlwang/fbcode/nlp_tools,
       \/home/xlwang/configerator/source,
-      \/home/xlwang/fbcode/dataswarm-pipelines
+      \/home/xlwang/fbcode/dataswarm-pipelines,
+      \/home/xlwang/www
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -745,6 +746,8 @@ function! MakeRoomForLowestPane()
   exec l:nr . "wincmd w"
 endfunction
 
-if exists(":FBGW")
+if exists("*BigGrep")
   command! FBGW call MakeRoomForLowestPane() | call BigGrep("f", "s", expand("<cword>"))
+  command! ZBGW call MakeRoomForLowestPane() | call BigGrep("z", "s", expand("<cword>"))
+  command! TBGW call MakeRoomForLowestPane() | call BigGrep("t", "s", expand("<cword>"))
 endif
