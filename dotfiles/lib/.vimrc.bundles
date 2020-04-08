@@ -234,6 +234,8 @@ let g:formatters_cconf=['black', 'yapf','autopep8']
 let g:formatters_mcconf=['black', 'yapf','autopep8']
 let g:formatters_cinc=['black', 'yapf','autopep8']
 let g:formatters_yapf=['yapf', 'autopep8']
+let g:formatdef_hackfmt="'hackfmt'"
+let g:formatters_php =['hackfmt']
 nnoremap <leader>w :Autoformat \| :w!<CR>
 vnoremap <leader>w :Autoformat \| :w!<CR>
 noremap <leader>W
