@@ -58,6 +58,7 @@ function print_256_color {
 ##-------------------------------== general ==--------------------------------##
 function test_alias_exist { alias $1 2>/dev/null >/dev/null; }
 function tmux_setup { tmux new -AD -s $(hostname -s)-main; }
+alias tt='[[ -n $TMUX ]] || [[ $(tmux attach > /dev/null 2>&1) ]] || tmux_setup'
 function exe_remote_script {
   eval "$(curl -fsSL $1)"
 }
