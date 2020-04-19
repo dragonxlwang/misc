@@ -32,5 +32,15 @@ then
   exit
 fi
 
-echo -e "\u24df $avg_ping:$stdev_ping"
+if [[ $avg_ping -gt 100 ]];
+then
+  color="#[fg=red,bright]"
+elif [[ $avg_ping -lt 30 ]];
+then
+  color="#[fg=cyan,bright]"
+else
+  color="#[fg=yellow,bright]"
+fi
+
+echo -e "$color""\u24df $avg_ping:$stdev_ping""#[default]"
 
