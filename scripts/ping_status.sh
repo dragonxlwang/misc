@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+misc_dir="$(dirname $(dirname $(readlink -f $0)))"
+f=$misc_dir/tmp/ping_$(hostname).txt
+
+if [[ -z $SSH_CLIENT ]] || ! [[ $(hostname) =~ 'dev' ]] || ! [[ -e $f ]];
+then
+  exit
+fi
+
+avg_ping=$(cut -sd / -f 5 $f | cut -d . -f 1)
+stdev_ping=$(cut -sd / -f 7 $f | cut -d . -f 1)
+
+client_ip=$(echo $SSH_CLIENT | cut -sd ' ' -f 1 -)
+function update_ping() {
+  local report=$(ping6 -c 10 -w 10 $client_ip)
+  echo "$report" > $f
+}
+
+update_ping &
+
+if [[ -z $avg_ping ]] || [[ -z $stdev_ping ]];
+then
+  exit
+fi
+
+echo -e "\u24df $avg_ping:$stdev_ping"
+
