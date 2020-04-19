@@ -17,7 +17,15 @@ function update_ping() {
   echo "$report" > $f
 }
 
-update_ping &
+ctime=$(stat -c %Z $f)
+mtime=$(stat -c %Y $f)
+now=$(date +%s)
+interval=120
+
+if [[ $now -gt $(( $mtime + $interval )) ]] && [[ $now -gt $(( $ctime + $interval )) ]];
+then
+  update_ping &
+fi
 
 if [[ -z $avg_ping ]] || [[ -z $stdev_ping ]];
 then
