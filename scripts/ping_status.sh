@@ -35,7 +35,7 @@ fi
 if [[ $avg_ping -gt 100 ]];
 then
   color="#[fg=red,bright]"
-elif [[ $avg_ping -lt 30 ]];
+elif [[ $avg_ping -lt 50 ]];
 then
   color="#[fg=cyan,bright]"
 else
