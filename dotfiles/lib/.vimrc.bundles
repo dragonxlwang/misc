@@ -268,6 +268,7 @@ augroup END
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeSplitFromPreviousWindow = 1
 let NERDTreeIgnore = ['\.pyc$', '\.swp$']
+let g:NERDTreeMapToggleFilters='z'
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>n. :NERDTreeFind<cr>
 nnoremap <leader>no :NERDTree<space>
@@ -357,6 +358,8 @@ vnoremap <leader>rg
         \ :execute "Rg ". @"  \|
         \ let @"=@a <CR>
 nnoremap <leader>rg :Rg <CR>
+cnoreabbrev <expr> rg
+      \ (getcmdtype() == ':' && getcmdline() =~ '^rg$')? 'Rg' : 'rg'
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_autofocus = 1
