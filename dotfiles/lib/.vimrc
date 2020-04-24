@@ -313,10 +313,9 @@ noremap <silent> <C-w>\ :execute "vertical res"  . &columns / 2<cr>
 
 noremap <silent> <C-n> :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-t> :wincmd _<cr>
-noremap <silent> <C-g> :if exists("g:NERDTree") \| :NERDTreeClose \| endif \|
-      \ :execute "vert res" . (&textwidth + 20)<cr>
-noremap <silent> <C-m> :if exists("g:NERDTree") \| :NERDTreeClose \| endif \|
-      \ :100 wincmd h \| execute "vert res" . &columns / 3 \|
+noremap <silent> <C-g> :NERDTreeClose \| :execute "vert res" . (&textwidth + 20)<cr>
+noremap <silent> <C-m> :NERDTreeClose \| :100 wincmd h \|
+      \ execute "vert res" . &columns / 3 \| wincmd h<cr>
 
 noremap <silent> <C-w><C-j> :100 wincmd j<cr>
 noremap <silent> <C-w><C-h> :100 wincmd h<cr>
