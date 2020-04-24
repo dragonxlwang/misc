@@ -315,7 +315,8 @@ noremap <silent> <C-n> :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-t> :wincmd _<cr>
 noremap <silent> <C-g> :NERDTreeClose \| :execute "vert res" . (&textwidth + 20)<cr>
 noremap <silent> <C-m> :NERDTreeClose \| :100 wincmd h \|
-      \ execute "vert res" . &columns / 3 \| wincmd h<cr>
+      \ execute "vert res" . &columns / 3 \|
+      \ wincmd l \| execute "vert res" . &columns / 3 \| wincmd h<cr>
 
 noremap <silent> <C-w><C-j> :100 wincmd j<cr>
 noremap <silent> <C-w><C-h> :100 wincmd h<cr>
