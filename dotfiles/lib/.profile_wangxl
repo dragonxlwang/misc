@@ -932,6 +932,7 @@ function hprev {
   done
 }
 alias hum="hg up master"
+alias hut='hg up tip'
 alias hu="hg up"
 alias ha="hg add"
 alias hc="hg commit"
@@ -1446,6 +1447,7 @@ function v() {
   local lines
   lines=$(grep '^>' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
   lines+=$(grep '^:sp' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
+  lines+=$(cat ~/.cache/ctrlp/mru/cache.txt)
   lines=$(echo $lines |
     while read line; do
       [ -f "${line/\~/$HOME}" ] && echo "$line";
