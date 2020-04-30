@@ -67,7 +67,19 @@ env -i PATH=/bin:/usr/bin:/usr/local/bin \
 
 # cmake -G Ninja
 env -i PATH=/bin:/usr/bin:/usr/local/bin \
-  cmake --build . --target ycm_core
+  cmake --build . --target ycm_core --config Release
+
+
+cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/watchdog_deps/watchdog
+rm -rf build/lib3
+python setup.py build --build-base=build/3 --build-lib=build/lib3
+
+cd ~
+mkdir regex_build
+cd regex_build
+cmake -G "Unix Makefiles" . \
+  ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/cregex
+cmake --build . --target _regex --config Release
 
 [[ -e /data/users/${USER}/YouCompleteMe ]] && \
   rm -rf /data/users/${USER}/YouCompleteMe
