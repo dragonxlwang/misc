@@ -269,6 +269,8 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeSplitFromPreviousWindow = 1
 let NERDTreeIgnore = ['\.pyc$', '\.swp$']
 let g:NERDTreeMapToggleFilters='z'
+" <CR> and <C-m> is the same so use C-b for open in nerdtree
+let g:NERDTreeMapCustomOpen='<C-b>'
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>n. :NERDTreeFind<cr>
 nnoremap <leader>no :NERDTree<space>
