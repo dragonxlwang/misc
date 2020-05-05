@@ -1445,16 +1445,27 @@ function ddd() {
 # consider migrating to ~/.cache/ctrlp/mru/cache.txt
 function v() {
   local lines
-  lines=$(grep '^>' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
-  lines+=$(grep '^:sp' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
-  lines+=$(cat ~/.cache/ctrlp/mru/cache.txt)
+  lines=$(cat ~/.cache/ctrlp/mru/cache.txt)
+  # lines=$(grep '^>' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
+  # lines+=$(grep '^:sp' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
   lines=$(echo $lines |
     while read line; do
-      [ -f "${line/\~/$HOME}" ] && echo "$line";
-    done
+      local f="${line/\~/$HOME}"
+      if [[ -f "$f" ]]; then
+        f=${f/\/data\/users\/xlwang\/fbsource\/fbcode/\~}
+        f=${f/\/data\/users\/xlwang\/www-hg/\~\/www}
+        f=${f/\/data\/users\/xlwang\/configerator/\~\/configerator}
+        f=${f/\/data\/users\/xlwang/\~}
+        f=${f/\/home\/xlwang/\~}
+        echo "$f"
+      fi
+    done |
+    awk '!seen[$0]++'
   )
   local files=$(echo $lines | uniq | fzf --query="$*" --prompt="vim-hist> " -m -1)
-  vim ${files//\~/$HOME}
+  files=${files//\~/$HOME}
+  greenecho "$files"
+  vim $(echo ${files} |  tr '\n' ' ') +'vert all'
 }
 # z - open directories
 unalias z 2> /dev/null
