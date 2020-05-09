@@ -1465,7 +1465,7 @@ function v() {
   local files=$(echo $lines | uniq | fzf --query="$*" --prompt="vim-hist> " -m -1)
   files=${files//\~/$HOME}
   greenecho "$files"
-  vim $(echo ${files} |  tr '\n' ' ') +'vert all'
+  vim "${(f)files}" +'vert all'
 }
 # z - open directories
 unalias z 2> /dev/null
@@ -1584,6 +1584,9 @@ function presto() {
 function presto_sample() {
   local limit=${2:=10}
   presto "select * from $1 limit $limit"
+}
+function presto_drop() {
+  presto "drop table $*;"
 }
 alias today="date +%F"
 alias yesterday="date --date='yesterday' +%F"
