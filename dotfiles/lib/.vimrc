@@ -322,6 +322,7 @@ noremap <silent> <C-w><C-j> :100 wincmd j<cr>
 noremap <silent> <C-w><C-h> :100 wincmd h<cr>
 noremap <silent> <C-w><C-k> :100 wincmd k<cr>
 noremap <silent> <C-w><C-l> :100 wincmd l<cr>
+noremap <silent> <C-w>H :NERDTreeClose \| :wincmd H<cr>
 " go to files
 noremap <C-w>v :vertical wincmd f<CR>
 
