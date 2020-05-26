@@ -1135,6 +1135,7 @@ function nbfq {
 }
 alias jfe="jf s && hed"
 alias jfp="jf s --update-fields && jf publish"
+alias jfep="jfe && jfp"
 alias jfs="jf s"
 alias jfss="jf s --stack"
 alias jfu="jf s --update-fields"
@@ -1452,7 +1453,7 @@ function v() {
     while read line; do
       local f="${line/\~/$HOME}"
       if [[ -f "$f" ]]; then
-        f=${f/\/data\/users\/xlwang\/fbsource\/fbcode/\~}
+        f=${f/\/data\/users\/xlwang\/fbsource\/fbcode/\~\/fbcode}
         f=${f/\/data\/users\/xlwang\/www-hg/\~\/www}
         f=${f/\/data\/users\/xlwang\/configerator/\~\/configerator}
         f=${f/\/data\/users\/xlwang/\~}
