@@ -426,7 +426,7 @@ alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 function init_tmux_tpm {
   if [[ ! -d ~/.tmux/plugins/tpm/.git ]] && \
      [[ ! -f ~/.tmux/plugins/tpm/.git ]]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    git clone git@github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
     redecho "\n\tRead about tmux tpm configuration for tmp" \
          " at https://github.com/tmux-plugins/tpm\n"
     cyanecho "prefix + I : install new plugins"
@@ -482,7 +482,7 @@ function up_symlinks {
 function init_vundle {
   if [[ ! -d ~/.vim/bundle/Vundle.vim/.git ]] && \
      [[ ! -f ~/.vim/bundle/Vundle.vim/.git ]]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git \
+    git clone git@github.com:VundleVim/Vundle.vim.git \
       ~/.vim/bundle/Vundle.vim
     redecho "\n\tRead about vim configuration for vundle" \
          " at https://github.com/VundleVim/Vundle.vim\n"
@@ -525,7 +525,7 @@ function init_oh_my_zsh {
   fi
   local zsh_custom="${HOME}/.oh-my-zsh/custom/plugins"
   function install_custom_plugin() {
-    local url=https://github.com/$1/$2
+    local url="git@github.com:$1/$2"
     local plugin=${3:=$2}
     echo $plugin
     if [[ ! -e $zsh_custom/$plugin/.git ]]; then
@@ -558,7 +558,7 @@ function git_clone {
   local dest=$3
   local name=${4:=$repo}
 
-  local url=https://github.com/$gh/$repo
+  local url=git@github.com:$gh/$repo
   if [[ ! -e $dest/$name/.git ]]; then
     makedir -p $dest
     echo "git clone $url $dest/$name"
