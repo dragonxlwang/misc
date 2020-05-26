@@ -68,12 +68,12 @@ fi
 
 # fzf
 cd ~
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+git clone --depth 1 git@github.com:junegunn/fzf.git  ~/.fzf
 ~/.fzf/install
 
 # bd
 cd ~/.oh-my-zsh/custom/plugins
-git clone https://github.com/Tarrasch/zsh-bd bd
+git clone git@github.com:Tarrasch/zsh-bd bd
 
 # pip
 ## ==================================================
@@ -85,22 +85,22 @@ mkdir -p ~/workspace
 # sudo python setup.py install
 
 cd ~/workspace
-git clone https://github.com/giampaolo/psutil.git
+git clone git@github.com:giampaolo/psutil.git
 cd psutil
 sudo python setup.py install
 
 cd ~/workspace
-git clone https://github.com/google/yapf.git
+git clone git@github.com:google/yapf.git
 cd yapf
 sudo python setup.py install
 
 cd ~/workspace
-git clone https://github.com/PythonCharmers/python-future.git
+git clone git@github.com:PythonCharmers/python-future.git
 cd python-future
 sudo python setup.py install
 
 cd ~/workspace
-git clone https://github.com/orb/pygments-json/
+git clone git@github.com:orb/pygments-json/
 cd pygments-json
 sudo python setup.py install
 
