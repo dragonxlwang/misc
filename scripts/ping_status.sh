@@ -2,21 +2,26 @@
 
 misc_dir="$(dirname $(dirname $(readlink -f $0)))"
 f=$misc_dir/tmp/ping_$(hostname).txt
-
-if [[ -z $SSH_CLIENT ]] || ! [[ $(hostname) =~ 'dev' ]] || ! [[ -e $f ]];
-then
-  exit
-fi
-
-avg_ping=$(cut -sd / -f 5 $f | cut -d . -f 1)
-stdev_ping=$(cut -sd / -f 7 $f | cut -d . -f 1)
-
 client_ip=$(echo $SSH_CLIENT | cut -sd ' ' -f 1 -)
+
 function update_ping() {
   local report=$(ping6 -c 10 -w 10 $client_ip)
   echo "$report" > $f
 }
 
+if [[ -z $SSH_CLIENT ]] || ! [[ $(hostname) =~ 'dev' ]];
+then
+  exit
+fi
+
+if ! [[ -e $f ]];
+then
+  update_ping
+  exit
+fi
+
+avg_ping=$(cut -sd / -f 5 $f | cut -d . -f 1)
+stdev_ping=$(cut -sd / -f 7 $f | cut -d . -f 1)
 ctime=$(stat -c %Z $f)
 mtime=$(stat -c %Y $f)
 now=$(date +%s)

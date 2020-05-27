@@ -6,10 +6,10 @@ Host dev
 # xlwang.sb
 Host devbig
     User xlwang
-    Hostname devbig470.prn2.facebook.com
+    Hostname devbig724.prn2.facebook.com
 Host devbig2
     User xlwang
-    Hostname devbig421.prn1.facebook.com
+    Hostname devbig470.prn2.facebook.com
 Host devgpu
     User xlwang
     HostName devgpu199.prn2.facebook.com
@@ -19,6 +19,10 @@ Host devgpu2
 Host devgpu3
     User xlwang
     HostName devgpu041.ash5.facebook.com
+Host dragoncave
+    User dc
+    HostName DragonCavesMini.localdomain
+
 
 Host *.facebook.com dev dev*
     IdentityFile ~/.ssh/fb_id_rsa

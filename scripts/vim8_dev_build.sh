@@ -11,22 +11,33 @@ cd ~
 
 # https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
 
-sudo rm -rf /etc/yum.repos.d/mcepl-vim8-epel-7.repo
+# sudo rm -rf /etc/yum.repos.d/mcepl-vim8-epel-7.repo
 
-sudo yum install -y ruby ruby-devel lua lua-devel luajit \
-    luajit-devel ctags git python python-devel \
-    python3 python3-devel tcl-devel \
-    perl perl-devel perl-ExtUtils-ParseXS \
-    perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
-    perl-ExtUtils-Embed
-sudo yum install cscope ncurses ncurses-devel ncurses-libs ncurses-base lua lua-devel python36-devel python-libs ruby ruby-devel
+packages=(ruby ruby-devel lua lua-devel luajit \
+  luajit-devel ctags git python python-devel \
+  python3 python3-devel tcl-devel \
+  perl perl-devel perl-ExtUtils-ParseXS \
+  perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
+  perl-ExtUtils-Embed cscope ncurses ncurses-devel \
+  ncurses-libs ncurses-base lua lua-devel \
+  python36-devel python-libs ruby ruby-devel)
+for p in "${packages[@]}"
+do
+  sudo yum install -y "$p"
+done
 
 #--with-python-command=/usr/local/fbcode/platform007/bin/python2.7 \
 #--enable-pythoninterp \
 #--with-python-config-dir=/usr/local/fbcode/platform007/lib/python2.7/config \
 
+# To solve issue when "checking if compile and link flags for Python 3 are sane... no"
+# in src/auto/config.log: /bin/ld: cannot find -lpython3.6m
+# need to manually link in /usr/lib64:
+# ln -s /usr/lib64/libpython3.6m.so.1.0 /usr/lib64/libpython3.6m.so
+
+
 cd ~
-ver=8.2.0360
+ver=8.2.0810
 curl -OL https://github.com/vim/vim/archive/v$ver.tar.gz
 tar -zxvf v$ver.tar.gz
 cd ~/vim-$ver
@@ -36,7 +47,7 @@ cd ~/vim-$ver
             --enable-rubyinterp \
             --with-python3-command=/usr/local/fbcode/platform007/bin/python3.6 \
             --enable-python3interp \
-            --with-python3-config-dir=/usr/local/fbcode/platform007/lib/python3.6/config-3.6m-fb-007-x86_64/ \
+            --with-python3-config-dir=/usr/local/fbcode/platform007/lib/python3.6/config-3.6m-fb-007-x86_64 \
             --enable-perlinterp \
             --enable-luainterp \
             --enable-gui=gtk2 \

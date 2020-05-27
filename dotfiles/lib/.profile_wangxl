@@ -568,6 +568,13 @@ function git_clone {
     greenecho "\n\tGit Repo $gh/$repo is already installed. Skipping..."
   fi
 }
+function pkg_clone {
+  mkdir -p ~/workspace > /dev/null 2>&1
+  cd ~/workspace
+  git clone git@github.com:dosentmatter/lolcat
+  cd lolcat
+  make && sudo make install
+}
 ##---------== update homebrew, oh-my-zsh, pip and source profile==------------##
 function update_scripts {
   redecho "upgrade oh-my-zsh"
@@ -591,6 +598,8 @@ function update_scripts {
     # pip freeze --local | grep -v '^\-e' | cut -d = -f 1  |\
     # xargs -n1 pip install -U
   fi
+  redecho "installing misc packages"
+  pkg_clone
   redecho "vundle update"
   up_vundle
   redecho "vundle clean"

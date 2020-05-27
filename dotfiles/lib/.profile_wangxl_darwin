@@ -276,10 +276,11 @@ function _list_task {
   local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
   local str2="  (2/n) :   zsh"
   local str3="  (3/s) :   mosh $(get_hostname devbig) (devbig)"
-  local str4="  (4/g) :   mosh $(get_hostname devgpu) (devgpu)"
-  local str5="  (5/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
-  local str6="  (6/a) :   mosh $(get_hostname devgpu3) (devgpu3)"
-  local str7="  (7/d) :   mosh $(get_hostname dragoncave) (dragoncave)"
+  local str4="  (4/b) :   mosh $(get_hostname devbig2) (devbig2)"
+  local str5="  (5/g) :   mosh $(get_hostname devgpu) (devgpu)"
+  # local str6="  (6/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
+  # local str7="  (7/a) :   mosh $(get_hostname devgpu3) (devgpu3)"
+  local str8="  (8/d) :   mosh $(get_hostname dragoncave) (dragoncave)"
   # main loop
   while [[ -z $option ]]
   do
@@ -290,6 +291,7 @@ function _list_task {
     cyanecho $str4
     cyanecho $str5
     cyanecho $str6
+    cyanecho $str7
     [[ $is_on_dc -eq 0 ]] && cyanecho $str7
     whiteecho $(printf '=%.0s' {1..80})
     local total_options=6
@@ -303,10 +305,11 @@ function _list_task {
     if   [[ $argopt == 1* || $argopt == t* ]]; then option=1
     elif [[ $argopt == 2* || $argopt == n* ]]; then option=2
     elif [[ $argopt == 3* || $argopt == s* ]]; then option=3
-    elif [[ $argopt == 4* || $argopt == g* ]]; then option=4
-    elif [[ $argopt == 5* || $argopt == x* ]]; then option=5
-    elif [[ $argopt == 6* || $argopt == a* ]]; then option=6
-    elif [[ $is_on_dc -eq 0 && ($argopt == 7* || $argopt == d*) ]]; then option=7
+    elif [[ $argopt == 4* || $argopt == b* ]]; then option=4
+    elif [[ $argopt == 5* || $argopt == g* ]]; then option=5
+    elif [[ $argopt == 6* || $argopt == x* ]]; then option=6
+    elif [[ $argopt == 7* || $argopt == a* ]]; then option=7
+    elif [[ $is_on_dc -eq 0 && ($argopt == 8* || $argopt == d*) ]]; then option=8
     else
       redecho "  Input Not Recognized..."
       echo ""
@@ -329,14 +332,17 @@ function _list_task {
     mosh devbig
   elif [[ $option -eq 4 ]]; then
     redecho $str4
-    mosh devgpu
+    mosh devbig2
   elif [[ $option -eq 5 ]]; then
     redecho $str5
-    mosh devgpu2
+    mosh devgpu
   elif [[ $option -eq 6 ]]; then
     redecho $str6
-    mosh devgpu3
+    mosh devgpu2
   elif [[ $option -eq 7 ]]; then
+    redecho $str7
+    mosh devgpu3
+  elif [[ $option -eq 8 ]]; then
     mosh dragoncave --server="/usr/local/bin/mosh-server"
   fi
 }

@@ -19,7 +19,7 @@ function whiteecho    { _color_echo "1;37m" "${@}"; }
 # yum
 ## ==================================================
 sudo yum groupinstall "Development Tools"
-sudo yum install cmake clang boost rubygems curl-devel htop \
+packages=(cmake clang boost rubygems curl-devel htop \
   gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel \
   curl-devel xorg-x11-xauth kernel-devel make ncurses-devel \
   bzip2-devel sqlite-devel readline readline-devel python-devel openssl \
@@ -30,7 +30,11 @@ sudo yum install cmake clang boost rubygems curl-devel htop \
   perl-ExtUtils-XSpp perl-ExtUtils-CBuilder \
   perl-ExtUtils-Embed gcc gcc-c++ \
   wget tar gzip ncurses-devel texinfo svn python-devel the_silver_searcher \
-  yasd autojump-zsh
+  yasd autojump-zsh)
+for p in "${packages[@]}"
+do
+  sudo yum install -y "$p"
+done
 
 # vim
 ## ==================================================
@@ -73,7 +77,7 @@ git clone --depth 1 git@github.com:junegunn/fzf.git  ~/.fzf
 
 # bd
 cd ~/.oh-my-zsh/custom/plugins
-git clone git@github.com:Tarrasch/zsh-bd bd
+git clone git@github.com:Tarrasch/zsh-bd.git bd
 
 # pip
 ## ==================================================
@@ -100,9 +104,15 @@ cd python-future
 sudo python setup.py install
 
 cd ~/workspace
-git clone git@github.com:orb/pygments-json/
+git clone git@github.com:orb/pygments-json.git
 cd pygments-json
 sudo python setup.py install
+
+cd ~/workspace
+git clone git@github.com:dosentmatter/lolcat
+cd lolcat
+make && sudo make install
+
 
 # ipython
 ## ==================================================
