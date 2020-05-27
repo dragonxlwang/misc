@@ -288,7 +288,7 @@ function _list_task {
     preamble=$str1"\n"$str2"\n"$str3"\n"$str4"\n"$str5
     [[ $is_on_dc -eq 0 ]] && preamble=$preamble"\n"$str6
     if [[ -n "$(which lolcat 2>/dev/null)" ]]; then
-      echo $preamble | lolcat
+      echo $preamble | lolcat -h 0.5
     else
       cyanecho $preamble
     fi
