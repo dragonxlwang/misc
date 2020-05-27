@@ -278,21 +278,20 @@ function _list_task {
   local str3="  (3/s) :   mosh $(get_hostname devbig) (devbig)"
   local str4="  (4/b) :   mosh $(get_hostname devbig2) (devbig2)"
   local str5="  (5/g) :   mosh $(get_hostname devgpu) (devgpu)"
+  local str6="  (6/d) :   mosh $(get_hostname dragoncave) (dragoncave)"
   # local str6="  (6/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
   # local str7="  (7/a) :   mosh $(get_hostname devgpu3) (devgpu3)"
-  local str8="  (8/d) :   mosh $(get_hostname dragoncave) (dragoncave)"
   # main loop
   while [[ -z $option ]]
   do
     redecho "Following starting options are available:"
-    cyanecho $str1
-    cyanecho $str2
-    cyanecho $str3
-    cyanecho $str4
-    cyanecho $str5
-    cyanecho $str6
-    cyanecho $str7
-    [[ $is_on_dc -eq 0 ]] && cyanecho $str7
+    preamble=$str1"\n"$str2"\n"$str3"\n"$str4"\n"$str5
+    [[ $is_on_dc -eq 0 ]] && preamble=$preamble"\n"$str6
+    if [[ -n "$(which lolcat 2>/dev/null)" ]]; then
+      echo $preamble | lolcat
+    else
+      cyanecho $preamble
+    fi
     whiteecho $(printf '=%.0s' {1..80})
     local total_options=6
     [[ $is_on_dc -eq 0 ]] && total_options=7
@@ -307,9 +306,7 @@ function _list_task {
     elif [[ $argopt == 3* || $argopt == s* ]]; then option=3
     elif [[ $argopt == 4* || $argopt == b* ]]; then option=4
     elif [[ $argopt == 5* || $argopt == g* ]]; then option=5
-    elif [[ $argopt == 6* || $argopt == x* ]]; then option=6
-    elif [[ $argopt == 7* || $argopt == a* ]]; then option=7
-    elif [[ $is_on_dc -eq 0 && ($argopt == 8* || $argopt == d*) ]]; then option=8
+    elif [[ $is_on_dc -eq 0 && ($argopt == 6* || $argopt == d*) ]]; then option=6
     else
       redecho "  Input Not Recognized..."
       echo ""
@@ -337,12 +334,6 @@ function _list_task {
     redecho $str5
     mosh devgpu
   elif [[ $option -eq 6 ]]; then
-    redecho $str6
-    mosh devgpu2
-  elif [[ $option -eq 7 ]]; then
-    redecho $str7
-    mosh devgpu3
-  elif [[ $option -eq 8 ]]; then
     mosh dragoncave --server="/usr/local/bin/mosh-server"
   fi
 }
