@@ -1283,7 +1283,7 @@ function get_blamef {
 # alias v="~/misc/scripts/v"
 # zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS="--height 10% --reverse --border --multi --cycle \
+export FZF_DEFAULT_OPTS="--height 10% --reverse --border horizontal --multi --cycle \
 --bind=ctrl-h:backward-char,ctrl-l:forward-char,ctrl-space:accept,\
 ctrl-d:backward-delete-char,ctrl-f:page-down,ctrl-b:page-up,ctrl-s:toggle \
 --inline-info \
@@ -1474,8 +1474,10 @@ function v() {
   )
   local files=$(echo $lines | uniq | fzf --query="$*" --prompt="vim-hist> " -m -1)
   files=${files//\~/$HOME}
-  greenecho "$files"
-  vim "${(f)files}" +'vert all'
+  if [[ -n $files ]]; then
+    greenecho "$files"
+    vim "${(f)files}" +'vert all'
+  fi
 }
 # z - open directories
 unalias z 2> /dev/null
