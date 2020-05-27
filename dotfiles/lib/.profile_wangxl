@@ -1550,10 +1550,10 @@ function list_my_tables() {
 function get_FB_UID() {
   local fbid
   if [[ -e  $BUCKOUT/experimental/xlwang/fbid.par ]]; then
-    fbid=$($BUCKOUT/experimental/xlwang/fbid.par $*)
+    fbid=$($BUCKOUT/experimental/xlwang/fbid.par $* RNE)
   else
     pushd  ${HOME}/fbcode
-    fbid=$(bbr //experimental/xlwang:fbid -- $*)
+    fbid=$(bbr //experimental/xlwang:fbid -- $* RNE)
     popd
   fi
   echo $fbid
@@ -1561,10 +1561,10 @@ function get_FB_UID() {
 function get_metastore_tables() {
   local tables
   if [[ -e $BUCKOUT/experimental/xlwang/metastore_util.par ]]; then
-    fbid=$($BUCKOUT/experimental/xlwang/metastore_util.par $*)
+    fbid=$($BUCKOUT/experimental/xlwang/metastore_util.par $* RNE)
   else
     pushd  ${HOME}/fbcode
-    fbid=$(bbr //experimental/xlwang:metastore_util -- $*)
+    fbid=$(bbr //experimental/xlwang:metastore_util -- $* RNE)
     popd
   fi
   echo $fbid
@@ -1580,7 +1580,7 @@ function export_env_variables() {
     val=$($cmd)
     tmux setenv $var "$val"
   fi
-  eval $(tmux showenv -s FB_UID)
+  eval $(tmux showenv -s $var)
   return 0
 }
 [[ $(uname) == "Linux" ]] && export_env_variables "FB_UID"
