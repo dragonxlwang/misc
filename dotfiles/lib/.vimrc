@@ -176,7 +176,7 @@ if g:osName == 'Linux'
   source ~/misc/scripts/fbvim.vim
   cnoreabbrev <expr> fbvim
         \ (getcmdtype() == ':' && getcmdline() =~ '^fbvim$')?
-        \ 'FBVimSaveSession' : 'fbvim'
+        \ 'NERDTreeClose \| FBVimSaveSession' : 'fbvim'
 endif
 " if !empty(glob('/usr/local/share/clang/clang-format.py'))
 "   augroup FBClangAutoGroup
