@@ -21,10 +21,12 @@ packages=(ruby ruby-devel lua lua-devel luajit \
   perl-ExtUtils-Embed cscope ncurses ncurses-devel \
   ncurses-libs ncurses-base lua lua-devel \
   python36-devel python-libs ruby ruby-devel)
-for p in "${packages[@]}"
-do
-  sudo yum install -y "$p"
-done
+if ! [[ $1 == '--skip_deps' ]]; then
+  for p in "${packages[@]}"
+  do
+    sudo yum install -y "$p"
+  done
+fi
 
 #--with-python-command=/usr/local/fbcode/platform007/bin/python2.7 \
 #--enable-pythoninterp \
@@ -37,7 +39,7 @@ done
 
 
 cd ~
-ver=8.2.0810
+ver=8.2.0744
 curl -OL https://github.com/vim/vim/archive/v$ver.tar.gz
 tar -zxvf v$ver.tar.gz
 cd ~/vim-$ver

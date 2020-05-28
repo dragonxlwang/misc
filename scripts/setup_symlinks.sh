@@ -137,6 +137,7 @@ files=(                                                           \
   "$root_dir/lib/.hgrc"             "${HOME}/.hgrc"               \
   "$root_dir/lib/flake8"            "${HOME}/.config/flake8"      \
   "$root_dir/lib/.hgignore"         "${HOME}/.hgignore"           \
+  "$root_dir/lib/.edenrc"           "${HOME}/.edenrc"             \
   "$root_dir/lib/.gdbinit"          "${HOME}/.gdbinit"            \
   "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/.vim/.ycm_extra_conf.py"     \
   "$root_dir/lib/.ycm_extra_conf.py"    "${HOME}/fbcode/.ycm_extra_conf.py"   \
