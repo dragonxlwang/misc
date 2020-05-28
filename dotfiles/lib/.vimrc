@@ -24,7 +24,9 @@ set nrformats-=octal            " Set number format for C-A, C-X
 set synmaxcol=128               " No syntax color lines that are too long
 set noequalalways               " No resize after splitting or closing a window
 " ================================- Display -===================================
-set number                      " Line numbers are good
+set cursorline                  " Highlight line of cursor
+set cursorlineopt=number        " Highlight cursor line number only
+set number relativenumber       " Hybrid relative line numbers are good
 set ruler                       " Bottom right corner of the status line
 set wrap                        " Wrap lines visually
 set textwidth=88                " Maximum line text width
@@ -104,6 +106,13 @@ augroup END
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
+augroup SwitchLineNumberAutoGroup
+  autocmd!
+  "InsertLeave,
+  autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif
+  "InsertEnter
+  autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
+augroup END
 " set rnu
 " augroup SwitchLineNumberAutoGroup
 "   autocmd!
