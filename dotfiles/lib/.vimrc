@@ -474,12 +474,15 @@ function! FBRepo(blame, fburl)
   elseif stridx(l:path, 'configerator/') != -1
     let l:f = substitute(l:path, '.*/configerator/', '', '')
     let l:url = l:header . 'CF/' . l:master . l:f . '?lines=' . l:line
-  elseif stridx(l:path, 'www-hg/') != -1 || stridx(l:path, 'www/')
+  elseif stridx(l:path, 'www-hg/') != -1 || stridx(l:path, 'www/') != -1
     let l:f = substitute(l:path, '.*/www/', '', '')
     let l:f = substitute(l:f, '.*/www-hg/', '', '')
     let l:url = l:header . 'WWW/' . l:master . l:f . '?lines=' . l:line . l:blame
+  elseif stridx(l:path, 'configerator-dsi/') != -1
+    let l:f = substitute(l:path, '.*/configerator-dsi/', '', '')
+    let l:url = l:header . 'CFDSI/' . l:master . l:f . '?lines=' . l:line . l:blame
   else
-    echoe 'unknown FB repo'
+    echohl ErrorMsg | echo 'unknown FB repo' | echohl None
     return
   endif
   if a:fburl == 1
