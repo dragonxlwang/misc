@@ -323,6 +323,7 @@ noremap <silent> <C-w>\ :execute "vertical res"  . &columns / 2<cr>
 noremap <silent> <C-n> :execute "res"  . &lines / 2<cr>
 noremap <silent> <C-t> :wincmd _<cr>
 noremap <silent> <C-g> :NERDTreeClose \| :execute "vert res" . (&textwidth + 20)<cr>
+" in Vim internally, <C-m> and <CR> are the same; to jump in command-line window, i<CR>
 noremap <silent> <C-m> :NERDTreeClose \| :100 wincmd h \|
       \ execute "vert res" . &columns / 3 \|
       \ wincmd l \| execute "vert res" . &columns / 3 \| wincmd h<cr>
