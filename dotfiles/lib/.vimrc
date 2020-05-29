@@ -435,38 +435,10 @@ command! Texclean exe "! ~/misc/scripts/tex_make.sh clean" | redraw!
 
 
 " ==================================- fb  -=====================================
-function! Duf()
-  echo expand('%:p:s?.*/fbcode/?https://phabricator.intern.facebook.com/'.
-        \'diffusion/FBS/browse/master/fbcode/?'.
-        \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
-        \. '%24' . line('.')
-endfunction
-function! Dufburl()
-  let l:url = expand('%:p:s?.*/fbcode/?https://phabricator.intern.facebook.com/'.
-        \'diffusion/FBS/browse/master/fbcode/?'.
-        \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
-        \. '%24' . line('.')
-  let l:fburl = substitute(system('fburl "' . l:url . '" 2> /dev/null'), "\n", "", "")
-  echo l:fburl
-endfunction
-command! -nargs=* Duf call Duf()
-command! -nargs=* Dufburl call Dufburl()
-function! Blamef()
-  echo expand('%:p:s?.*/fbcode/?https://phabricator.intern.facebook.com/'.
-        \'diffusion/FBS/browse/master/fbcode/?'.
-        \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
-        \. '%24' . line('.') . '?blame=1'
-endfunction
-function! Blamefburl()
-  let l:url = expand('%:p:s?.*/fbcode/?https://phabricator.intern.facebook.com/'.
-        \'diffusion/FBS/browse/master/fbcode/?'.
-        \':s?.*/configerator/?blamec ?:s?.*/configerator-hg/?blamec ?')
-        \. '%24' . line('.') . '?blame=1'
-  let l:fburl = substitute(system('fburl "' . l:url . '" 2> /dev/null'), "\n", "", "")
-  echo l:fburl
-endfunction
-command! -nargs=* Blamef call Blamef()
-command! -nargs=* Blamefburl call Blamefburl()
+command! -nargs=* Duf call FBRepo(0, 0)
+command! -nargs=* Dufburl call FBRepo(0, 1)
+command! -nargs=* Blamef call FBRepo(1, 0)
+command! -nargs=* Blamefburl call FBRepo(1, 1)
 set path=.,/usr/include,,
       \/home/xlwang/,
       \/home/xlwang/fbcode,
@@ -485,6 +457,37 @@ set path=.,/usr/include,,
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! FBRepo(blame, fburl)
+  let l:path = expand('%:p')
+  let l:header = 'https://www.internalfb.com/intern/diffusion/'
+  let l:master = 'browse/master/'
+  let l:line = line('.')
+  if a:blame == 1
+    let l:blame = '&blame=1'
+  else
+    let l:blame = ''
+  endif
+  if stridx(l:path, 'fbsource/') != -1
+    let l:f = substitute(l:path, '.*/fbsource/', '', '')
+    let l:url = l:header . 'FBS/' . l:master . l:f . '?lines=' . l:line . l:blame
+  elseif stridx(l:path, 'configerator/') != -1
+    let l:f = substitute(l:path, '.*/configerator/', '', '')
+    let l:url = l:header . 'CF/' . l:master . l:f . '?lines=' . l:line
+  elseif stridx(l:path, 'www-hg/') != -1 || stridx(l:path, 'www/')
+    let l:f = substitute(l:path, '.*/www/', '', '')
+    let l:f = substitute(l:f, '.*/www-hg/', '', '')
+    let l:url = l:header . 'WWW/' . l:master . l:f . '?lines=' . l:line . l:blame
+  else
+    echoe 'unknown FB repo'
+    return
+  endif
+  if a:fburl == 1
+    echo substitute(system('fburl "' . l:url . '" 2> /dev/null'), "\n", "", "")
+  else
+    echo l:url
+  endif
+endfunction
 
 function! HasPaste()
   if &paste
