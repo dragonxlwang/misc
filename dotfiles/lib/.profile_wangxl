@@ -1464,6 +1464,7 @@ function v() {
       if [[ -f "$f" ]]; then
         f=${f/\/data\/users\/xlwang\/fbsource\/fbcode/\~\/fbcode}
         f=${f/\/data\/users\/xlwang\/www-hg/\~\/www}
+        f=${f/\/data\/users\/xlwang\/www/\~\/www}
         f=${f/\/data\/users\/xlwang\/configerator/\~\/configerator}
         f=${f/\/data\/users\/xlwang/\~}
         f=${f/\/home\/xlwang/\~}

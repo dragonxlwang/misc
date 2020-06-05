@@ -166,10 +166,10 @@ augroup ConfigeratorGroup
 augroup END
 
 " ==========================- Facebook -=======================================
-if !empty(glob('~/fbcode/shellconfigs/vim/vim'))
+if !empty(glob('~/fbcode/shellconfigs/rc/vim'))
   source ~/fbcode/shellconfigs/rc/vim/biggrep.vim
-  set rtp+=~/fbcode/shellconfigs/vim/vim
-  set rtp+=~/fbcode/shellconfigs/vim/vim/after
+  set rtp+=~/fbcode/shellconfigs/vim/
+  set rtp+=~/fbcode/shellconfigs/vim/after
 endif
 
 if g:osName == 'Linux'
@@ -761,8 +761,11 @@ function! MakeRoomForLowestPane()
   if l:ln < 20
     let l:ln = 20
   endif
-  exec "res ". l:ln
-  exec l:nr . "wincmd w"
+  let l:cur = winheight(0)
+  if l:cur < l:ln
+    exec "res ". l:ln
+    exec l:nr . "wincmd w"
+  endif
 endfunction
 
 if exists("*BigGrep")
