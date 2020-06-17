@@ -1596,6 +1596,7 @@ function presto() {
     $presto $namespace --execute $*
   fi
 }
+alias spark='spark-sql --namespace search'
 function presto_sample() {
   local limit=${2:=10}
   presto "select * from $1 limit $limit"

@@ -162,7 +162,7 @@ augroup ConfigeratorGroup
   autocmd BufNewFile,BufRead *.cconf set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *.mcconf set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *.thrift-cvalidator set filetype=python | set syntax=python
-  autocmd BufNewFile,BufRead *TARGETS set filetype=python | set syntax=python
+  autocmd BufNewFile,BufRead *TARGETS set filetype=TARGETS | set syntax=python
 augroup END
 
 " ==========================- Facebook -=======================================
@@ -200,7 +200,8 @@ map <leader>ba :1,1000 bd!<cr>
 " Open last edited file
 nnoremap <Leader><Leader> <C-^>
 " Sudo write
-command! WW w !sudo tee > /dev/null %
+command! SW :w !sudo tee > /dev/null %
+command! WW :call mkdir(expand("%:p:h"), "p") | :w
 " Switch WD to the directory of the open buffer
 noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Change pwd to current dir
