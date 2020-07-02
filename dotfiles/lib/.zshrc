@@ -117,6 +117,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # enable zsh-completions
+setopt completealiases
 autoload -U compinit && compinit
 
 # Use vi mode.
