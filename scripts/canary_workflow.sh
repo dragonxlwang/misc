@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 FORCE_BUILD=false
 
@@ -42,6 +42,11 @@ do
       FORCE_BUILD=true
       shift # past argument
       ;;
+    -e|--ENTITLEMENT)
+      ENTITLEMENT="$2"
+      shift # past argument
+      shift # past value
+      ;;
     *)    # unknown option
       POSITIONAL+=("$1") # save it in an array for later
       shift # past argument
@@ -52,11 +57,15 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 
 dir=$(pwd)
 FBC=${FBC:-~/fbcode}
-cd $FBC
-DIFF="$(hg log -r . --template '{xg_sl_normal}' | tr -s ' ')"
+cd "$FBC" || exit
+hg_template="{separate('  ', sl_userdefined_prefix, shortest(node, sl_hash_minlen),\
+ date(date), sl_user, sl_diff, sl_tasks, sl_books, sl_branch,\
+ sl_userdefined_suffix)}"
+DIFF="$(hg log -r . --template "${hg_template}" | tr -s ' ')"
 WF="${WF:-dper.workflows.ads.train_eval_workflow}"
 MODE=${MODE:-opt}
 TITLE=${TITLE:-"${PREFIX:+${PREFIX}, }""${DIFF} ${MODE}""${SUFFIX:+, ${SUFFIX}}"}
+ENTITLEMENT=${ENTITLEMENT:-ads_ftw}
 
 echo "FBC            = ${FBC}"
 echo "PREFIX         = ${PREFIX}"
@@ -66,21 +75,20 @@ echo "TITLE          = ${TITLE}"
 echo "WORKFLOW       = ${WF}"
 echo "MODE           = ${MODE}"
 echo "FORCE_BUILD    = ${FORCE_BUILD}"
-if [[ -n $@ ]]; then
-  echo $# POSITIONAL ARGUMENTS: $@
+echo "ENTITLEMENT    = ${ENTITLEMENT}"
+if [[ -n "$*" ]]; then
+  echo $# POSITIONAL ARGUMENTS: "$@"
 fi
 
-if [[ $MODE == "default" ]]; then
-  CMD="flow-cli canary --entitlement ads_ftw $WF --name \"$TITLE\""
-else
-  CMD="flow-cli canary --entitlement ads_ftw --mode $MODE $WF --name \"$TITLE\""
-fi
+CMD=()
+$FORCE_BUILD && CMD+=("FLOW_FORCE_BUILD=1")
+CMD+=("flow-cli" "canary")
+CMD+=("--entitlement" "$ENTITLEMENT")
+[[ $MODE != "default" ]] && CMD+=("--mode" "$MODE")
+CMD+=("$WF")
+CMD+=("--name" "\"$TITLE\"")
 
-if $FORCE_BUILD; then
-  CMD="FLOW_FORCE_BUILD=1 ""$CMD"
-fi
+echo "${CMD[@]}"
+eval "${CMD[@]}"
 
-echo "$CMD"
-eval "$CMD"
-
-cd $dir
+cd "$dir" || exit
