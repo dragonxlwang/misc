@@ -1,0 +1,30 @@
+{
+  "Cell": {
+    "cm_config": {
+      "lineNumbers": true
+    }
+  },
+  "keys": {
+    "command": {
+      "bind": {
+        "ctrl-shift-n": "jupyter-notebook:insert-cell-below",
+        "ctrl-shift-p": "jupyter-notebook:insert-cell-above",
+        "ctrl-shift-r": "jupyter-notebook:restart-kernel",
+        "ctrl-shift-s": "jupyter-notebook:interrupt-kernel",
+        "ctrl-shift-m": "jupyter-notebook:change-cell-to-markdown",
+        "ctrl-shift-j": "jupyter-notebook:change-cell-to-code",
+        "ctrl-shift-q": "jupyter-notebook:undo-cell-deletion",
+        "ctrl-shift-c": "jupyter-notebook:delete-cell",
+        "ctrl-shift-x": "jupyter-notebook:clear-cell-output"
+      },
+      "unbind": [
+        "d,d",
+        "x"
+      ]
+    }
+  },
+  "load_extensions": {
+    "jupyter-js-widgets/extension": true,
+    "publishing/nbviewer_buttons": true
+  }
+}
