@@ -12,7 +12,7 @@
         "ctrl-shift-r": "jupyter-notebook:restart-kernel",
         "ctrl-shift-s": "jupyter-notebook:interrupt-kernel",
         "ctrl-shift-m": "jupyter-notebook:change-cell-to-markdown",
-        "ctrl-shift-j": "jupyter-notebook:change-cell-to-code",
+        "ctrl-shift-a": "jupyter-notebook:change-cell-to-code",
         "ctrl-shift-q": "jupyter-notebook:undo-cell-deletion",
         "ctrl-shift-c": "jupyter-notebook:delete-cell",
         "ctrl-shift-x": "jupyter-notebook:clear-cell-output"

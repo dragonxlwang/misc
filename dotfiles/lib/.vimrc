@@ -23,7 +23,8 @@ set pastetoggle=<F2>            " No indent on paste
 set nrformats-=octal            " Set number format for C-A, C-X
 set synmaxcol=128               " No syntax color lines that are too long
 set noequalalways               " No resize after splitting or closing a window
-" ================================- Display -===================================
+set cpoptions+=>                " a line break is inserted before the appended text
+"================================- Display -===================================
 set cursorline                  " Highlight line of cursor
 set cursorlineopt=number        " Highlight cursor line number only
 set number relativenumber       " Hybrid relative line numbers are good
@@ -380,6 +381,7 @@ nnoremap <leader>y "0y
 vnoremap <leader>p "0p
 vnoremap <leader>y "0y
 command TmuxPaste :read !tmux saveb - | cat | sed 's/\x1b\[[0-9;]*m//g'
+nnoremap <leader>lh @='"Qyiwj'<CR>
 
 " Toggle paste mode on and off
 noremap <ESC>p :setlocal paste! \| :echoe "paste =" &paste<cr>
