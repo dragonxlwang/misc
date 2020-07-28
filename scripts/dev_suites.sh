@@ -113,6 +113,10 @@ git clone git@github.com:dosentmatter/lolcat
 cd lolcat
 make && sudo make install
 
+cd ~/workspace
+git clone git@github.com:jeffkaufman/icdiff
+cd icdiff
+sudo python setup.py install
 
 # ipython
 ## ==================================================

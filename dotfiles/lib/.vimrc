@@ -463,7 +463,7 @@ set path=.,/usr/include,,
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! FBRepo(blame, fburl)
-  let l:path = expand('%:p')
+  let l:path = resolve(expand('%:p'))
   let l:header = 'https://www.internalfb.com/intern/diffusion/'
   let l:master = 'browse/master/'
   let l:line = line('.')
