@@ -34,7 +34,7 @@ extdiff =
 [extdiff]
 cmd.vimdiff =
 
-cmd.icdiff=icdiff
+cmd.icdiff=/home/xlwang/misc/scripts/icdiff.py
 # extdiff passes two directories to the diff command
 # --recursive tells icdiff to treat the two params as directories
 # and recursively diff their contents.
