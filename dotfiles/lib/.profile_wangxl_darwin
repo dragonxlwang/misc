@@ -287,7 +287,7 @@ function _list_task {
     redecho "Following starting options are available:"
     preamble=$str1"\n"$str2"\n"$str3"\n"$str4"\n"$str5
     [[ $is_on_dc -eq 0 ]] && preamble=$preamble"\n"$str6
-    if [[ -n "$(which lolcat 2>/dev/null)" ]]; then
+    if  which lolcat >/dev/null 2>&1; then
       echo $preamble | lolcat -h 0.5
     else
       cyanecho $preamble
