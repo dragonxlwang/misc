@@ -292,7 +292,7 @@ function _list_task {
     else
       cyanecho $preamble
     fi
-    whiteecho $(printf '=%.0s' {1..80})
+    whiteecho $(printf '=%.0s' {1..40})
     local total_options=6
     [[ $is_on_dc -eq 0 ]] && total_options=7
     yellowecho -n "Select One Option From (1) - ("$total_options"): "
@@ -314,7 +314,7 @@ function _list_task {
       argopt=""
     fi
   done
-  whiteecho $(printf '=%.0s' {1..50})
+  whiteecho $(printf '=%.0s' {1..40})
   greenecho "caller_is_profile  :  $caller_is_profile"
   greenecho "is_inside_tmux     :  $is_inside_tmux"
   greenecho "option             : (${option})"
