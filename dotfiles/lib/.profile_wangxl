@@ -1120,17 +1120,19 @@ function diff_test {
     eval ${cmd}
   fi
 }
+opt="opt-clang-thinlto"
 alias dtt="diff_test"
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias flow_help="cat ~/misc/scripts/flow_help.txt"
 alias dev_help="cat ~/misc/scripts/dev_help.txt"
 alias bbt='buck test'
-alias bbto='buck test @mode/opt'
+alias bbto="buck test @mode/$opt"
 alias bbb='buck build --show-output'
-alias bbbo='buck build --show-output @mode/opt'
+alias bbbo="buck build --show-output @mode/$opt"
+alias bbbd="buck build --show-output @mode/devo-nosan"
 alias bua='buck_util add'
 alias bbr='buck run'
-alias bbro='buck run @mode/opt'
+alias bbro="buck run @mode/$opt"
 alias misc='cd ~/misc'
 alias fbc='cd ~/fbcode'
 alias fbc1='cd ~/fbcode'
@@ -1558,9 +1560,9 @@ function get_FB_UID() {
   if [[ -e  $BUCKOUT/experimental/xlwang/fbid.par ]]; then
     fbid=$($BUCKOUT/experimental/xlwang/fbid.par $* RNE)
   else
-    pushd  ${HOME}/fbcode
+    pushd  ${HOME}/fbcode RNUL
     fbid=$(bbr //experimental/xlwang:fbid -- $* RNE)
-    popd
+    popd RNUL
   fi
   echo $fbid
 }
