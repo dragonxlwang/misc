@@ -48,4 +48,6 @@ Host timan103
 
 # On CentOS 7
 Host github.com
-    ProxyCommand nc --proxy-type http --proxy fwdproxy:8080 %h %p
+    ProxyCommand fwdproxy_ssh_proxy %h %p
+    ServerAliveInterval 300
+    # ProxyCommand nc --proxy-type http --proxy fwdproxy:8080 %h %p
