@@ -11,41 +11,41 @@
 function _color_echo {
   if [[ "$2" == "-n" ]]; then echo -ne "\033[${1}${@:3}\033[0m"
   else echo -e "\033[${1}${@:2}\033[0m"; fi }
-function blackecho    { _color_echo "1;30m" "${@}"; }
-function redecho      { _color_echo "1;31m" "${@}"; }
-function greenecho    { _color_echo "1;32m" "${@}"; }
-function yellowecho   { _color_echo "1;33m" "${@}"; }
-function blueecho     { _color_echo "1;34m" "${@}"; }
-function magentaecho  { _color_echo "1;35m" "${@}"; }
-function cyanecho     { _color_echo "1;36m" "${@}"; }
-function whiteecho    { _color_echo "1;37m" "${@}"; }
-function fromhex(){
-  local hex=${1#"#"}
-  local r=$(printf '0x%0.2s' "$hex")
-  local g=$(printf '0x%0.2s' ${hex#??})
-  local b=$(printf '0x%0.2s' ${hex#????})
-  printf '%03d' "$(( (r<75?0:(r-35)/40)*6*6   +
-                      (g<75?0:(g-35)/40)*6    +
-                      (b<75?0:(b-35)/40)      + 16 ))"
-}
-function print_256_color {
-  if [[ $# -eq 0 ]]; then
-    echo "Color Schema 1"
-    ${HOME}/misc/scripts/color_test.sh
-    echo "Color Schema 2"
-    ${HOME}/misc/scripts/256-colors.sh
-    return
-  fi
-  local color=$1
-  if [[ $color == "#"* ]]; then
-    color=$(echo $color | cut -c 2-)
-    color=$(fromhex $color)
-  fi
-  echo -en "\033[38;5;${color}m ${color}\t\033[0m"
-  echo ""
-  echo -en "\033[48;5;${color}m ${color}\t\033[0m"
-  echo ""
-}
+    function blackecho    { _color_echo "1;30m" "${@}"; }
+    function redecho      { _color_echo "1;31m" "${@}"; }
+    function greenecho    { _color_echo "1;32m" "${@}"; }
+    function yellowecho   { _color_echo "1;33m" "${@}"; }
+    function blueecho     { _color_echo "1;34m" "${@}"; }
+    function magentaecho  { _color_echo "1;35m" "${@}"; }
+    function cyanecho     { _color_echo "1;36m" "${@}"; }
+    function whiteecho    { _color_echo "1;37m" "${@}"; }
+    function fromhex(){
+      local hex=${1#"#"}
+      local r=$(printf '0x%0.2s' "$hex")
+      local g=$(printf '0x%0.2s' ${hex#??})
+      local b=$(printf '0x%0.2s' ${hex#????})
+      printf '%03d' "$(( (r<75?0:(r-35)/40)*6*6   +
+      (g<75?0:(g-35)/40)*6    +
+      (b<75?0:(b-35)/40)      + 16 ))"
+    }
+  function print_256_color {
+    if [[ $# -eq 0 ]]; then
+      echo "Color Schema 1"
+      ${HOME}/misc/scripts/color_test.sh
+      echo "Color Schema 2"
+      ${HOME}/misc/scripts/256-colors.sh
+      return
+    fi
+    local color=$1
+    if [[ $color == "#"* ]]; then
+      color=$(echo $color | cut -c 2-)
+      color=$(fromhex $color)
+    fi
+    echo -en "\033[38;5;${color}m ${color}\t\033[0m"
+    echo ""
+    echo -en "\033[48;5;${color}m ${color}\t\033[0m"
+    echo ""
+  }
 
 ## ========================================================================== ##
 #               ___       __       __       ___           _______.             #
@@ -134,28 +134,28 @@ function pspidmine { psmine | sed 1d | awk '{print $2}'; }
 # case sensitive kill
 function pskill {
   ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs kill -9; }
-# kill from joblist
-function kill_jobs {
-  if [[ -n $(jobs) ]];
-  then
-    for i in $(seq 1 $(jobs | wc -l));
-    do kill -9 %$i;
-    done
-  fi
-}
+  # kill from joblist
+  function kill_jobs {
+    if [[ -n $(jobs) ]];
+    then
+      for i in $(seq 1 $(jobs | wc -l));
+      do kill -9 %$i;
+      done
+    fi
+  }
 function kill_zombies {
   ps -e -o pid,state | awk '{ if ($2 == "Z") {print $1} }' | xargs  kill -9; }
-alias cls='printf "\033c"'
-alias tmux_kill='tmux kill-session'
-alias tmux_halt='tmux detach'
-function q {
-  if [[ -z $TMUX ]]; then
-    return 0
+  alias cls='printf "\033c"'
+  alias tmux_kill='tmux kill-session'
+  alias tmux_halt='tmux detach'
+  function q {
+    if [[ -z $TMUX ]]; then
+      return 0
 
-  else
-    tmux detach
-  fi
-}
+    else
+      tmux detach
+    fi
+  }
 function check_busy { lsof +D ${@:-.}; }
 alias nicer="sudo renice -20"
 alias unnice="renice 0"
@@ -164,17 +164,17 @@ function nicer_all {
   local x
   for x in "${(@f)$(pspidmine)}";
   do
-   redecho "renice $ni $x"
-   sudo renice ${ni} ${x}
- done
+    redecho "renice $ni $x"
+    sudo renice ${ni} ${x}
+  done
 }
 function unnice_all {
   local x
   for x in "${(@f)$(pspidmine)}";
   do
-   redecho "nicer ${x}"
-   unnice ${x}
- done
+    redecho "nicer ${x}"
+    unnice ${x}
+  done
 }
 ##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
@@ -203,75 +203,75 @@ alias lllt="lll -t"
 function lls { ll | grep $*; }
 alias llsi='lls -i'
 function ll_symlink {
-    ll "$@" --color=always | grep "\->"; }
-# cd
-function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
-function follow { cd $(dirname $(readlink -f $1)); }
-alias jp="jump"
-alias fl="follow"
-# tree might not installed; use ugly tree instead
-if [ -z "\${which tree}" ]; then
-  tree () {
+  ll "$@" --color=always | grep "\->"; }
+  # cd
+  function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
+  function follow { cd $(dirname $(readlink -f $1)); }
+  alias jp="jump"
+  alias fl="follow"
+  # tree might not installed; use ugly tree instead
+  if [ -z "\${which tree}" ]; then
+    tree () {
       find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+    }
+  fi
+  # gather external ip address
+  alias show_external_ip="curl -s -S https://icanhazip.com"
+  alias showptr="curl -s -S -k https://icanhazptr.com"
+  # gather external/local ip address
+  alias showip="${HOME}/misc/scripts/ip_lookup.sh all"
+  ##--------------------------------== remove ==--------------------------------##
+  # real remove
+  alias rrm='/bin/rm -v'
+  function rm {
+    [[ ! -d ~/.Trash ]] && mkdir ~/.Trash
+    local ret=""
+    local l
+    ret=$(mv --verbose -f --backup=numbered \
+      --target-directory ${HOME}/.Trash/ "$@")
+          redecho $ret
+          local reg=""
+          local f1=""
+          local f2=""
+          local fp="${HOME}/.Trash/rm.undo"
+          echo "#!/bin/sh" > $fp
+          for l in ${(f)ret}; do
+            reg='s/^(.*) -> (.*)$/\1/p'
+            f1=$(echo $l | sed -rn $reg)
+            if [[ -z $f1 ]]; then
+              continue
+            fi
+            f1=${f1:1:${#f1}-2}
+            reg='s/^(.*) -> (.*)$/\2/p'
+            f2=$(echo $l | sed -rn $reg)
+            f2=$(echo $f2 | sed -r 's/ \(backup: .*\)//')
+            f2=${f2:1:${#f2}-2}
+            [[ $f1 != /* ]] && f1="$PWD/$f1"
+            echo "# \"$f1\" -> \"$f2\"" >> $fp
+            echo "mv \"$f2\" \"$f1\"" >> $fp
+            echo "echo \"\\033[1;33mmv \\\"$f2\\\" \\\"$f1\\\"\\033[0m\"" >> $fp
+          done
+        }
+      alias rm=rm
+      function undo {
+        local fp="${HOME}/.Trash/rm.undo"
+        /bin/sh $fp
+      }
+    alias empty_trash='find ~/.Trash -mindepth 1 -delete -print'
+    # remove the following
+    ## all mac .DS_store/.localized files in current directory recursively
+    function rm_mac_hidden_files {
+      local clean_place=${*:-'.'}
+      find $clean_place -name '*.DS_Store'  -type f -delete -print
+      find $clean_place -name '*.localized' -type f -delete -print
+    }
+  ## all python .py[co] files and __pycache__ dirs
+  alias rm_python_compiled_files="pyclean"
+  function rm_python_compiled_files_no_recursion {
+    local clean_place=${*:-'.'}
+    find $clean_place -maxdepth 1 -type f -name "*.py[co]" -delete
+    find $clean_place -maxdepth 1 -type d -name "__pycache__" -delete
   }
-fi
-# gather external ip address
-alias show_external_ip="curl -s -S https://icanhazip.com"
-alias showptr="curl -s -S -k https://icanhazptr.com"
-# gather external/local ip address
-alias showip="${HOME}/misc/scripts/ip_lookup.sh all"
-##--------------------------------== remove ==--------------------------------##
-# real remove
-alias rrm='/bin/rm -v'
-function rm {
-  [[ ! -d ~/.Trash ]] && mkdir ~/.Trash
-  local ret=""
-  local l
-  ret=$(mv --verbose -f --backup=numbered \
-        --target-directory ${HOME}/.Trash/ "$@")
-  redecho $ret
-  local reg=""
-  local f1=""
-  local f2=""
-  local fp="${HOME}/.Trash/rm.undo"
-  echo "#!/bin/sh" > $fp
-  for l in ${(f)ret}; do
-    reg='s/^(.*) -> (.*)$/\1/p'
-    f1=$(echo $l | sed -rn $reg)
-    if [[ -z $f1 ]]; then
-      continue
-    fi
-    f1=${f1:1:${#f1}-2}
-    reg='s/^(.*) -> (.*)$/\2/p'
-    f2=$(echo $l | sed -rn $reg)
-    f2=$(echo $f2 | sed -r 's/ \(backup: .*\)//')
-    f2=${f2:1:${#f2}-2}
-    [[ $f1 != /* ]] && f1="$PWD/$f1"
-    echo "# \"$f1\" -> \"$f2\"" >> $fp
-    echo "mv \"$f2\" \"$f1\"" >> $fp
-    echo "echo \"\\033[1;33mmv \\\"$f2\\\" \\\"$f1\\\"\\033[0m\"" >> $fp
-  done
-}
-alias rm=rm
-function undo {
-  local fp="${HOME}/.Trash/rm.undo"
-  /bin/sh $fp
-}
-alias empty_trash='find ~/.Trash -mindepth 1 -delete -print'
-# remove the following
-## all mac .DS_store/.localized files in current directory recursively
-function rm_mac_hidden_files {
-  local clean_place=${*:-'.'}
-  find $clean_place -name '*.DS_Store'  -type f -delete -print
-  find $clean_place -name '*.localized' -type f -delete -print
-}
-## all python .py[co] files and __pycache__ dirs
-alias rm_python_compiled_files="pyclean"
-function rm_python_compiled_files_no_recursion {
-  local clean_place=${*:-'.'}
-  find $clean_place -maxdepth 1 -type f -name "*.py[co]" -delete
-  find $clean_place -maxdepth 1 -type d -name "__pycache__" -delete
-}
 ## all vim swap .sw[pon]
 function rm_vim_swap_files {
   local clean_place=${*:-'.'}
@@ -425,13 +425,13 @@ alias darwin_help="cat ~/misc/scripts/darwin_help.txt"
 alias ed_tmux="vim ~/.tmux.conf; tmux source-file ~/.tmux.conf"
 function init_tmux_tpm {
   if [[ ! -d ~/.tmux/plugins/tpm/.git ]] && \
-     [[ ! -f ~/.tmux/plugins/tpm/.git ]]; then
-    git clone git@github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
-    redecho "\n\tRead about tmux tpm configuration for tmp" \
-         " at https://github.com/tmux-plugins/tpm\n"
-    cyanecho "prefix + I : install new plugins"
-    cyanecho "prefix + U : updates plugin(s)"
-    cyanecho "prefix + alt + u : remove/uninstall plugins not on the list"
+    [[ ! -f ~/.tmux/plugins/tpm/.git ]]; then
+      git clone git@github.com:tmux-plugins/tpm ~/.tmux/plugins/tpm
+      redecho "\n\tRead about tmux tpm configuration for tmp" \
+        " at https://github.com/tmux-plugins/tpm\n"
+              cyanecho "prefix + I : install new plugins"
+              cyanecho "prefix + U : updates plugin(s)"
+              cyanecho "prefix + alt + u : remove/uninstall plugins not on the list"
   fi
 }
 alias up_tmux_tpm="init_tmux_tpm; ~/.tmux/plugins/tpm/bin/install_plugins"
@@ -447,20 +447,20 @@ function ed_misc {
   local cmd3='e ~/misc/dotfiles/lib/.vimrc |'
   cmd3+='bel vsplit ~/misc/dotfiles/lib/.vimrc.bundles'
   vim -c "$cmd1" -c "tabnew" \
-      -c "$cmd2" -c "tabnew" \
-      -c "$cmd3" -c "tabn1"
-  cyanecho "sourcing ~/.profile_wangxl"
-  source ${HOME}/.profile_wangxl
-  cyanecho "sourcing ~/.tmux.conf"
-  tmux source-file ${HOME}/.tmux.conf
-}
-function up_misc {
-  pushd ${HOME}/misc > /dev/null
-  if [[ -z $(git status --porcelain) ]]; then
-    ggpur
-  else
-    xg_st
-    redecho "There is uncommitted changes. Abort..."
+    -c "$cmd2" -c "tabnew" \
+    -c "$cmd3" -c "tabn1"
+      cyanecho "sourcing ~/.profile_wangxl"
+      source ${HOME}/.profile_wangxl
+      cyanecho "sourcing ~/.tmux.conf"
+      tmux source-file ${HOME}/.tmux.conf
+    }
+  function up_misc {
+    pushd ${HOME}/misc > /dev/null
+    if [[ -z $(git status --porcelain) ]]; then
+      ggpur
+    else
+      xg_st
+      redecho "There is uncommitted changes. Abort..."
   fi
   popd > /dev/null
 }
@@ -481,11 +481,11 @@ function up_symlinks {
 # https://github.com/VundleVim/Vundle.vim
 function init_vundle {
   if [[ ! -d ~/.vim/bundle/Vundle.vim/.git ]] && \
-     [[ ! -f ~/.vim/bundle/Vundle.vim/.git ]]; then
-    git clone git@github.com:VundleVim/Vundle.vim.git \
-      ~/.vim/bundle/Vundle.vim
-    redecho "\n\tRead about vim configuration for vundle" \
-         " at https://github.com/VundleVim/Vundle.vim\n"
+    [[ ! -f ~/.vim/bundle/Vundle.vim/.git ]]; then
+      git clone git@github.com:VundleVim/Vundle.vim.git \
+        ~/.vim/bundle/Vundle.vim
+              redecho "\n\tRead about vim configuration for vundle" \
+                " at https://github.com/VundleVim/Vundle.vim\n"
   fi
 }
 alias up_vundle="init_vundle; vim +PluginInstall +qall"
@@ -507,21 +507,21 @@ function build_vundle_ycm {
       cmake -G "Unix Makefiles" \
       -DEXTERNAL_LIBCLANG_PATH="${HOME}/llvm/build/lib/libclang.so" . \
       ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
-    cmake --build . --target ycm_core --config Release
-    popd RNUL
-    /bin/rm -rf $build_dir
+          cmake --build . --target ycm_core --config Release
+          popd RNUL
+          /bin/rm -rf $build_dir
   fi
 }
 ##------------------------------== oh-my-zsh ==-------------------------------##
 function init_oh_my_zsh {
   if [[ ! -d ~/.oh-my-zsh/.git ]] && \
-     [[ ! -f ~/.oh-my-zsh/.git ]]; then
-    sh -c "$(curl -fsSL \
-      https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    redecho "\n\tRead about oh-my-zsh" \
-         " at https://github.com/robbyrussell/oh-my-zsh\n"
-  else
-    greenecho "\n\toh-my-zsh is already installed. Skipping..."
+    [[ ! -f ~/.oh-my-zsh/.git ]]; then
+      sh -c "$(curl -fsSL \
+        https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+              redecho "\n\tRead about oh-my-zsh" \
+                " at https://github.com/robbyrussell/oh-my-zsh\n"
+                            else
+                              greenecho "\n\toh-my-zsh is already installed. Skipping..."
   fi
   local zsh_custom="${HOME}/.oh-my-zsh/custom/plugins"
   function install_custom_plugin() {
@@ -536,10 +536,10 @@ function init_oh_my_zsh {
       greenecho "\n\tCustom Git Plugin $1/$2 is already installed. Skipping..."
     fi
   }
-  install_custom_plugin zsh-users zsh-completions
-  install_custom_plugin zsh-users zsh-autosuggestions
-  install_custom_plugin zsh-users zsh-syntax-highlighting
-  install_custom_plugin Tarrasch zsh-bd bd
+install_custom_plugin zsh-users zsh-completions
+install_custom_plugin zsh-users zsh-autosuggestions
+install_custom_plugin zsh-users zsh-syntax-highlighting
+install_custom_plugin Tarrasch zsh-bd bd
 }
 function up_oh_my_zsh {
   init_oh_my_zsh
@@ -612,11 +612,11 @@ function update_scripts {
     redecho "git clone facebook/PathPicker.git"
     git_clone facebook PathPicker ~/local fpp
     sudo ln -s ~/local/fpp/fpp /usr/local/bin/fpp
-  redecho "source tmux conf"
-  tmux source ${HOME}/.tmux.conf
-  redecho "source profile_wangxl"
-  source ${HOME}/.profile_wangxl
-}
+    redecho "source tmux conf"
+    tmux source ${HOME}/.tmux.conf
+    redecho "source profile_wangxl"
+    source ${HOME}/.profile_wangxl
+  }
 
 ## ========================================================================== ##
 #                     ________      _______. __    __                          #
@@ -665,7 +665,7 @@ function xg_sl {
     --abbrev-commit --stat --stat-graph-width=60 --graph --decorate --all \
     --pretty=tformat:$format \
     $option
-}
+  }
 function xg_sll { # long
   # get remote unpulled changes
   git fetch
@@ -678,7 +678,7 @@ function xg_sll { # long
   git log \
     --abbrev-commit --stat --stat-graph-width=60 --graph --decorate --all \
     --pretty=tformat:$format
-}
+  }
 function _xg_sls {
   local pager_option=""
   [[ $1 == "--no-pager" ]] && pager_option="--no-pager"
@@ -688,7 +688,7 @@ function _xg_sls {
   format+="%C(bold blue)%an%Creset %C(auto)%d%Creset"           # author, decor
   git $pager_option log \
     --abbrev-commit --graph --decorate --all --pretty=tformat:$format "${@:2}"
-}
+  }
 function xg_sls { # short
   local option=""
   if [[ $# -eq 0 ]]; then option="-20"; else eval "option=(${@})"; fi
@@ -764,7 +764,7 @@ function github_short_url_to_clipboard {
 }
 # dev git proxy
 alias extgit='git -c http.proxy=fwdproxy:8080 -c'`
-             `'core.gitproxy=$HOME/bin/git-proxy-wrapper'
+`'core.gitproxy=$HOME/bin/git-proxy-wrapper'
 
 ## ========================================================================== ##
 #             .______   .______      ___________    __    ____                 #
@@ -779,9 +779,9 @@ if [[ $(uname) == "Darwin" ]] && [[ -n "$(which brew 2>/dev/null)"  ]]; then
   if [[ -f  ~/Dropbox/Tools/secrets/homebrew_github_api_token ]]; then
     export HOMEBREW_GITHUB_API_TOKEN=$(cat \
       ~/Dropbox/Tools/secrets/homebrew_github_api_token)
-  else
-    redecho "cannot find file ~/Dropbox/Tools/secrets/homebrew_github_api_token"
-    redecho "fix dropbox missing problem"
+        else
+          redecho "cannot find file ~/Dropbox/Tools/secrets/homebrew_github_api_token"
+          redecho "fix dropbox missing problem"
   fi
 fi
 
@@ -799,7 +799,7 @@ export EDITOR="vim"
 function yapf {
   $(whence -p yapf) \
     --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $@
-}
+  }
 # alias killall="eden start; killall -u $USER"
 alias killall="loginctl terminate-user $USER"
 alias ka="\killall -u $USER" #  disables the alias in interactive shell
@@ -828,28 +828,28 @@ function kill_timan_tunnel_ipython {
   # quote the command substitution
   # stackoverflow.com/questions/31521221/zsh-local-keyword-not-an-identifier
   local pids="$(ps aux | \
-               grep 'ssh -N -f -L localhost:8889:localhost:8889 timan101' | \
-               awk '{print $2}')"
-  for i in ${=pids};
-  do
-    local comm=$(ps -p $i -o comm=)
-    if [[ $comm == ssh* ]]; then
-      redecho "kill PID:($i) "$comm
-      kill -9 $i
-    fi
-  done
-}
-function build_bento {
-  buck build ${1:-@mode/opt} //experimental/xlwang:bento_kernel_devbig470_local
-  yellowecho "start bento https://our.intern.facebook.com/intern/bunny/?bento " \
-             "and select bento_kernel_devbig470_local"
-}
-# # A function to launch ipython notebooks
-function ifbpynb {
+    grep 'ssh -N -f -L localhost:8889:localhost:8889 timan101' | \
+    awk '{print $2}')"
+      for i in ${=pids};
+      do
+        local comm=$(ps -p $i -o comm=)
+        if [[ $comm == ssh* ]]; then
+          redecho "kill PID:($i) "$comm
+          kill -9 $i
+        fi
+      done
+    }
+  function build_bento {
+    buck build ${1:-@mode/opt} //experimental/xlwang:bento_kernel_devbig470_local
+    yellowecho "start bento https://our.intern.facebook.com/intern/bunny/?bento " \
+      "and select bento_kernel_devbig470_local"
+    }
+  # # A function to launch ipython notebooks
+  function ifbpynb {
     pushd ~/python;
     /usr/local/bin/ifbpy notebook --profile=nbserver;
     popd;
-}
+  }
 # # ai_bb
 alias ai_bb="buck build -c fbcode.platform=gcc-4.9-glibc-2.20"
 function itorch {
@@ -901,8 +901,8 @@ function ifbpy_c2 {
   # We can't use buck run here because it will block all other attempts to build
   # with buck while ifbpy notebook is running.
   buck build @mode/opt -c fbcode.platform=gcc-4.9-glibc-2.20 \
-        -c python.package_style=inplace \
-        ${TARGET}:ifbpy${EXT}
+    -c python.package_style=inplace \
+    ${TARGET}:ifbpy${EXT}
 
   ./buck-out/gen/${TARGET}/ifbpy${EXT}.par
   popd
@@ -911,7 +911,7 @@ alias cat_flow_log='cat ~/fbcode/experimental/xlwang/ipy_flow_debug.log'
 function less_flow_log {
   pygmentize -O full,style=monokai -l ocaml \
     ~/fbcode/experimental/xlwang/ipy_flow_debug.log | less -R +G
-}
+  }
 
 
 ## ========================================================================== ##
@@ -1133,7 +1133,7 @@ alias bbbd="buck build --show-output @mode/devo-nosan"
 alias bua='buck_util add'
 alias bbr='buck run'
 alias bbro="buck run @mode/$opt"
-alias bbrd="buck build --show-output @mode/devo-nosan"
+alias bbrd="buck run --show-output @mode/devo-nosan"
 alias misc='cd ~/misc'
 alias fbc='cd ~/fbcode'
 alias fbc1='cd ~/fbcode'
@@ -1189,92 +1189,92 @@ function fbtmux {
   tmux send-keys -t 1.1 "tmux send-keys -t 1.2 ifb2pynb_c2 C-m" C-m
   tmux send-keys -t 1.1 \
     "tmux send-keys -t 1.1 -R; tmux clear-history -t 1.1" C-m
-  tmux send-keys -t 1.1 "happy_coding" C-m
-}
-function tmux_fbc {
-  tmux new-window -c $(readlink -f ~/fbcode) \
-    && tmux setw allow-rename off \
-    && tmux rename-window "fbc"
-}
-function tmux_fbc2 {
-  tmux new-window -c $(readlink -f ~/fbcode2) \
-    && tmux setw allow-rename off \
-    && tmux rename-window "fbc2"
-}
-function tmux_fbc3 {
-  tmux new-window -c $(readlink -f ~/fbcode3) \
-    && tmux setw allow-rename off \
-    && tmux rename-window "fbc3"
-}
-function tmux_ds {
-  tmux new-window -c $(readlink -f ~/fbcode/dataswarm-pipelines/tasks) \
-    && tmux setw allow-rename off \
-    && tmux rename-window "ds"
-}
-function tmux_cconf {
-  tmux new-window -c $(readlink -f ~/configerator) \
-    && tmux setw allow-rename off \
-    && tmux rename-window "cf"
-}
-function run_dper_integration_tests {
-  pushd ~/fbcode
-  cyanecho """
-  ~/fbcode/fblearner/flow/run_integration_tests
+      tmux send-keys -t 1.1 "happy_coding" C-m
+    }
+  function tmux_fbc {
+    tmux new-window -c $(readlink -f ~/fbcode) \
+      && tmux setw allow-rename off \
+      && tmux rename-window "fbc"
+    }
+  function tmux_fbc2 {
+    tmux new-window -c $(readlink -f ~/fbcode2) \
+      && tmux setw allow-rename off \
+      && tmux rename-window "fbc2"
+    }
+  function tmux_fbc3 {
+    tmux new-window -c $(readlink -f ~/fbcode3) \
+      && tmux setw allow-rename off \
+      && tmux rename-window "fbc3"
+    }
+  function tmux_ds {
+    tmux new-window -c $(readlink -f ~/fbcode/dataswarm-pipelines/tasks) \
+      && tmux setw allow-rename off \
+      && tmux rename-window "ds"
+    }
+  function tmux_cconf {
+    tmux new-window -c $(readlink -f ~/configerator) \
+      && tmux setw allow-rename off \
+      && tmux rename-window "cf"
+    }
+  function run_dper_integration_tests {
+    pushd ~/fbcode
+    cyanecho """
+    ~/fbcode/fblearner/flow/run_integration_tests
     --mode opt
     --timeout 7200
     --entitlement 'integration_tests'
     --owner fblearner_realtime
     --project-name aml.dper2
-  """
-  ~/fbcode/fblearner/flow/run_integration_tests \
-    --mode opt \
-    --timeout 7200 \
-    --entitlement 'integration_tests' \
-    --owner fblearner_realtime \
-    --project-name aml.dper2 $@
-  popd
-}
-function happy_coding {
-  local happy=$(cat ~/misc/scripts/happy_coding.txt | head -n 9)
-  local coding=$(cat ~/misc/scripts/happy_coding.txt | tail -n 10)
-  cyanecho $happy
-  yellowecho $coding
-}
-function buck_gen_cc {
-  buck build --show-output $1\#compilation-database
-}
-alias buck_util='~/misc/scripts/buck_utils.py'
-function flow_util {
-  local bin=~/fbcode/buck-out/gen/experimental/xlwang/flow_util.par
-  local pyf=~/fbcode/experimental/xlwang/flow_util.py
-  local src=~/misc/scripts/flow_util.py
-  cur_pwd=$(pwd)
-  if [[ ! -e "$bin" ]]; then
-    redecho "missing $bin! build!"
-    if [[ ! -e "$pyf" ]]; then
-      if [[ ! -e "$src" ]]; then
-        redecho "$src does not exist! abort!"
-        exit
+    """
+    ~/fbcode/fblearner/flow/run_integration_tests \
+      --mode opt \
+      --timeout 7200 \
+      --entitlement 'integration_tests' \
+      --owner fblearner_realtime \
+      --project-name aml.dper2 $@
+          popd
+        }
+      function happy_coding {
+        local happy=$(cat ~/misc/scripts/happy_coding.txt | head -n 9)
+        local coding=$(cat ~/misc/scripts/happy_coding.txt | tail -n 10)
+        cyanecho $happy
+        yellowecho $coding
+      }
+    function buck_gen_cc {
+      buck build --show-output $1\#compilation-database
+      }
+    alias buck_util='~/misc/scripts/buck_utils.py'
+    function flow_util {
+      local bin=~/fbcode/buck-out/gen/experimental/xlwang/flow_util.par
+      local pyf=~/fbcode/experimental/xlwang/flow_util.py
+      local src=~/misc/scripts/flow_util.py
+      cur_pwd=$(pwd)
+      if [[ ! -e "$bin" ]]; then
+        redecho "missing $bin! build!"
+        if [[ ! -e "$pyf" ]]; then
+          if [[ ! -e "$src" ]]; then
+            redecho "$src does not exist! abort!"
+            exit
+          fi
+          ln -s "$src" "$pyf"
+        fi
+        cd ~/fbcode
+        buck build //experimental/xlwang:flow_util
+        cd $cur_pwd
       fi
-      ln -s "$src" "$pyf"
+      "$bin" $@
+    }
+  function get_duf {
+    local f=$1
+    f=$(readlink -f ${f})
+    local u
+    if [[ ${f} == *fbcode* ]]; then
+      u="https://phabricator.intern.facebook.com/diffusion/FBS/browse/master/"
+      u+="fbcode/"
+      u+=$(echo ${f} | sed 's/.*fbcode\/\(.*\)/\1/')
     fi
-    cd ~/fbcode
-    buck build //experimental/xlwang:flow_util
-    cd $cur_pwd
-  fi
-  "$bin" $@
-}
-function get_duf {
-  local f=$1
-  f=$(readlink -f ${f})
-  local u
-  if [[ ${f} == *fbcode* ]]; then
-    u="https://phabricator.intern.facebook.com/diffusion/FBS/browse/master/"
-    u+="fbcode/"
-    u+=$(echo ${f} | sed 's/.*fbcode\/\(.*\)/\1/')
-  fi
-  echo $u
-}
+    echo $u
+  }
 function get_blamef {
   local f=$1
   f=$(readlink -f ${f})
@@ -1292,352 +1292,352 @@ function get_blamef {
 # zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--height 10% --reverse --border horizontal --multi --cycle \
---bind=ctrl-h:backward-char,ctrl-l:forward-char,ctrl-space:accept,\
-ctrl-d:backward-delete-char,ctrl-f:page-down,ctrl-b:page-up,ctrl-s:toggle \
---inline-info \
---color fg:252,bg:233,hl:81,fg+:252,bg+:235,hl+:118 \
---color info:144,prompt:161,spinner:135,pointer:196,marker:208"
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null \
-|| cat {} || tree -C {}) 2> /dev/null | head -200'"
-# export FZF_CTRL_R_OPTS="--preview 'echo {}' \
-  # --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
-function vfzf { vim $(fzf); }
-function ffzf {
-  IFS=$'\n' out=($(eval "$1" | \
-    fzf --query="$3" --expect=ctrl-o,ctrl-e,ctrl-v,ctrl-x --prompt="$2"))
-  local first_line=$(head -n 1 <<< "$out")
-  local files
-  local opt
-  local file
-  local key
-  if [[ "$first_line" == ctrl* ]]; then
-    files=$(tail -n +2 <<< "$out")
-    key="$first_line"
-  else
-    files="$out"
-    key=""
-  fi
-  if [ -z "$files" ]; then
-    return
-  fi
-  if [[ -z "$key" || "$key" == ctrl-x || "$key" == ctrl-v ]]; then
-    if [[ "$key" == ctrl-x ]]; then
-      opt="-o"
-    elif [[ "$key" == ctrl-v ]]; then
-      opt="-O"
-    else
-      opt=""
-    fi
-    local cmd="${EDITOR:-vim} $opt $(echo ${files} |  tr '\n' ' ')"
-    echo $cmd
-    eval ${cmd}
-  else
-    for file in ${(f)files}; do
-      if [[ "$key" = ctrl-o ]]; then
-        get_duf "$file"
-      elif [[ "$key" == ctrl-e ]]; then
-        get_blamef "$file"
-      fi
-    done
-  fi
-}
-_fbcode_path="experimental/xlwang,\
-sigrid,\
-fblearner,\
-caffe2,\
-search,\
-nlp_tools,\
-unicorn,\
-"
-_cconf_path="unicorn,search"
-function ccf {
-  local query="find $_cconf_path -type f"
-  local prompt="cconf> "
-  ffzf $query $prompt $1
-}
-function fb1 {
-  local query="find  ~/fbcode/{$_fbcode_path} -type f"
-  local prompt="fbcode> "
-  ffzf $query $prompt $1
-}
-function fb2 {
-  local query="find ~/fbcode2/{$_fbcode_path} -type f"
-  local prompt="fbcode2> "
-  ffzf $query $prompt $1
-}
-function fb3 {
-  local query="find ~/fbcode3/{$_fbcode_path} -type f"
-  local prompt="fbcode3> "
-  ffzf $query $prompt $1
-}
-function fb {
-  local cwd=$(readlink -f .)
-  local prompt="$(~/misc/scripts/fb_repo_version.sh)> "
-  local query="~/misc/scripts/find_in_fb.sh"
-  ffzf $query $prompt $1
-}
-function ff {
-  local query="find . -type f"
-  local prompt="files> "
-  ffzf $query $prompt $1
-}
-# function ff {
-#   IFS=$'\n' out=($(fzf --query="$1" \
-#     --expect=ctrl-o,ctrl-e,ctrl-v,ctrl-x --prompt="files> "))
-#   local first_line=$(head -n 1 <<< "$out")
-#   local files
-#   local opt
-#   local file
-#   local key
-#   if [[ "$first_line" == ctrl* ]]; then
-#     files=$(tail -n +2 <<< "$out")
-#     key="$first_line"
-#   else
-#     files="$out"
-#     key=""
-#   fi
-#   if [ -z "$files" ]; then
-#     return
-#   fi
-#   if [[ -z "$key" || "$key" == ctrl-x || "$key" == ctrl-v ]]; then
-#     if [[ "$key" == ctrl-x ]]; then
-#       opt="-o"
-#     elif [[ "$key" == ctrl-v ]]; then
-#       opt="-O"
-#     else
-#       opt=""
-#     fi
-#     local cmd="${EDITOR:-vim} $opt $(echo ${files} |  tr '\n' ' ')"
-#     echo $cmd
-#     eval ${cmd}
-#   else
-#     for file in ${(f)files}; do
-#       if [[ "$key" = ctrl-o ]]; then
-#         get_duf "$file"
-#       elif [[ "$key" == ctrl-e ]]; then
-#         get_blamef "$file"
-#       fi
-#     done
-#   fi
-# }
-alias gg > /dev/null 2>&1 && unalias gg
-function gg() {
-  local file
-  local line
-  read -r file line \
-    <<<"$(ag --nobreak --noheading ${1:=.} \
-          | fzf --nth=2 --prompt="ag> " \
-          | awk -F: '{print $1, $2}')"
+  --bind=ctrl-h:backward-char,ctrl-l:forward-char,ctrl-space:accept,\
+  ctrl-d:backward-delete-char,ctrl-f:page-down,ctrl-b:page-up,ctrl-s:toggle \
+  --inline-info \
+  --color fg:252,bg:233,hl:81,fg+:252,bg+:235,hl+:118 \
+  --color info:144,prompt:161,spinner:135,pointer:196,marker:208"
+  export FZF_DEFAULT_COMMAND='ag -g ""'
+  export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null \
+    || cat {} || tree -C {}) 2> /dev/null | head -200'"
+      # export FZF_CTRL_R_OPTS="--preview 'echo {}' \
+      # --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+      function vfzf { vim $(fzf); }
+      function ffzf {
+        IFS=$'\n' out=($(eval "$1" | \
+          fzf --query="$3" --expect=ctrl-o,ctrl-e,ctrl-v,ctrl-x --prompt="$2"))
+                  local first_line=$(head -n 1 <<< "$out")
+                  local files
+                  local opt
+                  local file
+                  local key
+                  if [[ "$first_line" == ctrl* ]]; then
+                    files=$(tail -n +2 <<< "$out")
+                    key="$first_line"
+                  else
+                    files="$out"
+                    key=""
+                  fi
+                  if [ -z "$files" ]; then
+                    return
+                  fi
+                  if [[ -z "$key" || "$key" == ctrl-x || "$key" == ctrl-v ]]; then
+                    if [[ "$key" == ctrl-x ]]; then
+                      opt="-o"
+                    elif [[ "$key" == ctrl-v ]]; then
+                      opt="-O"
+                    else
+                      opt=""
+                    fi
+                    local cmd="${EDITOR:-vim} $opt $(echo ${files} |  tr '\n' ' ')"
+                    echo $cmd
+                    eval ${cmd}
+                  else
+                    for file in ${(f)files}; do
+                      if [[ "$key" = ctrl-o ]]; then
+                        get_duf "$file"
+                      elif [[ "$key" == ctrl-e ]]; then
+                        get_blamef "$file"
+                      fi
+                    done
+                  fi
+                }
+              _fbcode_path="experimental/xlwang,\
+                sigrid,\
+                fblearner,\
+                caffe2,\
+                search,\
+                nlp_tools,\
+                unicorn,\
+                "
+                              _cconf_path="unicorn,search"
+                              function ccf {
+                                local query="find $_cconf_path -type f"
+                                local prompt="cconf> "
+                                ffzf $query $prompt $1
+                              }
+                            function fb1 {
+                              local query="find  ~/fbcode/{$_fbcode_path} -type f"
+                              local prompt="fbcode> "
+                              ffzf $query $prompt $1
+                            }
+                          function fb2 {
+                            local query="find ~/fbcode2/{$_fbcode_path} -type f"
+                            local prompt="fbcode2> "
+                            ffzf $query $prompt $1
+                          }
+                        function fb3 {
+                          local query="find ~/fbcode3/{$_fbcode_path} -type f"
+                          local prompt="fbcode3> "
+                          ffzf $query $prompt $1
+                        }
+                      function fb {
+                        local cwd=$(readlink -f .)
+                        local prompt="$(~/misc/scripts/fb_repo_version.sh)> "
+                        local query="~/misc/scripts/find_in_fb.sh"
+                        ffzf $query $prompt $1
+                      }
+                    function ff {
+                      local query="find . -type f"
+                      local prompt="files> "
+                      ffzf $query $prompt $1
+                    }
+                  # function ff {
+                  #   IFS=$'\n' out=($(fzf --query="$1" \
+                  #     --expect=ctrl-o,ctrl-e,ctrl-v,ctrl-x --prompt="files> "))
+                  #   local first_line=$(head -n 1 <<< "$out")
+                  #   local files
+                  #   local opt
+                  #   local file
+                  #   local key
+                  #   if [[ "$first_line" == ctrl* ]]; then
+                  #     files=$(tail -n +2 <<< "$out")
+                  #     key="$first_line"
+                  #   else
+                  #     files="$out"
+                  #     key=""
+                  #   fi
+                  #   if [ -z "$files" ]; then
+                  #     return
+                  #   fi
+                  #   if [[ -z "$key" || "$key" == ctrl-x || "$key" == ctrl-v ]]; then
+                  #     if [[ "$key" == ctrl-x ]]; then
+                  #       opt="-o"
+                  #     elif [[ "$key" == ctrl-v ]]; then
+                  #       opt="-O"
+                  #     else
+                  #       opt=""
+                  #     fi
+                  #     local cmd="${EDITOR:-vim} $opt $(echo ${files} |  tr '\n' ' ')"
+                  #     echo $cmd
+                  #     eval ${cmd}
+                  #   else
+                  #     for file in ${(f)files}; do
+                  #       if [[ "$key" = ctrl-o ]]; then
+                  #         get_duf "$file"
+                  #       elif [[ "$key" == ctrl-e ]]; then
+                  #         get_blamef "$file"
+                  #       fi
+                  #     done
+                  #   fi
+                  # }
+                  alias gg > /dev/null 2>&1 && unalias gg
+                  function gg() {
+                    local file
+                    local line
+                    read -r file line \
+                      <<<"$(ag --nobreak --noheading ${1:=.} \
+                      | fzf --nth=2 --prompt="ag> " \
+                      | awk -F: '{print $1, $2}')"
 
-  if [[ -n $file ]]
-  then
-     vim $file +$line
-  fi
-}
-# dd - search directory including hidden directories
-function dd() {
-  local dir
-  local input
-   [[ $# -gt 0 && -d $1 ]] && \
-     { [[ $1 == */ ]] && { input=$1 } || { input=$1/ } } || \
-     { input=. }
-  dir=$(find ${input} -type d 2> /dev/null | fzf --query="$*" +m --prompt="dir> ") \
-    && cd "$dir"
-}
-# ddd - search directory including hidden directories
-function ddd() {
-  local cwd=$(readlink -f .)
-  local repo="fbcode"
-  local dir
-  if [[ $cwd == *"fbsource2"* ]]; then
-    repo="fbcode2"
-  elif [[ $cwd == *"fbsource4"* ]]; then
-    repo="fbcode3"
-  fi
-  local query="find ~/$repo/{$_fbcode_path} -type d 2> /dev/null"
-  dir=$(eval $query | fzf --query="$*" +m --prompt="fbdir> ") \
-    && cd "$dir"
-}
-# v - open files in ~/.viminfo
-# consider migrating to ~/.cache/ctrlp/mru/cache.txt
-function v() {
-  local lines
-  lines=$(cat ~/.cache/ctrlp/mru/cache.txt)
-  # lines=$(grep '^>' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
-  # lines+=$(grep '^:sp' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
-  lines=$(echo $lines |
-    while read line; do
-      local f="${line/\~/$HOME}"
-      if [[ -f "$f" ]]; then
-        f=${f/\/data\/users\/xlwang\/fbsource\/fbcode/\~\/fbcode}
-        f=${f/\/data\/users\/xlwang\/www-hg/\~\/www}
-        f=${f/\/data\/users\/xlwang\/www/\~\/www}
-        f=${f/\/data\/users\/xlwang\/configerator/\~\/configerator}
-        f=${f/\/data\/users\/xlwang/\~}
-        f=${f/\/home\/xlwang/\~}
-        echo "$f"
-      fi
-    done |
-    awk '!seen[$0]++'
-  )
-  local files=$(echo $lines | uniq | fzf --query="$*" --prompt="vim-hist> " -m -1)
-  files=${files//\~/$HOME}
-  if [[ -n $files ]]; then
-    greenecho "$files"
-    vim "${(f)files}" +'vert all'
-  fi
-}
-# z - open directories
-unalias z 2> /dev/null
-function z() {
-  [ $# -gt 0 ] && _z "$*" && return
-  cd "$(_z -l 2>&1 | fzf --nth=2 --prompt="dir-hist> " +s +m --tac --query "$*" \
-    | sed 's/^[0-9,.]* *//')"
-}
-function h() {
-  local tmp="${HOME}/misc/tmp/hg.revs"
-  local rev="$(hg smartlog -T '#{xg_sl_one_line_no_link}\n' 2>/dev/null --color=always \
-    | sed -n '/.*#/p' | sed 's/^[^#]*#//g'  \
-    | fzf --query="$*" --prompt='hg> ' --ansi | cut -d ' ' -f 1)"
-  [[ -z $rev ]] && return 1
-  local cmd="hg update $rev"
-  hg log -T '{xg_sl}' --rev $rev
-  cyanecho ${cmd}
-  eval ${cmd}
-}
-# Kerberos
-function krefresh() {
-  kdestroy
-  kinit
-  klist
-}
-function everpaste_url_gen() {
-  ${HOME}/misc/scripts/everpaste_url_gen.sh $*
-}
-function parse_everpaste_handle() {
-  less $* | grep "everpaste" | grep -Eo '(http|https)://\S+' \
-    | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
-}
-function parse_everpaste_url_from_file() {
-  for x in $(parse_everpaste_handle $*); do; everpaste_url_gen $x ; done
-}
-function parse_flow_net_everpaste_handle() {
-  less $* | grep "everpaste" | grep "net" | grep -Eo '(http|https)://\S+' \
-    | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
-}
-function parse_flow_net_everpaste_url_from_file() {
-  for x in $(parse_flow_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
-}
-function parse_flow_train_net_everpaste_handle() {
-  less $* | grep "everpaste" | grep "net" | grep "train" \
-    | grep -Eo '(http|https)://\S+' | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
-}
-function parse_flow_train_net_everpaste_url_from_file() {
-  for x in $(parse_flow_train_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
-}
-function _maybe_buck_run_exp() {
-  local target=$1
-  local par_path="$BUCKOUT/experimental/xlwang/$target.par"
-  local target_path="//experimental/xlwang:$target"
-  if [[ $2 == "force_build_buck" ]]; then
-    pushd ${HOME}/fbcode > /dev/null
-    bbr @mode/opt $target_path -- "${@:3}"
-    popd > /dev/null
-  elif [[ -e ${par_path} ]]; then
-    ${par_path} "${@:2}"
-  else
-    pushd ${HOME}/fbcode > /dev/null
-    bbr @mode/opt $target_path  -- "${@:2}"
-    popd > /dev/null
-  fi
-}
-function list_my_tables() {
-  _maybe_buck_run_exp metastore_util list_table
-}
+                    if [[ -n $file ]]
+                    then
+                      vim $file +$line
+                    fi
+                  }
+                # dd - search directory including hidden directories
+                function dd() {
+                  local dir
+                  local input
+                  [[ $# -gt 0 && -d $1 ]] && \
+                    { [[ $1 == */ ]] && { input=$1 } || { input=$1/ } } || \
+                      { input=. }
+                      dir=$(find ${input} -type d 2> /dev/null | fzf --query="$*" +m --prompt="dir> ") \
+                        && cd "$dir"
+                      }
+                    # ddd - search directory including hidden directories
+                    function ddd() {
+                      local cwd=$(readlink -f .)
+                      local repo="fbcode"
+                      local dir
+                      if [[ $cwd == *"fbsource2"* ]]; then
+                        repo="fbcode2"
+                      elif [[ $cwd == *"fbsource4"* ]]; then
+                        repo="fbcode3"
+                      fi
+                      local query="find ~/$repo/{$_fbcode_path} -type d 2> /dev/null"
+                      dir=$(eval $query | fzf --query="$*" +m --prompt="fbdir> ") \
+                        && cd "$dir"
+                      }
+                    # v - open files in ~/.viminfo
+                    # consider migrating to ~/.cache/ctrlp/mru/cache.txt
+                    function v() {
+                      local lines
+                      lines=$(cat ~/.cache/ctrlp/mru/cache.txt)
+                      # lines=$(grep '^>' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
+                      # lines+=$(grep '^:sp' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
+                      lines=$(echo $lines |
+                        while read line; do
+                          local f="${line/\~/$HOME}"
+                          if [[ -f "$f" ]]; then
+                            f=${f/\/data\/users\/xlwang\/fbsource\/fbcode/\~\/fbcode}
+                            f=${f/\/data\/users\/xlwang\/www-hg/\~\/www}
+                            f=${f/\/data\/users\/xlwang\/www/\~\/www}
+                            f=${f/\/data\/users\/xlwang\/configerator/\~\/configerator}
+                            f=${f/\/data\/users\/xlwang/\~}
+                            f=${f/\/home\/xlwang/\~}
+                            echo "$f"
+                          fi
+                        done |
+                          awk '!seen[$0]++'
+                        )
+                        local files=$(echo $lines | uniq | fzf --query="$*" --prompt="vim-hist> " -m -1)
+                        files=${files//\~/$HOME}
+                        if [[ -n $files ]]; then
+                          greenecho "$files"
+                          vim "${(f)files}" +'vert all'
+                        fi
+                      }
+                    # z - open directories
+                    unalias z 2> /dev/null
+                    function z() {
+                      [ $# -gt 0 ] && _z "$*" && return
+                      cd "$(_z -l 2>&1 | fzf --nth=2 --prompt="dir-hist> " +s +m --tac --query "$*" \
+                        | sed 's/^[0-9,.]* *//')"
+                      }
+                    function h() {
+                      local tmp="${HOME}/misc/tmp/hg.revs"
+                      local rev="$(hg smartlog -T '#{xg_sl_one_line_no_link}\n' 2>/dev/null --color=always \
+                        | sed -n '/.*#/p' | sed 's/^[^#]*#//g'  \
+                        | fzf --query="$*" --prompt='hg> ' --ansi | cut -d ' ' -f 1)"
+                                              [[ -z $rev ]] && return 1
+                                              local cmd="hg update $rev"
+                                              hg log -T '{xg_sl}' --rev $rev
+                                              cyanecho ${cmd}
+                                              eval ${cmd}
+                                            }
+                                          # Kerberos
+                                          function krefresh() {
+                                            kdestroy
+                                            kinit
+                                            klist
+                                          }
+                                        function everpaste_url_gen() {
+                                          ${HOME}/misc/scripts/everpaste_url_gen.sh $*
+                                        }
+                                      function parse_everpaste_handle() {
+                                        less $* | grep "everpaste" | grep -Eo '(http|https)://\S+' \
+                                          | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
+                                        }
+                                      function parse_everpaste_url_from_file() {
+                                        for x in $(parse_everpaste_handle $*); do; everpaste_url_gen $x ; done
+                                      }
+                                    function parse_flow_net_everpaste_handle() {
+                                      less $* | grep "everpaste" | grep "net" | grep -Eo '(http|https)://\S+' \
+                                        | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
+                                      }
+                                    function parse_flow_net_everpaste_url_from_file() {
+                                      for x in $(parse_flow_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
+                                    }
+                                  function parse_flow_train_net_everpaste_handle() {
+                                    less $* | grep "everpaste" | grep "net" | grep "train" \
+                                      | grep -Eo '(http|https)://\S+' | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
+                                    }
+                                  function parse_flow_train_net_everpaste_url_from_file() {
+                                    for x in $(parse_flow_train_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
+                                  }
+                                function _maybe_buck_run_exp() {
+                                  local target=$1
+                                  local par_path="$BUCKOUT/experimental/xlwang/$target.par"
+                                  local target_path="//experimental/xlwang:$target"
+                                  if [[ $2 == "force_build_buck" ]]; then
+                                    pushd ${HOME}/fbcode > /dev/null
+                                    bbr @mode/opt $target_path -- "${@:3}"
+                                    popd > /dev/null
+                                  elif [[ -e ${par_path} ]]; then
+                                    ${par_path} "${@:2}"
+                                  else
+                                    pushd ${HOME}/fbcode > /dev/null
+                                    bbr @mode/opt $target_path  -- "${@:2}"
+                                    popd > /dev/null
+                                  fi
+                                }
+                              function list_my_tables() {
+                                _maybe_buck_run_exp metastore_util list_table
+                              }
 
-function get_FB_UID() {
-  local fbid
-  if [[ -e  $BUCKOUT/experimental/xlwang/fbid.par ]]; then
-    fbid=$($BUCKOUT/experimental/xlwang/fbid.par $* RNE)
-  else
-    pushd  ${HOME}/fbcode RNUL
-    fbid=$(bbr //experimental/xlwang:fbid -- $* RNE)
-    popd RNUL
-  fi
-  echo $fbid
-}
-function get_metastore_tables() {
-  local tables
-  if [[ -e $BUCKOUT/experimental/xlwang/metastore_util.par ]]; then
-    fbid=$($BUCKOUT/experimental/xlwang/metastore_util.par $* RNE)
-  else
-    pushd  ${HOME}/fbcode
-    fbid=$(bbr //experimental/xlwang:metastore_util -- $* RNE)
-    popd
-  fi
-  echo $fbid
-}
-function export_env_variables() {
-  var=$1
-  if [[ -n $(printenv $var) ]]; then
-    return 0
-  fi
-  cmd=$(tmux showenv -s $var 2>/dev/null)
-  if [[ $? -ne 0  || $cmd == unset* ]]; then
-    cmd="get_$var"
-    val=$($cmd)
-    tmux setenv $var "$val"
-  fi
-  eval $(tmux showenv -s $var)
-  return 0
-}
-if [[ $(uname) == "Linux" ]]; then
-  (export_env_variables "FB_UID" &)
-fi
-function presto() {
-  local presto=/usr/local/bin/presto
-  local namespace=search
-  if [[ $# -eq 0 ]]; then
-    $presto $namespace
-  else
-    $presto $namespace --execute $*
-  fi
-}
-alias spark='spark-sql --namespace search'
-function presto_sample() {
-  local limit=${2:=10}
-  presto "select * from $1 limit $limit"
-}
-function presto_drop() {
-  presto "drop table $*;"
-}
-alias today="date +%F"
-alias yesterday="date --date='yesterday' +%F"
-function date_eval() {
-  date --date="$*" +%F
-}
+                            function get_FB_UID() {
+                              local fbid
+                              if [[ -e  $BUCKOUT/experimental/xlwang/fbid.par ]]; then
+                                fbid=$($BUCKOUT/experimental/xlwang/fbid.par $* RNE)
+                              else
+                                pushd  ${HOME}/fbcode RNUL
+                                fbid=$(bbr //experimental/xlwang:fbid -- $* RNE)
+                                popd RNUL
+                              fi
+                              echo $fbid
+                            }
+                          function get_metastore_tables() {
+                            local tables
+                            if [[ -e $BUCKOUT/experimental/xlwang/metastore_util.par ]]; then
+                              fbid=$($BUCKOUT/experimental/xlwang/metastore_util.par $* RNE)
+                            else
+                              pushd  ${HOME}/fbcode
+                              fbid=$(bbr //experimental/xlwang:metastore_util -- $* RNE)
+                              popd
+                            fi
+                            echo $fbid
+                          }
+                        function export_env_variables() {
+                          var=$1
+                          if [[ -n $(printenv $var) ]]; then
+                            return 0
+                          fi
+                          cmd=$(tmux showenv -s $var 2>/dev/null)
+                          if [[ $? -ne 0  || $cmd == unset* ]]; then
+                            cmd="get_$var"
+                            val=$($cmd)
+                            tmux setenv $var "$val"
+                          fi
+                          eval $(tmux showenv -s $var)
+                          return 0
+                        }
+                      if [[ $(uname) == "Linux" ]]; then
+                        (export_env_variables "FB_UID" &)
+                      fi
+                      function presto() {
+                        local presto=/usr/local/bin/presto
+                        local namespace=search
+                        if [[ $# -eq 0 ]]; then
+                          $presto $namespace
+                        else
+                          $presto $namespace --execute $*
+                        fi
+                      }
+                    alias spark='spark-sql --namespace search'
+                    function presto_sample() {
+                      local limit=${2:=10}
+                      presto "select * from $1 limit $limit"
+                    }
+                  function presto_drop() {
+                    presto "drop table $*;"
+                  }
+                alias today="date +%F"
+                alias yesterday="date --date='yesterday' +%F"
+                function date_eval() {
+                  date --date="$*" +%F
+                }
 
-super_shell_find() {
-  local cmd=$1
-  redecho "type $cmd"
-  type $cmd
-  redecho "declare -f $cmd"
-  declare -f $cmd
-  redecho "alias $cmd"
-  alias $cmd
-  redecho "whereis $cmd"
-  whereis $cmd
-  #command $cmd
-}
-function cp_to_public() {
-  local fp=$1
-  local f=$(basename $fp)
-  cp $fp ~/public/
-  yellowecho "url: https://home.fburl.com/~xlwang/$f"
-}
-alias ccat="pygmentize"
-alias jscat="pygmentize -l json"
+              super_shell_find() {
+                local cmd=$1
+                redecho "type $cmd"
+                type $cmd
+                redecho "declare -f $cmd"
+                declare -f $cmd
+                redecho "alias $cmd"
+                alias $cmd
+                redecho "whereis $cmd"
+                whereis $cmd
+                #command $cmd
+              }
+            function cp_to_public() {
+              local fp=$1
+              local f=$(basename $fp)
+              cp $fp ~/public/
+              yellowecho "url: https://home.fburl.com/~xlwang/$f"
+            }
+          alias ccat="pygmentize"
+          alias jscat="pygmentize -l json"
 
 
 ## ========================================================================== ##
