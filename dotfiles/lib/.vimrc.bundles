@@ -230,6 +230,7 @@ let g:formatdef_yapf =
   \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:80}\" -l '.a:firstline.'-'.a:lastline"
 let g:formatdef_black = "'isort - | black -q - '"
 let g:formatdef_buck="'~/fbsource/tools/third-party/buildifier/run_buildifier.py'"
+let g:formatdef_thrift="'~/misc/scripts/./thrift_formatter.sh'"
 let g:formatters_python=['black', 'yapf','autopep8']
 let g:formatters_cconf=['black', 'yapf','autopep8']
 let g:formatters_mcconf=['black', 'yapf','autopep8']
@@ -238,6 +239,7 @@ let g:formatters_yapf=['yapf', 'autopep8']
 let g:formatdef_hackfmt="'hackfmt'"
 let g:formatters_php =['hackfmt']
 let g:formatters_TARGETS=['buck']
+let g:formatters_thrift=['thrift']
 nnoremap <leader>w :Autoformat \| :w!<CR>
 vnoremap <leader>w :Autoformat \| :w!<CR>
 noremap <leader>W

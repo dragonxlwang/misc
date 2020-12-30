@@ -169,8 +169,8 @@ augroup END
 " ==========================- Facebook -=======================================
 if !empty(glob('~/fbcode/shellconfigs/rc/vim'))
   source ~/fbcode/shellconfigs/rc/vim/biggrep.vim
-  set rtp+=~/fbcode/shellconfigs/vim/
-  set rtp+=~/fbcode/shellconfigs/vim/after
+  set rtp+=~/fbcode/shellconfigs/rc/vim/
+  set rtp+=~/fbcode/shellconfigs/rc/vim/after
 endif
 
 if g:osName == 'Linux'
