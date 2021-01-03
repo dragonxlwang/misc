@@ -157,13 +157,14 @@ augroup VimAutoGroup
   autocmd!
   autocmd FileType vim setlocal fo+=t
 augroup END
-augroup ConfigeratorGroup
+augroup FbFormatAutoGroup
   autocmd!
   autocmd BufNewFile,BufRead *.cinc set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *.cconf set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *.mcconf set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *.thrift-cvalidator set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *TARGETS set filetype=TARGETS | set syntax=python
+  autocmd FileType TARGETS setlocal commentstring=#\ %s
 augroup END
 
 " ==========================- Facebook -=======================================
