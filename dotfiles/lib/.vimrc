@@ -114,6 +114,10 @@ augroup SwitchLineNumberAutoGroup
   "InsertEnter
   autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
 augroup END
+augroup ShowFilePathWhenSwitchingWindow
+  autocmd!
+  autocmd WinEnter * :echohl ErrorMsg | echo expand('%:p') | echohl None
+augroup END
 " set rnu
 " augroup SwitchLineNumberAutoGroup
 "   autocmd!
@@ -427,9 +431,9 @@ command! Tp echo expand('%:t')
 command! Fpp put expand('%:p')
 command! Fpy :let @" = expand('%:p')
 command! Tpy :let @" = expand('%:t')
-command! T exec "e " . expand('%:p:h') . '/TARGETS'
-command! TS exec "sp " . expand('%:p:h') . '/TARGETS'
-command! TV exec "vsp " . expand('%:p:h') . '/TARGETS'
+command! T exec "e " . FindFbcodeTargets()
+command! TS exec "sp " . FindFbcodeTargets()
+command! TV exec "vsp " . FindFbcodeTargets()
 nnoremap <ESC>n :call NumberToggle()<cr>
 cnoreabbrev <expr> vsf
       \ (getcmdtype() == ':' && getcmdline() =~ '^vsf$')? 'vert sf' : 'vsf'
@@ -777,3 +781,19 @@ if exists("*BigGrep")
   command! ZBGW call MakeRoomForLowestPane() | call BigGrep("z", "s", expand("<cword>"))
   command! TBGW call MakeRoomForLowestPane() | call BigGrep("t", "s", expand("<cword>"))
 endif
+
+function! FindFbcodeTargets()
+  let l:path = expand('%:p:h')
+  let l:new_targets = l:path . '/TARGETS'
+  while stridx(l:path, 'fbcode/')  != -1
+    let l:targets = l:path . '/TARGETS'
+    if filereadable(l:targets)
+      return l:targets
+    endif
+    let slashidx = strridx(l:path, '/')
+    let l:path = l:path[0:slashidx-1]
+  endwhile
+  echohl ErrorMsg | echo "No TARGETS found, create a new TARGETS" | echohl None
+  return l:new_targets
+endfunction
+
