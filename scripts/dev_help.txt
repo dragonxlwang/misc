@@ -81,3 +81,7 @@ connections without you needing to take any action.
 sudo feature install ttls_fwdproxy
 # wait for chef to complete...
 systemctl --user start ttls_fwdproxy_loader.service
+
+Buck Test Recursive:
+===================
+buck test //dir/...
