@@ -114,10 +114,13 @@ augroup SwitchLineNumberAutoGroup
   "InsertEnter
   autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
 augroup END
-augroup ShowFilePathWhenSwitchingWindow
-  autocmd!
-  autocmd WinEnter * :echohl ErrorMsg | echo expand('%:p') | echohl None
-augroup END
+
+" augroup ShowFilePathWhenSwitchingWindow
+"   autocmd!
+"   autocmd WinEnter * if !exists('g:no_fp_winent') |
+"         \ echohl ErrorMsg | echo expand('%:p') | echohl None | endif
+" augroup END
+
 " set rnu
 " augroup SwitchLineNumberAutoGroup
 "   autocmd!
