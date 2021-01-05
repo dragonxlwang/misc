@@ -1141,6 +1141,7 @@ alias fbc='cd ~/fbcode'
 alias fbc1='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
+alias scripts="cd ~/fbcode/scripts/xlwang"
 alias cconf='cd ~/configerator'
 alias buckout='cd ~/fbcode/buck-out/gen'
 alias www='cd ~/www'

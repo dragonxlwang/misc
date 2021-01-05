@@ -299,10 +299,13 @@ noremap <leader>sk :sp \| bnext <cr>
 noremap <leader>sj :sp \| bprev <cr>
 noremap <leader>vk :vs \| bnext <cr>
 noremap <leader>vj :vs \| bprev <cr>
-nmap <silent> <C-K> :wincmd k<CR>
-nmap <silent> <C-J> :wincmd j<CR>
-nmap <silent> <C-H> :wincmd h<CR>
-nmap <silent> <C-L> :wincmd l<CR>
+" print file path
+command! Fp  echohl Directory | echo expand('%:p') | echohl None
+command! Tp  echohl Directory | echo expand('%:p') | echohl None
+nmap <silent> <C-K> :wincmd k \| :Fp <cr>
+nmap <silent> <C-J> :wincmd j \| :Fp <cr>
+nmap <silent> <C-H> :wincmd h \| :Fp <cr>
+nmap <silent> <C-L> :wincmd l \| :Fp <cr>
 
 " Cycle between tabs
 " noremap <C-w><C-k> :tabn<cr>
@@ -338,10 +341,10 @@ noremap <silent> <C-m> :NERDTreeClose \| :100 wincmd h \|
       \ execute "vert res" . &columns / 3 \|
       \ wincmd l \| execute "vert res" . &columns / 3 \| wincmd h<cr>
 
-noremap <silent> <C-w><C-j> :100 wincmd j<cr>
-noremap <silent> <C-w><C-h> :100 wincmd h<cr>
-noremap <silent> <C-w><C-k> :100 wincmd k<cr>
-noremap <silent> <C-w><C-l> :100 wincmd l<cr>
+noremap <silent> <C-w><C-j> :100 wincmd j \| :Fp<cr>
+noremap <silent> <C-w><C-h> :100 wincmd h \| :Fp<cr>
+noremap <silent> <C-w><C-k> :100 wincmd k \| :Fp<cr>
+noremap <silent> <C-w><C-l> :100 wincmd l \| :Fp<cr>
 noremap <silent> <C-w>H :NERDTreeClose \| :wincmd H<cr>
 " go to files
 noremap <C-w>v :vertical wincmd f<CR>
@@ -429,8 +432,6 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ else \| set foldmethod=manual \| endif \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
-command! Fp echo expand('%:p')
-command! Tp echo expand('%:t')
 command! Fpp put expand('%:p')
 command! Fpy :let @" = expand('%:p')
 command! Tpy :let @" = expand('%:t')
