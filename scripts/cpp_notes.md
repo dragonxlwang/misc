@@ -15,6 +15,25 @@ stuck with this rule.
 
 [static data members](https://en.cppreference.com/w/cpp/language/static#Static_data_members)
 
+Static data members are not associated with any object. They exist even if no objects of
+the class have been defined. There is only one instance of the static data member in the
+entire program with static storage duration, unless the keyword thread_local is used, in
+which case there is one such object per thread with thread storage duration (since
+C++11).
+
+Static data members cannot be mutable.
+
+Static data members of a class in namespace scope have external linkage if the class
+itself has external linkage (i.e. is not a member of unnamed namespace). Local classes
+(classes defined inside functions) and unnamed classes, including member classes of
+unnamed classes, cannot have static data members.
+
+A static data member may be declared inline. An inline static data member can be defined
+in the class definition and may specify an initializer. It does not need an out-of-class
+definition:
+
+[constant static members](https://en.cppreference.com/w/cpp/language/static#Constant_static_members)
+
 C++17, A static data member may be declared inline. An inline static data member can be
 defined in the class definition and may specify an initializer. It does not need an
 out-of-class definition:
@@ -144,6 +163,12 @@ However if you add an explicit instantiation to the second case as follows you w
 2 as the results:
 
 template<> bool A<int>::d = [](){regist<A<int>>(); return true;}();
+
+## thrift annotation for customize equal or hash
+
+graphene/ticket/if/TARGETS
+cpp2_srcs
+cpp2.declare_hash = 1, cpp2.declare_equal_to = 1
 
 ---
 
