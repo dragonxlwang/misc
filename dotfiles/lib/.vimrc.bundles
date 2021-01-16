@@ -33,7 +33,8 @@ Plugin 'vim-scripts/a.vim'
 
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
+" Plugin 'tpope/vim-commentary'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular' " cuke tables: https://gist.github.com/tpope/287147

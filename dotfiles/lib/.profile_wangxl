@@ -1149,6 +1149,7 @@ alias dsi='cd ~/configerator-dsi'
 alias ds='cd ~/fbcode/dataswarm-pipelines/tasks'
 alias dsb='cd ~/fbcode/dataswarm-pipelines'
 alias nbf='cd ~/fbcode/dataswarm-pipelines; ./nbackfill3 --remote'
+alias vimcpp='vim ~/misc/scripts/cpp_notes.md'
 function nbfq {
   cd ~/fbcode/dataswarm-pipelines;
   ./nbackfill3 --yes-i-know-what-im-doing --remote "$@"
@@ -1163,6 +1164,7 @@ alias abac="arc build && arc canary --ttl 86400"
 alias acls="arc canary --list"
 alias acch="arc canary --cancel-host $(hostname)"
 alias al="arc lint"
+alias alc="arc lint -e extra --take CLANGTIDY"
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
 alias fbsf='/usr/local/bin/sf'
 function tmp {

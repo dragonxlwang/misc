@@ -85,3 +85,8 @@ systemctl --user start ttls_fwdproxy_loader.service
 Buck Test Recursive:
 ===================
 buck test //dir/...
+
+ClangTidy Arc Linter
+====================
+arc lint -e extra --take CLANGTIDY a.cpp b.cpp
+
