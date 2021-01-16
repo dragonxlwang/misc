@@ -1,6 +1,4 @@
-- non-const static data member must be initialized out of line
-
-https://stackoverflow.com/questions/18749071/why-does-a-static-data-member-need-to-be-defined-outside-of-the-class/18749251#18749251
+## [non-const static data member must be initialized out of line](https://stackoverflow.com/questions/18749071/why-does-a-static-data-member-need-to-be-defined-outside-of-the-class/18749251#18749251)
 
 It's a rule of the language, known as the One Definition Rule. Within a program, each
 static object (if it's used) must be defined once, and only once.
@@ -15,15 +13,13 @@ In principle, the language could do what it does with inline functions, allowing
 multiple definitions to be consolidated into a single one. But it doesn't, so we're
 stuck with this rule.
 
-https://en.cppreference.com/w/cpp/language/static#Static_data_members
+[static data members](https://en.cppreference.com/w/cpp/language/static#Static_data_members)
 
 C++17, A static data member may be declared inline. An inline static data member can be
 defined in the class definition and may specify an initializer. It does not need an
 out-of-class definition:
 
-- Why are only static const integral types & enums allowed In-class Initialization?
-
-https://stackoverflow.com/questions/9656941/why-cant-i-initialize-non-const-static-member-or-static-array-in-class
+## [Why are only static const integral types & enums allowed In-class Initialization?](https://stackoverflow.com/questions/9656941/why-cant-i-initialize-non-const-static-member-or-static-array-in-class)
 
 The answer is hidden in Bjarne's quote read it closely, "C++ requires that every object
 has a unique definition. That rule would be broken if C++ allowed in-class definition of
@@ -45,8 +41,7 @@ expected.see citation above
 
 functions/methods defined within a class are implicitly inline
 
-- static member variable in class template
-  https://stackoverflow.com/questions/19366615/static-member-variable-in-class-template
+## [static member variable in class template](https://stackoverflow.com/questions/19366615/static-member-variable-in-class-template)
 
 For template class' static variable:
 
@@ -110,10 +105,7 @@ template< typename T >
 float has_static<T>::pud = 1.5f; // initializer is optional
 ```
 
-- Is static member variable initialized in a template class if the static menber is not
-  used?
-
-https://stackoverflow.com/questions/19341360/is-static-member-variable-initialized-in-a-template-class-if-the-static-menber-i/19341402#19341402
+## [Is static member variable initialized in a template class if the static menber is not used?](https://stackoverflow.com/questions/19341360/is-static-member-variable-initialized-in-a-template-class-if-the-static-menber-i/19341402#19341402)
 
 no
 
@@ -153,7 +145,6 @@ However if you add an explicit instantiation to the second case as follows you w
 
 template<> bool A<int>::d = [](){regist<A<int>>(); return true;}();
 
+---
 
-=======================================================================================
-https://www.onlinegdb.com/online_c++_compiler
-
+[CPP online compiler](https://www.onlinegdb.com/online_c++_compiler)
