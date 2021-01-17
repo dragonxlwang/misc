@@ -38,6 +38,23 @@ C++17, A static data member may be declared inline. An inline static data member
 defined in the class definition and may specify an initializer. It does not need an
 out-of-class definition:
 
+If a static data member of integral or enumeration type is declared const (and not
+volatile), it can be initialized with an initializer in which every expression is a
+constant expression, right inside the class definition:
+
+If a static data member of LiteralType is declared constexpr, it must be initialized
+with an initializer in which every expression is a constant expression, right inside the
+class definition;
+
+If a const non-inline (since C++17) static data member or a constexpr
+static data member (since C++11)(until C++17) is odr-used, a definition at namespace
+scope is still required, but it cannot have an initializer. A definition may be provided
+even though redundant (since C++17).
+
+If a static data member is declared constexpr, it is implicitly inline and does not need
+to be redeclared at namespace scope. This redeclaration without an initializer (formerly
+required as shown above) is still permitted, but is deprecated.
+
 ## [Why are only static const integral types & enums allowed In-class Initialization?](https://stackoverflow.com/questions/9656941/why-cant-i-initialize-non-const-static-member-or-static-array-in-class)
 
 The answer is hidden in Bjarne's quote read it closely, "C++ requires that every object
@@ -169,6 +186,17 @@ template<> bool A<int>::d = [](){regist<A<int>>(); return true;}();
 graphene/ticket/if/TARGETS
 cpp2_srcs
 cpp2.declare_hash = 1, cpp2.declare_equal_to = 1
+
+
+## Buck Config
+
+.buckconfig.in
+per directory config: dir/BUILD_MODE.bzl, and register in
+fbsource/tools/buckconfigs/fbcode/build_mode.bcfg
+
+processed by fbcode/tools/build/buck/gen_modes.py
+generate fbsource/tools/buckconfigs/fbcode/modes/mode.bcfg
+
 
 ---
 
