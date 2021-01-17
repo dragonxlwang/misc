@@ -187,7 +187,6 @@ graphene/ticket/if/TARGETS
 cpp2_srcs
 cpp2.declare_hash = 1, cpp2.declare_equal_to = 1
 
-
 ## Buck Config
 
 .buckconfig.in
@@ -195,8 +194,8 @@ per directory config: dir/BUILD_MODE.bzl, and register in
 fbsource/tools/buckconfigs/fbcode/build_mode.bcfg
 
 processed by fbcode/tools/build/buck/gen_modes.py
-generate fbsource/tools/buckconfigs/fbcode/modes/mode.bcfg
 
+generate fbsource/tools/buckconfigs/fbcode/modes/mode.bcfg
 
 ---
 
