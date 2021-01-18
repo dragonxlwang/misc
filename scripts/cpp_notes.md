@@ -197,6 +197,9 @@ processed by fbcode/tools/build/buck/gen_modes.py
 
 generate fbsource/tools/buckconfigs/fbcode/modes/mode.bcfg
 
+## Thrift In-code Documentation
+https://www.internalfb.com/intern/wiki/ThriftdocGuide/
+
 ---
 
 [CPP online compiler](https://www.onlinegdb.com/online_c++_compiler)
