@@ -300,8 +300,8 @@ noremap <leader>sj :sp \| bprev <cr>
 noremap <leader>vk :vs \| bnext <cr>
 noremap <leader>vj :vs \| bprev <cr>
 " print file path
-command! Fp  echohl Directory | echo expand('%:p') | echohl None
-command! Tp  echohl Directory | echo expand('%:p') | echohl None
+command! Fp  echohl Directory | echo GetFilePath() | echohl None
+command! Tp  echohl Directory | echo GetFilePath() | echohl None
 nmap <silent> <C-K> :wincmd k \| :Fp <cr>
 nmap <silent> <C-J> :wincmd j \| :Fp <cr>
 nmap <silent> <C-H> :wincmd h \| :Fp <cr>
@@ -801,3 +801,11 @@ function! FindFbcodeTargets()
   return l:new_targets
 endfunction
 
+
+function! GetFilePath()
+  let l:path = expand('%:p')
+  let l:path = substitute(l:path, '^/data/users/xlwang/fbsource/', '', '')
+  let l:path = substitute(l:path, '^/data/users/xlwang/configerator/', '', '')
+  let l:path = substitute(l:path, '^/data/users/xlwang/www/', '', '')
+  return l:path
+endfunction
