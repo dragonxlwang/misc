@@ -1536,7 +1536,7 @@ function _v() {
   files=${files//\~/$HOME}
   if [[ -n $files ]]; then
     greenecho "$files"
-    vim "${(f)files}" +'vert all'
+    (exec </dev/tty vim "${(f)files}" +'vert all')
   fi
 }
 function v() {

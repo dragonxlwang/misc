@@ -25,6 +25,7 @@ Plugin 'moll/vim-bbye'
 noremap <leader>bd :Bdelete<cr>
 
 Plugin 'vim-scripts/a.vim'
+let g:alternateExtensions_h = "cpp,cc,cxx,CC,c"
 " Plugin 'vim-scripts/YankRing.vim'
 " let g:yankring_replace_n_pkey = '<leader><leader>p'
 " let g:yankring_replace_n_nkey = '<leader><leader>n'
