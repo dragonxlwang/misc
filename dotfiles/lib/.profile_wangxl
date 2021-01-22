@@ -1516,33 +1516,42 @@ function ddd() {
   }
 # v - open files in ~/.viminfo
 # consider migrating to ~/.cache/ctrlp/mru/cache.txt
+function _process_mru_file_lines() {
+  while read line; do
+    local f="${line/\~/$HOME}"
+    if [[ -f "$f" ]]; then
+      f=${f/\/data\/users\/xlwang\/fbsource\/fbcode/\~\/fbcode}
+      f=${f/\/data\/users\/xlwang\/www-hg/\~\/www}
+      f=${f/\/data\/users\/xlwang\/www/\~\/www}
+      f=${f/\/data\/users\/xlwang\/configerator/\~\/configerator}
+      f=${f/\/data\/users\/xlwang/\~}
+      f=${f/\/home\/xlwang/\~}
+      echo "$f"
+    fi
+  done | awk '!seen[$0]++'
+}
+function _v() {
+  local files=$(awk '!seen[$0]++')
+  files=$(echo $files | fzf --query="$*" --prompt="fh> " -m -1)
+  files=${files//\~/$HOME}
+  if [[ -n $files ]]; then
+    greenecho "$files"
+    vim "${(f)files}" +'vert all'
+  fi
+}
 function v() {
   local lines
-  lines=$(cat ~/.cache/ctrlp/mru/cache.txt)
-  # lines=$(grep '^>' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
-  # lines+=$(grep '^:sp' ~/.viminfo | tr -s ' ' | cut -d' ' -f2)
-  lines=$(echo $lines |
-    while read line; do
-      local f="${line/\~/$HOME}"
-      if [[ -f "$f" ]]; then
-        f=${f/\/data\/users\/xlwang\/fbsource\/fbcode/\~\/fbcode}
-        f=${f/\/data\/users\/xlwang\/www-hg/\~\/www}
-        f=${f/\/data\/users\/xlwang\/www/\~\/www}
-        f=${f/\/data\/users\/xlwang\/configerator/\~\/configerator}
-        f=${f/\/data\/users\/xlwang/\~}
-        f=${f/\/home\/xlwang/\~}
-        echo "$f"
-      fi
-    done |
-      awk '!seen[$0]++'
-    )
-    local files=$(echo $lines | uniq | fzf --query="$*" --prompt="vim-hist> " -m -1)
-    files=${files//\~/$HOME}
-    if [[ -n $files ]]; then
-      greenecho "$files"
-      vim "${(f)files}" +'vert all'
-    fi
-  }
+  lines=$(cat ~/.cache/ctrlp/mru/cache.txt | _process_mru_file_lines)
+  echo $lines | _v
+}
+function vv() {
+  # Sometimes ctrp mru is truncated, or missing; fallback to viminfo
+  local lines
+  lines=$(cat ~/.cache/ctrlp/mru/cache.txt | _process_mru_file_lines)
+  lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
+    tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
+  echo $lines | _v
+}
 # z - open directories
 unalias z 2> /dev/null
 function z() {

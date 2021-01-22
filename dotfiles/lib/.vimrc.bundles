@@ -354,7 +354,7 @@ function! GetOldFiles()
   \        'bufname(v:val)'), '!empty(v:val)'))
 endfunction
 nnoremap <C-[> :call FZFfbcodeFunc()<CR>
-nnoremap <C-[><c-[> :call FZFCwdFunc()<CR>
+nnoremap <C-[><C-[> :call FZFCwdFunc()<CR>
 " nnoremap <C-]> :FZFMru<CR>
 " nnoremap <C-]> :Lines<CR>
 nnoremap <C-]> :CtrlPLine<CR>
