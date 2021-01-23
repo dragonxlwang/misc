@@ -831,6 +831,7 @@ function yapf {
 alias killall="loginctl terminate-user $USER"
 alias ka="\killall -u $USER" #  disables the alias in interactive shell
 alias upld="${HOME}/misc/scripts/sync.sh"
+alias tty_sane="stty sane"
 
 ## ========================================================================== ##
 #     __  .______   ____    ____ .___________.__    __    ______   .__   __.   #
@@ -1550,6 +1551,7 @@ function vv() {
   lines=$(cat ~/.cache/ctrlp/mru/cache.txt | _process_mru_file_lines)
   lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
     tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
+
   echo $lines | _v
 }
 # z - open directories
