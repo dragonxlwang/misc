@@ -57,6 +57,7 @@ set wildignore=*.o,*.pyc,*~     " Stuff to ignore when tab completing
 set wildignore+=*/.git/**,*/.DS_Store
 set wildignore+=*.png,*.jpg,*.gif
 set completeopt=longest,menuone " Show menu but insert longest common substring
+set wildignorecase              " ignore case when completing file and directories
 " ===============================- Scrolling -==================================
 set scrolloff=8                 " Start scrolling when 8 lines away vertically
 set sidescrolloff=15            " Same as above, for horizontal scrolling
@@ -242,7 +243,7 @@ noremap <leader>v :if g:NERDTree.GetWinNum() == winnr() \| wincmd w \| endif \|
 
 " Reloads it -- making all changes active (have to save first)
 noremap <silent> <leader>V
-    \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+      \ :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " ==============================- Keymap: Diff -================================
 " ,do: Diff off
@@ -391,7 +392,7 @@ nnoremap <leader>p "0p
 nnoremap <leader>y "0y
 vnoremap <leader>p "0p
 vnoremap <leader>y "0y
-command TmuxPaste :read !tmux saveb - | cat | sed 's/\x1b\[[0-9;]*m//g'
+command TmuxPaste :read !tmux saveb - | sed 's/\x1b\[[0-9;]*m//g'
 nnoremap <leader>lh @='"Qyiwj'<CR>
 
 " Toggle paste mode on and off
