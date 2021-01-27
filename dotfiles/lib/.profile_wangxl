@@ -998,7 +998,6 @@ alias hg_query_author="hg log -r . --template '{sl_user}'"
 alias hg_query_diff="hg log -r . --template '{sl_diff_super}'"
 alias hld="hg log --rev . --template '{phabdiff}'"
 alias hrf='hhl && arc cleanup-features && hum && hs'
-alias hhpur='hhl && arc cleanup-features && hrb -d master && hu tip && hs'
 alias har='hg addremove'
 alias hrv='hg revert'
 alias hrvh='hg revert -r ".^"'
@@ -1007,6 +1006,17 @@ alias hpurge='hg purge'
 alias hmsg='arc amend --show 2>/dev/null || hg log -T {desc} --rev .'
 alias hg_latest_publish_commit="hg log -r 'first(reverse(::.) & public())' -T '{node}'"
 alias hg_current_commit="hg log -r '.' -T '{node}'"
+alias hfd='hg fold --exact --rev . --rev ".^"'
+alias hhe='hg histedit'
+alias hush='hg up -r "first(. % master)"' # jump to stack first rev
+function hhpur {
+  hhl
+  arc cleanup-features
+  hush > /dev/null 2>&1
+  hrbm -s .
+  hu tip
+  hs
+}
 function hg_authors {
   # hg --pager=off log --template "{xg_sl_authors}" -- ${1:-$(pwd)}
   hg log --template "{xg_sl_authors}" -- ${1:-$(readlink -f .)}
