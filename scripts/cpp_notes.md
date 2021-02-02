@@ -201,9 +201,8 @@ generate fbsource/tools/buckconfigs/fbcode/modes/mode.bcfg
 
 https://www.internalfb.com/intern/wiki/ThriftdocGuide/
 
-## [Why am I getting errors when my template-derived-class uses a member it inherits from
+## [Why am I getting errors when my template-derived-class uses a member it inherits from its template-base-class?](https://isocpp.org/wiki/faq/templates#nondependent-name-lookup-members)
 
-its template-base-class?](https://isocpp.org/wiki/faq/templates#nondependent-name-lookup-members)
 Workarounds:
 
 Change the call from `f()` to `this->f()`.
