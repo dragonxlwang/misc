@@ -216,6 +216,13 @@ Insert using `B<T>::f`; just prior to calling `f()`.
 Change the call from `f()` to `B<T>::f()`. Note however that this might not give you
 what you want if `f()` is virtual, since it inhibits the virtual dispatch mechanism.
 
+## [Dependent name](https://en.cppreference.com/w/cpp/language/dependent_name) Inside
+
+the definition of a template (both class template and function template), the meaning of
+some constructs may differ from one instantiation to another. In particular, types and
+expressions may depend on types of type template parameters and values of non-type
+template parameters.
+
 ---
 
 [CPP online compiler](https://www.onlinegdb.com/online_c++_compiler)
