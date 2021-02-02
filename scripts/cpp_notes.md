@@ -198,7 +198,24 @@ processed by fbcode/tools/build/buck/gen_modes.py
 generate fbsource/tools/buckconfigs/fbcode/modes/mode.bcfg
 
 ## Thrift In-code Documentation
+
 https://www.internalfb.com/intern/wiki/ThriftdocGuide/
+
+## [Why am I getting errors when my template-derived-class uses a member it inherits from
+
+its template-base-class?](https://isocpp.org/wiki/faq/templates#nondependent-name-lookup-members)
+Workarounds:
+
+Change the call from `f()` to `this->f()`.
+
+Since this is always implicitly dependent in a template, `this->f` is dependent and the
+lookup is therefore deferred until the template is actually instantiated, at which point
+all base classes are considered.
+
+Insert using `B<T>::f`; just prior to calling `f()`.
+
+Change the call from `f()` to `B<T>::f()`. Note however that this might not give you
+what you want if `f()` is virtual, since it inhibits the virtual dispatch mechanism.
 
 ---
 
