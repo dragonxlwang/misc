@@ -89,6 +89,7 @@ buck test //dir/...
 ClangTidy Arc Linter
 ====================
 arc lint -e extra --take CLANGTIDY a.cpp b.cpp
+https://fburl.com/wiki/6njyv22c
 
 
 Js Node

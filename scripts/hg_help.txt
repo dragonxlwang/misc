@@ -61,3 +61,46 @@ Show changes since last `arc diff`:
 Show commit messages and details:
 =================================
 - hg log -v --rev .
+
+journal:
+========
+hg journal                # shows previous locations of the working copy
+hg journal <bookmark>     # shows previous locations of a bookmark
+# hg reflog is a FB specific command for now
+
+revert:
+=======
+hg revert <file>               # undoes a pending change
+hg revert -r <hash> <file>     # changes the file to a previous commits version
+hg revert --all                # undoes all pending changes
+hg revert -i                   # interactive revert [experimental]
+
+histedit:
+=========
+hg histedit <basecommit>       # edit history for commits between <base> and '.'
+hg chistedit <basecommit>      # interactive interface for editing history
+
+graft:
+======
+hg graft <hash>  # cherry-picks the given commit into the current bookmark/branch
+
+purge:
+======
+hg purge       # delete all untracked files ('?' files in hg status) - git clean -df
+hg purge --all # delete all untracked and ignored files - git clean -dfx
+
+revisions:
+==========
+# hg help revisions
+# See `hg help revset` for a full list of queries.
+::X                # all ancestors of X
+X::                # all descendants of X
+X::Y               # commits between X and Y
+X^                 # parent of X
+only(X,Y)          # ancestors of X that are not ancestors of Y
+draft()            # commits that aren't from the server (not yet pushed)
+bookmark()         # all bookmarked commits
+
+Mercurial guide for git users:
+==============================
+https://www.internalfb.com/intern/wiki/Mercurial-workflow/GuideForGitUsers/

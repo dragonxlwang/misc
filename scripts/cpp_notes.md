@@ -223,6 +223,12 @@ some constructs may differ from one instantiation to another. In particular, typ
 expressions may depend on types of type template parameters and values of non-type
 template parameters.
 
+## [type trait]
+
+[std::enable_if](https://en.cppreference.com/w/cpp/types/enable_if)
+[std::disjunction_v](https://en.cppreference.com/w/cpp/types/disjunction)
+[std::void_t](https://en.cppreference.com/w/cpp/types/void_t)
+
 ---
 
 [CPP online compiler](https://www.onlinegdb.com/online_c++_compiler)
