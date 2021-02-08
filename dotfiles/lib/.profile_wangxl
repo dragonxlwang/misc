@@ -970,13 +970,17 @@ function hprev {
   #   hg prev
   # done
 }
-alias hum="hg up master"
-# alias hud="hg up -r 'draft()'"
+alias hs_cur_rev="hg log -T '{xg_sl}' -l 1"
+alias hum="hg up master && hs_cur_rev"
+alias hut='hg up tip && hs_cur_rev'
 function hud {
+  # alias hud="hg up -r 'draft()'"
   hg up -r "limit(reverse(draft() and head()), ${1:=1})"
+  [[ $? -eq 0 ]] && hs_cur_rev
 }
-alias hut='hg up tip'
 alias hu="hg up"
+alias hush='hg up -r "first(. % master)" && hs_cur_rev' # jump to stack first rev
+alias hust='hg up -r ".::" && hs_cur_rev' # jump to stack last rev
 alias ha="hg add"
 alias hc="hg commit"
 alias hc!="hg amend --rebase"
@@ -1014,7 +1018,6 @@ alias hg_latest_publish_commit="hg log -r 'first(reverse(::.) & public())' -T '{
 alias hg_current_commit="hg log -r '.' -T '{node}'"
 alias hfd='hg fold --exact --rev . --rev ".^"'
 alias hhe='hg histedit'
-alias hush='hg up -r "first(. % master)"' # jump to stack first rev
 function hhpur {
   hhl
   arc cleanup-features
