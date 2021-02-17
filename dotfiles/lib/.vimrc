@@ -235,6 +235,8 @@ command! UpldAll :! ~/misc/scripts/sync.sh <CR>
 command! Uf silent call SyncUploadFile() | redraw!
 command! Ua silent exec "! ~/misc/scripts/sync.sh" |
       \ silent exec "!echo " | redraw!
+command! -bar -nargs=1 -bang -complete=custom,DuplicateCurrentFile_complete Copy
+      \ call DuplicateCurrentFile(<q-args>)
 
 " =============================- Keymap: Vimrc -================================
 " Edit .vimrc
@@ -802,11 +804,29 @@ function! FindFbcodeTargets()
   return l:new_targets
 endfunction
 
-
 function! GetFilePath()
   let l:path = expand('%:p')
   let l:path = substitute(l:path, '^/data/users/xlwang/fbsource/', '', '')
   let l:path = substitute(l:path, '^/data/users/xlwang/configerator/', '', '')
   let l:path = substitute(l:path, '^/data/users/xlwang/www/', '', '')
   return l:path
+endfunction
+
+" tpope/vim-eunuch
+function! DuplicateCurrentFile(path)
+  let path = "%:h/" . a:path
+  execute "saveas " . path
+  execute "edit " . path
+endfunction
+
+function! Separator()
+  return !exists('+shellslash') || &shellslash ? '/' : '\\'
+endfunction
+
+function! DuplicateCurrentFile_complete(A, L, P) abort
+  let sep = Separator()
+  let prefix = expand('%:p:h').sep
+  let files = split(glob(prefix.a:A.'*'), "\n")
+  call map(files, 'v:val[strlen(prefix) : -1] . (isdirectory(v:val) ? sep : "")')
+  return join(files + ['..'.Separator()], "\n")
 endfunction

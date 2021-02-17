@@ -970,6 +970,12 @@ function hprev {
   #   hg prev
   # done
 }
+alias hnext1='hnext 1'
+alias hnext2='hnext 2'
+alias hnext3='hnext 3'
+alias hprev1='hprev 1'
+alias hprev2='hprev 2'
+alias hprev3='hprev 3'
 alias hs_cur_rev="hg log -T '{xg_sl}' -l 1"
 alias hum="hg up master && hs_cur_rev"
 alias hut='hg up tip && hs_cur_rev'
@@ -978,6 +984,10 @@ function hud {
   hg up -r "limit(reverse(draft() and head()), ${1:=1})"
   [[ $? -eq 0 ]] && hs_cur_rev
 }
+alias hudl="hg log -r 'draft() and head()'"
+alias hud1='hud 1'
+alias hud2='hud 2'
+alias hud3='hud 3'
 alias hu="hg up"
 alias hush='hg up -r "first(. % master)" && hs_cur_rev' # jump to stack first rev
 alias hust='hg up -r ".::" && hs_cur_rev' # jump to stack last rev
@@ -1003,6 +1013,7 @@ alias hhl='hg pull'
 alias hhp='arc diff'
 alias hrb='hg rebase'
 alias hrbm='hg rebase -d master'
+alias hrbt='hg rebase -d tip'
 alias hid='hg id -i'
 alias hg_query_author="hg log -r . --template '{sl_user}'"
 alias hg_query_diff="hg log -r . --template '{sl_diff_super}'"

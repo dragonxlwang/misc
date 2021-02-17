@@ -95,3 +95,10 @@ https://fburl.com/wiki/6njyv22c
 Js Node
 =======
 fbpkg fetch node-8.11.1
+
+hphpd printing
+==============
+- print_r
+https://www.internalfb.com/intern/wiki/Writing-scripts-in-php/printing/
+
+
