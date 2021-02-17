@@ -100,5 +100,3 @@ hphpd printing
 ==============
 - print_r
 https://www.internalfb.com/intern/wiki/Writing-scripts-in-php/printing/
-
-
