@@ -1359,6 +1359,17 @@ function get_blamef {
 # zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+function up_fzf {
+  if [[ ! -e ~/.fzf ]]; then
+    redecho "fzf does not exist!"
+    exit 1
+  fi
+  local cwd=$(pwd)
+  cd ~/.fzf
+  git pull && ./install
+  cd $cwd
+}
+
 _fzf_keybind_map=(                \
   "ctrl-h:backward-char"          \
   "ctrl-l:forward-char"           \
