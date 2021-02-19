@@ -22,7 +22,8 @@ cd ~/.vim/
 vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
 
-sudo yum install devtoolset-8-gcc-c++
+# sudo yum install devtoolset-8-gcc-c++
+# scl enable devtoolset-8 -- bash
 
 export PATH=/usr/local/bin:/usr/local/sbin:/opt/rh/devtoolset-8/root/usr/bin:$PATH
 
@@ -42,7 +43,7 @@ mkdir -p $BUILD_DIR
 
 cd $BUILD_DIR
 
-FBCODE_DIR="$(hg root --cwd ~/fbsource/fbcode)"/fbcode
+FBCODE_DIR="$(hg root --cwd ~/fbsource/fbcode)"/fbcode # set this
 FBCODE_PLATFORM=platform009
 TP2="$FBCODE_DIR"/third-party-buck/"$FBCODE_PLATFORM"/build
 PYTHON_VERSION=3.8
@@ -89,3 +90,25 @@ redecho 'delete existing ...'
 redecho 'setup symlink ...'
 mv ${HOME}/.vim/bundle/YouCompleteMe /data/users/${USER}/
 ln -s /data/users/${USER}/YouCompleteMe ${HOME}/.vim/bundle/YouCompleteMe
+
+
+
+# git reset --hard 41fb6537e290256fc3ca585bcd54860e67f1d7e5
+# git reset --hard 2e5b2e1cef09efb67365e02737424746a62d7d62
+
+# git reset --hard 2e5b2e1cef09efb67365e02737424746a62d7d62
+# cd $DEST_ROOT
+# git reset --hard c4beb2fb50e6268c9066e11874ead49ccb442332
+# cd $DEST_ROOT/third_party/JediHTTP
+# git reset --hard c376aadd89c7687ecf2c7a68f4cbecab3bbcd57b
+# cd $DEST_ROOT/third_party/JediHTTP/vendor/jedi
+# git reset --hard 8542047e5c92f1430bc11ec462e8ffd24e103a1d
+# cd $DEST_ROOT/third_party/JediHTTP/vendor/bottle
+# git reset --hard 7423aa0f64e381507d1e06a6bcab48888baf9a7b
+# cd $DEST_ROOT/third_party/gocode
+# git reset --hard eef10fdde96a12528a6da32f51bf638b2863a3b1
+# cd $DEST_ROOT/third_party/racerd
+# git reset --hard e3f3ff010fce2c67195750d9a6a669ffb3c2ac5f
+# cd $DEST_ROOT
+
+# -DPATH_TO_LLVM_ROOT="$TP2"/llvm-fb \

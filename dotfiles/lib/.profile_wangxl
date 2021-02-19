@@ -207,75 +207,76 @@ alias lllt="lll -t"
 function lls { ll | grep $*; }
 alias llsi='lls -i'
 function ll_symlink {
-  ll "$@" --color=always | grep "\->"; }
-  # cd
-  function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
-  function follow { cd $(dirname $(readlink -f $1)); }
-  alias jp="jump"
-  alias fl="follow"
-  # tree might not installed; use ugly tree instead
-  if [ -z "\${which tree}" ]; then
-    tree () {
-      find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
-    }
-  fi
-  # gather external ip address
-  alias show_external_ip="curl -s -S https://icanhazip.com"
-  alias showptr="curl -s -S -k https://icanhazptr.com"
-  # gather external/local ip address
-  alias showip="${HOME}/misc/scripts/ip_lookup.sh all"
-  ##--------------------------------== remove ==--------------------------------##
-  # real remove
-  alias rrm='/bin/rm -v'
-  function rm {
-    [[ ! -d ~/.Trash ]] && mkdir ~/.Trash
-    local ret=""
-    local l
-    ret=$(mv --verbose -f --backup=numbered \
-      --target-directory ${HOME}/.Trash/ "$@")
-          redecho $ret
-          local reg=""
-          local f1=""
-          local f2=""
-          local fp="${HOME}/.Trash/rm.undo"
-          echo "#!/bin/sh" > $fp
-          for l in ${(f)ret}; do
-            reg='s/^(.*) -> (.*)$/\1/p'
-            f1=$(echo $l | sed -rn $reg)
-            if [[ -z $f1 ]]; then
-              continue
-            fi
-            f1=${f1:1:${#f1}-2}
-            reg='s/^(.*) -> (.*)$/\2/p'
-            f2=$(echo $l | sed -rn $reg)
-            f2=$(echo $f2 | sed -r 's/ \(backup: .*\)//')
-            f2=${f2:1:${#f2}-2}
-            [[ $f1 != /* ]] && f1="$PWD/$f1"
-            echo "# \"$f1\" -> \"$f2\"" >> $fp
-            echo "mv \"$f2\" \"$f1\"" >> $fp
-            echo "echo \"\\033[1;33mmv \\\"$f2\\\" \\\"$f1\\\"\\033[0m\"" >> $fp
-          done
-        }
-      alias rm=rm
-      function undo {
-        local fp="${HOME}/.Trash/rm.undo"
-        /bin/sh $fp
-      }
-    alias empty_trash='find ~/.Trash -mindepth 1 -delete -print'
-    # remove the following
-    ## all mac .DS_store/.localized files in current directory recursively
-    function rm_mac_hidden_files {
-      local clean_place=${*:-'.'}
-      find $clean_place -name '*.DS_Store'  -type f -delete -print
-      find $clean_place -name '*.localized' -type f -delete -print
-    }
-  ## all python .py[co] files and __pycache__ dirs
-  alias rm_python_compiled_files="pyclean"
-  function rm_python_compiled_files_no_recursion {
-    local clean_place=${*:-'.'}
-    find $clean_place -maxdepth 1 -type f -name "*.py[co]" -delete
-    find $clean_place -maxdepth 1 -type d -name "__pycache__" -delete
+  ll "$@" --color=always | grep "\->";
+}
+# cd
+function jump { if [[ $# -eq 1 ]]; then cd $1; fi; cd $(pwd -P); }
+function follow { cd $(dirname $(readlink -f $1)); }
+alias jp="jump"
+alias fl="follow"
+# tree might not installed; use ugly tree instead
+if [ -z "\${which tree}" ]; then
+  tree () {
+    find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
   }
+fi
+# gather external ip address
+alias show_external_ip="curl -s -S https://icanhazip.com"
+alias showptr="curl -s -S -k https://icanhazptr.com"
+# gather external/local ip address
+alias showip="${HOME}/misc/scripts/ip_lookup.sh all"
+##--------------------------------== remove ==--------------------------------##
+# real remove
+alias rrm='/bin/rm -v'
+function rm {
+  [[ ! -d ~/.Trash ]] && mkdir ~/.Trash
+  local ret=""
+  local l
+  ret=$(mv --verbose -f --backup=numbered --target-directory ${HOME}/.Trash/ "$@")
+  redecho $ret
+  local reg=""
+  local f1=""
+  local f2=""
+  local fp="${HOME}/.Trash/rm.undo"
+  echo "#!/bin/sh" > $fp
+  for l in ${(f)ret}; do
+    reg='s/^(.*) -> (.*)$/\1/p'
+    f1=$(echo $l | sed -rn $reg)
+    if [[ -z $f1 ]]; then
+      continue
+    fi
+    f1=${f1:1:${#f1}-2}
+    reg='s/^(.*) -> (.*)$/\2/p'
+    f2=$(echo $l | sed -rn $reg)
+    f2=$(echo $f2 | sed -r 's/ \(backup: .*\)//')
+    f2=${f2:1:${#f2}-2}
+    [[ $f1 != /* ]] && f1="$PWD/$f1"
+    echo "# \"$f1\" -> \"$f2\"" >> $fp
+    echo "mv \"$f2\" \"$f1\"" >> $fp
+    echo "echo \"\\033[1;33mmv \\\"$f2\\\" \\\"$f1\\\"\\033[0m\"" >> $fp
+  done
+}
+
+alias rm=rm
+function undo {
+  local fp="${HOME}/.Trash/rm.undo"
+  /bin/sh $fp
+}
+alias empty_trash='find ~/.Trash -mindepth 1 -delete -print'
+# remove the following
+## all mac .DS_store/.localized files in current directory recursively
+function rm_mac_hidden_files {
+  local clean_place=${*:-'.'}
+  find $clean_place -name '*.DS_Store'  -type f -delete -print
+  find $clean_place -name '*.localized' -type f -delete -print
+}
+## all python .py[co] files and __pycache__ dirs
+alias rm_python_compiled_files="pyclean"
+function rm_python_compiled_files_no_recursion {
+  local clean_place=${*:-'.'}
+  find $clean_place -maxdepth 1 -type f -name "*.py[co]" -delete
+  find $clean_place -maxdepth 1 -type d -name "__pycache__" -delete
+}
 ## all vim swap .sw[pon]
 function rm_vim_swap_files {
   local clean_place=${*:-'.'}
@@ -296,8 +297,8 @@ function rm_vim_swap_files_no_recursion {
 ## SAVEHIST is the maximum number of lines that are kept in the history file.
 alias history='fc -i -l 1'
 # oh-my-zsh/plugins/history/history.plugin.zsh
-function hs { history | grep $*; }
-alias hsi='hs -i'
+function histg { history | grep $*; }
+alias histgi='histg -i'
 HISTSIZE=130000
 SAVEHIST=130000
 ##---------------------------== search and find ==----------------------------##
@@ -989,8 +990,10 @@ alias hud1='hud 1'
 alias hud2='hud 2'
 alias hud3='hud 3'
 alias hu="hg up"
-alias hush='hg up -r "first(. % master)" && hs_cur_rev' # jump to stack first rev
-alias hust='hg up -r ".::" && hs_cur_rev' # jump to stack last rev
+# alias hush='hg up -r "first(. % master)" && hs_cur_rev' # jump to stack first rev
+alias hush='hg bottom'
+# alias hust='hg up -r ".::" && hs_cur_rev' # jump to stack last rev
+alias hust='hg top'
 alias ha="hg add"
 alias hc="hg commit"
 alias hc!="hg amend --rebase"
@@ -1001,6 +1004,9 @@ alias hls="hg log --stat -l1"
 alias hlsf="hg log --stat -l1 | fpp"
 # need to refresh for missing lines in tmux
 alias hs="hg st && hg smartlog -T '{xg_sl}'; [[ -n $TMUX ]] && tmux refresh-client"
+alias hfs="hg st && hg fsl -T '{xg_sl}'; [[ -n $TMUX ]] && tmux refresh-client"
+alias hfss="hg st && hg fssl -T '{xg_sl}'; [[ -n $TMUX ]] && tmux refresh-client"
+alias hsu="{ hg-sl-up -T '{xg_sl_up}' } && hs_cur_rev"
 alias hst="hg st"
 alias hsl=" hg smartlog -T '{xg_sl}'"
 alias hsf="hg st | fpp"
@@ -1027,14 +1033,15 @@ alias hpurge='hg purge'
 alias hmsg='arc amend --show 2>/dev/null || hg log -T {desc} --rev .'
 alias hg_latest_publish_commit="hg log -r 'first(reverse(::.) & public())' -T '{node}'"
 alias hg_current_commit="hg log -r '.' -T '{node}'"
-alias hfd='hg fold --exact --rev . --rev ".^"'
+alias hfd='hg fold --exact --rev . --rev ".^"' # hg fold --from .^
 alias hhe='hg histedit'
+alias hab='hg absorb'
 function hhpur {
   hhl
   arc cleanup-features
-  hush > /dev/null 2>&1
-  hrbm -s .
-  hu tip
+  # hush > /dev/null 2>&1
+  # hrbm -s .
+  hrbm
   hs
 }
 function hg_authors {
@@ -1216,6 +1223,7 @@ alias jfp="jf s --update-fields && jf publish"
 alias jfep="jfe && jfp"
 alias jfs="jf s"
 alias jfss="jf s --stack"
+alias jfsss="jf s -r bottom::top"
 alias jfu="jf s --update-fields"
 alias abac="arc build && arc canary --ttl 86400"
 alias acls="arc canary --list"

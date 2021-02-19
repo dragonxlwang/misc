@@ -11,7 +11,13 @@ Dependent/Stacked Diffs
 - hg rebase -s xxxxxx -d yyyyyy
   hg strip -r zzzzzz
   hg histedit / hg fold
-- More tips: https://fburl.com/7fgmafh1
+- More tips: https://fburl.com/7fgmafh1 https://fburl.com/wiki/376ltrm8
+- rebase options:
+  -r: Exact match
+  -s: Include descendants
+  -b: Include entire subtree
+- jf submit --stack
+  jf submit -r bottom::top
 
 Splitting a Large Diff
 =====================
@@ -104,3 +110,16 @@ bookmark()         # all bookmarked commits
 Mercurial guide for git users:
 ==============================
 https://www.internalfb.com/intern/wiki/Mercurial-workflow/GuideForGitUsers/
+
+interactive smartlog:
+=====================
+hg-sl-up / hsu
+
+for-each-stacked:
+=================
+Use for-each-stacked to run a command on each commit in your stack. For
+example, you can run linters or tests on each commit by running:
+
+for-each-stacked arc lint
+for-each-stacked arc unit
+for-each-stacked buck test some/target/...
