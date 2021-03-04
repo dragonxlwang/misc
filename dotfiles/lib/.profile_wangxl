@@ -81,9 +81,9 @@ function rvmv {
 function uncolor {
   echo "$1" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"
 }
-# if [[ -n $(command -v python3) ]]; then
-#   alias python='python3'
-# fi
+if [[ -n $(command -v python3) ]]; then
+  alias python='python3'
+fi
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then
@@ -1036,6 +1036,18 @@ alias hg_current_commit="hg log -r '.' -T '{node}'"
 alias hfd='hg fold --exact --rev . --rev ".^"' # hg fold --from .^
 alias hhe='hg histedit'
 alias hab='hg absorb'
+function hg_cleanup {
+  revs=$(hg log -r 'draft()' -T '{sl_node_info} {phabstatus}\n' \
+    | grep Committed | awk '{print $1}')
+
+  for r in "${(@f)revs}"; do
+    hg log -r $r
+    if [[ $# -eq 0 ]]; then
+      redecho "hg strip -r $r"
+      hg strip -r $r
+    fi
+  done
+}
 function hhpur {
   hhl
   arc cleanup-features
@@ -1524,6 +1536,15 @@ function ff {
 #     done
 #   fi
 # }
+function bbbd_unicorn() {
+  cd ~/fbcode
+
+  bbbd //unicorn/topaggr:top_aggregator_server && \
+    unicorn_run_locally \
+    ~/fbcode/buck-out/gen/unicorn/topaggr/top_aggregator_server \
+    --smc_tiername=unicorn.topaggr.facebar.oregon.xlwang
+  }
+
 alias gg > /dev/null 2>&1 && unalias gg
 function gg() {
   local file
