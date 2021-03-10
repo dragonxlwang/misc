@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # add the line below to "crontab -e"
-# 0 3 * * 0 $HOME/misc/scripts/hg_cron.sh
-# runs every sunday 3:00 am
+# 0 5 * * 0 $HOME/misc/scripts/hg_cron.sh
+# runs every sunday 5:00 am
 
 function prettify() {
   while read line;
@@ -35,3 +35,6 @@ process "$HOME/configerator"
 process "$HOME/configerator-dsi"
 process "$HOME/www"
 process "$HOME/www-hg"
+
+cd "$HOME/fbcode"
+buck build --show-output @mode/devo-nosan //unicorn/topaggr:top_aggregator_server

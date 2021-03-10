@@ -1041,10 +1041,11 @@ function hg_cleanup {
     | grep Committed | awk '{print $1}')
 
   for r in "${(@f)revs}"; do
-    hg log -r $r
+    hg log -r $r -T '{xg_sl}'
     if [[ $# -eq 0 ]]; then
       redecho "hg strip -r $r"
       hg strip -r $r
+      echo ""
     fi
   done
 }
@@ -1542,7 +1543,7 @@ function bbbd_unicorn() {
   bbbd //unicorn/topaggr:top_aggregator_server && \
     unicorn_run_locally \
     ~/fbcode/buck-out/gen/unicorn/topaggr/top_aggregator_server \
-    --smc_tiername=unicorn.topaggr.facebar.oregon.xlwang
+    --smc_tiername=unicorn.topaggr.facebar.oregon.xlwang $@
   }
 
 alias gg > /dev/null 2>&1 && unalias gg
