@@ -11,7 +11,17 @@ if [[ ! -e $linter ]]; then
   exit 1
 fi
 
-$linter $tmp_fs | jq -rM '.replacement' | xargs -0 echo -e
+json_output=$(mktemp -u)
 
+$linter $tmp_fs > $json_output
+original=$(jq -rM '.original' $json_output)
+replacement=$(jq -rM '.replacement' $json_output)
+if [[ -z $replacement ]]; then
+  cat $tmp_fs
+else
+  echo $replacement
+fi
+
+rm $json_output
 rm $tmp_fs
 
