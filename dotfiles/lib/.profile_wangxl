@@ -83,6 +83,7 @@ function uncolor {
 }
 if [[ -n $(command -v python3) ]]; then
   alias python='python3'
+  alias py='python3'
 fi
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
@@ -1213,18 +1214,24 @@ alias bua='buck_util add'
 alias bbr='buck run'
 alias bbro="buck run @mode/$opt"
 alias bbrd="buck run @mode/devo-nosan"
-alias misc='cd ~/misc'
-alias fbc='cd ~/fbcode'
+function tmrn {
+  if [[ -n $TMUX ]]; then
+    tmux setw allow-rename off
+    tmux rename-window $1
+  fi
+}
+alias misc='cd ~/misc; tmrn misc'
+alias fbc='cd ~/fbcode; tmrn fbc'
 alias fbc1='cd ~/fbcode'
 alias fbc2='cd ~/fbcode2'
 alias fbc3='cd ~/fbcode3'
-alias exp="cd ~/fbcode/scripts/xlwang"
-alias cconf='cd ~/configerator'
-alias buckout='cd ~/fbcode/buck-out/gen'
-alias www='cd ~/www'
-alias dsi='cd ~/configerator-dsi'
-alias ds='cd ~/fbcode/dataswarm-pipelines/tasks'
-alias dsb='cd ~/fbcode/dataswarm-pipelines'
+alias exp="cd ~/fbcode/scripts/xlwang; tmrn exp"
+alias cconf='cd ~/configerator; tmrn cconf'
+alias buckout='cd ~/fbcode/buck-out/gen; tmrn buckout'
+alias www='cd ~/www; tmrn www'
+alias dsi='cd ~/configerator-dsi; tmrn dsi'
+alias ds='cd ~/fbcode/dataswarm-pipelines/tasks; tmrn ds'
+alias dsb='cd ~/fbcode/dataswarm-pipelines; tmrn dsb'
 alias nbf='cd ~/fbcode/dataswarm-pipelines; ./nbackfill3 --remote'
 alias vimcpp='vim ~/misc/scripts/cpp_notes.md'
 function nbfq {
