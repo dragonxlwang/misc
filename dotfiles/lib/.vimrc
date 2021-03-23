@@ -490,7 +490,7 @@ function! FBRepo(blame, fburl)
     let l:url = l:header . 'FBS/' . l:master . l:f . '?lines=' . l:line . l:blame
   elseif stridx(l:path, 'configerator/') != -1
     let l:f = substitute(l:path, '.*/configerator/', '', '')
-    let l:url = l:header . 'CF/' . l:master . l:f . '?lines=' . l:line. l:blame
+    let l:url = l:header . 'CF/' . l:master . l:f . '?lines=' . l:line . l:blame
   elseif stridx(l:path, 'www-hg/') != -1 || stridx(l:path, 'www/') != -1
     let l:f = substitute(l:path, '.*/www/', '', '')
     let l:f = substitute(l:f, '.*/www-hg/', '', '')
