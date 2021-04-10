@@ -182,6 +182,10 @@ if !empty(glob('~/fbcode/shellconfigs/rc/vim'))
   set rtp+=~/fbcode/shellconfigs/rc/vim/after
 endif
 
+if isdirectory('/usr/local/share/balancebot/vim')
+  set rtp+=/usr/local/share/balancebot/vim
+endif
+
 if g:osName == 'Linux'
   source ~/misc/scripts/fbvim.vim
   cnoreabbrev <expr> fbvim
@@ -490,7 +494,7 @@ function! FBRepo(blame, fburl)
     let l:url = l:header . 'FBS/' . l:master . l:f . '?lines=' . l:line . l:blame
   elseif stridx(l:path, 'configerator/') != -1
     let l:f = substitute(l:path, '.*/configerator/', '', '')
-    let l:url = l:header . 'CF/' . l:master . l:f . '?lines=' . l:line . l:blame
+    let l:url = l:header . 'CFHG/' . l:master . l:f . '?lines=' . l:line . l:blame
   elseif stridx(l:path, 'www-hg/') != -1 || stridx(l:path, 'www/') != -1
     let l:f = substitute(l:path, '.*/www/', '', '')
     let l:f = substitute(l:f, '.*/www-hg/', '', '')

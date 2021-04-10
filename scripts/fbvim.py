@@ -30,8 +30,8 @@ repos = {
         'big_grep_cmd': '/usr/local/bin/tbgs --stripdir',
         'mural_tags_path': '/home/engshare/pfff/TAGS',
         'hg': {
-            'default': 'ssh://hg.vip.facebook.com//data/scm/www',
-            'default-push': 'svn+ssh://svn.vip.facebook.com/svnroot/tfb/trunk/www',
+            'default':      "mononoke://mononoke.internal.tfbnw.net/www",
+            'default-push': "mononoke://mononoke.internal.tfbnw.net/www",
         },
         'svn': {
             'url': 'svn+ssh://tubbs/svnroot',
@@ -41,11 +41,18 @@ repos = {
     'fbcode': {
         'big_grep_cmd': '/usr/local/bin/fbgs --stripdir',
         'hg': {
-            'default': 'ssh://hg.vip.facebook.com//data/scm/fbcode',
-            'default-push': 'git+ssh://projects.git.vip.facebook.com//data/gitrepos/fbcode',
+            'default':      "mononoke://mononoke.internal.tfbnw.net/fbsource",
+            'default-push': "mononoke://mononoke.internal.tfbnw.net/fbsource",
         },
         'git': {
             'origin': 'ssh://fbcode.git.vip.facebook.com/data/gitrepos/fbcode.git',
+        },
+    },
+    'configerator': {
+        'big_grep_cmd': '/usr/local/bin/cbgs --stripdir',
+        'hg': {
+            'default':      "mononoke://mononoke.internal.tfbnw.net/configerator",
+            'default-push': "mononoke://mononoke.internal.tfbnw.net/configerator",
         },
     }
 }
@@ -93,12 +100,11 @@ def _detect_repo():
         for l in lines:
             (key, val) = l.split(' = ')
             hgvars[key] = val
-        if hgvars.get('default') == repos['www']['hg']['default'] and \
-           hgvars.get('default-push') == repos['www']['hg']['default-push']:
-            return 'www'
-        if hgvars.get('default') == repos['fbcode']['hg']['default'] and \
-           hgvars.get('default-push') == repos['fbcode']['hg']['default-push']:
-            return 'fbcode'
+        for repo, spec in repos.items():
+            if hgvars.get('default') == spec['hg']['default'] and \
+               hgvars.get('default-push') == spec['hg']['default-push']:
+                return repo
+        return "dev"
 
 
 def repo_rel_path_to_url(repo, path):
