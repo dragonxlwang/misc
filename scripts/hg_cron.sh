@@ -38,3 +38,6 @@ process "$HOME/www-hg"
 
 cd "$HOME/fbcode"
 buck build --show-output @mode/devo-nosan //unicorn/topaggr:top_aggregator_server
+
+rm -rf ~/local/exp_scripts
+cp -r ~/fbcode/scripts/xlwang ~/local/exp_scripts
