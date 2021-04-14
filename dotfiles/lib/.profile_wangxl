@@ -1652,6 +1652,7 @@ function viminfo_to_mru() {
   lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
     tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
 
+  lines=$(echo $lines | _process_mru_file_lines)
   echo $lines > ~/.cache/ctrlp/mru/cache.txt
 }
 # z - open directories
