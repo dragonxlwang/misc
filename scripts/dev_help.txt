@@ -100,3 +100,35 @@ hphpd printing
 ==============
 - print_r
 https://www.internalfb.com/intern/wiki/Writing-scripts-in-php/printing/
+
+Check if in unittest:
+=====================
+BuildInfo::isUnitTest()
+
+
+Unittest with logging:
+======================
+gtest approach:
+buck run foo:bar -- --gtest_filter=baz
+testpilot/Tpx :
+https://www.internalfb.com/intern/wiki/Testing_Infrastructure/TestPilot/how-do-i-faq/
+https://www.internalfb.com/intern/wiki/Testing_Infrastructure/tpx/Hacking_on_Tpx/Running_Tpx/
+bbtd buck:rule -- -r "regex" --print-passing-details
+
+gdb:
+====
+https://www.internalfb.com/intern/wiki/GDB/gdb_cheatsheet/
+
+relocation R_X86_64_32 out of range:
+====================================
+https://fburl.com/q0jyk3fl
+- FOR LOCAL DEVELOPMENT:
+buck build @mode/opt -c fbcode.split-dwarf=true path/to:binary
+- FOR FBPKG PACKAGING:
+buck build @mode/opt -c fbcode.split-dwarf=true -c fbcode.dwp=true \
+  path/to:binary path/to:binary-dwp
+
+code coverage:
+==============
+https://www.internalfb.com/intern/wiki/Code_Coverage_Snapshots/Fbcode-code-coverage/
+https://www.internalfb.com/intern/wiki/Code_Coverage_Snapshots/Fbcode-code-coverage/manually-running-coverage-tests/

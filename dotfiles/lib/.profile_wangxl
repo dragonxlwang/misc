@@ -1783,6 +1783,8 @@ function cp_to_public() {
 alias ccat="pygmentize"
 alias jscat="pygmentize -l json"
 
+alias gdb="gdb --directory=~/fbsource/fbcode -tui -ex='fbload stl' -ex='fbload folly'"
+
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
