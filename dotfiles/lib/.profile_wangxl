@@ -181,6 +181,7 @@ function unnice_all {
     unnice ${x}
   done
 }
+alias centos_version='cat /etc/redhat-release'
 ##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
 ## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
