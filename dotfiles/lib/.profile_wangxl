@@ -1804,7 +1804,9 @@ function cp_to_public() {
 alias ccat="pygmentize"
 alias jscat="pygmentize -l json"
 
-alias gdb="gdb --directory=~/fbsource/fbcode -tui -ex='fbload stl' -ex='fbload folly'"
+alias gdb="gdb --directory=~/fbsource/fbcode -ex='fbload stl' -ex='fbload folly'"
+# do not use tui because of gdb-dashboard
+# alias gdb="gdb --directory=~/fbsource/fbcode -tui -ex='fbload stl' -ex='fbload folly'"
 
 
 ## ========================================================================== ##
