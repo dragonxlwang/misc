@@ -22,7 +22,10 @@ cd ~/.vim/
 vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
 
-export PATH=/usr/local/bin:/usr/local/sbin:/opt/rh/devtoolset-8/root/usr/bin:$PATH
+
+sudo dnf install gcc-toolset-9
+
+export PATH=/usr/local/bin:/usr/local/sbin:/opt/rh/gcc-toolset-9/root/usr/bin:$PATH
 
 redecho "installing..."
 
@@ -44,5 +47,6 @@ https_proxy='fwdproxy:8080' http_proxy='fwdproxy:8080' EXTRA_CMAKE_ARGS=${CMAKE_
   ${PYTHON_DIR}/bin/python${PYTHON_VERSION} ./install.py --clang-completer
 
 redecho 'setup symlink ...'
+/bin/rm -rf /data/users/${USER}/YouCompleteMe
 mv ${HOME}/.vim/bundle/YouCompleteMe /data/users/${USER}/
 ln -s /data/users/${USER}/YouCompleteMe ${HOME}/.vim/bundle/YouCompleteMe

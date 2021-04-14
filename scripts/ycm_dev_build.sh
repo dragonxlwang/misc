@@ -22,9 +22,9 @@ cd ~/.vim/
 vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
 
-sudo yum install devtoolset-8-gcc-c++
+sudo dnf install gcc-toolset-9
 
-export PATH=/usr/local/bin:/usr/local/sbin:/opt/rh/devtoolset-8/root/usr/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/opt/rh/gcc-toolset-9/root/usr/bin:$PATH
 
 redecho "downloading ..."
 DEST_ROOT=~/.vim/bundle/YouCompleteMe/third_party/ycmd
