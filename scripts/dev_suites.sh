@@ -18,7 +18,7 @@ function whiteecho    { _color_echo "1;37m" "${@}"; }
 
 # yum
 ## ==================================================
-sudo yum groupinstall "Development Tools"
+sudo dnf groupinstall "Development Tools"
 packages=(cmake clang boost rubygems curl-devel htop \
   gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel \
   curl-devel xorg-x11-xauth kernel-devel make ncurses-devel \
@@ -33,15 +33,15 @@ packages=(cmake clang boost rubygems curl-devel htop \
   yasd autojump-zsh)
 for p in "${packages[@]}"
 do
-  sudo yum install -y "$p"
+  sudo dnf install -y "$p"
 done
 
 # vim
 ## ==================================================
 ## wiki/Development_Environment/Vim/
-sudo ln -s /usr/lib64/libpython2.7.so.1.0 /usr/lib64/libpython2.6.so.1.0
-sudo yum install fb-ycm-1.1-fb4.x86_64
-/usr/share/vim/vim74/bundle/YouCompleteMe/setup-ycm.sh
+# sudo ln -s /usr/lib64/libpython2.7.so.1.0 /usr/lib64/libpython2.6.so.1.0
+# sudo yum install fb-ycm-1.1-fb4.x86_64
+# /usr/share/vim/vim74/bundle/YouCompleteMe/setup-ycm.sh
 
 # proxy
 ## ==================================================
@@ -57,7 +57,7 @@ if [[ ! -e ~/.wgetrc ]]; then
   str+="https_proxy=fwdproxy:8080"
   echo $str >> ~/.wgetrc
 fi
-sudo yum install -y socat &&
+sudo dnf install -y socat &&
 if [[ ! -e ~/bin/git-proxy-wrapper ]]; then
   mkdir -p ~/bin;
   printf '%s\n' \
@@ -121,7 +121,25 @@ sudo python setup.py install
 # ipython
 ## ==================================================
 ## dex/ifbpy-notebook-in-a-nutshell/
-ipython_setup
-cd ~/fbcode
-torch/fb/fbitorch/setup.sh
-buck build -c fbcode.platform=gcc-4.9-glibc-2.20 deeplearning/torch:cuth
+# ipython_setup
+# cd ~/fbcode
+# torch/fb/fbitorch/setup.sh
+# buck build -c fbcode.platform=gcc-4.9-glibc-2.20 deeplearning/torch:cuth
+
+# features
+## ==================================================
+sudo feature install balancebot_vim
+sudo feature install bento
+sudo feature install dumont
+sudo feature install fb-vim
+sudo feature install fblearner_flow
+sudo feature install glean_tools
+sudo feature install inference_platform_tools
+sudo feature install laser_tools
+sudo feature install manifold
+sudo feature install mdf
+sudo feature install nlp_catalogue_tool
+sudo feature install ouroboros
+sudo feature install ttls_fwdproxy
+sudo feature install unicorn_tools
+sudo feature install warehouse

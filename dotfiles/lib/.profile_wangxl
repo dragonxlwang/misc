@@ -637,15 +637,19 @@ function update_scripts {
   up_tmux_tpm
   redecho "tmux tpm clean"
   clean_tmux_tmp
-  if [[ $(uname) == "Linux" ]]
+
+  if [[ $(uname) == "Linux" ]]; then
     redecho "git clone facebook/PathPicker.git"
     git_clone facebook PathPicker ~/local fpp
     sudo ln -s ~/local/fpp/fpp /usr/local/bin/fpp
-    redecho "source tmux conf"
-    tmux source ${HOME}/.tmux.conf
-    redecho "source profile_wangxl"
-    source ${HOME}/.profile_wangxl
-  }
+  fi
+
+  redecho "source tmux conf"
+  tmux source ${HOME}/.tmux.conf
+  redecho "source profile_wangxl"
+  source ${HOME}/.profile_wangxl
+
+}
 
 ## ========================================================================== ##
 #                     ________      _______. __    __                          #
@@ -1598,6 +1602,14 @@ function ddd() {
 function _process_mru_file_lines() {
   while read line; do
     local f="${line/\~/$HOME}"
+    if [[ ! -f "$f" ]] && [[ -f "$HOME/www/$f" ]]; then
+      f="$HOME/www/$f"
+    elif [[ ! -f "$f" ]] && [[ -f "$HOME/fbcode/$f" ]]; then
+      f="$HOME/fbcode/$f"
+    elif [[ ! -f "$f" ]] && [[ -f "$HOME/configerator/$f" ]]; then
+      f="$HOME/configerator/$f"
+    fi
+
     if [[ -f "$f" ]]; then
       f=${f/\/data\/users\/xlwang\/fbsource\/fbcode/\~\/fbcode}
       f=${f/\/data\/users\/xlwang\/www-hg/\~\/www}
@@ -1631,6 +1643,15 @@ function vv() {
     tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
 
   echo $lines | _v
+}
+function viminfo_to_mru() {
+  # Sometimes ctrp mru is truncated, or missing; fallback to viminfo
+  local lines
+  lines=$(cat ~/.cache/ctrlp/mru/cache.txt | _process_mru_file_lines)
+  lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
+    tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
+
+  echo $lines > ~/.cache/ctrlp/mru/cache.txt
 }
 # z - open directories
 unalias z 2> /dev/null
