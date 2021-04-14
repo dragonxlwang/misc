@@ -91,22 +91,22 @@ mkdir -p ~/workspace
 cd ~/workspace
 git clone git@github.com:giampaolo/psutil.git
 cd psutil
-sudo python setup.py install
+sudo /usr/bin/python3 setup.py install
 
 cd ~/workspace
 git clone git@github.com:google/yapf.git
 cd yapf
-sudo python setup.py install
+sudo /usr/bin/python3 setup.py install
 
 cd ~/workspace
 git clone git@github.com:PythonCharmers/python-future.git
 cd python-future
-sudo python setup.py install
+sudo /usr/bin/python3 setup.py install
 
 cd ~/workspace
 git clone git@github.com:orb/pygments-json.git
 cd pygments-json
-sudo python setup.py install
+sudo /usr/bin/python3 setup.py install
 
 cd ~/workspace
 git clone git@github.com:dosentmatter/lolcat
@@ -116,7 +116,7 @@ make && sudo make install
 cd ~/workspace
 git clone git@github.com:jeffkaufman/icdiff
 cd icdiff
-sudo python setup.py install
+sudo /usr/bin/python3 setup.py install
 
 # ipython
 ## ==================================================

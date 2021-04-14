@@ -1,4 +1,5 @@
-#!/usr/bin/env python2
+#!/usr/bin/python3
+
 import vim
 from fbvimutils import vimfunc, vc
 
