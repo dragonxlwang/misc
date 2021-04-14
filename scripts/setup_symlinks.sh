@@ -144,6 +144,7 @@ files=(                                                           \
   "${HOME}/fbsource/fbcode"         "${HOME}/fbcode"              \
   "${HOME}/local/configerator"      "${HOME}/configerator"        \
   "${HOME}/local/notebooks"         "${HOME}/notebooks"           \
+  "${HOME}/local/.cache"            "${HOME}/.cache"              \
   "$root_dir/lib/bento_notebook.json"                             \
   "${HOME}/local/.bento/jupyter/nbconfig/notebook.json"
 )
