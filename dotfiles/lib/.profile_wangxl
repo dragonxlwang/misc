@@ -457,18 +457,19 @@ function ed_misc {
   vim -c "$cmd1" -c "tabnew" \
     -c "$cmd2" -c "tabnew" \
     -c "$cmd3" -c "tabn1"
-      cyanecho "sourcing ~/.profile_wangxl"
-      source ${HOME}/.profile_wangxl
-      cyanecho "sourcing ~/.tmux.conf"
-      tmux source-file ${HOME}/.tmux.conf
-    }
-  function up_misc {
-    pushd ${HOME}/misc > /dev/null
-    if [[ -z $(git status --porcelain) ]]; then
-      ggpur
-    else
-      xg_st
-      redecho "There is uncommitted changes. Abort..."
+
+  cyanecho "sourcing ~/.profile_wangxl"
+  source ${HOME}/.profile_wangxl
+  cyanecho "sourcing ~/.tmux.conf"
+  tmux source-file ${HOME}/.tmux.conf
+}
+function up_misc {
+  pushd ${HOME}/misc > /dev/null
+  if [[ -z $(git status --porcelain) ]]; then
+    ggpur
+  else
+    xg_st
+    redecho "There is uncommitted changes. Abort..."
   fi
   popd > /dev/null
 }
@@ -835,7 +836,9 @@ function yapf {
     --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $@
   }
 # alias killall="eden start; killall -u $USER"
-alias killall="loginctl terminate-user $USER"
+if [[ $(uname) == "Linux" ]]; then
+  alias killall="loginctl terminate-user $USER"
+fi
 alias ka="\killall -u $USER" #  disables the alias in interactive shell
 alias upld="${HOME}/misc/scripts/sync.sh"
 alias tty_sane="stty sane"
