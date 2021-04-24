@@ -49,6 +49,7 @@ set tabstop=2                   " How many columns a tab counts for display
 set foldmethod=indent           " Fold based on indent
 set foldnestmax=3               " Deepest fold is 3 levels
 set foldlevelstart=99           " Dont fold by default (in lieu of nofoldenable)
+set sessionoptions-=folds       " mksessions without folds
 " ===============================- Completion -=================================
 set wildmode=list:longest,full  " List all matches including current
 set wildmenu                    " Enable ctrl-n and ctrl-p to scroll
