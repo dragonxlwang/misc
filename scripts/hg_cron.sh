@@ -62,3 +62,8 @@ log_event "www arc fix"
 cd ~/www
 arc fix
 log_status
+
+log_event 'local bento'
+cd ~/fbcode
+ ./search/typeahead/scripts/local_bento.sh
+ log_status
