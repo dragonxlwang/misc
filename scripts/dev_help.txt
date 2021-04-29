@@ -132,3 +132,9 @@ code coverage:
 ==============
 https://www.internalfb.com/intern/wiki/Code_Coverage_Snapshots/Fbcode-code-coverage/
 https://www.internalfb.com/intern/wiki/Code_Coverage_Snapshots/Fbcode-code-coverage/manually-running-coverage-tests/
+
+ODS:
+====
+sum 1 day data
+replace your sum(1d) with avg(1d), formula(* $1 1440) (for the case of 1-minute data)
+https://www.internalfb.com/intern/wiki/ODS/User_Guide/FAQ/
