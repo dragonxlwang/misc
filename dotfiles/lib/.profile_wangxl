@@ -960,6 +960,9 @@ function less_flow_log {
 #                              |  |     |  |_)  |                              #
 #                              |__|     |______/                               #
 ## ========================================================================== ##
+if [[ -d  ~/fbcode/search/typeahead/scripts ]]; then
+  export PATH=~/fbcode/search/typeahead/scripts:$PATH
+fi
 export BUCKOUT="${HOME}/fbcode/buck-out/gen"
 alias arc_lint="arc lint --engine HowtoevenLintEngine"
 alias arc_up_msg="hg commit --amend && arc diff --verbatim"
