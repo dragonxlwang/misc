@@ -2213,6 +2213,16 @@
 					<key>action</key>
 					<string>iTermHyperlinkTrigger</string>
 					<key>parameter</key>
+					<string>https://www.internalfb.com/intern/fblearner/details/\1</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>[f]([1-9][0-9]{5,})</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>iTermHyperlinkTrigger</string>
+					<key>parameter</key>
 					<string>https://our.intern.facebook.com/intern/diff/\0</string>
 					<key>partial</key>
 					<true/>
