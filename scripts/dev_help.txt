@@ -142,3 +142,7 @@ ODS:
 sum 1 day data
 replace your sum(1d) with avg(1d), formula(* $1 1440) (for the case of 1-minute data)
 https://www.internalfb.com/intern/wiki/ODS/User_Guide/FAQ/
+
+Python buck custom import:
+==========================
+https://www.internalfb.com/intern/wiki/Buck-integrators/fbcode-autodeps/#python-custom-import-met
