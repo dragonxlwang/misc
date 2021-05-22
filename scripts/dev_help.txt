@@ -146,3 +146,10 @@ https://www.internalfb.com/intern/wiki/ODS/User_Guide/FAQ/
 Python buck custom import:
 ==========================
 https://www.internalfb.com/intern/wiki/Buck-integrators/fbcode-autodeps/#python-custom-import-met
+
+Thrift sync:
+============
+(local) fbcode -> www:
+~/www/scripts/thrift/update_flib_files.php -b ~/fbsource fbcode:unicorn/if/search_response.thrift
+cconf -> fbcode:
+configerator-thrift-updater search/ranking/RankerModels.thrift -y
