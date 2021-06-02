@@ -5,11 +5,16 @@
 #   && sudo chown -R $(whoami):admin /usr/local
 
 # sudo chown -R $(whoami):admin /usr/local
-sudo chown -R $(whoami) $(brew --prefix)/*
-sudo chown -R $(whoami) /usr/local/lib /usr/local/sbin
-chmod u+w /usr/local/lib /usr/local/sbin
+# sudo chown -R $(whoami) $(brew --prefix)/*
+# sudo chown -R $(whoami) /usr/local/lib /usr/local/sbin
+# chmod u+w /usr/local/lib /usr/local/sbin
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/sbin
+# chmod u+w /usr/local/bin /usr/local/lib /usr/local/sbin
+
 
 # brew tap homebrew/dupes
 # brew tap homebrew/python@2

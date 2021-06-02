@@ -7,6 +7,7 @@ ANSI_COLOR_BLUE="\033[36m"
 ANSI_COLOR_YELLOW="\033[33m"
 
 root_dir=$(dirname $(dirname $(readlink -f $0)))/dotfiles
+[[ $? -ne 0 ]] && root_dir=$(dirname $(dirname $(greadlink -f $0)))/dotfiles
 
 if [[ ${1:l} != "darwin" && ${1:l} != "linux" ]]; then
   echo "specify which set of rules to apply"
