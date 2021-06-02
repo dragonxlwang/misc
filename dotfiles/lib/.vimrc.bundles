@@ -156,8 +156,8 @@ if system("hostname -s") =~ 'dev'
         \'/usr/local/fbcode/platform009/bin/python3'
   "'/home/xlwang/fbcode/third-party-buck/platform009/build/python/3.8/bin/python3'
   "'/usr/local/fbcode/bin/python3.6'
-else
-  let g:ycm_server_python_interpreter='/usr/local/bin/python'
+" else
+  " let g:ycm_server_python_interpreter='/usr/local/bin/python'
 endif
 " Plugin 'oblitum/YouCompleteMe'
 " let g:ycm_path_to_python_interpreter='/usr/local/bin/python'
