@@ -9,13 +9,33 @@ brew tap homebrew/core
 brew install graphviz
 
 brew install xquartz
-brew install dropbox google-drive google-chrome adium qq skype
-brew install spotify neteasemusic inkscape gimp
-brew install iterm2-beta atom filezilla the-unarchiver flux
-brew install mactex bibdesk texmaker bbedit adobe-acrobat-reader mou
-brew install cheatsheet suspicious-package
+brew install dropbox
+brew install google-drive
+brew install google-chrome
+brew install adium
+brew install qq
+brew install skype
+brew install spotify
+brew install neteasemusic
+brew install inkscape
+brew install gimp
+brew install iterm2-beta
+brew install atom
+brew install filezilla
+brew install the-unarchiver
+brew install flux
+brew install mactex
+brew install bibdesk
+brew install texmaker
+brew install bbedit
+brew install adobe-acrobat-reader
+brew install mou
+brew install cheatsheet
+brew install suspicious-package
 brew install github-desktop
-brew install java tcl quip
+brew install java
+brew install tcl
+brew install quip
 
 brew install qlcolorcode
 brew install qlstephen
