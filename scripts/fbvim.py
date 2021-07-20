@@ -444,32 +444,26 @@ def init_session_branch():
 def get_session_branch():
     return local_state().get('session_branch')
 
-def save_session():
-    repo = _get_current_repo()
-    branch = get_session_branch()
-    if not branch:
-        print("no branch for repo %s was loaded, pulling filesystem..."
-              % (repo))
-        branch = _get_repo_branch()
+def get_session_name():
+    try:
+        session_name = str(vim.eval("g:fbvim_session_name")) + "-session.vim"
+    except:
+        repo = _get_current_repo()
+        branch = get_session_branch()
+        if not branch:
+            branch = _get_repo_branch()
+        session_name = '%s-%s.vim' % (repo, branch)
+    return session_name
 
-    branch_session_file = os.path.join(vim_sessions_dir, '%s-%s.vim' % (repo, branch))
+def save_session():
+    branch_session_file = os.path.join(vim_sessions_dir, get_session_name())
     session_save_cmd = ':mksession! ' + branch_session_file
     vim.command(session_save_cmd)
     print("Saved session to %s" % branch_session_file)
     vim.command(':qall')
 
 def load_session():
-    repo = _get_current_repo()
-    session_branch = get_session_branch()
-    branch = _get_repo_branch()
-
-    if session_branch != branch:
-        print('Session branch (%s) and remote branch (%s) do not match. '
-              'You should start with a fresh session'
-              % (session_branch, branch))
-
-    branch_session_file = os.path.join(
-        vim_sessions_dir, '%s-%s.vim' % (repo, branch))
+    branch_session_file = os.path.join(vim_sessions_dir, get_session_name())
     cmd = 'source ' + branch_session_file
     vc(cmd)
 

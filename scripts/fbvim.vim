@@ -17,11 +17,11 @@ ENDPYTHON
 
 " take the current vim state and save it to a session file named by the current
 " repo (e.g. www) and the current branch
-command! FBVimSaveSession python3 fbvim.save_session()
+command! -nargs=? FBVimSaveSession call <SID>FBVimSaveSession(<f-args>)
 
 " look at the current repo (.e.g www) and current branch, and restore the last
 " saved session if it exists.
-command! FBVimLoadSession python3 fbvim.load_session()
+command! -nargs=? FBVimLoadSession call <SID>FBVimLoadSession(<f-args>)
 
 " run a query against the mural_server for tags (only works in www)
 command! FBVimMuralSearch python3 fbvim.tags_mural()
@@ -43,3 +43,19 @@ command! FBVimHackSearch python3 fbvim.tags_hack()
 " search against hack server using current word
 command! FBVimHackSearchCurrentWord python3 fbvim.tags_hack(True)
 
+
+function! <SID>FBVimSaveSession(...)
+  if a:0 > 0
+    let g:fbvim_session_name=a:1
+  endif
+  python3 fbvim.save_session()
+endfunction
+
+
+function! <SID>FBVimLoadSession(...)
+  if a:0 > 0
+    let g:fbvim_session_name=a:1
+    echo a:1 . g:fbvim_session_name
+  endif
+  python3 fbvim.load_session()
+endfunction
