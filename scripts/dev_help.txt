@@ -153,3 +153,10 @@ Thrift sync:
 ~/www/scripts/thrift/update_flib_files.php -b ~/fbsource fbcode:unicorn/if/search_response.thrift
 cconf -> fbcode:
 configerator-thrift-updater search/ranking/RankerModels.thrift -y
+
+SMC:
+====
+- Port taken
+sudo netstat -plten | grep 8115
+- Clear port
+fuser -k -n tcp 8115
