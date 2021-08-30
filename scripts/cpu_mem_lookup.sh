@@ -8,6 +8,7 @@ function need_update {
     if is_osx; then
       stat >/dev/null 2>&1 && { last_update=$(stat -f "%m" $1); }\
         || { last_update=$(stat -c "%Y" $1) }
+
     elif is_linux; then
       last_update=$(stat -c "%Y" $1)
     fi
@@ -20,16 +21,22 @@ function need_update {
   fi
 }
 
-if [[ $1 == cpu ]]; then
-  f=$misc_dir/tmp/cpu_$(hostname).txt
-  [[ -r $f ]] && cat $f
-  if need_update $f 5; then
-    $misc_dir/scripts/cpu_mem_lookup.py cpu > $f
-  fi
-elif [[ $1 == mem ]]; then
-  f=$misc_dir/tmp/mem_$(hostname).txt
-  [[ -r $f ]] && cat $f
-  if need_update $f 5; then
-    $misc_dir/scripts/cpu_mem_lookup.py mem > $f
-  fi
+# if [[ $1 == cpu ]]; then
+#   f=$misc_dir/tmp/cpu_$(hostname).txt
+#   [[ -r $f ]] && cat $f
+#   if need_update $f 5; then
+#     $misc_dir/scripts/cpu_mem_lookup.py cpu > $f
+#   fi
+# elif [[ $1 == mem ]]; then
+#   f=$misc_dir/tmp/mem_$(hostname).txt
+#   [[ -r $f ]] && cat $f
+#   if need_update $f 5; then
+#     $misc_dir/scripts/cpu_mem_lookup.py mem > $f
+#   fi
+# fi
+
+f=$misc_dir/tmp/cpu_mem_$(hostname).txt
+[[ -r $f ]] && cat $f
+if need_update $f 5; then
+  $misc_dir/scripts/cpu_mem_lookup.py > $f
 fi
