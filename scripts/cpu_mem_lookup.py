@@ -13,26 +13,44 @@ load = os.getloadavg()
 load1min = load[0]
 
 if load1min > 0.5 * cpu_cnt:
-    color = "#[fg=red,bright]"
+    load_color = "#[fg=red,bright]"
 elif load1min > 0.1 * cpu_cnt:
-    color = "#[fg=yellow,bright]"
+    load_color = "#[fg=yellow,bright]"
 else:
-    color = "#[fg=cyan,bright]"
+    load_color = "#[fg=cyan,bright]"
 
+
+if cpu_pct > 50:
+    cpu_color = "#[fg=red,bright]"
+else:
+    cpu_color = "#[fg=blue]"
+if mem_pct > 50:
+    mem_color = "#[fg=red,bright]"
+else:
+    mem_color = "#[fg=yellow]"
 
 if len(sys.argv) == 1:
     print(
-        "{0}"
-        u"\u24C1 {1:04}"
+        "{}"
+        u"\u24C1 {:04}"
         "#[default]"
         " "
-        "#[fg=blue]"
-        u"\u24D2 {2:04}%:{3}"
+        "{}"
+        u"\u24D2 {:04}%:{}"
         "#[default]"
         " "
-        "#[fg=yellow]"
-        "\u24Dc {4:04}%:{5}"
-        "#[default]".format(color, load1min, cpu_pct, cpu_cnt, mem_pct, mem_all)
+        "{}"
+        "\u24Dc {:04}%:{}"
+        "#[default]".format(
+            load_color,
+            load1min,
+            cpu_color,
+            cpu_pct,
+            cpu_cnt,
+            mem_color,
+            mem_pct,
+            mem_all,
+        )
     )
 elif sys.argv[1] == "cpu":
     print(u"\u24D2 {0:04}%:{1}".format(cpu_pct, cpu_cnt))
