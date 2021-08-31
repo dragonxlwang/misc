@@ -32,7 +32,7 @@ else:
 if len(sys.argv) == 1:
     print(
         "{}"
-        u"\u24C1 {:04}"
+        u"\u24C1 {:04.2f}"
         "#[default]"
         " "
         "{}"
