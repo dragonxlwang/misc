@@ -41,7 +41,7 @@ CMAKE_ARGS+=" -DCMAKE_CXX_COMPILER=g++.par"
 CMAKE_ARGS+=" -DCMAKE_C_FLAGS=\"--platform=$FBCODE_PLATFORM\""
 CMAKE_ARGS+=" -DCMAKE_CXX_FLAGS=\"--platform=$FBCODE_PLATFORM\""
 CMAKE_ARGS+=" -DPYTHON_LIBRARY=${PYTHON_DIR}/lib/libpython${PYTHON_MAJOR_VERSION}.so"
-CMAKE_ARGS+=" -DEXTERNAL_LIBCLANG_PATH=$TP2/llvm-fb/lib/libclang.so"
+CMAKE_ARGS+=" -DEXTERNAL_LIBCLANG_PATH=$TP2/llvm-fb/12/lib/libclang.so"
 
 https_proxy='fwdproxy:8080' http_proxy='fwdproxy:8080' EXTRA_CMAKE_ARGS=${CMAKE_ARGS} \
   ${PYTHON_DIR}/bin/python${PYTHON_VERSION} ./install.py --clang-completer
