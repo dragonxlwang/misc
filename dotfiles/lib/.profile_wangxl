@@ -1257,6 +1257,7 @@ alias jfss="jf s --stack"
 alias jfsss="jf s -r bottom::top"
 alias jfu="jf s --update-fields"
 alias abac="arc build && arc canary --ttl 86400"
+alias ablac="arc build --legacy && arc canary --ttl 86400"
 alias acls="arc canary --list"
 alias acch="arc canary --cancel-host $(hostname)"
 alias al="arc lint"
@@ -1815,6 +1816,12 @@ alias jscat="pygmentize -l json"
 alias gdb="gdb --directory=~/fbsource/fbcode -ex='fbload stl' -ex='fbload folly'"
 # do not use tui because of gdb-dashboard
 # alias gdb="gdb --directory=~/fbsource/fbcode -tui -ex='fbload stl' -ex='fbload folly'"
+
+function cp_exp() {
+  mkdir -p ~/fbcode/scripts/xlwang
+  cp -n ~/local/exp_scripts/* ~/fbcode/scripts/xlwang
+
+}
 
 
 ## ========================================================================== ##

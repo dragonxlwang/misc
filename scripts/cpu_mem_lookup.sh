@@ -38,5 +38,6 @@ function need_update {
 f=$misc_dir/tmp/cpu_mem_$(hostname).txt
 [[ -r $f ]] && cat $f
 if need_update $f 5; then
-  $misc_dir/scripts/cpu_mem_lookup.py > $f
+  output=$($misc_dir/scripts/cpu_mem_lookup.py)
+  [[ -n "$output" ]] && echo "$output" > $f
 fi
