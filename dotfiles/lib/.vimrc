@@ -440,8 +440,9 @@ noremap zfm :if &foldmethod == 'manual' \| set foldmethod=indent \|
       \ else \| set foldmethod=manual \| endif \|
       \ :echo "foldmethod =" &foldmethod<CR>
 " Get full path of file
-command! Fpp put expand('%:p')
+command! Fpp put =expand('%:p')
 command! Fpy :let @" = expand('%:p')
+command! Tpp put =expand('%:t')
 command! Tpy :let @" = expand('%:t')
 command! T exec "e " . FindFbcodeTargets()
 command! TS exec "sp " . FindFbcodeTargets()
