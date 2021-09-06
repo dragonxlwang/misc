@@ -345,6 +345,7 @@ alias -g RALL="2>&1"
 alias -g RNUL="> /dev/null 2>&1"
 alias -g FPP="| fpp"
 alias -g send_email_notification=" > >(cat) > >(strip_color PMM)"
+alias -g TAP="2>&1| tee >(arc paste)"
 ##---------------------------------== vim ==----------------------------------##
 function vim_buffers {
   local found=0

@@ -160,3 +160,7 @@ SMC:
 sudo netstat -plten | grep 8115
 - Clear port
 fuser -k -n tcp 8115
+
+Strobelight:
+============
+strobeclient run --tier multifeed.raas.dev-xlwang --binary-regex raas_server --event cycles --duration-ms 60000
