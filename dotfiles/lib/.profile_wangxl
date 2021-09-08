@@ -347,6 +347,7 @@ alias -g FPP="| fpp"
 alias -g send_email_notification=" > >(cat) > >(strip_color PMM)"
 alias -g TAP="2>&1| tee >(arc paste)"
 ##---------------------------------== vim ==----------------------------------##
+export FPP_EDITOR="${HOME}/misc/scripts/fpp_vim.sh"
 function vim_buffers {
   local found=0
   local exe_path
