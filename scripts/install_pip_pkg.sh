@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # pip
-alias pip=pip3
+# alias pip=pip3
+alias pip=/usr/bin/pip3
 pip install --user --upgrade pip
 pip install --user "ipython[all]" --upgrade ## --force-reinstall
 # sudo -H pip install -U nltk
