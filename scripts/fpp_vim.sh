@@ -13,4 +13,3 @@ echo "\"vs $first_file" > $viml
 echo $viml_script >> $viml
 
 vim $first_file -S $viml
-
