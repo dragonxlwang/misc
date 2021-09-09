@@ -5,6 +5,15 @@ If the error message shows up when executing:
 Solution:
   loginctl terminate-user $USER
 
+
+At your earliest convenience, please follow these steps:
+  * Close any processes that shouldn't be killed (editors, etc.).
+  * Run `loginctl terminate-user $USER` (this will log you out).
+  * Log in and run fixmyserver again to verify that this is fixed.
+  * If it's not fixed, run `sudo systemctl restart dbus systemd-logind`
+  * Log out and back in again, and run fixmyserver to verify that this is fixed.
+  * If it's *still* not fixed, reboot your devserver (https://fburl.com/devreboot)
+
 Chrome has problem opening the ipython:
 =======================================
 I get an SSL certificate error ("Your connection is not private") when
