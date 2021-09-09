@@ -138,29 +138,31 @@ function pspidgrep { _psfmt | grep -i $1 | grep -v grep | awk '{print $2}'; }
 function pspidmine { psmine | sed 1d | awk '{print $2}'; }
 # case sensitive kill
 function pskill {
-  ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs kill -9; }
-  # kill from joblist
-  function kill_jobs {
-    if [[ -n $(jobs) ]];
-    then
-      for i in $(seq 1 $(jobs | wc -l));
-      do kill -9 %$i;
-      done
-    fi
-  }
+  ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs kill -9;
+}
+# kill from joblist
+function kill_jobs {
+  if [[ -n $(jobs) ]];
+  then
+    for i in $(seq 1 $(jobs | wc -l));
+    do kill -9 %$i;
+    done
+  fi
+}
 function kill_zombies {
-  ps -e -o pid,state | awk '{ if ($2 == "Z") {print $1} }' | xargs  kill -9; }
-  alias cls='printf "\033c"'
-  alias tmux_kill='tmux kill-session'
-  alias tmux_halt='tmux detach'
-  function q {
-    if [[ -z $TMUX ]]; then
-      return 0
+  ps -e -o pid,state | awk '{ if ($2 == "Z") {print $1} }' | xargs  kill -9;
+}
+alias cls='printf "\033c"'
+alias tmux_kill='tmux kill-session'
+alias tmux_halt='tmux detach'
+function q {
+  if [[ -z $TMUX ]]; then
+    return 0
 
-    else
-      tmux detach
-    fi
-  }
+  else
+    tmux detach
+  fi
+}
 function check_busy { lsof +D ${@:-.}; }
 alias nicer="sudo renice -20"
 alias unnice="renice 0"
@@ -182,6 +184,7 @@ function unnice_all {
   done
 }
 alias centos_version='cat /etc/redhat-release'
+alias kill_mosh = "kill `pidof mosh-server`"
 ##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
 ## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
