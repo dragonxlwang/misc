@@ -1017,9 +1017,21 @@ alias hed="hg commit --amend"
 alias hls="hg log --stat -l1"
 alias hlsf="hg log --stat -l1 | fpp"
 # need to refresh for missing lines in tmux
-alias hs="hg st && hg smartlog -T '{xg_sl}'; [[ -n $TMUX ]] && tmux refresh-client"
-alias hfs="hg st && hg fsl -T '{xg_sl}'; [[ -n $TMUX ]] && tmux refresh-client"
-alias hfss="hg st && hg fssl -T '{xg_sl}'; [[ -n $TMUX ]] && tmux refresh-client"
+function hs {
+  [[ -z $(hg root 2>/dev/null) ]] && {cd ~/fbcode; tmrn fbc}
+  hg st && hg smartlog -T '{xg_sl}';
+  [[ -n $TMUX ]] && tmux refresh-client
+}
+function hfs {
+  [[ -z $(hg root 2>/dev/null) ]] && {cd ~/fbcode; tmrn fbc}
+  hg st && hg fsl -T '{xg_sl}';
+  [[ -n $TMUX ]] && tmux refresh-client
+}
+function hfss {
+  [[ -z $(hg root 2>/dev/null) ]] && {cd ~/fbcode; tmrn fbc}
+  hg st && hg fssl -T '{xg_sl}';
+  [[ -n $TMUX ]] && tmux refresh-client
+}
 alias hsu="{ hg-sl-up -T '{xg_sl_up}' } && hs_cur_rev"
 alias hst="hg st"
 alias hsl=" hg smartlog -T '{xg_sl}'"
