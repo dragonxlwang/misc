@@ -150,7 +150,13 @@ ODS:
 ====
 sum 1 day data
 replace your sum(1d) with avg(1d), formula(* $1 1440) (for the case of 1-minute data)
+sum 1 hour data
+datatype(sum),formula(/ $1 60),
+
 https://www.internalfb.com/intern/wiki/ODS/User_Guide/FAQ/
+
+groupby
+groupby(entity, unicorn\.(\w+)\.alacorn-object-feature-service-cpg-group\.(\d+)\.(\w+)\.(.*)-prod, %1), sum,
 
 Python buck custom import:
 ==========================
