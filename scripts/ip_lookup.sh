@@ -40,7 +40,7 @@ fi
 
 misc_dir="$(dirname $(dirname $(readlink -f $0)))"
 [[ ! -d "$misc_dir/tmp" ]] && mkdir "$misc_dir/tmp"
-tmp_file="$misc_dir/tmp/wan_ip_$(hostname).txt"
+tmp_file="$misc_dir/tmp/wan_ipv6_$(hostname).txt"
 if [ -f "$tmp_file" ]; then
   if is_osx; then
     stat >/dev/null 2>&1 && { last_update=$(stat -f "%m" ${tmp_file}); }\
@@ -54,7 +54,9 @@ if [ -f "$tmp_file" ]; then
   [[ "$up_to_date" -eq 1 ]] && wan_ip=$(cat ${tmp_file})
 fi
 if [[ -z "$wan_ip" ]]; then
-  wan_ip=$(curl --max-time 2 -s http://whatismyip.akamai.com/)
+  # wan_ip=$(curl --max-time 2 -s http://whatismyip.akamai.com/)
+  wan_ip=$(ip -6 addr show dev eth0 scope global |
+    sed -e's/^.*inet6 \([^ ]*\)\/.*global.s*$/\1/;t;d')
   [[ "$?" -eq "0" ]] &&  echo "${wan_ip}" > $tmp_file
 fi
 
@@ -62,7 +64,8 @@ if [[ $1 == 'all' ]]; then
   echo "ⓛ ${lan_ip-N/a} ⓦ ${wan_ip-N/a}"
 else
   [[ $lan_ip == $wan_ip ]] && wan_ip=""
-  [[ -n $lan_ip ]] && lan_ip="ⓛ ${lan_ip} "
+  # [[ -n $lan_ip ]] && lan_ip="ⓛ ${lan_ip} "
+  lan_ip=""
   [[ -n $wan_ip ]] && wan_ip="ⓦ ${wan_ip} "
   echo "$lan_ip$wan_ip"
 fi
