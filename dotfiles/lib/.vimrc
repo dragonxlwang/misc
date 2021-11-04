@@ -37,6 +37,8 @@ set showcmd                     " Show incomplete cmds down the bottom
 set showmode                    " Show current mode down the bottom
 set visualbell                  " No sounds
 set laststatus=2                " Always display the status line
+set winminheight=1              " min height
+set winminwidth=1               " min width
 " ==============================- Indentation -=================================
 set autoindent                  " Indent for new lines
 set smartindent                 " Indent by context

@@ -48,6 +48,7 @@ function! <SID>FBVimSaveSession(...)
   if a:0 > 0
     let g:fbvim_session_name=a:1
   endif
+  set winminheight=1 winminwidth=1
   python3 fbvim.save_session()
 endfunction
 
