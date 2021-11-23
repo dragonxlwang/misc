@@ -179,3 +179,7 @@ fuser -k -n tcp 8115
 Strobelight:
 ============
 strobeclient run --tier multifeed.raas.dev-xlwang --binary-regex raas_server --event cycles --duration-ms 60000
+
+Automate non-TW packages:
+=========================
+https://www.internalfb.com/intern/wiki/Releng/internal/Push4Push/Service_Evolution_Tutorial/Binary_package_evolution/
