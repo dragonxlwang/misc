@@ -6,7 +6,7 @@ Host dev
 # xlwang.sb
 Host devbig
     User xlwang
-    Hostname devbig724.prn2.facebook.com
+    Hostname devbig1102.prn1.facebook.com
 Host devbig2
     User xlwang
     Hostname devbig470.prn2.facebook.com
