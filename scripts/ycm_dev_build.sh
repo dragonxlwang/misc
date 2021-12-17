@@ -21,6 +21,7 @@ cd ~/.vim/
 /bin/rm -rf ./bundle/YouCompleteMe
 vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
+git checkout 4117a99861b537830d717c3113e3d584523bc573
 
 
 sudo dnf install gcc-toolset-9
