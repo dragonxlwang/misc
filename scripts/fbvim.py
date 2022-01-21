@@ -394,7 +394,10 @@ def _get_current_scm():
 def _get_current_repo():
     repo = local_state().get('current_repo')
     if not repo:
-        repo = _detect_repo()
+        try:
+            repo = _detect_repo()
+        except Exception:
+            repo = None
         if repo:
             local_state()['current_repo'] = repo
     return repo
