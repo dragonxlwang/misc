@@ -48,7 +48,8 @@ brew install geos
 for app in hub gawk ascii_plots gzip screen watch wget pigz fpp \
            gcc node reattach-to-user-namespace zsh-completions ctags cmake \
            emacs gdb gpatch m4 nano markdown pandoc \
-           file-formula git gist bfg less openssh perl518 rsync svn unzip autojump;
+           file-formula git gist bfg less openssh perl518 rsync svn unzip \
+           autojump pidof;
 do
   brew install $app
 done

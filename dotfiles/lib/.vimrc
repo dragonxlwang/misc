@@ -143,6 +143,10 @@ augroup END
 "     autocmd WinLeave * set nocul
 " augroup END
 
+if g:osName == 'Darwin'
+  let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
+endif
+
 " =============================- Vundle Config -================================
 if !empty(glob('~/.vim/bundle/Vundle.vim'))
   source ~/misc/dotfiles/lib/.vimrc.bundles
