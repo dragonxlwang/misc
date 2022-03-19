@@ -965,6 +965,7 @@ function less_flow_log {
 #                              |  |     |  |_)  |                              #
 #                              |__|     |______/                               #
 ## ========================================================================== ##
+alias buck="greenecho \[\[buck2\]\]; buck2"
 if [[ -d  ~/fbcode/search/typeahead/scripts ]]; then
   export PATH=~/fbcode/search/typeahead/scripts:$PATH
 fi
