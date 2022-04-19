@@ -144,3 +144,4 @@ sudo feature install ttls_fwdproxy
 sudo feature install unicorn_tools
 sudo feature install warehouse
 sudo feature install fpp
+sudo feature install pyre_upgradei
