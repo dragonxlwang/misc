@@ -25,7 +25,18 @@ Plugin 'moll/vim-bbye'
 noremap <leader>bd :Bdelete<cr>
 
 Plugin 'vim-scripts/a.vim'
-let g:alternateExtensions_h = "cpp,cc,cxx,CC,c"
+let g:alternateExtensions_h = "cpp,CPP,cc,CC,cxx,CXX,c,C"
+let g:alternateExtensions_hpp = "cpp,CPP,cc,CC,cxx,CXX,c,C"
+let g:alternateExtensions_H = "cpp,CPP,cc,CC,cxx,CXX,c,C"
+let g:alternateExtensions_HPP = "cpp,CPP,cc,CC,cxx,CXX,c,C"
+let g:alternateExtensions_cpp = "h,H,hpp,HPP"
+let g:alternateExtensions_CPP = "h,H,hpp,HPP"
+let g:alternateExtensions_cc = "h,H,hpp,HPP"
+let g:alternateExtensions_CC = "h,H,hpp,HPP"
+let g:alternateExtensions_cxx = "h,H,hpp,HPP"
+let g:alternateExtensions_CXX = "h,H,hpp,HPP"
+let g:alternateExtensions_c = "h,H,hpp,HPP"
+let g:alternateExtensions_C = "h,H,hpp,HPP"
 " Plugin 'vim-scripts/YankRing.vim'
 " let g:yankring_replace_n_pkey = '<leader><leader>p'
 " let g:yankring_replace_n_nkey = '<leader><leader>n'
@@ -161,7 +172,7 @@ if system("hostname -s") =~ 'dev'
         \'/usr/local/fbcode/platform009/bin/python3'
   "'/home/xlwang/fbcode/third-party-buck/platform009/build/python/3.8/bin/python3'
   "'/usr/local/fbcode/bin/python3.6'
-" else
+  " else
   " let g:ycm_server_python_interpreter='/usr/local/bin/python'
 endif
 " Plugin 'oblitum/YouCompleteMe'
@@ -236,7 +247,7 @@ endif
 let g:formatters_cpp = ['my_custom_clang']
 let g:formatters_c = ['my_custom_clang']
 let g:formatdef_yapf =
-  \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:80}\" -l '.a:firstline.'-'.a:lastline"
+      \"'yapf --style=\"{based_on_style:facebook,indent_width:4,column_limit:80}\" -l '.a:firstline.'-'.a:lastline"
 " let g:formatdef_black = "'isort -m 3 - | black -q - '"
 let g:formatdef_black = "'pyfmt - | black -q - '"
 let g:formatdef_buck="'~/fbsource/tools/third-party/buildifier/run_buildifier.py'"
@@ -253,8 +264,8 @@ let g:formatters_thrift=['thrift']
 nnoremap <leader>w :Autoformat \| :w!<CR>
 vnoremap <leader>w :Autoformat \| :w!<CR>
 noremap <leader>W
-  \ :Autoformat yapf \| :w! \|
-  \ :setl textwidth=80 \| :setl colorcolumn=80 <CR>
+      \ :Autoformat yapf \| :w! \|
+      \ :setl textwidth=80 \| :setl colorcolumn=80 <CR>
 " let g:formatter_yapf_style = 'facebook'
 " let g:formatters_python = ['yapf']
 " let auto_format_type_list = ['c', 'cpp', 'python']
@@ -315,52 +326,52 @@ let g:fbdirs = 'sigrid,fblearner,caffe2,experimental/xlwang,search,unicorn,nlp_t
 let g:cconf="unicorn,nlp_tools"
 let g:fzf_layout= { 'down': '~20%' }
 command! FZFfbcode call fzf#run(fzf#wrap(
-    \ {'source':  'find '.
-    \ '~/fbcode/{'. g:fbdirs. '} '.
-    \ '~/configerator/source/{'.  g:cconf. '} '.
-    \ '-type f',
-    \ 'options': '--prompt "fbcode> "'  }))
+      \ {'source':  'find '.
+      \ '~/fbcode/{'. g:fbdirs. '} '.
+      \ '~/configerator/source/{'.  g:cconf. '} '.
+      \ '-type f',
+      \ 'options': '--prompt "fbcode> "'  }))
 command! FZFfbcode2 call fzf#run(fzf#wrap(
-    \ {'source':  'find '. '~/fbcode2/{'. g:fbdirs. '} -type f',
-    \  'options': '--prompt "fbcode2> "'  }))
+      \ {'source':  'find '. '~/fbcode2/{'. g:fbdirs. '} -type f',
+      \  'options': '--prompt "fbcode2> "'  }))
 command! FZFfbcode3 call fzf#run(fzf#wrap(
-    \ {'source':  'find '. '~/fbcode3/{'. g:fbdirs. '} -type f',
-    \  'options': '--prompt "fbcode3> "'  }))
+      \ {'source':  'find '. '~/fbcode3/{'. g:fbdirs. '} -type f',
+      \  'options': '--prompt "fbcode3> "'  }))
 command! FZFfullfbcode call fzf#run(fzf#wrap(
-    \ {'source': 'find ~/fbcode/ -type f',
-    \  'options': '--prompt "fbcode> "'  }))
+      \ {'source': 'find ~/fbcode/ -type f',
+      \  'options': '--prompt "fbcode> "'  }))
 command! FZFfullfbcode2 call fzf#run(fzf#wrap(
-    \ {'source': 'find ~/fbcode2/ -type f',
-    \  'options': '--prompt "fbcode2> "'  }))
+      \ {'source': 'find ~/fbcode2/ -type f',
+      \  'options': '--prompt "fbcode2> "'  }))
 command! FZFfullfbcode3 call fzf#run(fzf#wrap(
-    \ {'source': 'find ~/fbcode3/ -type f',
-    \  'options': '--prompt "fbcode3> "'  }))
+      \ {'source': 'find ~/fbcode3/ -type f',
+      \  'options': '--prompt "fbcode3> "'  }))
 function! FZFfbcodeFunc()
   let b:fbver = substitute(
         \system('~/misc/scripts/fb_repo_version.sh '.  resolve(expand('%:p'))),
         \"\n", "", "")
   let b:prompt = b:fbver. '> '
   call fzf#run(fzf#wrap(
-    \ {'source': '~/misc/scripts/find_in_fb.sh '.  resolve(expand('%:p')),
-    \  'options': '--prompt "'. b:prompt. '"'}))
+        \ {'source': '~/misc/scripts/find_in_fb.sh '.  resolve(expand('%:p')),
+        \  'options': '--prompt "'. b:prompt. '"'}))
 endfunction
 function! FZFCwdFunc()
   let b:prompt ='files> '
   call fzf#run(fzf#wrap(
-    \ {'source': 'find '. getcwd(). " -type f -not -path '*/\.*'",
-    \  'options': '--prompt "'. b:prompt. '"'}))
+        \ {'source': 'find '. getcwd(). " -type f -not -path '*/\.*'",
+        \  'options': '--prompt "'. b:prompt. '"'}))
 endfunction
 
 
 command! FZFMru call fzf#run(fzf#wrap(
-    \ {'source': reverse(GetOldFiles()),
-    \  'options': '--prompt "hist> "'  }))
+      \ {'source': reverse(GetOldFiles()),
+      \  'options': '--prompt "hist> "'  }))
 function! GetOldFiles()
   return extend(
-  \ filter(reverse(copy(v:oldfiles)), "filereadable(expand(v:val)) && ".
-  \        "v:val !~ 'fugitive:\\|__Tagbar__\\|NERD_tree\\|^/tmp/\\|.git/'"),
-  \ filter(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'),
-  \        'bufname(v:val)'), '!empty(v:val)'))
+        \ filter(reverse(copy(v:oldfiles)), "filereadable(expand(v:val)) && ".
+        \        "v:val !~ 'fugitive:\\|__Tagbar__\\|NERD_tree\\|^/tmp/\\|.git/'"),
+        \ filter(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'),
+        \        'bufname(v:val)'), '!empty(v:val)'))
 endfunction
 nnoremap <C-[> :call FZFfbcodeFunc()<CR>
 nnoremap <C-[><C-[> :call FZFCwdFunc()<CR>
@@ -369,10 +380,10 @@ nnoremap <C-[><C-[> :call FZFCwdFunc()<CR>
 nnoremap <C-]> :CtrlPLine<CR>
 nnoremap <C-]><C-]> :CtrlPBuffer<CR>
 vnoremap <leader>rg
-        \ :<CR>:let @a=@" \|
-        \ :execute "normal! vgvy" \|
-        \ :execute "Rg ". @"  \|
-        \ let @"=@a <CR>
+      \ :<CR>:let @a=@" \|
+      \ :execute "normal! vgvy" \|
+      \ :execute "Rg ". @"  \|
+      \ let @"=@a <CR>
 nnoremap <leader>rg :Rg <CR>
 cnoreabbrev <expr> rg
       \ (getcmdtype() == ':' && getcmdline() =~ '^rg$')? 'Rg' : 'rg'
