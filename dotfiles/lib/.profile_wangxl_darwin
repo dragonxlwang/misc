@@ -282,15 +282,16 @@ function _list_task {
   local str3="  (3/s) :   mosh $(get_hostname devbig) (devbig)"
   local str4="  (4/b) :   mosh $(get_hostname devbig2) (devbig2)"
   local str5="  (5/g) :   mosh $(get_hostname devgpu) (devgpu)"
-  local str6="  (6/d) :   mosh $(get_hostname dragoncave) (dragoncave)"
+  local str6="  (6/d) :   dev connect"
+  # local str6="  (6/d) :   mosh $(get_hostname dragoncave) (dragoncave)"
   # local str6="  (6/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
   # local str7="  (7/a) :   mosh $(get_hostname devgpu3) (devgpu3)"
   # main loop
   while [[ -z $option ]]
   do
     redecho "Following starting options are available:"
-    preamble=$str1"\n"$str2"\n"$str3"\n"$str4"\n"$str5
-    [[ $is_on_dc -eq 0 ]] && preamble=$preamble"\n"$str6
+    preamble=$str1"\n"$str2"\n"$str3"\n"$str4"\n"$str5"\n"$str6
+    # [[ $is_on_dc -eq 0 ]] && preamble=$preamble"\n"$str6
     if  which lolcat >/dev/null 2>&1; then
       echo $preamble | lolcat -h 0.5
     else
@@ -298,7 +299,7 @@ function _list_task {
     fi
     whiteecho $(printf '=%.0s' {1..40})
     local total_options=6
-    [[ $is_on_dc -eq 0 ]] && total_options=7
+    # [[ $is_on_dc -eq 0 ]] && total_options=7
     yellowecho -n "Select One Option From (1) - ("$total_options"): "
     if [[ -z $argopt ]]; then
       read argopt
@@ -310,7 +311,8 @@ function _list_task {
     elif [[ $argopt == 3* || $argopt == s* ]]; then option=3
     elif [[ $argopt == 4* || $argopt == b* ]]; then option=4
     elif [[ $argopt == 5* || $argopt == g* ]]; then option=5
-    elif [[ $is_on_dc -eq 0 && ($argopt == 6* || $argopt == d*) ]]; then option=6
+    elif [[ $argopt == 6* || $argopt == d* ]]; then option=6
+    # elif [[ $is_on_dc -eq 0 && ($argopt == 6* || $argopt == d*) ]]; then option=6
     else
       redecho "  Input Not Recognized..."
       echo ""
@@ -338,7 +340,11 @@ function _list_task {
     redecho $str5
     mosh devgpu
   elif [[ $option -eq 6 ]]; then
-    mosh dragoncave --server="/usr/local/bin/mosh-server"
+    redecho $str6
+    dev connect
+  # elif [[ $option -eq 6 ]]; then
+  #   redecho $str6
+  #   mosh dragoncave --server="/usr/local/bin/mosh-server"
   fi
 }
 
