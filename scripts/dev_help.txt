@@ -183,3 +183,8 @@ strobeclient run --tier multifeed.raas.dev-xlwang --binary-regex raas_server --e
 Automate non-TW packages:
 =========================
 https://www.internalfb.com/intern/wiki/Releng/internal/Push4Push/Service_Evolution_Tutorial/Binary_package_evolution/
+
+
+OD GPU:
+=======
+cd ~/fbcode/deep_retrieval && hg up master && hg cloud sync && hg up tip && hg log -l 1 && hostname && torchx run
