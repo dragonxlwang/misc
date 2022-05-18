@@ -1233,6 +1233,7 @@ function diff_test {
   fi
 }
 opt="opt-clang-thinlto"
+opt="opt-split-dwarf"
 alias dtt="diff_test"
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias flow_help="cat ~/misc/scripts/flow_help.txt"
