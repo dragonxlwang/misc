@@ -105,6 +105,7 @@ fi
 export PATH
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
+export HISTFILE=~/.zsh_history
 
 ## set by linuxbrew
 INCLUDE_LINUXBREW_PATHS=0
@@ -224,5 +225,6 @@ export ANDROID_SDK=/opt/android_sdk
 export ANDROID_NDK_REPOSITORY=/opt/android_ndk
 export ANDROID_HOME=${ANDROID_SDK}
 export PATH=${PATH}:${ANDROID_SDK}/tools:${ANDROID_SDK}/platform-tools
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
