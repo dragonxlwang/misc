@@ -2253,6 +2253,16 @@
 					<key>regex</key>
 					<string>[P]([1-9][0-9]{5,})</string>
 				</dict>
+				<dict>
+					<key>action</key>
+					<string>iTermHyperlinkTrigger</string>
+					<key>parameter</key>
+					<string>https://www.internalfb.com/mast/job/\0</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>torchx-\S+</string>
+				</dict>
 			</array>
 			<key>Unicode Version</key>
 			<integer>8</integer>
