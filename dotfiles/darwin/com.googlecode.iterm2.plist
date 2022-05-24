@@ -2256,10 +2256,12 @@
 				<dict>
 					<key>action</key>
 					<string>iTermHyperlinkTrigger</string>
+					<key>disabled</key>
+					<true/>
 					<key>parameter</key>
 					<string>https://www.internalfb.com/mast/job/\0</string>
 					<key>partial</key>
-					<true/>
+					<false/>
 					<key>regex</key>
 					<string>torchx-\S+</string>
 				</dict>
