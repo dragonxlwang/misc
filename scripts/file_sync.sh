@@ -19,8 +19,8 @@ files=(                                                                 \
   "${HOME}/.z"                      "${dst_dir}/.z"                     \
   "${HOME}/.zsh_history"            "${dst_dir}/.zsh_history"           \
   "${HOME}/.viminfo"                "${dst_dir}/.viminfo"               \
-  "${HOME}/.cache/ctrlp"            "${dst_dir}/.cache.ctrlp"           \
-  "${HOME}/fbcode/scripts/xlwang"   "${dst_dir}/fbcode_exp"             \
+  "${HOME}/.cache/ctrlp/."          "${dst_dir}/.cache.ctrlp/"          \
+  "${HOME}/fbcode/scripts/xlwang/." "${dst_dir}/fbcode_exp/"            \
 )
 
 mkdir -po $dst_dir
