@@ -1,0 +1,96 @@
+load("//bento:buck_macros.bzl", "bento_kernel")
+load("@fbcode_macros//build_defs:python_binary.bzl", "python_binary")
+load("@fbcode_macros//build_defs:python_library.bzl", "python_library")
+
+bento_kernel(
+    name = "deep_retrieval",
+    deps = [
+        "//deep_retrieval/py/lib/bento:lib",
+    ],
+)
+
+python_binary(
+    name = "foo",
+    srcs = ["foo.py"],
+    base_module = "",
+    main_module = "foo",
+    deps = [":bar"],
+)
+
+python_library(
+    name = "bar",
+    srcs = ["bar.py"],
+    base_module = "",
+)
+
+python_binary(
+    name = "process_pool",
+    srcs = ["process_pool.py"],
+    main_module = "scripts.xlwang.process_pool",
+    deps = [
+        "fbsource//third-party/pypi/click:click",
+        "fbsource//third-party/pypi/pathos:pathos",
+        "fbsource//third-party/pypi/six:six",
+    ],
+)
+
+cpp_binary(
+    name = "test_socket",
+    srcs = ["test_socket.cpp"],
+    deps = [
+        "//common/init:init",
+        "//common/logging:logging",
+    ],
+)
+
+python_binary(
+    name = "jetter",
+    srcs = ["jetter.py"],
+    main_module = "scripts.xlwang.jetter",
+    deps = [
+        "//jetter:build",
+        "//jetter:thrift-py3-types",
+    ],
+)
+
+python_binary(
+    name = "click",
+    srcs = ["click.py"],
+    main_module = "scripts.xlwang.click",
+    deps = [
+        "fbsource//third-party/pypi/click:click",
+    ],
+)
+
+python_binary(
+    name = "thread_pool",
+    srcs = ["thread_pool.py"],
+    main_module = "scripts.xlwang.thread_pool",
+    deps = [
+        "fbsource//third-party/pypi/click:click",
+        "fbsource//third-party/pypi/six:six",
+    ],
+)
+
+python_binary(
+    name = "test_global",
+    srcs = ["test_global.py"],
+    main_module = "scripts.xlwang.test_global",
+    deps = [
+        ":global_var",
+        ":modify_global",
+    ],
+)
+
+python_library(
+    name = "global_var",
+    srcs = ["global_var.py"],
+)
+
+python_library(
+    name = "modify_global",
+    srcs = ["modify_global.py"],
+    deps = [
+        ":global_var",
+    ],
+)

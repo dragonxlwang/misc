@@ -491,6 +491,9 @@ function up_symlinks {
   cyanecho "setup symlinks for $opt"
   ${HOME}/misc/scripts/setup_symlinks.sh $opt --no-confirm
 }
+function up_cache_sync {
+  ${HOME}/misc/scripts/file_sync.sh
+}
 ##--------------------------------== vundle ==--------------------------------##
 # oh-my-zsh/plugins/vundle/vundle.plugin.zsh
 # https://github.com/VundleVim/Vundle.vim
@@ -1040,13 +1043,18 @@ function hfss {
   hg st && hg fssl -T '{xg_sl}';
   [[ -n $TMUX ]] && tmux refresh-client
 }
+function hdh {
+  cd $(hg root)
+  hg diff -r ".^" $@
+  cd -
+}
+
 alias hsu="{ hg-sl-up -T '{xg_sl_up}' } && hs_cur_rev"
 alias hst="hg st"
 alias hsl=" hg smartlog -T '{xg_sl}'"
 alias hsf="hg st | fpp"
 alias hd='hg diff'
 alias hsd='hg icdiff --pager=yes'
-alias hdh='hg diff -r ".^"'
 alias hsdh='hg icdiff --pager=yes -r ".^"'
 alias hdjf='hg diff --since-last-submit'
 alias hhl='hg pull'
@@ -1848,6 +1856,8 @@ function cp_exp() {
   cp -n ~/local/exp_scripts/* ~/fbcode/scripts/xlwang
 
 }
+
+alias mast_kill="mast kill --comment user_error"
 
 
 ## ========================================================================== ##
