@@ -1,4 +1,5 @@
 minimvalviableaic
+filesync
 dataloader
 deeptra
 trainutil

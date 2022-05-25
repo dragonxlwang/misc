@@ -1,4 +1,4 @@
-/data/users/xlwang/fbsource/fbcode|2866.83|1653508002
+/data/users/xlwang/fbsource/fbcode|2867.83|1653508007
 /usr/local/torchx/bin|3.89234|1652596010
 /home/xlwang/workspace/setuptools/setuptools|2.52801|1642985311
 /data/users/xlwang/dotsync-home|3.05038|1618379506
@@ -28,7 +28,6 @@
 /home/xlwang/share|2.13824|1633678587
 /home/xlwang/workspace/setuptools|3.79201|1642985317
 /data/users/xlwang/notebooks|16.7534|1642273388
-/home/xlwang/misc/dotfiles/lib/cache/fbcode_exp|2|1653507923
 /data/users/xlwang/isort/4.2.5/src/isort-4.2.5/isort|1.69638|1617239796
 /data/users/xlwang/.cache/ctrlp/hist|3|1653506592
 /mnt/gvfs/third-party2/isort/883de90d05ed45d2794aae7e68e4ade8e180f9cf/4.2.5/platform009|2.04048|1617239746
@@ -42,10 +41,9 @@
 /tmp/jetter/xlwang|1.70292|1652596976
 /data/users/xlwang/www|185.207|1638551861
 /data/users/xlwang/fbsource/fbcode/buck-out|58.6933|1652415617
-/home/xlwang/misc/dotfiles/lib/cache|2|1653507913
 /home/xlwang/persistent/public-90d|18.1173|1642096408
 /data/users/xlwang/isort/4.2.5/platform009|1.20443|1617239689
-/home/xlwang/misc|319.965|1653507995
+/home/xlwang/misc|328.965|1653508165
 /home/xlwang/.fzf|2.09331|1631077280
 /home/xlwang/.ondemand/homedir|9.26906|1646803381
 /mnt/public/xlwang|11.8179|1642038881
@@ -54,9 +52,8 @@
 /home/xlwang/workspace/pytest/src|2.10666|1642987938
 /home/xlwang/.torchx/fbpkg|16.5682|1650463558
 /data/users/xlwang/configerator|817.23|1653441294
-/home/xlwang/misc/dotfiles/lib/cache/.cache.ctrlp|2|1653507917
-/home/xlwang/misc/dotfiles/lib|52.4236|1653507910
 /mnt/gvfs/third-party2/llvm-fb/0ff9d99454db48410de972b11f9f49e232fa4ea6/12/platform009/75df918/lib|1.00944|1630360269
+/home/xlwang/misc/dotfiles/lib|54.4236|1653508102
 /home/xlwang/workspace/lolcat|9.37006|1638745311
 /tmp/jetter|5.10876|1652596973
 /data/users/xlwang/notebooks/notebooks|3.12061|1642273296

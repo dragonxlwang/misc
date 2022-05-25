@@ -1,10 +1,10 @@
+/home/xlwang/misc/scripts/file_sync.sh
 /home/xlwang/.profile_wangxl
+/home/xlwang/misc/scripts/setup_symlinks.sh
 /data/users/xlwang/fbsource/fbcode/pytorch/data/fb/utils/full_sync_data_iterator_v2.py
 /home/xlwang/fbcode/pytorch/data/fb/utils/full_sync_data_iterator_v2.py
 /home/xlwang/.viminfo
 /home/xlwang/.z
-/home/xlwang/misc/scripts/file_sync.sh
-/home/xlwang/misc/scripts/setup_symlinks.sh
 /data/users/xlwang/fbsource/fbcode/deep_retrieval/py/core/train_utils.py
 /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/hpc/feature_defs.py
 /data/users/xlwang/fbsource/fbcode/deep_retrieval/apps/gysj/gysj_data_config.py
