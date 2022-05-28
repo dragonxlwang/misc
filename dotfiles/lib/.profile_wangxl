@@ -1858,6 +1858,11 @@ function cp_exp() {
 }
 
 alias mast_kill="mast kill --comment user_error"
+function drtb {
+  url="https://www.internalfb.com/intern/tensorboard/?"\
+"dir=manifold://deep_retrieval/tree/jobs/$@/tensorboard"
+  fburl $url
+}
 
 
 ## ========================================================================== ##
