@@ -18,6 +18,11 @@ if [[ $? -eq 0 ]]; then
   alias reset_bluetooth="blueutil -p 0 && sleep 1 && blueutil -p 1"
 fi
 
+function reset_ether {
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
+}
+
 ## ========================================================================== ##
 #                     ________      _______. __    __                          #
 #                    |       /     /       ||  |  |  |                         #
