@@ -56,7 +56,7 @@ endfunction
 function! <SID>FBVimLoadSession(...)
   if a:0 > 0
     let g:fbvim_session_name=a:1
-    echo a:1 . g:fbvim_session_name
+    echo g:fbvim_session_name
   endif
   python3 fbvim.load_session()
 endfunction
