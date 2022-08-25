@@ -167,6 +167,11 @@ function mac_disable_accent_char {
 function mac_enable_accent_char {
   defaults write -g ApplePressAndHoldEnabled -bool true
 }
+function refresh_en0 {
+  sudo ifconfig en0 down
+  sleep 30
+  sudo ifconfig en0 up
+}
 
 ## ========================================================================== ##
 #            __    __  .___________.__   __          _______.                  #
