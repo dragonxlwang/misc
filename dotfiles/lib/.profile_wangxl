@@ -1880,7 +1880,23 @@ function drtb {
   url="https://www.internalfb.com/intern/tensorboard/?dir=$manifold"
   fburl $url
 }
-
+function drst {
+  for ((i=1; i<=$#; i++))
+  do
+    job="$@[i]"
+    mast list-jobs --job-name $job --include-historical
+  done
+}
+function drst_my {
+  all_jobs=$(mast list-jobs --limit 100 --include-historical \
+             --job-owner-unixname $(whoami) )
+  echo $all_jobs | head -n 1
+  for ((i=1; i<=$#; i++))
+  do
+    job="$@[i]"
+    echo $all_jobs | grep --color=auto "${job}"
+  done
+}
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
