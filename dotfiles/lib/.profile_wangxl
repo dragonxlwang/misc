@@ -85,6 +85,9 @@ if [[ -n $(command -v python3) ]]; then
   alias python='python3'
   alias py='python3'
 fi
+function ddate {
+  echo "( $(date -d $2 +%s)  -  $(date -d $1 +%s) )/86400 + 1" | bc
+}
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then
@@ -1049,11 +1052,12 @@ function hdh {
   cd $(hg root)
   hg diff -r ".^" $@
   local ret_code=$?
-  cd -
-  if [[ $ret_code != 0 ]]; then
+  [[  -z $(hg diff -r ".^" $@ 2>&1 | grep "No such file or directory")  ]]
+  local empty=$?
+  cd - > /dev/null 2>&1
+  if [[ $ret_code != 0 || $empty != 0 ]]; then
     hg diff -r ".^" $@
   fi
-
 }
 
 alias hsu="{ hg-sl-up -T '{xg_sl_up}' } && hs_cur_rev"
@@ -1865,7 +1869,14 @@ function cp_exp() {
 
 }
 
-alias mast_kill="mast kill --comment user_error"
+function mast_kill {
+  for ((i=1; i<=$#; i++))
+  do
+    job="$@[i]"
+    mast kill --comment user_error "$job"
+  done
+
+}
 function drtb {
   local manifold=""
   for ((i=1; i<=$#; i++))
@@ -1889,13 +1900,33 @@ function drst {
 }
 function drst_my {
   all_jobs=$(mast list-jobs --limit 100 --include-historical \
-             --job-owner-unixname $(whoami) )
+    --job-owner-unixname $(whoami) )
   echo $all_jobs | head -n 1
   for ((i=1; i<=$#; i++))
   do
     job="$@[i]"
     echo $all_jobs | grep --color=auto "${job}"
   done
+  drtb "$@"
+}
+
+function cpz {
+  cp --backup=t --verbose ~/.z ~/misc/tmp/
+}
+function bfz {
+  local lines
+  lines=$(cat ~/.cache/ctrlp/mru/cache.txt | _process_mru_file_lines)
+  lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
+    tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
+  local curpwd=$(pwd)
+  for ln in "${(f)lines}"; do
+    while [[ $ln != '/' && $ln != '.' ]]; do
+      _z --add "$(eval echo $ln)"
+      ln=$(dirname "$ln")
+      # echo "$(eval echo $ln)"
+    done
+  done
+  cd $curpwd
 }
 
 ## ========================================================================== ##
