@@ -3,7 +3,7 @@ autopep8==1.2.1
 backports-abc==0.4
 backports.ssl-match-hostname==3.4.0.2
 basemap==1.0.7
-certifi==2015.11.20
+certifi==2022.12.7
 cycler==0.9.0
 decorator==4.0.4
 enum34==1.0.4
