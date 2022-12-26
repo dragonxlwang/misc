@@ -64,5 +64,5 @@ tornado==4.3
 tox==2.2.1
 traitlets==4.0.0
 virtualenv==13.1.2
-wheel==0.26.0
+wheel==0.38.1
 yapf==0.6.2
