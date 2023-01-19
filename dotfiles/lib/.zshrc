@@ -116,8 +116,12 @@ if [[ INCLUDE_LINUXBREW_PATHS -eq 1 && -e "${HOME}/.linuxbrew" ]]; then
 fi
 
 ## set by homebrew
-if which brew >/dev/null 2>&1; then
-  eval $(brew shellenv)
+if [[ $(uname) == 'Darwin' ]]; then                                    # mac os
+  if [[ -e ~/homebrew ]]; then
+    eval "$($HOME/homebrew/bin/brew shellenv)"
+  else
+    eval $(brew shellenv)
+  fi
 fi
 
 source $ZSH/oh-my-zsh.sh
