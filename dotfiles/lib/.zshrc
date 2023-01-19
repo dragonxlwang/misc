@@ -68,7 +68,8 @@ plugins=(\
 
 # User configuration
 if [[ $(uname) == 'Darwin' ]]; then                                    # mac os
-  PATH="/opt/facebook/bin:"
+  PATH="$HOME/homebrew/bin:"
+  PATH+="/opt/facebook/bin:"
   PATH+="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
   PATH+="/opt/X11/bin:/Library/TeX/texbin"
 elif [[ $(hostname -s) =~ "timan" ]]; then                              # timan
