@@ -68,8 +68,7 @@ plugins=(\
 
 # User configuration
 if [[ $(uname) == 'Darwin' ]]; then                                    # mac os
-  PATH="$HOME/homebrew/bin:"
-  PATH+="/opt/facebook/bin:"
+  PATH="/opt/facebook/bin:"
   PATH+="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:"
   PATH+="/opt/X11/bin:/Library/TeX/texbin"
 elif [[ $(hostname -s) =~ "timan" ]]; then                              # timan
@@ -114,6 +113,11 @@ if [[ INCLUDE_LINUXBREW_PATHS -eq 1 && -e "${HOME}/.linuxbrew" ]]; then
   export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
   export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
   export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+fi
+
+## set by homebrew
+if which brew >/dev/null 2>&1; then
+  eval $(brew shellenv)
 fi
 
 source $ZSH/oh-my-zsh.sh
