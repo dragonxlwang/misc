@@ -77,13 +77,13 @@ then
       ln -s $(brew --prefix)/bin/g$b /$(brew --prefix)/bin/$b
       echo "==> bin symlink: $b -> g$b"
     fi
-    if [[ -e $(brew --prefix)/opt/coreutils/libexec/gnuman/man1/$b.1 ]]; then
+    if [[ -e $(brew --prefix)/share/man/man1/$b.1 ]]; then
       echo "==> man symlink: skipping, $b exist"
-    elif [[ ! -e $(brew --prefix)/opt/coreutils/libexec/gnuman/man1/g$b.1 ]]; then
+    elif [[ ! -e $(brew --prefix)/share/man/man1/g$b.1 ]]; then
       echo "==> man symlink: skipping, $b doesn't exist"
     else
-      ln -s $(brew --prefix)/opt/coreutils/libexec/gnuman/man1/g$b.1 \
-        $(brew --prefix)/opt/coreutils/libexec/gnuman/man1/$b.1
+      ln -s $(brew --prefix)/share/man/man1/g$b.1 \
+        $(brew --prefix)/share/man/man1/$b.1
       echo "==> man symlink: $b -> g$b"
     fi
   done
