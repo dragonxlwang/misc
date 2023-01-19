@@ -69,21 +69,21 @@ then
   for b in "${bins[@]}"
   do
     echo -e $ANSI_COLOR_BLUE "$b -> g$b" $ANSI_COLOR_RESET
-    if [[ -e /usr/local/bin/$b ]]; then
+    if [[ -e $(brew --prefix)/bin/$b ]]; then
       echo "==> bin symlink: skipping, $b exist"
     elif [[ ! -e $(brew --prefix)/bin/g$b ]]; then
       echo "==> bin symlink: skipping, g$b doesn't exist"
     else
-      ln -s $(brew --prefix)/bin/g$b /usr/local/bin/$b
+      ln -s $(brew --prefix)/bin/g$b /$(brew --prefix)/bin/$b
       echo "==> bin symlink: $b -> g$b"
     fi
-    if [[ -e /usr/local/share/man/man1/$b.1 ]]; then
+    if [[ -e $(brew --prefix)/opt/coreutils/libexec/gnuman/man1/$b.1 ]]; then
       echo "==> man symlink: skipping, $b exist"
-    elif [[ ! -e $(brew --prefix)/opt/coreutils/libexec/gnuman/man1/$b.1 ]]; then
+    elif [[ ! -e $(brew --prefix)/opt/coreutils/libexec/gnuman/man1/g$b.1 ]]; then
       echo "==> man symlink: skipping, $b doesn't exist"
     else
       ln -s $(brew --prefix)/opt/coreutils/libexec/gnuman/man1/g$b.1 \
-        /usr/local/share/man/man1/$b.1
+        $(brew --prefix)/opt/coreutils/libexec/gnuman/man1/$b.1
       echo "==> man symlink: $b -> g$b"
     fi
   done
