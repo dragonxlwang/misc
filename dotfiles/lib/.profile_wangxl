@@ -519,7 +519,7 @@ function build_vundle_ycm {
   if [[ $(uname) == "Darwin" ]]; then
     pushd . RNUL
     cd ~/.vim/bundle/YouCompleteMe
-    ./install.py --clang-completer
+    ./install.py --all
     popd RNUL
   else
     pushd . RNUL
