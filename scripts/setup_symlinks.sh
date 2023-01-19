@@ -118,9 +118,6 @@ elif [[ $(rpm -q --queryformat '%{VERSION}' centos-release) == 7* ]]; then
     ${HOME}/.ssh/config
 fi
 
-if [[ $(uname) == Linux ]]; then
-  mk_link /tmp/$USER ${HOME}/tmp
-fi
 
 [[ $(tmux -V) == *2.2 ]] && \
   tmux_conf=".tmux.v2.2.conf" || tmux_conf=".tmux.conf"
@@ -149,6 +146,7 @@ files=(                                                           \
   "${HOME}/local/notebooks"         "${HOME}/notebooks"           \
   "${HOME}/local/.cache"            "${HOME}/.cache"              \
   "${HOME}/local/vim-sessions"      "${HOME}/vim-sessions"        \
+  "/tmp/$USER"                      "${HOME}/tmp"                 \
   "$root_dir/lib/bento_notebook.json"                             \
   "${HOME}/local/.bento/jupyter/nbconfig/notebook.json"
 )
