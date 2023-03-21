@@ -1820,9 +1820,9 @@ function presto() {
   local presto=/usr/local/bin/presto
   local namespace=groups
   if [[ $# -eq 0 ]]; then
-    $presto $namespace
+    $presto ad_delivery
   else
-    $presto $namespace --execute $*
+    $presto $1 --execute ${@:2}
   fi
 }
 alias spark='spark-sql --namespace search'
@@ -1915,6 +1915,7 @@ function cpz {
   cp --backup=t --verbose ~/.z ~/misc/tmp/
 }
 function bfz {
+  # backfill z history
   local lines
   lines=$(cat ~/.cache/ctrlp/mru/cache.txt | _process_mru_file_lines)
   lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
@@ -1924,7 +1925,7 @@ function bfz {
     while [[ $ln != '/' && $ln != '.' ]]; do
       _z --add "$(eval echo $ln)"
       ln=$(dirname "$ln")
-      # echo "$(eval echo $ln)"
+      echo "$ln"
     done
   done
   cd $curpwd
