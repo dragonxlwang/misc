@@ -1931,6 +1931,8 @@ function bfz {
   cd $curpwd
 }
 
+alias fb-sks-agent='/Library/CPE/bin/FBSKSAgent.app/Contents/MacOS/fb-sks-agent'
+
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
 #            /       \   \  /   / /       |           |   ____||   \/   |      #
