@@ -21,7 +21,7 @@ cd ~/.vim/
 /bin/rm -rf ./bundle/YouCompleteMe
 vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
-git checkout 4117a99861b537830d717c3113e3d584523bc573
+# git checkout 4117a99861b537830d717c3113e3d584523bc573
 
 
 sudo dnf install gcc-toolset-9
@@ -31,9 +31,9 @@ export PATH=/usr/local/bin:/usr/local/sbin:/opt/rh/gcc-toolset-9/root/usr/bin:$P
 redecho "installing..."
 
 FBCODE_DIR="$(hg root --cwd ~/fbsource/fbcode)"/fbcode
-FBCODE_PLATFORM=platform009
+FBCODE_PLATFORM=platform010
 TP2="$FBCODE_DIR"/third-party-buck/"$FBCODE_PLATFORM"/build
-PYTHON_VERSION=3.8
+PYTHON_VERSION=3.10
 PYTHON_MAJOR_VERSION=3
 PYTHON_DIR=${TP2}/python/${PYTHON_VERSION}
 
@@ -41,8 +41,8 @@ CMAKE_ARGS="-DCMAKE_C_COMPILER=gcc.par"
 CMAKE_ARGS+=" -DCMAKE_CXX_COMPILER=g++.par"
 CMAKE_ARGS+=" -DCMAKE_C_FLAGS=\"--platform=$FBCODE_PLATFORM\""
 CMAKE_ARGS+=" -DCMAKE_CXX_FLAGS=\"--platform=$FBCODE_PLATFORM\""
-CMAKE_ARGS+=" -DPYTHON_LIBRARY=${PYTHON_DIR}/lib/libpython${PYTHON_MAJOR_VERSION}.so"
-CMAKE_ARGS+=" -DEXTERNAL_LIBCLANG_PATH=$TP2/llvm-fb/12/lib/libclang.so"
+CMAKE_ARGS+=" -DPYTHON_LIBRARY=${PYTHON_DIR}/lib/libpython${PYTHON_VERSION}.so"
+CMAKE_ARGS+=" -DEXTERNAL_LIBCLANG_PATH=$TP2/llvm-fb/15/lib/libclang.so"
 
 https_proxy='fwdproxy:8080' http_proxy='fwdproxy:8080' EXTRA_CMAKE_ARGS=${CMAKE_ARGS} \
   ${PYTHON_DIR}/bin/python${PYTHON_VERSION} ./install.py --clang-completer
