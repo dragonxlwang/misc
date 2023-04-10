@@ -48,11 +48,6 @@ process "$HOME/configerator-dsi"
 process "$HOME/www"
 process "$HOME/www-hg"
 
-log_event "build unicorn ..."
-cd "$HOME/fbcode"
-buck build --show-output @mode/devo-nosan //unicorn/topaggr:top_aggregator_server
-log_status
-
 log_event "sync exp scripts"
 rm -rf ~/local/exp_scripts && cp -r ~/fbcode/scripts/xlwang ~/local/exp_scripts
 log_status
@@ -62,8 +57,3 @@ log_event "www arc fix"
 cd ~/www
 arc fix
 log_status
-
-log_event 'local bento'
-cd ~/fbcode
- ./search/typeahead/scripts/local_bento.sh
- log_status
