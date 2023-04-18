@@ -1092,6 +1092,7 @@ alias hab='hg absorb'
 function hg_cleanup {
   revs=$(hg log -r 'draft()' -T '{sl_node_info} {phabstatus}\n' \
     | grep -E 'Committed|Abandoned' | awk '{print $1}')
+  [[ -z "$revs"  ]] && return 1
 
   for r in "${(@f)revs}"; do
     hg log -r $r -T '{xg_sl}'
@@ -1104,7 +1105,7 @@ function hg_cleanup {
 }
 function hhpur {
   hhl
-  arc cleanup-features
+  # arc cleanup-features
   # hush > /dev/null 2>&1
   # hrbm -s .
   hrbm
@@ -1824,6 +1825,11 @@ function presto() {
   else
     $presto $1 --execute ${@:2}
   fi
+}
+function presto_list_table() {
+  /usr/local/bin/presto --output-format ALIGNED $1 \
+    --execute "select ds, count(*) as cnt from ${2} group by 1 order by 1 desc"
+
 }
 alias spark='spark-sql --namespace search'
 function presto_sample() {
