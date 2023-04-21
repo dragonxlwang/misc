@@ -188,3 +188,17 @@ https://www.internalfb.com/intern/wiki/Releng/internal/Push4Push/Service_Evoluti
 OD GPU:
 =======
 cd ~/fbcode/deep_retrieval && hg up master && hg cloud sync && hg up tip && hg log -l 1 && hostname && torchx run
+
+Bento:
+======
+%%time
+
+%load_ext autoreload
+%autoreload 2
+
+%local-changes
+
+%%install manual local
+dep = ["//scripts/tranlm:fb_gspread"]
+
+! bento kernel update

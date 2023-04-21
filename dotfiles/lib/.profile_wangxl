@@ -1037,6 +1037,7 @@ function hs {
   [[ -z $(hg root 2>/dev/null) ]] && {cd ~/fbcode; tmrn fbc}
   hg st && hg smartlog -T '{xg_sl}';
   [[ -n $TMUX ]] && tmux refresh-client
+  jf list --status CLOSED -l 10
 }
 function hfs {
   [[ -z $(hg root 2>/dev/null) ]] && {cd ~/fbcode; tmrn fbc}
@@ -1302,6 +1303,7 @@ alias jfs="jf s"
 alias jfss="jf s --stack"
 alias jfsss="jf s -r bottom::top"
 alias jfu="jf s --update-fields"
+alias jfll='jf list --status CLOSED -l 10'
 alias abac="arc build && arc canary --ttl 86400"
 alias ablac="arc build --legacy && arc canary --ttl 86400"
 alias acls="arc canary --list"
