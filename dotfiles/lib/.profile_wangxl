@@ -1037,7 +1037,7 @@ function hs {
   [[ -z $(hg root 2>/dev/null) ]] && {cd ~/fbcode; tmrn fbc}
   hg st && hg smartlog -T '{xg_sl}';
   [[ -n $TMUX ]] && tmux refresh-client
-  jf list --status CLOSED -l 10
+  [[ $1 == "-l" ]] && jf list --status CLOSED -l 10
 }
 function hfs {
   [[ -z $(hg root 2>/dev/null) ]] && {cd ~/fbcode; tmrn fbc}
@@ -1106,10 +1106,10 @@ function hg_cleanup {
 }
 function hhpur {
   hhl
-  arc cleanup-features
   # hush > /dev/null 2>&1
   # hrbm -s .
   hrbm
+  arc cleanup-features
   hs
 }
 function hg_authors {
@@ -1829,8 +1829,14 @@ function presto() {
   fi
 }
 function presto_list_table() {
+  where_clause=""
+  if [[ -n $3 ]]; then
+    where_clause="where ds>='<DATEID-${3}>'"
+  fi
+
   /usr/local/bin/presto --output-format ALIGNED $1 \
-    --execute "select ds, count(*) as cnt from ${2} group by 1 order by 1 desc"
+    --execute \
+    "select ds, count(*) as cnt from ${2} ${where_clause} group by 1 order by 1 desc"
 
 }
 alias spark='spark-sql --namespace search'
