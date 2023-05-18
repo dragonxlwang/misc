@@ -183,6 +183,14 @@ endif
 " nnoremap <leader>pg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
 " nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
+let g:ycm_language_server =
+      \ [
+      \   {
+      \     'name': 'php',
+      \     'cmdline': ['hh', 'lsp', '--from', 'vim'],
+      \     'filetypes': [ 'php' ]
+      \   }
+      \ ]
 
 " scriptencoding utf-8
 " set encoding=utf-8
