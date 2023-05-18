@@ -44,16 +44,19 @@ function process() {
 
 process "$HOME/fbcode"
 process "$HOME/configerator"
-process "$HOME/configerator-dsi"
+# process "$HOME/configerator-dsi"
 process "$HOME/www"
-process "$HOME/www-hg"
 
 log_event "sync exp scripts"
 rm -rf ~/local/exp_scripts && cp -r ~/fbcode/scripts/xlwang ~/local/exp_scripts
+rsync -a --delete ~/fbcode/scripts/xlwang/ ~/misc/tmp/exp_scripts
 log_status
 
+log_event "copy z"
+cp ~/.z ~/misc/tmp/.z
+log_status
 
 log_event "www arc fix"
 cd ~/www
-arc fix
+arc reset everything
 log_status
