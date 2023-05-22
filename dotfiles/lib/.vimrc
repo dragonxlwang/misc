@@ -183,10 +183,10 @@ augroup FbFormatAutoGroup
 augroup END
 
 " ==========================- Facebook -=======================================
-if !empty(glob('~/fbcode/shellconfigs/rc/vim'))
-  source ~/fbcode/shellconfigs/rc/vim/biggrep.vim
-  set rtp+=~/fbcode/shellconfigs/rc/vim/
-  set rtp+=~/fbcode/shellconfigs/rc/vim/after
+if !empty(glob('~/fbcode/shellconfigs/rc_deprecated/vim'))
+  source ~/fbcode/shellconfigs/rc_deprecated/vim/biggrep.vim
+  set rtp+=~/fbcode/shellconfigs/rc_deprecated/vim/
+  set rtp+=~/fbcode/shellconfigs/rc_deprecated/vim/after
 endif
 
 if isdirectory('/usr/local/share/balancebot/vim')
@@ -510,6 +510,9 @@ function! FBRepo(blame, fburl)
   elseif stridx(l:path, 'configerator-dsi/') != -1
     let l:f = substitute(l:path, '.*/configerator-dsi/', '', '')
     let l:url = l:header . 'CFDSI/' . l:master . l:f . '?lines=' . l:line . l:blame
+  elseif stridx(l:path, 'instagram-server/') != -1
+    let l:f = substitute(l:path, '.*/instagram-server/', '', '')
+    let l:url = l:header . 'IGSRVHG/' . l:master . l:f . '?lines=' . l:line . l:blame
   else
     echohl ErrorMsg | echo 'unknown FB repo' | echohl None
     return
