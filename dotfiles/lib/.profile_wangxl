@@ -1665,6 +1665,9 @@ function _process_mru_file_lines() {
       f="$HOME/fbcode/$f"
     elif [[ ! -f "$f" ]] && [[ -f "$HOME/configerator/$f" ]]; then
       f="$HOME/configerator/$f"
+    elif [[ ! -f "$f" ]] && [[ -f "$HOME/instagram/instagram-server/distillery/$f" ]];
+    then
+      f="$HOME/instagram/instagram-server/distillery/$f"
     fi
 
     if [[ -f "$f" ]]; then
@@ -1674,6 +1677,7 @@ function _process_mru_file_lines() {
       f=${f/\/data\/users\/xlwang\/configerator/\~\/configerator}
       f=${f/\/data\/users\/xlwang/\~}
       f=${f/\/home\/xlwang/\~}
+      f=${f/\/home\/xlwang\/instagram\/instagram-server/\~\/instagram-server}
       echo "$f"
     fi
   done | awk '!seen[$0]++'
