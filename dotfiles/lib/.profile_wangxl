@@ -1675,9 +1675,9 @@ function _process_mru_file_lines() {
       f=${f/\/data\/users\/xlwang\/www-hg/\~\/www}
       f=${f/\/data\/users\/xlwang\/www/\~\/www}
       f=${f/\/data\/users\/xlwang\/configerator/\~\/configerator}
+      f=${f/\/data\/users\/xlwang\/instagram\/instagram-server/\~\/instagram-server}
       f=${f/\/data\/users\/xlwang/\~}
       f=${f/\/home\/xlwang/\~}
-      f=${f/\/home\/xlwang\/instagram\/instagram-server/\~\/instagram-server}
       echo "$f"
     fi
   done | awk '!seen[$0]++'
