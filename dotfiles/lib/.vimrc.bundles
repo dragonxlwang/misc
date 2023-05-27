@@ -192,6 +192,11 @@ let g:ycm_language_server =
       \   }
       \ ]
 
+      " \   },
+      " \   {
+      " \     'name': 'python',
+      " \     'cmdline': ['/home/xlwang/fbcode/bigcode/bcf/codecompose/lsp/release/code-compose-lsp'],
+      " \     'filetypes': [ 'python' ]
 " scriptencoding utf-8
 " set encoding=utf-8
 " let g:coc_node_path = '/data/users/xlwang/fbsource/xplat/third-party/node/current/node'
