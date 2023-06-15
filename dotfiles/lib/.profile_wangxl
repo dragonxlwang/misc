@@ -1287,6 +1287,7 @@ alias exp="cd ~/fbcode/scripts/xlwang; tmrn exp"
 alias cconf='cd ~/configerator; tmrn cconf'
 alias buckout='cd $BUCKOUT; tmrn buckout'
 alias www='cd ~/www; tmrn www'
+alias igsrv='cd ~/instagram-server; tmrn igsrv'
 alias dsi='cd ~/configerator-dsi; tmrn dsi'
 alias ds='cd ~/fbcode/dataswarm-pipelines/tasks; tmrn ds'
 alias dsb='cd ~/fbcode/dataswarm-pipelines; tmrn dsb'

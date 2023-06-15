@@ -124,6 +124,26 @@ if [[ $(uname) == 'Darwin' ]]; then                                    # mac os
   fi
 fi
 
+# Source global definitions
+if [[ -e "/etc/zshrc" ]]; then
+  . /etc/zshrc
+fi
+# Source Facebook definitions
+if [[ -e "/usr/facebook/ops/rc/master.zshrc" ]]; then
+  # first source fb zshrc to avoid my own setting being overwritten
+  source /usr/facebook/ops/rc/master.zshrc
+fi
+for i in /etc/profile.d/*.sh; do
+  if [ -r "$i" ]; then
+    if [ "$PS1" ]; then
+      . $i
+    else
+      . $i > /dev/null 2>&1
+    fi
+  fi
+done
+unset i
+
 source $ZSH/oh-my-zsh.sh
 
 # enable zsh-completions
@@ -173,10 +193,6 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ${HOME}/ls_colors.zsh
-if [[ -e "/usr/facebook/ops/rc/master.zshrc" ]]; then
-  # first source fb zshrc to avoid my own setting being overwritten
-  source /usr/facebook/ops/rc/master.zshrc
-fi
 source ${HOME}/.profile_wangxl
 
 ###############################################################################
