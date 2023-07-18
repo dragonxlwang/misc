@@ -4,7 +4,8 @@ if exists('g:fbvim_py_path_override')
 endif
 
 python3 << ENDPYTHON
-import imp
+# import imp
+from importlib.machinery import SourceFileLoader
 import vim
 import sys
 import os
@@ -12,7 +13,10 @@ import os
 __fbvim_path = vim.eval('s:fbvim_py_path')
 sys.path.append(os.path.dirname(__fbvim_path))
 
-fbvim = imp.load_source('fbvim', __fbvim_path)
+# fbvim = imp.load_source('fbvim', __fbvim_path)
+
+fbvim = SourceFileLoader('fbvim', __fbvim_path).load_module()
+
 ENDPYTHON
 
 " take the current vim state and save it to a session file named by the current

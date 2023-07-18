@@ -25,3 +25,5 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 ## q for quick exit
 alias q='exit'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
