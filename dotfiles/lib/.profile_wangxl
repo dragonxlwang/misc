@@ -1950,6 +1950,17 @@ function bfz {
   cd $curpwd
 }
 
+function hcs {
+  hg bookmark -d current
+  hg bookmark current
+  hg cloud sync
+}
+function hcj {
+  hg up master
+  hg cloud join
+  hg up current
+}
+
 alias fb-sks-agent='/Library/CPE/bin/FBSKSAgent.app/Contents/MacOS/fb-sks-agent'
 
 ## ========================================================================== ##
