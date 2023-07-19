@@ -40,7 +40,7 @@ if shutil.which("nvidia-smi"):
             "--format=csv,noheader,nounits",
         ]
     )
-    out = [float(x) for ln in out.splits("\n") for x in ln.split(",")]
+    out = [[float(x) for x in ln.split(", ")] for ln in out.decode().split("\n") if ln]
     gpus = len(out)
     gpu_mem = int(sum(g[2] for g in out)) / 1024
     util_gpu = sum(g[0] for g in out) / gpus
@@ -52,8 +52,10 @@ if shutil.which("nvidia-smi"):
 if len(sys.argv) == 1:
     output = ""
     if gpus > 0:
-        output += ("{}" "\u24BC {:04}%:{},{:04}%:{}" "#[default]" " ").format(
-            util_gpu_pct, gpus, util_mem_pct, gpu_mem
+        util_gpu_pct = "0%" if util_gpu_pct == 0 else f"{util_gpu_pct:04}%"
+        util_mem_pct = "0%" if util_mem_pct == 0 else f"{util_mem_pct:04}%"
+        output += ("{}" "\u24BC {}:{},{}:{}" "#[default]" " ").format(
+            "#[fg=green,bright]", util_gpu_pct, gpus, util_mem_pct, gpu_mem
         )
     output += (
         "{}"
