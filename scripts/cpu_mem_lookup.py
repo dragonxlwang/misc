@@ -42,7 +42,7 @@ if shutil.which("nvidia-smi"):
     )
     out = [[float(x) for x in ln.split(", ")] for ln in out.decode().split("\n") if ln]
     gpus = len(out)
-    gpu_mem = int(sum(g[2] for g in out)) / 1024
+    gpu_mem = int(sum(g[2] for g in out) / 1024)
     util_gpu = sum(g[0] for g in out) / gpus
     util_mem = sum(g[1] for g in out) / gpus
     util_gpu_pct = int(util_gpu * 100)
