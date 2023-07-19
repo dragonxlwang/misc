@@ -1961,6 +1961,8 @@ function hcj {
   hg cloud join
   hg up current
 }
+alias cuda_util='nvidia-smi `
+`--query-gpu=index,uuid,utilization.gpu,memory.total,memory.used --format=csv'
 
 alias fb-sks-agent='/Library/CPE/bin/FBSKSAgent.app/Contents/MacOS/fb-sks-agent'
 
