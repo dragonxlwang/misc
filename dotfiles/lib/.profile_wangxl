@@ -1259,6 +1259,7 @@ alias dtt="diff_test"
 alias hg_help="cat ~/misc/scripts/hg_help.txt"
 alias flow_help="cat ~/misc/scripts/flow_help.txt"
 alias dev_help="cat ~/misc/scripts/dev_help.txt"
+alias buck='buck2'
 alias bbt='buck test'
 alias bbto="buck test @mode/$opt"
 alias bbtd="buck test @mode/devo-nosan"
