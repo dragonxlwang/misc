@@ -1912,6 +1912,10 @@ function drtb {
   url="https://www.internalfb.com/intern/tensorboard/?dir=$manifold"
   fburl $url
 }
+function tb_cmp {
+  url=$(~/misc/scripts/tb_cmp.py "$@")
+  fburl $url
+}
 function drst {
   for ((i=1; i<=$#; i++))
   do

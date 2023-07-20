@@ -118,6 +118,12 @@ git clone git@github.com:jeffkaufman/icdiff
 cd icdiff
 sudo /usr/bin/python3 setup.py install
 
+cd ~/workspace
+git clone git@github.com:pallets/click.git
+cd click
+git checkout cba52fa76135af2edf46c154203b47106f898eb3
+sudo /usr/bin/python3 setup.py install
+
 # ipython
 ## ==================================================
 ## dex/ifbpy-notebook-in-a-nutshell/
