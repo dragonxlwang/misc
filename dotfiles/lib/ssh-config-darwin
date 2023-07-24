@@ -12,7 +12,7 @@ Host devbig2
     Hostname devbig470.prn2.facebook.com
 Host devgpu
     User xlwang
-    HostName devgpu199.prn2.facebook.com
+    HostName devgpu019.ash9.facebook.com
 Host devgpu2
     User xlwang
     HostName devgpu166.prn2.facebook.com
