@@ -25,3 +25,9 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 ## q for quick exit
 alias q='exit'
+
+
+PYPER_V2_SCRIPT=~/fbsource/fbcode/dper_lib/instagram/pyper_v2/shell_commands.sh
+if test -f "$PYPER_V2_SCRIPT"; then
+    source $PYPER_V2_SCRIPT
+fi

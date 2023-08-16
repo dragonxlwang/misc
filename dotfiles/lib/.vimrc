@@ -39,6 +39,7 @@ set visualbell                  " No sounds
 set laststatus=2                " Always display the status line
 set winminheight=1              " min height
 set winminwidth=1               " min width
+set synmaxcol=0                 " max col to search for syntax items
 " ==============================- Indentation -=================================
 set autoindent                  " Indent for new lines
 set smartindent                 " Indent by context
