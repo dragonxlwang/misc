@@ -182,6 +182,10 @@ augroup FbFormatAutoGroup
   autocmd BufNewFile,BufRead *TARGETS set filetype=TARGETS | set syntax=python
   autocmd FileType TARGETS setlocal commentstring=#\ %s
 augroup END
+augroup MakeAutoGroup
+  autocmd!
+  autocmd FileType make setlocal shiftwidth=4 softtabstop=4 tabstop=4
+augroup END
 
 " ==========================- Facebook -=======================================
 if !empty(glob('~/fbcode/shellconfigs/rc_deprecated/vim'))
