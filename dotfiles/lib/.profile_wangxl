@@ -1823,9 +1823,9 @@ function export_env_variables() {
   eval $(tmux showenv -s $var)
   return 0
 }
-if [[ $(uname) == "Linux" ]]; then
-  (export_env_variables "FB_UID" &)
-fi
+# if [[ $(uname) == "Linux" ]]; then
+#   (export_env_variables "FB_UID" &)
+# fi
 function presto() {
   local presto=/usr/local/bin/presto
   local namespace=groups
