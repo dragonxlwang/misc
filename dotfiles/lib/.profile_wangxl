@@ -1329,6 +1329,14 @@ function flow_script {
 function fb_latest_pkg {
   fbpkg versions "$*" --no-ephemerals | grep DEFAULT | cut -d' ' -f1
 }
+function fbpkg_rev_log {
+  hg log -r $(fbpkg info $@ | grep Revision | awk '{ print $2 }')
+}
+function fbpkg_rev_up {
+  rev=$(fbpkg info $@ | grep Revision | awk '{ print $2 }')
+  yellowecho "rev: $rev"
+  hg up -r "$rev"
+}
 function fbtmux {
   fbc2
   tmux new-window -t 2 -c $(readlink -f ~/fbcode)
