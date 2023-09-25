@@ -1016,7 +1016,8 @@ function hud {
   [[ $? -eq 0 ]] && hs_cur_rev
 }
 function hudls {
-  hg log -T '{xg_sl}' -r "sort(draft() and head(), -date)"
+  hg log -T '{xg_sl}' -r "sort(draft() and head(), -date)" --color always | \
+    awk -v num=3 'FNR % num == 1 {print "\033[1;32m["++q"]\033[0m" ORS $0;next} 1'
 }
 alias hudl="hg log -r 'draft() and head()'"
 alias hud1='hud 1'
@@ -1910,22 +1911,26 @@ function mast_kill {
   done
 
 }
+# function drtb {
+#   local manifold=""
+#   for ((i=1; i<=$#; i++))
+#   do
+#     job="$@[i]"
+#     echo $job
+#     if [[ -n $manifold ]]; then
+#       manifold+='%2C'
+#     fi
+#     manifold+="${i}_${job}:manifold://deep_retrieval/tree/jobs/$job/tensorboard"
+#   done
+#   url="https://www.internalfb.com/intern/tensorboard/?dir=$manifold"
+#   fburl $url
+# }
 function drtb {
-  local manifold=""
-  for ((i=1; i<=$#; i++))
-  do
-    job="$@[i]"
-    echo $job
-    if [[ -n $manifold ]]; then
-      manifold+='%2C'
-    fi
-    manifold+="${i}_${job}:manifold://deep_retrieval/tree/jobs/$job/tensorboard"
-  done
-  url="https://www.internalfb.com/intern/tensorboard/?dir=$manifold"
+  url=$(~/misc/scripts/tb_cmp.py gen-dr "$@")
   fburl $url
 }
 function tb_cmp {
-  url=$(~/misc/scripts/tb_cmp.py "$@")
+  url=$(~/misc/scripts/tb_cmp.py gen "$@")
   fburl $url
 }
 function drst {
