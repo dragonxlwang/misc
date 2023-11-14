@@ -202,3 +202,15 @@ Bento:
 dep = ["//scripts/tranlm:fb_gspread"]
 
 ! bento kernel update
+
+OOM:
+====
+https://fburl.com/ods/6exs4zc5
+https://fburl.com/scuba/netcons_ooms/gs6uwj2a
+
+Yubikey:
+========
+$ brew install ykman
+$ ykman otp settings --enter 1
+$ ykman otp settings --no-enter 1
+$ ykman otp info
