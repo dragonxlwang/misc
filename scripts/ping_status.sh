@@ -2,7 +2,25 @@
 
 misc_dir="$(dirname $(dirname $(readlink -f $0)))"
 f=$misc_dir/tmp/ping_$(hostname).txt
-client_ip=$(echo $SSH_CLIENT | cut -sd ' ' -f 1 -)
+
+if [[ -e ~/.active_ssh_client_for_tmux ]]; then
+  client_ip=$(cat ~/.active_ssh_client_for_tmux | cut -sd ' ' -f 1 -)
+else
+  client_ip=$(echo $SSH_CLIENT | cut -sd ' ' -f 1 -)
+fi
+
+function register_client_ip {
+  touch ~/.known_ssh_clients_for_tmux
+  id=$(awk '/'$1'/{ print NR; exit }' ~/.known_ssh_clients_for_tmux)
+  if [[ -n $id ]]; then
+    echo $id
+    return 0
+  fi
+  echo $1 >> ~/.known_ssh_clients_for_tmux
+  register_client_ip $1
+}
+
+client_id=$(register_client_ip $client_ip)
 
 function update_ping() {
   local report=$(ping6 -c 10 -w 10 $client_ip)
@@ -47,5 +65,5 @@ else
   color="#[fg=yellow,bright]"
 fi
 
-echo -e "$color""\u24df $avg_ping:$stdev_ping""#[default]"
-
+# https://en.wikipedia.org/wiki/List_of_Unicode_characters
+echo -e "$color""\u24df $client_id\u260e $avg_ping:$stdev_ping""#[default]"
