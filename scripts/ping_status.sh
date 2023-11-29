@@ -22,6 +22,10 @@ function register_client_ip {
 
 client_id=$(register_client_ip $client_ip)
 
+if [[ $client_id -lt 10 ]]; then
+  client_id=$(echo -e '\u216'$(($client_id-1)))" "
+fi
+
 function update_ping() {
   local report=$(ping6 -c 10 -w 10 $client_ip)
   echo "$report" > $f
