@@ -868,6 +868,9 @@ fi
 alias ka="\killall -u $USER" #  disables the alias in interactive shell
 alias upld="${HOME}/misc/scripts/sync.sh"
 alias tty_sane="stty sane"
+function short_hostname {
+  hostname | sed -r 's/\./ /g' | awk '{ if (NF > 1) print $1"."$2; else print $1; }'
+}
 
 ## ========================================================================== ##
 #     __  .______   ____    ____ .___________.__    __    ______   .__   __.   #

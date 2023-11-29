@@ -3,6 +3,10 @@
 function is_osx { [[ $(uname) == 'Darwin' ]]; }
 function is_linux { [[ $(uname) == 'Linux' ]]; }
 
+if is_linux; then
+  exit 0
+fi
+
 # tmux-powerline/segments/lan_ip.sh
 # tmux-powerline/segments/wan_ip.sh
 # oh-my-zsh/plugins/systemadmin/systemadmin.plugin.zsh
