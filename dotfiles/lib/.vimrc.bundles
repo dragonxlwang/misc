@@ -121,6 +121,7 @@ Plugin 'mhinz/vim-signify'
 Plugin 'jeetsukumaran/vim-buffergator'
 nnoremap <leader>bb :BuffergatorToggle<CR>
 " Plugin 'vim-scripts/ScrollColors'
+Plugin 'wellle/context.vim'
 
 " ============================================================================="
 "            __       __  .__   __. .___________._______ .______               "

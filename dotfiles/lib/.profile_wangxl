@@ -1977,14 +1977,25 @@ function bfz {
   lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
     tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
   local curpwd=$(pwd)
-  for ln in "${(f)lines}"; do
-    while [[ $ln != '/' && $ln != '.' ]]; do
-      _z --add "$(eval echo $ln)"
-      ln=$(dirname "$ln")
-      echo "$ln"
+  local total_lines=${(f)#lines}
+  function _add {
+    for ln in "${(f)lines}"; do
+      while [[ $ln != '/' && $ln != '.' ]]; do
+        _z --add "$(eval echo $ln)"
+        ln=$(dirname "$ln")
+        echo "$ln"
+      done
     done
-  done
+  }
+  _add | tqdm --unit file --unit_scale --total $total_lines
   cd $curpwd
+}
+function tqdm {
+  if [[ -e ~/workspace/tqdm ]]; then
+    PYTHONPATH=~/workspace/tqdm python -m tqdm $@
+  else
+    cat
+  fi
 }
 
 function hcs {
