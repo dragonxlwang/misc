@@ -122,6 +122,16 @@ Plugin 'jeetsukumaran/vim-buffergator'
 nnoremap <leader>bb :BuffergatorToggle<CR>
 " Plugin 'vim-scripts/ScrollColors'
 Plugin 'wellle/context.vim'
+let g:context_skip_regex = '^\([<=>]\{7\}\|\s*\($\|\h\+\S\(\(?!else\)\s*\):\|#\|//\|/\*\|\*\($\|\s\|/\)\)\)'
+let g:context_join_regex = '^\s*\(elif\|else\)'
+" let g:context_enabled = 0
+augroup ContextNumberAutoGroup
+  autocmd!
+  "InsertLeave,
+  autocmd BufEnter,FocusGained,WinEnter * :ContextEnableWindow
+  "InsertEnter
+  autocmd BufLeave,FocusLost,WinLeave   * :ContextDisableWindow
+augroup END
 
 " ============================================================================="
 "            __       __  .__   __. .___________._______ .______               "
