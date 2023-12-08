@@ -1331,8 +1331,9 @@ alias acls="arc canary --list"
 alias acch="arc canary --cancel-host $(hostname)"
 alias al="arc lint"
 alias alc="arc lint -e extra --take CLANGTIDY"
-alias alpr="al &&  pyre --output=json | pyre-upgrade fixme"
+alias alpr="al && pyre --output=text"
 alias prfm="pyre --output=json | pyre-upgrade fixme"
+alias prp="pyre --output=text"
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
 alias fbsf='/usr/local/bin/sf'
 function tmp {
