@@ -155,7 +155,7 @@ _dotfiles_scm_info()
       diff=$(hg log -T '{sl_diff}' -r .)
       diff_status=$(hg log -T '{sl_difflabel}' -r .)
       diff_color="green"
-      if [[ $diff_status =~ review || $diff_status =~ unpublished ]]; then
+      if [[ $diff_status =~ ssl.review || $diff_status =~ unpublished ]]; then
         diff_color="yellow"
       elif [[ $diff_status =~ revision ]]; then
         diff_color="red"
