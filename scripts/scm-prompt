@@ -161,7 +161,7 @@ _dotfiles_scm_info()
         diff_color="red"
       fi
 
-      echo -n " %{$fg[white]%}on%{$reset_color%} hg:%{$fg[cyan]%}$br%{$reset_color%} %{$fg_bold[$diff_color]%}$diff%{$reset_color%}"
+      echo -n " %{$fg_bold[white]%}on%{$reset_color%} hg:%{$fg[cyan]%}$br%{$reset_color%} %{$fg[$diff_color]%}$diff%{$reset_color%}"
       # if [ -n "$(hg status 2>/dev/null)" ]; then
       #   echo -n "$YS_VCS_PROMPT_DIRTY"
       # else

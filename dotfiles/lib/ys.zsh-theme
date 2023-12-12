@@ -86,7 +86,7 @@ PROMPT="
 %{$fg_bold[magenta]%}%M%{$reset_color%} \
 %{$fg_bold[white]%}in%{$reset_color%} \
 %{$fg_bold[green]%}%~%{$reset_color%}\
-%{$terminfo[bold]%}${hg_info}${git_info}%{$reset_color%} \
-%{$fg[yellow]%}[%*] \
+${hg_info}${git_info} \
+%{$fg_bold[yellow]%}[%*]%{$reset_color%} \
 %{$fg[blue]%}tty:%l L:%L N:%i C:$exit_code
 %{$fg_bold[yellow]%}$%{$reset_color%} "
