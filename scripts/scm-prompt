@@ -152,20 +152,21 @@ _dotfiles_scm_info()
   fi
   if [[ $ask_hg -eq 1 ]]; then
     if [[ $repo == "hg" ]] && [[ -n "$br" ]]; then
-      diff_color="green"
-      if [[ -z $(hg log -r 'draft() and .')  ]]; then
-        diff=""
-      else
-        diff=$(hg log -T '{sl_diff}' -r .)
-        diff_status=$(hg log -T '{sl_difflabel}' -r .)
-        if [[ $diff_status =~ ssl.review || $diff_status =~ unpublished ]]; then
-          diff_color="yellow"
-        elif [[ $diff_status =~ revision ]]; then
-          diff_color="red"
-        fi
-      fi
-
-      echo -n " %{$fg_bold[white]%}on%{$reset_color%} hg:%{$fg[cyan]%}$br%{$reset_color%} %{$fg[$diff_color]%}$diff%{$reset_color%}"
+      # diff_color="green"
+      # if [[ -z $(hg log -r 'draft() and .')  ]]; then
+      #   diff=""
+      # else
+      #   diff=$(hg log -T '{sl_diff}' -r .)
+      #   diff_status=$(hg log -T '{sl_difflabel}' -r .)
+      #   if [[ $diff_status =~ ssl.review || $diff_status =~ unpublished ]]; then
+      #     diff_color="yellow"
+      #   elif [[ $diff_status =~ revision ]]; then
+      #     diff_color="red"
+      #   fi
+      # fi
+      #
+      # echo -n " %{$fg_bold[white]%}on%{$reset_color%} hg:%{$fg[cyan]%}$br%{$reset_color%} %{$fg[$diff_color]%}$diff%{$reset_color%}"
+      echo -n " %{$fg_bold[white]%}on%{$reset_color%} hg:%{$fg[cyan]%}$br%{$reset_color%}"
       # if [ -n "$(hg status 2>/dev/null)" ]; then
       #   echo -n "$YS_VCS_PROMPT_DIRTY"
       # else
