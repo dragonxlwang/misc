@@ -2005,6 +2005,7 @@ function hcs {
   hg cloud sync
 }
 function hcj {
+  hg backupdisable # disable for 1hr
   hg up master
   hg cloud join
   hg up current
