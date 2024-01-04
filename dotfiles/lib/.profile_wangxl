@@ -1326,6 +1326,12 @@ alias jfsss="jf s -r bottom::top"
 alias jfu="jf s --update-fields"
 alias jfll='jf list --status CLOSED -l 10'
 alias abac="arc build && arc canary --ttl 86400"
+function jfulpng {
+  mkdir -p /tmp/$(whoami) > /dev/null 2>&1
+  pngpaste /tmp/$(whoami)/tmp.png
+  unbuffer jf upload /tmp/$(whoami)/tmp.png |  tee /tmp/$(whoami)/paste.txt
+  cat /tmp/$(whoami)/paste.txt | sed -rn "s/.*([{]F[[:digit:]]+[}]).*/\1/p" | pbcopy
+}
 alias ablac="arc build --legacy && arc canary --ttl 86400"
 alias acls="arc canary --list"
 alias acch="arc canary --cancel-host $(hostname)"
