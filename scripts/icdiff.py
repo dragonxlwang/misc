@@ -56,6 +56,30 @@ color_mapping = {
     "line-numbers": "white",
 }
 
+def background(color):
+    return replace_all({"\033[1;": "\033[7;1;", "\033[0;": "\033[7;"}, color)
+
+def raw_colorize(s, color):
+    return "%s%s%s" % (color_codes[color], s, color_codes["none"])
+
+
+def simple_colorize(s, category):
+    return raw_colorize(s, color_mapping[category])
+
+
+def replace_all(replacements, string):
+    for search, replace in replacements.items():
+        string = string.replace(search, replace)
+    return string
+
+# DUMMY = background(color_codes[color_mapping["line-numbers"]]) + ' ' + color_codes["none"]
+# | ¦ ┆ │ ┊
+DUMMY = color_codes[color_mapping["line-numbers"]] +  "¦" + color_codes["none"]
+
+def blank_line(col):
+    # https://github.com/fidian/ansi
+    # https://fburl.com/oa1515z7
+    return background("\033[48;5;236m")  + ' ' * col + color_codes["none"]
 
 class ConsoleDiff(object):
     """Console colored side by side comparison with change highlights.
@@ -276,7 +300,9 @@ class ConsoleDiff(object):
         except TypeError:
             # handle blank lines where linenum is '>' or ''
             lid = ""
-            return text
+            if text.strip():
+                return text
+            return "%s %s" % (self._rpad(DUMMY, 8), blank_line(self._wrapcolumn))
         return "%s %s" % (
             self._rpad(simple_colorize(str(lid), "line-numbers"), 8),
             text,
@@ -385,9 +411,6 @@ class ConsoleDiff(object):
                 yield line
 
     def colorize(self, s):
-        def background(color):
-            return replace_all({"\033[1;": "\033[7;1;", "\033[0;": "\033[7;"}, color)
-
         C_ADD = color_codes[color_mapping["add"]]
         C_SUB = color_codes[color_mapping["subtract"]]
         C_CHG = color_codes[color_mapping["change"]]
@@ -463,19 +486,6 @@ class ConsoleDiff(object):
 
         return joined
 
-
-def raw_colorize(s, color):
-    return "%s%s%s" % (color_codes[color], s, color_codes["none"])
-
-
-def simple_colorize(s, category):
-    return raw_colorize(s, color_mapping[category])
-
-
-def replace_all(replacements, string):
-    for search, replace in replacements.items():
-        string = string.replace(search, replace)
-    return string
 
 
 class MultipleOption(Option):
@@ -668,7 +678,7 @@ def set_cols_option(options):
 
         cr = ioctl_GWINSZ(0) or ioctl_GWINSZ(1) or ioctl_GWINSZ(2)
         if cr and cr[1] > 0:
-            options.cols = cr[1]
+            options.cols = min(cr[1], 240)
             return
     options.cols = 80
 
