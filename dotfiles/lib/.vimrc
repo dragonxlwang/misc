@@ -180,6 +180,7 @@ augroup FbFormatAutoGroup
   autocmd BufNewFile,BufRead *.mcconf set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *.thrift-cvalidator set filetype=python | set syntax=python
   autocmd BufNewFile,BufRead *TARGETS set filetype=TARGETS | set syntax=python
+  autocmd BufNewFile,BufRead *.bzl set filetype=python | set syntax=python
   autocmd FileType TARGETS setlocal commentstring=#\ %s
 augroup END
 augroup MakeAutoGroup
