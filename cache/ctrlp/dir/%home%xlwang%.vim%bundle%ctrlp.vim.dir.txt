@@ -1,0 +1,5 @@
+doc
+.git
+plugin
+autoload
+autoload/ctrlp
