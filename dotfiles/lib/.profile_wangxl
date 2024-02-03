@@ -300,7 +300,7 @@ function rm_python_compiled_files_no_recursion {
 ## all vim swap .sw[pon]
 function rm_vim_swap_files {
   local clean_place=${*:-'.'}
-  find $clean_place -name '*.sw[ponlm]'  -type f -delete -print
+  find $clean_place -name '*.sw[ponlmk]'  -type f -delete -print
 }
 function rm_vim_swap_files_no_recursion {
   local clean_place=${*:-'.'}
