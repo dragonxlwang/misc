@@ -1988,7 +1988,7 @@ function bfz {
   function _add {
     for ln in "${(f)lines}"; do
       while [[ $ln != '/' && $ln != '.' ]]; do
-        _z --add "$(eval echo $ln)"
+        zshz --add "$(eval echo $ln)"
         ln=$(dirname "$ln")
         echo "$ln"
       done
