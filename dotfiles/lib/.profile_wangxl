@@ -2021,6 +2021,10 @@ alias cuda_util='nvidia-smi `
 
 alias fb-sks-agent='/Library/CPE/bin/FBSKSAgent.app/Contents/MacOS/fb-sks-agent'
 
+function merge_zsh_history {
+  ~/misc/scripts/merge_zsh_history.sh $1 ~/.zsh_history ~/.zsh_history
+}
+
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
 #            /       \   \  /   / /       |           |   ____||   \/   |      #
