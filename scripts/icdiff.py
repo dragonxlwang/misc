@@ -43,6 +43,7 @@ color_codes = {
     "magenta_bold": "\033[1;35m",
     "cyan_bold": "\033[1;36m",
     "white_bold": "\033[1;37m",
+    "underline_yellow": "\033[4;1;33m"
 }
 
 
@@ -51,7 +52,7 @@ color_mapping = {
     "subtract": "red_bold",
     "change": "yellow_bold",
     "separator": "blue",
-    "description": "blue",
+    "description": "underline_yellow",
     "meta": "magenta",
     "line-numbers": "white",
 }
@@ -816,6 +817,16 @@ def diff_files(options, a, b):
                 return
         else:
             headers = a if a is not None else "~", b if b is not None else "~"
+
+            # to make it consistent with hg diff
+            if os.getcwd().startswith("/tmp/"):
+                headers0, headers1 = headers
+                if headers0 and "/" in headers0:
+                    headers0 = "/".join(["a"] + headers0.split("/")[1:])
+                if headers1 and "/" in headers1:
+                    headers1 = "/".join(["b"] + headers1.split("/")[1:])
+                headers = (headers0, headers1)
+
     if options.no_headers:
         headers = None, None
 
