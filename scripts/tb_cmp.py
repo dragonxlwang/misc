@@ -31,7 +31,7 @@ def gen_dr(runs: str) -> None:
         if "," in r:
             a, r = r.split(",")
         else:
-            a = i
+            a = f"{i}/{r}"
         parts += [f"{a}:manifold://deep_retrieval/tree/jobs/{r}/tensorboard"]
     url = url + ",".join(parts)
     print(url)
