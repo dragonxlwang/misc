@@ -1964,8 +1964,13 @@ function tb_cmp {
 }
 function tb_cmp_mast_runs {
   mast_list=$(mast list-jobs --job-owner-unixname $USER | tee /dev/tty )
-  $mast_list |  grep "fire-$USER-$(date '+%m%d')-" | awk '{print $1}' | \
-    xargs | xargs -L1 ~/misc/scripts/tb_cmp.py gen
+  url=$(echo "$mast_list" |  grep "fire-$USER-$(date '+%m%d')-" \
+    | awk '{print $1}' \
+    | xargs \
+    | xargs -L1 ~/misc/scripts/tb_cmp.py gen)
+
+  echo ""
+  greenecho "$(fburl "$url")"
 
 #
 }
