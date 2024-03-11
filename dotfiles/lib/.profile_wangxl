@@ -1033,6 +1033,8 @@ function hud {
 function hudls {
   hg log -T '{xg_sl}' -r "sort(draft() and head(), -date)" --color always | \
     awk -v num=3 'FNR % num == 1 {print "\033[1;32m["++q"]\033[0m" ORS $0;next} 1'
+
+#
 }
 alias hudl="hg log -r 'draft() and head()'"
 alias hud1='hud 1'
@@ -1113,6 +1115,7 @@ alias hab='hg absorb'
 function hg_cleanup {
   revs=$(hg log -r 'draft()' -T '{sl_node_info} {phabstatus}\n' \
     | grep -E 'Committed|Abandoned' | awk '{print $1}')
+
   [[ -z "$revs"  ]] && return 1
 
   for r in "${(@f)revs}"; do
@@ -1123,6 +1126,8 @@ function hg_cleanup {
       echo ""
     fi
   done
+
+#
 }
 function hhpur {
   hhl
@@ -1880,6 +1885,7 @@ function presto_list_table() {
     --execute \
     "select ds, count(*) as cnt from ${2} ${where_clause} group by 1 order by 1 desc"
 
+#
 }
 alias spark='spark-sql --namespace search'
 function presto_sample() {
@@ -1948,13 +1954,20 @@ function mast_kill {
 #   url="https://www.internalfb.com/intern/tensorboard/?dir=$manifold"
 #   fburl $url
 # }
-function drtb {
-  url=$(~/misc/scripts/tb_cmp.py gen-dr "$@")
+function drtb { # to be deprecated
+  url=$(~/misc/scripts/tb_cmp.py gen "$@")
   fburl $url
 }
 function tb_cmp {
   url=$(~/misc/scripts/tb_cmp.py gen "$@")
   fburl $url
+}
+function tb_cmp_mast_runs {
+  mast_list=$(mast list-jobs --job-owner-unixname $USER | tee /dev/tty )
+  $mast_list |  grep "fire-$USER-$(date '+%m%d')-" | awk '{print $1}' | \
+    xargs | xargs -L1 ~/misc/scripts/tb_cmp.py gen
+
+#
 }
 function drst {
   for ((i=1; i<=$#; i++))
@@ -1966,6 +1979,7 @@ function drst {
 function drst_my {
   all_jobs=$(mast list-jobs --limit 100 --include-historical \
     --job-owner-unixname $(whoami) )
+
   echo $all_jobs | head -n 1
   for ((i=1; i<=$#; i++))
   do
@@ -1973,8 +1987,9 @@ function drst_my {
     echo $all_jobs | grep --color=auto "${job}"
   done
   drtb "$@"
-}
 
+#
+}
 function cpz {
   cp --backup=t --verbose ~/.z ~/misc/tmp/
 }
@@ -1984,8 +1999,11 @@ function bfz {
   lines=$(cat ~/.cache/ctrlp/mru/cache.txt | _process_mru_file_lines)
   lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
     tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
+
+  #
   local curpwd=$(pwd)
   local total_lines=${(f)#lines}
+
   function _add {
     for ln in "${(f)lines}"; do
       while [[ $ln != '/' && $ln != '.' ]]; do
@@ -1995,6 +2013,8 @@ function bfz {
       done
     done
   }
+
+  #
   _add | tqdm --unit file --unit_scale --total $total_lines
   cd $curpwd
 }

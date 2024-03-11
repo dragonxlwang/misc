@@ -17,7 +17,9 @@ def gen(runs: str) -> None:
         if "," in r:
             a, r = r.split(",")
         else:
-            a = i
+            a = f"{i}/{r}"
+        if not r.startswith("manifold://"):
+            r = f"manifold://deep_retrieval/tree/jobs/{r}/tensorboard"
         parts += [f"{a}:{r}"]
     url = url + ",".join(parts)
     print(url)

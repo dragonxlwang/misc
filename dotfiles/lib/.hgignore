@@ -2,6 +2,8 @@
 **/experimental/xlwang/**
 **/scripts/xlwang/exp/*
 **/scripts/xlwang/exp/**
+**/scripts/xlwang/tests/*
+**/scripts/xlwang/tests/**
 **/buck-out/bin/metadata.type
 **/flow/projects/dper/workflows/test_workflow.py
 fbcode/gen-json_experimental/*
