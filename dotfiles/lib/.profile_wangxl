@@ -1961,17 +1961,24 @@ function drtb { # to be deprecated
 }
 function tb_cmp {
   url=$(~/misc/scripts/tb_cmp.py gen "$@")
-  fburl $url
+  fb_url=$(fburl "$url")
+  dt=$(date +%Y-%m-%d+%H:%M:%S)
+  hashkey=$(echo "$@" | md5sum | head -c 8)
+
+  echo "$dt""\t""$hashkey""\t""$fb_url""\t""$@" >> ~/misc/tmp/tb
+  ~/misc/scripts/tb_cmp.py sort-dedup -s 1 ~/misc/tmp/tb
+
+  echo $fb_url
 }
 function tb_cmp_mast_runs {
   mast_list=$(mast list-jobs --job-owner-unixname $USER | tee /dev/tty )
-  url=$(echo "$mast_list" |  grep "fire-$USER-$(date '+%m%d')-" \
+  runs=$(echo "$mast_list" |  grep "fire-$USER-$(date "$@" '+%m%d')-" \
     | awk '{print $1}' \
-    | xargs \
-    | xargs -L1 ~/misc/scripts/tb_cmp.py gen)
+    | xargs)
 
+  url=$(tb_cmp "${=runs[@]}")
   echo ""
-  greenecho "$(fburl "$url")"
+  greenecho $url
 
 #
 }
