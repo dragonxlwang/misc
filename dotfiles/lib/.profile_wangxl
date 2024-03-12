@@ -1984,11 +1984,12 @@ function tb_cmp_mast_runs {
 }
 function tb_cat {
   cat -n ~/misc/tmp/tb
+  print -s "tb_select "
 }
 function tb_select {
   runs=$(sed "${1}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4)
   echo "$runs"
-  print -S "tb_cmp $runs"
+  print -s "tb_cmp $runs"
 
 }
 function drst {
