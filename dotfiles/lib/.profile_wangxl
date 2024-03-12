@@ -1776,13 +1776,14 @@ function h() {
       cyanecho ${cmd}
       eval ${cmd}
     }
-  # Kerberos
-  function krefresh() {
-    kdestroy
-    kinit
-    klist
-    fbwallet_fetch
-  }
+
+# Kerberos
+function krefresh() {
+  kdestroy
+  kinit
+  klist
+  fbwallet_fetch
+}
 function everpaste_url_gen() {
   ${HOME}/misc/scripts/everpaste_url_gen.sh $*
 }
