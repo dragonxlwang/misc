@@ -1982,6 +1982,13 @@ function tb_cmp_mast_runs {
 
 #
 }
+function tb_cat {
+  cat -n ~/misc/tmp/tb
+}
+function tb_select {
+  export TB_RUNS=$(sed "${1}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4)
+  echo "${TB_RUNS}"
+}
 function drst {
   for ((i=1; i<=$#; i++))
   do
