@@ -301,6 +301,8 @@ let g:UltiSnipsEditSplit="vertical"
 
 Plugin 'justinmk/vim-syntax-extra'  " temporal solution
 Plugin 'dragonxlwang/python-syntax'
+let g:python_highlight_all=1
+
 Plugin 'solarnz/thrift.vim'
 
 Plugin 'Chiel92/vim-autoformat'
