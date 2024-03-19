@@ -1321,7 +1321,7 @@ alias nbf='cd ~/fbcode/dataswarm-pipelines; ./nbackfill3 --remote'
 alias vimcpp='vim ~/misc/scripts/cpp_notes.md'
 function nbfq {
   cd ~/fbcode/dataswarm-pipelines;
-  ./nbackfill3 --yes-i-know-what-im-doing --remote "$@"
+  ./nbackfill --yes-i-know-what-im-doing --remote "$@"
 }
 alias jfe="jf s && hed"
 alias jfp="jf s --update-fields && jf publish"
