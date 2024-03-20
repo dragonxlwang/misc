@@ -67,7 +67,7 @@ def sort_dedup(s: int, fp: str) -> None:
         for ln in lines
         if ln and not is_duplicate(ln.split("\t")[s])
     }
-    lines = [lines[dt] for dt in sorted(lines)]
+    lines = [lines[dt] for dt in reversed(sorted(lines))]
 
     with open(fp, "w") as f:
         f.writelines(lines)

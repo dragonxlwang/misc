@@ -1983,7 +1983,7 @@ function tb_cmp_mast_runs {
 #
 }
 function tb_cat {
-  cat -n ~/misc/tmp/tb
+  cat -n ~/misc/tmp/tb "$@"
   print -s "tb_select "
 }
 function tb_select {
