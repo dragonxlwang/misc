@@ -1983,7 +1983,11 @@ function tb_cmp_mast_runs {
 #
 }
 function tb_cat {
-  cat -n ~/misc/tmp/tb "$@"
+  if [[ $# -eq 0 ]]; then
+    cat -n ~/misc/tmp/tb | lolcat -h 0.5
+  else
+    cat -n ~/misc/tmp/tb | head "$@" | lolcat -h 0.5
+  fi
   print -s "tb_select "
 }
 function tb_select {
