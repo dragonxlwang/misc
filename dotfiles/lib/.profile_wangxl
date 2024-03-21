@@ -1972,9 +1972,16 @@ function tb_cmp {
 }
 function tb_cmp_mast_runs {
   mast_list=$(mast list-jobs --job-owner-unixname $USER | tee /dev/tty )
-  runs=$(echo "$mast_list" |  grep "fire-$USER-$(date "$@" '+%m%d')-" \
+  patt="fire-$USER-"
+  if [[ $# -ne 0 ]]; then
+    patt="fire-$USER-$(date "$@" '+%m%d')-"
+  fi
+  runs=$(echo "$mast_list" |  grep $patt \
     | awk '{print $1}' \
     | xargs)
+
+  echo ""
+  yellowecho "selected runs: $runs"
 
   url=$(tb_cmp "${=runs[@]}")
   echo ""
