@@ -1989,6 +1989,54 @@ function tb_cmp_mast_runs {
 
 #
 }
+function mast_list {
+  echo "$(mast list-jobs --job-owner-unixname $USER)" > ~/misc/tmp/mast
+  cat ~/misc/tmp/mast | nl -w2 -s'] ' -v0 | lolcat -h 0.5
+  print -s "mast_select"
+}
+function mast_select {
+  # Get the number of command line arguments
+  num_args=$#
+  # Iterate over the command line arguments
+  for i in $(seq 1 $num_args); do
+    # Get the current argument
+    arg=$1
+
+    # Increment the argument
+    arg=$((arg + 1))
+
+    # Set the modified argument
+    set -- "$@" "$arg"
+
+    # Shift the arguments to the left
+    shift
+  done
+
+  runs=$(select_lines_from_file ~/misc/tmp/mast "$@" | cut -d' ' -f1 | xargs)
+  echo "$runs"
+  print -s "$runs"
+
+}
+function select_lines_from_file {
+  # run awk
+  awk -v nums="${*:2}" '
+  BEGIN {
+  tot = n = split(nums, arr)       # split and store numbers in an array
+  for (i=1; i<=n; i++)             # convert to lines array with key as numbers
+    lines[arr[i]]
+  }
+NR in lines {                       # if current line no is in lines array
+lines[NR] = $0                   # store current line as value
+if (!--tot)                      # decrement total count
+  exit                          # exit when we have processed all
+}
+END {                               # print all stored lines
+for (i=1; i<=n; i++)
+  print lines[arr[i]]
+}' "$1"
+
+}
+
 function tb_cat {
   if [[ $# -eq 0 ]]; then
     cat -n ~/misc/tmp/tb | lolcat -h 0.5
