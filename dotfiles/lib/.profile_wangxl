@@ -2014,7 +2014,7 @@ function mast_select {
 
   runs=$(select_lines_from_file ~/misc/tmp/mast "$@" | cut -d' ' -f1 | xargs)
   echo "$runs"
-  print -s "$runs"
+  print -s "tb_cmp $runs"
 
 }
 function select_lines_from_file {
