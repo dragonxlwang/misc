@@ -18,4 +18,10 @@ for fgbg in 38 48 ; do #Foreground/Background
 	echo #New line
 done
 
+for color in {0..256} ; do #Colors
+  #Display the color
+  echo -e "\033[48;5;${color}m [${color}] The quick brown fox jumps over the lazy dog THE QUICK BROWN FOX JUMPED OVER THE LAZY DOG'S BACK 1234567890 \033[0m"
+done
+echo #New line
+
 exit 0

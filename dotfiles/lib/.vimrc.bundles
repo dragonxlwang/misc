@@ -203,11 +203,11 @@ let g:ycm_language_server =
       \   }
       \ ]
 
-      " \   },
-      " \   {
-      " \     'name': 'python',
-      " \     'cmdline': ['/home/xlwang/fbcode/bigcode/bcf/codecompose/lsp/release/code-compose-lsp'],
-      " \     'filetypes': [ 'python' ]
+" \   },
+" \   {
+" \     'name': 'python',
+" \     'cmdline': ['/home/xlwang/fbcode/bigcode/bcf/codecompose/lsp/release/code-compose-lsp'],
+" \     'filetypes': [ 'python' ]
 " scriptencoding utf-8
 " set encoding=utf-8
 " let g:coc_node_path = '/data/users/xlwang/fbsource/xplat/third-party/node/current/node'
@@ -388,6 +388,16 @@ let g:ctrlp_mruf_max = 5000
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+let g:ctrlp_buffer_func = {'enter':'BrightHighlightOn', 'exit':'BrightHighlightOff'}
+function BrightHighlightOn()
+  set cursorlineopt=line
+endfunction
+
+function BrightHighlightOff()
+  set cursorlineopt=number
+endfunction
+" hi cursorline cterm=none ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" set nocursorline
 
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
