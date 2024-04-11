@@ -1031,8 +1031,26 @@ function hud {
   [[ $? -eq 0 ]] && hs_cur_rev
 }
 function hudls {
-  hg log -T '{xg_sl}' -r "sort(draft() and head(), -date)" --color always | \
-    awk -v num=3 'FNR % num == 1 {print "\033[1;32m["++q"]\033[0m" ORS $0;next} 1'
+  tmp_hs=~/tmp/hs
+  script --flush --quiet --return \
+    $tmp_hs --command "hg --pager never smartlog -T '{xg_sl}'" 2>/dev/null 1>&2
+
+
+  hd=$(hg log -T '{sl_node_info}\n' -r "sort(draft() and head(), -date)")
+  id=0
+  for f in "${(f)hd}"; do
+    id=$((id+1))
+    sed -i "s/$f/[${id}]: ${f}/" $tmp_hs
+  done
+  cat $tmp_hs | sed 1d | sed '$d'
+  /bin/rm $tmp_hs
+
+  print -s "hud "
+
+  # hs
+  # hg log -T '{xg_sl}' -r "sort(draft() and head(), -date)" --color always | \
+  #   awk -v num=3 'FNR % num == 1 {print "\033[1;32m["++q"]\033[0m" ORS $0;next} 1'
+  # print -s "hud "
 
 #
 }
@@ -1992,7 +2010,7 @@ function tb_cmp_mast_runs {
 function mast_list {
   echo "$(mast list-jobs --job-owner-unixname $USER)" > ~/misc/tmp/mast
   cat ~/misc/tmp/mast | nl -w2 -s'] ' -v0 | lolcat -h 0.5
-  print -s "mast_select"
+  print -s "mast_select "
 }
 function mast_select {
   # Get the number of command line arguments

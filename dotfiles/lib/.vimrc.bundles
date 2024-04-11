@@ -99,6 +99,8 @@ let g:airline_section_c =
 " https://gist.github.com/baopham/1838072
 set guifont=Monaco\ for\ Powerline:h12
 let g:airline_powerline_fonts = 1
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline#extensions#searchcount#show_search_term = 0
 
 Plugin 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊
