@@ -52,22 +52,22 @@ if shutil.which("nvidia-smi"):
 if len(sys.argv) == 1:
     output = ""
     if gpus > 0:
-        util_gpu_pct = "0%" if util_gpu_pct == 0 else f"{util_gpu_pct:04}%"
-        util_mem_pct = "0%" if util_mem_pct == 0 else f"{util_mem_pct:04}%"
+        util_gpu_pct = "0%" if util_gpu_pct == 0 else f"{util_gpu_pct:.1}%"
+        util_mem_pct = "0%" if util_mem_pct == 0 else f"{util_mem_pct:.1}%"
         output += ("{}" "\u24BC {}:{},{}:{}" "#[default]" " ").format(
             "#[fg=green,bright]", util_gpu_pct, gpus, util_mem_pct, gpu_mem
         )
     output += (
         "{}"
-        "\u24C1 {:04.2f}"
+        "\u24C1 {:.1f}"
         "#[default]"
         " "
         "{}"
-        "\u24D2 {:04}%:{}"
+        "\u24D2 {:.1f}%:{}"
         "#[default]"
         " "
         "{}"
-        "\u24Dc {:04}%:{}"
+        "\u24Dc {:.1f}%:{}"
         "#[default]".format(
             load_color,
             load1min,
