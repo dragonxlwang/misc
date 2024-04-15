@@ -1040,7 +1040,7 @@ function hudls {
   id=0
   for f in "${(f)hd}"; do
     id=$((id+1))
-    sed -i "s/$f/[${id}]: ${f}/" $tmp_hs
+    sed -i "s/$f/>>>[${id}]<<<: ${f}/" $tmp_hs
   done
   cat $tmp_hs | sed 1d | sed '$d'
   /bin/rm $tmp_hs
