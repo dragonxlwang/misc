@@ -1991,6 +1991,62 @@ function cp_exp() {
 
 }
 
+function cpz {
+  cp --backup=t --verbose ~/.z ~/misc/tmp/
+}
+function bfz {
+  # backfill z history
+  local lines
+  lines=$(cat ~/.cache/ctrlp/mru/cache.txt | _process_mru_file_lines)
+  lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
+    tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
+
+  #
+  local curpwd=$(pwd)
+  local total_lines=${(f)#lines}
+
+  function _add {
+    for ln in "${(f)lines}"; do
+      while [[ $ln != '/' && $ln != '.' ]]; do
+        zshz --add "$(eval echo $ln)"
+        ln=$(dirname "$ln")
+        echo "$ln"
+      done
+    done
+  }
+
+  #
+  _add | tqdm --unit file --unit_scale --total $total_lines
+  cd $curpwd
+}
+function tqdm {
+  if [[ -e ~/workspace/tqdm ]]; then
+    PYTHONPATH=~/workspace/tqdm python -m tqdm $@
+  else
+    cat
+  fi
+}
+
+function hcs {
+  hg bookmark -d current
+  hg bookmark current
+  hg cloud sync
+}
+function hcj {
+  hg backupdisable # disable for 1hr
+  hg up master
+  hg cloud join
+  hg up current
+}
+alias cuda_util='nvidia-smi `
+`--query-gpu=index,uuid,utilization.gpu,memory.total,memory.used --format=csv'
+
+alias fb-sks-agent='/Library/CPE/bin/FBSKSAgent.app/Contents/MacOS/fb-sks-agent'
+
+function merge_zsh_history {
+  ~/misc/scripts/merge_zsh_history.sh $1 ~/.zsh_history ~/.zsh_history
+}
+
 
 ## ========================================================================== ##
 #                                                                              #
@@ -2047,7 +2103,7 @@ function mast_select {
 
   runs=$(select_lines_from_file ~/misc/tmp/mast "$@" | cut -d' ' -f1 | xargs)
   echo "$runs"
-  print -s "tb_cmp $runs"
+  print -s "mast_link $runs"
 
 }
 function select_lines_from_file {
@@ -2070,18 +2126,18 @@ for (i=1; i<=n; i++)
 
 }
 
-function tb_cat {
+function mast_cat {
   if [[ $# -eq 0 ]]; then
     cat -n ~/misc/tmp/tb | lolcat -h 0.5
   else
     cat -n ~/misc/tmp/tb | head "$@" | lolcat -h 0.5
   fi
-  print -s "tb_select "
+  print -s "mast_cat_select "
 }
-function tb_select {
+function mast_cat_select {
   runs=$(sed "${1}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4)
   echo "$runs"
-  print -s "tb_cmp $runs"
+  print -s "mast_link $runs"
 
 }
 function drst {
@@ -2145,9 +2201,9 @@ function mast_link {
   done
   echo $fb_url | lolcat -h 0.5
 }
-function tb_cmp_mast_runs {
-  mast_list=$(mast list-jobs --job-owner-unixname $USER | tee /dev/tty )
-  patt="fire-$USER-"
+function mast_runs {
+  local mast_list=$(mast list-jobs --job-owner-unixname $USER | tee /dev/tty )
+  local patt="fire-$USER-"
   if [[ $# -ne 0 ]]; then
     patt="fire-$USER-$(date "$@" '+%m%d')-"
   fi
@@ -2159,64 +2215,9 @@ function tb_cmp_mast_runs {
   yellowecho "selected runs: $runs"
 
   echo ""
-  tb_cmp "${=runs[@]}"
+  mast_link "${=runs[@]}"
 
 #
-}
-function cpz {
-  cp --backup=t --verbose ~/.z ~/misc/tmp/
-}
-function bfz {
-  # backfill z history
-  local lines
-  lines=$(cat ~/.cache/ctrlp/mru/cache.txt | _process_mru_file_lines)
-  lines+=$(sed -n -E -e '/^>|^:sp|^:vs/p' ~/.viminfo | \
-    tr -s ' ' | cut -d' ' -f2 | _process_mru_file_lines)
-
-  #
-  local curpwd=$(pwd)
-  local total_lines=${(f)#lines}
-
-  function _add {
-    for ln in "${(f)lines}"; do
-      while [[ $ln != '/' && $ln != '.' ]]; do
-        zshz --add "$(eval echo $ln)"
-        ln=$(dirname "$ln")
-        echo "$ln"
-      done
-    done
-  }
-
-  #
-  _add | tqdm --unit file --unit_scale --total $total_lines
-  cd $curpwd
-}
-function tqdm {
-  if [[ -e ~/workspace/tqdm ]]; then
-    PYTHONPATH=~/workspace/tqdm python -m tqdm $@
-  else
-    cat
-  fi
-}
-
-function hcs {
-  hg bookmark -d current
-  hg bookmark current
-  hg cloud sync
-}
-function hcj {
-  hg backupdisable # disable for 1hr
-  hg up master
-  hg cloud join
-  hg up current
-}
-alias cuda_util='nvidia-smi `
-`--query-gpu=index,uuid,utilization.gpu,memory.total,memory.used --format=csv'
-
-alias fb-sks-agent='/Library/CPE/bin/FBSKSAgent.app/Contents/MacOS/fb-sks-agent'
-
-function merge_zsh_history {
-  ~/misc/scripts/merge_zsh_history.sh $1 ~/.zsh_history ~/.zsh_history
 }
 
 ## ========================================================================== ##
