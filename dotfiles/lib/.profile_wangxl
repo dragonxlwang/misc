@@ -1991,14 +1991,17 @@ function cp_exp() {
 
 }
 
-function mast_kill {
-  for ((i=1; i<=$#; i++))
-  do
-    job="$@[i]"
-    mast kill --comment user_error "$job"
-  done
 
-}
+## ========================================================================== ##
+#                                                                              #
+#               .___  ___.      ___           _______.___________.             #
+#               |   \/   |     /   \         /       |           |             #
+#               |  \  /  |    /  ^  \       |   (----`---|  |----`             #
+#               |  |\/|  |   /  /_\  \       \   \       |  |                  #
+#               |  |  |  |  /  _____  \  .----)   |      |  |                  #
+#               |__|  |__| /__/     \__\ |_______/       |__|                  #
+## ========================================================================== ##
+
 # function drtb {
 #   local manifold=""
 #   for ((i=1; i<=$#; i++))
@@ -2017,35 +2020,7 @@ function drtb { # to be deprecated
   url=$(~/misc/scripts/tb_cmp.py gen "$@")
   fburl $url
 }
-function tb_cmp {
-  url=$(~/misc/scripts/tb_cmp.py gen "$@")
-  fb_url=$(fburl "$url")
-  dt=$(date +%Y-%m-%d+%H:%M:%S)
-  hashkey=$(echo "$@" | md5sum | head -c 8)
 
-  echo "$dt""\t""$hashkey""\t""$fb_url""\t""$@" >> ~/misc/tmp/tb
-  ~/misc/scripts/tb_cmp.py sort-dedup -s 1 ~/misc/tmp/tb
-
-  echo $fb_url
-}
-function tb_cmp_mast_runs {
-  mast_list=$(mast list-jobs --job-owner-unixname $USER | tee /dev/tty )
-  patt="fire-$USER-"
-  if [[ $# -ne 0 ]]; then
-    patt="fire-$USER-$(date "$@" '+%m%d')-"
-  fi
-  runs=$(echo "$mast_list" |  grep $patt \
-    | awk '{print $1}' \
-    | xargs)
-
-  echo ""
-  yellowecho "selected runs: $runs"
-
-  echo ""
-  tb_cmp "${=runs[@]}"
-
-#
-}
 function mast_list {
   echo "$(mast list-jobs --job-owner-unixname $USER)" > ~/misc/tmp/mast
   cat ~/misc/tmp/mast | nl -w2 -s'] ' -v0 | lolcat -h 0.5
@@ -2054,6 +2029,7 @@ function mast_list {
 function mast_select {
   # Get the number of command line arguments
   num_args=$#
+  local i
   # Iterate over the command line arguments
   for i in $(seq 1 $num_args); do
     # Get the current argument
@@ -2126,6 +2102,64 @@ function drst_my {
     echo $all_jobs | grep --color=auto "${job}"
   done
   drtb "$@"
+
+#
+}
+function mast_resolve {
+  local i
+  for ((i=1; i<=$#; i++))
+  do
+    local arg="$@[i]"
+    if [[ "$arg" =~ ^-?[0-9]+$ ]]; then
+      echo -n $(mast_select "$arg")
+    else
+      echo -n $(echo "$arg")
+    fi
+    if [[ $i != $# ]]; then
+      echo -n " "
+    fi
+  done
+  echo ""
+}
+function mast_kill {
+  for ((i=1; i<=$#; i++))
+  do
+    job="$(mast_resolve $@[i])"
+    mast kill --comment user_error "$job"
+  done
+
+}
+function mast_link {
+  local runs="$(mast_resolve "$@")"
+  url=$(~/misc/scripts/tb_cmp.py gen "${=runs}")
+  fb_url=$(fburl "$url")
+  dt=$(date +%Y-%m-%d+%H:%M:%S)
+  hashkey=$(echo "$runs" | md5sum | head -c 8)
+
+  echo "$dt""\t""$hashkey""\t""$fb_url""\t""$runs" >> ~/misc/tmp/tb
+  ~/misc/scripts/tb_cmp.py sort-dedup -s 1 ~/misc/tmp/tb
+
+  local r
+  for r in ${=runs[@]}; do
+    echo mast://$r
+  done
+  echo $fb_url | lolcat -h 0.5
+}
+function tb_cmp_mast_runs {
+  mast_list=$(mast list-jobs --job-owner-unixname $USER | tee /dev/tty )
+  patt="fire-$USER-"
+  if [[ $# -ne 0 ]]; then
+    patt="fire-$USER-$(date "$@" '+%m%d')-"
+  fi
+  runs=$(echo "$mast_list" |  grep $patt \
+    | awk '{print $1}' \
+    | xargs)
+
+  echo ""
+  yellowecho "selected runs: $runs"
+
+  echo ""
+  tb_cmp "${=runs[@]}"
 
 #
 }
