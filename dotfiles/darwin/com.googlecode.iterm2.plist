@@ -2219,6 +2219,16 @@
 					<key>action</key>
 					<string>iTermHyperlinkTrigger</string>
 					<key>parameter</key>
+          <string>https://www.internalfb.com/mlhub/pipelines/runs/mast/\1</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+          <string>[mast://](\S+)</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>iTermHyperlinkTrigger</string>
+					<key>parameter</key>
 					<string>https://www.internalfb.com/intern/fblearner/details/\1</string>
 					<key>partial</key>
 					<true/>
