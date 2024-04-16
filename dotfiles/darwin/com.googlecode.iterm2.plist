@@ -2223,7 +2223,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-          <string>[mast\\://](\S+)</string>
+          <string>mast://(\S+)</string>
 				</dict>
 				<dict>
 					<key>action</key>
