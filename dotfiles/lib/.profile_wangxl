@@ -593,10 +593,10 @@ function init_oh_my_zsh {
       greenecho "\n\tCustom Git Plugin $1/$2 is already installed. Skipping..."
     fi
   }
-install_custom_plugin zsh-users zsh-completions
-install_custom_plugin zsh-users zsh-autosuggestions
-install_custom_plugin zsh-users zsh-syntax-highlighting
-install_custom_plugin Tarrasch zsh-bd bd
+  install_custom_plugin zsh-users zsh-completions
+  install_custom_plugin zsh-users zsh-autosuggestions
+  install_custom_plugin zsh-users zsh-syntax-highlighting
+  install_custom_plugin Tarrasch zsh-bd bd
 }
 function up_oh_my_zsh {
   init_oh_my_zsh
@@ -726,7 +726,9 @@ function xg_sl {
     --abbrev-commit --stat --stat-graph-width=60 --graph --decorate --all \
     --pretty=tformat:$format \
     $option
-  }
+
+#
+}
 function xg_sll { # long
   # get remote unpulled changes
   git fetch
@@ -739,7 +741,9 @@ function xg_sll { # long
   git log \
     --abbrev-commit --stat --stat-graph-width=60 --graph --decorate --all \
     --pretty=tformat:$format
-  }
+
+  #
+}
 function _xg_sls {
   local pager_option=""
   [[ $1 == "--no-pager" ]] && pager_option="--no-pager"
@@ -749,7 +753,9 @@ function _xg_sls {
   format+="%C(bold blue)%an%Creset %C(auto)%d%Creset"           # author, decor
   git $pager_option log \
     --abbrev-commit --graph --decorate --all --pretty=tformat:$format "${@:2}"
-  }
+
+  #
+}
 function xg_sls { # short
   local option=""
   if [[ $# -eq 0 ]]; then option="-20"; else eval "option=(${@})"; fi
@@ -860,7 +866,9 @@ export EDITOR="vim"
 function yapf {
   $(whence -p yapf) \
     --style="{based_on_style:facebook,indent_width:4,column_limit:79}" $@
-  }
+
+#
+}
 # alias killall="eden start; killall -u $USER"
 if [[ $(uname) == "Linux" ]]; then
   alias killall="loginctl terminate-user $USER"
@@ -905,18 +913,22 @@ function kill_timan_tunnel_ipython {
           kill -9 $i
         fi
       done
-    }
-  function build_bento {
-    buck build ${1:-@mode/opt} //experimental/xlwang:bento_kernel_devbig470_local
-    yellowecho "start bento https://our.intern.facebook.com/intern/bunny/?bento " \
-      "and select bento_kernel_devbig470_local"
-    }
-  # # A function to launch ipython notebooks
-  function ifbpynb {
-    pushd ~/python;
-    /usr/local/bin/ifbpy notebook --profile=nbserver;
-    popd;
-  }
+
+#
+}
+function build_bento {
+  buck build ${1:-@mode/opt} //experimental/xlwang:bento_kernel_devbig470_local
+  yellowecho "start bento https://our.intern.facebook.com/intern/bunny/?bento " \
+    "and select bento_kernel_devbig470_local"
+
+#
+}
+# # A function to launch ipython notebooks
+function ifbpynb {
+  pushd ~/python;
+  /usr/local/bin/ifbpy notebook --profile=nbserver;
+  popd;
+}
 # # ai_bb
 alias ai_bb="buck build -c fbcode.platform=gcc-4.9-glibc-2.20"
 function itorch {
@@ -1409,27 +1421,37 @@ function tmux_fbc {
   tmux new-window -c $(readlink -f ~/fbcode) \
     && tmux setw allow-rename off \
     && tmux rename-window "fbc"
-  }
+
+#
+}
 function tmux_fbc2 {
   tmux new-window -c $(readlink -f ~/fbcode2) \
     && tmux setw allow-rename off \
     && tmux rename-window "fbc2"
-  }
+
+#
+}
 function tmux_fbc3 {
   tmux new-window -c $(readlink -f ~/fbcode3) \
     && tmux setw allow-rename off \
     && tmux rename-window "fbc3"
-  }
+
+#
+}
 function tmux_ds {
   tmux new-window -c $(readlink -f ~/fbcode/dataswarm-pipelines/tasks) \
     && tmux setw allow-rename off \
     && tmux rename-window "ds"
-  }
+
+#
+}
 function tmux_cconf {
   tmux new-window -c $(readlink -f ~/configerator) \
     && tmux setw allow-rename off \
     && tmux rename-window "cf"
-  }
+
+#
+}
 function run_dper_integration_tests {
   pushd ~/fbcode
 
@@ -1459,7 +1481,9 @@ function happy_coding {
 }
 function buck_gen_cc {
   buck build --show-output $1\#compilation-database
-  }
+
+#
+}
 alias buck_util='~/misc/scripts/buck_utils.py'
 function flow_util {
   local bin=~/fbcode/buck-out/gen/experimental/xlwang/flow_util.par
@@ -1673,7 +1697,9 @@ function bbbd_unicorn() {
     unicorn_run_locally \
     ~/fbcode/buck-out/gen/unicorn/topaggr/top_aggregator_server \
     --smc_tiername=unicorn.topaggr.facebar.oregon.xlwang $@
-  }
+
+#
+}
 
 alias gg > /dev/null 2>&1 && unalias gg
 function gg() {
@@ -1714,7 +1740,9 @@ function ddd() {
   local query="find ~/$repo/{$_fbcode_path} -type d 2> /dev/null"
   dir=$(eval $query | fzf --query="$*" +m --prompt="fbdir> ") \
     && cd "$dir"
-  }
+
+#
+}
 # v - open files in ~/.viminfo
 # consider migrating to ~/.cache/ctrlp/mru/cache.txt
 function _process_mru_file_lines() {
@@ -1782,7 +1810,9 @@ function z() {
   [ $# -gt 0 ] && _z "$*" && return
   cd "$(zshz -l 2>&1 | fzf --nth=2 --prompt="dir-hist> " +s +m --tac --query "$*" \
     | sed 's/^[0-9,.]* *//')"
-  }
+
+#
+}
 function h() {
   local tmp="${HOME}/misc/tmp/hg.revs"
   local rev="$(hg smartlog -T '#{xg_sl_one_line_no_link}\n' 2>/dev/null --color=always \
@@ -1793,7 +1823,9 @@ function h() {
       hg log -T '{xg_sl}' --rev $rev
       cyanecho ${cmd}
       eval ${cmd}
-    }
+
+#
+}
 
 # Kerberos
 function krefresh() {
@@ -1808,21 +1840,29 @@ function everpaste_url_gen() {
 function parse_everpaste_handle() {
   less $* | grep "everpaste" | grep -Eo '(http|https)://\S+' \
     | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
-  }
+
+#
+}
 function parse_everpaste_url_from_file() {
   for x in $(parse_everpaste_handle $*); do; everpaste_url_gen $x ; done
+
+#
 }
 function parse_flow_net_everpaste_handle() {
   less $* | grep "everpaste" | grep "net" | grep -Eo '(http|https)://\S+' \
     | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
-  }
+
+#
+}
 function parse_flow_net_everpaste_url_from_file() {
   for x in $(parse_flow_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
 }
 function parse_flow_train_net_everpaste_handle() {
   less $* | grep "everpaste" | grep "net" | grep "train" \
     | grep -Eo '(http|https)://\S+' | tr -d '.' | grep -oP 'handle=\K\S+' --color=never
-  }
+
+#
+}
 function parse_flow_train_net_everpaste_url_from_file() {
   for x in $(parse_flow_train_net_everpaste_handle $*); do; everpaste_url_gen $x ; done
 }
@@ -2001,9 +2041,8 @@ function tb_cmp_mast_runs {
   echo ""
   yellowecho "selected runs: $runs"
 
-  url=$(tb_cmp "${=runs[@]}")
   echo ""
-  greenecho $url
+  tb_cmp "${=runs[@]}"
 
 #
 }
@@ -2043,11 +2082,11 @@ function select_lines_from_file {
   for (i=1; i<=n; i++)             # convert to lines array with key as numbers
     lines[arr[i]]
   }
-NR in lines {                       # if current line no is in lines array
-lines[NR] = $0                   # store current line as value
-if (!--tot)                      # decrement total count
-  exit                          # exit when we have processed all
-}
+  NR in lines {                       # if current line no is in lines array
+  lines[NR] = $0                   # store current line as value
+  if (!--tot)                      # decrement total count
+    exit                          # exit when we have processed all
+  }
 END {                               # print all stored lines
 for (i=1; i<=n; i++)
   print lines[arr[i]]
