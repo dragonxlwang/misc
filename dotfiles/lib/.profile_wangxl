@@ -1039,16 +1039,19 @@ alias hum="hg up master && hs_cur_rev"
 alias hut='hg up tip && hs_cur_rev'
 function hud {
   # alias hud="hg up -r 'draft()'"
-  hg up -r "limit(sort(draft() and head(), -date), ${1:=1})"
+  # hg up -r "limit(sort(draft() and head(), -date), ${1:=1})"
+  hg up -r "limit(sort(draft(), -topo), ${1:=1})"
   [[ $? -eq 0 ]] && hs_cur_rev
 }
 function hudls {
+  mkdir -p ~/tmp
   tmp_hs=~/tmp/hs
   script --flush --quiet --return \
     $tmp_hs --command "hg --pager never smartlog -T '{xg_sl}'" 2>/dev/null 1>&2
 
 
-  hd=$(hg log -T '{sl_node_info}\n' -r "sort(draft() and head(), -date)")
+  # hd=$(hg log -T '{sl_node_info}\n' -r "sort(draft() and head(), -date)")
+  hd=$(hg log -T '{sl_node_info}\n' -r "sort(draft(), -topo)")
   id=0
   for f in "${(f)hd}"; do
     id=$((id+1))
