@@ -2130,11 +2130,7 @@ for (i=1; i<=n; i++)
 }
 
 function mast_cat {
-  if [[ $# -eq 0 ]]; then
-    cat -n ~/misc/tmp/tb | lolcat -h 0.5
-  else
-    cat -n ~/misc/tmp/tb | head "$@" | lolcat -h 0.5
-  fi
+  cat -n ~/misc/tmp/tb | head -n "${1:-5}" | lolcat -h 0.5
   print -s "mast_cat_select "
 }
 function mast_cat_select {
