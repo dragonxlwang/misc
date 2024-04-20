@@ -2196,7 +2196,8 @@ function mast_link {
 
   local r
   for r in ${=runs[@]}; do
-    echo mast://$r
+    # echo mast://$r
+    echo "https://www.internalfb.com/mast/job/$r"
   done
   echo $fb_url | lolcat -h 0.5
 }
