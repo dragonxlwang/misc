@@ -109,7 +109,7 @@ cd pygments-json
 sudo /usr/bin/python3 setup.py install
 
 cd ~/workspace
-git clone git@github.com:dosentmatter/lolcat
+git clone git@github.com:busyloop/lolcat
 cd lolcat
 make && sudo make install
 
