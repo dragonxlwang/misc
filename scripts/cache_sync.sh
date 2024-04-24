@@ -6,7 +6,7 @@ ANSI_COLOR_RESET="\033[0m"
 ANSI_COLOR_BLUE="\033[36m"
 ANSI_COLOR_YELLOW="\033[33m"
 
-root_dir=$(dirname $(dirname $(greadlink -f $0)))
+root_dir=$(dirname $(dirname $(greadlink -f $0)) 2>/dev/null )
 [[ $? -ne 0 ]] && root_dir=$(dirname $(dirname $(readlink -f $0)))
 
 echo $root_dir
