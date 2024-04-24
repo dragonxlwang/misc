@@ -11,7 +11,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/up_cache
+~MSle0~/dev\/null
 
 # Last Substitute Search Pattern:
 ~MSle0&\/
@@ -20,10 +20,24 @@
 $
 
 # Command Line History (newest to oldest):
+:W
+|2,0,1713938220,,"W"
+:w
+|2,0,1713938218,,"w"
+:e
+|2,0,1713937986,,"e"
+:Rename cache_sync.sh
+|2,0,1713937729,,"Rename cache_sync.sh"
+:sp ~/misc/scripts/setup_symlinks.sh
+|2,0,1713936793,,"sp ~/misc/scripts/setup_symlinks.sh"
+:sp ~/.cron
+|2,0,1713936788,,"sp ~/.cron"
+:sp ~/.hgrc
+|2,0,1713936776,,"sp ~/.hgrc"
+:sp 
+|2,0,1713936766,,"sp "
 :qa
 |2,0,1713936831,,"qa"
-:w
-|2,0,1713936707,,"w"
 :sp ~/misc/scripts/file_sync.sh
 |2,0,1713935501,,"sp ~/misc/scripts/file_sync.sh"
 :YcmDebugInfo
@@ -52,8 +66,6 @@ $
 |2,0,1704232827,,"Sp ~"
 :sp ~/fbcode/ai_tooling/data_processing/functions/ComponentLoggerFunctionFactory.h
 |2,0,1704232454,,"sp ~/fbcode/ai_tooling/data_processing/functions/ComponentLoggerFunctionFactory.h"
-:sp 
-|2,0,1704231510,,"sp "
 :Rg get_event_logger
 |2,0,1704231238,,"Rg get_event_logger"
 :Rg
@@ -70,16 +82,12 @@ $
 |2,0,1703321193,,"Sp "
 :sp ~/fbcode/fbcode/dataswarm-pipelines/tasks/feed_fblearner/fb_reels/content_understanding/reels_video_process.py
 |2,0,1703321192,,"sp ~/fbcode/fbcode/dataswarm-pipelines/tasks/feed_fblearner/fb_reels/content_understanding/reels_video_process.py"
-:W
-|2,0,1703321051,,"W"
 :E
 |2,0,1703317144,,"E"
 :T
 |2,0,1703317036,,"T"
 :Fbs6
 |2,0,1703182205,,"Fbs6"
-:e
-|2,0,1703182202,,"e"
 :Fbs5
 |2,0,1703181172,,"Fbs5"
 :jkkj
@@ -3694,8 +3702,6 @@ $
 |2,0,1655534342,,"sb49"
 :152
 |2,0,1655534054,,"152"
-:sp ~/.hgrc
-|2,0,1655526581,,"sp ~/.hgrc"
 :ew
 |2,0,1655502433,,"ew"
 :FBs50
@@ -4966,12 +4972,34 @@ $
 |2,0,1635272165,,"ujk"
 
 # Search String History (newest to oldest):
+?/dev\/null
+|2,1,1713938116,47,"dev\\/null"
+?/devjkjjkkkk
+|2,1,1713938112,47,"devjkjjkkkk"
+?/dev/
+|2,1,1713938106,47,"dev/"
+?/jkjk
+|2,1,1713938099,47,"jkjk"
+?/dev/null
+|2,1,1713938096,47,"dev/null"
+?/bfz
+|2,1,1713938001,47,"bfz"
+?/up_
+|2,1,1713937957,47,"up_"
+?/file_
+|2,1,1713936896,47,"file_"
+?/cache
+|2,1,1713936893,47,"cache"
+?/hg_c
+|2,1,1713936798,47,"hg_c"
+?/cron
+|2,1,1713936794,47,"cron"
+? \s\+$
+|2,1,1713936709,,"\\s\\+$"
 ?/up_cache
 |2,1,1713936658,47,"up_cache"
 ?/misc\/cache
 |2,1,1713936654,47,"misc\\/cache"
-?/cache
-|2,1,1713936640,47,"cache"
 ?/ing
 |2,1,1713935684,47,"ing"
 ?/jk
@@ -4982,8 +5010,6 @@ $
 |2,1,1713935546,47,"update_s"
 ?/up
 |2,1,1713935543,47,"up"
-?/up_
-|2,1,1713935464,47,"up_"
 ?/up_scr
 |2,1,1713935459,47,"up_scr"
 ?/balance
@@ -5124,8 +5150,6 @@ $
 |2,1,1703321408,47,"videkk"
 ?/transform
 |2,1,1703321404,47,"transform"
-? \s\+$
-|2,1,1703321111,,"\\s\\+$"
 ?/ast
 |2,1,1703320626,47,"ast"
 ?/is not none
@@ -6911,8 +6935,6 @@ $
 |2,1,1701470605,47,"unit"
 ?/bytes
 |2,1,1701470511,47,"bytes"
-?/bfz
-|2,1,1701469429,47,"bfz"
 ?/zbf
 |2,1,1701469428,47,"zbf"
 ?/function z
@@ -15578,8 +15600,6 @@ $
 |2,1,1665711886,47,"suplpp"
 ?/raasrequest
 |2,1,1665711836,47,"raasrequest"
-?/dev/null
-|2,1,1665713715,47,"dev/null"
 ?/member
 |2,1,1665706828,47,"member"
 ?/grou
@@ -20956,20 +20976,6 @@ $
 |2,1,1645566566,47,"storageid"
 ?/UNIDATA_START_ID
 |2,1,1645566460,47,"UNIDATA_START_ID"
-?/hpc_schedul
-|2,1,1645323224,47,"hpc_schedul"
-?/ttk
-|2,1,1645322632,47,"ttk"
-?/start_train
-|2,1,1645322627,47,"start_train"
-?/create_vanilla_module
-|2,1,1645318046,47,"create_vanilla_module"
-?/sparsennmodule
-|2,1,1645318034,47,"sparsennmodule"
-?/create_train
-|2,1,1645318020,47,"create_train"
-?/preprocmetadat
-|2,1,1645317848,47,"preprocmetadat"
 
 # Expression History (newest to oldest):
 ='else:' =~ '^\(\s*\(\h\+\S\s*:\)\)'jkjjjkjkkkk
@@ -22479,118 +22485,37 @@ $
 
 # Registers:
 "0	CHAR	0
-	g
-|3,0,0,0,1,0,1713936670,"g"
+	 
+|3,0,0,0,1,0,1713938042," "
 ""1	LINE	0
+	
+|3,1,1,1,1,0,1713938221,""
+"2	LINE	0
+	
+|3,0,2,1,1,0,1713938219,""
+"3	LINE	0
+	root_dir=$(dirname $(dirname $(greadlink -f $0)) 2>/dev/null )
+|3,0,3,1,1,0,1713938215,"root_dir=$(dirname $(dirname $(greadlink -f $0)) 2>/dev/null )"
+"4	LINE	0
+	}
+|3,0,4,1,1,0,1713938042,"}"
+"5	LINE	0
+	
+|3,0,5,1,1,0,1713937705,""
+"6	LINE	0
+	
+|3,0,6,1,1,0,1713937704,""
+"7	LINE	0
+	git pull
+|3,0,7,1,1,0,1713937686,"git pull"
+"8	LINE	0
 	function up_cache_sync {
 	  ${HOME}/misc/scripts/file_sync.sh
 	}
-|3,1,1,1,3,0,1713936706,"function up_cache_sync {","  ${HOME}/misc/scripts/file_sync.sh","}"
-"2	LINE	0
-	from mrs.fm.utils import 
-|3,0,2,1,1,0,1713935393,"from mrs.fm.utils import "
-"3	LINE	0
-	
-	    clip_sampler_type="uniform",
-	    frames_per_clip=4,
-	    frame_dilation=16,
-	    clips_per_video=1,
-	    max_video_duration=60,
-	    output_frame_size=64,
-	    crop_size=64,
-	    num_partitions=101,
-	    partition_by_ts=True,
-	    retention_days=90,
-|3,0,3,1,11,0,1703321495,"","    clip_sampler_type=\"uniform\",","    frames_per_clip=4,","    frame_dilation=16,","    clips_per_video=1,","    max_video_duration=60,","    output_frame_size=64,","    crop_size=64,","    num_partitions=101,","    partition_by_ts=True,","    retention_days=90,"
-"4	LINE	0
-	    dep_list=[handle_lookup_task],
-|3,0,4,1,1,0,1703321491,"    dep_list=[handle_lookup_task],"
-"5	LINE	0
-	def video_transforms_decord(
-	    select_sql: str,
-	    output_table_name: str,
-	    video_fbid_col: str,
-	    everstore_handle_col: str,
-	    # sampler options
-	    frames_per_clip: int = 4,
-	    clips_per_video:int = -1,
-	    frame_dilation_sec: float= 0.125,
-	    clips_per_second :float= 0.1,
-	    clips_start_second:float=0,
-	    clips_end_second:float=30,
-	    interpolate_scale:str = "(0.25,0.0625,0.0625)",
-	    crop_scale:str="(0.5,0.5)",
-	    # transformer options
-	    num_partitions: int = 101,
-	    dep_list: Optional[List] = None,
-	    partition_by_ts: bool = True,
-	    retention_days: int = 90,
-	):
-	    output_table = output.table(output_table_name)
-	    partitions = [Column("ds", "VARCHAR", "")]
-	    if partition_by_ts:
-	        output_table = output_table.col_ts_ds_eq_scheduled()
-	        partitions.append(Column("ts", "VARCHAR", ""))
-	    else:
-	        output_table = output_table.col_ds_eq_dateid()
-	
-	    transform_task = HiveInsertOperatorWithSchema(
-	        dep_list=dep_list if dep_list is not None else [],
-	        output_data={
-	            "output_table": output_table
-	        },
-	        create=Table(
-	            cols=[
-	                Column(video_fbid_col, "BIGINT", ""),
-	                Column(everstore_handle_col, "STRING", "")
-	                Column("clips", "STRING", ""),
-	            ],
-	            partitions=partitions,
-	            comment="",
-	            retention=retention_days,
-	        ),
-	        spark_opts={
-	            "spark.sql.transform.enabled": "true",
-	            "spark.sql.shuffle.partitions": f"{num_partitions}",
-	            "spark.default.parallelism": f"{num_partitions}",
-	            "spark.history.based.tuning.shuffle.partitions.override.enabled": "false",
-	            "spark.dynamicAllocation.maxExecutors": "2000",
-	        },
-|3,0,5,1,50,0,1703321066,"def video_transforms_decord(","    select_sql: str,","    output_table_name: str,","    video_fbid_col: str,","    everstore_handle_col: str,","    # sampler options","    frames_per_clip: int = 4,","    clips_per_video:int = -1,","    frame_dilation_sec: float= 0.125,","    clips_per_second :float= 0.1,","    clips_start_second:float=0,","    clips_end_second:float=30,","    interpolate_scale:str = \"(0.25,0.0625,0.0625)\",",>35
-|<"    crop_scale:str=\"(0.5,0.5)\",","    # transformer options","    num_partitions: int = 101,","    dep_list: Optional[List] = None,","    partition_by_ts: bool = True,","    retention_days: int = 90,","):","    output_table = output.table(output_table_name)","    partitions = [Column(\"ds\", \"VARCHAR\", \"\")]","    if partition_by_ts:","        output_table = output_table.col_ts_ds_eq_scheduled()","        partitions.append(Column(\"ts\", \"VARCHAR\", \"\"))","    else:",>56
-|<"        output_table = output_table.col_ds_eq_dateid()","","    transform_task = HiveInsertOperatorWithSchema(","        dep_list=dep_list if dep_list is not None else [],","        output_data={","            \"output_table\": output_table","        },","        create=Table(","            cols=[","                Column(video_fbid_col, \"BIGINT\", \"\"),","                Column(everstore_handle_col, \"STRING\", \"\")","                Column(\"clips\", \"STRING\", \"\"),",>16
-|<"            ],","            partitions=partitions,","            comment=\"\",","            retention=retention_days,","        ),","        spark_opts={","            \"spark.sql.transform.enabled\": \"true\",","            \"spark.sql.shuffle.partitions\": f\"{num_partitions}\",","            \"spark.default.parallelism\": f\"{num_partitions}\",","            \"spark.history.based.tuning.shuffle.partitions.override.enabled\": \"false\",",>65
-|<"            \"spark.dynamicAllocation.maxExecutors\": \"2000\",","        },"
-"6	LINE	0
-	    select_sql: str,
-	    output_table_name: str,
-	    video_fbid_col: str,
-	    everstore_handle_col: str,
-	    # sampler options
-	    frames_per_clip: int = 4,
-	    clips_per_video:int = -1,
-	    frame_dilation_sec: float= 0.125,
-	    clips_per_second :float= 0.1,
-	    clips_start_second:float=0,
-	    clips_end_second:float=30,
-	    interpolate_scale:str = "(0.25,0.0625,0.0625)",
-	    crop_scale:str="(0.5,0.5)",
-	    # transformer options
-	    num_partitions: int = 101,
-	    dep_list: Optional[List] = None,
-	    partition_by_ts: bool = True,
-	    retention_days: int = 90,
-|3,0,6,1,18,0,1703321042,"    select_sql: str,","    output_table_name: str,","    video_fbid_col: str,","    everstore_handle_col: str,","    # sampler options","    frames_per_clip: int = 4,","    clips_per_video:int = -1,","    frame_dilation_sec: float= 0.125,","    clips_per_second :float= 0.1,","    clips_start_second:float=0,","    clips_end_second:float=30,","    interpolate_scale:str = \"(0.25,0.0625,0.0625)\",","    crop_scale:str=\"(0.5,0.5)\",",>27
-|<"    # transformer options","    num_partitions: int = 101,","    dep_list: Optional[List] = None,","    partition_by_ts: bool = True,","    retention_days: int = 90,"
-"7	LINE	0
-	
-|3,0,7,1,1,0,1703320885,""
-"8	LINE	0
-	
-|3,0,8,1,1,0,1703320873,""
+|3,0,8,1,3,0,1713936706,"function up_cache_sync {","  ${HOME}/misc/scripts/file_sync.sh","}"
 "9	LINE	0
-	
-|3,0,9,1,1,0,1703320872,""
+	from mrs.fm.utils import 
+|3,0,9,1,1,0,1713935393,"from mrs.fm.utils import "
 "a	CHAR	0
 	jkkkjjjjjjjjjkk€ý,€ý.ï¼š
 |3,0,10,0,1,0,1695854316,"jkkkjjjjjjjjjkk€ý,€ý.ï¼š"
@@ -22662,37 +22587,77 @@ $
 |3,0,35,0,1,0,1630515023,>451
 |<"hjkllzh:AnncjkkjjjjjjjjjjjjjjjkkkjjjVjxjk,jkuujkddyyjjpjk,w€ý,€ý.kjkkkkkkkkkkkkkkjj/sessionjkkkkkkjbbwwjwwzhwwwbzhjkkkkkkkjojkkgccjkoauto€kb€kb€kb€kb€kb€kb€kbstd::make_uniquejkhzhjkkk€ý,€ý.€ü €ý,€ü €ý.jkA<A>(xjkA;jkIa = jkjjwwwlxi->jkjjjhhxi->jk,w €ý,€ý.jk;;kkkkkkkkkkkkkkkkkkkbbjkxjkbbdwiconst jkwhi&jkjjkkhr&r*jkjjjjjjjjjjjjjjwwwkkkjwwwwwlllijkhi&kj,wjkhhhhxxxxjk,wjjjkbbbi*jkjjjhi*jk,w€ý,€ý.€ü €ý,€ü €ý.;;jkIauyto €kb€kb€kb€kb€kbuto jk,wjkj"
 "-	CHAR	0
-	g
-|3,0,36,0,1,0,1704231330,"g"
+	[[ $? -ne 0 ]] && 
+|3,0,36,0,1,0,1713938218,"[[ $? -ne 0 ]] && "
 
 # global variables:
 !DISPATCH_STARTS	DIC	{}
 
 # File marks:
-'0  1  0  /tmp/crontab.US2gSp
-|4,48,1,0,1713936832,"/tmp/crontab.US2gSp"
-'1  511  0  ~/.profile_wangxl
-|4,49,511,0,1713936709,"~/.profile_wangxl"
-'2  10439  0  ~/.zsh_history
-|4,50,10439,0,1713935818,"~/.zsh_history"
-'3  73  34  ~/misc/scripts/ping_status.sh
-|4,51,73,34,1713935715,"~/misc/scripts/ping_status.sh"
-'4  1  0  ~/.tmux.conf
-|4,52,1,0,1713935649,"~/.tmux.conf"
-'5  1  0  ~/.tmux.conf
-|4,53,1,0,1713935649,"~/.tmux.conf"
-'6  633  9  ~/.profile_wangxl
-|4,54,633,9,1713935550,"~/.profile_wangxl"
-'7  636  9  ~/.profile_wangxl
-|4,55,636,9,1713935550,"~/.profile_wangxl"
-'8  568  0  ~/.profile_wangxl
-|4,56,568,0,1713935470,"~/.profile_wangxl"
-'9  568  0  ~/.profile_wangxl
-|4,57,568,0,1713935470,"~/.profile_wangxl"
+'0  11  0  ~/misc/scripts/cache_sync.sh
+|4,48,11,0,1713938222,"~/misc/scripts/cache_sync.sh"
+'1  1  0  /tmp/crontab.US2gSp
+|4,49,1,0,1713936832,"/tmp/crontab.US2gSp"
+'2  511  0  ~/.profile_wangxl
+|4,50,511,0,1713936709,"~/.profile_wangxl"
+'3  511  0  ~/.profile_wangxl
+|4,51,511,0,1713936709,"~/.profile_wangxl"
+'4  511  0  ~/.profile_wangxl
+|4,52,511,0,1713936709,"~/.profile_wangxl"
+'5  10439  0  ~/.zsh_history
+|4,53,10439,0,1713935818,"~/.zsh_history"
+'6  10439  0  ~/.zsh_history
+|4,54,10439,0,1713935818,"~/.zsh_history"
+'7  73  34  ~/misc/scripts/ping_status.sh
+|4,55,73,34,1713935715,"~/misc/scripts/ping_status.sh"
+'8  73  34  ~/misc/scripts/ping_status.sh
+|4,56,73,34,1713935715,"~/misc/scripts/ping_status.sh"
+'9  1  0  ~/.tmux.conf
+|4,57,1,0,1713935649,"~/.tmux.conf"
 
 # Jumplist (newest first):
+-'  11  0  ~/misc/scripts/cache_sync.sh
+|4,39,11,0,1713938222,"~/misc/scripts/cache_sync.sh"
+-'  10  0  ~/misc/scripts/cache_sync.sh
+|4,39,10,0,1713938220,"~/misc/scripts/cache_sync.sh"
+-'  9  60  ~/misc/scripts/cache_sync.sh
+|4,39,9,60,1713938154,"~/misc/scripts/cache_sync.sh"
+-'  22  0  ~/misc/scripts/cache_sync.sh
+|4,39,22,0,1713937950,"~/misc/scripts/cache_sync.sh"
+-'  20  71  ~/misc/scripts/cache_sync.sh
+|4,39,20,71,1713937890,"~/misc/scripts/cache_sync.sh"
+-'  43  14  ~/misc/scripts/cache_sync.sh
+|4,39,43,14,1713937704,"~/misc/scripts/cache_sync.sh"
+-'  42  23  ~/misc/scripts/cache_sync.sh
+|4,39,42,23,1713937686,"~/misc/scripts/cache_sync.sh"
+-'  44  0  ~/misc/scripts/cache_sync.sh
+|4,39,44,0,1713937549,"~/misc/scripts/cache_sync.sh"
+-'  41  44  ~/misc/scripts/cache_sync.sh
+|4,39,41,44,1713937524,"~/misc/scripts/cache_sync.sh"
+-'  40  11  ~/misc/scripts/cache_sync.sh
+|4,39,40,11,1713937489,"~/misc/scripts/cache_sync.sh"
+-'  19  72  ~/misc/scripts/cache_sync.sh
+|4,39,19,72,1713937070,"~/misc/scripts/cache_sync.sh"
+-'  12  20  ~/misc/scripts/cache_sync.sh
+|4,39,12,20,1713937040,"~/misc/scripts/cache_sync.sh"
+-'  13  0  ~/misc/scripts/cache_sync.sh
+|4,39,13,0,1713937039,"~/misc/scripts/cache_sync.sh"
+-'  16  0  ~/misc/scripts/cache_sync.sh
+|4,39,16,0,1713936907,"~/misc/scripts/cache_sync.sh"
+-'  22  3  ~/misc/scripts/hg_cron.sh
+|4,39,22,3,1713936896,"~/misc/scripts/hg_cron.sh"
+-'  33  0  ~/misc/scripts/hg_cron.sh
+|4,39,33,0,1713936864,"~/misc/scripts/hg_cron.sh"
 -'  1  0  /tmp/crontab.US2gSp
 |4,39,1,0,1713936832,"/tmp/crontab.US2gSp"
+-'  12  13  ~/misc/scripts/setup_symlinks.sh
+|4,39,12,13,1713936806,"~/misc/scripts/setup_symlinks.sh"
+-'  961  2  ~/.profile_wangxl
+|4,39,961,2,1713936793,"~/.profile_wangxl"
+-'  1  0  ~/.profile_wangxl
+|4,39,1,0,1713936709,"~/.profile_wangxl"
+-'  511  0  ~/.profile_wangxl
+|4,39,511,0,1713936709,"~/.profile_wangxl"
 -'  511  0  ~/.profile_wangxl
 |4,39,511,0,1713936709,"~/.profile_wangxl"
 -'  511  0  ~/.profile_wangxl
@@ -22701,6 +22666,10 @@ $
 |4,39,2000,17,1713936658,"~/.profile_wangxl"
 -'  2000  17  ~/.profile_wangxl
 |4,39,2000,17,1713936658,"~/.profile_wangxl"
+-'  2000  17  ~/.profile_wangxl
+|4,39,2000,17,1713936658,"~/.profile_wangxl"
+-'  1838  2  ~/.profile_wangxl
+|4,39,1838,2,1713936646,"~/.profile_wangxl"
 -'  1838  2  ~/.profile_wangxl
 |4,39,1838,2,1713936646,"~/.profile_wangxl"
 -'  1838  2  ~/.profile_wangxl
@@ -22709,6 +22678,10 @@ $
 |4,39,1791,17,1713936643,"~/.profile_wangxl"
 -'  1791  17  ~/.profile_wangxl
 |4,39,1791,17,1713936643,"~/.profile_wangxl"
+-'  1791  17  ~/.profile_wangxl
+|4,39,1791,17,1713936643,"~/.profile_wangxl"
+-'  1785  33  ~/.profile_wangxl
+|4,39,1785,33,1713936642,"~/.profile_wangxl"
 -'  1785  33  ~/.profile_wangxl
 |4,39,1785,33,1713936642,"~/.profile_wangxl"
 -'  1785  33  ~/.profile_wangxl
@@ -22717,10 +22690,20 @@ $
 |4,39,1747,43,1713936641,"~/.profile_wangxl"
 -'  1747  43  ~/.profile_wangxl
 |4,39,1747,43,1713936641,"~/.profile_wangxl"
+-'  1747  43  ~/.profile_wangxl
+|4,39,1747,43,1713936641,"~/.profile_wangxl"
 -'  633  9  ~/.profile_wangxl
 |4,39,633,9,1713936640,"~/.profile_wangxl"
 -'  633  9  ~/.profile_wangxl
 |4,39,633,9,1713936640,"~/.profile_wangxl"
+-'  633  9  ~/.profile_wangxl
+|4,39,633,9,1713936640,"~/.profile_wangxl"
+-'  10439  0  ~/.zsh_history
+|4,39,10439,0,1713935818,"~/.zsh_history"
+-'  10439  0  ~/.zsh_history
+|4,39,10439,0,1713935818,"~/.zsh_history"
+-'  10439  0  ~/.zsh_history
+|4,39,10439,0,1713935818,"~/.zsh_history"
 -'  10439  0  ~/.zsh_history
 |4,39,10439,0,1713935818,"~/.zsh_history"
 -'  10439  0  ~/.zsh_history
@@ -22737,6 +22720,24 @@ $
 |4,39,1,0,1713935817,"~/.zsh_history"
 -'  1  0  ~/.zsh_history
 |4,39,1,0,1713935817,"~/.zsh_history"
+-'  1  0  ~/.zsh_history
+|4,39,1,0,1713935817,"~/.zsh_history"
+-'  1  0  ~/.zsh_history
+|4,39,1,0,1713935817,"~/.zsh_history"
+-'  1  0  ~/.zsh_history
+|4,39,1,0,1713935817,"~/.zsh_history"
+-'  73  34  ~/misc/scripts/ping_status.sh
+|4,39,73,34,1713935715,"~/misc/scripts/ping_status.sh"
+-'  73  34  ~/misc/scripts/ping_status.sh
+|4,39,73,34,1713935715,"~/misc/scripts/ping_status.sh"
+-'  73  34  ~/misc/scripts/ping_status.sh
+|4,39,73,34,1713935715,"~/misc/scripts/ping_status.sh"
+-'  73  34  ~/misc/scripts/ping_status.sh
+|4,39,73,34,1713935715,"~/misc/scripts/ping_status.sh"
+-'  73  34  ~/misc/scripts/ping_status.sh
+|4,39,73,34,1713935715,"~/misc/scripts/ping_status.sh"
+-'  73  34  ~/misc/scripts/ping_status.sh
+|4,39,73,34,1713935715,"~/misc/scripts/ping_status.sh"
 -'  73  34  ~/misc/scripts/ping_status.sh
 |4,39,73,34,1713935715,"~/misc/scripts/ping_status.sh"
 -'  73  34  ~/misc/scripts/ping_status.sh
@@ -22769,6 +22770,30 @@ $
 |4,39,29,17,1713935692,"~/misc/scripts/ping_status.sh"
 -'  29  17  ~/misc/scripts/ping_status.sh
 |4,39,29,17,1713935692,"~/misc/scripts/ping_status.sh"
+-'  29  17  ~/misc/scripts/ping_status.sh
+|4,39,29,17,1713935692,"~/misc/scripts/ping_status.sh"
+-'  29  17  ~/misc/scripts/ping_status.sh
+|4,39,29,17,1713935692,"~/misc/scripts/ping_status.sh"
+-'  29  17  ~/misc/scripts/ping_status.sh
+|4,39,29,17,1713935692,"~/misc/scripts/ping_status.sh"
+-'  29  17  ~/misc/scripts/ping_status.sh
+|4,39,29,17,1713935692,"~/misc/scripts/ping_status.sh"
+-'  29  17  ~/misc/scripts/ping_status.sh
+|4,39,29,17,1713935692,"~/misc/scripts/ping_status.sh"
+-'  29  17  ~/misc/scripts/ping_status.sh
+|4,39,29,17,1713935692,"~/misc/scripts/ping_status.sh"
+-'  5  0  ~/misc/scripts/ping_status.sh
+|4,39,5,0,1713935690,"~/misc/scripts/ping_status.sh"
+-'  5  0  ~/misc/scripts/ping_status.sh
+|4,39,5,0,1713935690,"~/misc/scripts/ping_status.sh"
+-'  5  0  ~/misc/scripts/ping_status.sh
+|4,39,5,0,1713935690,"~/misc/scripts/ping_status.sh"
+-'  5  0  ~/misc/scripts/ping_status.sh
+|4,39,5,0,1713935690,"~/misc/scripts/ping_status.sh"
+-'  5  0  ~/misc/scripts/ping_status.sh
+|4,39,5,0,1713935690,"~/misc/scripts/ping_status.sh"
+-'  5  0  ~/misc/scripts/ping_status.sh
+|4,39,5,0,1713935690,"~/misc/scripts/ping_status.sh"
 -'  5  0  ~/misc/scripts/ping_status.sh
 |4,39,5,0,1713935690,"~/misc/scripts/ping_status.sh"
 -'  5  0  ~/misc/scripts/ping_status.sh
@@ -22791,118 +22816,65 @@ $
 |4,39,80,45,1713935688,"~/.tmux.conf"
 -'  80  45  ~/.tmux.conf
 |4,39,80,45,1713935688,"~/.tmux.conf"
--'  80  45  ~/.tmux.conf
-|4,39,80,45,1713935688,"~/.tmux.conf"
--'  80  45  ~/.tmux.conf
-|4,39,80,45,1713935688,"~/.tmux.conf"
--'  80  45  ~/.tmux.conf
-|4,39,80,45,1713935688,"~/.tmux.conf"
--'  80  45  ~/.tmux.conf
-|4,39,80,45,1713935688,"~/.tmux.conf"
--'  80  45  ~/.tmux.conf
-|4,39,80,45,1713935688,"~/.tmux.conf"
--'  62  0  ~/.tmux.conf
-|4,39,62,0,1713935684,"~/.tmux.conf"
--'  62  0  ~/.tmux.conf
-|4,39,62,0,1713935684,"~/.tmux.conf"
--'  62  0  ~/.tmux.conf
-|4,39,62,0,1713935684,"~/.tmux.conf"
--'  62  0  ~/.tmux.conf
-|4,39,62,0,1713935684,"~/.tmux.conf"
--'  62  0  ~/.tmux.conf
-|4,39,62,0,1713935684,"~/.tmux.conf"
--'  62  0  ~/.tmux.conf
-|4,39,62,0,1713935684,"~/.tmux.conf"
--'  62  0  ~/.tmux.conf
-|4,39,62,0,1713935684,"~/.tmux.conf"
--'  62  0  ~/.tmux.conf
-|4,39,62,0,1713935684,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935667,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935667,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935667,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935667,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935667,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935667,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935667,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935667,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935649,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935649,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935649,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935649,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935649,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935649,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935649,"~/.tmux.conf"
--'  1  0  ~/.tmux.conf
-|4,39,1,0,1713935649,"~/.tmux.conf"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  636  9  ~/.profile_wangxl
-|4,39,636,9,1713935550,"~/.profile_wangxl"
--'  464  37  ~/.profile_wangxl
-|4,39,464,37,1713935546,"~/.profile_wangxl"
--'  464  37  ~/.profile_wangxl
-|4,39,464,37,1713935546,"~/.profile_wangxl"
--'  464  37  ~/.profile_wangxl
-|4,39,464,37,1713935546,"~/.profile_wangxl"
--'  464  37  ~/.profile_wangxl
-|4,39,464,37,1713935546,"~/.profile_wangxl"
--'  464  37  ~/.profile_wangxl
-|4,39,464,37,1713935546,"~/.profile_wangxl"
 
 # History of marks within files (newest to oldest):
+
+> ~/misc/scripts/cache_sync.sh
+	*	1713938221	0
+	"	11	0
+	.	11	0
+	+	12	21
+	+	9	54
+	+	9	71
+	+	12	0
+	+	9	49
+	+	9	66
+	+	19	71
+	+	20	35
+	+	23	8
+	+	40	11
+	+	41	44
+	+	44	0
+	+	42	7
+	+	44	0
+	+	42	0
+	+	43	14
+	+	44	0
+	+	20	71
+	+	9	0
+	+	10	0
+	+	11	0
+
+> ~/.profile_wangxl
+	*	1713938116	0
+	"	364	18
+	^	2022	15
+	.	2023	0
+	+	511	0
+	+	2022	19
+	+	2022	43
+	+	2022	15
+	+	2023	0
+	+	2022	15
+	+	2023	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/NERD_tree_tab_1
+	*	1713936896	0
+	"	30	3
+	.	1	0
+	+	1	0
+
+> ~/misc/scripts/hg_cron.sh
+	*	1713936890	0
+	"	22	3
 
 > /tmp/crontab.US2gSp
 	*	1713936828	0
 	"	1	0
 
-> ~/.profile_wangxl
-	*	1713936708	0
-	"	511	0
-	.	511	0
-	+	511	0
+> ~/misc/scripts/setup_symlinks.sh
+	*	1713936803	0
+	"	12	13
 
 > ~/.zsh_history
 	*	1713935817	0
@@ -22986,10 +22958,6 @@ $
 > ~/.zshrc
 	*	1713933740	0
 	"	136	14
-
-> ~/misc/scripts/setup_symlinks.sh
-	*	1713933606	0
-	"	10	32
 
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/utils/utils.py
 	*	1704240814	0
@@ -24377,116 +24345,3 @@ $
 > /data/users/xlwang/fbsource/fbcode/caffe2/defs.bzl
 	*	1703131606	0
 	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/video/tests/transformers_test.py
-	*	1703119930	0
-	"	14	43
-	.	14	0
-	+	13	0
-	+	12	48
-	+	11	23
-	+	12	20
-	+	13	59
-	+	7	0
-	+	10	0
-	+	8	0
-	+	13	34
-	+	15	43
-	+	1	0
-	+	1	75
-	+	1	17
-	+	1	40
-	+	1	21
-	+	1	0
-	+	1	48
-	+	1	23
-	+	1	20
-	+	1	0
-	+	1	14
-	+	1	0
-	+	1	40
-	+	1	0
-	+	1	34
-	+	1	0
-	+	1	11
-	+	1	0
-	+	1	16
-	+	13	0
-	+	1	0
-	+	1	16
-	+	1	0
-	+	13	0
-	+	1	0
-	+	1	75
-	+	1	17
-	+	1	40
-	+	1	21
-	+	1	0
-	+	1	48
-	+	1	23
-	+	1	20
-	+	1	59
-	+	1	0
-	+	1	14
-	+	1	0
-	+	1	40
-	+	1	0
-	+	1	34
-	+	1	0
-	+	1	11
-	+	1	0
-	+	1	16
-	+	1	0
-	+	1	16
-	+	1	0
-	+	1	75
-	+	1	17
-	+	1	40
-	+	1	21
-	+	1	0
-	+	1	48
-	+	1	23
-	+	1	20
-	+	1	0
-	+	4	14
-	+	3	0
-	+	5	0
-	+	6	0
-	+	5	0
-	+	6	40
-	+	6	0
-	+	9	34
-	+	3	0
-	+	2	11
-	+	10	0
-	+	9	0
-	+	10	16
-	+	15	0
-	+	9	0
-	+	10	16
-	+	10	0
-	+	15	0
-	+	10	0
-	+	13	0
-	+	13	75
-	+	11	17
-	+	13	40
-	+	11	21
-	+	13	0
-	+	12	48
-	+	11	23
-	+	12	20
-	+	13	59
-	+	7	0
-	+	10	0
-	+	8	0
-	+	13	34
-	+	14	0
-
-> /data/users/xlwang/fbsource/fbcode/scripts/xlwang/mp_crash.py
-	*	1703119922	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/better_lut/tests/TARGETS
-	*	1703119782	0
-	"	4	0
