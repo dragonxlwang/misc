@@ -2159,14 +2159,24 @@ function drst_my {
 #
 }
 function mast_resolve {
+  function silent_refresh_mast_list {
+    mast_select >/dev/null 2>&1
+    echo $(( $(cat ~/misc/tmp/mast | wc -l) - 1 ))
+  }
   local i
   for ((i=1; i<=$#; i++))
   do
     local arg="$@[i]"
-    if [[ "$arg" =~ ^-?[0-9]+$ ]]; then
+    if [[ "$arg" == "$" ]]; then
+      local total_mast_runs=$(silent_refresh_mast_list)
+      for ((j=1; j<=$total_mast_runs; j++))
+      do
+        echo -n "$(mast_select "$j") "
+      done
+    elif [[ "$arg" =~ ^-?[0-9]+$ ]]; then
       echo -n $(mast_select "$arg")
     else
-      echo -n $(echo "$arg")
+      echo -n $(echo "${arg/"https:\/\/www.internalfb.com\/mast\/job\/"}")
     fi
     if [[ $i != $# ]]; then
       echo -n " "

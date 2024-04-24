@@ -16,6 +16,8 @@ def gen(runs: str) -> None:
     url = "https://www.internalfb.com/intern/tensorboard/?dir="
     parts = []
     for i, r in enumerate(runs):
+        r = r.replace("https://www.internalfb.com/mast/job/", "")
+
         if "," in r:
             a, r = r.split(",")
         else:
