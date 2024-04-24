@@ -20,7 +20,7 @@ files=(                                                                 \
   "${HOME}/.zsh_history"            "${dst_dir}/.zsh_history"           \
   "${HOME}/.viminfo"                "${dst_dir}/.viminfo"               \
   "${HOME}/.cache/ctrlp/."          "${dst_dir}/ctrlp/"                 \
-  "${HOME}/fbcode/scripts/xlwang/"  "${dst_dir}/fbcode_exp/"            \
+  "${HOME}/fbcode/scripts/xlwang/"  "${dst_dir}/fbcode/"                \
 )
 
 mkdir -p $dst_dir
