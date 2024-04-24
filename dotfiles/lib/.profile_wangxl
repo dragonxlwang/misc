@@ -2019,6 +2019,7 @@ function bfz {
   _add | tqdm --unit file --unit_scale --total $total_lines
   cd $curpwd
 }
+alias up_cache="~/misc/scripts/cache_sync.sh"
 function tqdm {
   if [[ -e ~/workspace/tqdm ]]; then
     PYTHONPATH=~/workspace/tqdm python -m tqdm $@
