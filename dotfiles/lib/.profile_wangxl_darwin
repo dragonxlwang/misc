@@ -290,9 +290,8 @@ function _list_task {
   local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
   local str2="  (2/n) :   zsh"
   local str3="  (3/s) :   mosh $(get_hostname devbig) (devbig)"
-  local str4="  (4/b) :   mosh $(get_hostname devbig2) (devbig2)"
-  local str5="  (5/g) :   mosh $(get_hostname devgpu) (devgpu)"
-  local str6="  (6/d) :   dev connect"
+  local str4="  (4/g) :   mosh $(get_hostname devgpu) (devgpu)"
+  local str5="  (5/d) :   dev connect"
   # local str6="  (6/d) :   mosh $(get_hostname dragoncave) (dragoncave)"
   # local str6="  (6/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
   # local str7="  (7/a) :   mosh $(get_hostname devgpu3) (devgpu3)"
@@ -319,9 +318,8 @@ function _list_task {
     if   [[ $argopt == 1* || $argopt == t* ]]; then option=1
     elif [[ $argopt == 2* || $argopt == n* ]]; then option=2
     elif [[ $argopt == 3* || $argopt == s* ]]; then option=3
-    elif [[ $argopt == 4* || $argopt == b* ]]; then option=4
-    elif [[ $argopt == 5* || $argopt == g* ]]; then option=5
-    elif [[ $argopt == 6* || $argopt == d* ]]; then option=6
+    elif [[ $argopt == 4* || $argopt == g* ]]; then option=4
+    elif [[ $argopt == 5* || $argopt == d* ]]; then option=5
     # elif [[ $is_on_dc -eq 0 && ($argopt == 6* || $argopt == d*) ]]; then option=6
     else
       redecho "  Input Not Recognized..."
@@ -345,12 +343,9 @@ function _list_task {
     mosh devbig
   elif [[ $option -eq 4 ]]; then
     redecho $str4
-    mosh devbig2
+    mosh devgpu
   elif [[ $option -eq 5 ]]; then
     redecho $str5
-    mosh devgpu
-  elif [[ $option -eq 6 ]]; then
-    redecho $str6
     dev connect
   # elif [[ $option -eq 6 ]]; then
   #   redecho $str6
