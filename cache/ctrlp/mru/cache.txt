@@ -1,6 +1,19 @@
+/home/xlwang/misc/scripts/cache_sync.sh
+/home/xlwang/misc/scripts/file_sync.sh
+/home/xlwang/misc/scripts/hg_cron.sh
+/home/xlwang/misc/scripts/setup_symlinks.sh
+/home/xlwang/.profile_wangxl
+/tmp/crontab.US2gSp
+/home/xlwang/.zsh_history
+/home/xlwang/misc/scripts/ip_lookup.sh
+/home/xlwang/misc/scripts/ping_status.sh
+/home/xlwang/.tmux.conf
+/home/xlwang/misc/scripts/ycm_dev_build_no_download.sh
+/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
+/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/TARGETS
+/home/xlwang/fbcode/minimal_viable_ai/experimental/cotrain/TARGETS
 /data/users/xlwang/.cache/ctrlp/hist/cache.txt
 /home/xlwang/.cache/ctrlp/hist/cache.txt
-/home/xlwang/.profile_wangxl
 /data/users/xlwang/fbsource/fbcode/mvai_infra/common/data.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/umia_v1/ig/preproc/shared_data.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/umia_v1/ig/utils/config_utils.py
@@ -71,7 +84,6 @@
 /home/xlwang/fbcode/mrs/fm/feature_joiner/id_hashers.py
 /home/xlwang/fbcode/mrs/fm/feature_joiner/indexes.py
 /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-wh_lvqd8.commit.hg.txt
-/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/model_family_api/configs.py
 /data/users/xlwang/fbsource/fbcode/caffe2/torch/utils/data/datapipes/datapipe.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/umia_v1/ig/omni/model.py
@@ -117,7 +129,6 @@
 /data/users/xlwang/fbsource/fbcode/caffe2/caffe2/fb/proto/io_metadata.thrift
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/trainer.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/model_family_api/model_family.py
-/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/TARGETS
 /data/users/xlwang/fbsource/fbcode/pytorch/data/fb/arrow_datapipe_factory.py
 /data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/pools.py
 /home/xlwang/fbcode/pytorch/data/fb/arrow_datapipe_factory.py
@@ -153,7 +164,6 @@
 /home/xlwang/fbcode/minimal_viable_ai/utils/torcharrow_preproc_utils.py
 /data/users/xlwang/fbsource/fbcode/pytorch/data/fb/__init__.py
 /home/xlwang/fbcode/pytorch/data/fb/tracing_arrow_datapipe.py
-/home/xlwang/fbcode/minimal_viable_ai/experimental/cotrain/TARGETS
 /home/xlwang/fbcode/mrs/fm/modules/TARGETS
 /home/xlwang/fbcode/mrs/fm/modules/encoders.py
 /home/xlwang/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
@@ -244,7 +254,6 @@
 /data/users/xlwang/fbsource/fbcode/dataswarm-pipelines/tasks/feed_fblearner/mrs/fm/video_ids_aggregated.py
 /home/xlwang/fbcode/dataswarm-pipelines/tasks/feed_fblearner/mrs/fm/video_ids_aggregated.py
 /home/xlwang/fbcode/dataswarm-pipelines/dataswarm_commons/aml/mmvu/media_utils.py
-/home/xlwang/.zsh_history
 /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-5fpqg6wf.commit.hg.txt
 /data/users/xlwang/fbsource/fbcode/scripts/xlwang/TARGETS
 /home/xlwang/fbcode/scripts/xlwang/video_sampler.py
@@ -993,9 +1002,6 @@
 /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-orncijt1.commit.hg.txt
 /data/users/xlwang/configerator/source/sigrid/models/active_models.instagram.cconf
 /home/xlwang/configerator/source/sigrid/models/active_models.instagram.cconf
-/home/xlwang/.tmux.conf
-/home/xlwang/misc/scripts/ping_status.sh
-/home/xlwang/misc/scripts/ip_lookup.sh
 /home/xlwang/misc/scripts/short_hostname.sh
 /home/xlwang/misc/dotfiles/lib/.profile_wangxl_linux
 /home/xlwang/.fzf.zsh
@@ -2012,7 +2018,6 @@ elastic/multiprocessing/errors/__init__.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/sandbox/umia_hstu/utils/st_publish_utils.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/sandbox/dataclass_json.py
 /home/xlwang/misc/.git/COMMIT_EDITMSG
-/home/xlwang/misc/scripts/setup_symlinks.sh
 /home/xlwang/fbcode/fblearner/flow/projects/minimal_viable_ai/train_flow.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/sandbox/umia_hstu/fbr/publish_configs.py
 /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch/experimental/st_tgif/tests/umia_config_test.py
@@ -3345,7 +3350,6 @@ elastic/multiprocessing/errors/__init__.py
 /data/users/xlwang/www/flib/entity/public_figures/EntPFCGraphXoutEvent.php
 /home/xlwang/www/flib/qp/creatives/data_models/QPHScrollCardComponent.php
 /home/xlwang/www/flib/feed/sptf/utils/SptfCandidateFilter.php
-/home/xlwang/misc/scripts/hg_cron.sh
 /tmp/xlwang/hg_cron.out
 /home/xlwang/tmp/hg_cron.out
 /data/users/xlwang/www/flib/community_integrity/ci_infra/ri/filter/RIFilterSet.php
@@ -4994,7 +4998,3 @@ model.py
 /home/xlwang/fbcode/torchrec/fb/distributed/sequence_embedding_arch.py
 /home/xlwang/fbcode/torchrec/fb/distributed/pooled_embedding_arch.py
 /data/users/xlwang/fbsource/fbcode/torchrec/distributed/planner/utils.py
-/home/xlwang/fbcode/torchrec/distributed/fused_embeddingbag.py
-/data/users/xlwang/fbsource/fbcode/deep_retrieval/apps/gysj/guf_v3/bulk_eval.ini
-/data/users/xlwang/fbsource/fbcode/deep_retrieval/apps/gysj/guf/bulk_eval.ini
-/data/users/xlwang/fbsource/fbcode/deep_retrieval/apps/seq2vec/demo/bulk_export_lib.py

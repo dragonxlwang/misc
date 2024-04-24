@@ -508,9 +508,6 @@ function up_symlinks {
   cyanecho "setup symlinks for $opt"
   ${HOME}/misc/scripts/setup_symlinks.sh $opt --no-confirm
 }
-function up_cache_sync {
-  ${HOME}/misc/scripts/file_sync.sh
-}
 ##--------------------------------== vundle ==--------------------------------##
 # oh-my-zsh/plugins/vundle/vundle.plugin.zsh
 # https://github.com/VundleVim/Vundle.vim
