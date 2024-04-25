@@ -2080,8 +2080,22 @@ function drtb { # to be deprecated
 
 function mast_list {
   echo "$(mast list-jobs --job-owner-unixname $USER)" > ~/misc/tmp/mast
-  cat ~/misc/tmp/mast | nl -w2 -s'] ' -v0 | lolcat -h 0.5
+  # cat ~/misc/tmp/mast | nl -w2 -s'] ' -v0 | lolcat -h 0.5
+
+  # cat ~/misc/tmp/mast | \
+  #   nl -w2 -s'] ' -v0 | \
+  #   awk '(NR>1) { cmd="fburl " "https://www.internalfb.com/mast/job/"$2;
+  #     cmd | getline d; print $0, d }' | \
+  #       lolcat -h 0.5
+
+  cat ~/misc/tmp/mast | \
+    nl -w2 -s'] ' -v0 | \
+    awk '(NR>1) { print $0, "\thttps://www.internalfb.com/mast/job/"$2 }' | \
+    lolcat -h 0.5
+
   print -s "mast_select "
+
+#
 }
 function mast_select {
   # Get the number of command line arguments
@@ -2193,6 +2207,7 @@ function mast_kill {
 
 }
 function mast_link {
+  [[ $# -eq 0 ]] && return 1
   local runs="$(mast_resolve "$@")"
   url=$(~/misc/scripts/tb_cmp.py gen "${=runs}")
   fb_url=$(fburl "$url")
