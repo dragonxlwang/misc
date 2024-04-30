@@ -1814,7 +1814,8 @@ function z() {
 #
 }
 function h() {
-  local rev="$(hg log -T '#{xg_sl_one_line_no_link}\n' -r "sort(draft(), -date)" 2>/dev/null --color=always \
+  local rev="$(hg log -T '#{xg_sl_one_line_no_link}\n' -r "sort(draft(), -date)" \
+    2>/dev/null --color=always \
     | sed -n '/.*#/p' | sed 's/^[^#]*#//g'  \
     | fzf --query="$*" --prompt='hg> ' --ansi | cut -d ' ' -f 1)"
       [[ -z $rev ]] && return 1
