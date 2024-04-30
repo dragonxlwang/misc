@@ -59,6 +59,16 @@ function print_colour {
     printf "$text"                                # print text
     printf "\e[0m "                               # Reset colour
 }
+function print_colour_with_fg {
+    local colour="$1" contrast
+    contrast=$2
+    local text=${3-""}
+    text=${text:+"] $text"}
+    printf "\e[48;5;%sm" "$colour"                # Start block of colour
+    printf "\e[38;5;%sm%3d" "$contrast" "$colour" # In contrast, print number
+    printf "$text"                                # print text
+    printf "\e[0m"                                # Reset colour
+}
 
 # Starting at $1, print a run of $2 colours
 function print_run {
@@ -105,6 +115,57 @@ function print_lines {
     done
 }
 
+function print_fg_lines {
+    local i
+    local start=0
+    local end=255
+
+    # Print sets of blocks
+    for (( i = start; i <= end; i += 1 )) do
+        printf "\n" # Space before each set of blocks
+        print_colour_with_fg $i 0 "The "
+        print_colour_with_fg $i 1 "quick "
+        print_colour_with_fg $i 2 "brown "
+        print_colour_with_fg $i 3 "fox "
+        print_colour_with_fg $i 4 "jumps "
+        print_colour_with_fg $i 5 "over "
+        print_colour_with_fg $i 6 "the "
+        print_colour_with_fg $i 7 "lazy "
+        print_colour_with_fg $i 8 "dog "
+        print_colour_with_fg $i 9 "THE "
+        print_colour_with_fg $i 10 "QUICK "
+        print_colour_with_fg $i 11 "BROWN "
+        print_colour_with_fg $i 12 "FOX "
+        print_colour_with_fg $i 13 "JUMPED "
+        print_colour_with_fg $i 14 "OVER "
+        print_colour_with_fg $i 15 "THE "
+        print_colour_with_fg $i 16 "LAZY DOG'S BACK 1234567890"
+    done
+}
+
+function print_tmux_lines {
+    local i
+    local start=0
+    local end=255
+
+    # Print sets of blocks
+    for (( i = start; i <= end; i += 1 )) do
+        printf "\n" # Space before each set of blocks
+        print_colour_with_fg $i 14 "devgpu088.cco2 "
+        print_colour_with_fg $i 13 "ⓢ devgpu088-main "
+        print_colour_with_fg $i 3  "ⓘ 2 "
+        print_colour_with_fg $i 12 "ⓟ 1 "
+        print_colour_with_fg $i 14 "1:misc- "
+        print_colour_with_fg $i 15 "2:vim* "
+        print_colour_with_fg $i 14 "ⓟ Ⅰ ☎ 35:7 "
+        print_colour_with_fg $i 10 "Ⓖ 0 0 "
+        print_colour_with_fg $i 11 "Ⓛ 106.4 "
+        print_colour_with_fg $i 12 "ⓒ 1.8 "
+        print_colour_with_fg $i 3  "ⓜ 17.2 "
+        print_colour_with_fg $i 2  "Tue Apr 30  1:17AM PDT "
+    done
+}
+
 print_run 0 16 # The first 16 colours are spread over the whole spectrum
 printf "\n"
 print_blocks 16 231 6 6 3 # 6x6x6 colour cube between 16 and 231 inclusive
@@ -112,4 +173,6 @@ print_blocks 232 255 12 2 1 # Not 50, but 24 Shades of Grey
 
 
 print_lines
+printf "\n"
+print_tmux_lines
 printf "\n"
