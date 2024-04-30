@@ -200,6 +200,12 @@ function unnice_all {
 }
 alias centos_version='cat /etc/redhat-release'
 alias kill_mosh="kill $(pidof mosh-server)"
+function kill_tty {
+  # w
+  # kill_tty pts/33
+  # w | sed -n "s/$USER/\0/p" | awk '{print $2}'
+  ps -H -t /dev/$1 | awk '{ print $1}' | tail -n 2 | xargs kill -9
+}
 ##------------------------------== file list ==-------------------------------##
 ## ls -A: List all entries except for . and ...
 ## zsh f expansion flag to split on newline: arr_of_lns=("${(@f)$(my_cmd)}")
