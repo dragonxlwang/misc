@@ -1114,7 +1114,7 @@ function hdh {
 }
 
 alias hsu="{ hg-sl-up -T '{xg_sl_up}' } && hs_cur_rev"
-alias hst="hg st"
+alias hst="hg st; hg log -T '{xg_sl_no_newline}' -r ."
 alias hsl=" hg smartlog -T '{xg_sl}'"
 alias hsf="hg st | fpp"
 alias hd='hg diff'
@@ -1814,8 +1814,7 @@ function z() {
 #
 }
 function h() {
-  local tmp="${HOME}/misc/tmp/hg.revs"
-  local rev="$(hg smartlog -T '#{xg_sl_one_line_no_link}\n' 2>/dev/null --color=always \
+  local rev="$(hg log -T '#{xg_sl_one_line_no_link}\n' -r "sort(draft(), -date)" 2>/dev/null --color=always \
     | sed -n '/.*#/p' | sed 's/^[^#]*#//g'  \
     | fzf --query="$*" --prompt='hg> ' --ansi | cut -d ' ' -f 1)"
       [[ -z $rev ]] && return 1
