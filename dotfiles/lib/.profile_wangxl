@@ -2096,7 +2096,9 @@ function mast_list {
 
   cat ~/misc/tmp/mast | \
     nl -w2 -s'] ' -v0 | \
-    awk '(NR>1) { print $0, "\thttps://www.internalfb.com/mast/job/"$2 }' | \
+    awk '(NR>1) {
+      print $0, "\thttps://www.internalfb.com/mast/job/"$2 ; next
+    } { print $0 }' | \
     lolcat -h 0.5
 
   print -s "mast_select "
