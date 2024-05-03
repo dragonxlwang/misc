@@ -11,7 +11,6 @@
 #         \   \    |   ___/  |   __|  |  |     |  | |   __|  |  | |  |         #
 #     .----)   |   |  |      |  |____ |  `----.|  | |  |     |  | |  `----.    #
 #     |_______/    | _|      |_______| \______||__| |__|     |__|  \______|    #
-                                                                               #
 ## ========================================================================== ##
 which blueutil RNUL
 if [[ $? -eq 0 ]]; then
@@ -78,9 +77,12 @@ function atom_compare_packages {
   atom_ls_starred_packages > starred.list
   local starred="$(diff installed.list starred.list | \
     sed -rn 's/^>[[:space:]]*//p')"
+
   local instald="$(diff installed.list starred.list | \
     sed -rn 's/^<[[:space:]]*//p')"
+
   [[ -n ${instald// /} ]] && greenecho "Installed but not starred packages:"
+
   for p in "${(f)instald}";
   do
     [[ -n ${p// /} ]] && cyanecho "==> $p"
@@ -109,6 +111,7 @@ function atom_compare_packages {
   greenecho "Compare Finished!"
   cd $dir
 }
+
 alias atom_star_installed='apm star --installed'
 alias atom_install_starred='apm stars --install'
 function atom_install_from_list { apm install  $( cat ${1} ) }
@@ -128,8 +131,10 @@ function atom_sync_package_incremental {
   atom_ls_starred_packages > starred.list
   local starred="$(diff installed.list starred.list | \
     sed -rn 's/^>[[:space:]]*//p')"
+
   local instald="$(diff installed.list starred.list | \
     sed -rn 's/^<[[:space:]]*//p')"
+
   [[ -n ${instald// /} ]] && cyanecho "Installed but not starred packages:"
   for p in "${(f)instald}";
   do
@@ -211,8 +216,10 @@ function convert_mov_to_gif {
     local f=$(echo $1 | sed 's/mov$/gif/i')
     opt_res="scale=min(iw\,${opt_res}):-1"
     ffmpeg -i $1 -vf "${opt_res}" -pix_fmt rgb24 -r 10 -f gif - |\
-    # convert -delay 5 -layers Optimize -loop 0 - $f
-    gifsicle --optimize=3 --delay=7 > $f
+      # convert -delay 5 -layers Optimize -loop 0 - $f
+          gifsicle --optimize=3 --delay=7 > $f
+
+    #
     if [[ opt_publish -eq 1 ]]; then
       local f0="${HOME}/Dropbox/Public"
       local home_url=$(cat "${HOME}/Dropbox/Public/home_url")
@@ -225,6 +232,7 @@ function convert_mov_to_gif {
       cyanecho "converted gif file: $f0$f1"
       cyanecho "public url is: $home_url$f1"
     fi
+    #
   else
     redecho "$1 is not a .mov file"
   fi
@@ -280,47 +288,37 @@ function _list_task {
   [[ -n "$TMUX" ]] && is_inside_tmux=1
   local argopt=$2
   local option
-  local is_on_dc=0
-  [[ $(hostname) == "DragonCavesMini.localdomain" ]] && is_on_dc=1
   # finish if called from profile and inside tmux
   [[ $caller_is_profile -eq 1 && $is_inside_tmux -eq 1 ]]  && return
-  if [[ $is_on_dc -eq 1 ]]; then
-    tmux new -AD -s $(hostname -s)-main
-  fi
-  local str1="  (1/t) :   tmux new -AD -s $(hostname -s)-main"
-  local str2="  (2/n) :   zsh"
-  local str3="  (3/s) :   mosh $(get_hostname devbig) (devbig)"
-  local str4="  (4/g) :   mosh $(get_hostname devgpu) (devgpu)"
-  local str5="  (5/d) :   dev connect"
-  # local str6="  (6/d) :   mosh $(get_hostname dragoncave) (dragoncave)"
-  # local str6="  (6/x) :   mosh $(get_hostname devgpu2) (devgpu2)"
-  # local str7="  (7/a) :   mosh $(get_hostname devgpu3) (devgpu3)"
+  local preamble=( \
+    "  (1/t) :   tmux new -AD -s $(hostname -s)-main" \
+    "  (2/n) :   zsh" \
+    "  (3/s) :   mosh $(get_hostname devbig) (devbig)" \
+    "  (4/g) :   mosh $(get_hostname devgpu) (devgpu)" \
+    "  (5/d) :   dev connect (ondemand)" \
+    "  (6)   :   mosh $(get_hostname devgpu2) (devgpu2)"  \
+  )
+    local short_cmd_names="tnsgd"
+
   # main loop
   while [[ -z $option ]]
   do
     redecho "Following starting options are available:"
-    preamble=$str1"\n"$str2"\n"$str3"\n"$str4"\n"$str5"\n"$str6
-    # [[ $is_on_dc -eq 0 ]] && preamble=$preamble"\n"$str6
     if  which lolcat >/dev/null 2>&1; then
-      echo $preamble | lolcat -h 0.5
+      echo "${(F)preamble[@]}" | lolcat -h 0.5
     else
       cyanecho $preamble
     fi
     whiteecho $(printf '=%.0s' {1..40})
-    local total_options=6
-    # [[ $is_on_dc -eq 0 ]] && total_options=7
-    yellowecho -n "Select One Option From (1) - ("$total_options"): "
+    yellowecho -n "Select One Option: "
     if [[ -z $argopt ]]; then
       read argopt
     else
       echo $argopt
     fi
-    if   [[ $argopt == 1* || $argopt == t* ]]; then option=1
-    elif [[ $argopt == 2* || $argopt == n* ]]; then option=2
-    elif [[ $argopt == 3* || $argopt == s* ]]; then option=3
-    elif [[ $argopt == 4* || $argopt == g* ]]; then option=4
-    elif [[ $argopt == 5* || $argopt == d* ]]; then option=5
-    # elif [[ $is_on_dc -eq 0 && ($argopt == 6* || $argopt == d*) ]]; then option=6
+    if [[ $argopt =~ ^-?[0-9]+$ ]]; then option=$argopt
+    elif [[ ${#${short_cmd_names%%$argopt*}} -lt ${#short_cmd_names} ]]; then
+      option=$((${#${short_cmd_names%%$argopt*}}+1))
     else
       redecho "  Input Not Recognized..."
       echo ""
@@ -331,25 +329,22 @@ function _list_task {
   whiteecho $(printf '=%.0s' {1..40})
   greenecho "caller_is_profile  :  $caller_is_profile"
   greenecho "is_inside_tmux     :  $is_inside_tmux"
-  greenecho "option             : (${option})"
+  greenecho "option             :  $(echo ${preamble[$option]} | awk '{$1=$1};1')"
+
   if [[ $option -eq 1 ]]; then
-    redecho $str1
     [[ $is_inside_tmux -eq 1 ]] && redecho "already in tmux" || \
       tmux new -AD -s $(hostname -s)-main
+
   elif [[ $option -eq 2 ]]; then
-    redecho $str2
+    return
   elif [[ $option -eq 3 ]]; then
-    redecho $str3
     mosh devbig
   elif [[ $option -eq 4 ]]; then
-    redecho $str4
     mosh devgpu
   elif [[ $option -eq 5 ]]; then
-    redecho $str5
     dev connect
-  # elif [[ $option -eq 6 ]]; then
-  #   redecho $str6
-  #   mosh dragoncave --server="/usr/local/bin/mosh-server"
+  elif [[ $option -eq 6 ]]; then
+    mosh devgpu2
   fi
 }
 
