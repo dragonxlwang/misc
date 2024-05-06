@@ -4,7 +4,7 @@ misc_dir="$(dirname $(dirname $(readlink -f $0)))"
 f=$misc_dir/tmp/ping_$(hostname).txt
 
 if [[ -e ~/.active_ssh_client_for_tmux ]]; then
-  client_ip=$(cat ~/.active_ssh_client_for_tmux | cut -sd ' ' -f 1 -)
+  client_ip=$(cat ~/.active_ssh_client_for_tmux | cut -d ' ' -f 1 -)
 else
   client_ip=$(echo $SSH_CLIENT | cut -sd ' ' -f 1 -)
 fi
