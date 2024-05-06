@@ -330,6 +330,7 @@ function _list_task {
   greenecho "caller_is_profile  :  $caller_is_profile"
   greenecho "is_inside_tmux     :  $is_inside_tmux"
   greenecho "option             :  $(echo ${preamble[$option]} | awk '{$1=$1};1')"
+  echo ""
 
   if [[ $option -eq 1 ]]; then
     [[ $is_inside_tmux -eq 1 ]] && redecho "already in tmux" || \
