@@ -62,7 +62,11 @@ function print_256_color {
 ##-------------------------------== general ==--------------------------------##
 function test_alias_exist { alias $1 2>/dev/null >/dev/null; }
 function setup_ssh_client_for_tmux {
-  echo "$SSH_CLIENT" > ~/.active_ssh_client_for_tmux
+  # echo "$SSH_CLIENT" > ~/.active_ssh_client_for_tmux
+  who | grep ${$(tty)##/dev/} | \
+    sed -rn 's/.*\((\S*).*\)/\1/p' > ~/.active_ssh_client_for_tmux
+
+#
 }
 function tmux_setup {
   setup_ssh_client_for_tmux
@@ -2099,9 +2103,9 @@ function mast_list {
     awk '(NR>1) {
       print $0, "\thttps://www.internalfb.com/mast/job/"$2 ; next
     } { print $0 }' | \
-    lolcat -h 0.5
+      lolcat -h 0.5
 
-  print -s "mast_select "
+    print -s "mast_select "
 
 #
 }
