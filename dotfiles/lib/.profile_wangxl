@@ -1828,15 +1828,13 @@ function h() {
     2>/dev/null --color=always \
     | sed -n '/.*#/p' | sed 's/^[^#]*#//g'  \
     | fzf --query="$*" --prompt='hg> ' --ansi | cut -d ' ' -f 1)"
-      [[ -z $rev ]] && return 1
-      local cmd="hg update $rev"
-      hg log -T '{xg_sl}' --rev $rev
-      cyanecho ${cmd}
-      eval ${cmd}
 
-#
+  [[ -z $rev ]] && return 1
+  local cmd="hg update $rev"
+  hg log -T '{xg_sl}' --rev $rev
+  cyanecho ${cmd}
+  eval ${cmd}
 }
-
 # Kerberos
 function krefresh() {
   kdestroy
