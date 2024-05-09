@@ -1043,6 +1043,7 @@ alias hprev2='hprev 2'
 alias hprev3='hprev 3'
 alias hs_cur_rev="hg log -T '{xg_sl}' -l 1"
 alias hum="hg up master && hs_cur_rev"
+alias hus="hg up stable && hs_cur_rev"
 alias hut='hg up tip && hs_cur_rev'
 function hud {
   # alias hud="hg up -r 'draft()'"
