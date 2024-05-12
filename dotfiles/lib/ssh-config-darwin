@@ -32,7 +32,8 @@ Host *
 Match host *.facebook.com,dev,dev*,*.sb
 	GSSAPIAuthentication yes
 	GSSAPIDelegateCredentials yes
-	PubkeyAuthentication no
+	PubkeyAuthentication yes
+	IdentityAgent ~/.fb-sks-agent/agent.sock
 
 ## Deprecated
 # Host *.facebook.com dev dev*
