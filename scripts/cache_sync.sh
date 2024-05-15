@@ -18,6 +18,7 @@ files=(                                                                 \
   "${HOME}/.viminfo"                "${dst_dir}/.viminfo"               \
   "${HOME}/.cache/ctrlp/."          "${dst_dir}/ctrlp/"                 \
   "${HOME}/fbcode/scripts/xlwang/"  "${dst_dir}/fbcode/"                \
+  "${HOME}/misc/tmp/tb"             "${dst_dir}/tb"                     \
 )
 
 mkdir -p $dst_dir
