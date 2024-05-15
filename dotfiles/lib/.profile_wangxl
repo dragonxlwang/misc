@@ -2087,6 +2087,10 @@ function drtb { # to be deprecated
   fburl $url
 }
 
+function mast_tenant {
+  mast list-jobs --job-application-metadata rm_attribution:$1 | lolcat -h 0.5
+}
+
 function mast_list {
   echo "$(mast list-jobs --job-owner-unixname $USER)" > ~/misc/tmp/mast
   # cat ~/misc/tmp/mast | nl -w2 -s'] ' -v0 | lolcat -h 0.5
