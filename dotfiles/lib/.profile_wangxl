@@ -2088,7 +2088,14 @@ function drtb { # to be deprecated
 }
 
 function mast_tenant {
-  mast list-jobs --job-application-metadata rm_attribution:$1 | lolcat -h 0.5
+  mast list-jobs --job-application-metadata rm_attribution:$1 | \
+    nl -w2 -s'] ' -v0 | \
+    awk '(NR>1) {
+      print $0, "\thttps://www.internalfb.com/mast/job/"$2 ; next
+    } { print $0 }' | \
+      lolcat -h 0.5
+
+#
 }
 
 function mast_list {
