@@ -2168,8 +2168,16 @@ function mast_cat {
   print -s "mast_cat_select "
 }
 function mast_cat_select {
-  runs=$(sed "${1}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4)
-  echo "$runs"
+  local runs=$(sed "${1}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4)
+  local fb_url=$(sed "${1}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f3)
+
+  local r
+  for r in ${=runs[@]}; do
+    # echo mast://$r
+    echo "https://www.internalfb.com/mast/job/$r"
+  done
+  echo $fb_url | lolcat -h 0.5
+
   print -s "mast_link $runs"
 
 }
