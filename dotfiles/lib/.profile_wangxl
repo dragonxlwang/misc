@@ -2192,6 +2192,7 @@ function mast_resolve {
     mast_select >/dev/null 2>&1
     echo $(( $(cat ~/misc/tmp/mast | wc -l) - 1 ))
   }
+
   function resolve {
     local i
     for ((i=1; i<=$#; i++))
@@ -2214,6 +2215,7 @@ function mast_resolve {
     done
     echo ""
   }
+
   resolve $@ | \
     awk -v RS='\\s+' '!seen[$0]++{printf "%s%s", (NR>1?OFS:""), $0} END{print ""}'
 
