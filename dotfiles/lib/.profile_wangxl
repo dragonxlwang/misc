@@ -2281,7 +2281,7 @@ function mast_runs {
 #
 }
 function mast_exp {
-  vim ~/misc/tmp/mast_exp
+  vim ~/misc/tmp/mast_exp.md
 }
 
 ## ========================================================================== ##

@@ -19,6 +19,7 @@ files=(                                                                 \
   "${HOME}/.cache/ctrlp/."          "${dst_dir}/ctrlp/"                 \
   "${HOME}/fbcode/scripts/xlwang/"  "${dst_dir}/fbcode/"                \
   "${HOME}/misc/tmp/tb"             "${dst_dir}/tb"                     \
+  "${HOME}/misc/tmp/mast_exp.md"    "${dst_dir}/mast_exp.md"            \
 )
 
 mkdir -p $dst_dir
@@ -31,8 +32,11 @@ do
   dst=${files[k]}
   if [[ -e $src ]] ; then
     mkdir -p $(dirname $dst)
-    cp -rL $src $dst
-    echo -e $ANSI_COLOR_GREEN"cp -r $src $dst"$ANSI_COLOR_RESET
+    src_ln=$(cat $src | wc -l)
+    dst_ln=$(cat $dst | wc -l)
+
+    # cp -rL $src $dst
+    echo -e $ANSI_COLOR_GREEN"cp -r $src $dst ($src_ln -> $dst_ln)"$ANSI_COLOR_RESET
   else
     echo -e $ANSI_COLOR_RED"$src file does not exists!"$ANSI_COLOR_RESET
   fi
