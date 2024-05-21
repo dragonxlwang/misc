@@ -1,10 +1,10 @@
-/home/xlwang/misc/tmp/tb
+/home/xlwang/misc/dotfiles/lib/.profile_wangxl
 /home/xlwang/misc/scripts/cache_sync.sh
+/home/xlwang/misc/tmp/tb
 /home/xlwang/misc/tmp/mast_exp.md
 /home/xlwang/misc/dotfiles/lib/.vimrc.bundles
 /home/xlwang/.vimrc
 /home/xlwang/misc/tmp/mast_exp
-/home/xlwang/misc/dotfiles/lib/.profile_wangxl
 /home/xlwang/.vim/bundle/ctrlp-funky/autoload/ctrlp/funky/ft/markdown.vim
 /home/xlwang/.vim/bundle/vimtex/autoload/vimtex/syntax/p/markdown.vim
 /home/xlwang/.vim/bundle/python-syntax/syntax/python.vim
