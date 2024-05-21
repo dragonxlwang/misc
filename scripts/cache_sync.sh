@@ -42,13 +42,12 @@ do
     fi
 
     cp -rL $src $dst
-    ln_delta=$(($src_ln - $dst_ln))
+    ln_delta=$(( $src_ln - $dst_ln ))
     if [[ $ln_delta == -* ]]; then
       ln_str=$ANSI_COLOR_RED"($dst_ln -> $src_ln $ln_delta)"$ANSI_COLOR_RESET
     else
       ln_str=$ANSI_COLOR_BLUE"($dst_ln -> $src_ln +$ln_delta)"$ANSI_COLOR_RESET
     fi
-    ln_str=""
     echo -e $ANSI_COLOR_GREEN"cp -r $src $dst"$ANSI_COLOR_RESET" $ln_str"
   else
     echo -e $ANSI_COLOR_RED"$src file does not exists!"$ANSI_COLOR_RESET
