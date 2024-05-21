@@ -32,8 +32,14 @@ do
   dst=${files[k]}
   if [[ -e $src ]] ; then
     mkdir -p $(dirname $dst)
-    src_ln=$(cat $src | wc -l)
-    dst_ln=$(cat $dst | wc -l)
+    src_ln="?"
+    dst_ln="?"
+    if [[ -f $src ]]; then
+      src_ln=$(cat $src | wc -l)
+    fi
+    if [[ -f $dst ]]; then
+      dst_ln=$(cat $dst | wc -l)
+    fi
 
     cp -rL $src $dst
     echo -e $ANSI_COLOR_GREEN"cp -r $src $dst ($dst_ln -> $src_ln)"$ANSI_COLOR_RESET
