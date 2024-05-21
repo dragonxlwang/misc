@@ -7,7 +7,8 @@ ANSI_COLOR_BLUE="\033[36m"
 ANSI_COLOR_YELLOW="\033[33m"
 
 root_dir=$(dirname $(dirname $(readlink -f $0)))
-echo $root_dir
+echo root_dir=$root_dir
+echo ""
 
 dst_dir="${root_dir}/cache"
 
@@ -42,7 +43,6 @@ do
     fi
 
     cp -rL $src $dst
-    echo $src_ln $dst_ln
     ln_delta=$(( ${src_ln/'?'/0} - ${dst_ln/'?'/0} ))
     if [[ $ln_delta == -* ]]; then
       ln_str=$ANSI_COLOR_RED"($dst_ln -> $src_ln, $ln_delta)"$ANSI_COLOR_RESET
@@ -54,6 +54,7 @@ do
     echo -e $ANSI_COLOR_RED"$src file does not exists!"$ANSI_COLOR_RESET
   fi
 done
+echo ""
 
 cd $root_dir
 git commit --verbose --all -m "dev cache sync"

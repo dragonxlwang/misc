@@ -11,7 +11,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/rnul
+~MSle0~/up_cache
 
 # Last Substitute Search Pattern:
 ~MSle0&max_nro_len
@@ -20,10 +20,10 @@
 $
 
 # Command Line History (newest to oldest):
+:w
+|2,0,1716276578,,"w"
 :qa
 |2,0,1716276393,,"qa"
-:w
-|2,0,1716276382,,"w"
 :W
 |2,0,1716276053,,"W"
 :wqa
@@ -22668,34 +22668,34 @@ $
 # Registers:
 "0	LINE	0
 	    ln_str=""
-|3,0,0,1,1,0,1716276379,"    ln_str=\"\""
+|3,0,0,1,1,0,1716276545,"    ln_str=\"\""
 ""1	LINE	0
-	    ln_str=""
-|3,1,1,1,1,0,1716276092,"    ln_str=\"\""
+	    echo $src_ln $dst_ln
+|3,1,1,1,1,0,1716276577,"    echo $src_ln $dst_ln"
 "2	LINE	0
-	      ln_str=$ANSI_COLOR_BLUE"+$ln_delta"$ANSI_COLOR_RESET
-|3,0,2,1,1,0,1716276008,"      ln_str=$ANSI_COLOR_BLUE\"+$ln_delta\"$ANSI_COLOR_RESET"
+	    ln_str=""
+|3,0,2,1,1,0,1716276092,"    ln_str=\"\""
 "3	LINE	0
-	      ln_str=$ANSI_COLOR_RED"$ln_delta"$ANSI_COLOR_RESET
-|3,0,3,1,1,0,1716276006,"      ln_str=$ANSI_COLOR_RED\"$ln_delta\"$ANSI_COLOR_RESET"
+	      ln_str=$ANSI_COLOR_BLUE"+$ln_delta"$ANSI_COLOR_RESET
+|3,0,3,1,1,0,1716276008,"      ln_str=$ANSI_COLOR_BLUE\"+$ln_delta\"$ANSI_COLOR_RESET"
 "4	LINE	0
-	
-|3,0,4,1,1,0,1716275983,""
+	      ln_str=$ANSI_COLOR_RED"$ln_delta"$ANSI_COLOR_RESET
+|3,0,4,1,1,0,1716276006,"      ln_str=$ANSI_COLOR_RED\"$ln_delta\"$ANSI_COLOR_RESET"
 "5	LINE	0
-	    echo 
-|3,0,5,1,1,0,1716275456,"    echo "
+	
+|3,0,5,1,1,0,1716275983,""
 "6	LINE	0
-	
-|3,0,6,1,1,0,1716275367,""
+	    echo 
+|3,0,6,1,1,0,1716275456,"    echo "
 "7	LINE	0
-	```
-|3,0,7,1,1,0,1716275340,"```"
-"8	LINE	0
 	
-|3,0,8,1,1,0,1716275339,""
+|3,0,7,1,1,0,1716275367,""
+"8	LINE	0
+	```
+|3,0,8,1,1,0,1716275340,"```"
 "9	LINE	0
-	`````
-|3,0,9,1,1,0,1716275331,"`````"
+	
+|3,0,9,1,1,0,1716275339,""
 "a	CHAR	0
 	jkkkjjjjjjjjjkk€ý,€ý.ï¼š
 |3,0,10,0,1,0,1716247185,"jkkkjjjjjjjjjkk€ý,€ý.ï¼š"
@@ -22770,35 +22770,41 @@ $
 |3,0,35,0,1,0,1630515023,>451
 |<"hjkllzh:AnncjkkjjjjjjjjjjjjjjjkkkjjjVjxjk,jkuujkddyyjjpjk,w€ý,€ý.kjkkkkkkkkkkkkkkjj/sessionjkkkkkkjbbwwjwwzhwwwbzhjkkkkkkkjojkkgccjkoauto€kb€kb€kb€kb€kb€kb€kbstd::make_uniquejkhzhjkkk€ý,€ý.€ü €ý,€ü €ý.jkA<A>(xjkA;jkIa = jkjjwwwlxi->jkjjjhhxi->jk,w €ý,€ý.jk;;kkkkkkkkkkkkkkkkkkkbbjkxjkbbdwiconst jkwhi&jkjjkkhr&r*jkjjjjjjjjjjjjjjwwwkkkjwwwwwlllijkhi&kj,wjkhhhhxxxxjk,wjjjkbbbi*jkjjjhi*jk,w€ý,€ý.€ü €ý,€ü €ý.;;jkIauyto €kb€kb€kb€kb€kbuto jk,wjkj"
 "-	CHAR	0
-	dst_ln
-|3,0,36,0,1,0,1716276379,"dst_ln"
+	?
+|3,0,36,0,1,0,1716276545,"?"
 
 # global variables:
 !DISPATCH_STARTS	DIC	{}
 
 # File marks:
-'0  374  9  ~/.profile_wangxl
-|4,48,374,9,1716276393,"~/.profile_wangxl"
-'1  45  45  ~/misc/scripts/cache_sync.sh
-|4,49,45,45,1716276387,"~/misc/scripts/cache_sync.sh"
-'2  1  0  ~/misc/tmp/tb
-|4,50,1,0,1716275553,"~/misc/tmp/tb"
-'3  1  0  ~/misc/tmp/mast_exp.md
-|4,51,1,0,1716275387,"~/misc/tmp/mast_exp.md"
-'4  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,52,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
-'5  3  3  ~/misc/tmp/mast_exp.md
-|4,53,3,3,1716275128,"~/misc/tmp/mast_exp.md"
+'0  45  4  ~/misc/scripts/cache_sync.sh
+|4,48,45,4,1716276580,"~/misc/scripts/cache_sync.sh"
+'1  374  9  ~/.profile_wangxl
+|4,49,374,9,1716276393,"~/.profile_wangxl"
+'2  45  45  ~/misc/scripts/cache_sync.sh
+|4,50,45,45,1716276387,"~/misc/scripts/cache_sync.sh"
+'3  1  0  ~/misc/tmp/tb
+|4,51,1,0,1716275553,"~/misc/tmp/tb"
+'4  1  0  ~/misc/tmp/mast_exp.md
+|4,52,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+'5  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,53,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
 '6  3  3  ~/misc/tmp/mast_exp.md
 |4,54,3,3,1716275128,"~/misc/tmp/mast_exp.md"
-'7  3  0  ~/misc/tmp/mast_exp.md
-|4,55,3,0,1716275128,"~/misc/tmp/mast_exp.md"
+'7  3  3  ~/misc/tmp/mast_exp.md
+|4,55,3,3,1716275128,"~/misc/tmp/mast_exp.md"
 '8  3  0  ~/misc/tmp/mast_exp.md
 |4,56,3,0,1716275128,"~/misc/tmp/mast_exp.md"
-'9  41  35  ~/misc/tmp/mast_exp
-|4,57,41,35,1716275125,"~/misc/tmp/mast_exp"
+'9  3  0  ~/misc/tmp/mast_exp.md
+|4,57,3,0,1716275128,"~/misc/tmp/mast_exp.md"
 
 # Jumplist (newest first):
+-'  45  4  ~/misc/scripts/cache_sync.sh
+|4,39,45,4,1716276580,"~/misc/scripts/cache_sync.sh"
+-'  49  49  ~/misc/scripts/cache_sync.sh
+|4,39,49,49,1716276560,"~/misc/scripts/cache_sync.sh"
+-'  47  48  ~/misc/scripts/cache_sync.sh
+|4,39,47,48,1716276558,"~/misc/scripts/cache_sync.sh"
 -'  374  9  ~/.profile_wangxl
 |4,39,374,9,1716276393,"~/.profile_wangxl"
 -'  45  45  ~/misc/scripts/cache_sync.sh
@@ -22829,40 +22835,72 @@ $
 |4,39,840,45,1716276240,"~/.profile_wangxl"
 -'  51  65  ~/misc/scripts/cache_sync.sh
 |4,39,51,65,1716276073,"~/misc/scripts/cache_sync.sh"
+-'  51  65  ~/misc/scripts/cache_sync.sh
+|4,39,51,65,1716276073,"~/misc/scripts/cache_sync.sh"
 -'  49  53  ~/misc/scripts/cache_sync.sh
 |4,39,49,53,1716276053,"~/misc/scripts/cache_sync.sh"
 -'  47  52  ~/misc/scripts/cache_sync.sh
 |4,39,47,52,1716276040,"~/misc/scripts/cache_sync.sh"
 -'  50  27  ~/misc/scripts/cache_sync.sh
 |4,39,50,27,1716275990,"~/misc/scripts/cache_sync.sh"
+-'  50  27  ~/misc/scripts/cache_sync.sh
+|4,39,50,27,1716275990,"~/misc/scripts/cache_sync.sh"
+-'  46  33  ~/misc/scripts/cache_sync.sh
+|4,39,46,33,1716275936,"~/misc/scripts/cache_sync.sh"
 -'  46  33  ~/misc/scripts/cache_sync.sh
 |4,39,46,33,1716275936,"~/misc/scripts/cache_sync.sh"
 -'  42  5  ~/misc/scripts/cache_sync.sh
 |4,39,42,5,1716275646,"~/misc/scripts/cache_sync.sh"
+-'  42  5  ~/misc/scripts/cache_sync.sh
+|4,39,42,5,1716275646,"~/misc/scripts/cache_sync.sh"
+-'  40  26  ~/misc/scripts/cache_sync.sh
+|4,39,40,26,1716275644,"~/misc/scripts/cache_sync.sh"
 -'  40  26  ~/misc/scripts/cache_sync.sh
 |4,39,40,26,1716275644,"~/misc/scripts/cache_sync.sh"
 -'  39  5  ~/misc/scripts/cache_sync.sh
 |4,39,39,5,1716275638,"~/misc/scripts/cache_sync.sh"
+-'  39  5  ~/misc/scripts/cache_sync.sh
+|4,39,39,5,1716275638,"~/misc/scripts/cache_sync.sh"
+-'  37  26  ~/misc/scripts/cache_sync.sh
+|4,39,37,26,1716275636,"~/misc/scripts/cache_sync.sh"
 -'  37  26  ~/misc/scripts/cache_sync.sh
 |4,39,37,26,1716275636,"~/misc/scripts/cache_sync.sh"
 -'  36  12  ~/misc/scripts/cache_sync.sh
 |4,39,36,12,1716275628,"~/misc/scripts/cache_sync.sh"
+-'  36  12  ~/misc/scripts/cache_sync.sh
+|4,39,36,12,1716275628,"~/misc/scripts/cache_sync.sh"
 -'  35  12  ~/misc/scripts/cache_sync.sh
 |4,39,35,12,1716275624,"~/misc/scripts/cache_sync.sh"
+-'  35  12  ~/misc/scripts/cache_sync.sh
+|4,39,35,12,1716275624,"~/misc/scripts/cache_sync.sh"
+-'  44  4  ~/misc/scripts/cache_sync.sh
+|4,39,44,4,1716275568,"~/misc/scripts/cache_sync.sh"
 -'  44  4  ~/misc/scripts/cache_sync.sh
 |4,39,44,4,1716275568,"~/misc/scripts/cache_sync.sh"
 -'  1  0  ~/misc/tmp/tb
 |4,39,1,0,1716275553,"~/misc/tmp/tb"
 -'  1  0  ~/misc/tmp/tb
 |4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  1  0  ~/misc/tmp/tb
+|4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  41  28  ~/misc/scripts/cache_sync.sh
+|4,39,41,28,1716275480,"~/misc/scripts/cache_sync.sh"
 -'  41  28  ~/misc/scripts/cache_sync.sh
 |4,39,41,28,1716275480,"~/misc/scripts/cache_sync.sh"
 -'  38  10  ~/misc/scripts/cache_sync.sh
 |4,39,38,10,1716275471,"~/misc/scripts/cache_sync.sh"
+-'  38  10  ~/misc/scripts/cache_sync.sh
+|4,39,38,10,1716275471,"~/misc/scripts/cache_sync.sh"
+-'  43  8  ~/misc/scripts/cache_sync.sh
+|4,39,43,8,1716275455,"~/misc/scripts/cache_sync.sh"
 -'  43  8  ~/misc/scripts/cache_sync.sh
 |4,39,43,8,1716275455,"~/misc/scripts/cache_sync.sh"
 -'  22  71  ~/misc/scripts/cache_sync.sh
 |4,39,22,71,1716275424,"~/misc/scripts/cache_sync.sh"
+-'  22  71  ~/misc/scripts/cache_sync.sh
+|4,39,22,71,1716275424,"~/misc/scripts/cache_sync.sh"
+-'  1  0  ~/misc/scripts/cache_sync.sh
+|4,39,1,0,1716275401,"~/misc/scripts/cache_sync.sh"
 -'  1  0  ~/misc/scripts/cache_sync.sh
 |4,39,1,0,1716275401,"~/misc/scripts/cache_sync.sh"
 -'  1  0  ~/misc/tmp/mast_exp.md
@@ -22875,6 +22913,18 @@ $
 |4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
 -'  1  0  ~/misc/tmp/mast_exp.md
 |4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+-'  39  0  ~/misc/tmp/mast_exp.md
+|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
+-'  39  0  ~/misc/tmp/mast_exp.md
+|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
+-'  39  0  ~/misc/tmp/mast_exp.md
+|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
 -'  39  0  ~/misc/tmp/mast_exp.md
 |4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
 -'  39  0  ~/misc/tmp/mast_exp.md
@@ -22895,6 +22945,18 @@ $
 |4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
 -'  3  3  ~/misc/tmp/mast_exp.md
 |4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
+-'  3  3  ~/misc/tmp/mast_exp.md
+|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
+-'  3  3  ~/misc/tmp/mast_exp.md
+|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
+-'  3  3  ~/misc/tmp/mast_exp.md
+|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
+-'  5  0  ~/misc/tmp/mast_exp.md
+|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
+-'  5  0  ~/misc/tmp/mast_exp.md
+|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
+-'  5  0  ~/misc/tmp/mast_exp.md
+|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
 -'  5  0  ~/misc/tmp/mast_exp.md
 |4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
 -'  5  0  ~/misc/tmp/mast_exp.md
@@ -22915,6 +22977,12 @@ $
 |4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
 -'  10  0  ~/misc/tmp/mast_exp.md
 |4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
+-'  10  0  ~/misc/tmp/mast_exp.md
+|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
+-'  10  0  ~/misc/tmp/mast_exp.md
+|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
+-'  10  0  ~/misc/tmp/mast_exp.md
+|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
 -'  9  0  ~/misc/tmp/mast_exp.md
 |4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
 -'  9  0  ~/misc/tmp/mast_exp.md
@@ -22925,88 +22993,20 @@ $
 |4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
 -'  9  0  ~/misc/tmp/mast_exp.md
 |4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
--'  12  0  ~/misc/tmp/mast_exp.md
-|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
--'  12  0  ~/misc/tmp/mast_exp.md
-|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
--'  12  0  ~/misc/tmp/mast_exp.md
-|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
--'  12  0  ~/misc/tmp/mast_exp.md
-|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
--'  12  0  ~/misc/tmp/mast_exp.md
-|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
--'  153  36  ~/.vimrc
-|4,39,153,36,1716275179,"~/.vimrc"
--'  153  36  ~/.vimrc
-|4,39,153,36,1716275179,"~/.vimrc"
+-'  9  0  ~/misc/tmp/mast_exp.md
+|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
+-'  9  0  ~/misc/tmp/mast_exp.md
+|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
+-'  9  0  ~/misc/tmp/mast_exp.md
+|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
 
 # History of marks within files (newest to oldest):
 
 > ~/misc/scripts/cache_sync.sh
-	*	1716276386	0
-	"	45	45
-	^	45	45
-	.	45	44
+	*	1716276579	0
+	"	45	4
+	^	49	50
+	.	45	0
 	+	22	71
 	+	43	0
 	+	44	0
@@ -23044,6 +23044,11 @@ $
 	+	49	50
 	+	51	0
 	+	45	44
+	+	45	21
+	+	45	44
+	+	47	48
+	+	49	49
+	+	45	0
 
 > ~/.profile_wangxl
 	*	1716276255	0
