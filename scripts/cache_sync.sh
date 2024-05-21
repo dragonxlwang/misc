@@ -45,9 +45,9 @@ do
     echo $src_ln $dst_ln
     ln_delta=$(( ${src_ln/'?'/0} - ${dst_ln/'?'/0} ))
     if [[ $ln_delta == -* ]]; then
-      ln_str=$ANSI_COLOR_RED"($dst_ln -> $src_ln $ln_delta)"$ANSI_COLOR_RESET
+      ln_str=$ANSI_COLOR_RED"($dst_ln -> $src_ln, $ln_delta)"$ANSI_COLOR_RESET
     else
-      ln_str=$ANSI_COLOR_BLUE"($dst_ln -> $src_ln +$ln_delta)"$ANSI_COLOR_RESET
+      ln_str=$ANSI_COLOR_BLUE"($dst_ln -> $src_ln, +$ln_delta)"$ANSI_COLOR_RESET
     fi
     echo -e $ANSI_COLOR_GREEN"cp -r $src $dst"$ANSI_COLOR_RESET" $ln_str"
   else
