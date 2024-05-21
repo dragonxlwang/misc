@@ -413,6 +413,11 @@ nnoremap <leader>p "0p
 nnoremap <leader>y "0y
 vnoremap <leader>p "0p
 vnoremap <leader>y "0y
+vnoremap <silent> <leader>yy
+      \ :<CR>:let @a=@" \|
+      \ execute "normal! vgvy" \|
+      \ let res=system("~/misc/scripts/oscyank.sh -", @") \|
+      \ let @"=@a<CR>
 command TmuxPaste :read !tmux saveb - | sed 's/\x1b\[[0-9;]*m//g'
 nnoremap <leader>lh @='"Qyiwj'<CR>
 
