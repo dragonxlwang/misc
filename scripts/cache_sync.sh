@@ -43,7 +43,7 @@ do
 
     cp -rL $src $dst
     echo $src_ln $dst_ln
-    ln_delta=$(( ${src_ln/?/0} - ${dst_ln/?/0} ))
+    ln_delta=$(( ${src_ln/'?'/0} - ${dst_ln/'?'/0} ))
     if [[ $ln_delta == -* ]]; then
       ln_str=$ANSI_COLOR_RED"($dst_ln -> $src_ln $ln_delta)"$ANSI_COLOR_RESET
     else

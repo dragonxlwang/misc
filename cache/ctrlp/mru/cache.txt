@@ -1,5 +1,6 @@
-/home/xlwang/misc/dotfiles/lib/.profile_wangxl
+/home/xlwang/.profile_wangxl
 /home/xlwang/misc/scripts/cache_sync.sh
+/home/xlwang/misc/dotfiles/lib/.profile_wangxl
 /home/xlwang/misc/tmp/tb
 /home/xlwang/misc/tmp/mast_exp.md
 /home/xlwang/misc/dotfiles/lib/.vimrc.bundles
@@ -13,7 +14,6 @@
 /etc/ssh/sshd_config
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
 /home/xlwang/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-/home/xlwang/.profile_wangxl
 /usr/local/bin/pbcopy
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/common.sh
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train.sh

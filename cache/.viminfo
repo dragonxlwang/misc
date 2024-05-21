@@ -11,7 +11,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/vimtex_latexmk_callback_hooks
+~MSle0~/rnul
 
 # Last Substitute Search Pattern:
 ~MSle0&max_nro_len
@@ -21,13 +21,13 @@ $
 
 # Command Line History (newest to oldest):
 :qa
-|2,0,1716275553,,"qa"
+|2,0,1716276393,,"qa"
+:w
+|2,0,1716276382,,"w"
+:W
+|2,0,1716276053,,"W"
 :wqa
 |2,0,1716275387,,"wqa"
-:w
-|2,0,1716275368,,"w"
-:W
-|2,0,1716275332,,"W"
 :vs ~/.vimrc
 |2,0,1716275176,,"vs ~/.vimrc"
 :qa!
@@ -5120,6 +5120,14 @@ $
 |2,0,1635272165,,"ujk"
 
 # Search String History (newest to oldest):
+?/rnul
+|2,1,1716276250,47,"rnul"
+?/rnull
+|2,1,1716276248,47,"rnull"
+?/dev\/null
+|2,1,1716276240,47,"dev\\/null"
+?/up_cache
+|2,1,1716275670,47,"up_cache"
 ?/vimtex_latexmk_callback_hooks
 |2,1,1716275184,47,"vimtex_latexmk_callback_hooks"
 ?/vimtex
@@ -6726,8 +6734,6 @@ $
 |2,1,1713983034,47,"seq_sele"
 ?/debi
 |2,1,1713982763,47,"debi"
-?/rnul
-|2,1,1713978630,47,"rnul"
 ?/cat
 |2,1,1713978230,47,"cat"
 ?/hg
@@ -6736,8 +6742,6 @@ $
 |2,1,1713941214,47,"pdb"
 ?/arg
 |2,1,1713938908,47,"arg"
-?/dev\/null
-|2,1,1713938116,47,"dev\\/null"
 ?/devjkjjkkkk
 |2,1,1713938112,47,"devjkjjkkkk"
 ?/dev/
@@ -6758,8 +6762,6 @@ $
 |2,1,1713936798,47,"hg_c"
 ?/cron
 |2,1,1713936794,47,"cron"
-?/up_cache
-|2,1,1713936658,47,"up_cache"
 ?/misc\/cache
 |2,1,1713936654,47,"misc\\/cache"
 ?/ing
@@ -21122,8 +21124,6 @@ $
 |2,1,1647472438,47,"chuck"
 ?/preso
 |2,1,1647472399,47,"preso"
-?/dataloaderinter
-|2,1,1647470974,47,"dataloaderinter"
 
 # Expression History (newest to oldest):
 ='else:' =~ '^\(\s*\(\h\+\S\s*:\)\)'jkjjjkjkkkk
@@ -22666,36 +22666,36 @@ $
 # Debug Line History (newest to oldest):
 
 # Registers:
-"0	CHAR	0
-	 
-|3,0,0,0,1,0,1716275283," "
+"0	LINE	0
+	    ln_str=""
+|3,0,0,1,1,0,1716276379,"    ln_str=\"\""
 ""1	LINE	0
-	
-|3,1,1,1,1,0,1716275367,""
+	    ln_str=""
+|3,1,1,1,1,0,1716276092,"    ln_str=\"\""
 "2	LINE	0
-	```
-|3,0,2,1,1,0,1716275340,"```"
+	      ln_str=$ANSI_COLOR_BLUE"+$ln_delta"$ANSI_COLOR_RESET
+|3,0,2,1,1,0,1716276008,"      ln_str=$ANSI_COLOR_BLUE\"+$ln_delta\"$ANSI_COLOR_RESET"
 "3	LINE	0
-	
-|3,0,3,1,1,0,1716275339,""
+	      ln_str=$ANSI_COLOR_RED"$ln_delta"$ANSI_COLOR_RESET
+|3,0,3,1,1,0,1716276006,"      ln_str=$ANSI_COLOR_RED\"$ln_delta\"$ANSI_COLOR_RESET"
 "4	LINE	0
-	`````
-|3,0,4,1,1,0,1716275331,"`````"
+	
+|3,0,4,1,1,0,1716275983,""
 "5	LINE	0
-	`````
-|3,0,5,1,1,0,1716275326,"`````"
+	    echo 
+|3,0,5,1,1,0,1716275456,"    echo "
 "6	LINE	0
-	kj
-|3,0,6,1,1,0,1716275326,"kj"
+	
+|3,0,6,1,1,0,1716275367,""
 "7	LINE	0
 	```
-|3,0,7,1,1,0,1716275320,"```"
+|3,0,7,1,1,0,1716275340,"```"
 "8	LINE	0
 	
-|3,0,8,1,1,0,1716275319,""
+|3,0,8,1,1,0,1716275339,""
 "9	LINE	0
-	
-|3,0,9,1,1,0,1716275311,""
+	`````
+|3,0,9,1,1,0,1716275331,"`````"
 "a	CHAR	0
 	jkkkjjjjjjjjjkk€ý,€ý.ï¼š
 |3,0,10,0,1,0,1716247185,"jkkkjjjjjjjjjkk€ý,€ý.ï¼š"
@@ -22756,7 +22756,7 @@ $
 <jjj:34jk:34jkjkjjjjjkkjjjjjwkkkwwwwwlzhNNnNjjwwwkkwwwwwwzh€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýMjkkj kkjjjkbbbbbv$hS)jkAjki?? :€kb''jk,wjkjjjjjjjjjjjjjjjjjjjjkkjjjjjjjjjddjk,wjddjk,w€ý,€ý.ggjkjjjjggkggjkjjjjjjjjjjoDISABLED =€kb= "disabledjkA;jk:whbbbbzhjkjkjkGjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk wwzhjkjkjkkjjjk 
 	1050
 <jjjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkVjjjyjjjpjkkojkjjwwwwwwjkjl:sp ~/fbc	tor	ch			€kb€kb€kb€kb€kb€kb./€kb€kb/	jkkhdwitorchjkjjkbdwitorchjkhzhhjk:WjkkkjkIjkwwbblllllldwiTROCH jkhhhhhxliRjkhzhjkviwyjjjjjjjkA + jkkJkAjkjAEVICT_CAF	 + EVIC€kB			jkkJjk:wjk€ý,€ý.€ý,€ý.VjjjjxxjkjbbDAjk:w€ý,€ý.jko€FI allocator = "jemalloc",    enable_lazy_imports = True,    enable_native_python = True,€FJjkkk<<jkkkkjkuujk:wjkkkbbwxxxxxxipythonjkhhhhzhjk:wjkuujkuuuuuuuuuuujkuuuuujkujk:wkkkkjjjjjjwwkhkhzhjjkVjkgcjk:wjkkkkkkkkxxxxxxicinderjk:Wjkjjjjjjjzhjkoenable_lazy_import=€kb€kb€kb€kbs=True,allocator="jemallocjkA,jk,wkkjjkkk€ý,€ý.€ý,€ý.bDjk:wjkbbwzhjkIjkjknnjkIjkzh€ý,€ý-€ý-€ý.kjj jjjjjjjjjjj;;jjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkjjejjjjjkkkkkkxhjjkuxhjkjkxhjkuujkzhjkjjjjjjVjjxzhwwggnnggjjjjjjjjjjjjjkVjjjjjjjj;;jkkkjVjjjjxjkjbbwzhjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkVjxkzhjk:Wkkjjjkkjjjjjjjjjjkkkkkkkkkkkkbxxxxxxipythonjkzhjkjjjjjjjk:w€ý,€ý.jk:ejk:eG€ý,€ý.jk jkkkkVjjjyjjjjjjjjjjjjjkwwpjkkddjkVjjjyjjjjjjjjjjjjjjjpkjVjjj<kddjk,w
-|3,0,31,0,4,0,1716251831,"kkkVjjjyjjjpjkjjjjddkkkkwlxxxictfsjkhjhxxxictfsjkzhhjkviwyjwwwbviwpjkzhhjkjjkoreturn shape (jkkwwjkjkkggjnkkkVjjjjjyjkjpjkwwwwdwi$rank	jkhzhjkjwwwdwi$ppr_weih	jkjbdwi$simweight	jkjbdwi$ctfsweight	jkjbdwi$qe_e€kb€kb€kb€kbexperime€kb€kb€kb€kb	jkjbdwi$groupna	jkhzhjk,wjkjjA;jk,wkddjkjkkkkjjjjjjjVjjxkddk,wkkkkkkkkkwwjkzhjkjk  jk ,w","jjwkjwww",>318
+|3,0,31,0,4,0,1716275662,"kkkVjjjyjjjpjkjjjjddkkkkwlxxxictfsjkhjhxxxictfsjkzhhjkviwyjwwwbviwpjkzhhjkjjkoreturn shape (jkkwwjkjkkggjnkkkVjjjjjyjkjpjkwwwwdwi$rank	jkhzhjkjwwwdwi$ppr_weih	jkjbdwi$simweight	jkjbdwi$ctfsweight	jkjbdwi$qe_e€kb€kb€kb€kbexperime€kb€kb€kb€kb	jkjbdwi$groupna	jkhzhjk,wjkjjA;jk,wkddjkjkkkkjjjjjjjVjjxkddk,wkkkkkkkkkwwjkzhjkjk  jk ,w","jjwkjwww",>318
 |<"jjj:34jk:34jkjkjjjjjkkjjjjjwkkkwwwwwlzhNNnNjjwwwkkwwwwwwzh€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýMjkkj kkjjjkbbbbbv$hS)jkAjki?? :€kb''jk,wjkjjjjjjjjjjjjjjjjjjjjkkjjjjjjjjjddjk,wjddjk,w€ý,€ý.ggjkjjjjggkggjkjjjjjjjjjjoDISABLED =€kb= \"disabledjkA;jk:whbbbbzhjkjkjkGjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk wwzhjkjkjkkjjjk ",>1052
 |<"jjjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkVjjjyjjjpjkkojkjjwwwwwwjkjl:sp ~/fbc	tor	ch			€kb€kb€kb€kb€kb€kb./€kb€kb/	jkkhdwitorchjkjjkbdwitorchjkhzhhjk:WjkkkjkIjkwwbblllllldwiTROCH jkhhhhhxliRjkhzhjkviwyjjjjjjjkA + jkkJkAjkjAEVICT_CAF	 + EVIC€kB			jkkJjk:wjk€ý,€ý.€ý,€ý.VjjjjxxjkjbbDAjk:w€ý,€ý.jko€FI allocator = \"jemalloc\",    enable_lazy_imports = True,    enable_native_python = True,€FJjkkk<<jkkkkjkuujk:wjkkkbbwxxxxxxipythonjkhhhhzhjk:wjkuujkuuuuuuuuuuujkuuuuujkujk:wkk
 |<kkjjjjjjwwkhkhzhjjkVjkgcjk:wjkkkkkkkkxxxxxxicinderjk:Wjkjjjjjjjzhjkoenable_lazy_import=€kb€kb€kb€kbs=True,allocator=\"jemallocjkA,jk,wkkjjkkk€ý,€ý.€ý,€ý.bDjk:wjkbbwzhjkIjkjknnjkIjkzh€ý,€ý-€ý-€ý.kjj jjjjjjjjjjj;;jjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkjjejjjjjkkkkkkxhjjkuxhjkjkxhjkuujkzhjkjjjjjjVjjxzhwwggnnggjjjjjjjjjjjjjkVjjjjjjjj;;jkkkjVjjjjxjkjbbwzhjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkVjxkzhjk:Wkkjjjkkjjjjjjjjjjkkkkkkkkkkkkbxxxxxxipythonjkzhjkjjjjjjjk:w€ý,€ý.jk:ejk:eG€ý,€ý.jk
@@ -22770,37 +22770,107 @@ $
 |3,0,35,0,1,0,1630515023,>451
 |<"hjkllzh:AnncjkkjjjjjjjjjjjjjjjkkkjjjVjxjk,jkuujkddyyjjpjk,w€ý,€ý.kjkkkkkkkkkkkkkkjj/sessionjkkkkkkjbbwwjwwzhwwwbzhjkkkkkkkjojkkgccjkoauto€kb€kb€kb€kb€kb€kb€kbstd::make_uniquejkhzhjkkk€ý,€ý.€ü €ý,€ü €ý.jkA<A>(xjkA;jkIa = jkjjwwwlxi->jkjjjhhxi->jk,w €ý,€ý.jk;;kkkkkkkkkkkkkkkkkkkbbjkxjkbbdwiconst jkwhi&jkjjkkhr&r*jkjjjjjjjjjjjjjjwwwkkkjwwwwwlllijkhi&kj,wjkhhhhxxxxjk,wjjjkbbbi*jkjjjhi*jk,w€ý,€ý.€ü €ý,€ü €ý.;;jkIauyto €kb€kb€kb€kb€kbuto jk,wjkj"
 "-	CHAR	0
-	`
-|3,0,36,0,1,0,1716275330,"`"
+	dst_ln
+|3,0,36,0,1,0,1716276379,"dst_ln"
 
 # global variables:
 !DISPATCH_STARTS	DIC	{}
 
 # File marks:
-'0  1  0  ~/misc/tmp/tb
-|4,48,1,0,1716275553,"~/misc/tmp/tb"
-'1  1  0  ~/misc/tmp/mast_exp.md
-|4,49,1,0,1716275387,"~/misc/tmp/mast_exp.md"
-'2  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,50,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
-'3  3  3  ~/misc/tmp/mast_exp.md
-|4,51,3,3,1716275128,"~/misc/tmp/mast_exp.md"
-'4  3  3  ~/misc/tmp/mast_exp.md
-|4,52,3,3,1716275128,"~/misc/tmp/mast_exp.md"
-'5  3  0  ~/misc/tmp/mast_exp.md
-|4,53,3,0,1716275128,"~/misc/tmp/mast_exp.md"
-'6  3  0  ~/misc/tmp/mast_exp.md
-|4,54,3,0,1716275128,"~/misc/tmp/mast_exp.md"
-'7  41  35  ~/misc/tmp/mast_exp
-|4,55,41,35,1716275125,"~/misc/tmp/mast_exp"
-'8  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,56,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
-'9  37  3  ~/misc/tmp/mast_exp
-|4,57,37,3,1716274799,"~/misc/tmp/mast_exp"
+'0  374  9  ~/.profile_wangxl
+|4,48,374,9,1716276393,"~/.profile_wangxl"
+'1  45  45  ~/misc/scripts/cache_sync.sh
+|4,49,45,45,1716276387,"~/misc/scripts/cache_sync.sh"
+'2  1  0  ~/misc/tmp/tb
+|4,50,1,0,1716275553,"~/misc/tmp/tb"
+'3  1  0  ~/misc/tmp/mast_exp.md
+|4,51,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+'4  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,52,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+'5  3  3  ~/misc/tmp/mast_exp.md
+|4,53,3,3,1716275128,"~/misc/tmp/mast_exp.md"
+'6  3  3  ~/misc/tmp/mast_exp.md
+|4,54,3,3,1716275128,"~/misc/tmp/mast_exp.md"
+'7  3  0  ~/misc/tmp/mast_exp.md
+|4,55,3,0,1716275128,"~/misc/tmp/mast_exp.md"
+'8  3  0  ~/misc/tmp/mast_exp.md
+|4,56,3,0,1716275128,"~/misc/tmp/mast_exp.md"
+'9  41  35  ~/misc/tmp/mast_exp
+|4,57,41,35,1716275125,"~/misc/tmp/mast_exp"
 
 # Jumplist (newest first):
+-'  374  9  ~/.profile_wangxl
+|4,39,374,9,1716276393,"~/.profile_wangxl"
+-'  45  45  ~/misc/scripts/cache_sync.sh
+|4,39,45,45,1716276387,"~/misc/scripts/cache_sync.sh"
+-'  1905  9  ~/.profile_wangxl
+|4,39,1905,9,1716276251,"~/.profile_wangxl"
+-'  1903  26  ~/.profile_wangxl
+|4,39,1903,26,1716276250,"~/.profile_wangxl"
+-'  1883  28  ~/.profile_wangxl
+|4,39,1883,28,1716276250,"~/.profile_wangxl"
+-'  1885  12  ~/.profile_wangxl
+|4,39,1885,12,1716276246,"~/.profile_wangxl"
+-'  1889  28  ~/.profile_wangxl
+|4,39,1889,28,1716276246,"~/.profile_wangxl"
+-'  1891  12  ~/.profile_wangxl
+|4,39,1891,12,1716276246,"~/.profile_wangxl"
+-'  1925  32  ~/.profile_wangxl
+|4,39,1925,32,1716276245,"~/.profile_wangxl"
+-'  2207  18  ~/.profile_wangxl
+|4,39,2207,18,1716276245,"~/.profile_wangxl"
+-'  2304  0  ~/.profile_wangxl
+|4,39,2304,0,1716276243,"~/.profile_wangxl"
+-'  1058  66  ~/.profile_wangxl
+|4,39,1058,66,1716276243,"~/.profile_wangxl"
+-'  852  56  ~/.profile_wangxl
+|4,39,852,56,1716276242,"~/.profile_wangxl"
+-'  840  45  ~/.profile_wangxl
+|4,39,840,45,1716276240,"~/.profile_wangxl"
+-'  51  65  ~/misc/scripts/cache_sync.sh
+|4,39,51,65,1716276073,"~/misc/scripts/cache_sync.sh"
+-'  49  53  ~/misc/scripts/cache_sync.sh
+|4,39,49,53,1716276053,"~/misc/scripts/cache_sync.sh"
+-'  47  52  ~/misc/scripts/cache_sync.sh
+|4,39,47,52,1716276040,"~/misc/scripts/cache_sync.sh"
+-'  50  27  ~/misc/scripts/cache_sync.sh
+|4,39,50,27,1716275990,"~/misc/scripts/cache_sync.sh"
+-'  46  33  ~/misc/scripts/cache_sync.sh
+|4,39,46,33,1716275936,"~/misc/scripts/cache_sync.sh"
+-'  42  5  ~/misc/scripts/cache_sync.sh
+|4,39,42,5,1716275646,"~/misc/scripts/cache_sync.sh"
+-'  40  26  ~/misc/scripts/cache_sync.sh
+|4,39,40,26,1716275644,"~/misc/scripts/cache_sync.sh"
+-'  39  5  ~/misc/scripts/cache_sync.sh
+|4,39,39,5,1716275638,"~/misc/scripts/cache_sync.sh"
+-'  37  26  ~/misc/scripts/cache_sync.sh
+|4,39,37,26,1716275636,"~/misc/scripts/cache_sync.sh"
+-'  36  12  ~/misc/scripts/cache_sync.sh
+|4,39,36,12,1716275628,"~/misc/scripts/cache_sync.sh"
+-'  35  12  ~/misc/scripts/cache_sync.sh
+|4,39,35,12,1716275624,"~/misc/scripts/cache_sync.sh"
+-'  44  4  ~/misc/scripts/cache_sync.sh
+|4,39,44,4,1716275568,"~/misc/scripts/cache_sync.sh"
 -'  1  0  ~/misc/tmp/tb
 |4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  1  0  ~/misc/tmp/tb
+|4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  41  28  ~/misc/scripts/cache_sync.sh
+|4,39,41,28,1716275480,"~/misc/scripts/cache_sync.sh"
+-'  38  10  ~/misc/scripts/cache_sync.sh
+|4,39,38,10,1716275471,"~/misc/scripts/cache_sync.sh"
+-'  43  8  ~/misc/scripts/cache_sync.sh
+|4,39,43,8,1716275455,"~/misc/scripts/cache_sync.sh"
+-'  22  71  ~/misc/scripts/cache_sync.sh
+|4,39,22,71,1716275424,"~/misc/scripts/cache_sync.sh"
+-'  1  0  ~/misc/scripts/cache_sync.sh
+|4,39,1,0,1716275401,"~/misc/scripts/cache_sync.sh"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
 -'  1  0  ~/misc/tmp/mast_exp.md
 |4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
 -'  1  0  ~/misc/tmp/mast_exp.md
@@ -22809,6 +22879,18 @@ $
 |4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
 -'  39  0  ~/misc/tmp/mast_exp.md
 |4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
+-'  39  0  ~/misc/tmp/mast_exp.md
+|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
+-'  39  0  ~/misc/tmp/mast_exp.md
+|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
+-'  39  0  ~/misc/tmp/mast_exp.md
+|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
+-'  3  3  ~/misc/tmp/mast_exp.md
+|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
+-'  3  3  ~/misc/tmp/mast_exp.md
+|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
+-'  3  3  ~/misc/tmp/mast_exp.md
+|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
 -'  3  3  ~/misc/tmp/mast_exp.md
 |4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
 -'  3  3  ~/misc/tmp/mast_exp.md
@@ -22817,6 +22899,18 @@ $
 |4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
 -'  5  0  ~/misc/tmp/mast_exp.md
 |4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
+-'  5  0  ~/misc/tmp/mast_exp.md
+|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
+-'  5  0  ~/misc/tmp/mast_exp.md
+|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
+-'  5  0  ~/misc/tmp/mast_exp.md
+|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
+-'  10  0  ~/misc/tmp/mast_exp.md
+|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
+-'  10  0  ~/misc/tmp/mast_exp.md
+|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
+-'  10  0  ~/misc/tmp/mast_exp.md
+|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
 -'  10  0  ~/misc/tmp/mast_exp.md
 |4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
 -'  10  0  ~/misc/tmp/mast_exp.md
@@ -22825,10 +22919,34 @@ $
 |4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
 -'  9  0  ~/misc/tmp/mast_exp.md
 |4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
+-'  9  0  ~/misc/tmp/mast_exp.md
+|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
+-'  9  0  ~/misc/tmp/mast_exp.md
+|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
+-'  9  0  ~/misc/tmp/mast_exp.md
+|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
 -'  12  0  ~/misc/tmp/mast_exp.md
 |4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
 -'  12  0  ~/misc/tmp/mast_exp.md
 |4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
+-'  12  0  ~/misc/tmp/mast_exp.md
+|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
+-'  12  0  ~/misc/tmp/mast_exp.md
+|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
+-'  12  0  ~/misc/tmp/mast_exp.md
+|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
 -'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
 |4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
 -'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
@@ -22845,6 +22963,30 @@ $
 |4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
 -'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
 |4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
 -'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
 |4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
 -'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
@@ -22857,191 +22999,64 @@ $
 |4,39,153,36,1716275179,"~/.vimrc"
 -'  153  36  ~/.vimrc
 |4,39,153,36,1716275179,"~/.vimrc"
--'  153  36  ~/.vimrc
-|4,39,153,36,1716275179,"~/.vimrc"
--'  153  36  ~/.vimrc
-|4,39,153,36,1716275179,"~/.vimrc"
--'  152  23  ~/.vimrc
-|4,39,152,23,1716275178,"~/.vimrc"
--'  152  23  ~/.vimrc
-|4,39,152,23,1716275178,"~/.vimrc"
--'  152  23  ~/.vimrc
-|4,39,152,23,1716275178,"~/.vimrc"
--'  152  23  ~/.vimrc
-|4,39,152,23,1716275178,"~/.vimrc"
--'  3  0  ~/misc/tmp/mast_exp.md
-|4,39,3,0,1716275176,"~/misc/tmp/mast_exp.md"
--'  3  0  ~/misc/tmp/mast_exp.md
-|4,39,3,0,1716275176,"~/misc/tmp/mast_exp.md"
--'  3  0  ~/misc/tmp/mast_exp.md
-|4,39,3,0,1716275128,"~/misc/tmp/mast_exp.md"
--'  3  0  ~/misc/tmp/mast_exp.md
-|4,39,3,0,1716275128,"~/misc/tmp/mast_exp.md"
--'  41  35  ~/misc/tmp/mast_exp
-|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
--'  41  35  ~/misc/tmp/mast_exp
-|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
--'  41  35  ~/misc/tmp/mast_exp
-|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
--'  41  35  ~/misc/tmp/mast_exp
-|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
--'  41  35  ~/misc/tmp/mast_exp
-|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
--'  41  35  ~/misc/tmp/mast_exp
-|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
--'  41  35  ~/misc/tmp/mast_exp
-|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
--'  41  35  ~/misc/tmp/mast_exp
-|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
--'  1  0  ~/misc/tmp/mast_exp.md
-|4,39,1,0,1716275119,"~/misc/tmp/mast_exp.md"
--'  1  0  ~/misc/tmp/mast_exp.md
-|4,39,1,0,1716275119,"~/misc/tmp/mast_exp.md"
--'  1  0  ~/misc/tmp/mast_exp.md
-|4,39,1,0,1716275119,"~/misc/tmp/mast_exp.md"
--'  1  0  ~/misc/tmp/mast_exp.md
-|4,39,1,0,1716275119,"~/misc/tmp/mast_exp.md"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
-|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
--'  38  0  ~/misc/tmp/mast_exp
-|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
--'  38  0  ~/misc/tmp/mast_exp
-|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
--'  38  0  ~/misc/tmp/mast_exp
-|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
--'  38  0  ~/misc/tmp/mast_exp
-|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
--'  38  0  ~/misc/tmp/mast_exp
-|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
--'  38  0  ~/misc/tmp/mast_exp
-|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
--'  38  0  ~/misc/tmp/mast_exp
-|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
--'  38  0  ~/misc/tmp/mast_exp
-|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
--'  37  0  ~/misc/tmp/mast_exp
-|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
--'  37  0  ~/misc/tmp/mast_exp
-|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
--'  37  0  ~/misc/tmp/mast_exp
-|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
--'  37  0  ~/misc/tmp/mast_exp
-|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
--'  37  0  ~/misc/tmp/mast_exp
-|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
--'  37  0  ~/misc/tmp/mast_exp
-|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
--'  37  0  ~/misc/tmp/mast_exp
-|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
--'  37  0  ~/misc/tmp/mast_exp
-|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
--'  43  3  ~/misc/tmp/mast_exp
-|4,39,43,3,1716275020,"~/misc/tmp/mast_exp"
 
 # History of marks within files (newest to oldest):
 
-> ~/misc/tmp/tb
-	*	1716275551	0
-	"	1	0
+> ~/misc/scripts/cache_sync.sh
+	*	1716276386	0
+	"	45	45
+	^	45	45
+	.	45	44
+	+	22	71
+	+	43	0
+	+	44	0
+	+	43	0
+	+	38	10
+	+	41	29
+	+	51	64
+	+	38	0
+	+	51	65
+	+	44	0
+	+	35	12
+	+	36	12
+	+	37	26
+	+	38	0
+	+	39	0
+	+	40	26
+	+	41	0
+	+	42	0
+	+	37	0
+	+	51	71
+	+	51	10
+	+	51	52
+	+	51	32
+	+	45	13
+	+	46	29
+	+	50	0
+	+	46	33
+	+	47	57
+	+	50	0
+	+	47	0
+	+	49	0
+	+	46	20
+	+	51	12
+	+	47	51
+	+	49	50
+	+	51	0
+	+	45	44
 
-> ~/misc/tmp/mast_exp.md
-	*	1716275386	0
-	"	1	0
-	.	22	0
-	+	9	38
-	+	12	0
-	+	9	38
-	+	12	0
-	+	3	3
-	+	3	5
-	+	3	0
-	+	12	0
-	+	11	0
-	+	3	3
-	+	4	0
-	+	22	0
-
-> ~/misc/dotfiles/lib/.vimrc.bundles
-	*	1716275283	0
-	"	563	0
-	^	584	31
-	.	563	0
-	+	585	45
-	+	584	0
-	+	586	26
-	+	584	30
-	+	584	0
-	+	563	0
-
-> ~/.vimrc
-	*	1716275179	0
-	"	153	36
+> ~/.profile_wangxl
+	*	1716276255	0
+	"	374	9
+	^	2284	25
+	.	2284	24
+	+	2284	16
+	+	2283	17
+	+	2284	24
 
 > ~/misc/dotfiles/lib/.profile_wangxl
-	*	1716275114	0
-	"	2284	27
+	*	1716275682	0
+	"	2031	7
 	^	2284	28
 	.	2284	27
 	+	2172	7
@@ -23144,6 +23159,50 @@ $
 	+	2172	7
 	+	2172	0
 	+	2284	27
+
+> ~/.vim/bundle/vim-markdown/ControlP
+	*	1716275665	0
+	"	10	0
+	.	2	0
+	+	1	0
+	+	2	0
+
+> ~/misc/tmp/tb
+	*	1716275551	0
+	"	1	0
+
+> ~/misc/tmp/mast_exp.md
+	*	1716275386	0
+	"	1	0
+	.	22	0
+	+	9	38
+	+	12	0
+	+	9	38
+	+	12	0
+	+	3	3
+	+	3	5
+	+	3	0
+	+	12	0
+	+	11	0
+	+	3	3
+	+	4	0
+	+	22	0
+
+> ~/misc/dotfiles/lib/.vimrc.bundles
+	*	1716275283	0
+	"	563	0
+	^	584	31
+	.	563	0
+	+	585	45
+	+	584	0
+	+	586	26
+	+	584	30
+	+	584	0
+	+	563	0
+
+> ~/.vimrc
+	*	1716275179	0
+	"	153	36
 
 > ~/misc/tmp/mast_exp
 	*	1716275107	0
@@ -23270,15 +23329,6 @@ $
 > /etc/ssh/sshd_config
 	*	1716269132	0
 	"	77	11
-
-> ~/.profile_wangxl
-	*	1716268425	0
-	"	840	45
-	^	2284	25
-	.	2284	24
-	+	2284	16
-	+	2283	17
-	+	2284	24
 
 > /usr/local/bin/pbcopy
 	*	1716267344	0
@@ -24296,11 +24346,3 @@ $
 > /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/csrc/utils/index_ops.cpp
 	*	1715967397	0
 	"	643	7
-
-> /data/users/xlwang/fbsource/fbcode/aiplatform/modelstore/model_generation/flow/gmpp_concurrent/gmpp_process_wrapper.py
-	*	1715967161	0
-	"	183	12
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_ifu/roo_predict.py
-	*	1715966735	0
-	"	85	36
