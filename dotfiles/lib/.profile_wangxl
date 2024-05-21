@@ -32,12 +32,14 @@ function fromhex(){
   (g<75?0:(g-35)/40)*6    +
   (b<75?0:(b-35)/40)      + 16 ))"
 }
-function print_256_color {
+function palette {
   if [[ $# -eq 0 ]]; then
     echo "Color Schema 1"
     ${HOME}/misc/scripts/color_test.sh
     echo "Color Schema 2"
-    ${HOME}/misc/scripts/256-colors.sh
+    ${HOME}/misc/scripts/256_colors.sh
+    echo "Color Schema 3"
+    ${HOME}/misc/scripts/256_to_rgb.sh
     return
   fi
   local color=$1

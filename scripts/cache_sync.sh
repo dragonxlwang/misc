@@ -1,13 +1,14 @@
 #!/bin/bash
 
-ANSI_COLOR_RED="\034[31m"
+ANSI_COLOR_RED="\033[31m"
 ANSI_COLOR_GREEN="\033[32m"
 ANSI_COLOR_RESET="\033[0m"
 ANSI_COLOR_BLUE="\033[36m"
-ANSI_COLOR_YELLOW="\033[33m"
+ANSI_COLOR_ORANGE="\033[33m"
+ANSI_COLOR_YELLOW="\033[1;33m"
 
 root_dir=$(dirname $(dirname $(readlink -f $0)))
-echo -e $ANSI_COLOR_YELLOW"root_dir=$root_dir"$ANSI_COLOR_RESET
+echo -e $ANSI_COLOR_ORANGE"root_dir=$root_dir"$ANSI_COLOR_RESET
 echo ""
 
 dst_dir="${root_dir}/cache"
@@ -47,7 +48,7 @@ do
     if [[ $ln_delta == -* ]]; then
       ln_str=$ANSI_COLOR_RED"($dst_ln -> $src_ln, $ln_delta)"$ANSI_COLOR_RESET
     elif [[ $ln_delta == 0 ]]; then
-      ln_str="($dst_ln -> $src_ln, $ln_delta)"
+      ln_str=$ANSI_COLOR_YELLOW"($dst_ln -> $src_ln, $ln_delta)"$ANSI_COLOR_RESET
     else
       ln_str=$ANSI_COLOR_BLUE"($dst_ln -> $src_ln, +$ln_delta)"$ANSI_COLOR_RESET
     fi
@@ -64,4 +65,4 @@ git pull --rebase origin
 git push origin
 
 echo ""
-echo -e $ANSI_COLOR_YELLOW"Finished!"$ANSI_COLOR_RESET
+echo -e $ANSI_COLOR_ORANGE"Finished!"$ANSI_COLOR_RESET

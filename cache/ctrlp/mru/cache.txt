@@ -1,5 +1,6 @@
 /home/xlwang/.profile_wangxl
 /home/xlwang/misc/scripts/cache_sync.sh
+/home/xlwang/misc/scripts/256_to_rgb.sh
 /home/xlwang/misc/dotfiles/lib/.profile_wangxl
 /home/xlwang/misc/tmp/tb
 /home/xlwang/misc/tmp/mast_exp.md
@@ -4997,4 +4998,3 @@ growth/qp_target_prediction.py
 /data/users/xlwang/fbsource/fbcode/aiplatform/modelstore/umm/TARGETS
 /data/users/xlwang/fbsource/fbcode/aiplatform/modelstore/metadata_service/client/TARGETS
 /data/users/xlwang/fbsource/fbcode/aiplatform/modelstore/metadata_service/if/TARGETS
-/data/users/xlwang/fbsource/fbcode/aiplatform/modelstore/umm/model_instance_managers/service_address.py
