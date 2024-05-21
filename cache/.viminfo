@@ -11,7 +11,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/up_cache
+~MSle0~/echo
 
 # Last Substitute Search Pattern:
 ~MSle0&max_nro_len
@@ -20,10 +20,10 @@
 $
 
 # Command Line History (newest to oldest):
-:w
-|2,0,1716276578,,"w"
 :qa
-|2,0,1716276393,,"qa"
+|2,0,1716276628,,"qa"
+:w
+|2,0,1716276610,,"w"
 :W
 |2,0,1716276053,,"W"
 :wqa
@@ -5120,6 +5120,8 @@ $
 |2,0,1635272165,,"ujk"
 
 # Search String History (newest to oldest):
+?/echo
+|2,1,1716276581,47,"echo"
 ?/rnul
 |2,1,1716276250,47,"rnul"
 ?/rnull
@@ -7752,8 +7754,6 @@ $
 |2,1,1702326172,47,"INFO: New Frame Siz"
 ?/spark
 |2,1,1702325618,47,"spark"
-?/echo
-|2,1,1702362795,47,"echo"
 ?/reporter
 |2,1,1702335616,47,"reporter"
 ?/aux
@@ -22777,40 +22777,64 @@ $
 !DISPATCH_STARTS	DIC	{}
 
 # File marks:
-'0  45  4  ~/misc/scripts/cache_sync.sh
-|4,48,45,4,1716276580,"~/misc/scripts/cache_sync.sh"
-'1  374  9  ~/.profile_wangxl
-|4,49,374,9,1716276393,"~/.profile_wangxl"
-'2  45  45  ~/misc/scripts/cache_sync.sh
-|4,50,45,45,1716276387,"~/misc/scripts/cache_sync.sh"
-'3  1  0  ~/misc/tmp/tb
-|4,51,1,0,1716275553,"~/misc/tmp/tb"
-'4  1  0  ~/misc/tmp/mast_exp.md
-|4,52,1,0,1716275387,"~/misc/tmp/mast_exp.md"
-'5  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
-|4,53,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
-'6  3  3  ~/misc/tmp/mast_exp.md
-|4,54,3,3,1716275128,"~/misc/tmp/mast_exp.md"
-'7  3  3  ~/misc/tmp/mast_exp.md
-|4,55,3,3,1716275128,"~/misc/tmp/mast_exp.md"
-'8  3  0  ~/misc/tmp/mast_exp.md
-|4,56,3,0,1716275128,"~/misc/tmp/mast_exp.md"
-'9  3  0  ~/misc/tmp/mast_exp.md
-|4,57,3,0,1716275128,"~/misc/tmp/mast_exp.md"
+'0  57  6  ~/misc/scripts/cache_sync.sh
+|4,48,57,6,1716276629,"~/misc/scripts/cache_sync.sh"
+'1  46  4  ~/misc/scripts/cache_sync.sh
+|4,49,46,4,1716276580,"~/misc/scripts/cache_sync.sh"
+'2  46  4  ~/misc/scripts/cache_sync.sh
+|4,50,46,4,1716276580,"~/misc/scripts/cache_sync.sh"
+'3  45  4  ~/misc/scripts/cache_sync.sh
+|4,51,45,4,1716276580,"~/misc/scripts/cache_sync.sh"
+'4  374  9  ~/.profile_wangxl
+|4,52,374,9,1716276393,"~/.profile_wangxl"
+'5  46  45  ~/misc/scripts/cache_sync.sh
+|4,53,46,45,1716276387,"~/misc/scripts/cache_sync.sh"
+'6  45  45  ~/misc/scripts/cache_sync.sh
+|4,54,45,45,1716276387,"~/misc/scripts/cache_sync.sh"
+'7  1  0  ~/misc/tmp/tb
+|4,55,1,0,1716275553,"~/misc/tmp/tb"
+'8  1  0  ~/misc/tmp/tb
+|4,56,1,0,1716275553,"~/misc/tmp/tb"
+'9  1  0  ~/misc/tmp/mast_exp.md
+|4,57,1,0,1716275387,"~/misc/tmp/mast_exp.md"
 
 # Jumplist (newest first):
+-'  57  6  ~/misc/scripts/cache_sync.sh
+|4,39,57,6,1716276629,"~/misc/scripts/cache_sync.sh"
+-'  11  6  ~/misc/scripts/cache_sync.sh
+|4,39,11,6,1716276598,"~/misc/scripts/cache_sync.sh"
+-'  10  13  ~/misc/scripts/cache_sync.sh
+|4,39,10,13,1716276591,"~/misc/scripts/cache_sync.sh"
+-'  1  0  ~/misc/scripts/cache_sync.sh
+|4,39,1,0,1716276584,"~/misc/scripts/cache_sync.sh"
+-'  52  4  ~/misc/scripts/cache_sync.sh
+|4,39,52,4,1716276583,"~/misc/scripts/cache_sync.sh"
+-'  46  4  ~/misc/scripts/cache_sync.sh
+|4,39,46,4,1716276581,"~/misc/scripts/cache_sync.sh"
 -'  45  4  ~/misc/scripts/cache_sync.sh
 |4,39,45,4,1716276580,"~/misc/scripts/cache_sync.sh"
+-'  50  49  ~/misc/scripts/cache_sync.sh
+|4,39,50,49,1716276560,"~/misc/scripts/cache_sync.sh"
 -'  49  49  ~/misc/scripts/cache_sync.sh
 |4,39,49,49,1716276560,"~/misc/scripts/cache_sync.sh"
+-'  48  48  ~/misc/scripts/cache_sync.sh
+|4,39,48,48,1716276558,"~/misc/scripts/cache_sync.sh"
 -'  47  48  ~/misc/scripts/cache_sync.sh
 |4,39,47,48,1716276558,"~/misc/scripts/cache_sync.sh"
+-'  374  9  ~/.profile_wangxl
+|4,39,374,9,1716276393,"~/.profile_wangxl"
 -'  374  9  ~/.profile_wangxl
 |4,39,374,9,1716276393,"~/.profile_wangxl"
 -'  45  45  ~/misc/scripts/cache_sync.sh
 |4,39,45,45,1716276387,"~/misc/scripts/cache_sync.sh"
 -'  1905  9  ~/.profile_wangxl
 |4,39,1905,9,1716276251,"~/.profile_wangxl"
+-'  1905  9  ~/.profile_wangxl
+|4,39,1905,9,1716276251,"~/.profile_wangxl"
+-'  1903  26  ~/.profile_wangxl
+|4,39,1903,26,1716276250,"~/.profile_wangxl"
+-'  1883  28  ~/.profile_wangxl
+|4,39,1883,28,1716276250,"~/.profile_wangxl"
 -'  1903  26  ~/.profile_wangxl
 |4,39,1903,26,1716276250,"~/.profile_wangxl"
 -'  1883  28  ~/.profile_wangxl
@@ -22821,6 +22845,16 @@ $
 |4,39,1889,28,1716276246,"~/.profile_wangxl"
 -'  1891  12  ~/.profile_wangxl
 |4,39,1891,12,1716276246,"~/.profile_wangxl"
+-'  1885  12  ~/.profile_wangxl
+|4,39,1885,12,1716276246,"~/.profile_wangxl"
+-'  1889  28  ~/.profile_wangxl
+|4,39,1889,28,1716276246,"~/.profile_wangxl"
+-'  1891  12  ~/.profile_wangxl
+|4,39,1891,12,1716276246,"~/.profile_wangxl"
+-'  1925  32  ~/.profile_wangxl
+|4,39,1925,32,1716276245,"~/.profile_wangxl"
+-'  2207  18  ~/.profile_wangxl
+|4,39,2207,18,1716276245,"~/.profile_wangxl"
 -'  1925  32  ~/.profile_wangxl
 |4,39,1925,32,1716276245,"~/.profile_wangxl"
 -'  2207  18  ~/.profile_wangxl
@@ -22829,8 +22863,16 @@ $
 |4,39,2304,0,1716276243,"~/.profile_wangxl"
 -'  1058  66  ~/.profile_wangxl
 |4,39,1058,66,1716276243,"~/.profile_wangxl"
+-'  2304  0  ~/.profile_wangxl
+|4,39,2304,0,1716276243,"~/.profile_wangxl"
+-'  1058  66  ~/.profile_wangxl
+|4,39,1058,66,1716276243,"~/.profile_wangxl"
 -'  852  56  ~/.profile_wangxl
 |4,39,852,56,1716276242,"~/.profile_wangxl"
+-'  852  56  ~/.profile_wangxl
+|4,39,852,56,1716276242,"~/.profile_wangxl"
+-'  840  45  ~/.profile_wangxl
+|4,39,840,45,1716276240,"~/.profile_wangxl"
 -'  840  45  ~/.profile_wangxl
 |4,39,840,45,1716276240,"~/.profile_wangxl"
 -'  51  65  ~/misc/scripts/cache_sync.sh
@@ -22841,38 +22883,56 @@ $
 |4,39,49,53,1716276053,"~/misc/scripts/cache_sync.sh"
 -'  47  52  ~/misc/scripts/cache_sync.sh
 |4,39,47,52,1716276040,"~/misc/scripts/cache_sync.sh"
+-'  51  27  ~/misc/scripts/cache_sync.sh
+|4,39,51,27,1716275990,"~/misc/scripts/cache_sync.sh"
 -'  50  27  ~/misc/scripts/cache_sync.sh
 |4,39,50,27,1716275990,"~/misc/scripts/cache_sync.sh"
 -'  50  27  ~/misc/scripts/cache_sync.sh
 |4,39,50,27,1716275990,"~/misc/scripts/cache_sync.sh"
+-'  47  33  ~/misc/scripts/cache_sync.sh
+|4,39,47,33,1716275936,"~/misc/scripts/cache_sync.sh"
 -'  46  33  ~/misc/scripts/cache_sync.sh
 |4,39,46,33,1716275936,"~/misc/scripts/cache_sync.sh"
 -'  46  33  ~/misc/scripts/cache_sync.sh
 |4,39,46,33,1716275936,"~/misc/scripts/cache_sync.sh"
+-'  43  5  ~/misc/scripts/cache_sync.sh
+|4,39,43,5,1716275646,"~/misc/scripts/cache_sync.sh"
 -'  42  5  ~/misc/scripts/cache_sync.sh
 |4,39,42,5,1716275646,"~/misc/scripts/cache_sync.sh"
 -'  42  5  ~/misc/scripts/cache_sync.sh
 |4,39,42,5,1716275646,"~/misc/scripts/cache_sync.sh"
+-'  41  26  ~/misc/scripts/cache_sync.sh
+|4,39,41,26,1716275644,"~/misc/scripts/cache_sync.sh"
 -'  40  26  ~/misc/scripts/cache_sync.sh
 |4,39,40,26,1716275644,"~/misc/scripts/cache_sync.sh"
 -'  40  26  ~/misc/scripts/cache_sync.sh
 |4,39,40,26,1716275644,"~/misc/scripts/cache_sync.sh"
+-'  40  5  ~/misc/scripts/cache_sync.sh
+|4,39,40,5,1716275638,"~/misc/scripts/cache_sync.sh"
 -'  39  5  ~/misc/scripts/cache_sync.sh
 |4,39,39,5,1716275638,"~/misc/scripts/cache_sync.sh"
 -'  39  5  ~/misc/scripts/cache_sync.sh
 |4,39,39,5,1716275638,"~/misc/scripts/cache_sync.sh"
+-'  38  26  ~/misc/scripts/cache_sync.sh
+|4,39,38,26,1716275636,"~/misc/scripts/cache_sync.sh"
 -'  37  26  ~/misc/scripts/cache_sync.sh
 |4,39,37,26,1716275636,"~/misc/scripts/cache_sync.sh"
 -'  37  26  ~/misc/scripts/cache_sync.sh
 |4,39,37,26,1716275636,"~/misc/scripts/cache_sync.sh"
+-'  37  12  ~/misc/scripts/cache_sync.sh
+|4,39,37,12,1716275628,"~/misc/scripts/cache_sync.sh"
 -'  36  12  ~/misc/scripts/cache_sync.sh
 |4,39,36,12,1716275628,"~/misc/scripts/cache_sync.sh"
 -'  36  12  ~/misc/scripts/cache_sync.sh
 |4,39,36,12,1716275628,"~/misc/scripts/cache_sync.sh"
+-'  36  12  ~/misc/scripts/cache_sync.sh
+|4,39,36,12,1716275624,"~/misc/scripts/cache_sync.sh"
 -'  35  12  ~/misc/scripts/cache_sync.sh
 |4,39,35,12,1716275624,"~/misc/scripts/cache_sync.sh"
 -'  35  12  ~/misc/scripts/cache_sync.sh
 |4,39,35,12,1716275624,"~/misc/scripts/cache_sync.sh"
+-'  45  4  ~/misc/scripts/cache_sync.sh
+|4,39,45,4,1716275568,"~/misc/scripts/cache_sync.sh"
 -'  44  4  ~/misc/scripts/cache_sync.sh
 |4,39,44,4,1716275568,"~/misc/scripts/cache_sync.sh"
 -'  44  4  ~/misc/scripts/cache_sync.sh
@@ -22883,18 +22943,34 @@ $
 |4,39,1,0,1716275553,"~/misc/tmp/tb"
 -'  1  0  ~/misc/tmp/tb
 |4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  1  0  ~/misc/tmp/tb
+|4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  1  0  ~/misc/tmp/tb
+|4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  1  0  ~/misc/tmp/tb
+|4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  1  0  ~/misc/tmp/tb
+|4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  42  28  ~/misc/scripts/cache_sync.sh
+|4,39,42,28,1716275480,"~/misc/scripts/cache_sync.sh"
 -'  41  28  ~/misc/scripts/cache_sync.sh
 |4,39,41,28,1716275480,"~/misc/scripts/cache_sync.sh"
 -'  41  28  ~/misc/scripts/cache_sync.sh
 |4,39,41,28,1716275480,"~/misc/scripts/cache_sync.sh"
+-'  39  10  ~/misc/scripts/cache_sync.sh
+|4,39,39,10,1716275471,"~/misc/scripts/cache_sync.sh"
 -'  38  10  ~/misc/scripts/cache_sync.sh
 |4,39,38,10,1716275471,"~/misc/scripts/cache_sync.sh"
 -'  38  10  ~/misc/scripts/cache_sync.sh
 |4,39,38,10,1716275471,"~/misc/scripts/cache_sync.sh"
+-'  44  8  ~/misc/scripts/cache_sync.sh
+|4,39,44,8,1716275455,"~/misc/scripts/cache_sync.sh"
 -'  43  8  ~/misc/scripts/cache_sync.sh
 |4,39,43,8,1716275455,"~/misc/scripts/cache_sync.sh"
 -'  43  8  ~/misc/scripts/cache_sync.sh
 |4,39,43,8,1716275455,"~/misc/scripts/cache_sync.sh"
+-'  23  71  ~/misc/scripts/cache_sync.sh
+|4,39,23,71,1716275424,"~/misc/scripts/cache_sync.sh"
 -'  22  71  ~/misc/scripts/cache_sync.sh
 |4,39,22,71,1716275424,"~/misc/scripts/cache_sync.sh"
 -'  22  71  ~/misc/scripts/cache_sync.sh
@@ -22919,136 +22995,105 @@ $
 |4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
 -'  1  0  ~/misc/tmp/mast_exp.md
 |4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
--'  39  0  ~/misc/tmp/mast_exp.md
-|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
--'  39  0  ~/misc/tmp/mast_exp.md
-|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
--'  39  0  ~/misc/tmp/mast_exp.md
-|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
--'  39  0  ~/misc/tmp/mast_exp.md
-|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
--'  39  0  ~/misc/tmp/mast_exp.md
-|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
--'  39  0  ~/misc/tmp/mast_exp.md
-|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
--'  39  0  ~/misc/tmp/mast_exp.md
-|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
--'  39  0  ~/misc/tmp/mast_exp.md
-|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
--'  3  3  ~/misc/tmp/mast_exp.md
-|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
--'  3  3  ~/misc/tmp/mast_exp.md
-|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
--'  3  3  ~/misc/tmp/mast_exp.md
-|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
--'  3  3  ~/misc/tmp/mast_exp.md
-|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
--'  3  3  ~/misc/tmp/mast_exp.md
-|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
--'  3  3  ~/misc/tmp/mast_exp.md
-|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
--'  3  3  ~/misc/tmp/mast_exp.md
-|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
--'  3  3  ~/misc/tmp/mast_exp.md
-|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
--'  5  0  ~/misc/tmp/mast_exp.md
-|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
--'  5  0  ~/misc/tmp/mast_exp.md
-|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
--'  5  0  ~/misc/tmp/mast_exp.md
-|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
--'  5  0  ~/misc/tmp/mast_exp.md
-|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
--'  5  0  ~/misc/tmp/mast_exp.md
-|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
--'  5  0  ~/misc/tmp/mast_exp.md
-|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
--'  5  0  ~/misc/tmp/mast_exp.md
-|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
--'  5  0  ~/misc/tmp/mast_exp.md
-|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
--'  10  0  ~/misc/tmp/mast_exp.md
-|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
--'  10  0  ~/misc/tmp/mast_exp.md
-|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
--'  10  0  ~/misc/tmp/mast_exp.md
-|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
--'  10  0  ~/misc/tmp/mast_exp.md
-|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
--'  10  0  ~/misc/tmp/mast_exp.md
-|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
--'  10  0  ~/misc/tmp/mast_exp.md
-|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
--'  10  0  ~/misc/tmp/mast_exp.md
-|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
--'  10  0  ~/misc/tmp/mast_exp.md
-|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
--'  9  0  ~/misc/tmp/mast_exp.md
-|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
--'  9  0  ~/misc/tmp/mast_exp.md
-|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
--'  9  0  ~/misc/tmp/mast_exp.md
-|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
--'  9  0  ~/misc/tmp/mast_exp.md
-|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
--'  9  0  ~/misc/tmp/mast_exp.md
-|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
--'  9  0  ~/misc/tmp/mast_exp.md
-|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
--'  9  0  ~/misc/tmp/mast_exp.md
-|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
--'  9  0  ~/misc/tmp/mast_exp.md
-|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
 
 # History of marks within files (newest to oldest):
 
 > ~/misc/scripts/cache_sync.sh
-	*	1716276579	0
-	"	45	4
-	^	49	50
-	.	45	0
-	+	22	71
-	+	43	0
+	*	1716276614	0
+	"	57	6
+	^	57	7
+	.	57	6
+	+	23	71
 	+	44	0
-	+	43	0
-	+	38	10
-	+	41	29
-	+	51	64
-	+	38	0
-	+	51	65
-	+	44	0
-	+	35	12
-	+	36	12
-	+	37	26
-	+	38	0
-	+	39	0
-	+	40	26
-	+	41	0
-	+	42	0
-	+	37	0
-	+	51	71
-	+	51	10
-	+	51	52
-	+	51	32
-	+	45	13
-	+	46	29
-	+	50	0
-	+	46	33
-	+	47	57
-	+	50	0
-	+	47	0
-	+	49	0
-	+	46	20
-	+	51	12
-	+	47	51
-	+	49	50
-	+	51	0
-	+	45	44
-	+	45	21
-	+	45	44
-	+	47	48
-	+	49	49
 	+	45	0
+	+	44	0
+	+	39	10
+	+	42	29
+	+	52	64
+	+	39	0
+	+	52	65
+	+	45	0
+	+	36	12
+	+	37	12
+	+	38	26
+	+	39	0
+	+	40	0
+	+	41	26
+	+	42	0
+	+	43	0
+	+	38	0
+	+	52	71
+	+	52	10
+	+	52	52
+	+	52	32
+	+	46	13
+	+	47	29
+	+	51	0
+	+	47	33
+	+	48	57
+	+	51	0
+	+	48	0
+	+	50	0
+	+	47	20
+	+	52	12
+	+	48	51
+	+	50	50
+	+	52	0
+	+	46	44
+	+	46	21
+	+	46	44
+	+	48	48
+	+	50	49
+	+	46	0
+	+	23	71
+	+	44	0
+	+	45	0
+	+	44	0
+	+	39	10
+	+	42	29
+	+	52	64
+	+	39	0
+	+	52	65
+	+	45	0
+	+	36	12
+	+	37	12
+	+	38	26
+	+	39	0
+	+	40	0
+	+	41	26
+	+	42	0
+	+	43	0
+	+	38	0
+	+	52	71
+	+	52	10
+	+	52	52
+	+	52	32
+	+	46	13
+	+	47	29
+	+	51	0
+	+	47	33
+	+	48	57
+	+	51	0
+	+	48	0
+	+	50	0
+	+	47	20
+	+	52	12
+	+	48	51
+	+	50	50
+	+	52	0
+	+	46	44
+	+	46	21
+	+	46	44
+	+	48	48
+	+	50	49
+	+	46	0
+	+	10	13
+	+	11	6
+	+	57	6
 
 > ~/.profile_wangxl
 	*	1716276255	0

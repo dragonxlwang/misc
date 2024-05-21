@@ -7,7 +7,7 @@ ANSI_COLOR_BLUE="\033[36m"
 ANSI_COLOR_YELLOW="\033[33m"
 
 root_dir=$(dirname $(dirname $(readlink -f $0)))
-echo root_dir=$root_dir
+echo $ANSI_COLOR_YELLOW"root_dir=$root_dir"$ANSI_COLOR_RESET
 echo ""
 
 dst_dir="${root_dir}/cache"
@@ -61,4 +61,5 @@ git commit --verbose --all -m "dev cache sync"
 git pull --rebase origin
 git push origin
 
-echo "Finished!"
+echo ""
+echo $ANSI_COLOR_YELLOW"Finished!"$ANSI_COLOR_RESET
