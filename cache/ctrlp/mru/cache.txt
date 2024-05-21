@@ -1,3 +1,8 @@
+/home/xlwang/.oh-my-zsh/plugins/z/z.plugin.zsh
+/home/xlwang/.oh-my-zsh/plugins/z/_z
+/home/xlwang/.zshrc
+/home/xlwang/.vimrc
+/home/xlwang/.z
 /home/xlwang/.profile_wangxl
 /home/xlwang/misc/scripts/cache_sync.sh
 /home/xlwang/misc/scripts/256_to_rgb.sh
@@ -5,7 +10,6 @@
 /home/xlwang/misc/tmp/tb
 /home/xlwang/misc/tmp/mast_exp.md
 /home/xlwang/misc/dotfiles/lib/.vimrc.bundles
-/home/xlwang/.vimrc
 /home/xlwang/misc/tmp/mast_exp
 /home/xlwang/.vim/bundle/ctrlp-funky/autoload/ctrlp/funky/ft/markdown.vim
 /home/xlwang/.vim/bundle/vimtex/autoload/vimtex/syntax/p/markdown.vim
@@ -131,7 +135,6 @@
 /home/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/hstu_vdd_date_ranges.sh
 /home/xlwang/fbcode/mrs/fm/modules/enrichment_interactor.py
 /home/xlwang/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train_local.sh
-/home/xlwang/.z
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf/model_v5_hstu_standalone_cint_exp_config.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_mast_train_eval.sh
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_local_train.sh
@@ -143,7 +146,6 @@
 /data/users/xlwang/fbsource/fbcode/dataswarm_authoring/operators/wait_for_hive_operator.py
 /home/xlwang/fbcode/dataswarm_authoring/operators/__init__.py
 /home/xlwang/fbcode/python/fbconda/setup/conda_profile.sh
-/home/xlwang/.zshrc
 /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-hq7v69u_.commit.hg.txt
 /etc/fbconda/fbconda.sh
 /home/xlwang/.tmux.conf
@@ -482,8 +484,6 @@
 /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-aqzkmoig.commit.hg.txt
 /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-5ckktdyr.commit.hg.txt
 /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-pe157r1h.commit.hg.txt
-/home/xlwang/.oh-my-zsh/plugins/z/_z
-/home/xlwang/.oh-my-zsh/plugins/z/z.plugin.zsh
 /home/xlwang/.oh-my-zsh/plugins/z/z.sh
 /data/users/xlwang/fbsource/fbcode/caffe2/caffe2/fb/proto/io_metadata.thrift
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/model_family_api/model_family.py

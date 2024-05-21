@@ -1,4 +1,5 @@
 
+zshrc
 profile
 modelv5hstustand
 qeonlinetrain
@@ -7997,4 +7998,3 @@ elasticmultiproc
 hpctrainerpy
 torchxpython
 minimaldatapy
-torchxconfig

@@ -44,6 +44,10 @@ ZSH_THEME="ys"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
+# .z sets below default to 9000, which roughly keeps 500 dir locations
+# increase the value to keep more dirs
+ZSHZ_MAX_SCORE=99999
+
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
