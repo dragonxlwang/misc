@@ -11,7 +11,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/named_module
+~MSle0~/vimtex_latexmk_callback_hooks
 
 # Last Substitute Search Pattern:
 ~MSle0&max_nro_len
@@ -21,21 +21,91 @@ $
 
 # Command Line History (newest to oldest):
 :qa
-|2,0,1715964278,,"qa"
-:Dufburl
-|2,0,1715919354,,"Dufburl"
-:Duf
-|2,0,1715919160,,"Duf"
+|2,0,1716275553,,"qa"
+:wqa
+|2,0,1716275387,,"wqa"
 :w
-|2,0,1715904496,,"w"
+|2,0,1716275368,,"w"
+:W
+|2,0,1716275332,,"W"
+:vs ~/.vimrc
+|2,0,1716275176,,"vs ~/.vimrc"
+:qa!
+|2,0,1716275125,,"qa!"
+:Qa!
+|2,0,1716275106,,"Qa!"
+:Qa
+|2,0,1716275102,,"Qa"
+:set filetype=markdown
+|2,0,1716274808,,"set filetype=markdown"
+:sp ~/.vim/bundle/vim-syntax-extra/after/syntax/
+|2,0,1716273895,,"sp ~/.vim/bundle/vim-syntax-extra/after/syntax/"
+:set filetype=text
+|2,0,1716273804,,"set filetype=text"
+:help :PluginInstall
+|2,0,1716274732,,"help :PluginInstall"
+:PluginInstall 'preservim/vim-markdown'
+|2,0,1716274720,,"PluginInstall 'preservim/vim-markdown'"
+:PluginInstall preservim/vim-markdown
+|2,0,1716274698,,"PluginInstall preservim/vim-markdown"
+:help PluginInstall
+|2,0,1716274676,,"help PluginInstall"
+:help
+|2,0,1716274672,,"help"
+:sp ./ctrlp-funky/autoload/ctrlp/funky/ft/markdown.vim
+|2,0,1716274263,,"sp ./ctrlp-funky/autoload/ctrlp/funky/ft/markdown.vim"
+:sb ./ctrlp-funky/autoload/ctrlp/funky/ft/markdown.vim
+|2,0,1716274260,,"sb ./ctrlp-funky/autoload/ctrlp/funky/ft/markdown.vim"
+:ls
+|2,0,1716274245,,"ls"
+:q
+|2,0,1716273962,,"q"
+:"w
+|2,0,1716266667,,"\"w"
+:124
+|2,0,1716251011,,"124"
+:Fbs29
+|2,0,1716250824,,"Fbs29"
+:127
+|2,0,1716250002,,"127"
+:wjkkjku
+|2,0,1716249721,,"wjkkjku"
+:Fbs13
+|2,0,1716249520,,"Fbs13"
+:Fbs46
+|2,0,1716249514,,"Fbs46"
+:Wipeout
+|2,0,1716249500,,"Wipeout"
+:jkujk
+|2,0,1716247374,,"jkujk"
+:new
+|2,0,1716247039,,"new"
+:Dufburl
+|2,0,1716246200,,"Dufburl"
+:Duf
+|2,0,1716241127,,"Duf"
+:Rg
+|2,0,1716248245,,"Rg"
+:'<,'>qa
+|2,0,1716242615,,"'<,'>qa"
+:jk
+|2,0,1716239986,,"jk"
+:Fbs11
+|2,0,1716228254,,"Fbs11"
+:Wqa
+|2,0,1716240115,,"Wqa"
+:wq
+|2,0,1716240114,,"wq"
+:Dif
+|2,0,1715971245,,"Dif"
+:AS
+|2,0,1715964946,,"AS"
+:681
+|2,0,1715964413,,"681"
 :e
 |2,0,1715904483,,"e"
-:W
-|2,0,1715904430,,"W"
 :'<,'>
 |2,0,1715904254,,"'<,'>"
-:'<,'>qa
-|2,0,1715900063,,"'<,'>qa"
 :Fbs12
 |2,0,1715892328,,"Fbs12"
 :Fbs20
@@ -44,14 +114,8 @@ $
 |2,0,1715886888,,"Fbs10"
 :823
 |2,0,1715879376,,"823"
-:Qa
-|2,0,1715819989,,"Qa"
-:qa!
-|2,0,1715809805,,"qa!"
 :jkkkjk
 |2,0,1715809369,,"jkkkjk"
-:wqa
-|2,0,1715809350,,"wqa"
 :sp ~/fbcode/python/fbconda/setup/conda_profile.sh
 |2,0,1715798537,,"sp ~/fbcode/python/fbconda/setup/conda_profile.sh"
 :355
@@ -64,8 +128,6 @@ $
 |2,0,1715748102,,"Fbs5"
 :NERDTreeClose | FBVimSaveSession
 |2,0,1715747851,,"NERDTreeClose | FBVimSaveSession"
-:"w
-|2,0,1715723499,,"\"w"
 :Fbs8
 |2,0,1715709345,,"Fbs8"
 :347
@@ -76,8 +138,6 @@ $
 |2,0,1715640681,,"Fbs161"
 :sp ~/fbcode/pytorch/data/torchdata/dataloader2/dataloader2.py
 |2,0,1715638281,,"sp ~/fbcode/pytorch/data/torchdata/dataloader2/dataloader2.py"
-:Wqa
-|2,0,1715724964,,"Wqa"
 :tmpj
 |2,0,1715724933,,"tmpj"
 :VjkVC
@@ -86,8 +146,6 @@ $
 |2,0,1715626850,,"vs"
 :Fbs18
 |2,0,1715376781,,"Fbs18"
-:Fbs29
-|2,0,1715376777,,"Fbs29"
 :Fbs24
 |2,0,1715373900,,"Fbs24"
 :Fbs23
@@ -96,8 +154,6 @@ $
 |2,0,1715373171,,"sb 18"
 :sp ~/ls_colors.zsh
 |2,0,1715363868,,"sp ~/ls_colors.zsh"
-:q
-|2,0,1715363794,,"q"
 :qqa
 |2,0,1715363579,,"qqa"
 :qq
@@ -128,8 +184,6 @@ $
 |2,0,1715302575,,"58"
 :TS
 |2,0,1715302572,,"TS"
-:jk
-|2,0,1715302485,,"jk"
 :sb11
 |2,0,1715301713,,"sb11"
 :1713
@@ -140,14 +194,10 @@ $
 |2,0,1715298404,,"Fbs1"
 :Fbs4
 |2,0,1715295227,,"Fbs4"
-:AS
-|2,0,1715277637,,"AS"
 :jk:Fb
 |2,0,1715234413,,"jk:Fb"
 :72
 |2,0,1715230768,,"72"
-:Rg
-|2,0,1715229037,,"Rg"
 :142
 |2,0,1715221871,,"142"
 :119
@@ -156,8 +206,6 @@ $
 |2,0,1715214361,,"::::w"
 :152
 |2,0,1715213983,,"152"
-:127
-|2,0,1715213839,,"127"
 :158
 |2,0,1715213782,,"158"
 :!58
@@ -192,8 +240,6 @@ $
 |2,0,1715073236,,"jkjjkkk"
 :317
 |2,0,1715072499,,"317"
-:Wipeout
-|2,0,1715067259,,"Wipeout"
 :461
 |2,0,1715066990,,"461"
 :398
@@ -224,8 +270,6 @@ $
 |2,0,1715040129,,"Rg shutdown"
 :366
 |2,0,1715035865,,"366"
-:Fbs11
-|2,0,1715030169,,"Fbs11"
 :61
 |2,0,1714804686,,"61"
 :43
@@ -254,8 +298,6 @@ $
 |2,0,1714772317,,"169"
 :112
 |2,0,1714772265,,"112"
-:Fbs13
-|2,0,1714770477,,"Fbs13"
 :Df
 |2,0,1714770448,,"Df"
 :Wu
@@ -382,8 +424,6 @@ $
 |2,0,1713982127,,"qw"
 :qwa
 |2,0,1713978453,,"qwa"
-:Qa!
-|2,0,1713942225,,"Qa!"
 :Rename cache_sync.sh
 |2,0,1713937729,,"Rename cache_sync.sh"
 :sp ~/misc/scripts/setup_symlinks.sh
@@ -470,8 +510,6 @@ $
 |2,0,1703102650,,"s/\\/\\./g"
 :Fbs34
 |2,0,1703100640,,"Fbs34"
-:wq
-|2,0,1703112103,,"wq"
 :sp ~/fbcode/langtech/transformers/common/TARGETS
 |2,0,1703098868,,"sp ~/fbcode/langtech/transformers/common/TARGETS"
 :sp ~/configerator/source/minimal_viable_ai/prospector/mvai_prospector_igr.fbpkg.cconf
@@ -606,8 +644,6 @@ $
 |2,0,1702617171,,"267"
 :jkjk
 |2,0,1702616234,,"jkjk"
-:ls
-|2,0,1702616052,,"ls"
 :sp ~/fbcode/dper_lib/silvertorch/lib/preproc/umia_preproc.py
 |2,0,1702615885,,"sp ~/fbcode/dper_lib/silvertorch/lib/preproc/umia_preproc.py"
 :740
@@ -802,8 +838,6 @@ $
 |2,0,1702083091,,"578"
 :758
 |2,0,1702081976,,"758"
-:681
-|2,0,1702074795,,"681"
 :760
 |2,0,1702074754,,"760"
 :1405
@@ -1000,8 +1034,6 @@ $
 |2,0,1701475611,,"8jkkkjj"
 :help indent
 |2,0,1701475579,,"help indent"
-:help
-|2,0,1701475576,,"help"
 :134
 |2,0,1701470556,,"134"
 :sp ~/workspace/tqdm/tqdm/cli.py
@@ -1462,8 +1494,6 @@ $
 |2,0,1695681663,,"sp ~/fbcode/hammer/ops/triton/triton_bucketed_bias.py"
 :969
 |2,0,1695679213,,"969"
-:jkujk
-|2,0,1695539809,,"jkujk"
 :sp ~/fbcode/deeplearning/fbgemm/fbgemm_gpu/fbgemm_gpu/split_table_batched_embeddings_ops_training.py
 |2,0,1695492032,,"sp ~/fbcode/deeplearning/fbgemm/fbgemm_gpu/fbgemm_gpu/split_table_batched_embeddings_ops_training.py"
 :sp model_hstu_standalone.py
@@ -1712,8 +1742,6 @@ $
 |2,0,1693438278,,"set s"
 :sp ~/.vim/after/indent/
 |2,0,1693438183,,"sp ~/.vim/after/indent/"
-:sp ~/.vim/bundle/vim-syntax-extra/after/syntax/
-|2,0,1693438159,,"sp ~/.vim/bundle/vim-syntax-extra/after/syntax/"
 :sp ~/.vim/after/syntax/
 |2,0,1693438125,,"sp ~/.vim/after/syntax/"
 :set 
@@ -2134,8 +2162,6 @@ $
 |2,0,1691685597,,"sp ~/min"
 :66
 |2,0,1691652461,,"66"
-:124
-|2,0,1691651375,,"124"
 :Com
 |2,0,1691639955,,"Com"
 :Fpy'
@@ -2176,8 +2202,6 @@ $
 |2,0,1691435172,,"set filetype=python"
 :filetype=python
 |2,0,1691435164,,"filetype=python"
-:new
-|2,0,1691435153,,"new"
 :new 
 |2,0,1691433941,,"new "
 :s/_/-/gc
@@ -2196,8 +2220,6 @@ $
 |2,0,1691364865,,"Fbs38"
 :Rg process_sparse_params
 |2,0,1691341067,,"Rg process_sparse_params"
-:Fbs46
-|2,0,1691339383,,"Fbs46"
 :sp ~/.vim/bundle/vim-better-search/plugin/better-search.vim
 |2,0,1691336271,,"sp ~/.vim/bundle/vim-better-search/plugin/better-search.vim"
 :sp ~/fbcode/minimal_viable_ai/fire/templates/app-layer.fbpkg.cconf.template
@@ -2656,8 +2678,6 @@ $
 |2,0,1686257779,,"sp ~/instagram-server/distillery/gatekeeper/restraints/checks/other/dependent_gatekeeper_project_with_and_operator.py"
 :sp ~/distillery/gatekeeper/restraints/checks/other/dependent_gatekeeper_project_with_and_operator.py
 |2,0,1686257777,,"sp ~/distillery/gatekeeper/restraints/checks/other/dependent_gatekeeper_project_with_and_operator.py"
-:Dif
-|2,0,1686254153,,"Dif"
 :44
 |2,0,1686182901,,"44"
 :sp ~/.bashrc
@@ -5100,6 +5120,260 @@ $
 |2,0,1635272165,,"ujk"
 
 # Search String History (newest to oldest):
+?/vimtex_latexmk_callback_hooks
+|2,1,1716275184,47,"vimtex_latexmk_callback_hooks"
+?/vimtex
+|2,1,1716275182,47,"vimtex"
+?/bundle
+|2,1,1716275178,47,"bundle"
+?/mast_exp
+|2,1,1716275112,47,"mast_exp"
+?/markdown
+|2,1,1716274364,47,"markdown"
+?/long_last
+|2,1,1716270647,47,"long_last"
+?/x11
+|2,1,1716269130,47,"x11"
+?/prod
+|2,1,1716266500,47,"prod"
+?/pbco
+|2,1,1716267318,47,"pbco"
+?/clip
+|2,1,1716267314,47,"clip"
+?/date
+|2,1,1716252182,47,"date"
+?/today
+|2,1,1716252179,47,"today"
+?/mast_list
+|2,1,1716252153,47,"mast_list"
+?/copy_nro
+|2,1,1716250400,47,"copy_nro"
+?/nro_
+|2,1,1716250399,47,"nro_"
+?/eval
+|2,1,1716249274,47,"eval"
+?/model_enti
+|2,1,1716248748,47,"model_enti"
+?/model_entity_id
+|2,1,1716248519,47,"model_entity_id"
+?/load_model_entity
+|2,1,1716248478,47,"load_model_entity"
+?/m
+|2,1,1716248475,47,"m"
+?/optiona
+|2,1,1716248470,47,"optiona"
+?/load_model
+|2,1,1716247600,47,"load_model"
+?/load_)
+|2,1,1716247598,47,"load_)"
+?/load_che
+|2,1,1716247589,47,"load_che"
+?/load_check
+|2,1,1716247481,47,"load_check"
+?/ech
+|2,1,1716247479,47,"ech"
+?/check
+|2,1,1716247440,47,"check"
+?/checkpoint
+|2,1,1716247414,47,"checkpoint"
+?/-z
+|2,1,1716247338,47,"-z"
+?/publish
+|2,1,1716241655,47,"publish"
+?/train
+|2,1,1716241644,47,"train"
+?/ru
+|2,1,1716241641,47,"ru"
+?/tgif
+|2,1,1716241423,47,"tgif"
+?/commo
+|2,1,1716241174,47,"commo"
+?/v5
+|2,1,1716240718,47,"v5"
+?/v5_logging
+|2,1,1716240701,47,"v5_logging"
+?/hstu
+|2,1,1716240675,47,"hstu"
+?/click
+|2,1,1716248243,47,"click"
+?/light
+|2,1,1716248242,47,"light"
+?/copy
+|2,1,1716250401,47,"copy"
+? [\u0009\u0020\u00a0\u1680\u180e\u2000-\u200b\u202f\u205f\u3000\ufeff]\+$
+|2,1,1716250103,,"[\\u0009\\u0020\\u00a0\\u1680\\u180e\\u2000-\\u200b\\u202f\\u205f\\u3000\\ufeff]\\+$"
+?/model_en
+|2,1,1716249286,47,"model_en"
+?/load
+|2,1,1716249276,47,"load"
+?/local
+|2,1,1716248779,47,"local"
+?/null
+|2,1,1716246887,47,"null"
+?/app
+|2,1,1716246565,47,"app"
+?/online
+|2,1,1716246401,47,"online"
+?/max_app_re
+|2,1,1716246034,47,"max_app_re"
+?/max-app-
+|2,1,1716246026,47,"max-app-"
+?/onlin
+|2,1,1716245390,47,"onlin"
+?/tracer
+|2,1,1716244453,47,"tracer"
+?/trace
+|2,1,1716244083,47,"trace"
+?/inference_mo
+|2,1,1716243531,47,"inference_mo"
+?/publish_impl
+|2,1,1716243523,47,"publish_impl"
+?/fx
+|2,1,1716243511,47,"fx"
+?/merge_
+|2,1,1716242689,47,"merge_"
+?/collect_
+|2,1,1716242059,47,"collect_"
+?/merge
+|2,1,1716237721,47,"merge"
+?/fill_
+|2,1,1716237442,47,"fill_"
+?/seq_embeddings
+|2,1,1716237228,47,"seq_embeddings"
+?/seq_embedding
+|2,1,1716237212,47,"seq_embedding"
+?/self
+|2,1,1716236956,47,"self"
+?/node
+|2,1,1716236674,47,"node"
+?/torch_func
+|2,1,1716230858,47,"torch_func"
+?/torchy_
+|2,1,1716230856,47,"torchy_"
+?/wait
+|2,1,1716230843,47,"wait"
+?/torch_disp
+|2,1,1716230834,47,"torch_disp"
+?/awa
+|2,1,1716230830,47,"awa"
+?/sample
+|2,1,1716228262,47,"sample"
+?/random
+|2,1,1716228230,47,"random"
+?/input
+|2,1,1716228220,47,"input"
+?/samp
+|2,1,1716228217,47,"samp"
+?/inferenc
+|2,1,1716228063,47,"inferenc"
+?/inference
+|2,1,1716228030,47,"inference"
+?/sample_input
+|2,1,1716228009,47,"sample_input"
+?/jkjujkkkjk
+|2,1,1716228007,47,"jkjujkkkjk"
+?/sample_inputs
+|2,1,1716226258,47,"sample_inputs"
+?/fill
+|2,1,1716225878,47,"fill"
+?/trce
+|2,1,1716225737,47,"trce"
+? \s\+$
+|2,1,1716240122,,"\\s\\+$"
+?/reduce
+|2,1,1716240106,47,"reduce"
+?/sf
+|2,1,1716229207,47,"sf"
+?/interactor
+|2,1,1716225238,47,"interactor"
+?/dst
+|2,1,1716225183,47,"dst"
+?/assert
+|2,1,1716225127,47,"assert"
+?/get_combine
+|2,1,1716224854,47,"get_combine"
+?/legacy
+|2,1,1716224824,47,"legacy"
+?/get_combined
+|2,1,1716224819,47,"get_combined"
+?/et_com
+|2,1,1716224813,47,"et_com"
+?/first
+|2,1,1716157578,47,"first"
+?/embedding
+|2,1,1716017966,47,"embedding"
+?/sh
+|2,1,1716017951,47,"sh"
+?/embeddingcollection
+|2,1,1716017936,47,"embeddingcollection"
+?/seq_
+|2,1,1715991644,47,"seq_"
+?/fill_seq
+|2,1,1715988351,47,"fill_seq"
+?/sparse_arch*
+|2,1,1715988301,47,"sparse_arch*"
+?/dict
+|2,1,1715988270,47,"dict"
+?/seq_emb
+|2,1,1715988267,47,"seq_emb"
+?/sparse_arch
+|2,1,1715988258,47,"sparse_arch"
+?/class
+|2,1,1715988250,47,"class"
+?/sequence
+|2,1,1715988224,47,"sequence"
+?/preproc
+|2,1,1715983756,47,"preproc"
+?/cot
+|2,1,1715983740,47,"cot"
+?/enrichment_d
+|2,1,1715982449,47,"enrichment_d"
+?/sup
+|2,1,1715972633,47,"sup"
+?/rule
+|2,1,1715972032,47,"rule"
+?/spli
+|2,1,1715968851,47,"spli"
+?/split
+|2,1,1715967881,47,"split"
+?/thrift
+|2,1,1715967537,47,"thrift"
+?/hhc
+|2,1,1715967504,47,"hhc"
+?/tg
+|2,1,1715967501,47,"tg"
+?/publisher_config
+|2,1,1715967486,47,"publisher_config"
+?/di_world_siz
+|2,1,1715967416,47,"di_world_siz"
+?/roo
+|2,1,1715967409,47,"roo"
+?/poulate
+|2,1,1715966599,47,"poulate"
+?/has_emb
+|2,1,1715966537,47,"has_emb"
+?/has
+|2,1,1715966527,47,"has"
+?/lr
+|2,1,1715966464,47,"lr"
+?/weight
+|2,1,1715966115,47,"weight"
+?/collect_sequen
+|2,1,1715966091,47,"collect_sequen"
+?/po
+|2,1,1715965233,47,"po"
+?/hpc
+|2,1,1715965223,47,"hpc"
+?/populate
+|2,1,1715965009,47,"populate"
+?/def
+|2,1,1715964957,47,"def"
+?/state_dict
+|2,1,1715964945,47,"state_dict"
+?/rank
+|2,1,1715964696,47,"rank"
+?/impl
+|2,1,1715964690,47,"impl"
 ?/named_module
 |2,1,1715922454,47,"named_module"
 ?/cotrainconfig
@@ -5130,8 +5404,6 @@ $
 |2,1,1715897464,47,"unsu"
 ?/enrichment
 |2,1,1715897359,47,"enrichment"
-?/state_dict
-|2,1,1715893975,47,"state_dict"
 ?/named_buffers
 |2,1,1715892454,47,"named_buffers"
 ?/persistent
@@ -5140,8 +5412,6 @@ $
 |2,1,1715892125,47,"shard"
 ?/register_buffer
 |2,1,1715892009,47,"register_buffer"
-? \s\+$
-|2,1,1715897076,,"\\s\\+$"
 ?/mast_link
 |2,1,1715896969,47,"mast_link"
 ?/mast_cat
@@ -5154,8 +5424,6 @@ $
 |2,1,1715886830,47,"assemble"
 ?/asse
 |2,1,1715886827,47,"asse"
-?/publish
-|2,1,1715886661,47,"publish"
 ?/freeze
 |2,1,1715886375,47,"freeze"
 ?/get_dense
@@ -5176,8 +5444,6 @@ $
 |2,1,1715879054,47,"create"
 ?/start
 |2,1,1715879053,47,"start"
-?/samp
-|2,1,1715817166,47,"samp"
 ?/depl
 |2,1,1715822954,47,"depl"
 ?/generic
@@ -5216,8 +5482,6 @@ $
 |2,1,1715804033,47,"bulk_eval"
 ?/HSTUCint
 |2,1,1715803566,47,"HSTUCint"
-?/split
-|2,1,1715802017,47,"split"
 ?/multiple
 |2,1,1715802015,47,"multiple"
 ?/enrichment_result
@@ -5270,8 +5534,6 @@ $
 |2,1,1715757202,47,"should_re"
 ?/process_loookup
 |2,1,1715752189,47,"process_loookup"
-?/fill
-|2,1,1715752126,47,"fill"
 ?/fills
 |2,1,1715752082,47,"fills"
 ?/pool
@@ -5366,8 +5628,6 @@ $
 |2,1,1715661646,47,"mem"
 ?/zeus
 |2,1,1715652183,47,"zeus"
-?/checkpoint
-|2,1,1715642559,47,"checkpoint"
 ?/build
 |2,1,1715641669,47,"build"
 ?/preload done
@@ -5412,8 +5672,6 @@ $
 |2,1,1715638127,47,"dataloader"
 ?/position
 |2,1,1715637350,47,"position"
-?/sample
-|2,1,1715637173,47,"sample"
 ?/sampl
 |2,1,1715637164,47,"sampl"
 ?/should
@@ -5448,8 +5706,6 @@ $
 |2,1,1715630122,47,"classification"
 ?/supervision_wei
 |2,1,1715626704,47,"supervision_wei"
-?/weight
-|2,1,1715626693,47,"weight"
 ?/supervision
 |2,1,1715626692,47,"supervision"
 ?/supervision_weight
@@ -5478,8 +5734,6 @@ $
 |2,1,1715383271,47,"r"
 ?/reducebase
 |2,1,1715383270,47,"reducebase"
-?/v5
-|2,1,1715383235,47,"v5"
 ?/max_seque
 |2,1,1715383572,47,"max_seque"
 ?/mast_kill
@@ -5494,10 +5748,6 @@ $
 |2,1,1715375532,47,"toy_pool_si"
 ?/toy
 |2,1,1715375480,47,"toy"
-?/prod
-|2,1,1715375096,47,"prod"
-?/reduce
-|2,1,1715375069,47,"reduce"
 ?/reduc
 |2,1,1715375013,47,"reduc"
 ?/interac
@@ -5506,8 +5756,6 @@ $
 |2,1,1715373776,47,"in"
 ?/vari
 |2,1,1715373775,47,"vari"
-?/po
-|2,1,1715373773,47,"po"
 ?/bulk
 |2,1,1715373684,47,"bulk"
 ?/reload
@@ -5566,8 +5814,6 @@ $
 |2,1,1715362187,47,"sourc"
 ?/clear-history
 |2,1,1715362023,47,"clear-history"
-?/cot
-|2,1,1715321343,47,"cot"
 ?/cint
 |2,1,1715321339,47,"cint"
 ?/feature_pro
@@ -5590,8 +5836,6 @@ $
 |2,1,1715299711,47,"enrichmentresult"
 ?/self.cot
 |2,1,1715299340,47,"self.cot"
-?/assert
-|2,1,1715298900,47,"assert"
 ?/roomtml
 |2,1,1715298451,47,"roomtml"
 ?/config
@@ -5620,14 +5864,10 @@ $
 |2,1,1715302330,47,"enrichment_mask"
 ?/cotrainenrichmentresults
 |2,1,1715302108,47,"cotrainenrichmentresults"
-?/hstu
-|2,1,1715302052,47,"hstu"
 ? \<TODO\>
 |2,1,1715300786,,"\\<TODO\\>"
 ?/hum
 |2,1,1715288073,47,"hum"
-?/dict
-|2,1,1715277634,47,"dict"
 ?/CLIPViTEncoder
 |2,1,1715277161,47,"CLIPViTEncoder"
 ?/iniaili
@@ -5718,8 +5958,6 @@ $
 |2,1,1715221489,47,"dummy"
 ?/dim
 |2,1,1715220847,47,"dim"
-? [\u0009\u0020\u00a0\u1680\u180e\u2000-\u200b\u202f\u205f\u3000\ufeff]\+$
-|2,1,1715220678,,"[\\u0009\\u0020\\u00a0\\u1680\\u180e\\u2000-\\u200b\\u202f\\u205f\\u3000\\ufeff]\\+$"
 ?/id_
 |2,1,1715220443,47,"id_"
 ?/gather
@@ -5766,8 +6004,6 @@ $
 |2,1,1715194246,47,"function h{"
 ?/h {
 |2,1,1715194243,47,"h {"
-?/merge
-|2,1,1715191914,47,"merge"
 ?/to
 |2,1,1715191201,47,"to"
 ?/callback
@@ -5828,8 +6064,6 @@ $
 |2,1,1715067700,47,"iter"
 ?/on_train_
 |2,1,1715064818,47,"on_train_"
-?/load
-|2,1,1715063978,47,"load"
 ?/hivedata
 |2,1,1715063906,47,"hivedata"
 ?/datasource
@@ -5846,8 +6080,6 @@ $
 |2,1,1715062489,47,"save_interval"
 ?/interval
 |2,1,1715062475,47,"interval"
-?/check
-|2,1,1715061766,47,"check"
 ?/new_
 |2,1,1715060872,47,"new_"
 ?/object_list
@@ -5872,8 +6104,6 @@ $
 |2,1,1715048323,47,"ini"
 ?/mvai
 |2,1,1715048281,47,"mvai"
-?/train
-|2,1,1715048258,47,"train"
 ?/undefined
 |2,1,1715048093,47,"undefined"
 ?/init_process_group
@@ -5892,8 +6122,6 @@ $
 |2,1,1715066936,47,"get_newer"
 ?/timer
 |2,1,1715066906,47,"timer"
-?/self
-|2,1,1715066825,47,"self"
 ?/group
 |2,1,1715060884,47,"group"
 ?/paste
@@ -5912,8 +6140,6 @@ $
 |2,1,1715045340,47,"pas"
 ?/co
 |2,1,1715045333,47,"co"
-?/copy
-|2,1,1715045330,47,"copy"
 ?/overr
 |2,1,1715040658,47,"overr"
 ?/pyre
@@ -6012,8 +6238,6 @@ $
 |2,1,1714778078,47,"cot_test"
 ?/batch_size
 |2,1,1714775551,47,"batch_size"
-?/rank
-|2,1,1714775347,47,"rank"
 ?/_grad_moni
 |2,1,1714774818,47,"_grad_moni"
 ?/additional
@@ -6136,8 +6360,6 @@ $
 |2,1,1714674057,47,"tail"
 ?/id_hasher
 |2,1,1714673889,47,"id_hasher"
-?/inferenc
-|2,1,1714673200,47,"inferenc"
 ?/inferen
 |2,1,1714672114,47,"inferen"
 ?/infe
@@ -6190,10 +6412,6 @@ $
 |2,1,1714635675,47,"kwargs"
 ?/delta
 |2,1,1714635490,47,"delta"
-?/tgif
-|2,1,1714635461,47,"tgif"
-?/roo
-|2,1,1714635328,47,"roo"
 ?/pulib
 |2,1,1714635257,47,"pulib"
 ?/register
@@ -6228,16 +6446,12 @@ $
 |2,1,1714608680,47,"write"
 ?/rewrite
 |2,1,1714608113,47,"rewrite"
-?/wait
-|2,1,1714607276,47,"wait"
 ?/start_d
 |2,1,1714598448,47,"start_d"
 ?/return
 |2,1,1714597145,47,"return"
 ?/ctx
 |2,1,1714597109,47,"ctx"
-?/input
-|2,1,1714596980,47,"input"
 ?/dist_input
 |2,1,1714596971,47,"dist_input"
 ?/ebc
@@ -6268,8 +6482,6 @@ $
 |2,1,1714548734,47,"average"
 ?/awk
 |2,1,1714547069,47,"awk"
-?/mast_list
-|2,1,1714546739,47,"mast_list"
 ?/div
 |2,1,1714540689,47,"div"
 ?/collection
@@ -6280,14 +6492,10 @@ $
 |2,1,1714540547,47,"coll"
 ?/sour
 |2,1,1714524478,47,"sour"
-?/interactor
-|2,1,1714522665,47,"interactor"
 ?/t
 |2,1,1714522495,47,"t"
 ?/embedding_f
 |2,1,1714604404,47,"embedding_f"
-?/inference
-|2,1,1714604368,47,"inference"
 ?/back
 |2,1,1714540826,47,"back"
 ?/distill
@@ -6422,8 +6630,6 @@ $
 |2,1,1714151647,47," "
 ?/nro_siz
 |2,1,1714093424,47,"nro_siz"
-?/dst
-|2,1,1714092453,47,"dst"
 ?/embe
 |2,1,1714092154,47,"embe"
 ?/get_
@@ -6524,16 +6730,12 @@ $
 |2,1,1713978630,47,"rnul"
 ?/cat
 |2,1,1713978230,47,"cat"
-?/sh
-|2,1,1713942046,47,"sh"
 ?/hg
 |2,1,1713942043,47,"hg"
 ?/pdb
 |2,1,1713941214,47,"pdb"
 ?/arg
 |2,1,1713938908,47,"arg"
-?/click
-|2,1,1713938903,47,"click"
 ?/dev\/null
 |2,1,1713938116,47,"dev\\/null"
 ?/devjkjjkkkk
@@ -6714,8 +6916,6 @@ $
 |2,1,1703147708,47,"frame"
 ?/dial
 |2,1,1703145937,47,"dial"
-?/clip
-|2,1,1703145872,47,"clip"
 ?/tee
 |2,1,1703145228,47,"tee"
 ?/mrs_fm_video_sampler
@@ -6780,8 +6980,6 @@ $
 |2,1,1703133797,47,"required"
 ?/procedss
 |2,1,1703132856,47,"procedss"
-?/preproc
-|2,1,1703132853,47,"preproc"
 ?/test_decord
 |2,1,1703131593,47,"test_decord"
 ?/unittest
@@ -6978,8 +7176,6 @@ $
 |2,1,1702924417,47,"rmatt"
 ?/entitlement
 |2,1,1702924414,47,"entitlement"
-?/light
-|2,1,1702924407,47,"light"
 ?/TypeFuncDecorator
 |2,1,1702924031,47,"TypeFuncDecorator"
 ?/ta_util
@@ -7148,8 +7344,6 @@ $
 |2,1,1702575004,47,"iofer"
 ?/publish-st
 |2,1,1702537704,47,"publish-st"
-?/embedding
-|2,1,1702536517,47,"embedding"
 ?/embedding_tab
 |2,1,1702535616,47,"embedding_tab"
 ?/model.module
@@ -7164,8 +7358,6 @@ $
 |2,1,1702509435,47,"_forward"
 ?/UMIAWithApproxTopK
 |2,1,1702509202,47,"UMIAWithApproxTopK"
-?/eval
-|2,1,1702509172,47,"eval"
 ?/user
 |2,1,1702508581,47,"user"
 ?/media
@@ -7196,8 +7388,6 @@ $
 |2,1,1702503786,47,"rp"
 ?/eval_preproc
 |2,1,1702503770,47,"eval_preproc"
-?/local
-|2,1,1702499334,47,"local"
 ?/lca
 |2,1,1702499333,47,"lca"
 ?/run_config
@@ -7228,8 +7418,6 @@ $
 |2,1,1702454489,47,"from langtech.dataswarm.lib import everstore_io"
 ?/to_torch
 |2,1,1702443884,47,"to_torch"
-?/m
-|2,1,1702443609,47,"m"
 ?/torchrec
 |2,1,1702443544,47,"torchrec"
 ?/sequential:qa
@@ -7330,8 +7518,6 @@ $
 |2,1,1702424463,47,"umia.*cinc"
 ?/mi
 |2,1,1702423712,47,"mi"
-?/sparse_arch
-|2,1,1702420502,47,"sparse_arch"
 ?/sharders
 |2,1,1702419815,47,"sharders"
 ?/module_type
@@ -7402,8 +7588,6 @@ $
 |2,1,1702408669,47,"hamm"
 ?/key
 |2,1,1702407322,47,"key"
-?/publisher_config
-|2,1,1702406665,47,"publisher_config"
 ?/op
 |2,1,1702406656,47,"op"
 ?/variant
@@ -7584,8 +7768,6 @@ $
 |2,1,1702331327,47,"mhl"
 ?/hl
 |2,1,1702331326,47,"hl"
-?/date
-|2,1,1702320295,47,"date"
 ?/start_ts
 |2,1,1702319622,47,"start_ts"
 ?/filter
@@ -7602,8 +7784,6 @@ $
 |2,1,1702108842,47,"base_layer"
 ?/deiv
 |2,1,1702095265,47,"deiv"
-?/app
-|2,1,1702095054,47,"app"
 ?/package
 |2,1,1702095051,47,"package"
 ?/app-p
@@ -7670,8 +7850,6 @@ $
 |2,1,1702064356,47,"efpkg"
 ?/test_create_launch_quickapp_request_online_job_type
 |2,1,1702063773,47,"test_create_launch_quickapp_request_online_job_type"
-?/online
-|2,1,1702063623,47,"online"
 ?/max_re
 |2,1,1702063486,47,"max_re"
 ?/class dpprole
@@ -7844,8 +8022,6 @@ $
 |2,1,1701975168,47,"v4"
 ?/v4jk
 |2,1,1701975167,47,"v4jk"
-?/first
-|2,1,1701974785,47,"first"
 ?/args
 |2,1,1701974780,47,"args"
 ?/base.progres
@@ -7934,8 +8110,6 @@ $
 |2,1,1701887904,47,"template"
 ?/tensorimpl
 |2,1,1701887772,47,"tensorimpl"
-?/impl
-|2,1,1701887745,47,"impl"
 ?/tensorm
 |2,1,1701887367,47,"tensorm"
 ?/tempate
@@ -8198,8 +8372,6 @@ $
 |2,1,1701727774,47,"negative_sample"
 ?/lookup(
 |2,1,1701727567,47,"lookup("
-?/random
-|2,1,1701727474,47,"random"
 ?/ranom
 |2,1,1701727472,47,"ranom"
 ?/query
@@ -8281,8 +8453,6 @@ $
 |2,1,1701476436,47,"sle"
 ?/should_
 |2,1,1701476423,47,"should_"
-?/sequence
-|2,1,1701473749,47,"sequence"
 ?/\.z
 |2,1,1701473580,47,"\\.z"
 ?/.z
@@ -8319,8 +8489,6 @@ $
 |2,1,1701463370,47,"emedd"
 ?/ta_pu
 |2,1,1701460309,47,"ta_pu"
-?/bundle
-|2,1,1701459274,47,"bundle"
 ?//bundle
 |2,1,1701459271,47,"/bundle"
 ?/hash_
@@ -8835,8 +9003,6 @@ $
 |2,1,1700243947,47,"self +="
 ?/shared
 |2,1,1700240643,47,"shared"
-?/def
-|2,1,1700239444,47,"def"
 ?/embedding_Featu
 |2,1,1700239415,47,"embedding_Featu"
 ?/ref
@@ -9075,8 +9241,6 @@ $
 |2,1,1700077721,47,"F.sigrid"
 ?/mlh
 |2,1,1700077581,47,"mlh"
-?/optiona
-|2,1,1700077522,47,"optiona"
 ?/shardingtype
 |2,1,1700077456,47,"shardingtype"
 ?/as ta
@@ -9617,8 +9781,6 @@ $
 |2,1,1698176326,47,"torcch"
 ?/content
 |2,1,1698176303,47,"content"
-?/trace
-|2,1,1698167674,47,"trace"
 ?/pooledembe
 |2,1,1698167491,47,"pooledembe"
 ?/embeddingbaiojkkk
@@ -9909,8 +10071,6 @@ $
 |2,1,1696369960,47,"VIEWER_CLIPS_LAST_N_ENGAGED_TEXTRAY_CLUSTER_20K_SERVER_SIDE"
 ?/VIEWER_CLIPS_LAST_N_ENGAGED_MUSIC_SERVER_SID
 |2,1,1696369949,47,"VIEWER_CLIPS_LAST_N_ENGAGED_MUSIC_SERVER_SID"
-?/lr
-|2,1,1696369922,47,"lr"
 ?/gradient_clip
 |2,1,1696362789,47,"gradient_clip"
 ?/mixin_
@@ -10129,8 +10289,6 @@ $
 |2,1,1695418172,47,"tc_ay"
 ?/stream
 |2,1,1695408935,47,"stream"
-?/node
-|2,1,1695367509,47,"node"
 ?/lightning
 |2,1,1695338108,47,"lightning"
 ?/content_understanding
@@ -10527,8 +10685,6 @@ $
 |2,1,1694585708,47,"rootrainer"
 ?/conf
 |2,1,1694585603,47,"conf"
-?/load_che
-|2,1,1694584388,47,"load_che"
 ?/create_sou
 |2,1,1694577657,47,"create_sou"
 ?/gmpp_p
@@ -10856,8 +11012,6 @@ $
 |2,1,1693507040,47,"to_json"
 ?/is_dataclass
 |2,1,1693506214,47,"is_dataclass"
-?/thrift
-|2,1,1693505986,47,"thrift"
 ?/issubclass
 |2,1,1693505481,47,"issubclass"
 ?/cjk
@@ -10986,8 +11140,6 @@ $
 |2,1,1693384363,47,"minimal_"
 ?/has_publish
 |2,1,1693383460,47,"has_publish"
-?/has
-|2,1,1693383436,47,"has"
 ?/predict_
 |2,1,1693381403,47,"predict_"
 ?/model_config_provider_module
@@ -11316,8 +11468,6 @@ $
 |2,1,1692832506,47,"preemp"
 ?/preem
 |2,1,1692832228,47,"preem"
-?/hpc
-|2,1,1692832182,47,"hpc"
 ?/preemption
 |2,1,1692832140,47,"preemption"
 ?/from_process
@@ -11332,16 +11482,12 @@ $
 |2,1,1692826002,47,"checkpoin"
 ?/dd
 |2,1,1692825866,47,"dd"
-?/model_entity_id
-|2,1,1692825824,47,"model_entity_id"
 ?/launch_train
 |2,1,1692824450,47,"launch_train"
 ?/eval_)
 |2,1,1692824337,47,"eval_)"
 ?/eval_ts
 |2,1,1692824028,47,"eval_ts"
-?/today
-|2,1,1692820615,47,"today"
 ?/2023-07
 |2,1,1692819645,47,"2023-07"
 ?/create_dataloader
@@ -11488,8 +11634,6 @@ $
 |2,1,1692647398,47,"w>"
 ?/jump
 |2,1,1692647392,47,"jump"
-?/sf
-|2,1,1692647355,47,"sf"
 ?/find
 |2,1,1692647354,47,"find"
 ?/<c-w> f
@@ -11746,8 +11890,6 @@ $
 |2,1,1692167716,47,"88"
 ?/99
 |2,1,1692167700,47,"99"
-?/class
-|2,1,1692167438,47,"class"
 ?/match
 |2,1,1692167429,47,"match"
 ?/"""
@@ -11786,12 +11928,8 @@ $
 |2,1,1692164256,47,"mtml"
 ?/Training on first attempt or checkpoint was disabled
 |2,1,1692151721,47,"Training on first attempt or checkpoint was disabled"
-?/load_model_entity
-|2,1,1692151634,47,"load_model_entity"
 ?/load_mode
 |2,1,1692151631,47,"load_mode"
-?/load_model
-|2,1,1692151623,47,"load_model"
 ?/test_tag
 |2,1,1692137862,47,"test_tag"
 ?/clipmodel
@@ -12806,8 +12944,6 @@ $
 |2,1,1690397694,47,"params"
 ?/metr
 |2,1,1690391866,47,"metr"
-?/tracer
-|2,1,1690351915,47,"tracer"
 ?/datadict
 |2,1,1690351368,47,"datadict"
 ?/seed
@@ -14662,8 +14798,6 @@ $
 |2,1,1684031101,47,"col_ts_ds_eq_latest"
 ?/col_ts_ds_eq_latestjk
 |2,1,1684031100,47,"col_ts_ds_eq_latestjk"
-?/load_check
-|2,1,1684029912,47,"load_check"
 ?/meta_veri
 |2,1,1683916331,47,"meta_veri"
 ?/cre
@@ -14726,8 +14860,6 @@ $
 |2,1,1683316721,47,"vm"
 ?/presto_li
 |2,1,1683314651,47,"presto_li"
-?/-z
-|2,1,1683314608,47,"-z"
 ?/presto_list_t
 |2,1,1683314588,47,"presto_list_t"
 ?/end
@@ -16100,8 +16232,6 @@ $
 |2,1,1674603341,47,"# user"
 ?/_term_
 |2,1,1674602923,47,"_term_"
-?/rule
-|2,1,1674602291,47,"rule"
 ?/ukrjk/value
 |2,1,1674601227,47,"ukrjk/value"
 ?/ig_foll
@@ -16578,8 +16708,6 @@ $
 |2,1,1665712667,47,"injected_suvmjkkkjkkk"
 ?/supp
 |2,1,1665712295,47,"supp"
-?/sup
-|2,1,1665712282,47,"sup"
 ?/suppl
 |2,1,1665711993,47,"suppl"
 ?/overrides
@@ -17144,8 +17272,6 @@ $
 |2,1,1662958213,47,"p[re"
 ?/model = 
 |2,1,1662957578,47,"model = "
-?/fx
-|2,1,1662952551,47,"fx"
 ?/except 
 |2,1,1662950614,47,"except "
 ?/def graph
@@ -17880,8 +18006,6 @@ $
 |2,1,1660020710,47,"all_g"
 ?/gating_out_dim
 |2,1,1659985018,47,"gating_out_dim"
-?/merge_
-|2,1,1659983688,47,"merge_"
 ?/query_hive
 |2,1,1659981761,47,"query_hive"
 ?/layer_norm
@@ -17968,8 +18092,6 @@ $
 |2,1,1659253769,47,"mmoe"
 ?/whitelist
 |2,1,1659250930,47,"whitelist"
-?/model_enti
-|2,1,1659225831,47,"model_enti"
 ?/mopg
 |2,1,1659225814,47,"mopg"
 ?/log_train
@@ -21002,108 +21124,6 @@ $
 |2,1,1647472399,47,"preso"
 ?/dataloaderinter
 |2,1,1647470974,47,"dataloaderinter"
-??fn: Callable\[\.\.\.  T\]
-|2,1,1647469555,63,"fn: Callable\\[\\.\\.\\.  T\\]"
-?/getrank
-|2,1,1647468880,47,"getrank"
-?/WORLD
-|2,1,1647468808,47,"WORLD"
-?/log_zh
-|2,1,1647460346,47,"log_zh"
-?/call_teardown
-|2,1,1647459039,47,"call_teardown"
-?/callback_
-|2,1,1647458962,47,"callback_"
-?/fit
-|2,1,1647458813,47,"fit"
-?/teardwn
-|2,1,1647458670,47,"teardwn"
-?/attach
-|2,1,1647458254,47,"attach"
-?/lightningdatamod
-|2,1,1647458061,47,"lightningdatamod"
-?/fetching
-|2,1,1647457632,47,"fetching"
-?/htod
-|2,1,1647457613,47,"htod"
-?/lightningdata
-|2,1,1647457476,47,"lightningdata"
-?/train_dataloader
-|2,1,1647457225,47,"train_dataloader"
-?/conne
-|2,1,1647457205,47,"conne"
-?/traindatalo
-|2,1,1647457088,47,"traindatalo"
-?/LightningDataModule
-|2,1,1647457057,47,"LightningDataModule"
-?/distributeddataloader
-|2,1,1647456810,47,"distributeddataloader"
-?/dsi
-|2,1,1647456807,47,"dsi"
-?/__iter___
-|2,1,1647456636,47,"__iter___"
-?/reset(
-|2,1,1647456582,47,"reset("
-?/combinedload
-|2,1,1647456238,47,"combinedload"
-?/utilities
-|2,1,1647456197,47,"utilities"
-?/destroysession
-|2,1,1647454655,47,"destroysession"
-?/stopservice
-|2,1,1647454624,47,"stopservice"
-?/hand
-|2,1,1647454494,47,"hand"
-?/sync;jk
-|2,1,1647452989,47,"sync;jk"
-?/shuddown
-|2,1,1647452813,47,"shuddown"
-?/seria
-|2,1,1647449661,47,"seria"
-?/datadi
-|2,1,1647449409,47,"datadi"
-?/retrieve
-|2,1,1647447503,47,"retrieve"
-?/pipelina
-|2,1,1647416069,47,"pipelina"
-?/sparse_features
-|2,1,1647414868,47,"sparse_features"
-?/keyedj
-|2,1,1647414756,47,"keyedj"
-?/sparse_features_to_kjt
-|2,1,1647414685,47,"sparse_features_to_kjt"
-?/minimao
-|2,1,1647410281,47,"minimao"
-?/create_data_loader
-|2,1,1647409643,47,"create_data_loader"
-?/create_data_
-|2,1,1647409558,47,"create_data_"
-?/dataloaderho
-|2,1,1647409518,47,"dataloaderho"
-?/create_dist
-|2,1,1647409212,47,"create_dist"
-?/sa/sp
-|2,1,1647447812,47,"sa/sp"
-?/jkkk#kkkjkkkk
-|2,1,1647406112,47,"jkkk#kkkjkkkk"
-?/is clos
-|2,1,1647405574,47,"is clos"
-?/path(
-|2,1,1647405246,47,"path("
-?/_path
-|2,1,1647404266,47,"_path"
-?/print_hi
-|2,1,1647402670,47,"print_hi"
-?/absl
-|2,1,1647402373,47,"absl"
-?/brute
-|2,1,1647401528,47,"brute"
-?/item_embs
-|2,1,1647401509,47,"item_embs"
-?/drmodel
-|2,1,1647389766,47,"drmodel"
-?/self.entmax
-|2,1,1647389749,47,"self.entmax"
 
 # Expression History (newest to oldest):
 ='else:' =~ '^\(\s*\(\h\+\S\s*:\)\)'jkjjjkjkkkk
@@ -21284,6 +21304,10 @@ $
 |2,2,1590704332,,"%:p:s"
 
 # Input Line History (newest to oldest):
+@/home/xlwang/misc/tmp/mast_exp.md
+|2,3,1716275099,,"/home/xlwang/misc/tmp/mast_exp.md"
+@/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_online_train.sh
+|2,3,1716245707,,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_online_train.sh"
 @/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train_local.sh
 |2,3,1715376368,,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train_local.sh"
 @/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train.sh
@@ -22642,70 +22666,39 @@ $
 # Debug Line History (newest to oldest):
 
 # Registers:
-""0	CHAR	0
-	feature_processor_forward(batch)
-|3,1,0,0,1,0,1715922450,"feature_processor_forward(batch)"
-"1	LINE	0
-	  echo "$runs"  | tr " " "\n" | \
-	    nl -w2 -s'] ' -v0 | \
-	    awk '(NR>1) {
-	      print $0, "\thttps://www.internalfb.com/mast/job/"$2 ; next
-	    } { print $0 }' | \
-	      lolcat -h 0.5
-|3,0,1,1,6,0,1715897003,"  echo \"$runs\"  | tr \" \" \"\\n\" | \\","    nl -w2 -s'] ' -v0 | \\","    awk '(NR>1) {","      print $0, \"\\thttps://www.internalfb.com/mast/job/\"$2 ; next","    } { print $0 }' | \\","      lolcat -h 0.5"
-"2	CHAR	0
-	te_dict is not None
-	            else None
-	        )
+"0	CHAR	0
+	 
+|3,0,0,0,1,0,1716275283," "
+""1	LINE	0
 	
-|3,0,2,0,4,0,1715886943,"te_dict is not None","            else None","        )",""
-"3	CHAR	0
+|3,1,1,1,1,0,1716275367,""
+"2	LINE	0
+	```
+|3,0,2,1,1,0,1716275340,"```"
+"3	LINE	0
 	
-	
-	
-|3,0,3,0,3,0,1715886369,"","",""
+|3,0,3,1,1,0,1716275339,""
 "4	LINE	0
-	
-|3,0,4,1,1,0,1715818151,""
+	`````
+|3,0,4,1,1,0,1716275331,"`````"
 "5	LINE	0
-	  local i
-	  for ((i=1; i<=$#; i++))
-	  do
-	    local arg="$@[i]"
-	    if [[ "$arg" == "$" ]]; then
-	      local total_mast_runs=$(silent_refresh_mast_list)
-	      for ((j=1; j<=$total_mast_runs; j++))
-	      do
-	        echo -n "$(mast_select "$j") "
-	      done
-	    elif [[ "$arg" =~ ^-?[0-9]+$ ]]; then
-	      echo -n $(mast_select "$arg")
-	    else
-	      echo -n $(echo "${arg/"https:\/\/www.internalfb.com\/mast\/job\/"}")
-	    fi
-	    if [[ $i != $# ]]; then
-	      echo -n " "
-	    fi
-	  done
-	  echo ""
-|3,0,5,1,20,0,1715818143,"  local i","  for ((i=1; i<=$#; i++))","  do","    local arg=\"$@[i]\"","    if [[ \"$arg\" == \"$\" ]]; then","      local total_mast_runs=$(silent_refresh_mast_list)","      for ((j=1; j<=$total_mast_runs; j++))","      do","        echo -n \"$(mast_select \"$j\") \"","      done","    elif [[ \"$arg\" =~ ^-?[0-9]+$ ]]; then","      echo -n $(mast_select \"$arg\")","    else",>85
-|<"      echo -n $(echo \"${arg/\"https:\\/\\/www.internalfb.com\\/mast\\/job\\/\"}\")","    fi","    if [[ $i != $# ]]; then","      echo -n \" \"","    fi","  done","  echo \"\""
+	`````
+|3,0,5,1,1,0,1716275326,"`````"
 "6	LINE	0
-	**/scripts/xlwang/test_**
-|3,0,6,1,1,0,1715817094,"**/scripts/xlwang/test_**"
+	kj
+|3,0,6,1,1,0,1716275326,"kj"
 "7	LINE	0
-	  local f2="${HOME}/misc/dotfiles/lib/.profile_wangxl_darwin"
-	  local f3="${HOME}/misc/dotfiles/lib/.profile_wangxl_linux"
-|3,0,7,1,2,0,1715809334,"  local f2=\"${HOME}/misc/dotfiles/lib/.profile_wangxl_darwin\"","  local f3=\"${HOME}/misc/dotfiles/lib/.profile_wangxl_linux\""
+	```
+|3,0,7,1,1,0,1716275320,"```"
 "8	LINE	0
-	        echo "link found"
-|3,0,8,1,1,0,1715798624,"        echo \"link found\""
+	
+|3,0,8,1,1,0,1716275319,""
 "9	LINE	0
 	
-|3,0,9,1,1,0,1715761637,""
+|3,0,9,1,1,0,1716275311,""
 "a	CHAR	0
 	jkkkjjjjjjjjjkk€ý,€ý.ï¼š
-|3,0,10,0,1,0,1695854316,"jkkkjjjjjjjjjkk€ý,€ý.ï¼š"
+|3,0,10,0,1,0,1716247185,"jkkkjjjjjjjjjkk€ý,€ý.ï¼š"
 "b	CHAR	0
 	"to_available_memory": {}
 |3,0,11,0,1,0,1594402050,"\"to_available_memory\": {}"
@@ -22763,7 +22756,7 @@ $
 <jjj:34jk:34jkjkjjjjjkkjjjjjwkkkwwwwwlzhNNnNjjwwwkkwwwwwwzh€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýMjkkj kkjjjkbbbbbv$hS)jkAjki?? :€kb''jk,wjkjjjjjjjjjjjjjjjjjjjjkkjjjjjjjjjddjk,wjddjk,w€ý,€ý.ggjkjjjjggkggjkjjjjjjjjjjoDISABLED =€kb= "disabledjkA;jk:whbbbbzhjkjkjkGjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk wwzhjkjkjkkjjjk 
 	1050
 <jjjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkVjjjyjjjpjkkojkjjwwwwwwjkjl:sp ~/fbc	tor	ch			€kb€kb€kb€kb€kb€kb./€kb€kb/	jkkhdwitorchjkjjkbdwitorchjkhzhhjk:WjkkkjkIjkwwbblllllldwiTROCH jkhhhhhxliRjkhzhjkviwyjjjjjjjkA + jkkJkAjkjAEVICT_CAF	 + EVIC€kB			jkkJjk:wjk€ý,€ý.€ý,€ý.VjjjjxxjkjbbDAjk:w€ý,€ý.jko€FI allocator = "jemalloc",    enable_lazy_imports = True,    enable_native_python = True,€FJjkkk<<jkkkkjkuujk:wjkkkbbwxxxxxxipythonjkhhhhzhjk:wjkuujkuuuuuuuuuuujkuuuuujkujk:wkkkkjjjjjjwwkhkhzhjjkVjkgcjk:wjkkkkkkkkxxxxxxicinderjk:Wjkjjjjjjjzhjkoenable_lazy_import=€kb€kb€kb€kbs=True,allocator="jemallocjkA,jk,wkkjjkkk€ý,€ý.€ý,€ý.bDjk:wjkbbwzhjkIjkjknnjkIjkzh€ý,€ý-€ý-€ý.kjj jjjjjjjjjjj;;jjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkjjejjjjjkkkkkkxhjjkuxhjkjkxhjkuujkzhjkjjjjjjVjjxzhwwggnnggjjjjjjjjjjjjjkVjjjjjjjj;;jkkkjVjjjjxjkjbbwzhjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkVjxkzhjk:Wkkjjjkkjjjjjjjjjjkkkkkkkkkkkkbxxxxxxipythonjkzhjkjjjjjjjk:w€ý,€ý.jk:ejk:eG€ý,€ý.jk jkkkkVjjjyjjjjjjjjjjjjjkwwpjkkddjkVjjjyjjjjjjjjjjjjjjjpkjVjjj<kddjk,w
-|3,0,31,0,4,0,1715922450,"kkkVjjjyjjjpjkjjjjddkkkkwlxxxictfsjkhjhxxxictfsjkzhhjkviwyjwwwbviwpjkzhhjkjjkoreturn shape (jkkwwjkjkkggjnkkkVjjjjjyjkjpjkwwwwdwi$rank	jkhzhjkjwwwdwi$ppr_weih	jkjbdwi$simweight	jkjbdwi$ctfsweight	jkjbdwi$qe_e€kb€kb€kb€kbexperime€kb€kb€kb€kb	jkjbdwi$groupna	jkhzhjk,wjkjjA;jk,wkddjkjkkkkjjjjjjjVjjxkddk,wkkkkkkkkkwwjkzhjkjk  jk ,w","jjwkjwww",>318
+|3,0,31,0,4,0,1716251831,"kkkVjjjyjjjpjkjjjjddkkkkwlxxxictfsjkhjhxxxictfsjkzhhjkviwyjwwwbviwpjkzhhjkjjkoreturn shape (jkkwwjkjkkggjnkkkVjjjjjyjkjpjkwwwwdwi$rank	jkhzhjkjwwwdwi$ppr_weih	jkjbdwi$simweight	jkjbdwi$ctfsweight	jkjbdwi$qe_e€kb€kb€kb€kbexperime€kb€kb€kb€kb	jkjbdwi$groupna	jkhzhjk,wjkjjA;jk,wkddjkjkkkkjjjjjjjVjjxkddk,wkkkkkkkkkwwjkzhjkjk  jk ,w","jjwkjwww",>318
 |<"jjj:34jk:34jkjkjjjjjkkjjjjjwkkkwwwwwlzhNNnNjjwwwkkwwwwwwzh€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýMjkkj kkjjjkbbbbbv$hS)jkAjki?? :€kb''jk,wjkjjjjjjjjjjjjjjjjjjjjkkjjjjjjjjjddjk,wjddjk,w€ý,€ý.ggjkjjjjggkggjkjjjjjjjjjjoDISABLED =€kb= \"disabledjkA;jk:whbbbbzhjkjkjkGjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk wwzhjkjkjkkjjjk ",>1052
 |<"jjjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkVjjjyjjjpjkkojkjjwwwwwwjkjl:sp ~/fbc	tor	ch			€kb€kb€kb€kb€kb€kb./€kb€kb/	jkkhdwitorchjkjjkbdwitorchjkhzhhjk:WjkkkjkIjkwwbblllllldwiTROCH jkhhhhhxliRjkhzhjkviwyjjjjjjjkA + jkkJkAjkjAEVICT_CAF	 + EVIC€kB			jkkJjk:wjk€ý,€ý.€ý,€ý.VjjjjxxjkjbbDAjk:w€ý,€ý.jko€FI allocator = \"jemalloc\",    enable_lazy_imports = True,    enable_native_python = True,€FJjkkk<<jkkkkjkuujk:wjkkkbbwxxxxxxipythonjkhhhhzhjk:wjkuujkuuuuuuuuuuujkuuuuujkujk:wkk
 |<kkjjjjjjwwkhkhzhjjkVjkgcjk:wjkkkkkkkkxxxxxxicinderjk:Wjkjjjjjjjzhjkoenable_lazy_import=€kb€kb€kb€kbs=True,allocator=\"jemallocjkA,jk,wkkjjkkk€ý,€ý.€ý,€ý.bDjk:wjkbbwzhjkIjkjknnjkIjkzh€ý,€ý-€ý-€ý.kjj jjjjjjjjjjj;;jjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkjjejjjjjkkkkkkxhjjkuxhjkjkxhjkuujkzhjkjjjjjjVjjxzhwwggnnggjjjjjjjjjjjjjkVjjjjjjjj;;jkkkjVjjjjxjkjbbwzhjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkVjxkzhjk:Wkkjjjkkjjjjjjjjjjkkkkkkkkkkkkbxxxxxxipythonjkzhjkjjjjjjjk:w€ý,€ý.jk:ejk:eG€ý,€ý.jk
@@ -22777,388 +22770,525 @@ $
 |3,0,35,0,1,0,1630515023,>451
 |<"hjkllzh:AnncjkkjjjjjjjjjjjjjjjkkkjjjVjxjk,jkuujkddyyjjpjk,w€ý,€ý.kjkkkkkkkkkkkkkkjj/sessionjkkkkkkjbbwwjwwzhwwwbzhjkkkkkkkjojkkgccjkoauto€kb€kb€kb€kb€kb€kb€kbstd::make_uniquejkhzhjkkk€ý,€ý.€ü €ý,€ü €ý.jkA<A>(xjkA;jkIa = jkjjwwwlxi->jkjjjhhxi->jk,w €ý,€ý.jk;;kkkkkkkkkkkkkkkkkkkbbjkxjkbbdwiconst jkwhi&jkjjkkhr&r*jkjjjjjjjjjjjjjjwwwkkkjwwwwwlllijkhi&kj,wjkhhhhxxxxjk,wjjjkbbbi*jkjjjhi*jk,w€ý,€ý.€ü €ý,€ü €ý.;;jkIauyto €kb€kb€kb€kb€kbuto jk,wjkj"
 "-	CHAR	0
-	feature_processor_forward(batch)
-|3,0,36,0,1,0,1715919351,"feature_processor_forward(batch)"
+	`
+|3,0,36,0,1,0,1716275330,"`"
 
 # global variables:
 !DISPATCH_STARTS	DIC	{}
 
 # File marks:
-'0  2396  30  /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/module.py
-|4,48,2396,30,1715964279,"/data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/module.py"
-'1  434  8  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,49,434,8,1715904504,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
-'2  1500  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,50,1500,0,1715904255,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
-'3  343  38  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,51,343,38,1715900625,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
-'4  343  38  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,52,343,38,1715900625,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
-'5  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,53,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
-'6  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,54,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
-'7  47  57  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/tests/cogwheel_cot_integration_test.py
-|4,55,47,57,1715900064,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/tests/cogwheel_cot_integration_test.py"
-'8  237  29  ~/misc/dotfiles/lib/.profile_wangxl
-|4,56,237,29,1715898642,"~/misc/dotfiles/lib/.profile_wangxl"
-'9  237  29  ~/misc/dotfiles/lib/.profile_wangxl
-|4,57,237,29,1715898642,"~/misc/dotfiles/lib/.profile_wangxl"
+'0  1  0  ~/misc/tmp/tb
+|4,48,1,0,1716275553,"~/misc/tmp/tb"
+'1  1  0  ~/misc/tmp/mast_exp.md
+|4,49,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+'2  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,50,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+'3  3  3  ~/misc/tmp/mast_exp.md
+|4,51,3,3,1716275128,"~/misc/tmp/mast_exp.md"
+'4  3  3  ~/misc/tmp/mast_exp.md
+|4,52,3,3,1716275128,"~/misc/tmp/mast_exp.md"
+'5  3  0  ~/misc/tmp/mast_exp.md
+|4,53,3,0,1716275128,"~/misc/tmp/mast_exp.md"
+'6  3  0  ~/misc/tmp/mast_exp.md
+|4,54,3,0,1716275128,"~/misc/tmp/mast_exp.md"
+'7  41  35  ~/misc/tmp/mast_exp
+|4,55,41,35,1716275125,"~/misc/tmp/mast_exp"
+'8  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,56,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+'9  37  3  ~/misc/tmp/mast_exp
+|4,57,37,3,1716274799,"~/misc/tmp/mast_exp"
 
 # Jumplist (newest first):
--'  2396  30  /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/module.py
-|4,39,2396,30,1715964279,"/data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/module.py"
--'  2310  26  /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/module.py
-|4,39,2310,26,1715922454,"/data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/module.py"
--'  193  6  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,193,6,1715922452,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  145  34  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,145,34,1715919352,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  159  51  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,159,51,1715918924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  148  12  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,148,12,1715918884,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  150  49  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,150,49,1715918883,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  166  12  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,166,12,1715918882,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  167  12  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,167,12,1715918882,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  168  12  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,168,12,1715918882,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  185  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,185,8,1715918881,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  56  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,56,8,1715918879,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  332  37  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,332,37,1715918877,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  337  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,337,8,1715918780,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  459  47  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,459,47,1715918775,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  464  13  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,464,13,1715918775,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  493  35  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,493,35,1715918775,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  480  58  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,480,58,1715918767,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  468  13  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,468,13,1715918765,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  321  18  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,321,18,1715918763,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  138  12  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,138,12,1715918762,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  144  43  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-|4,39,144,43,1715918733,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py"
--'  434  8  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,434,8,1715904504,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  434  8  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,434,8,1715904504,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  440  8  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,440,8,1715904483,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  440  8  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,440,8,1715904483,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  439  8  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,439,8,1715904480,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  439  8  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,439,8,1715904480,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  435  23  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,435,23,1715904384,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  435  23  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,435,23,1715904384,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  343  38  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,343,38,1715904358,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  343  38  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,343,38,1715904358,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  771  4  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,771,4,1715904354,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  771  4  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,771,4,1715904354,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  362  35  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,362,35,1715904348,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  362  35  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,362,35,1715904348,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  1500  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1500,0,1715904255,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1500  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1500,0,1715904255,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1500  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1500,0,1715904255,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1500  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1500,0,1715904255,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1465  40  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1465,40,1715901484,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1465  40  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1465,40,1715901484,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1465  40  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1465,40,1715901484,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1465  40  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1465,40,1715901484,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1561  41  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1561,41,1715901483,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1561  41  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1561,41,1715901483,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1561  41  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1561,41,1715901483,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1561  41  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1561,41,1715901483,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715901373,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  367  18  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,367,18,1715901373,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715901373,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  367  18  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,367,18,1715901373,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715901373,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  367  18  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,367,18,1715901373,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715901373,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  367  18  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,367,18,1715901373,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  402  21  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,402,21,1715901333,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  400  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,400,8,1715901333,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  402  21  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,402,21,1715901333,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  400  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,400,8,1715901333,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  402  21  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,402,21,1715901333,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  400  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,400,8,1715901333,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  402  21  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,402,21,1715901333,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  400  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,400,8,1715901333,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  404  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,404,8,1715901331,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  404  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,404,8,1715901331,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  404  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,404,8,1715901331,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  404  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-|4,39,404,8,1715901331,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py"
--'  343  38  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,343,38,1715900625,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  343  38  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,343,38,1715900625,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  343  38  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,343,38,1715900625,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  343  38  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,343,38,1715900625,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  1  0  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,1,0,1715900575,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  1  0  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,1,0,1715900575,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  1  0  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,1,0,1715900575,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  1  0  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,1,0,1715900575,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  1  0  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,1,0,1715900575,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  1  0  /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-|4,39,1,0,1715900575,"/tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1523  9  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1523,9,1715900211,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1703  55  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1703,55,1715900188,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1476  16  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/model_hstu_standalone_cint.py
-|4,39,1476,16,1715900184,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/model_hstu_standalone_cint.py"
--'  1476  16  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/model_hstu_standalone_cint.py
-|4,39,1476,16,1715900184,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/model_hstu_standalone_cint.py"
+-'  1  0  ~/misc/tmp/tb
+|4,39,1,0,1716275553,"~/misc/tmp/tb"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275387,"~/misc/tmp/mast_exp.md"
+-'  39  0  ~/misc/tmp/mast_exp.md
+|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
+-'  39  0  ~/misc/tmp/mast_exp.md
+|4,39,39,0,1716275379,"~/misc/tmp/mast_exp.md"
+-'  3  3  ~/misc/tmp/mast_exp.md
+|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
+-'  3  3  ~/misc/tmp/mast_exp.md
+|4,39,3,3,1716275359,"~/misc/tmp/mast_exp.md"
+-'  5  0  ~/misc/tmp/mast_exp.md
+|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
+-'  5  0  ~/misc/tmp/mast_exp.md
+|4,39,5,0,1716275352,"~/misc/tmp/mast_exp.md"
+-'  10  0  ~/misc/tmp/mast_exp.md
+|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
+-'  10  0  ~/misc/tmp/mast_exp.md
+|4,39,10,0,1716275344,"~/misc/tmp/mast_exp.md"
+-'  9  0  ~/misc/tmp/mast_exp.md
+|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
+-'  9  0  ~/misc/tmp/mast_exp.md
+|4,39,9,0,1716275342,"~/misc/tmp/mast_exp.md"
+-'  12  0  ~/misc/tmp/mast_exp.md
+|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
+-'  12  0  ~/misc/tmp/mast_exp.md
+|4,39,12,0,1716275301,"~/misc/tmp/mast_exp.md"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  563  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,563,0,1716275288,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  540  15  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,540,15,1716275184,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  584  0  ~/misc/dotfiles/lib/.vimrc.bundles
+|4,39,584,0,1716275182,"~/misc/dotfiles/lib/.vimrc.bundles"
+-'  153  36  ~/.vimrc
+|4,39,153,36,1716275179,"~/.vimrc"
+-'  153  36  ~/.vimrc
+|4,39,153,36,1716275179,"~/.vimrc"
+-'  153  36  ~/.vimrc
+|4,39,153,36,1716275179,"~/.vimrc"
+-'  153  36  ~/.vimrc
+|4,39,153,36,1716275179,"~/.vimrc"
+-'  152  23  ~/.vimrc
+|4,39,152,23,1716275178,"~/.vimrc"
+-'  152  23  ~/.vimrc
+|4,39,152,23,1716275178,"~/.vimrc"
+-'  152  23  ~/.vimrc
+|4,39,152,23,1716275178,"~/.vimrc"
+-'  152  23  ~/.vimrc
+|4,39,152,23,1716275178,"~/.vimrc"
+-'  3  0  ~/misc/tmp/mast_exp.md
+|4,39,3,0,1716275176,"~/misc/tmp/mast_exp.md"
+-'  3  0  ~/misc/tmp/mast_exp.md
+|4,39,3,0,1716275176,"~/misc/tmp/mast_exp.md"
+-'  3  0  ~/misc/tmp/mast_exp.md
+|4,39,3,0,1716275128,"~/misc/tmp/mast_exp.md"
+-'  3  0  ~/misc/tmp/mast_exp.md
+|4,39,3,0,1716275128,"~/misc/tmp/mast_exp.md"
+-'  41  35  ~/misc/tmp/mast_exp
+|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
+-'  41  35  ~/misc/tmp/mast_exp
+|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
+-'  41  35  ~/misc/tmp/mast_exp
+|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
+-'  41  35  ~/misc/tmp/mast_exp
+|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
+-'  41  35  ~/misc/tmp/mast_exp
+|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
+-'  41  35  ~/misc/tmp/mast_exp
+|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
+-'  41  35  ~/misc/tmp/mast_exp
+|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
+-'  41  35  ~/misc/tmp/mast_exp
+|4,39,41,35,1716275125,"~/misc/tmp/mast_exp"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275119,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275119,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275119,"~/misc/tmp/mast_exp.md"
+-'  1  0  ~/misc/tmp/mast_exp.md
+|4,39,1,0,1716275119,"~/misc/tmp/mast_exp.md"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  2284  27  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,2284,27,1716275115,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  375  19  ~/misc/dotfiles/lib/.profile_wangxl
+|4,39,375,19,1716275112,"~/misc/dotfiles/lib/.profile_wangxl"
+-'  38  0  ~/misc/tmp/mast_exp
+|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
+-'  38  0  ~/misc/tmp/mast_exp
+|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
+-'  38  0  ~/misc/tmp/mast_exp
+|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
+-'  38  0  ~/misc/tmp/mast_exp
+|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
+-'  38  0  ~/misc/tmp/mast_exp
+|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
+-'  38  0  ~/misc/tmp/mast_exp
+|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
+-'  38  0  ~/misc/tmp/mast_exp
+|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
+-'  38  0  ~/misc/tmp/mast_exp
+|4,39,38,0,1716275053,"~/misc/tmp/mast_exp"
+-'  37  0  ~/misc/tmp/mast_exp
+|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
+-'  37  0  ~/misc/tmp/mast_exp
+|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
+-'  37  0  ~/misc/tmp/mast_exp
+|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
+-'  37  0  ~/misc/tmp/mast_exp
+|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
+-'  37  0  ~/misc/tmp/mast_exp
+|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
+-'  37  0  ~/misc/tmp/mast_exp
+|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
+-'  37  0  ~/misc/tmp/mast_exp
+|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
+-'  37  0  ~/misc/tmp/mast_exp
+|4,39,37,0,1716275050,"~/misc/tmp/mast_exp"
+-'  43  3  ~/misc/tmp/mast_exp
+|4,39,43,3,1716275020,"~/misc/tmp/mast_exp"
 
 # History of marks within files (newest to oldest):
 
-> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/module.py
-	*	1715964277	0
-	"	2396	30
-	^	526	23
-	.	526	0
-	+	526	0
-	j	2399	0
+> ~/misc/tmp/tb
+	*	1716275551	0
+	"	1	0
 
-> /tmp/xlwang/ControlP
-	*	1715922452	0
-	"	10	0
-	.	2	0
+> ~/misc/tmp/mast_exp.md
+	*	1716275386	0
+	"	1	0
+	.	22	0
+	+	9	38
+	+	12	0
+	+	9	38
+	+	12	0
+	+	3	3
+	+	3	5
+	+	3	0
+	+	12	0
+	+	11	0
+	+	3	3
+	+	4	0
+	+	22	0
+
+> ~/misc/dotfiles/lib/.vimrc.bundles
+	*	1716275283	0
+	"	563	0
+	^	584	31
+	.	563	0
+	+	585	45
+	+	584	0
+	+	586	26
+	+	584	30
+	+	584	0
+	+	563	0
+
+> ~/.vimrc
+	*	1716275179	0
+	"	153	36
+
+> ~/misc/dotfiles/lib/.profile_wangxl
+	*	1716275114	0
+	"	2284	27
+	^	2284	28
+	.	2284	27
+	+	2172	7
+	+	2172	0
+	+	2236	0
+	+	2238	0
+	+	2211	20
+	+	2232	0
+	+	2238	0
+	+	2212	0
+	+	2232	0
+	+	2234	11
+	+	2238	0
+	+	2234	92
+	+	2211	20
+	+	2232	0
+	+	2238	0
+	+	2212	0
+	+	2232	0
+	+	2234	11
+	+	2238	0
+	+	2234	16
+	+	2234	0
+	+	2238	0
+	+	2211	20
+	+	2232	0
+	+	2238	0
+	+	2212	0
+	+	2232	0
+	+	2234	11
+	+	2238	0
+	+	2234	92
+	+	2211	20
+	+	2232	0
+	+	2238	0
+	+	2212	0
+	+	2232	0
+	+	2234	11
+	+	2238	0
+	+	2234	16
+	+	2234	0
+	+	2238	0
+	+	2211	20
+	+	2232	0
+	+	2238	0
+	+	2212	0
+	+	2232	0
+	+	2234	11
+	+	2238	0
+	+	2234	92
+	+	2211	20
+	+	2232	0
+	+	2238	0
+	+	2212	0
+	+	2232	0
+	+	2234	11
+	+	2238	0
+	+	2234	16
+	+	2234	0
+	+	2238	0
+	+	2211	20
+	+	2232	0
+	+	2238	0
+	+	2212	0
+	+	2232	0
+	+	2234	11
+	+	2238	0
+	+	2234	92
+	+	2211	20
+	+	2232	0
+	+	2238	0
+	+	2212	0
+	+	2232	0
+	+	2234	11
+	+	2238	0
+	+	2234	16
+	+	2234	0
+	+	2236	0
+	+	2238	0
+	+	2210	0
+	+	2233	0
+	+	2238	0
+	+	2237	0
+	+	2091	77
+	+	2092	0
+	+	2091	0
+	+	2098	1
+	+	2097	0
+	+	2173	0
+	+	2172	64
+	+	2173	14
+	+	2173	18
+	+	2173	27
+	+	2182	0
+	+	2173	0
+	+	2174	0
+	+	2173	0
+	+	2172	4
+	+	2171	7
+	+	2172	7
+	+	2172	0
+	+	2284	27
+
+> ~/misc/tmp/mast_exp
+	*	1716275107	0
+	"	41	35
+	.	38	0
+	+	10	38
 	+	1	0
+	+	34	38
+	+	1	0
+	+	5	0
+	+	34	38
+	+	14	9
+	+	5	0
+	+	2	69
+	+	3	0
 	+	2	0
+	+	15	0
+	+	39	1
+	+	31	78
+	+	33	0
+	+	29	76
+	+	27	74
+	+	26	74
+	+	40	47
+	+	41	92
+	+	24	0
+	+	18	12
+	+	17	7
+	+	41	0
+	+	43	51
+	+	23	20
+	+	22	15
+	+	23	19
+	+	16	0
+	+	4	3
+	+	11	0
+	+	2	1
+	+	1	1
+	+	14	1
+	+	26	0
+	+	25	3
+	+	34	38
+	+	39	0
+	+	35	5
+	+	39	1
+	+	39	5
+	+	39	0
+	+	43	0
+	+	43	3
+	+	43	4
+	+	43	0
+	+	43	2
+	+	43	0
+	+	43	4
+	+	43	0
+	+	42	0
+	+	43	0
+	+	39	61
+	+	40	49
+	+	41	1
+	+	41	94
+	+	42	53
+	+	43	9
+	+	43	0
+	+	43	3
+	+	43	0
+	+	38	8
+	+	37	3
+	+	37	0
+	+	38	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/train_pipeline.py
-	*	1715922450	0
-	"	193	6
-	^	148	12
-	.	145	0
-	+	344	0
-	+	344	36
-	+	344	0
-	+	344	46
-	+	344	0
-	+	471	35
-	+	476	35
-	+	344	46
-	+	344	0
-	+	344	51
-	+	344	46
-	+	344	0
-	+	344	46
-	+	344	0
-	+	7	0
-	+	344	0
-	+	344	85
-	+	344	0
-	+	344	43
-	+	344	0
-	+	348	0
-	+	344	24
-	+	344	46
-	+	344	26
-	+	344	0
-	+	344	64
-	+	344	0
-	+	344	63
-	+	344	58
-	+	344	59
-	+	344	0
-	+	344	32
-	+	344	59
-	+	344	24
-	+	344	0
-	+	349	118
-	+	349	47
-	+	349	48
-	+	354	0
-	+	339	43
-	+	344	0
-	+	339	0
-	+	344	26
-	+	339	30
-	+	339	47
-	+	339	37
-	+	339	22
-	+	339	0
-	+	339	59
-	+	339	0
-	+	336	0
-	+	337	0
-	+	344	12
-	+	337	0
-	+	344	0
-	+	343	92
-	+	343	125
-	+	343	0
-	+	351	19
-	+	344	0
-	+	337	0
-	+	276	0
-	+	457	58
-	+	455	0
-	+	457	45
-	+	276	0
-	+	343	121
-	+	349	0
-	+	369	73
-	+	453	57
-	+	457	26
-	+	453	49
-	+	343	39
-	+	343	0
-	+	343	55
-	+	343	101
-	+	343	0
-	+	343	11
-	+	353	0
-	+	337	40
-	+	73	0
-	+	73	70
-	+	73	0
-	+	341	34
-	+	343	11
-	+	344	0
-	+	343	56
-	+	354	21
-	+	465	0
-	+	465	13
-	+	464	33
-	+	465	0
-	+	455	0
-	+	459	29
-	+	456	0
-	+	459	45
-	+	281	0
-	+	325	0
-	+	27	0
-	+	145	0
+> ~/misc/NERD_tree_tab_1
+	*	1716275100	0
+	"	35	0
+	.	1	0
+	+	1	0
+
+> ~/.vim/bundle/preservim/vim-markdown
+	*	1716274783	0
+	"	1	0
+
+> ~/.vim/bundle/Vundle.vim/doc/vundle.txt
+	*	1716274759	0
+	"	262	0
+
+> ~/.vim/bundle/NERD_tree_tab_1
+	*	1716274709	0
+	"	4	0
+	.	1	0
+	+	1	0
+
+> ~/.vim/bundle/[Vundle] Installer
+	*	1716274704	0
+	"	3	0
+	.	1	0
+	+	1	0
+
+> ~/.vim/bundle/ctrlp-funky/autoload/ctrlp/funky/ft/markdown.vim
+	*	1716274269	0
+	"	3	0
+
+> ~/.vim/bundle/vimtex/autoload/vimtex/syntax/p/markdown.vim
+	*	1716274262	0
+	"	1	0
+
+> ~/.vim/bundle/python-syntax/syntax/python.vim
+	*	1716273975	0
+	"	430	2
+
+> ~/.vim/bundle/indentLine/after/syntax/indentLine.vim
+	*	1716273957	0
+	"	1	0
+
+> ~/misc/NERD_tree_win_1
+	*	1716273904	0
+	"	1	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-ph4f7jop.commit.hg.txt
+	*	1716270235	0
+	"	1	0
+
+> /etc/ssh/sshd_config
+	*	1716269132	0
+	"	77	11
+
+> ~/.profile_wangxl
+	*	1716268425	0
+	"	840	45
+	^	2284	25
+	.	2284	24
+	+	2284	16
+	+	2283	17
+	+	2284	24
+
+> /usr/local/bin/pbcopy
+	*	1716267344	0
+	"	1	0
 
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-	*	1715919552	0
-	"	73	0
-	^	449	25
-	.	449	24
-	+	433	29
-	+	434	25
-	+	430	0
-	+	427	50
-	+	430	0
-	+	424	25
-	+	440	20
-	+	430	0
-	+	339	0
-	+	338	85
-	+	339	0
-	+	429	0
-	+	440	0
-	+	438	0
-	+	437	0
-	+	438	7
-	+	430	68
-	+	430	75
-	+	431	26
-	+	438	0
-	+	437	61
-	+	441	0
-	+	437	28
-	+	346	33
+	*	1716266740	0
+	"	410	12
+	^	421	8
+	.	421	50
 	+	347	0
 	+	348	0
 	+	347	0
@@ -23170,9 +23300,9 @@ $
 	+	363	0
 	+	365	14
 	+	365	0
-	+	423	74
-	+	423	20
-	+	429	59
+	+	444	74
+	+	444	20
+	+	449	59
 	+	66	81
 	+	84	81
 	+	66	0
@@ -23184,69 +23314,427 @@ $
 	+	362	17
 	+	364	0
 	+	255	0
-	+	423	0
+	+	444	0
 	+	365	0
 	+	362	8
-	+	424	8
+	+	445	8
 	+	361	6
 	+	360	0
 	+	361	9
 	+	365	0
-	+	423	0
+	+	444	0
 	+	366	0
 	+	365	0
 	+	373	0
 	+	398	50
 	+	385	0
-	+	410	28
-	+	409	0
+	+	409	28
 	+	408	0
-	+	409	0
-	+	411	0
-	+	423	0
-	+	424	19
-	+	429	0
-	+	428	0
-	+	421	57
-	+	428	59
-	+	429	85
-	+	432	23
-	+	433	29
-	+	429	50
-	+	430	0
-	+	437	44
-	+	441	0
-	+	399	0
-	+	401	0
-	+	431	46
-	+	435	22
-	+	437	0
-	+	439	29
-	+	435	22
-	+	409	0
-	+	408	0
-	+	409	0
 	+	407	0
-	+	435	23
-	+	439	46
-	+	431	50
-	+	443	0
-	+	442	0
-	+	443	19
-	+	447	0
-	+	449	24
+	+	408	0
+	+	410	0
+	+	444	0
+	+	445	19
+	+	449	0
+	+	448	0
+	+	442	57
+	+	448	59
+	+	449	85
+	+	452	23
+	+	453	29
+	+	449	50
+	+	450	0
+	+	457	44
+	+	461	0
+	+	399	0
+	+	400	0
+	+	451	46
+	+	455	22
+	+	457	0
+	+	459	29
+	+	455	22
+	+	408	0
+	+	407	0
+	+	408	0
+	+	406	0
+	+	455	23
+	+	459	46
+	+	451	50
+	+	463	0
+	+	462	0
+	+	463	19
+	+	467	0
+	+	469	24
+	+	470	22
+	+	474	49
+	+	400	0
+	+	435	0
+	+	412	0
+	+	435	0
+	+	414	0
+	+	446	0
+	+	422	0
+	+	428	22
+	+	432	48
+	+	446	38
+	+	436	18
+	+	415	19
+	+	420	73
+	+	420	75
+	+	420	74
+	+	420	70
+	+	420	81
+	+	420	70
+	+	420	51
+	+	422	0
+	+	420	51
+	+	421	50
 
-> /tmp/xlwang/patch/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-	*	1715904502	0
-	"	434	8
-	^	439	51
-	.	439	50
-	+	435	23
-	+	439	50
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train.sh
+	*	1716265675	0
+	"	20	43
+	^	19	2
+	.	20	0
+	+	19	28
+	+	20	39
+	+	11	0
+	+	20	0
+
+> ~/.por
+	*	1716252147	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/NERD_tree_tab_1
+	*	1716252097	0
+	"	12	3
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_online_train.sh
+	*	1716252091	0
+	"	17	0
+	^	15	0
+	.	29	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	9	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	9	0
+	+	11	0
+	+	29	0
+	+	11	0
+	+	29	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	9	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	9	0
+	+	11	0
+	+	29	0
+	+	11	0
+	+	29	0
+	+	15	0
+	+	29	0
+	+	15	0
+	+	29	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/ControlP
+	*	1716251834	0
+	"	5	0
+	.	2	0
+	+	1	0
+	+	2	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-histedit-cbfir9av.histedit.hg.txt
+	*	1716251819	0
+	"	2	0
+	.	2	0
+	+	1	0
+	+	2	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-nwqju6bx.commit.hg.txt
+	*	1716251800	0
+	"	15	0
+	^	12	0
+	.	15	0
+	+	10	21
+	+	15	0
+	+	13	29
+	+	12	0
+	+	15	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/common.sh
+	*	1716251659	0
+	"	118	3
+	^	117	64
+	.	120	9
+	+	84	0
+	+	74	27
+	+	74	28
+	+	74	0
+	+	73	0
+	+	74	0
+	+	72	0
+	+	133	18
+	+	133	0
+	+	134	21
+	+	134	0
+	+	84	0
+	+	74	27
+	+	74	28
+	+	74	0
+	+	73	0
+	+	74	0
+	+	72	0
+	+	133	18
+	+	133	0
+	+	134	21
+	+	134	0
+	+	134	25
+	+	134	24
+	+	134	0
+	+	133	0
+	+	134	0
+	+	133	0
+	+	134	0
+	+	133	53
+	+	134	0
+	+	133	52
+	+	134	0
+	+	134	31
+	+	134	0
+	+	41	4
+	+	20	26
+	+	42	8
+	+	66	35
+	+	134	0
+	+	134	155
+	+	134	49
+	+	134	58
+	+	134	30
+	+	1	0
+	+	15	20
+	+	17	16
+	+	50	0
+	+	1	0
+	+	88	0
+	+	81	0
+	+	105	0
+	+	106	0
+	+	111	0
+	+	126	0
+	+	131	0
+	+	127	38
+	+	129	0
+	+	128	42
+	+	131	0
+	+	111	0
+	+	110	0
+	+	131	0
+	+	131	7
+	+	131	37
+	+	131	47
+	+	113	28
+	+	117	0
+	+	130	18
+	+	131	0
+	+	117	0
+	+	125	0
+	+	123	0
+	+	125	0
+	+	116	38
+	+	118	5
+	+	114	19
+	+	117	3
+	+	118	4
+	+	117	25
+	+	115	10
+	+	119	7
+	+	122	65
+	+	115	0
+	+	122	47
+	+	122	108
+	+	122	68
+	+	122	0
+	+	121	0
+	+	122	23
+	+	122	14
+	+	124	16
+	+	103	82
+	+	104	0
+	+	103	80
+	+	127	30
+	+	120	28
+	+	117	64
+	+	124	7
+	+	120	9
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-cvfieswp.commit.hg.txt
+	*	1716251120	0
+	"	1	48
+	^	1	49
+	.	1	48
+	+	5	47
+	+	10	0
+	+	8	0
+	+	9	29
+	+	10	0
+	+	14	13
+	+	1	48
+
+> /data/users/xlwang/fbsource/fbcode/scripts/xlwang/test_dist.py
+	*	1716250987	0
+	"	14	17
+	^	10	55
+	.	10	0
+	+	25	0
+	+	1	13
+	+	1	0
+	+	25	0
+	+	1	0
+	+	1	7
+	+	1	0
+	+	1	11
+	+	1	16
+	+	1	0
+	+	1	39
+	+	1	30
+	+	1	0
+	+	25	0
+	+	21	13
+	+	24	0
+	+	21	0
+	+	22	0
+	+	23	0
+	+	21	0
+	+	25	0
+	+	11	0
+	+	10	7
+	+	7	0
+	+	5	11
+	+	8	16
+	+	10	0
+	+	9	39
+	+	10	30
+	+	1	26
+	+	11	0
+	+	12	16
+	+	10	0
+	a	21	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train_local.sh
+	*	1716250840	0
+	"	37	0
+	^	18	7
+	.	17	0
+	+	19	0
+	+	32	5
+	+	25	0
+	+	32	49
+	+	30	23
+	+	18	7
+	+	17	0
+	+	19	0
+	+	32	5
+	+	25	0
+	+	32	49
+	+	30	23
+	+	18	7
+	+	17	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_local_train_publish.sh
+	*	1716250836	0
+	"	27	27
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_mast_train_online.sh
+	*	1716250822	0
+	"	29	2
+	.	30	0
+	+	1	0
+	+	30	0
+	+	25	49
+	+	30	0
 
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-	*	1715904394	0
-	"	771	4
+	*	1716250735	0
+	"	208	8
 	^	362	36
 	.	362	0
 	+	1	0
@@ -23351,17 +23839,135 @@ $
 	+	362	0
 
 > /data/users/xlwang/fbsource/fbcode/ControlP
-	*	1715904352	0
+	*	1716250396	0
 	"	10	0
 	.	2	0
 	+	1	0
-	+	12	0
-	+	1	0
 	+	2	0
 
+> /data/users/xlwang/fbsource/fbcode/NERD_tree_tab_4
+	*	1716250053	0
+	"	1494	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/cu_cotrain_cint_mast_train_eval.sh
+	*	1716249953	0
+	"	17	9
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/tc_train_online.sh
+	*	1716249853	0
+	"	72	8
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/cu_cotrain_cint_mast_eval.sh
+	*	1716249519	0
+	"	27	14
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/launch.py
+	*	1716249515	0
+	"	268	4
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_ifu/cotrain/model_v4_hstu_standalone_magic.py
+	*	1716249510	0
+	"	3	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/trainer.py
+	*	1716249510	0
+	"	634	16
+	^	1068	4
+	.	806	0
+	+	806	86
+	+	806	0
+	+	833	84
+	+	806	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/launch.py
+	*	1716249509	0
+	"	122	45
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/launcher.py
+	*	1716249508	0
+	"	3	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf/roo_trainer_config.py
+	*	1716249496	0
+	"	137	0
+	^	828	12
+	.	186	0
+	+	643	0
+	+	186	0
+
+> /data/users/xlwang/fbsource/fbcode/mvai_infra/checkpoint/checkpoint_manager.py
+	*	1716249491	0
+	"	378	13
+	^	378	12
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/job_resolver.py
+	*	1716249489	0
+	"	729	8
+
+> /data/users/xlwang/fbsource/fbcode/mvai_infra/checkpoint/checkpoint.py
+	*	1716249489	0
+	"	233	40
+	^	211	8
+
+> /data/users/xlwang/fbsource/fbcode/NERD_tree_tab_2
+	*	1716249264	0
+	"	1490	41
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/scripts/xlwang/video_sampler.py
+	*	1716248397	0
+	"	318	4
+
+> /data/users/xlwang/fbsource/fbcode/scripts/xlwang/NERD_tree_tab_1
+	*	1716248265	0
+	"	10	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/scripts/xlwang/mp_crash.py
+	*	1716248245	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/roo_trainer_config.py
+	*	1716248152	0
+	"	4	22
+
+> /data/users/xlwang/fbsource/fbcode/tgif/lib/tgif_split_pass.py
+	*	1716248150	0
+	"	125	29
+	.	113	0
+	+	113	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/utils.py
+	*	1716248150	0
+	"	440	59
+	^	489	12
+	.	442	0
+	+	442	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/utils/utils.py
+	*	1716247656	0
+	"	429	4
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_mast_eval.sh
+	*	1716247440	0
+	"	29	4
+	.	16	0
+	+	17	0
+	+	16	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/local_train_online.sh
+	*	1716247336	0
+	"	1	0
+
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-	*	1715904254	0
-	"	1500	0
+	*	1716247279	0
+	"	1572	26
 	^	594	16
 	.	1439	0
 	+	1	0
@@ -23440,537 +24046,74 @@ $
 	+	1463	0
 	+	1439	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/model_hstu_standalone_cint.py
-	*	1715900189	0
-	"	1476	16
-	.	666	0
-	+	631	0
-	+	642	66
-	+	642	40
-	+	649	32
-	+	650	0
-	+	650	83
-	+	650	19
-	+	650	77
-	+	650	34
-	+	37	19
-	+	650	61
-	+	650	0
-	+	644	0
-	+	646	108
-	+	645	79
-	+	647	60
-	+	646	58
-	+	647	60
-	+	649	0
-	+	647	84
-	+	648	15
-	+	642	67
-	+	644	0
-	+	643	0
-	+	630	59
-	+	642	71
-	+	643	0
-	+	644	0
-	+	659	33
-	+	671	0
-	+	672	36
-	+	672	0
-	+	674	13
-	+	677	13
-	+	680	13
-	+	681	0
-	+	683	13
-	+	673	26
-	+	676	26
-	+	679	26
-	+	682	26
-	+	1703	68
-	+	1713	11
-	+	1704	86
-	+	1713	0
-	+	1703	32
-	+	1713	0
-	+	1705	0
-	+	1714	0
-	+	1715	0
-	+	1737	0
-	+	1738	23
-	+	1744	23
-	+	1723	37
-	+	1703	33
-	+	1782	64
-	+	1781	64
-	+	1844	0
-	+	1842	32
-	+	1843	34
-	+	1841	51
-	+	1782	0
-	+	1842	33
-	+	497	53
-	+	707	0
-	+	1725	45
-	+	1726	46
-	+	1727	47
-	+	1728	48
-	+	1729	42
-	+	1733	38
-	+	1735	45
-	+	1732	0
-	+	1736	0
-	+	1734	0
-	+	1744	17
-	+	1749	17
-	+	1743	0
-	+	1703	74
-	+	1704	0
-	+	1711	85
-	+	1707	14
-	+	1708	30
-	+	1709	0
-	+	1708	76
-	+	1716	53
-	+	1746	27
-	+	1716	88
-	+	1717	0
-	+	1716	88
-	+	1717	0
-	+	1753	25
-	+	1641	0
-	+	1639	0
-	+	1632	68
-	+	1633	0
-	+	1632	67
-	+	1666	0
-	+	666	0
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/fire/fire.py
+	*	1716247275	0
+	"	1488	8
+	^	1361	4
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/ControlP
-	*	1715900184	0
-	"	9	0
-	.	2	0
-	+	1	0
-	+	2	0
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/fire/quickapp_utils.py
+	*	1716246430	0
+	"	1592	4
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/tests/cogwheel_cot_integration_test.py
-	*	1715900063	0
-	"	47	57
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/NERD_tree_tab_1
-	*	1715899719	0
-	"	9	4
+> /data/users/xlwang/fbsource/fbcode/NERD_tree_win_3
+	*	1716245396	0
+	"	6	0
 	.	1	0
 	+	1	0
 
-> ~/misc/dotfiles/lib/.profile_wangxl
-	*	1715899709	0
-	"	237	29
-	^	2172	8
-	.	2172	0
-	+	2171	7
-	+	2172	7
-	+	2172	0
-	+	2236	0
-	+	2238	0
-	+	2211	20
-	+	2232	0
-	+	2238	0
-	+	2212	0
-	+	2232	0
-	+	2234	11
-	+	2238	0
-	+	2234	92
-	+	2211	20
-	+	2232	0
-	+	2238	0
-	+	2212	0
-	+	2232	0
-	+	2234	11
-	+	2238	0
-	+	2234	16
-	+	2234	0
-	+	2238	0
-	+	2211	20
-	+	2232	0
-	+	2238	0
-	+	2212	0
-	+	2232	0
-	+	2234	11
-	+	2238	0
-	+	2234	92
-	+	2211	20
-	+	2232	0
-	+	2238	0
-	+	2212	0
-	+	2232	0
-	+	2234	11
-	+	2238	0
-	+	2234	16
-	+	2234	0
-	+	2238	0
-	+	2211	20
-	+	2232	0
-	+	2238	0
-	+	2212	0
-	+	2232	0
-	+	2234	11
-	+	2238	0
-	+	2234	92
-	+	2211	20
-	+	2232	0
-	+	2238	0
-	+	2212	0
-	+	2232	0
-	+	2234	11
-	+	2238	0
-	+	2234	16
-	+	2234	0
-	+	2238	0
-	+	2211	20
-	+	2232	0
-	+	2238	0
-	+	2212	0
-	+	2232	0
-	+	2234	11
-	+	2238	0
-	+	2234	92
-	+	2211	20
-	+	2232	0
-	+	2238	0
-	+	2212	0
-	+	2232	0
-	+	2234	11
-	+	2238	0
-	+	2234	16
-	+	2234	0
-	+	2236	0
-	+	2238	0
-	+	2210	0
-	+	2233	0
-	+	2238	0
-	+	2237	0
-	+	2091	77
-	+	2092	0
-	+	2091	0
-	+	2098	1
-	+	2097	0
-	+	2173	0
-	+	2172	64
-	+	2173	14
-	+	2173	18
-	+	2173	27
-	+	2182	0
-	+	2173	0
-	+	2174	0
-	+	2173	0
-	+	2172	4
-	+	2171	7
-	+	2172	7
-	+	2172	0
-
-> /data/users/xlwang/fbsource/fbcode/hpc/torchrec/train_module.py
-	*	1715897092	0
-	"	690	31
-
-> ~/.hgignore
-	*	1715896629	0
-	"	8	23
-	.	8	23
-	+	9	0
-	+	8	23
-
-> /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch/lib/gmpp_util.py
-	*	1715893963	0
-	"	75	35
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf/model_10s_v4_hstu_standalone_cint_config.py
+	*	1716245377	0
+	"	5	0
+	.	113	0
+	+	113	30
+	+	113	0
 
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/tgif_publisher.py
-	*	1715892273	0
-	"	29	13
+	*	1716245022	0
+	"	55	22
 	.	150	0
 	+	150	0
 
-> /data/users/xlwang/fbsource/fbcode/aiplatform/modelstore/model_generation/data_loader/in_trainer_data_loader.py
-	*	1715892271	0
-	"	310	32
+> /data/users/xlwang/fbsource/fbcode/tgif/fx/tgif_tracer.py
+	*	1716245022	0
+	"	35	0
+	^	33	0
+	.	34	0
+	+	34	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/utils.py
-	*	1715892211	0
-	"	386	15
-
-> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/hpc/modules.py
-	*	1715887074	0
-	"	144	6
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/tests/cot_lib_tests.py
-	*	1715886657	0
-	"	88	33
-
-> /data/users/xlwang/fbsource/fbcode/NERD_tree_tab_1
-	*	1715886425	0
-	"	1584	10
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/cot_lib.py
-	*	1715886420	0
-	"	185	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/mvai_cli/online_training_mgr.py
-	*	1715886370	0
-	"	162	43
-	.	162	0
-	+	162	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/mvai_cli/checkout.py
-	*	1715879519	0
-	"	14	13
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/trainer.py
-	*	1715879486	0
-	"	823	23
-	^	1068	4
-	.	806	0
-	+	806	86
-	+	806	0
-	+	833	84
-	+	806	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/seq_select.py
-	*	1715879048	0
-	"	320	35
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/umia_v1/ig/training_pipeline/training_pipeline.py
-	*	1715822959	0
-	"	176	16
-	^	166	76
-	.	166	0
-	+	272	0
-	+	169	33
-	+	174	33
-	+	271	0
-	+	313	0
-	+	345	0
-	+	346	0
-	+	1	0
-	+	1	38
-	+	1	24
-	+	1	0
-	+	1	33
-	+	1	0
-	+	174	0
-	+	242	0
-	+	345	0
-	+	343	0
-	+	341	38
-	+	342	24
-	+	312	0
-	+	311	0
-	+	272	0
-	+	270	0
-	+	272	0
-	+	169	33
-	+	174	33
-	+	271	0
-	+	1	0
-	+	1	38
-	+	1	24
-	+	1	0
-	+	1	33
-	+	1	0
-	+	174	0
-	+	242	0
-	+	345	0
-	+	343	0
-	+	341	38
-	+	342	24
-	+	312	0
-	+	311	0
-	+	272	0
-	+	270	0
-	+	272	0
-	+	169	33
-	+	174	33
-	+	271	0
-	+	313	0
-	+	1	0
-	+	1	38
-	+	1	24
-	+	1	0
-	+	1	33
-	+	1	0
-	+	174	0
-	+	242	0
-	+	345	0
-	+	343	0
-	+	341	38
-	+	342	24
-	+	312	0
-	+	311	0
-	+	272	0
-	+	270	0
-	+	272	0
-	+	169	33
-	+	174	33
-	+	271	0
-	+	1	0
-	+	1	38
-	+	1	24
-	+	1	0
-	+	1	33
-	+	1	0
-	+	174	0
-	+	242	0
-	+	345	0
-	+	343	0
-	+	341	38
-	+	342	24
-	+	312	0
-	+	311	0
-	+	272	0
-	+	270	0
-	+	272	0
-	+	169	33
-	+	174	33
-	+	271	0
-	+	313	0
-	+	345	0
-	+	346	0
-	+	170	0
-	+	169	0
-	+	165	26
-	+	167	22
-	+	169	11
-	+	174	11
-	+	173	0
-	+	168	0
-	+	166	0
-	j	164	20
-
-> ~/.hgrc
-	*	1715819989	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/fire/fire.py
-	*	1715816992	0
-	"	862	29
-	^	847	4
+> /data/users/xlwang/fbsource/fbcode/hammer/modules/features/hstu_feature_processors.py
+	*	1716237775	0
+	"	235	9
 
 > /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/enrichment_interactor.py
-	*	1715814067	0
-	"	302	0
-	^	330	51
-	.	330	51
+	*	1716237582	0
+	"	69	8
+	.	69	0
 	+	316	21
 	+	330	51
+	+	118	0
+	+	68	0
+	+	69	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/hstu_vdd_date_ranges.sh
-	*	1715812069	0
-	"	14	30
+> /data/users/xlwang/fbsource/fbcode/torchrec/distributed/types.py
+	*	1716237582	0
+	"	397	27
 
-> ~/.vimrc
-	*	1715809802	0
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/roo_predict.py
+	*	1716237200	0
+	"	50	16
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fx/node.py
+	*	1716236932	0
+	"	754	28
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fx/graph.py
+	*	1716236676	0
 	"	1	0
 
-> ~/misc/scripts/cache_sync.sh
-	*	1715809430	0
-	"	21	56
-	^	21	56
-	.	21	55
-	+	21	55
-
-> ~/.profile_wangxl
-	*	1715809347	0
-	"	446	9
-	^	2091	77
-	.	446	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1833	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1833	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1834	0
-	+	1838	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1833	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1833	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1834	0
-	+	1838	0
-	+	1839	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1833	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1833	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1834	0
-	+	1838	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1833	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1833	0
-	+	1834	0
-	+	1834	1
-	+	1832	0
-	+	1834	0
-	+	1838	0
-	+	1839	0
-	+	1046	8
-	+	1410	18
-	+	1410	0
-	+	2091	0
-	+	2091	76
-	+	448	0
-	+	446	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/common.sh
-	*	1715809245	0
-	"	5	9
-	^	70	0
-	.	71	0
-	+	73	27
-	+	73	28
-	+	73	0
-	+	72	0
-	+	73	0
-	+	71	0
-
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/conf/feature_index_loader_configs.py
-	*	1715808791	0
-	"	350	0
+	*	1716233260	0
+	"	339	58
 	^	340	30
 	.	351	28
 	+	1	20
@@ -24021,603 +24164,82 @@ $
 	+	352	17
 	+	351	28
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train_local.sh
-	*	1715808743	0
-	"	34	54
-	.	30	49
-	+	17	0
-	+	30	5
-	+	23	0
-	+	30	49
-
-> ~/.z
-	*	1715807338	0
-	"	1	0
-
-> ~/._z
-	*	1715807333	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_mast_train_eval.sh
-	*	1715806152	0
-	"	24	82
-	^	15	6
-	.	24	82
-	+	15	5
-	+	24	82
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_mast_eval.sh
-	*	1715806141	0
-	"	25	82
-	.	16	0
-	+	17	0
-	+	16	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_local_train_publish.sh
-	*	1715806138	0
-	"	33	57
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_local_train.sh
-	*	1715806136	0
-	"	33	57
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/mast_tenant_select.sh
-	*	1715806129	0
-	"	159	6
-	^	160	29
-	.	159	0
-	+	159	0
-	+	160	28
-	+	161	0
-	+	159	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf/model_v5_hstu_standalone_cint_exp_config.py
-	*	1715806089	0
-	"	23	19
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/indexes.py
-	*	1715803565	0
-	"	187	0
-	^	355	40
-	.	355	39
-	+	1	11
-	+	1	28
-	+	1	33
-	+	1	0
-	+	1	15
-	+	1	23
-	+	1	0
-	+	1	23
-	+	1	0
-	+	1	28
-	+	1	33
-	+	1	0
-	+	1	11
-	+	1	28
-	+	1	33
-	+	1	0
-	+	1	15
-	+	1	23
-	+	1	0
-	+	1	23
-	+	1	0
-	+	1	29
-	+	1	0
-	+	361	54
-	+	1	16
-	+	361	0
-	+	1	0
-	+	1	31
-	+	1	14
-	+	1	43
-	+	1	0
-	+	1	28
-	+	1	0
-	+	43	28
-	+	43	33
-	+	108	0
-	+	108	11
-	+	43	28
-	+	43	33
-	+	108	0
-	+	108	15
-	+	108	23
-	+	108	0
-	+	108	23
-	+	108	0
-	+	43	28
-	+	43	33
-	+	108	0
-	+	108	11
-	+	43	28
-	+	43	33
-	+	108	0
-	+	108	15
-	+	108	23
-	+	108	0
-	+	108	23
-	+	108	0
-	+	43	0
-	+	43	28
-	+	43	33
-	+	108	0
-	+	108	11
-	+	43	28
-	+	43	33
-	+	108	0
-	+	108	15
-	+	108	23
-	+	108	0
-	+	108	23
-	+	108	0
-	+	43	28
-	+	43	33
-	+	108	0
-	+	108	11
-	+	43	28
-	+	43	33
-	+	108	0
-	+	108	15
-	+	108	23
-	+	108	0
-	+	108	23
-	+	108	0
-	+	43	0
-	+	355	29
-	+	355	0
-	+	361	54
-	+	355	16
-	+	361	0
-	+	355	0
-	+	359	31
-	+	356	14
-	+	357	43
-	+	359	0
-	+	357	0
-	+	358	28
-	+	355	8
-	+	361	0
-	+	360	19
-	+	4	8
-	+	355	39
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/train_pipeline.py
-	*	1715801867	0
-	"	595	0
-
-> /data/users/xlwang/fbsource/fbcode/dataswarm_authoring/operators/wait_for_hive_operator.py
-	*	1715801864	0
-	"	129	12
-
-> /data/users/xlwang/fbsource/fbcode/dataswarm_authoring/operators/__init__.py
-	*	1715801086	0
-	"	73	24
-
-> /data/users/xlwang/fbsource/fbcode/python/fbconda/setup/conda_profile.sh
-	*	1715798784	0
-	"	114	61
-	.	69	0
-	+	68	24
-	+	69	11
-	+	70	6
-	+	69	7
-	+	70	0
-	+	62	55
-	+	63	7
-	+	64	6
-	+	62	0
-	+	69	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-hq7v69u_.commit.hg.txt
-	*	1715798744	0
-	"	19	0
-	^	19	0
-	.	11	0
-	+	5	73
-	+	7	11
-	+	11	57
-	+	15	8
-	+	18	0
-	+	11	0
-
-> ~/.zshrc
-	*	1715798524	0
-	"	255	0
-	.	2	0
-	+	256	0
-	+	3	0
-	+	69	0
-	+	105	0
-	+	127	0
-	+	256	0
-	+	147	0
-	+	149	0
-	+	256	0
-	+	153	0
-	+	172	0
-	+	248	0
-	+	195	0
-	+	2	0
-
-> /etc/fbconda/fbconda.sh
-	*	1715793457	0
-	"	26	13
-
-> ~/.tmux.conf
-	*	1715793406	0
-	"	175	0
-	^	139	0
-	.	139	10
-	+	137	82
-	+	140	0
-	+	137	82
-	+	140	0
-	+	137	82
-	+	140	0
-	+	137	82
-	+	140	0
-	+	137	0
-	+	137	82
-	+	140	0
-	+	137	159
-	+	137	82
-	+	140	0
-	+	137	113
-	+	127	0
-	+	126	0
-	+	127	32
-	+	126	0
-	+	127	0
-	+	137	82
-	+	140	0
-	+	137	82
-	+	140	0
-	+	137	82
-	+	140	0
-	+	137	82
-	+	140	0
-	+	137	82
-	+	140	0
-	+	137	82
-	+	140	0
-	+	137	12
-	+	137	134
-	+	137	12
-	+	137	0
-	+	137	12
-	+	137	63
-	+	140	0
-	+	137	114
-	+	137	0
-	+	138	113
-	+	137	0
-	+	138	0
-	+	139	10
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/feature_index_loader.py
-	*	1715793148	0
-	"	536	17
-	.	536	0
-	+	474	68
-	+	481	31
-	+	482	0
-	+	481	28
-	+	482	29
-	+	393	63
-	+	395	31
-	+	399	22
-	+	400	0
-	+	398	48
-	+	399	63
-	+	472	0
-	+	463	0
-	+	459	43
-	+	460	87
-	+	461	23
-	+	463	8
-	+	394	28
-	+	463	14
-	+	464	23
-	+	466	8
-	+	467	31
-	+	468	59
-	+	469	22
-	+	471	19
-	+	112	86
-	+	112	50
-	+	112	67
-	+	112	38
-	+	112	0
-	+	113	0
-	+	121	16
-	+	129	44
-	+	143	27
-	+	150	54
-	+	154	8
-	+	160	8
-	+	161	19
-	+	393	0
-	+	7	12
-	+	7	0
-	+	6	0
-	+	7	0
-	+	393	51
-	+	455	0
-	+	478	24
-	+	479	0
-	+	443	33
-	+	443	0
-	+	460	36
-	+	464	0
-	+	464	37
-	+	466	41
-	+	469	0
-	+	466	0
-	+	464	0
-	+	460	0
-	+	443	0
-	+	391	67
-	+	393	66
-	+	397	81
-	+	101	0
-	+	106	21
-	+	107	25
-	+	106	0
-	+	101	34
-	+	101	15
-	+	101	41
-	+	101	0
-	+	101	15
-	+	101	30
-	+	101	29
-	+	101	0
-	+	101	20
-	+	101	0
-	+	548	27
-	+	548	0
-	+	538	18
-	+	548	17
-	+	152	0
-	+	548	15
-	+	101	0
-	+	548	24
-	+	548	0
-	+	548	18
-	+	548	0
-	+	152	0
-	+	538	0
-	+	548	0
-	+	106	15
-	+	107	0
-	+	97	0
-	+	90	0
-	+	109	8
-	+	110	8
-	+	112	0
-	+	546	25
-	+	547	0
-	+	536	17
-	+	536	0
-	j	86	28
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-_mwl765t.commit.hg.txt
-	*	1715760422	0
-	"	21	8
-	^	21	9
-	.	6	0
-	+	6	52
-	+	8	46
-	+	10	85
-	+	11	87
-	+	17	47
-	+	15	48
-	+	21	8
-	+	6	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/pools.py
-	*	1715757314	0
-	"	246	0
-	.	245	0
-	+	1	12
-	+	1	22
-	+	1	4
-	+	1	28
-	+	1	0
-	+	1	12
-	+	1	22
-	+	1	4
-	+	1	28
-	+	1	0
-	+	94	0
-	+	149	0
-	+	245	21
-	+	245	0
-	+	1	12
-	+	1	22
-	+	1	4
-	+	1	28
-	+	1	0
-	+	1	12
-	+	1	22
-	+	1	4
-	+	1	28
-	+	1	0
-	+	94	0
-	+	149	0
-	+	245	21
-	+	245	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/comm_coordinators.py
-	*	1715757050	0
-	"	279	32
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf/roo_trainer_config.py
-	*	1715747857	0
-	"	184	0
-	^	185	6
-	.	186	0
-	+	643	0
-	+	186	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/dataloader/dataloader.py
-	*	1715746232	0
-	"	476	21
-	^	448	12
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/dataloader/batch_aggregate_functions.py
-	*	1715746230	0
-	"	18	9
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/launch.py
-	*	1715746226	0
-	"	316	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/utils/utils.py
-	*	1715745872	0
-	"	414	16
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/distributed.py
-	*	1715745868	0
-	"	30	22
-
-> /tmp/mvai-xlwang.log
-	*	1715738423	0
-	"	45671	14
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-histedit-577t4ea0.histedit.hg.txt
-	*	1715725366	0
-	"	3	0
-	.	3	0
-	+	5	0
-	+	3	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-histedit-buo6echd.histedit.hg.txt
-	*	1715725344	0
-	"	2	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-u_8ixx77.commit.hg.txt
-	*	1715725286	0
-	"	1	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-uwninjn0.commit.hg.txt
-	*	1715725232	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-histedit-lxnjmefv.histedit.hg.txt
-	*	1715725217	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-i4wmr7cu.commit.hg.txt
-	*	1715725176	0
-	"	18	0
-	^	9	12
-	.	19	0
-	+	5	78
-	+	7	41
-	+	5	0
-	+	13	80
-	+	16	103
-	+	23	10
-	+	23	11
-	+	25	0
-	+	24	0
-	+	19	17
-	+	9	11
-	+	8	0
-	+	9	12
-	+	10	0
-	+	19	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-67fnq7h4.commit.hg.txt
-	*	1715724964	0
-	"	3	38
-	^	3	38
-	.	3	37
-	+	3	37
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-1b5m7ith.commit.hg.txt
-	*	1715724934	0
-	"	1	2
-	^	1	3
-	.	1	2
-	+	1	2
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf/model_10s_v4_hstu_standalone_cint_config.py
-	*	1715722168	0
-	"	607	38
-	^	148	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/fire/quickapp_utils.py
-	*	1715663593	0
-	"	984	27
-
-> ~/misc/scripts/cpu_mem_lookup.py
-	*	1715662673	0
-	"	14	17
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/dataloader/dataloader_configs.py
-	*	1715644982	0
-	"	280	52
-
-> /data/users/xlwang/fbsource/fbcode/hammer/modules/features/hstu_feature_processors.py
-	*	1715644941	0
-	"	263	59
-
-> /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/uih_sampling_modules.py
-	*	1715644941	0
-	"	317	0
-
-> /data/users/xlwang/fbsource/fbcode/pytorch/data/torchdata/dataloader2/dataloader2.py
-	*	1715644937	0
-	"	131	0
-
-> /data/users/xlwang/fbsource/fbcode/pytorch/data/fb/disaggregated_dpp_reading_service.py
-	*	1715644936	0
-	"	1487	0
-
-> /data/users/xlwang/fbsource/fbcode/pytorch/data/fb/__init__.py
-	*	1715644935	0
-	"	14	5
-	^	1	30
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/NERD_tree_win_2
-	*	1715639709	0
-	"	12	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/conf/trainer_config.py
-	*	1715639580	0
-	"	8	24
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/train_pipeline.py
-	*	1715638136	0
-	"	2	0
-
-> /tmp/xlwang/cot_prod.log
-	*	1715634258	0
-	"	1494251	0
-	^	1494261	73
-	.	1494251	0
-	+	1494261	0
-	+	1494251	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/ControlP
-	*	1715632126	0
-	"	10	0
+> /tmp/xlwang/ControlP
+	*	1716233219	0
+	"	6	0
 	.	2	0
 	+	1	0
 	+	2	0
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/utils/_python_dispatch.py
+	*	1716231287	0
+	"	261	9
+	n	252	8
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/model_transform/splitting/split_dispatcher.py
+	*	1716231263	0
+	"	332	4
+
+> /data/users/xlwang/fbsource/fbcode/torchrec/sparse/jagged_tensor.py
+	*	1716231175	0
+	"	9	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/type_adaptors.py
+	*	1716231168	0
+	"	11	25
+
+> /data/users/xlwang/fbsource/fbcode/tgif/fx/tgif_split.py
+	*	1716228015	0
+	"	321	4
+	^	118	13
+	.	355	0
+	+	54	45
+	+	54	16
+	+	435	0
+	+	54	0
+	+	355	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/seq_select.py
+	*	1716225312	0
+	"	221	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/jt_lib.py
+	*	1716224868	0
+	"	518	4
+
+> /data/users/xlwang/fbsource/fbcode/torchrec/distributed/embedding.py
+	*	1716018025	0
+	"	937	61
+
+> /data/users/xlwang/fbsource/fbcode/torchrec/modules/embedding_modules.py
+	*	1716017946	0
+	"	384	8
+
+> /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch/modules/retrieval/sampling/ec_sparse_arch_uih_sampling.py
+	*	1715988295	0
+	"	459	13
+	^	459	12
+
+> /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch/modules/retrieval/sparse_arch_utils.py
+	*	1715988253	0
+	"	109	0
+
+> /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch/modules/retrieval/sparse_arch.py
+	*	1715988251	0
+	"	160	0
+
+> /data/users/xlwang/fbsource/fbcode/tgif/publish/tgif_application.py
+	*	1715986429	0
+	"	174	14
+	^	171	8
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/common/sigrid_pytorch_constants.py
+	*	1715985498	0
+	"	22	1
 
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cotrain_configs.py
-	*	1715534901	0
-	"	128	4
+	*	1715982650	0
+	"	29	0
 	.	48	0
 	+	32	35
 	+	42	0
@@ -24636,127 +24258,49 @@ $
 	+	43	0
 	+	48	0
 
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/seq_padding.py
-	*	1715534304	0
-	"	66	12
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/configs.py
+	*	1715982649	0
+	"	57	28
 
-> ~/.ssh/config
-	*	1715503694	0
-	"	26	0
-
-> ~/.bashrc
-	*	1715493501	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/cu_cotrain_cint_mast_train_eval.sh
-	*	1715385902	0
-	"	2	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train.sh
-	*	1715385901	0
-	"	16	3
-	.	16	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	25	38
-	+	2	0
-	+	24	5
-	+	15	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	25	38
-	+	31	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	25	38
-	+	2	0
-	+	24	5
-	+	15	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	25	38
-	+	31	0
-	+	13	0
-	+	14	0
-	+	12	31
-	+	24	55
-	+	2	0
-	+	24	5
-	+	15	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	25	38
-	+	2	0
-	+	24	5
-	+	15	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	25	38
-	+	31	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	25	38
-	+	2	0
-	+	24	5
-	+	15	0
-	+	2	0
-	+	24	5
-	+	15	0
-	+	25	38
-	+	31	0
-	+	13	0
-	+	14	0
-	+	12	31
-	+	24	55
-	+	10	0
-	+	26	47
-	+	16	6
-	+	16	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/cu_cotrain_cint_tiny_mast_train_eval.sh
-	*	1715385886	0
-	"	10	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/cu_cotrain_cint_mast_eval.sh
-	*	1715385867	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train
-	*	1715385770	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/ControlP
-	*	1715384551	0
+> ~/misc/ControlP
+	*	1715982446	0
 	"	10	0
 	.	2	0
 	+	1	0
 	+	2	0
 
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/ControlP
-	*	1715383600	0
-	"	10	0
-	.	2	0
-	+	1	0
-	+	2	0
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/gmpp_in_trainer_publisher_config.py
+	*	1715972029	0
+	"	11	0
 
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/NERD_tree_tab_1
-	*	1715383241	0
-	"	12	16
-	.	1	0
-	+	1	0
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/tgif_publisher_config.py
+	*	1715972024	0
+	"	66	23
+
+> /data/users/xlwang/fbsource/fbcode/tgif/types/types.py
+	*	1715972015	0
+	"	738	12
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/publisher/publisher_config.py
+	*	1715972014	0
+	"	10	0
+
+> /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch/lib/gmpp_util.py
+	*	1715967756	0
+	"	274	4
+
+> /data/users/xlwang/fbsource/fbcode/tgif/types/TARGETS
+	*	1715967539	0
+	"	55	0
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/csrc/utils/index_ops.cpp
+	*	1715967397	0
+	"	643	7
+
+> /data/users/xlwang/fbsource/fbcode/aiplatform/modelstore/model_generation/flow/gmpp_concurrent/gmpp_process_wrapper.py
+	*	1715967161	0
+	"	183	12
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_ifu/roo_predict.py
+	*	1715966735	0
+	"	85	36

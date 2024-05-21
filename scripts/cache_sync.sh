@@ -35,8 +35,8 @@ do
     src_ln=$(cat $src | wc -l)
     dst_ln=$(cat $dst | wc -l)
 
-    # cp -rL $src $dst
-    echo -e $ANSI_COLOR_GREEN"cp -r $src $dst ($src_ln -> $dst_ln)"$ANSI_COLOR_RESET
+    cp -rL $src $dst
+    echo -e $ANSI_COLOR_GREEN"cp -r $src $dst ($dst_ln -> $src_ln)"$ANSI_COLOR_RESET
   else
     echo -e $ANSI_COLOR_RED"$src file does not exists!"$ANSI_COLOR_RESET
   fi
