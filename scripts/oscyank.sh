@@ -19,17 +19,17 @@ copy_use_osc52_fallback=$(tmux show-option -gvq "@copy_use_osc52_fallback")
 copy_backend=""
 # if is_app_installed pbcopy; then
 #   copy_backend="pbcopy"
-if is_app_installed reattach-to-user-namespace; then
-  copy_backend="reattach-to-user-namespace pbcopy"
-elif [ -n "${DISPLAY-}" ] && is_app_installed xsel; then
-  copy_backend="xsel -i --clipboard"
-elif [ -n "${DISPLAY-}" ] && is_app_installed xclip; then
-  copy_backend="xclip -i -f -selection primary | xclip -i -selection clipboard"
-elif [ -n "${copy_backend_remote_tunnel_port-}" ] \
-    && (netstat -f inet -nl 2>/dev/null || netstat -4 -nl 2>/dev/null) \
-      | grep -q "[.:]$copy_backend_remote_tunnel_port"; then
-  copy_backend="nc localhost $copy_backend_remote_tunnel_port"
-fi
+# if is_app_installed reattach-to-user-namespace; then
+#   copy_backend="reattach-to-user-namespace pbcopy"
+# elif [ -n "${DISPLAY-}" ] && is_app_installed xsel; then
+#   copy_backend="xsel -i --clipboard"
+# elif [ -n "${DISPLAY-}" ] && is_app_installed xclip; then
+#   copy_backend="xclip -i -f -selection primary | xclip -i -selection clipboard"
+# elif [ -n "${copy_backend_remote_tunnel_port-}" ] \
+#     && (netstat -f inet -nl 2>/dev/null || netstat -4 -nl 2>/dev/null) \
+#       | grep -q "[.:]$copy_backend_remote_tunnel_port"; then
+#   copy_backend="nc localhost $copy_backend_remote_tunnel_port"
+# fi
 
 # if copy backend is resolved, copy and exit
 if [ -n "$copy_backend" ]; then
@@ -66,6 +66,7 @@ esc="\033Ptmux;\033$esc\033\\"
 # if we are on remote machine, send directly to SSH_TTY to transport escape sequence
 # to terminal on local machine, so data lands in clipboard on our local machine
 pane_active_tty=$(tmux list-panes -F "#{pane_active} #{pane_tty}" | awk '$1=="1" { print $2 }')
-target_tty="${SSH_TTY:-$pane_active_tty}"
+target_tty="$pane_active_tty"
+# target_tty="${SSH_TTY:-$pane_active_tty}"
 
 printf "$esc" > "$target_tty"
