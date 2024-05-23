@@ -67,6 +67,7 @@ function setup_ssh_client_for_tmux {
   # echo "$SSH_CLIENT" > ~/.active_ssh_client_for_tmux
   who | grep ${$(tty)##/dev/} | \
     sed -rn 's/.*\((\S*).*\)/\1/p' > ~/.active_ssh_client_for_tmux
+  who | grep ${$(tty)##/dev/} | awk '{ print $(2) }'  > ~/.active_ssh_tty
 
 #
 }
