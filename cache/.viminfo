@@ -11,7 +11,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/cli
+~MSle0~/3mo
 
 # Last Substitute Search Pattern:
 ~MSle0&max_nro_len
@@ -20,12 +20,12 @@
 $
 
 # Command Line History (newest to oldest):
+:qa
+|2,0,1717002721,,"qa"
+:w
+|2,0,1717002671,,"w"
 :wqa
 |2,0,1717002270,,"wqa"
-:w
-|2,0,1717002250,,"w"
-:qa
-|2,0,1717001977,,"qa"
 :W
 |2,0,1717001678,,"W"
 :fb
@@ -5144,6 +5144,8 @@ $
 |2,0,1635272165,,"ujk"
 
 # Search String History (newest to oldest):
+?/3mo
+|2,1,1717002573,47,"3mo"
 ?/cli
 |2,1,1717002020,47,"cli"
 ?/pass
@@ -21146,8 +21148,6 @@ $
 |2,1,1647734088,47,"lsps"
 ?/tensorbo
 |2,1,1647733566,47,"tensorbo"
-?/hotload
-|2,1,1647726272,47,"hotload"
 
 # Expression History (newest to oldest):
 ='else:' =~ '^\(\s*\(\h\+\S\s*:\)\)'jkjjjkjkkkk
@@ -22694,40 +22694,54 @@ $
 # Debug Line History (newest to oldest):
 
 # Registers:
-"0	CHAR	0
-	selection
-|3,0,0,0,1,0,1717002246,"selection"
-""1	LINE	0
-	bind-key -T copy-mode-vi 'y' send -X copy-pipe '~/misc/scripts/oscyank.sh'
-|3,1,1,1,1,0,1717002247,"bind-key -T copy-mode-vi 'y' send -X copy-pipe '~/misc/scripts/oscyank.sh'"
+""0	LINE	0
+	```
+|3,1,0,1,1,0,1717002682,"```"
+"1	LINE	0
+	```
+|3,0,1,1,1,0,1717002669,"```"
 "2	LINE	0
-	# bind-key -T copy-mode-vi 'y' send -X copy-pipe "~/misc/scripts/oscyank.sh"
-|3,0,2,1,1,0,1717001801,"# bind-key -T copy-mode-vi 'y' send -X copy-pipe \"~/misc/scripts/oscyank.sh\""
+	```
+|3,0,2,1,1,0,1717002666,"```"
 "3	LINE	0
-	set -s copy-command '~/misc/scripts/oscyank2.sh'
-|3,0,3,1,1,0,1717001777,"set -s copy-command '~/misc/scripts/oscyank2.sh'"
+	## MOE
+|3,0,3,1,1,0,1717002649,"## MOE"
 "4	LINE	0
-	
-|3,0,4,1,1,0,1717001617,""
+	``````
+	https://www.internalfb.com/mast/job/fire-xlwang-0528-bae0a453-cot_exp_25ro (3MoE)
+	https://www.internalfb.com/mast/job/fire-xlwang-0527-b53b3b02-cot_exp_25ro
+	https://www.internalfb.com/mast/job/fire-xlwang-0524-cd2b8e40-cot_exp_5ro
+	https://www.internalfb.com/mast/job/fire-xlwang-0520-719b9c91-hstu
+	https://fburl.com/tensorboard/c1e6rmpu
+	``````
+|3,0,4,1,7,0,1717002626,"``````","https://www.internalfb.com/mast/job/fire-xlwang-0528-bae0a453-cot_exp_25ro (3MoE)","https://www.internalfb.com/mast/job/fire-xlwang-0527-b53b3b02-cot_exp_25ro","https://www.internalfb.com/mast/job/fire-xlwang-0524-cd2b8e40-cot_exp_5ro","https://www.internalfb.com/mast/job/fire-xlwang-0520-719b9c91-hstu","https://fburl.com/tensorboard/c1e6rmpu","``````"
 "5	LINE	0
-	printf "$esc" > /dev/pts/40
-|3,0,5,1,1,0,1717001616,"printf \"$esc\" > /dev/pts/40"
+	``````
+|3,0,5,1,1,0,1717002609,"``````"
 "6	LINE	0
-	printf "$esc"
-|3,0,6,1,1,0,1717001513,"printf \"$esc\""
+	
+|3,0,6,1,1,0,1717002608,""
 "7	LINE	0
-	echo $
-|3,0,7,1,1,0,1717001507,"echo $"
+	``````
+|3,0,7,1,1,0,1717002607,"``````"
 "8	LINE	0
-	echo $buf > ~/tmp/tmp.txt
-|3,0,8,1,1,0,1717001491,"echo $buf > ~/tmp/tmp.txt"
+	https://www.internalfb.com/mast/job/fire-xlwang-0528-bae0a453-cot_exp_25ro (3MoE)
+	https://www.internalfb.com/mast/job/fire-xlwang-0527-b53b3b02-cot_exp_25ro
+	https://www.internalfb.com/mast/job/fire-xlwang-0524-cd2b8e40-cot_exp_5ro
+	https://www.internalfb.com/mast/job/fire-xlwang-0520-719b9c91-hstu
+	https://fburl.com/tensorboard/c1e6rmpu
+|3,0,8,1,5,0,1717002605,"https://www.internalfb.com/mast/job/fire-xlwang-0528-bae0a453-cot_exp_25ro (3MoE)","https://www.internalfb.com/mast/job/fire-xlwang-0527-b53b3b02-cot_exp_25ro","https://www.internalfb.com/mast/job/fire-xlwang-0524-cd2b8e40-cot_exp_5ro","https://www.internalfb.com/mast/job/fire-xlwang-0520-719b9c91-hstu","https://fburl.com/tensorboard/c1e6rmpu"
 "9	LINE	0
-	        gating_output[eliminated_mask] = -float("inf")
-	        gating_output = torch.nn.functional.softmax(gating_output, dim=-1)
-|3,0,9,1,2,0,1717001362,"        gating_output[eliminated_mask] = -float(\"inf\")","        gating_output = torch.nn.functional.softmax(gating_output, dim=-1)"
-"a	CHAR	0
-	1100
-|3,0,10,0,1,0,1716993343,"1100"
+	https://www.internalfb.com/mast/job/fire-xlwang-0528-bae0a453-cot_exp_25ro (3MoE)
+	https://www.internalfb.com/mast/job/fire-xlwang-0527-b53b3b02-cot_exp_25ro
+	https://www.internalfb.com/mast/job/fire-xlwang-0524-cd2b8e40-cot_exp_5ro
+	https://www.internalfb.com/mast/job/fire-xlwang-0520-719b9c91-hstu
+	https://fburl.com/tensorboard/c1e6rmpu
+	``````
+|3,0,9,1,6,0,1717002601,"https://www.internalfb.com/mast/job/fire-xlwang-0528-bae0a453-cot_exp_25ro (3MoE)","https://www.internalfb.com/mast/job/fire-xlwang-0527-b53b3b02-cot_exp_25ro","https://www.internalfb.com/mast/job/fire-xlwang-0524-cd2b8e40-cot_exp_5ro","https://www.internalfb.com/mast/job/fire-xlwang-0520-719b9c91-hstu","https://fburl.com/tensorboard/c1e6rmpu","``````"
+"a	LINE	0
+	```
+|3,0,10,1,1,0,1717002682,"```"
 "b	CHAR	0
 	"to_available_memory": {}
 |3,0,11,0,1,0,1594402050,"\"to_available_memory\": {}"
@@ -22789,49 +22803,91 @@ $
 |3,0,35,0,1,0,1630515023,>451
 |<"hjkllzh:AnncjkkjjjjjjjjjjjjjjjkkkjjjVjxjk,jkuujkddyyjjpjk,w€ý,€ý.kjkkkkkkkkkkkkkkjj/sessionjkkkkkkjbbwwjwwzhwwwbzhjkkkkkkkjojkkgccjkoauto€kb€kb€kb€kb€kb€kb€kbstd::make_uniquejkhzhjkkk€ý,€ý.€ü €ý,€ü €ý.jkA<A>(xjkA;jkIa = jkjjwwwlxi->jkjjjhhxi->jk,w €ý,€ý.jk;;kkkkkkkkkkkkkkkkkkkbbjkxjkbbdwiconst jkwhi&jkjjkkhr&r*jkjjjjjjjjjjjjjjwwwkkkjwwwwwlllijkhi&kj,wjkhhhhxxxxjk,wjjjkbbbi*jkjjjhi*jk,w€ý,€ý.€ü €ý,€ü €ý.;;jkIauyto €kb€kb€kb€kb€kbuto jk,wjkj"
 "-	CHAR	0
-	selection
-|3,0,36,0,1,0,1717002195,"selection"
+	`
+|3,0,36,0,1,0,1717002637,"`"
 
 # global variables:
 !DISPATCH_STARTS	DIC	{}
 
 # File marks:
-'0  158  0  ~/.tmux.conf
-|4,48,158,0,1717002270,"~/.tmux.conf"
-'1  157  73  ~/.tmux.conf
-|4,49,157,73,1717002204,"~/.tmux.conf"
+'0  61  2  ~/misc/tmp/mast_exp.md
+|4,48,61,2,1717002722,"~/misc/tmp/mast_exp.md"
+'1  158  0  ~/.tmux.conf
+|4,49,158,0,1717002270,"~/.tmux.conf"
 '2  157  73  ~/.tmux.conf
 |4,50,157,73,1717002204,"~/.tmux.conf"
-'3  46  6  ~/.tmux.conf
-|4,51,46,6,1717002023,"~/.tmux.conf"
+'3  157  73  ~/.tmux.conf
+|4,51,157,73,1717002204,"~/.tmux.conf"
 '4  46  6  ~/.tmux.conf
 |4,52,46,6,1717002023,"~/.tmux.conf"
 '5  46  6  ~/.tmux.conf
 |4,53,46,6,1717002023,"~/.tmux.conf"
 '6  46  6  ~/.tmux.conf
 |4,54,46,6,1717002023,"~/.tmux.conf"
-'7  45  0  ~/misc/scripts/oscyank2.sh
-|4,55,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
-'8  159  0  ~/.tmux.conf
-|4,56,159,0,1717001808,"~/.tmux.conf"
+'7  46  6  ~/.tmux.conf
+|4,55,46,6,1717002023,"~/.tmux.conf"
+'8  45  0  ~/misc/scripts/oscyank2.sh
+|4,56,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
 '9  159  0  ~/.tmux.conf
 |4,57,159,0,1717001808,"~/.tmux.conf"
 
 # Jumplist (newest first):
+-'  61  2  ~/misc/tmp/mast_exp.md
+|4,39,61,2,1717002722,"~/misc/tmp/mast_exp.md"
+-'  21  0  ~/misc/tmp/mast_exp.md
+|4,39,21,0,1717002670,"~/misc/tmp/mast_exp.md"
+-'  12  0  ~/misc/tmp/mast_exp.md
+|4,39,12,0,1717002667,"~/misc/tmp/mast_exp.md"
+-'  14  0  ~/misc/tmp/mast_exp.md
+|4,39,14,0,1717002665,"~/misc/tmp/mast_exp.md"
+-'  13  14  ~/misc/tmp/mast_exp.md
+|4,39,13,14,1717002662,"~/misc/tmp/mast_exp.md"
+-'  4  5  ~/misc/tmp/mast_exp.md
+|4,39,4,5,1717002652,"~/misc/tmp/mast_exp.md"
+-'  5  5  ~/misc/tmp/mast_exp.md
+|4,39,5,5,1717002649,"~/misc/tmp/mast_exp.md"
+-'  6  79  ~/misc/tmp/mast_exp.md
+|4,39,6,79,1717002623,"~/misc/tmp/mast_exp.md"
+-'  3  0  ~/misc/tmp/mast_exp.md
+|4,39,3,0,1717002614,"~/misc/tmp/mast_exp.md"
+-'  11  0  ~/misc/tmp/mast_exp.md
+|4,39,11,0,1717002613,"~/misc/tmp/mast_exp.md"
+-'  2  0  ~/misc/tmp/mast_exp.md
+|4,39,2,0,1717002582,"~/misc/tmp/mast_exp.md"
+-'  19  3  ~/misc/tmp/mast_exp.md
+|4,39,19,3,1717002576,"~/misc/tmp/mast_exp.md"
+-'  58  2  ~/misc/tmp/mast_exp.md
+|4,39,58,2,1717002542,"~/misc/tmp/mast_exp.md"
+-'  158  0  ~/.tmux.conf
+|4,39,158,0,1717002270,"~/.tmux.conf"
 -'  158  0  ~/.tmux.conf
 |4,39,158,0,1717002270,"~/.tmux.conf"
 -'  156  0  ~/.tmux.conf
 |4,39,156,0,1717002246,"~/.tmux.conf"
+-'  156  0  ~/.tmux.conf
+|4,39,156,0,1717002246,"~/.tmux.conf"
+-'  46  0  ~/.tmux.conf
+|4,39,46,0,1717002239,"~/.tmux.conf"
 -'  46  0  ~/.tmux.conf
 |4,39,46,0,1717002239,"~/.tmux.conf"
 -'  157  73  ~/.tmux.conf
 |4,39,157,73,1717002235,"~/.tmux.conf"
 -'  157  73  ~/.tmux.conf
+|4,39,157,73,1717002235,"~/.tmux.conf"
+-'  157  73  ~/.tmux.conf
 |4,39,157,73,1717002204,"~/.tmux.conf"
+-'  157  73  ~/.tmux.conf
+|4,39,157,73,1717002204,"~/.tmux.conf"
+-'  156  0  ~/.tmux.conf
+|4,39,156,0,1717002192,"~/.tmux.conf"
 -'  156  0  ~/.tmux.conf
 |4,39,156,0,1717002192,"~/.tmux.conf"
 -'  46  6  ~/.tmux.conf
 |4,39,46,6,1717002179,"~/.tmux.conf"
+-'  46  6  ~/.tmux.conf
+|4,39,46,6,1717002179,"~/.tmux.conf"
+-'  46  6  ~/.tmux.conf
+|4,39,46,6,1717002023,"~/.tmux.conf"
 -'  46  6  ~/.tmux.conf
 |4,39,46,6,1717002023,"~/.tmux.conf"
 -'  9  0  ~/.tmux.conf
@@ -22840,6 +22896,24 @@ $
 |4,39,9,0,1717002020,"~/.tmux.conf"
 -'  9  0  ~/.tmux.conf
 |4,39,9,0,1717002020,"~/.tmux.conf"
+-'  9  0  ~/.tmux.conf
+|4,39,9,0,1717002020,"~/.tmux.conf"
+-'  9  0  ~/.tmux.conf
+|4,39,9,0,1717002020,"~/.tmux.conf"
+-'  9  0  ~/.tmux.conf
+|4,39,9,0,1717002020,"~/.tmux.conf"
+-'  8  0  ~/.tmux.conf
+|4,39,8,0,1717002017,"~/.tmux.conf"
+-'  6  0  ~/.tmux.conf
+|4,39,6,0,1717002017,"~/.tmux.conf"
+-'  8  0  ~/.tmux.conf
+|4,39,8,0,1717002017,"~/.tmux.conf"
+-'  6  0  ~/.tmux.conf
+|4,39,6,0,1717002017,"~/.tmux.conf"
+-'  8  0  ~/.tmux.conf
+|4,39,8,0,1717002017,"~/.tmux.conf"
+-'  6  0  ~/.tmux.conf
+|4,39,6,0,1717002017,"~/.tmux.conf"
 -'  8  0  ~/.tmux.conf
 |4,39,8,0,1717002017,"~/.tmux.conf"
 -'  6  0  ~/.tmux.conf
@@ -22868,6 +22942,22 @@ $
 |4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
 -'  45  0  ~/misc/scripts/oscyank2.sh
 |4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
 -'  25  0  ~/misc/scripts/oscyank.sh
 |4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
 -'  25  0  ~/misc/scripts/oscyank.sh
@@ -22884,6 +22974,38 @@ $
 |4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
 -'  25  0  ~/misc/scripts/oscyank.sh
 |4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
 -'  4  0  ~/misc/scripts/oscyank.sh
 |4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
 -'  4  0  ~/misc/scripts/oscyank.sh
@@ -22910,116 +23032,73 @@ $
 |4,39,159,0,1717001808,"~/.tmux.conf"
 -'  159  0  ~/.tmux.conf
 |4,39,159,0,1717001808,"~/.tmux.conf"
--'  159  77  ~/.tmux.conf
-|4,39,159,77,1717001794,"~/.tmux.conf"
--'  158  77  ~/.tmux.conf
-|4,39,158,77,1717001794,"~/.tmux.conf"
--'  158  77  ~/.tmux.conf
-|4,39,158,77,1717001794,"~/.tmux.conf"
--'  158  77  ~/.tmux.conf
-|4,39,158,77,1717001794,"~/.tmux.conf"
--'  49  43  ~/.tmux.conf
-|4,39,49,43,1717001693,"~/.tmux.conf"
--'  49  43  ~/.tmux.conf
-|4,39,49,43,1717001693,"~/.tmux.conf"
--'  49  43  ~/.tmux.conf
-|4,39,49,43,1717001693,"~/.tmux.conf"
--'  49  43  ~/.tmux.conf
-|4,39,49,43,1717001693,"~/.tmux.conf"
--'  49  43  ~/.tmux.conf
-|4,39,49,43,1717001693,"~/.tmux.conf"
--'  158  22  ~/.tmux.conf
-|4,39,158,22,1717001689,"~/.tmux.conf"
--'  157  22  ~/.tmux.conf
-|4,39,157,22,1717001689,"~/.tmux.conf"
--'  157  22  ~/.tmux.conf
-|4,39,157,22,1717001689,"~/.tmux.conf"
--'  157  22  ~/.tmux.conf
-|4,39,157,22,1717001689,"~/.tmux.conf"
--'  17  0  ~/.tmux.conf
-|4,39,17,0,1717001681,"~/.tmux.conf"
--'  17  0  ~/.tmux.conf
-|4,39,17,0,1717001681,"~/.tmux.conf"
--'  17  0  ~/.tmux.conf
-|4,39,17,0,1717001681,"~/.tmux.conf"
--'  17  0  ~/.tmux.conf
-|4,39,17,0,1717001681,"~/.tmux.conf"
--'  17  0  ~/.tmux.conf
-|4,39,17,0,1717001681,"~/.tmux.conf"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  7  0  ~/misc/scripts/oscyank.sh
-|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  66  0  ~/misc/scripts/oscyank.sh
-|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
--'  67  0  ~/misc/scripts/oscyank.sh
-|4,39,67,0,1717001369,"~/misc/scripts/oscyank.sh"
--'  67  0  ~/misc/scripts/oscyank.sh
-|4,39,67,0,1717001369,"~/misc/scripts/oscyank.sh"
--'  67  0  ~/misc/scripts/oscyank.sh
-|4,39,67,0,1717001369,"~/misc/scripts/oscyank.sh"
--'  67  0  ~/misc/scripts/oscyank.sh
-|4,39,67,0,1717001369,"~/misc/scripts/oscyank.sh"
 
 # History of marks within files (newest to oldest):
+
+> ~/misc/tmp/mast_exp.md
+	*	1717002721	0
+	"	61	2
+	^	21	0
+	.	21	0
+	+	25	38
+	+	35	0
+	+	25	38
+	+	35	0
+	+	24	3
+	+	24	5
+	+	24	0
+	+	35	0
+	+	34	0
+	+	24	3
+	+	25	0
+	+	45	0
+	+	56	0
+	+	54	38
+	+	32	38
+	+	25	0
+	+	34	0
+	+	33	0
+	+	32	0
+	+	62	0
+	+	63	41
+	+	60	65
+	+	60	0
+	+	13	75
+	+	20	38
+	+	13	18
+	+	13	14
+	+	13	19
+	+	22	5
+	+	1	0
+	+	13	14
+	+	22	0
+	+	59	0
+	+	13	52
+	+	13	19
+	+	13	14
+	+	11	37
+	+	13	14
+	+	11	0
+	+	13	14
+	+	13	19
+	+	11	5
+	+	11	0
+	+	11	5
+	+	11	0
+	+	13	14
+	+	5	0
+	+	6	79
+	+	11	0
+	+	13	3
+	+	22	2
+	+	5	0
+	+	4	5
+	+	13	13
+	+	13	14
+	+	13	0
+	+	12	0
+	+	22	0
+	+	21	0
 
 > ~/.tmux.conf
 	*	1717002250	0
@@ -23845,52 +23924,6 @@ $
 	+	7	80
 	+	8	90
 	+	7	0
-
-> ~/misc/tmp/mast_exp.md
-	*	1716970679	0
-	"	5	74
-	^	22	71
-	.	5	0
-	+	24	38
-	+	34	0
-	+	24	38
-	+	34	0
-	+	23	3
-	+	23	5
-	+	23	0
-	+	34	0
-	+	33	0
-	+	23	3
-	+	24	0
-	+	44	0
-	+	55	0
-	+	53	38
-	+	31	38
-	+	24	0
-	+	33	0
-	+	32	0
-	+	31	0
-	+	61	0
-	+	62	41
-	+	59	65
-	+	59	0
-	+	13	61
-	+	19	38
-	+	13	4
-	+	12	0
-	+	13	0
-	+	12	5
-	+	21	5
-	+	1	0
-	+	12	0
-	+	21	0
-	+	20	0
-	+	21	0
-	+	58	0
-	+	9	38
-	+	4	5
-	+	10	5
-	+	5	0
 
 > /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/TARGETS
 	*	1716946887	0

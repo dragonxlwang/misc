@@ -1,3 +1,4 @@
+/home/xlwang/misc/tmp/mast_exp.md
 /home/xlwang/.tmux.conf
 /home/xlwang/misc/scripts/oscyank.sh
 /home/xlwang/misc/scripts/oscyank2.sh
@@ -31,7 +32,6 @@
 /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/metrics.py
 /home/xlwang/fbcode/mrs/fm/modules/moe.py
 /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-1acegp7_.commit.hg.txt
-/home/xlwang/misc/tmp/mast_exp.md
 /home/xlwang/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/model_family_api/configs.py
 /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/parallel/data_parallel.py
