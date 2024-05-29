@@ -838,6 +838,7 @@ function! GetFilePath()
   let l:path = substitute(l:path, '^/data/users/xlwang/fbsource/', '', '')
   let l:path = substitute(l:path, '^/data/users/xlwang/configerator/', '', '')
   let l:path = substitute(l:path, '^/data/users/xlwang/www/', '', '')
+  let l:yank = system("~/misc/scripts/oscyank.sh -", l:path)
   return l:path
 endfunction
 
