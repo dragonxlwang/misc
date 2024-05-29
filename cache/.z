@@ -122,7 +122,7 @@
 /data/users/xlwang/fbsource/fbcode/torchrec|38.812078591683076|1713935992
 /data/users/xlwang/fbsource/fbcode/mvai_infra|11.716853914470358|1713938661
 /data/users/xlwang/fbsource/fbcode/pytorch/elastic|1.4646067393087947|1713935905
-/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd|22.820558860726802|1715304614
+/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd|24.820558860726802|1716303162
 /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch|40.276685330991846|1713935969
 /data/users/xlwang/fbsource/fbcode/ai_tooling/data_processing/state_store|2.1969101089631917|1713935776
 /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/apex/apex|1.4646067393087947|1713935929
@@ -204,7 +204,7 @@
 /data/users/xlwang/fbsource/fbcode/contbuild/configs|7.323033696543976|1713935859
 /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/parallel|2.1969101089631917|1713935928
 /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/lib|4.3938202179263834|1713935979
-/home/xlwang/misc|390.18508028287869|1716278913
+/home/xlwang/misc|523.18508028287874|1717002273
 /data/users/xlwang/fbsource/fbcode/koski/connect/scribe|5.1261235875807829|1713935889
 /data/users/xlwang/fbsource/fbcode/dataswarm-pipelines/tasks/feed_fblearner|9.519943805507161|1713935775
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/umia_v1|49.796629136499028|1713936017
@@ -238,7 +238,7 @@
 /data/users/xlwang/fbsource/fbcode/koski/cpp_dataframe|1.4646067393087947|1713935889
 /data/users/xlwang/fbsource/fbcode/vision|2.1969101089631917|1713935782
 /data/users/xlwang/fbsource/fbcode/fblearner/flow/quick_flow|5.8584269572351788|1713935991
-/data/users/xlwang/fbsource/fbcode/mrs/fm/modules/tests|51.993539245462209|1714023241
+/data/users/xlwang/fbsource/fbcode/mrs/fm/modules/tests|126.99353924546222|1716950106
 /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_lib/builders/torchrec/module_factory|5.1261235875807829|1713935994
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental|6.5907303268895818|1713935759
 /data/users/xlwang/fbsource/tools/build_defs|2.1969101089631917|1713935758
@@ -263,7 +263,7 @@
 /data/users/xlwang/fbsource/fbcode/langtech/transformers/common|2.1969101089631917|1713935779
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/main_feed_mtml|2.9292134786175894|1713935825
 /data/users/xlwang/fbsource/fbcode/hpc/predictor|2.1969101089631917|1713935821
-/home/xlwang/misc/scripts|272.13232721020591|1716277437
+/home/xlwang/misc/scripts|279.13232721020591|1717001970
 /data/users/xlwang/fbsource/fbcode/koski/connect/scribe/common|2.9292134786175894|1713935888
 /data/users/xlwang/fbsource/fbcode/pytorch_lightning_deprecated/pytorch-lightning/pytorch_lightning/loops|1.4646067393087947|1713935900
 /data/users/xlwang/fbsource/fbcode/langtech/dataswarm/lib|1.4646067393087947|1713935779
@@ -376,7 +376,7 @@
 /data/users/xlwang/fbsource/fbcode/pytorch/data|18.30758424135994|1713936016
 /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_models/teams|19.772190980668732|1713935978
 /data/users/xlwang/fbsource/fbcode/libfb/py|3.661516848271988|1713935870
-/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts|424.79531654208535|1716268434
+/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts|1223.7953165420854|1717001808
 /data/users/xlwang/fbsource/fbcode/pytorch_lightning_deprecated|8.7876404358527669|1713935902
 /data/users/xlwang/fbsource/fbcode/langtech/data_io/py|2.9292134786175894|1713935779
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/sandbox/umia_hstu/tests|2.1969101089631917|1713935988
@@ -410,7 +410,7 @@
 /data/users/xlwang/fbsource/fbcode/aiplatform/gmpp/delta_publish/base|4.3938202179263834|1713935946
 /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_models/teams/home|1.4646067393087947|1713935978
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf|2.9669532547683475|1715066111
-/data/users/xlwang/fbsource/fbcode|1528.6337698134844|1716278909
+/data/users/xlwang/fbsource/fbcode|1817.6337698134844|1716927283
 /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/pyper_v2/teams/examples|1.4646067393087947|1713935935
 /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/losses|2.1969101089631917|1713935959
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/umia_v1/ifr/tests|1.4646067393087947|1713935782
@@ -444,7 +444,7 @@
 /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_lib/builders/generic_interfaces|2.1969101089631917|1713935980
 /data/users/xlwang/fbsource/fbcode/mrs/fm/better_lut|3.661516848271988|1713935778
 /data/users/xlwang/fbsource/fbcode/deeplearning/projects/mmvu/vise|3.661516848271988|1713935778
-/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain|1553.7653216744675|1715368026
+/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain|1565.7653216744675|1716970751
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/umia_v1/ig/utils|2.1969101089631917|1713935810
 /data/users/xlwang/fbsource/fbcode/aiplatform/managed_training_service/cli_v2|1.4646067393087947|1713935970
 /data/users/xlwang/fbsource/fbcode/aiplatform/modelstore/umm/util|2.9292134786175894|1713935965
@@ -477,7 +477,7 @@
 /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/training_toolkit/backend/training_scripts/sync_sgd|3.661516848271988|1713935999
 /data/users/xlwang/fbsource/fbcode/fblearner/predictor/model_publishing_service|2.1969101089631917|1713935849
 /data/users/xlwang/fbsource/fbcode/fblearner/flow/projects|14.646067393087952|1713935988
-/data/users/xlwang/fbsource/fbcode/mrs/fm|494.29102766281636|1715309215
+/data/users/xlwang/fbsource/fbcode/mrs/fm|504.29102766281636|1716970586
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/recurring_flow|1.4646067393087947|1713935976
 /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/sparsenn/cpu_operators|1.4646067393087947|1713935855
 /data/users/xlwang/.cache/ctrlp|2.1969101089631917|1713935754
@@ -543,8 +543,8 @@
 /data/users/xlwang/fbsource/fbcode/pytorch/vision/torchvision|2.1969101089631917|1713935781
 /data/users/xlwang/fbsource/fbcode/mrs/fm/video/tests|1.4646067393087947|1713935777
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain|44.159912655048586|1715143902
+/home/xlwang/misc/tmp|22.069684966881518|1716311138
 /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/sandbox|14.646067393087952|1713935988
-/home/xlwang/misc/tmp|5.0696849668815167|1714462044
 /data/users/xlwang/fbsource/fbcode/fblearner/predictor/model_publishing_service/tools/mrs_tools|2.1969101089631917|1713935849
 /data/users/xlwang/fbsource/fbcode/torchrec/modules|2.9292134786175894|1713935925
 /data/users/xlwang/fbsource/fbcode/fblearner/flow/projects/minimal_viable_ai|6.5907303268895818|1713935988

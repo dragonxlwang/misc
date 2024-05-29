@@ -1,12 +1,34 @@
 # 2024-05-20
 # --eval-start-ts 2024-05-14+08:00:00 --eval-end-ts 2024-05-14+12:00:00
+
+``````
+https://www.internalfb.com/mast/job/fire-xlwang-0528-bae0a453-cot_exp_25ro (3MoE)
+https://www.internalfb.com/mast/job/fire-xlwang-0527-b53b3b02-cot_exp_25ro
+https://www.internalfb.com/mast/job/fire-xlwang-0524-cd2b8e40-cot_exp_5ro
+https://www.internalfb.com/mast/job/fire-xlwang-0520-719b9c91-hstu
+https://fburl.com/tensorboard/c1e6rmpu
+``````
+
+``````
+https://www.internalfb.com/mast/job/fire-xlwang-0520-719b9c91-hstu
+https://www.internalfb.com/mast/job/fire-xlwang-0520-e102b1f8-cot_exp_long_samp
+https://www.internalfb.com/mast/job/fire-xlwang-0520-57b2b215-cot_exp_extreme_samp
+https://www.internalfb.com/mast/job/fire-xlwang-0523-1374b2c8-cot_exp_long_samp30
+https://www.internalfb.com/mast/job/fire-xlwang-0523-e3072f70-cot_exp_long_samp2
+https://www.internalfb.com/mast/job/fire-xlwang-0524-cd2b8e40-cot_exp_5ro
+https://fburl.com/tensorboard/4z2fbaeb
+``````
+# 2024-05-20
+# --eval-start-ts 2024-05-14+08:00:00 --eval-end-ts 2024-05-14+12:00:00
 ```
 https://www.internalfb.com/mast/job/fire-xlwang-0520-719b9c91-hstu
 https://www.internalfb.com/mast/job/fire-xlwang-0520-d0ef0eb0-cot_prod
 https://www.internalfb.com/mast/job/fire-xlwang-0520-e102b1f8-cot_exp_long_samp
 https://www.internalfb.com/mast/job/fire-xlwang-0520-57b2b215-cot_exp_extreme_samp
 https://www.internalfb.com/mast/job/fire-xlwang-0520-4768608c-cot_exp_long_last
-https://fburl.com/tensorboard/84xdt0iz
+https://www.internalfb.com/mast/job/fire-xlwang-0523-1374b2c8-cot_exp_long_samp30
+https://www.internalfb.com/mast/job/fire-xlwang-0523-e3072f70-cot_exp_long_samp2
+https://fburl.com/tensorboard/7z3rcevz
 ```
 
 # 2024-05-16
@@ -29,11 +51,12 @@ https://www.internalfb.com/mast/job/fire-xlwang-0515-1a52f7a0-cot_prod2 (0.7859)
 https://www.internalfb.com/mast/job/fire-xlwang-0516-f6c561ed-cot_exp_extreme_samp
 https://www.internalfb.com/mast/job/fire-xlwang-0517-3b92bf77-cot_prod3
 https://fburl.com/tensorboard/5b0pq375
-``````
+```
 
 
 # Metrics
 **variable_step_metrics/NE/global/window/vvp100/(train|eval)**
-**variable_step_qps/global/lifetime/(train|eval)**
+**variable_step_qps/global/lifetime/(train|e0.05,  # 500 * 0.05 ~ 25val)**
 **variable_step_metrics/NE/global/window/(mt/)?(comment|like|vvd|share|vv[^/_]*)/(train|eval)**
 **user_export/enrichment_index_hit/mean/(train|eval)**
+**user_export/enriched_.*_len/mean/train**

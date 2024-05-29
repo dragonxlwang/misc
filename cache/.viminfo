@@ -11,7 +11,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/\c\(\<ZSHZ_MAX_SCORE\>\)
+~MSle0~/cli
 
 # Last Substitute Search Pattern:
 ~MSle0&max_nro_len
@@ -20,28 +20,108 @@
 $
 
 # Command Line History (newest to oldest):
-:qa
-|2,0,1716278904,,"qa"
+:wqa
+|2,0,1717002270,,"wqa"
 :w
-|2,0,1716278574,,"w"
+|2,0,1717002250,,"w"
+:qa
+|2,0,1717001977,,"qa"
 :W
-|2,0,1716278545,,"W"
+|2,0,1717001678,,"W"
+:fb
+|2,0,1717000977,,"fb"
+:jkkjkkk
+|2,0,1717000834,,"jkkjkkk"
+:q
+|2,0,1716995385,,"q"
+:NERDTreeClose | FBVimSaveSession
+|2,0,1716992622,,"NERDTreeClose | FBVimSaveSession"
+:e
+|2,0,1716970753,,"e"
+:888
+|2,0,1716970558,,"888"
+:64
+|2,0,1716970100,,"64"
+:Fbs23
+|2,0,1716970030,,"Fbs23"
+:Fbs9
+|2,0,1716969875,,"Fbs9"
+:Fbs12
+|2,0,1716969866,,"Fbs12"
+:Duf
+|2,0,1716969337,,"Duf"
+:582
+|2,0,1716969318,,"582"
+:F
+|2,0,1716964904,,"F"
+:Fbs13
+|2,0,1716964903,,"Fbs13"
+:Fbs17
+|2,0,1716964895,,"Fbs17"
+:Fbs8
+|2,0,1716964884,,"Fbs8"
+:TS
+|2,0,1716946884,,"TS"
+:955
+|2,0,1716946743,,"955"
+:944
+|2,0,1716946543,,"944"
+:jkq
+|2,0,1716946468,,"jkq"
+:844
+|2,0,1716946435,,"844"
+:503
+|2,0,1716946300,,"503"
+:sb8
+|2,0,1716941558,,"sb8"
+:jkjkjk
+|2,0,1716941119,,"jkjkjk"
+:Fbs 9
+|2,0,1716927595,,"Fbs 9"
+:"q
+|2,0,1716917293,,"\"q"
+:qa!
+|2,0,1716830469,,"qa!"
+:fbv
+|2,0,1716603728,,"fbv"
+:Fbs15
+|2,0,1716585266,,"Fbs15"
+:Fbs7
+|2,0,1716583500,,"Fbs7"
+:Qa
+|2,0,1716575879,,"Qa"
+:'<,'>qa
+|2,0,1716575878,,"'<,'>qa"
+:"W
+|2,0,1716572793,,"\"W"
+:D
+|2,0,1716572540,,"D"
+:sb 4
+|2,0,1716571888,,"sb 4"
 :wq
-|2,0,1716278544,,"wq"
+|2,0,1716451891,,"wq"
+:Wq
+|2,0,1716451655,,"Wq"
+:79
+|2,0,1716413508,,"79"
+:17
+|2,0,1716413503,,"17"
+:Fbs5
+|2,0,1716409155,,"Fbs5"
+:Fbs
+|2,0,1716330477,,"Fbs"
+:71
+|2,0,1716316812,,"71"
+:help v:shell_error
+|2,0,1716314217,,"help v:shell_error"
+:Rg
+|2,0,1716302760,,"Rg"
 :jk
 |2,0,1716277083,,"jk"
-:q
-|2,0,1716277316,,"q"
-:wqa
-|2,0,1716275387,,"wqa"
 :vs ~/.vimrc
 |2,0,1716275176,,"vs ~/.vimrc"
-:qa!
-|2,0,1716275125,,"qa!"
 :Qa!
 |2,0,1716275106,,"Qa!"
-:Qa
-|2,0,1716275102,,"Qa"
 :set filetype=markdown
 |2,0,1716274808,,"set filetype=markdown"
 :sp ~/.vim/bundle/vim-syntax-extra/after/syntax/
@@ -74,8 +154,6 @@ $
 |2,0,1716250002,,"127"
 :wjkkjku
 |2,0,1716249721,,"wjkkjku"
-:Fbs13
-|2,0,1716249520,,"Fbs13"
 :Fbs46
 |2,0,1716249514,,"Fbs46"
 :Wipeout
@@ -86,12 +164,6 @@ $
 |2,0,1716247039,,"new"
 :Dufburl
 |2,0,1716246200,,"Dufburl"
-:Duf
-|2,0,1716241127,,"Duf"
-:Rg
-|2,0,1716248245,,"Rg"
-:'<,'>qa
-|2,0,1716242615,,"'<,'>qa"
 :Fbs11
 |2,0,1716228254,,"Fbs11"
 :Wqa
@@ -102,12 +174,8 @@ $
 |2,0,1715964946,,"AS"
 :681
 |2,0,1715964413,,"681"
-:e
-|2,0,1715904483,,"e"
 :'<,'>
 |2,0,1715904254,,"'<,'>"
-:Fbs12
-|2,0,1715892328,,"Fbs12"
 :Fbs20
 |2,0,1715886914,,"Fbs20"
 :Fbs10
@@ -124,16 +192,8 @@ $
 |2,0,1715757227,,"342"
 :543
 |2,0,1715757186,,"543"
-:Fbs5
-|2,0,1715748102,,"Fbs5"
-:NERDTreeClose | FBVimSaveSession
-|2,0,1715747851,,"NERDTreeClose | FBVimSaveSession"
-:Fbs8
-|2,0,1715709345,,"Fbs8"
 :347
 |2,0,1715670169,,"347"
-:Fbs7
-|2,0,1715640684,,"Fbs7"
 :Fbs161
 |2,0,1715640681,,"Fbs161"
 :sp ~/fbcode/pytorch/data/torchdata/dataloader2/dataloader2.py
@@ -148,8 +208,6 @@ $
 |2,0,1715376781,,"Fbs18"
 :Fbs24
 |2,0,1715373900,,"Fbs24"
-:Fbs23
-|2,0,1715373340,,"Fbs23"
 :sb 18
 |2,0,1715373171,,"sb 18"
 :sp ~/ls_colors.zsh
@@ -182,8 +240,6 @@ $
 |2,0,1715302616,,"1721"
 :58
 |2,0,1715302575,,"58"
-:TS
-|2,0,1715302572,,"TS"
 :sb11
 |2,0,1715301713,,"sb11"
 :1713
@@ -358,8 +414,6 @@ $
 |2,0,1714430520,,"539"
 :292
 |2,0,1714429370,,"292"
-:Fbs15
-|2,0,1714426275,,"Fbs15"
 :69
 |2,0,1714465286,,"69"
 :Rg TransformerEncoderLayer
@@ -376,8 +430,6 @@ $
 |2,0,1714152026,,"Fbvim"
 :159
 |2,0,1714095398,,"159"
-:17
-|2,0,1714095312,,"17"
 :Fbs51
 |2,0,1714094134,,"Fbs51"
 :sb5
@@ -480,16 +532,12 @@ $
 |2,0,1703141912,,"s/\\//./g"
 :Fpy
 |2,0,1703141891,,"Fpy"
-:F
-|2,0,1703141857,,"F"
 :275
 |2,0,1703140689,,"275"
 :77
 |2,0,1703134896,,"77"
 :24
 |2,0,1703134736,,"24"
-:Fbs
-|2,0,1703132618,,"Fbs"
 :sp ~/fbsource/jkj
 |2,0,1703131667,,"sp ~/fbsource/jkj"
 :Fbs16
@@ -560,8 +608,6 @@ $
 |2,0,1703024379,,"sp"
 :sp ~/configerator/source/minimal_viable_ai/umia_v1/mvai_umia_v1_igr.fbpkg
 |2,0,1703024375,,"sp ~/configerator/source/minimal_viable_ai/umia_v1/mvai_umia_v1_igr.fbpkg"
-:D
-|2,0,1703024172,,"D"
 :WW
 |2,0,1702976342,,"WW"
 :sp ~/fbcode/mrs/video/transforms.py
@@ -1054,8 +1100,6 @@ $
 |2,0,1701371509,," "
 :Fbs32
 |2,0,1701322757,,"Fbs32"
-:Fbs17
-|2,0,1701304479,,"Fbs17"
 :sp ~/fbcode/caffe2/aten/src/ATen/core/TensorBase.h
 |2,0,1701299924,,"sp ~/fbcode/caffe2/aten/src/ATen/core/TensorBase.h"
 :sp ~/fbcode/caffe2/aten/src/ATen/SavedTensorHooks.h
@@ -1184,8 +1228,6 @@ $
 |2,0,1700182758,,"995"
 :Rg DistributedModelParallel
 |2,0,1700172683,,"Rg DistributedModelParallel"
-:sb8
-|2,0,1700165642,,"sb8"
 :sp ~/fbcode/caffe2/torch/testing/_internal/common_distributed.py
 |2,0,1700160258,,"sp ~/fbcode/caffe2/torch/testing/_internal/common_distributed.py"
 :sp ~/fbcode/tools/build/buck/dwyu/tests/test_python_autodeps.py
@@ -1252,8 +1294,6 @@ $
 |2,0,1699573136,,"Z"
 :sp ~/fbcode/fblearner/flow/quick_flow/public/if/quick_flow.thrift
 |2,0,1699922578,,"sp ~/fbcode/fblearner/flow/quick_flow/public/if/quick_flow.thrift"
-:Fbs9
-|2,0,1699913683,,"Fbs9"
 :Rg preload_item_pool_config
 |2,0,1699567955,,"Rg preload_item_pool_config"
 :Cjk
@@ -1582,8 +1622,6 @@ $
 |2,0,1694462511,,"sp ~/usr/local/fbcode/platform010/lib/python3.10/logging/__init__.py"
 :176
 |2,0,1694462212,,"176"
-:jkkjkkk
-|2,0,1694459541,,"jkkjkkk"
 :a
 |2,0,1694468335,,"a"
 :91
@@ -1936,8 +1974,6 @@ $
 |2,0,1692691483,,"229"
 :"qa
 |2,0,1692679323,,"\"qa"
-:fbv
-|2,0,1692662386,,"fbv"
 :s/\//\./c
 |2,0,1692604346,,"s/\\//\\./c"
 :s/\//\./gc
@@ -2480,8 +2516,6 @@ $
 |2,0,1688669842,,"sp ~/instagram-server/distillery/ig_netego/netego_step.py"
 :sp ~/distillery/ig_netego/netego_step.py
 |2,0,1688669839,,"sp ~/distillery/ig_netego/netego_step.py"
-:64
-|2,0,1688577640,,"64"
 :sp ~/instagram-server/distillery/ig_nodeapi/privacy/auth/auth_vc_enforcement_allowlist.py
 |2,0,1688229653,,"sp ~/instagram-server/distillery/ig_nodeapi/privacy/auth/auth_vc_enforcement_allowlist.py"
 :sp ~/configerator/source/distillery/ig_nodeapi/privacy/auth/auth_vc_enforcement_allowlist.py
@@ -2996,8 +3030,6 @@ $
 |2,0,1682534974,,"435"
 :133
 |2,0,1682529928,,"133"
-:79
-|2,0,1682462286,,"79"
 :ews
 |2,0,1682530027,,"ews"
 :kkkkkkkk
@@ -3124,8 +3156,6 @@ $
 |2,0,1680558630,,"sp ~/fbcode/dataswarm/dataswarm/dataset_schema_evolution.py"
 :Rename train_data_backfill.sh
 |2,0,1680555634,,"Rename train_data_backfill.sh"
-:fb
-|2,0,1680466132,,"fb"
 :1749
 |2,0,1680462006,,"1749"
 :4631
@@ -3378,8 +3408,6 @@ $
 |2,0,1666417760,,"jkjkkk"
 :sp ~/configerator/source/multifeed/raas/suvm/supplemental_raas_config.thrift
 |2,0,1665694023,,"sp ~/configerator/source/multifeed/raas/suvm/supplemental_raas_config.thrift"
-:71
-|2,0,1665623381,,"71"
 :111
 |2,0,1665560565,,"111"
 :Qa!:
@@ -3888,8 +3916,6 @@ $
 |2,0,1655362011,,"sp ~/configerator/source/mocha/features/feature_sets/experimental_features_sets/gysj/common_feature_setid_20201028.cinc"
 :Tpyj
 |2,0,1655361913,,"Tpyj"
-:"W
-|2,0,1655361540,,"\"W"
 :sp ~/configerator/source/mocha/features/feature_groups/experimental_feature_groups/groups/gysj_laser_gysj_gedac_guf_user_embd.cconf
 |2,0,1655360126,,"sp ~/configerator/source/mocha/features/feature_groups/experimental_feature_groups/groups/gysj_laser_gysj_gedac_guf_user_embd.cconf"
 :sp ~/configerator/source/mocha/features/feature_groups/experimental_feature_groups/groups/gysj_laser_gysj_gedac_guf_group_embd.cconf
@@ -4052,8 +4078,6 @@ $
 |2,0,1653981401,,"sp ~/fbcode/fblearner/flow/projects/modelstore/pyper_model_publish_workflow.py"
 :389
 |2,0,1653975166,,"389"
-:503
-|2,0,1653974027,,"503"
 :477
 |2,0,1653973777,,"477"
 :155
@@ -5120,12 +5144,290 @@ $
 |2,0,1635272165,,"ujk"
 
 # Search String History (newest to oldest):
+?/cli
+|2,1,1717002020,47,"cli"
+?/pass
+|2,1,1716995545,47,"pass"
+?/clip
+|2,1,1716994328,47,"clip"
+?/misc
+|2,1,1716994201,47,"misc"
+?/set-clip
+|2,1,1716993981,47,"set-clip"
+?/send
+|2,1,1716993631,47,"send"
+?/osc
+|2,1,1716993382,47,"osc"
+?/yank
+|2,1,1716993370,47,"yank"
+?/class encoder
+|2,1,1716940965,47,"class encoder"
+?/clstoken
+|2,1,1716939401,47,"clstoken"
+?/sequen
+|2,1,1716939288,47,"sequen"
+?/modulelist
+|2,1,1716931719,47,"modulelist"
+?/sparse_ar
+|2,1,1716929850,47,"sparse_ar"
+?/encoder
+|2,1,1716927581,47,"encoder"
+?/patchify
+|2,1,1716927535,47,"patchify"
+?/values
+|2,1,1716970189,47,"values"
+?/v3
+|2,1,1716969882,47,"v3"
+?/scatter
+|2,1,1716967933,47,"scatter"
+?/top_k
+|2,1,1716964562,47,"top_k"
+? \s\+$
+|2,1,1716949907,,"\\s\\+$"
+?/enco
+|2,1,1716947061,47,"enco"
+?/ein
+|2,1,1716946984,47,"ein"
+?/en\ins
+|2,1,1716946982,47,"en\\ins"
+?/moe
+|2,1,1716946885,47,"moe"
+?/gating
+|2,1,1716946714,47,"gating"
+?/list
+|2,1,1716946693,47,"list"
+?/t
+|2,1,1716946512,47,"t"
+?/vanilla
+|2,1,1716945289,47,"vanilla"
+???
+|2,1,1716941665,63,"?"
+?/valin
+|2,1,1716941560,47,"valin"
+?/cls
+|2,1,1716941232,47,"cls"
+?/encode
+|2,1,1716941016,47,"encode"
+?/encod
+|2,1,1716941037,47,"encod"
+?/layernorm
+|2,1,1716940920,47,"layernorm"
+?/linear
+|2,1,1716940919,47,"linear"
+?/gelu
+|2,1,1716939527,47,"gelu"
+?/silu
+|2,1,1716939522,47,"silu"
+?/forward
+|2,1,1716931772,47,"forward"
+?/def forward
+|2,1,1716931768,47,"def forward"
+?/for
+|2,1,1716931738,47,"for"
+?/dropout
+|2,1,1716929703,47,"dropout"
+?/encoder_dropout
+|2,1,1716929636,47,"encoder_dropout"
+?/deco
+|2,1,1716927694,47,"deco"
+?/version
+|2,1,1716927586,47,"version"
+?/rag
+|2,1,1716920540,47,"rag"
+?/tagged/rag
+|2,1,1716920538,47,"tagged/rag"
+?/_RaggedAttentionFunction
+|2,1,1716920511,47,"_RaggedAttentionFunction"
+?/triton
+|2,1,1716920505,47,"triton"
+?/static_graph
+|2,1,1716918414,47,"static_graph"
+?/statci_
+|2,1,1716918412,47,"statci_"
+?/static_Graph/s
+|2,1,1716918410,47,"static_Graph/s"
+?/static_
+|2,1,1716918384,47,"static_"
+?/ddpconfig
+|2,1,1716917753,47,"ddpconfig"
+?/input
+|2,1,1716916080,47,"input"
+?/hour
+|2,1,1716916071,47,"hour"
+?/tra
+|2,1,1716596557,47,"tra"
+?/multiplier
+|2,1,1716596485,47,"multiplier"
+?/seq_sele
+|2,1,1716585299,47,"seq_sele"
+?/req_ids
+|2,1,1716585084,47,"req_ids"
+?/set_tra
+|2,1,1716584689,47,"set_tra"
+?/is_nro
+|2,1,1716586246,47,"is_nro"
+?/extreme
+|2,1,1716488381,47,"extreme"
+?/enrich_seq_offsets
+|2,1,1716573235,47,"enrich_seq_offsets"
+?/to_off
+|2,1,1716573187,47,"to_off"
+?/self.
+|2,1,1716503129,47,"self."
+?/self
+|2,1,1716502716,47,"self"
+?/source_len
+|2,1,1716502196,47,"source_len"
+?/source_legnth
+|2,1,1716502158,47,"source_legnth"
+?/sam
+|2,1,1716501982,47,"sam"
+?/nro
+|2,1,1716501862,47,"nro"
+?/unhashed
+|2,1,1716501574,47,"unhashed"
+?/toy
+|2,1,1716497559,47,"toy"
+?/set
+|2,1,1716492782,47,"set"
+?/seq_mask
+|2,1,1716490461,47,"seq_mask"
+?/weight
+|2,1,1716490357,47,"weight"
+?/unpad_prese
+|2,1,1716490010,47,"unpad_prese"
+?/new_format
+|2,1,1716489961,47,"new_format"
+?/enriched_weight
+|2,1,1716489393,47,"enriched_weight"
+?/legacy
+|2,1,1716489367,47,"legacy"
+?/;
+|2,1,1716489366,47,";"
+?/weight,
+|2,1,1716487221,47,"weight,"
+?/wei
+|2,1,1716487121,47,"wei"
+? )
+|2,1,1716487076,,")"
+? \<1\>
+|2,1,1716487070,,"\\<1\\>"
+?/enriched_total
+|2,1,1716486928,47,"enriched_total"
+?/enrichment_total_len
+|2,1,1716486926,47,"enrichment_total_len"
+?/enrichment_total
+|2,1,1716486919,47,"enrichment_total"
+?/vpv
+|2,1,1716483109,47,"vpv"
+?/ro_float_features
+|2,1,1716483097,47,"ro_float_features"
+?/time
+|2,1,1716482837,47,"time"
+?/timestamp
+|2,1,1716482824,47,"timestamp"
 ?/age
-|2,1,1716277973,47,"age"
+|2,1,1716482802,47,"age"
+?/ro_float
+|2,1,1716482622,47,"ro_float"
+?/collec
+|2,1,1716482389,47,"collec"
+?/object
+|2,1,1716482374,47,"object"
+?/story_age
+|2,1,1716482335,47,"story_age"
+?/jt_ilb
+|2,1,1716572775,47,"jt_ilb"
+?/compute_jt_su
+|2,1,1716572705,47,"compute_jt_su"
+?/offset
+|2,1,1716572673,47,"offset"
+?/lengths
+|2,1,1716572670,47,"lengths"
+?/seq_le
+|2,1,1716572021,47,"seq_le"
+?/jit
+|2,1,1716512098,47,"jit"
+?/jt_su
+|2,1,1716511790,47,"jt_su"
+?/set_trace
+|2,1,1716510279,47,"set_trace"
+?/get_seq_legn
+|2,1,1716508730,47,"get_seq_legn"
+?/jt_lib
+|2,1,1716504266,47,"jt_lib"
+?/seq_lengths
+|2,1,1716504039,47,"seq_lengths"
+?/hstuconfig
+|2,1,1716503152,47,"hstuconfig"
+?/config
+|2,1,1716503140,47,"config"
+?/_get
+|2,1,1716502717,47,"_get"
+?/tty
+|2,1,1716485780,47,"tty"
+?/clipboard
+|2,1,1716451581,47,"clipboard"
+?/longsamp
+|2,1,1716448661,47,"longsamp"
+?/sampl
+|2,1,1716409146,47,"sampl"
+?/xsel
+|2,1,1716449728,47,"xsel"
+?/logger
+|2,1,1716447937,47,"logger"
+?/logg
+|2,1,1716447910,47,"logg"
+?/salt
+|2,1,1716444983,47,"salt"
+?/device
+|2,1,1716427126,47,"device"
+?/deadline
+|2,1,1716427067,47,"deadline"
+?/assert
+|2,1,1716426987,47,"assert"
+?/max
+|2,1,1716426704,47,"max"
+?/examples::
+|2,1,1716420168,47,"examples::"
+?/example
+|2,1,1716418873,47,"example"
+?/sampli
+|2,1,1716360993,47,"sampli"
+?/common_forward
+|2,1,1716336983,47,"common_forward"
+?/common_feature_processor
+|2,1,1716336978,47,"common_feature_processor"
+?/torch.jit
+|2,1,1716327832,47,"torch.jit"
+?/pickle
+|2,1,1716327151,47,"pickle"
+?/publish_impl
+|2,1,1716327042,47,"publish_impl"
+?/tgif
+|2,1,1716327036,47,"tgif"
+?/script
+|2,1,1716327031,47,"script"
+?/dev
+|2,1,1716318021,47,"dev"
+?/re
+|2,1,1716315427,47,"re"
+?/vnoremap
+|2,1,1716314357,47,"vnoremap"
+?/leader>y
+|2,1,1716314024,47,"leader>y"
+?/pbcopy
+|2,1,1716313963,47,"pbcopy"
+?/copy
+|2,1,1716313887,47,"copy"
+?/yakn
+|2,1,1716313885,47,"yakn"
+?/terminal
+|2,1,1716311619,47,"terminal"
+?/online
+|2,1,1716304007,47,"online"
 ?/keep
 |2,1,1716277786,47,"keep"
-?/max
-|2,1,1716277758,47,"max"
 ?/wc
 |2,1,1716277713,47,"wc"
 ?/datafile
@@ -5142,8 +5444,6 @@ $
 |2,1,1716278640,47,"export"
 ?/z
 |2,1,1716278430,47,"z"
-?/misc
-|2,1,1716278069,47,"misc"
 ?/|
 |2,1,1716278062,47,"|"
 ?/color
@@ -5180,8 +5480,6 @@ $
 |2,1,1716266500,47,"prod"
 ?/pbco
 |2,1,1716267318,47,"pbco"
-?/clip
-|2,1,1716267314,47,"clip"
 ?/date
 |2,1,1716252182,47,"date"
 ?/today
@@ -5224,8 +5522,6 @@ $
 |2,1,1716241644,47,"train"
 ?/ru
 |2,1,1716241641,47,"ru"
-?/tgif
-|2,1,1716241423,47,"tgif"
 ?/commo
 |2,1,1716241174,47,"commo"
 ?/v5
@@ -5238,8 +5534,6 @@ $
 |2,1,1716248243,47,"click"
 ?/light
 |2,1,1716248242,47,"light"
-?/copy
-|2,1,1716250401,47,"copy"
 ? [\u0009\u0020\u00a0\u1680\u180e\u2000-\u200b\u202f\u205f\u3000\ufeff]\+$
 |2,1,1716250103,,"[\\u0009\\u0020\\u00a0\\u1680\\u180e\\u2000-\\u200b\\u202f\\u205f\\u3000\\ufeff]\\+$"
 ?/model_en
@@ -5252,8 +5546,6 @@ $
 |2,1,1716246887,47,"null"
 ?/app
 |2,1,1716246565,47,"app"
-?/online
-|2,1,1716246401,47,"online"
 ?/max_app_re
 |2,1,1716246034,47,"max_app_re"
 ?/max-app-
@@ -5266,8 +5558,6 @@ $
 |2,1,1716244083,47,"trace"
 ?/inference_mo
 |2,1,1716243531,47,"inference_mo"
-?/publish_impl
-|2,1,1716243523,47,"publish_impl"
 ?/fx
 |2,1,1716243511,47,"fx"
 ?/merge_
@@ -5282,8 +5572,6 @@ $
 |2,1,1716237228,47,"seq_embeddings"
 ?/seq_embedding
 |2,1,1716237212,47,"seq_embedding"
-?/self
-|2,1,1716236956,47,"self"
 ?/node
 |2,1,1716236674,47,"node"
 ?/torch_func
@@ -5300,8 +5588,6 @@ $
 |2,1,1716228262,47,"sample"
 ?/random
 |2,1,1716228230,47,"random"
-?/input
-|2,1,1716228220,47,"input"
 ?/samp
 |2,1,1716228217,47,"samp"
 ?/inferenc
@@ -5318,8 +5604,6 @@ $
 |2,1,1716225878,47,"fill"
 ?/trce
 |2,1,1716225737,47,"trce"
-? \s\+$
-|2,1,1716240122,,"\\s\\+$"
 ?/reduce
 |2,1,1716240106,47,"reduce"
 ?/sf
@@ -5328,12 +5612,8 @@ $
 |2,1,1716225238,47,"interactor"
 ?/dst
 |2,1,1716225183,47,"dst"
-?/assert
-|2,1,1716225127,47,"assert"
 ?/get_combine
 |2,1,1716224854,47,"get_combine"
-?/legacy
-|2,1,1716224824,47,"legacy"
 ?/get_combined
 |2,1,1716224819,47,"get_combined"
 ?/et_com
@@ -5396,8 +5676,6 @@ $
 |2,1,1715966527,47,"has"
 ?/lr
 |2,1,1715966464,47,"lr"
-?/weight
-|2,1,1715966115,47,"weight"
 ?/collect_sequen
 |2,1,1715966091,47,"collect_sequen"
 ?/po
@@ -5424,8 +5702,6 @@ $
 |2,1,1715918923,47,"base_forward"
 ?/enrich
 |2,1,1715918879,47,"enrich"
-?/collec
-|2,1,1715901333,47,"collec"
 ?/cotreduce
 |2,1,1715900579,47,"cotreduce"
 ?/cot_enrichment
@@ -5514,10 +5790,6 @@ $
 |2,1,1715807276,47,"req_id"
 ?/new_for
 |2,1,1715806136,47,"new_for"
-?/script
-|2,1,1715806124,47,"script"
-?/new_format
-|2,1,1715806097,47,"new_format"
 ?/bulk_eval
 |2,1,1715804033,47,"bulk_eval"
 ?/HSTUCint
@@ -5592,14 +5864,10 @@ $
 |2,1,1715745764,47,"_index"
 ?/padder
 |2,1,1715745184,47,"padder"
-?/set_trace
-|2,1,1715725208,47,"set_trace"
 ?/data_
 |2,1,1715725023,47,"data_"
 ?/rais
 |2,1,1715722191,47,"rais"
-?/set_tra
-|2,1,1715722177,47,"set_tra"
 ?/stages
 |2,1,1715718159,47,"stages"
 ?/data_iter
@@ -5712,8 +5980,6 @@ $
 |2,1,1715638127,47,"dataloader"
 ?/position
 |2,1,1715637350,47,"position"
-?/sampl
-|2,1,1715637164,47,"sampl"
 ?/should
 |2,1,1715634972,47,"should"
 ?/build(
@@ -5784,8 +6050,6 @@ $
 |2,1,1715376413,47,"cotrain"
 ?/toy_pool_si
 |2,1,1715375532,47,"toy_pool_si"
-?/toy
-|2,1,1715375480,47,"toy"
 ?/reduc
 |2,1,1715375013,47,"reduc"
 ?/interac
@@ -5824,8 +6088,6 @@ $
 |2,1,1715371952,47,"fblearn"
 ?/pospad
 |2,1,1715379944,47,"pospad"
-?/enco
-|2,1,1715377525,47,"enco"
 ?/set_batch
 |2,1,1715377068,47,"set_batch"
 ?/xlwang
@@ -5842,8 +6104,6 @@ $
 |2,1,1715363350,47,"rou"
 ?/c-r
 |2,1,1715363347,47,"c-r"
-?/send
-|2,1,1715362978,47,"send"
 ?/zsh
 |2,1,1715362722,47,"zsh"
 ?/run-shell
@@ -5876,8 +6136,6 @@ $
 |2,1,1715299340,47,"self.cot"
 ?/roomtml
 |2,1,1715298451,47,"roomtml"
-?/config
-|2,1,1715297327,47,"config"
 ?/sparse
 |2,1,1715297153,47,"sparse"
 ?/hstucint
@@ -5894,8 +6152,6 @@ $
 |2,1,1715304413,47,"enrichedmtml"
 ?/multi_query
 |2,1,1715304084,47,"multi_query"
-?/forward
-|2,1,1715303806,47,"forward"
 ?/batch
 |2,1,1715302935,47,"batch"
 ?/enrichment_mask
@@ -6060,8 +6316,6 @@ $
 |2,1,1715141898,47,"17"
 ?/pin
 |2,1,1715113493,47,"pin"
-?/device
-|2,1,1715112765,47,"device"
 ?/hive
 |2,1,1715112704,47,"hive"
 ?/emb
@@ -6414,8 +6668,6 @@ $
 |2,1,1714640607,47,"set_att"
 ?/self.device
 |2,1,1714640071,47,"self.device"
-?/encoder
-|2,1,1714639840,47,"encoder"
 ?/train_publish
 |2,1,1714637003,47,"train_publish"
 ?/type
@@ -6438,8 +6690,6 @@ $
 |2,1,1714641894,47,"tuple"
 ?/prepublis
 |2,1,1714641819,47,"prepublis"
-?/set
-|2,1,1714641764,47,"set"
 ?/dvice
 |2,1,1714641643,47,"dvice"
 ?/forward_en
@@ -6472,8 +6722,6 @@ $
 |2,1,1714625349,47,"state"
 ?/update(
 |2,1,1714625267,47,"update("
-?/req_ids
-|2,1,1714615952,47,"req_ids"
 ?/select_id
 |2,1,1714615951,47,"select_id"
 ?/select
@@ -6500,8 +6748,6 @@ $
 |2,1,1714590686,47,"input_dist"
 ?/embeddingbagcoll
 |2,1,1714590214,47,"embeddingbagcoll"
-?/sparse_ar
-|2,1,1714590206,47,"sparse_ar"
 ?/input_d
 |2,1,1714589786,47,"input_d"
 ?/sparsedist
@@ -6530,8 +6776,6 @@ $
 |2,1,1714540547,47,"coll"
 ?/sour
 |2,1,1714524478,47,"sour"
-?/t
-|2,1,1714522495,47,"t"
 ?/embedding_f
 |2,1,1714604404,47,"embedding_f"
 ?/back
@@ -6542,8 +6786,6 @@ $
 |2,1,1714522881,47,"sr _"
 ?/kill_tty
 |2,1,1714518655,47,"kill_tty"
-?/tty
-|2,1,1714518647,47,"tty"
 ?/sed
 |2,1,1714518410,47,"sed"
 ?/kill
@@ -6578,8 +6820,6 @@ $
 |2,1,1714428566,47,"1d_to"
 ?/to_dense
 |2,1,1714428562,47,"to_dense"
-?/jt_lib
-|2,1,1714428250,47,"jt_lib"
 ?/length
 |2,1,1714427712,47,"length"
 ?/pivot
@@ -6620,14 +6860,10 @@ $
 |2,1,1714204207,47,"ac"
 ?/activa
 |2,1,1714204183,47,"activa"
-?/silu
-|2,1,1714204129,47,"silu"
 ?/src
 |2,1,1714201496,47,"src"
 ?/nocomm
 |2,1,1714207262,47,"nocomm"
-?/gelu
-|2,1,1714207087,47,"gelu"
 ?/acti
 |2,1,1714207076,47,"acti"
 ?/encoder_ver
@@ -6678,8 +6914,6 @@ $
 |2,1,1714078962,47,"len"
 ?/256
 |2,1,1714078941,47,"256"
-?/nro
-|2,1,1714107514,47,"nro"
 ?/default
 |2,1,1714094123,47,"default"
 ?/get_seq_pos
@@ -6730,8 +6964,6 @@ $
 |2,1,1714003798,47,"_seq_se"
 ?/self._seq
 |2,1,1714003771,47,"self._seq"
-?/sequen
-|2,1,1714003290,47,"sequen"
 ?/sampling
 |2,1,1714001539,47,"sampling"
 ?/seg_len
@@ -6760,8 +6992,6 @@ $
 |2,1,1713984414,47,"mask"
 ?/abs
 |2,1,1713983450,47,"abs"
-?/seq_sele
-|2,1,1713983034,47,"seq_sele"
 ?/debi
 |2,1,1713982763,47,"debi"
 ?/cat
@@ -6910,8 +7140,6 @@ $
 |2,1,1704229554,47,"info"
 ?/job
 |2,1,1704229526,47,"job"
-?/cli
-|2,1,1704229510,47,"cli"
 ?/sa
 |2,1,1704229028,47,"sa"
 ?/inser
@@ -6938,8 +7166,6 @@ $
 |2,1,1703316785,47,"process_func"
 ?/processfunc
 |2,1,1703316782,47,"processfunc"
-?/for
-|2,1,1703316778,47,"for"
 ?/rate
 |2,1,1703182471,47,"rate"
 ?/dila
@@ -7094,8 +7320,6 @@ $
 |2,1,1703030999,47,"launc"
 ?/filoe
 |2,1,1703030700,47,"filoe"
-?/logger
-|2,1,1703013182,47,"logger"
 ?/everstoreclient
 |2,1,1703012633,47,"everstoreclient"
 ?/plt
@@ -7524,8 +7748,6 @@ $
 |2,1,1702425920,47,"fe_multita"
 ?/feedrec
 |2,1,1702425834,47,"feedrec"
-?/dropout
-|2,1,1702425771,47,"dropout"
 ?/ig-explore-ml
 |2,1,1702425744,47,"ig-explore-ml"
 ?/ig-connect
@@ -7910,8 +8132,6 @@ $
 |2,1,1702057755,47,"online_training"
 ?/mastutilstest
 |2,1,1702057675,47,"mastutilstest"
-?/list
-|2,1,1702026776,47,"list"
 ?/_embedding_names
 |2,1,1702026383,47,"_embedding_names"
 ?/cjkÑœkjkjjkj
@@ -7942,8 +8162,6 @@ $
 |2,1,1702022934,47,"create_mi"
 ?/aux_
 |2,1,1702022206,47,"aux_"
-?/common_forward
-|2,1,1702021638,47,"common_forward"
 ?/common_Forward/
 |2,1,1702021635,47,"common_Forward/"
 ?/aux_loss
@@ -7956,8 +8174,6 @@ $
 |2,1,1702020682,47,"stack"
 ?/jkujk
 |2,1,1702019649,47,"jkujk"
-?/modulelist
-|2,1,1702022778,47,"modulelist"
 ?/mhl_l
 |2,1,1702022415,47,"mhl_l"
 ?/materialized
@@ -7974,8 +8190,6 @@ $
 |2,1,1702010299,47,"modul"
 ?/orecal
 |2,1,1701997332,47,"orecal"
-?/re
-|2,1,1701997330,47,"re"
 ?/emb_look
 |2,1,1701996731,47,"emb_look"
 ?/keys(
@@ -8152,8 +8366,6 @@ $
 |2,1,1701885542,47,"getting_embe"
 ?/getting_
 |2,1,1701885539,47,"getting_"
-?/cls
-|2,1,1701884897,47,"cls"
 ?/get_feature
 |2,1,1701884731,47,"get_feature"
 ?/get_table
@@ -8410,8 +8622,6 @@ $
 |2,1,1701725579,47,"cross"
 ?/float
 |2,1,1701725491,47,"float"
-?/def forward
-|2,1,1701725374,47,"def forward"
 ?/common_fo
 |2,1,1701725108,47,"common_fo"
 ?/embedding_Feature
@@ -8891,8 +9101,6 @@ $
 |2,1,1700610416,47,"while true"
 ?/whilte
 |2,1,1700610414,47,"whilte"
-?/multiplier
-|2,1,1700609378,47,"multiplier"
 ?/num_clus
 |2,1,1700609319,47,"num_clus"
 ?/nu
@@ -9001,8 +9209,6 @@ $
 |2,1,1700259334,47,"jk/pyre"
 ?/data(
 |2,1,1700253594,47,"data("
-?/linear
-|2,1,1700253270,47,"linear"
 ?/to(
 |2,1,1700248891,47,"to("
 ?/os
@@ -9055,8 +9261,6 @@ $
 |2,1,1700180226,47,"keyedjaggedtenso"
 ?/setstate
 |2,1,1700180218,47,"setstate"
-?/pickle
-|2,1,1700180180,47,"pickle"
 ?/p[i
 |2,1,1700180179,47,"p[i"
 ?/run_mult
@@ -9097,8 +9301,6 @@ $
 |2,1,1700171069,47,"with m"
 ?/multipro
 |2,1,1700170810,47,"multipro"
-?/dev
-|2,1,1700168070,47,"dev"
 ?/test_util
 |2,1,1700167978,47,"test_util"
 ?/is
@@ -9283,8 +9485,6 @@ $
 |2,1,1700069824,47,"-1"
 ?/sha
 |2,1,1700069823,47,"sha"
-?/values
-|2,1,1700069806,47,"values"
 ?/class jagg
 |2,1,1700069572,47,"class jagg"
 ?/embeddingbagcollecjkkkjkk
@@ -9295,8 +9495,6 @@ $
 |2,1,1700069301,47,"projection"
 ?/ordere
 |2,1,1700004060,47,"ordere"
-?/offset
-|2,1,1700001100,47,"offset"
 ?/to_dict
 |2,1,1699991406,47,"to_dict"
 ?/instr
@@ -9401,8 +9599,6 @@ $
 |2,1,1699568796,47,"final"
 ?/sarr
 |2,1,1699567792,47,"sarr"
-?/sam
-|2,1,1699566786,47,"sam"
 ?/update_and
 |2,1,1699565722,47,"update_and"
 ?/prese
@@ -9469,8 +9665,6 @@ $
 |2,1,1699310865,47,"sparse_"
 ?/patch
 |2,1,1699310064,47,"patch"
-?/time
-|2,1,1699307543,47,"time"
 ?/count
 |2,1,1699307507,47,"count"
 ?/initial
@@ -9679,8 +9873,6 @@ $
 |2,1,1698474046,47,"decor"
 ?/row_selection
 |2,1,1698449268,47,"row_selection"
-?/version
-|2,1,1698446658,47,"version"
 ?/latest_config
 |2,1,1698446657,47,"latest_config"
 ?/latrest
@@ -9833,8 +10025,6 @@ $
 |2,1,1698133344,47,"combain"
 ?/avx
 |2,1,1698133230,47,"avx"
-?/salt
-|2,1,1698132841,47,"salt"
 ?/host
 |2,1,1698127646,47,"host"
 ?/break
@@ -10047,8 +10237,6 @@ $
 |2,1,1696490636,47,"skip samplin"
 ?/100
 |2,1,1696489682,47,"100"
-?/logg
-|2,1,1696487943,47,"logg"
 ?/sandbox
 |2,1,1696409466,47,"sandbox"
 ?/data_source_config
@@ -11048,8 +11236,6 @@ $
 |2,1,1693504080,47,"schedule"
 ?/offline_and
 |2,1,1693504078,47,"offline_and"
-?/encode
-|2,1,1693448029,47,"encode"
 ?/issub
 |2,1,1693447846,47,"issub"
 ?/encode_item
@@ -11858,8 +12044,6 @@ $
 |2,1,1692142604,47,"vvp200"
 ?/pubcontent
 |2,1,1692142446,47,"pubcontent"
-?/timestamp
-|2,1,1692141787,47,"timestamp"
 ?/timest
 |2,1,1692141655,47,"timest"
 ?/base_model
@@ -13126,8 +13310,6 @@ $
 |2,1,1689809749,47,"autogr"
 ?/fus
 |2,1,1689809608,47,"fus"
-?/jit
-|2,1,1689808722,47,"jit"
 ?/n__name
 |2,1,1689808232,47,"n__name"
 ?/__name__
@@ -13158,8 +13340,6 @@ $
 |2,1,1689749736,47,"asm"
 ?/program_id
 |2,1,1689744999,47,"program_id"
-?/triton
-|2,1,1689726400,47,"triton"
 ?/reshape
 |2,1,1689665836,47,"reshape"
 ?/pyt
@@ -14192,8 +14372,6 @@ $
 |2,1,1686160242,47,"pah"
 ?/login
 |2,1,1686157511,47,"login"
-?/;
-|2,1,1686157509,47,";"
 ?/zshrc
 |2,1,1686155663,47,"zshrc"
 ?/oint
@@ -14446,8 +14624,6 @@ $
 |2,1,1684907267,47,"none_rec"
 ?/RI
 |2,1,1684907228,47,"RI"
-???
-|2,1,1684904495,63,"?"
 ?/genlan
 |2,1,1684901015,47,"genlan"
 ?/langu
@@ -14730,8 +14906,6 @@ $
 |2,1,1684352040,47,"getfeautres"
 ?/getfeature
 |2,1,1684352003,47,"getfeature"
-?/vpv
-|2,1,1684341185,47,"vpv"
 ?/f
 |2,1,1684341184,47,"f"
 ?/vpv_gr
@@ -15010,8 +15184,6 @@ $
 |2,1,1682639177,47,"get_meta"
 ?/fa
 |2,1,1682638308,47,"fa"
-?/v3
-|2,1,1682636931,47,"v3"
 ?/get_fb_Fea
 |2,1,1682636828,47,"get_fb_Fea"
 ?/suspected_or
@@ -15066,8 +15238,6 @@ $
 |2,1,1682615058,47,"num_ex"
 ?/over_arch
 |2,1,1682615018,47,"over_arch"
-?/moe
-|2,1,1682614678,47,"moe"
 ?/gating_module_or_arc
 |2,1,1682607441,47,"gating_module_or_arc"
 ?/pre_sn
@@ -15178,8 +15348,6 @@ $
 |2,1,1682362580,47,"leaf"
 ?/cross_net
 |2,1,1682361889,47,"cross_net"
-?/gating
-|2,1,1682361515,47,"gating"
 ?/gn
 |2,1,1682360713,47,"gn"
 ?/dcn
@@ -15204,8 +15372,6 @@ $
 |2,1,1682271009,47,"gaming"
 ?/train_ocuc_gaming_prevalence
 |2,1,1682271006,47,"train_ocuc_gaming_prevalence"
-?/wei
-|2,1,1682268917,47,"wei"
 ?/y
 |2,1,1682268868,47,"y"
 ?/weights
@@ -15252,8 +15418,6 @@ $
 |2,1,1682231761,47,"dmp("
 ?/dmp(x)
 |2,1,1682231758,47,"dmp(x)"
-? \<1\>
-|2,1,1682230367,,"\\<1\\>"
 ?/711
 |2,1,1682230087,47,"711"
 ?/crossnet
@@ -15604,8 +15768,6 @@ $
 |2,1,1681011576,47,"tmp_export"
 ?/cat(
 |2,1,1681005902,47,"cat("
-?/tra
-|2,1,1681004687,47,"tra"
 ?/post_run_log
 |2,1,1681003572,47,"post_run_log"
 ?/pre_
@@ -16798,8 +16960,6 @@ $
 |2,1,1665452795,47,"drp"
 ?/marketplace
 |2,1,1665452604,47,"marketplace"
-?/static_
-|2,1,1665452416,47,"static_"
 ?/depreca
 |2,1,1665292917,47,"depreca"
 ?/create_job
@@ -17228,8 +17388,6 @@ $
 |2,1,1663112520,47,"add_scala"
 ?/HPC_JOB_ATTEMPT_INDE
 |2,1,1663112410,47,"HPC_JOB_ATTEMPT_INDE"
-?/pass
-|2,1,1663111206,47,"pass"
 ?/cli_ver
 |2,1,1663089030,47,"cli_ver"
 ?/lios
@@ -17958,8 +18116,6 @@ $
 |2,1,1660348574,47,"preserve_"
 ?/layer
 |2,1,1660254773,47,"layer"
-?/layernorm
-|2,1,1660254504,47,"layernorm"
 ?/over_arch_gating
 |2,1,1660248824,47,"over_arch_gating"
 ?/gedac_from
@@ -18668,8 +18824,6 @@ $
 |2,1,1656492047,47,"penv.par"
 ?/u/
 |2,1,1656487088,47,"u/"
-?/example
-|2,1,1656472957,47,"example"
 ?/worksapc
 |2,1,1656472735,47,"worksapc"
 ?/partition_u
@@ -20994,136 +21148,6 @@ $
 |2,1,1647733566,47,"tensorbo"
 ?/hotload
 |2,1,1647726272,47,"hotload"
-?/hotload_modul
-|2,1,1647724069,47,"hotload_modul"
-?/or_loa
-|2,1,1647723555,47,"or_loa"
-?/meta_path
-|2,1,1647736999,47,"meta_path"
-?/bzl
-|2,1,1647736032,47,"bzl"
-?/bento_utils
-|2,1,1647736010,47,"bento_utils"
-?/dper-cli-lib
-|2,1,1647735920,47,"dper-cli-lib"
-?/bento_util
-|2,1,1647735720,47,"bento_util"
-?/base_module
-|2,1,1647735288,47,"base_module"
-?/bento_test
-|2,1,1647735273,47,"bento_test"
-?/hg_prevjkkkjjj
-|2,1,1647723157,47,"hg_prevjkkkjjj"
-?/hnext
-|2,1,1647722992,47,"hnext"
-?/hu
-|2,1,1647722974,47,"hu"
-?/hsl
-|2,1,1647722967,47,"hsl"
-?/trash
-|2,1,1647720494,47,"trash"
-?/buck_out
-|2,1,1647720218,47,"buck_out"
-?/buckout
-|2,1,1647720172,47,"buckout"
-?/BUCKOUT
-|2,1,1647720110,47,"BUCKOUT"
-?/alias buck
-|2,1,1647718557,47,"alias buck"
-?/bbww
-|2,1,1647718502,47,"bbww"
-?/shutdown(
-|2,1,1647717838,47,"shutdown("
-?/combo_launch
-|2,1,1647717750,47,"combo_launch"
-?/data_test
-|2,1,1647634012,47,"data_test"
-?/disttestba
-|2,1,1647632947,47,"disttestba"
-?/actu
-|2,1,1647629866,47,"actu"
-?/\//\./
-|2,1,1647629634,47,"\\//\\./"
-?/\//.
-|2,1,1647629617,47,"\\//."
-?/atexit
-|2,1,1647588635,47,"atexit"
-?/pry
-|2,1,1647586093,47,"pry"
-?/pipelineable
-|2,1,1647584772,47,"pipelineable"
-?/modelin
-|2,1,1647583661,47,"modelin"
-?/jkj
-|2,1,1647583656,47,"jkj"
-?/type(
-|2,1,1647582696,47,"type("
-?/idlistfeatu
-|2,1,1647578984,47,"idlistfeatu"
-?/lengths
-|2,1,1647578058,47,"lengths"
-?/train_batch_
-|2,1,1647577168,47,"train_batch_"
-?/_field
-|2,1,1647576591,47,"_field"
-?/converteddataiterator
-|2,1,1647555587,47,"converteddataiterator"
-?/zero_grad
-|2,1,1647507864,47,"zero_grad"
-?/cast(
-|2,1,1647507780,47,"cast("
-?/dataintera
-|2,1,1647507327,47,"dataintera"
-?/iterator
-|2,1,1647507298,47,"iterator"
-?/fbdataiter
-|2,1,1647507006,47,"fbdataiter"
-?/fbdataiterat
-|2,1,1647506190,47,"fbdataiterat"
-?/inputcon
-|2,1,1647505876,47,"inputcon"
-?/tre
-|2,1,1647505868,47,"tre"
-?/inputconver
-|2,1,1647505865,47,"inputconver"
-?/fit(
-|2,1,1647504502,47,"fit("
-?/inputconv
-|2,1,1647503667,47,"inputconv"
-?/trainng_ste/trainin
-|2,1,1647503361,47,"trainng_ste/trainin"
-?/class ligthin
-|2,1,1647503292,47,"class ligthin"
-?/lightningmodule
-|2,1,1647503288,47,"lightningmodule"
-?/lighning
-|2,1,1647503282,47,"lighning"
-?/sharded_model
-|2,1,1647502483,47,"sharded_model"
-?/class trainer
-|2,1,1647500774,47,"class trainer"
-?/create_checkpoint
-|2,1,1647500365,47,"create_checkpoint"
-?/ifrmtmlmode
-|2,1,1647536217,47,"ifrmtmlmode"
-?/statefuldataload
-|2,1,1647541078,47,"statefuldataload"
-?/self.shutdown
-|2,1,1647494167,47,"self.shutdown"
-?/cra
-|2,1,1647492990,47,"cra"
-?/temp
-|2,1,1647478065,47,"temp"
-?/teardown
-|2,1,1647478058,47,"teardown"
-?/init_distr
-|2,1,1647478050,47,"init_distr"
-?/tear
-|2,1,1647473981,47,"tear"
-?/shutting
-|2,1,1647473161,47,"shutting"
-?/rank1
-|2,1,1647472735,47,"rank1"
 
 # Expression History (newest to oldest):
 ='else:' =~ '^\(\s*\(\h\+\S\s*:\)\)'jkjjjkjkkkk
@@ -21304,6 +21328,10 @@ $
 |2,2,1590704332,,"%:p:s"
 
 # Input Line History (newest to oldest):
+@/home/xlwang/misc/scripts/oscyank2.sh
+|2,3,1717001630,,"/home/xlwang/misc/scripts/oscyank2.sh"
+@/data/users/xlwang/fbsource/fbcode/mrs/fm/modules/moe.py
+|2,3,1716597239,,"/data/users/xlwang/fbsource/fbcode/mrs/fm/modules/moe.py"
 @/home/xlwang/misc/tmp/mast_exp.md
 |2,3,1716275099,,"/home/xlwang/misc/tmp/mast_exp.md"
 @/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_online_train.sh
@@ -22667,38 +22695,39 @@ $
 
 # Registers:
 "0	CHAR	0
-	print_256_color 
-|3,0,0,0,1,0,1716278894,"print_256_color "
+	selection
+|3,0,0,0,1,0,1717002246,"selection"
 ""1	LINE	0
-	    echo $Z
-|3,1,1,1,1,0,1716278568,"    echo $Z"
+	bind-key -T copy-mode-vi 'y' send -X copy-pipe '~/misc/scripts/oscyank.sh'
+|3,1,1,1,1,0,1717002247,"bind-key -T copy-mode-vi 'y' send -X copy-pipe '~/misc/scripts/oscyank.sh'"
 "2	LINE	0
-	exit
-|3,0,2,1,1,0,1716277047,"exit"
+	# bind-key -T copy-mode-vi 'y' send -X copy-pipe "~/misc/scripts/oscyank.sh"
+|3,0,2,1,1,0,1717001801,"# bind-key -T copy-mode-vi 'y' send -X copy-pipe \"~/misc/scripts/oscyank.sh\""
 "3	LINE	0
-	echo ""
-|3,0,3,1,1,0,1716277046,"echo \"\""
+	set -s copy-command '~/misc/scripts/oscyank2.sh'
+|3,0,3,1,1,0,1717001777,"set -s copy-command '~/misc/scripts/oscyank2.sh'"
 "4	LINE	0
-	echo -e $ANSI_COLOR_RED"root_dir=$root_dir"$ANSI_COLOR_RESET
-|3,0,4,1,1,0,1716277044,"echo -e $ANSI_COLOR_RED\"root_dir=$root_dir\"$ANSI_COLOR_RESET"
-"5	LINE	0
 	
-|3,0,5,1,1,0,1716276787,""
+|3,0,4,1,1,0,1717001617,""
+"5	LINE	0
+	printf "$esc" > /dev/pts/40
+|3,0,5,1,1,0,1717001616,"printf \"$esc\" > /dev/pts/40"
 "6	LINE	0
-	    echo $src_ln $dst_ln
-|3,0,6,1,1,0,1716276577,"    echo $src_ln $dst_ln"
+	printf "$esc"
+|3,0,6,1,1,0,1717001513,"printf \"$esc\""
 "7	LINE	0
-	    ln_str=""
-|3,0,7,1,1,0,1716276092,"    ln_str=\"\""
+	echo $
+|3,0,7,1,1,0,1717001507,"echo $"
 "8	LINE	0
-	      ln_str=$ANSI_COLOR_BLUE"+$ln_delta"$ANSI_COLOR_RESET
-|3,0,8,1,1,0,1716276008,"      ln_str=$ANSI_COLOR_BLUE\"+$ln_delta\"$ANSI_COLOR_RESET"
+	echo $buf > ~/tmp/tmp.txt
+|3,0,8,1,1,0,1717001491,"echo $buf > ~/tmp/tmp.txt"
 "9	LINE	0
-	      ln_str=$ANSI_COLOR_RED"$ln_delta"$ANSI_COLOR_RESET
-|3,0,9,1,1,0,1716276006,"      ln_str=$ANSI_COLOR_RED\"$ln_delta\"$ANSI_COLOR_RESET"
+	        gating_output[eliminated_mask] = -float("inf")
+	        gating_output = torch.nn.functional.softmax(gating_output, dim=-1)
+|3,0,9,1,2,0,1717001362,"        gating_output[eliminated_mask] = -float(\"inf\")","        gating_output = torch.nn.functional.softmax(gating_output, dim=-1)"
 "a	CHAR	0
-	jkkkjjjjjjjjjkk€ý,€ý.ï¼š
-|3,0,10,0,1,0,1716247185,"jkkkjjjjjjjjjkk€ý,€ý.ï¼š"
+	1100
+|3,0,10,0,1,0,1716993343,"1100"
 "b	CHAR	0
 	"to_available_memory": {}
 |3,0,11,0,1,0,1594402050,"\"to_available_memory\": {}"
@@ -22730,11 +22759,11 @@ $
 	kkkjkjjjjjjjjjjjjjjj:Duf
 |3,0,19,0,1,0,1715641678,"kkkjkjjjjjjjjjjjjjjj:Duf"
 "k	CHAR	0
-	894
-<kkkzhNNjkkjknkkkkjjjjjkkkkkkkzhhhzhjkjjkkNjjhhzhnggnnnwwjjjjjjjjjjjjkkkkkkkkkzhjkNNggnn/microjkzhjkkjkkkjzhjwwkkkjwwwwzhwwzhjkjjhhzhjkkkjj/id_list_featuresjkkjkkkkhhhzhkkjjhhhzhnnnjkjjkjkkzjkkNjkzhjkjkkjjkkjkhhkhhzhnnnjkjjjjjjwkzhjkjjknwwwwwwzhkkkkkkkkkkkkkkkkkkkkkkkkkkkknjkjkjnnNkkkkkkkkkkkkzhnnnjjjwjj/embeejkjjkjjjjjjjjzhkzhjkNNnNggnwwwjknnNnnkkkjjjkjkkkkkkkkkkkkkzhnnnnjknNnnnn/embedding_tablesjkkkkkkkjjkkjnnzhjkjkggnjkjkjjoembed€kb€kb€kb€kb€kbjkkkwwwwkbbzhhhhzhjkjjoinput_confi					.embed_table_typ	jkzhhjkA(toy_mode	, get_all_tables_fopr	=TruejkhzhjkhbbhhzhnnjkkkkkkjjkjkkjjkIembedding_tables €kb_€kb€kb_types  =€kb€kb€kb = €kb€kb€kbs = jk,wjkbBzhjkviwykkkzhjkjjo# use embedding_Table€kb€kb€kb€kb€kbtable_types for consturcting preprocjkhzhjk:wkjjjkIjkviwykkkkzhnnnjkwwviwpjkhzhjk:wjkjkkkkjkjkNjkkwwwwwjkAjkhhhhhhiinfer jk,w
-|3,0,20,0,1,0,1702505272,>893
-|<"kkkzhNNjkkjknkkkkjjjjjkkkkkkkzhhhzhjkjjkkNjjhhzhnggnnnwwjjjjjjjjjjjjkkkkkkkkkzhjkNNggnn/microjkzhjkkjkkkjzhjwwkkkjwwwwzhwwzhjkjjhhzhjkkkjj/id_list_featuresjkkjkkkkhhhzhkkjjhhhzh\n\n\njkjjkjkkzjkkNjkzhjkjkkjjkkjkhhkhhzh\nnnjkjjjjjjwkzhjkjjknwwwwwwzhkkkkkkkkkkkkkkkkkkkkkkkkkkkknjkjkjnnNkkkkkkkkkkkkzhnnnjjjwjj/embeejkjjkjjjjjjjjzhkzhjkNNnNggnwwwjknnNnnkkkjjjkjkkkkkkkkkkkkkzh\nn\nnjknNnnnn/embedding_tablesjkkkkkkkjjkkjnnzhjkjkggnjkjkjjoembed€kb€kb€kb
-|<€kb€kbjkkkwwwwkbbzhhhhzhjkjjoinput_confi					.embed_table_typ	jkzhhjkA(toy_mode	, get_all_tables_fopr	=TruejkhzhjkhbbhhzhnnjkkkkkkjjkjkkjjkIembedding_tables €kb_€kb€kb_types  =€kb€kb€kb = €kb€kb€kbs = jk,wjkbBzhjkviwykkkzhjkjjo# use embedding_Table€kb€kb€kb€kb€kbtable_types for consturcting preprocjkhzhjk:wkjjjkIjkviwykkkkzhnnnjkwwviwpjkhzhjk:wjkjkkkkjkjkNjkkwwwwwjkAjkhhhhhhiinfer jk,w"
+	917
+<kjkujkddjk:wVkkkkkkkkkkkkkyjjjjjjjjjjjjjojkpjkwwhr4€ý5jkkkkkkkkkkkkkkkko"""dense mov€kbejkkjddkddddjkkwwhhjkhxximoejkhjkjkjjjjjjndwimoejkjVkkkkkkkkkkkkkkyGojkpjkllllllllllllllllliSGjkjjjjjjjjjjjjjAjkhhhisgjk:wjjjjjjjjjjjjjjjhhxxisgmoejkhzhjk:wjjjkhzhjkjjjjjjjjjjjkkojkjknkois_sg_mo	=True,jkjddjk:wkwzhjk,wjkzhkkjjnjk:Fbs23GVkkkkkkkkkkkkkkkkkkkkkkyGojkpjkwwjjjjjjjjjjjjjois_sgmo	=True,jkjjjjjk,wkkkkkkkkkkkkkkkkkkkbbjjjbbbbbbllllijklisgjk:wjkjGjkkkjj:64jkzhwwwwwkkkk/valuesjknwhxjk,wjjkkkkjjjhhhhhhhhhhhhhhhhhzhjkwwwijkjkkji, jkujkkkkkkkkkkojkujodevic	 = input.devic	jkjjjjjjjjjkkkkkkkjjjjjjwwwwi, devic	=devic	jkwwwwwwwjjjwwwwwwwwwwwwwwwwwwwwwwwwwwi, devic	=devic	jkwwwwwwwjjjjjjkwwwlzhjk,wjkjjkjllllvwwwwwhxi1196jkjwwDA10, jkjjjjjjjjkA€kbjk,wA€kbjk,wjkjjjjkwwwjwwwwllxxi00jkAjkhhxxi100jk,wjkkojkujo# flops depends on expert e€kbdistribution which is of high variancejk:wjk
+|3,0,20,0,1,0,1716970379,>919
+|<"kjkujkddjk:wVkkkkkkkkkkkkkyjjjjjjjjjjjjjojkpjkwwhr4€ý5jkkkkkkkkkkkkkkkko\"\"\"dense mov€kbejkkjddkddddjkkwwhhjkhxximoejkhjkjkjjjjjjndwimoejkjVkkkkkkkkkkkkkkyGojkpjkllllllllllllllllliSGjkjjjjjjjjjjjjjAjkhhhisgjk:wjjjjjjjjjjjjjjjhhxxisgmoejkhzhjk:wjjjkhzhjkjjjjjjjjjjjkkojkjk\nkois_sg_mo	=True,jkjddjk:wkwzhjk,wjkzhkkjj\njk:Fbs23GVkkkkkkkkkkkkkkkkkkkkkkyGojkpjkwwjjjjjjjjjjjjjois_sgmo	=True,jkjjjjjk,wkkkkkkkkkkkkkkkkkkkbbjjjbbbbbbllllijklisgjk:wjkjGjkkkjj:64jkzhwwww
+|<wkkkk/valuesjknwhxjk,wjjkkkkjjjhhhhhhhhhhhhhhhhhzhjkwwwijkjkkji, jkujkkkkkkkkkkojkujodevic	 = input.devic	jkjjjjjjjjjkkkkkkkjjjjjjwwwwi, devic	=devic	jkwwwwwwwjjjwwwwwwwwwwwwwwwwwwwwwwwwwwi, devic	=devic	jkwwwwwwwjjjjjjkwwwlzhjk,wjkjjkjllllvwwwwwhxi1196jkjwwDA10, jkjjjjjjjjkA€kbjk,wA€kbjk,wjkjjjjkwwwjwwwwllxxi00jkAjkhhxxi100jk,wjkkojkujo# flops depends on expert e€kbdistribution which is of high variancejk:wjk"
 "l	CHAR	0
 	llllzhkkkoprint("jkhifjkli>>> " ".join(commandlin	jklhvbbbbhhS}jkwhhr'wwhhhlr'jk,wjkwwwwli =jk:wi jk:w
 |3,0,21,0,1,0,1652596585,"llllzhkkkoprint(\"jkhifjkli>>> \" \".join(commandlin	jklhvbbbbhhS}jkwhhr'wwhhhlr'jk,wjkwwwwli =jk:wi jk:w"
@@ -22749,18 +22778,8 @@ $
 <esthashjkujkhhxireques			jkhhhhhzhjkwDAjk,wjkhhhDjk,wkjivwyjjjjjku€ý,€ý.jkjkk22kkk22kkk22jjwzh11kjjjhviwynviw,pnviw,p€ý,€ý.jk€ý,€ý.jkjjkIjkwwhhhviw,pnviw,pnviw,pnviw,pjk22kkbbbzhN€ý,€ý.jkkN;;;;kjwwjkvwi€ý,€ý.jkkjkjk;;jkjkkjkjkNNNnnnwwdwirequestHasher	jki jkhhhzhjk:wjkjknjkkjwwjkwjkkNjk~kjljkviwynwwviw,pjknwwviw,pnwwviw,pnwwviw,pjk,wjkjj:ASnjkjkknjkjkkjjk
 |3,0,30,0,1,0,1636473159,"esthashjkujkhhxireques			jkhhhhhzhjkwDAjk,wjkhhhDjk,wkjivwyjjjjjku€ý,€ý.jkjkk22kkk22kkk22jjwzh11kjjjhviwynviw,pnviw,p€ý,€ý.jk€ý,€ý.jkjjkIjkwwhhhviw,pnviw,pnviw,pnviw,pjk22kkbbbzhN€ý,€ý.jkkN;;;;kjwwjkvwi€ý,€ý.jkkjkjk;;jkjkkjkjkNNNnnnwwdwirequestHasher	jki jkhhhzhjk:wjkjknjkkjwwjkwjkkNjk~kjljkviwynwwviw,pjknwwviw,pnwwviw,pnwwviw,pjk,wjkjj:ASnjkjkknjkjkkjjk"
 "v	CHAR	0
-	337
-<kkkVjjjyjjjpjkjjjjddkkkkwlxxxictfsjkhjhxxxictfsjkzhhjkviwyjwwwbviwpjkzhhjkjjkoreturn shape (jkkwwjkjkkggjnkkkVjjjjjyjkjpjkwwwwdwi$rank	jkhzhjkjwwwdwi$ppr_weih	jkjbdwi$simweight	jkjbdwi$ctfsweight	jkjbdwi$qe_e€kb€kb€kb€kbexperime€kb€kb€kb€kb	jkjbdwi$groupna	jkhzhjk,wjkjjA;jk,wkddjkjkkkkjjjjjjjVjjxkddk,wkkkkkkkkkwwjkzhjkjk  jk ,w
-	jjwkjwww
-	318
-<jjj:34jk:34jkjkjjjjjkkjjjjjwkkkwwwwwlzhNNnNjjwwwkkwwwwwwzh€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýMjkkj kkjjjkbbbbbv$hS)jkAjki?? :€kb''jk,wjkjjjjjjjjjjjjjjjjjjjjkkjjjjjjjjjddjk,wjddjk,w€ý,€ý.ggjkjjjjggkggjkjjjjjjjjjjoDISABLED =€kb= "disabledjkA;jk:whbbbbzhjkjkjkGjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk wwzhjkjkjkkjjjk 
-	1050
-<jjjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkVjjjyjjjpjkkojkjjwwwwwwjkjl:sp ~/fbc	tor	ch			€kb€kb€kb€kb€kb€kb./€kb€kb/	jkkhdwitorchjkjjkbdwitorchjkhzhhjk:WjkkkjkIjkwwbblllllldwiTROCH jkhhhhhxliRjkhzhjkviwyjjjjjjjkA + jkkJkAjkjAEVICT_CAF	 + EVIC€kB			jkkJjk:wjk€ý,€ý.€ý,€ý.VjjjjxxjkjbbDAjk:w€ý,€ý.jko€FI allocator = "jemalloc",    enable_lazy_imports = True,    enable_native_python = True,€FJjkkk<<jkkkkjkuujk:wjkkkbbwxxxxxxipythonjkhhhhzhjk:wjkuujkuuuuuuuuuuujkuuuuujkujk:wkkkkjjjjjjwwkhkhzhjjkVjkgcjk:wjkkkkkkkkxxxxxxicinderjk:Wjkjjjjjjjzhjkoenable_lazy_import=€kb€kb€kb€kbs=True,allocator="jemallocjkA,jk,wkkjjkkk€ý,€ý.€ý,€ý.bDjk:wjkbbwzhjkIjkjknnjkIjkzh€ý,€ý-€ý-€ý.kjj jjjjjjjjjjj;;jjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkjjejjjjjkkkkkkxhjjkuxhjkjkxhjkuujkzhjkjjjjjjVjjxzhwwggnnggjjjjjjjjjjjjjkVjjjjjjjj;;jkkkjVjjjjxjkjbbwzhjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkVjxkzhjk:Wkkjjjkkjjjjjjjjjjkkkkkkkkkkkkbxxxxxxipythonjkzhjkjjjjjjjk:w€ý,€ý.jk:ejk:eG€ý,€ý.jk jkkkkVjjjyjjjjjjjjjjjjjkwwpjkkddjkVjjjyjjjjjjjjjjjjjjjpkjVjjj<kddjk,w
-|3,0,31,0,4,0,1716278424,"kkkVjjjyjjjpjkjjjjddkkkkwlxxxictfsjkhjhxxxictfsjkzhhjkviwyjwwwbviwpjkzhhjkjjkoreturn shape (jkkwwjkjkkggjnkkkVjjjjjyjkjpjkwwwwdwi$rank	jkhzhjkjwwwdwi$ppr_weih	jkjbdwi$simweight	jkjbdwi$ctfsweight	jkjbdwi$qe_e€kb€kb€kb€kbexperime€kb€kb€kb€kb	jkjbdwi$groupna	jkhzhjk,wjkjjA;jk,wkddjkjkkkkjjjjjjjVjjxkddk,wkkkkkkkkkwwjkzhjkjk  jk ,w","jjwkjwww",>318
-|<"jjj:34jk:34jkjkjjjjjkkjjjjjwkkkwwwwwlzhNNnNjjwwwkkwwwwwwzh€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýM€ýMjkkj kkjjjkbbbbbv$hS)jkAjki?? :€kb''jk,wjkjjjjjjjjjjjjjjjjjjjjkkjjjjjjjjjddjk,wjddjk,w€ý,€ý.ggjkjjjjggkggjkjjjjjjjjjjoDISABLED =€kb= \"disabledjkA;jk:whbbbbzhjkjkjkGjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk wwzhjkjkjkkjjjk ",>1052
-|<"jjjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkVjjjyjjjpjkkojkjjwwwwwwjkjl:sp ~/fbc	tor	ch			€kb€kb€kb€kb€kb€kb./€kb€kb/	jkkhdwitorchjkjjkbdwitorchjkhzhhjk:WjkkkjkIjkwwbblllllldwiTROCH jkhhhhhxliRjkhzhjkviwyjjjjjjjkA + jkkJkAjkjAEVICT_CAF	 + EVIC€kB			jkkJjk:wjk€ý,€ý.€ý,€ý.VjjjjxxjkjbbDAjk:w€ý,€ý.jko€FI allocator = \"jemalloc\",    enable_lazy_imports = True,    enable_native_python = True,€FJjkkk<<jkkkkjkuujk:wjkkkbbwxxxxxxipythonjkhhhhzhjk:wjkuujkuuuuuuuuuuujkuuuuujkujk:wkk
-|<kkjjjjjjwwkhkhzhjjkVjkgcjk:wjkkkkkkkkxxxxxxicinderjk:Wjkjjjjjjjzhjkoenable_lazy_import=€kb€kb€kb€kbs=True,allocator=\"jemallocjkA,jk,wkkjjkkk€ý,€ý.€ý,€ý.bDjk:wjkbbwzhjkIjkjknnjkIjkzh€ý,€ý-€ý-€ý.kjj jjjjjjjjjjj;;jjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkjjejjjjjkkkkkkxhjjkuxhjkjkxhjkuujkzhjkjjjjjjVjjxzhwwggnnggjjjjjjjjjjjjjkVjjjjjjjj;;jkkkjVjjjjxjkjbbwzhjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkVjxkzhjk:Wkkjjjkkjjjjjjjjjjkkkkkkkkkkkkbxxxxxxipythonjkzhjkjjjjjjjk:w€ý,€ý.jk:ejk:eG€ý,€ý.jk
-|< jkkkkVjjjyjjjjjjjjjjjjjkwwpjkkddjkVjjjyjjjjjjjjjjjjjjjpkjVjjj<kddjk,w"
+	wkkjj
+|3,0,31,0,1,0,1717001831,"wkkjj"
 "w	CHAR	0
 	wwwjwjjkkKNjkjjjjjjjjjjjjjkkkkkkkkjbbbwzhjkIjkzhnjww
 |3,0,32,0,1,0,1702091691,"wwwjwjjkkKNjkjjjjjjjjjjjjjkkkkkkkkjbbbwzhjkIjkzhnjww"
@@ -22770,240 +22789,1451 @@ $
 |3,0,35,0,1,0,1630515023,>451
 |<"hjkllzh:AnncjkkjjjjjjjjjjjjjjjkkkjjjVjxjk,jkuujkddyyjjpjk,w€ý,€ý.kjkkkkkkkkkkkkkkjj/sessionjkkkkkkjbbwwjwwzhwwwbzhjkkkkkkkjojkkgccjkoauto€kb€kb€kb€kb€kb€kb€kbstd::make_uniquejkhzhjkkk€ý,€ý.€ü €ý,€ü €ý.jkA<A>(xjkA;jkIa = jkjjwwwlxi->jkjjjhhxi->jk,w €ý,€ý.jk;;kkkkkkkkkkkkkkkkkkkbbjkxjkbbdwiconst jkwhi&jkjjkkhr&r*jkjjjjjjjjjjjjjjwwwkkkjwwwwwlllijkhi&kj,wjkhhhhxxxxjk,wjjjkbbbi*jkjjjhi*jk,w€ý,€ý.€ü €ý,€ü €ý.;;jkIauyto €kb€kb€kb€kb€kbuto jk,wjkj"
 "-	CHAR	0
-	print_256_color 
-|3,0,36,0,1,0,1716277425,"print_256_color "
+	selection
+|3,0,36,0,1,0,1717002195,"selection"
 
 # global variables:
 !DISPATCH_STARTS	DIC	{}
 
 # File marks:
-'0  381  4  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,48,381,4,1716278905,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
-'1  49  0  ~/.zshrc
-|4,49,49,0,1716278900,"~/.zshrc"
-'2  316  13  ~/.z
-|4,50,316,13,1716278088,"~/.z"
-'3  1  0  ~/.z
-|4,51,1,0,1716277489,"~/.z"
-'4  1  0  ~/.z
-|4,52,1,0,1716277489,"~/.z"
-'5  35  17  ~/.profile_wangxl
-|4,53,35,17,1716277432,"~/.profile_wangxl"
-'6  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,54,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
-'7  60  6  ~/misc/scripts/cache_sync.sh
-|4,55,60,6,1716276629,"~/misc/scripts/cache_sync.sh"
-'8  57  6  ~/misc/scripts/cache_sync.sh
-|4,56,57,6,1716276629,"~/misc/scripts/cache_sync.sh"
-'9  47  4  ~/misc/scripts/cache_sync.sh
-|4,57,47,4,1716276580,"~/misc/scripts/cache_sync.sh"
+'0  158  0  ~/.tmux.conf
+|4,48,158,0,1717002270,"~/.tmux.conf"
+'1  157  73  ~/.tmux.conf
+|4,49,157,73,1717002204,"~/.tmux.conf"
+'2  157  73  ~/.tmux.conf
+|4,50,157,73,1717002204,"~/.tmux.conf"
+'3  46  6  ~/.tmux.conf
+|4,51,46,6,1717002023,"~/.tmux.conf"
+'4  46  6  ~/.tmux.conf
+|4,52,46,6,1717002023,"~/.tmux.conf"
+'5  46  6  ~/.tmux.conf
+|4,53,46,6,1717002023,"~/.tmux.conf"
+'6  46  6  ~/.tmux.conf
+|4,54,46,6,1717002023,"~/.tmux.conf"
+'7  45  0  ~/misc/scripts/oscyank2.sh
+|4,55,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+'8  159  0  ~/.tmux.conf
+|4,56,159,0,1717001808,"~/.tmux.conf"
+'9  159  0  ~/.tmux.conf
+|4,57,159,0,1717001808,"~/.tmux.conf"
 
 # Jumplist (newest first):
--'  381  4  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,381,4,1716278905,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  49  0  ~/.zshrc
-|4,39,49,0,1716278900,"~/.zshrc"
--'  382  3  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,382,3,1716278849,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  50  0  ~/.zshrc
-|4,39,50,0,1716278640,"~/.zshrc"
--'  326  6  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,326,6,1716278553,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  149  4  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,149,4,1716278551,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  64  5  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,64,5,1716278550,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  48  37  ~/.zshrc
-|4,39,48,37,1716278545,"~/.zshrc"
--'  47  69  ~/.zshrc
-|4,39,47,69,1716278530,"~/.zshrc"
--'  109  0  ~/.zshrc
-|4,39,109,0,1716278455,"~/.zshrc"
--'  59  0  ~/.zshrc
-|4,39,59,0,1716278454,"~/.zshrc"
--'  9  0  ~/.zshrc
-|4,39,9,0,1716278452,"~/.zshrc"
--'  8  2  ~/.zshrc
-|4,39,8,2,1716278452,"~/.zshrc"
--'  2  0  ~/.zshrc
-|4,39,2,0,1716278430,"~/.zshrc"
--'  153  36  ~/.vimrc
-|4,39,153,36,1716278426,"~/.vimrc"
--'  103  0  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,103,0,1716278420,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  380  5  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,380,5,1716278283,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  1  0  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,1,0,1716278172,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  316  13  ~/.z
-|4,39,316,13,1716278088,"~/.z"
--'  316  13  ~/.z
-|4,39,316,13,1716278088,"~/.z"
--'  266  13  ~/.z
-|4,39,266,13,1716278082,"~/.z"
--'  266  13  ~/.z
-|4,39,266,13,1716278082,"~/.z"
--'  207  13  ~/.z
-|4,39,207,13,1716278081,"~/.z"
--'  207  13  ~/.z
-|4,39,207,13,1716278081,"~/.z"
--'  85  13  ~/.z
-|4,39,85,13,1716278077,"~/.z"
--'  85  13  ~/.z
-|4,39,85,13,1716278077,"~/.z"
--'  546  13  ~/.z
-|4,39,546,13,1716278075,"~/.z"
--'  546  13  ~/.z
-|4,39,546,13,1716278075,"~/.z"
--'  509  13  ~/.z
-|4,39,509,13,1716278074,"~/.z"
--'  509  13  ~/.z
-|4,39,509,13,1716278074,"~/.z"
--'  492  13  ~/.z
-|4,39,492,13,1716278071,"~/.z"
--'  492  13  ~/.z
-|4,39,492,13,1716278071,"~/.z"
--'  407  0  ~/.z
-|4,39,407,0,1716278069,"~/.z"
--'  407  0  ~/.z
-|4,39,407,0,1716278069,"~/.z"
--'  555  0  ~/.z
-|4,39,555,0,1716278062,"~/.z"
--'  555  0  ~/.z
-|4,39,555,0,1716278062,"~/.z"
--'  1  65  ~/.z
-|4,39,1,65,1716278053,"~/.z"
--'  1  65  ~/.z
-|4,39,1,65,1716278053,"~/.z"
--'  1014  0  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,1014,0,1716277987,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  320  54  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,320,54,1716277982,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  85  11  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,85,11,1716277980,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  727  12  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,727,12,1716277977,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  759  16  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,759,16,1716277977,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  958  25  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,958,25,1716277976,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  563  9  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,563,9,1716277973,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  600  6  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,600,6,1716277805,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  576  10  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,576,10,1716277802,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  646  10  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,646,10,1716277789,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  340  0  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,340,0,1716277758,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  135  12  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,135,12,1716277656,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  104  0  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,104,0,1716277652,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  59  25  ~/.oh-my-zsh/plugins/z/z.plugin.zsh
-|4,39,59,25,1716277643,"~/.oh-my-zsh/plugins/z/z.plugin.zsh"
--'  33  59  ~/.oh-my-zsh/plugins/z/_z
-|4,39,33,59,1716277638,"~/.oh-my-zsh/plugins/z/_z"
--'  1  0  ~/.oh-my-zsh/plugins/z/_z
-|4,39,1,0,1716277503,"~/.oh-my-zsh/plugins/z/_z"
--'  1  0  ~/.z
-|4,39,1,0,1716277489,"~/.z"
--'  1  0  ~/.z
-|4,39,1,0,1716277489,"~/.z"
--'  1  0  ~/.z
-|4,39,1,0,1716277489,"~/.z"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  35  17  ~/.profile_wangxl
-|4,39,35,17,1716277432,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  42  34  ~/.profile_wangxl
-|4,39,42,34,1716277344,"~/.profile_wangxl"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  88  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,88,0,1716277318,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  89  4  ~/misc/scripts/256_to_rgb.sh
-|4,39,89,4,1716277316,"~/misc/scripts/256_to_rgb.sh"
--'  1  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,1,0,1716277304,"~/misc/scripts/256_to_rgb.sh"
--'  1  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,1,0,1716277304,"~/misc/scripts/256_to_rgb.sh"
--'  1  0  ~/misc/scripts/256_to_rgb.sh
-|4,39,1,0,1716277304,"~/misc/scripts/256_to_rgb.sh"
+-'  158  0  ~/.tmux.conf
+|4,39,158,0,1717002270,"~/.tmux.conf"
+-'  156  0  ~/.tmux.conf
+|4,39,156,0,1717002246,"~/.tmux.conf"
+-'  46  0  ~/.tmux.conf
+|4,39,46,0,1717002239,"~/.tmux.conf"
+-'  157  73  ~/.tmux.conf
+|4,39,157,73,1717002235,"~/.tmux.conf"
+-'  157  73  ~/.tmux.conf
+|4,39,157,73,1717002204,"~/.tmux.conf"
+-'  156  0  ~/.tmux.conf
+|4,39,156,0,1717002192,"~/.tmux.conf"
+-'  46  6  ~/.tmux.conf
+|4,39,46,6,1717002179,"~/.tmux.conf"
+-'  46  6  ~/.tmux.conf
+|4,39,46,6,1717002023,"~/.tmux.conf"
+-'  9  0  ~/.tmux.conf
+|4,39,9,0,1717002020,"~/.tmux.conf"
+-'  9  0  ~/.tmux.conf
+|4,39,9,0,1717002020,"~/.tmux.conf"
+-'  9  0  ~/.tmux.conf
+|4,39,9,0,1717002020,"~/.tmux.conf"
+-'  8  0  ~/.tmux.conf
+|4,39,8,0,1717002017,"~/.tmux.conf"
+-'  6  0  ~/.tmux.conf
+|4,39,6,0,1717002017,"~/.tmux.conf"
+-'  8  0  ~/.tmux.conf
+|4,39,8,0,1717002017,"~/.tmux.conf"
+-'  6  0  ~/.tmux.conf
+|4,39,6,0,1717002017,"~/.tmux.conf"
+-'  8  0  ~/.tmux.conf
+|4,39,8,0,1717002017,"~/.tmux.conf"
+-'  6  0  ~/.tmux.conf
+|4,39,6,0,1717002017,"~/.tmux.conf"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  45  0  ~/misc/scripts/oscyank2.sh
+|4,39,45,0,1717001977,"~/misc/scripts/oscyank2.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  25  0  ~/misc/scripts/oscyank.sh
+|4,39,25,0,1717001858,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  4  0  ~/misc/scripts/oscyank.sh
+|4,39,4,0,1717001830,"~/misc/scripts/oscyank.sh"
+-'  159  0  ~/.tmux.conf
+|4,39,159,0,1717001808,"~/.tmux.conf"
+-'  160  0  ~/.tmux.conf
+|4,39,160,0,1717001808,"~/.tmux.conf"
+-'  159  0  ~/.tmux.conf
+|4,39,159,0,1717001808,"~/.tmux.conf"
+-'  159  0  ~/.tmux.conf
+|4,39,159,0,1717001808,"~/.tmux.conf"
+-'  159  0  ~/.tmux.conf
+|4,39,159,0,1717001808,"~/.tmux.conf"
+-'  159  77  ~/.tmux.conf
+|4,39,159,77,1717001794,"~/.tmux.conf"
+-'  158  77  ~/.tmux.conf
+|4,39,158,77,1717001794,"~/.tmux.conf"
+-'  158  77  ~/.tmux.conf
+|4,39,158,77,1717001794,"~/.tmux.conf"
+-'  158  77  ~/.tmux.conf
+|4,39,158,77,1717001794,"~/.tmux.conf"
+-'  49  43  ~/.tmux.conf
+|4,39,49,43,1717001693,"~/.tmux.conf"
+-'  49  43  ~/.tmux.conf
+|4,39,49,43,1717001693,"~/.tmux.conf"
+-'  49  43  ~/.tmux.conf
+|4,39,49,43,1717001693,"~/.tmux.conf"
+-'  49  43  ~/.tmux.conf
+|4,39,49,43,1717001693,"~/.tmux.conf"
+-'  49  43  ~/.tmux.conf
+|4,39,49,43,1717001693,"~/.tmux.conf"
+-'  158  22  ~/.tmux.conf
+|4,39,158,22,1717001689,"~/.tmux.conf"
+-'  157  22  ~/.tmux.conf
+|4,39,157,22,1717001689,"~/.tmux.conf"
+-'  157  22  ~/.tmux.conf
+|4,39,157,22,1717001689,"~/.tmux.conf"
+-'  157  22  ~/.tmux.conf
+|4,39,157,22,1717001689,"~/.tmux.conf"
+-'  17  0  ~/.tmux.conf
+|4,39,17,0,1717001681,"~/.tmux.conf"
+-'  17  0  ~/.tmux.conf
+|4,39,17,0,1717001681,"~/.tmux.conf"
+-'  17  0  ~/.tmux.conf
+|4,39,17,0,1717001681,"~/.tmux.conf"
+-'  17  0  ~/.tmux.conf
+|4,39,17,0,1717001681,"~/.tmux.conf"
+-'  17  0  ~/.tmux.conf
+|4,39,17,0,1717001681,"~/.tmux.conf"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  7  0  ~/misc/scripts/oscyank.sh
+|4,39,7,0,1717001374,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  66  0  ~/misc/scripts/oscyank.sh
+|4,39,66,0,1717001371,"~/misc/scripts/oscyank.sh"
+-'  67  0  ~/misc/scripts/oscyank.sh
+|4,39,67,0,1717001369,"~/misc/scripts/oscyank.sh"
+-'  67  0  ~/misc/scripts/oscyank.sh
+|4,39,67,0,1717001369,"~/misc/scripts/oscyank.sh"
+-'  67  0  ~/misc/scripts/oscyank.sh
+|4,39,67,0,1717001369,"~/misc/scripts/oscyank.sh"
+-'  67  0  ~/misc/scripts/oscyank.sh
+|4,39,67,0,1717001369,"~/misc/scripts/oscyank.sh"
 
 # History of marks within files (newest to oldest):
 
+> ~/.tmux.conf
+	*	1717002250	0
+	"	158	0
+	.	157	0
+	+	49	10
+	+	45	22
+	+	45	14
+	+	47	40
+	+	45	0
+	+	154	45
+	+	157	0
+	+	156	0
+	+	157	45
+	+	154	0
+	+	157	0
+	+	156	0
+	+	157	47
+	+	46	0
+	+	157	46
+	+	154	0
+	+	157	87
+	+	159	0
+	+	157	0
+	+	156	0
+	+	49	0
+	+	158	78
+	+	157	0
+	+	158	25
+	+	46	0
+	+	157	0
+	+	156	0
+	+	157	72
+	+	46	0
+	+	156	0
+	+	157	0
+
+> ~/misc/scripts/oscyank2.sh
+	*	1717001967	0
+	"	45	0
+	^	54	1
+	.	54	0
+	+	54	0
+
+> ~/misc/scripts/oscyank.sh
+	*	1717001962	0
+	"	26	0
+	.	72	0
+	+	72	28
+	+	3	65
+	+	2	0
+	+	3	1
+	+	54	0
+	+	4	46
+	+	21	0
+	+	22	0
+	+	14	8
+	+	11	0
+	+	6	0
+	+	14	0
+	+	71	0
+	+	32	0
+	+	71	0
+	+	71	28
+	+	32	0
+	+	71	0
+	+	32	0
+	+	71	0
+	+	71	28
+	+	72	0
+	+	71	0
+	+	72	15
+	+	72	0
+	+	72	25
+	+	71	0
+	+	72	26
+	+	8	0
+	+	62	0
+	+	61	0
+	+	65	0
+	+	72	0
+	+	72	15
+	+	72	0
+	+	72	31
+	+	72	0
+	+	65	0
+	+	70	31
+	+	72	12
+	+	70	30
+	+	63	0
+	+	72	0
+	+	63	18
+	+	71	0
+	+	69	0
+	+	72	0
+	+	70	0
+	+	14	10
+	+	14	0
+	+	14	9
+	+	14	0
+	+	14	41
+	+	14	0
+	+	14	24
+	+	73	0
+	+	72	0
+	+	73	0
+	+	14	0
+	+	65	0
+	+	65	5
+	+	65	0
+	+	73	0
+	+	65	0
+	+	72	0
+
+> ~/NERD_tree_tab_1
+	*	1717001858	0
+	"	90	0
+	.	1	0
+	+	1	0
+
+> ~/ControlP
+	*	1717001832	0
+	"	10	0
+	.	2	0
+	+	1	0
+	+	2	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/NERD_tree_tab_1
+	*	1717001630	0
+	"	50	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/ControlP
+	*	1717001373	0
+	"	10	0
+	.	2	0
+	+	1	0
+	+	2	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/moe.py
+	*	1717001363	0
+	"	73	29
+	^	72	11
+	.	73	0
+	+	32	0
+	+	31	0
+	+	32	0
+	+	60	0
+	+	36	16
+	+	37	16
+	+	43	0
+	+	36	0
+	+	44	48
+	+	59	19
+	+	51	17
+	+	52	17
+	+	59	35
+	+	64	50
+	+	84	79
+	+	84	0
+	+	83	0
+	+	65	52
+	+	83	0
+	+	65	48
+	+	65	18
+	+	65	65
+	+	60	37
+	+	65	0
+	+	63	0
+	+	65	77
+	+	66	71
+	+	70	47
+	+	66	19
+	+	70	24
+	+	72	48
+	+	74	72
+	+	83	0
+	+	55	0
+	+	76	41
+	+	83	15
+	+	80	28
+	+	78	46
+	+	79	35
+	+	78	0
+	+	80	20
+	+	83	0
+	+	83	22
+	+	78	42
+	+	39	23
+	+	54	35
+	+	75	34
+	+	76	0
+	+	75	40
+	+	57	26
+	+	66	36
+	+	75	55
+	+	76	0
+	+	79	54
+	+	77	26
+	+	78	26
+	+	77	27
+	+	78	38
+	+	77	25
+	+	77	0
+	+	79	34
+	+	81	69
+	+	83	80
+	+	83	0
+	+	83	22
+	+	83	0
+	+	84	0
+	+	85	0
+	+	84	29
+	+	85	0
+	+	78	0
+	+	79	19
+	+	80	46
+	+	79	0
+	+	78	15
+	+	79	38
+	+	83	25
+	+	82	49
+	+	83	0
+	+	26	41
+	+	26	0
+	+	26	34
+	+	27	15
+	+	25	0
+	+	26	0
+	+	65	64
+	+	66	0
+	+	57	0
+	+	58	28
+	+	66	51
+	+	75	70
+	+	70	0
+	+	66	20
+	+	64	20
+	+	66	88
+	+	66	0
+	+	67	0
+	+	69	29
+	+	70	44
+	+	73	0
+
+> ~/misc/ControlP
+	*	1717001166	0
+	"	10	0
+	.	2	0
+	+	1	0
+	+	43	0
+	+	1	0
+	+	29	0
+	+	20	0
+	+	11	0
+	+	2	0
+
+> /tmp/xlwang/tmp.txt
+	*	1716995285	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-5gbk8kbb.commit.hg.txt
+	*	1716993506	0
+	"	9	0
+	.	9	0
+	+	10	0
+	+	9	0
+	+	8	9
+	+	8	0
+	+	9	0
+	+	8	9
+	+	8	0
+	+	8	10
+	+	9	0
+	+	8	85
+	+	8	10
+	+	9	0
+	+	8	0
+	+	8	10
+	+	8	91
+	+	9	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/tests/encoder_tests.py
+	*	1716993241	0
+	"	266	43
+	^	266	43
+	.	266	42
+	+	1	14
+	+	1	38
+	+	1	0
+	+	1	28
+	+	1	33
+	+	1	0
+	+	1	18
+	+	1	0
+	+	1	13
+	+	1	0
+	+	1	14
+	+	1	38
+	+	1	0
+	+	1	28
+	+	1	33
+	+	1	0
+	+	1	18
+	+	1	0
+	+	1	13
+	+	1	0
+	+	1	14
+	+	1	38
+	+	1	0
+	+	1	28
+	+	1	33
+	+	1	0
+	+	1	18
+	+	1	0
+	+	1	13
+	+	1	0
+	+	1	14
+	+	1	38
+	+	1	0
+	+	1	28
+	+	1	33
+	+	1	0
+	+	1	18
+	+	1	0
+	+	1	21
+	+	1	50
+	+	1	0
+	+	1	13
+	+	1	0
+	+	1	14
+	+	1	38
+	+	1	0
+	+	1	28
+	+	1	33
+	+	1	0
+	+	1	18
+	+	1	0
+	+	1	13
+	+	1	0
+	+	1	14
+	+	1	38
+	+	1	0
+	+	1	28
+	+	1	33
+	+	1	0
+	+	1	18
+	+	1	0
+	+	1	13
+	+	1	0
+	+	1	14
+	+	1	38
+	+	1	0
+	+	1	28
+	+	1	33
+	+	1	0
+	+	1	18
+	+	1	0
+	+	11	0
+	+	10	13
+	+	11	0
+	+	10	14
+	+	222	38
+	+	223	0
+	+	226	28
+	+	227	33
+	+	236	0
+	+	237	18
+	+	226	0
+	+	237	21
+	+	240	50
+	+	239	0
+	+	240	68
+	+	225	27
+	+	227	38
+	+	240	86
+	+	241	74
+	+	245	0
+	+	246	0
+	+	260	30
+	+	246	14
+	+	268	15
+	+	269	20
+	+	266	53
+	+	264	0
+	+	265	71
+	+	266	42
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
+	*	1716992658	0
+	"	296	8
+	^	1289	16
+	.	1439	0
+	+	1	0
+	+	1	83
+	+	1	0
+	+	1	98
+	+	1	0
+	+	1622	0
+	+	1621	83
+	+	1622	0
+	+	1621	98
+	+	1420	0
+	+	93	24
+	+	1420	77
+	+	1420	22
+	+	1432	35
+	+	1451	33
+	+	1762	0
+	+	1621	0
+	+	1439	80
+	+	1	0
+	+	1	83
+	+	1	0
+	+	1	98
+	+	1	0
+	+	1622	0
+	+	1621	83
+	+	1622	0
+	+	1621	98
+	+	1420	0
+	+	93	24
+	+	1420	77
+	+	1420	22
+	+	1432	35
+	+	1451	33
+	+	1762	0
+	+	1621	0
+	+	1439	80
+	+	1463	84
+	+	1	0
+	+	1	83
+	+	1	0
+	+	1	98
+	+	1	0
+	+	1622	0
+	+	1621	83
+	+	1622	0
+	+	1621	98
+	+	1420	0
+	+	93	24
+	+	1420	77
+	+	1420	22
+	+	1432	35
+	+	1451	33
+	+	1762	0
+	+	1621	0
+	+	1439	80
+	+	1	0
+	+	1	83
+	+	1	0
+	+	1	98
+	+	1	0
+	+	1622	0
+	+	1621	83
+	+	1622	0
+	+	1621	98
+	+	1420	0
+	+	93	24
+	+	1420	77
+	+	1420	22
+	+	1432	35
+	+	1451	33
+	+	1762	0
+	+	1621	0
+	+	1439	80
+	+	1463	0
+	+	1439	0
+
+> /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/hstu_transducer_cint.py
+	*	1716992658	0
+	"	516	8
+
+> /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/fused_hstu_transducer.py
+	*	1716992658	0
+	"	493	0
+
+> /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/fused_hstu.py
+	*	1716992658	0
+	"	815	0
+
+> /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/mlps.py
+	*	1716992658	0
+	"	106	0
+	^	79	8
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/encoders.py
+	*	1716992657	0
+	"	884	29
+	^	881	36
+	.	881	35
+	+	947	0
+	+	949	0
+	+	973	0
+	+	950	35
+	+	973	69
+	+	949	0
+	+	957	0
+	+	918	0
+	+	958	0
+	+	957	0
+	+	973	0
+	+	957	0
+	+	932	8
+	+	950	0
+	+	954	15
+	+	13	38
+	+	954	0
+	+	952	8
+	+	953	0
+	+	954	20
+	+	960	0
+	+	959	47
+	+	960	58
+	+	960	0
+	+	959	0
+	+	963	14
+	+	963	0
+	+	962	0
+	+	963	29
+	+	963	0
+	+	970	34
+	+	967	23
+	+	970	0
+	+	968	24
+	+	970	0
+	+	969	18
+	+	970	0
+	+	11	23
+	+	392	0
+	+	505	8
+	+	508	47
+	+	604	8
+	+	613	16
+	+	607	47
+	+	514	0
+	+	678	8
+	+	681	34
+	+	699	16
+	+	846	8
+	+	849	34
+	+	867	16
+	+	932	39
+	+	930	8
+	+	929	7
+	+	932	0
+	+	952	30
+	+	953	59
+	+	7	56
+	+	967	8
+	+	970	46
+	+	894	0
+	+	894	16
+	+	894	0
+	+	878	72
+	+	881	16
+	+	891	67
+	+	891	66
+	+	886	0
+	+	882	0
+	+	886	0
+	+	891	19
+	+	891	0
+	+	886	0
+	+	888	0
+	+	889	46
+	+	888	18
+	+	889	0
+	+	888	0
+	+	890	0
+	+	891	67
+	+	892	0
+	+	894	0
+	+	975	0
+	+	976	0
+	+	916	0
+	+	914	31
+	+	955	0
+	+	12	40
+	+	958	85
+	+	959	0
+	+	933	32
+	+	946	12
+	+	945	30
+	+	932	15
+	+	965	0
+	+	961	0
+	+	961	67
+	+	962	85
+	+	898	17
+	+	881	35
+	j	28	31
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
+	*	1716992657	0
+	"	887	12
+	^	762	27
+	.	753	24
+	+	283	50
+	+	277	17
+	+	287	63
+	+	289	0
+	+	288	0
+	+	277	88
+	+	283	80
+	+	275	64
+	+	283	0
+	+	284	56
+	+	317	0
+	+	298	0
+	+	304	0
+	+	298	0
+	+	299	16
+	+	426	23
+	+	431	0
+	+	426	19
+	+	429	20
+	+	431	60
+	+	432	16
+	+	527	88
+	+	389	43
+	+	423	79
+	+	424	84
+	+	397	0
+	+	470	28
+	+	464	18
+	+	527	19
+	+	528	0
+	+	527	24
+	+	255	0
+	+	269	52
+	+	271	60
+	+	279	40
+	+	280	0
+	+	290	0
+	+	300	0
+	+	308	21
+	+	310	16
+	+	296	75
+	+	305	0
+	+	296	57
+	+	319	37
+	+	320	71
+	+	319	73
+	+	285	15
+	+	286	31
+	+	307	17
+	+	273	28
+	+	44	14
+	+	273	57
+	+	279	42
+	+	290	0
+	+	300	0
+	+	307	28
+	+	311	0
+	+	44	0
+	+	41	17
+	+	271	42
+	+	273	29
+	+	271	26
+	+	273	0
+	+	306	62
+	+	307	42
+	+	308	0
+	+	307	42
+	+	270	40
+	+	272	0
+	+	327	7
+	+	327	54
+	+	327	0
+	+	734	0
+	+	735	27
+	+	737	22
+	+	28	11
+	+	742	19
+	+	743	19
+	+	744	19
+	+	747	0
+	+	747	36
+	+	747	0
+	+	746	31
+	+	737	28
+	+	27	0
+	+	29	14
+	+	737	22
+	+	738	29
+	+	582	22
+	+	736	0
+	+	748	0
+	+	749	0
+	+	750	27
+	+	736	0
+	+	735	28
+	+	750	30
+	+	763	0
+	+	762	26
+	+	763	0
+	+	753	24
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
+	*	1716992657	0
+	"	495	23
+	^	501	46
+	.	488	16
+	+	364	0
+	+	255	0
+	+	446	0
+	+	365	0
+	+	362	8
+	+	447	8
+	+	361	6
+	+	360	0
+	+	361	9
+	+	365	0
+	+	446	0
+	+	366	0
+	+	365	0
+	+	373	0
+	+	400	50
+	+	385	0
+	+	411	28
+	+	410	0
+	+	409	0
+	+	410	0
+	+	412	0
+	+	446	0
+	+	447	19
+	+	451	0
+	+	450	0
+	+	444	57
+	+	450	59
+	+	451	85
+	+	454	23
+	+	469	29
+	+	451	50
+	+	452	0
+	+	505	44
+	+	509	0
+	+	401	0
+	+	402	0
+	+	453	46
+	+	503	22
+	+	505	0
+	+	507	29
+	+	503	22
+	+	410	0
+	+	409	0
+	+	410	0
+	+	408	0
+	+	503	23
+	+	507	46
+	+	453	50
+	+	511	0
+	+	510	0
+	+	511	19
+	+	515	0
+	+	517	24
+	+	518	22
+	+	522	49
+	+	402	0
+	+	437	0
+	+	414	0
+	+	437	0
+	+	416	0
+	+	448	0
+	+	424	0
+	+	430	22
+	+	434	48
+	+	448	38
+	+	438	18
+	+	417	19
+	+	422	73
+	+	422	75
+	+	422	74
+	+	422	70
+	+	422	81
+	+	422	70
+	+	422	51
+	+	424	0
+	+	422	51
+	+	423	50
+	+	437	48
+	+	456	7
+	+	456	0
+	+	455	0
+	+	456	14
+	+	462	23
+	+	466	29
+	+	457	12
+	+	463	22
+	+	398	21
+	+	398	0
+	+	486	0
+	+	470	0
+	+	471	12
+	+	477	22
+	+	483	0
+	+	484	45
+	+	472	17
+	+	485	46
+	+	487	0
+	+	488	18
+	+	501	45
+	+	488	16
+
+> /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
+	*	1716992657	0
+	"	478	8
+	^	553	12
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf/model_10s_v4_hstu_standalone_cint_config.py
+	*	1716992657	0
+	"	625	35
+	^	1857	24
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-1acegp7_.commit.hg.txt
+	*	1716970722	0
+	"	10	9
+	^	8	91
+	.	7	0
+	+	7	79
+	+	7	80
+	+	8	90
+	+	7	0
+
+> ~/misc/tmp/mast_exp.md
+	*	1716970679	0
+	"	5	74
+	^	22	71
+	.	5	0
+	+	24	38
+	+	34	0
+	+	24	38
+	+	34	0
+	+	23	3
+	+	23	5
+	+	23	0
+	+	34	0
+	+	33	0
+	+	23	3
+	+	24	0
+	+	44	0
+	+	55	0
+	+	53	38
+	+	31	38
+	+	24	0
+	+	33	0
+	+	32	0
+	+	31	0
+	+	61	0
+	+	62	41
+	+	59	65
+	+	59	0
+	+	13	61
+	+	19	38
+	+	13	4
+	+	12	0
+	+	13	0
+	+	12	5
+	+	21	5
+	+	1	0
+	+	12	0
+	+	21	0
+	+	20	0
+	+	21	0
+	+	58	0
+	+	9	38
+	+	4	5
+	+	10	5
+	+	5	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/TARGETS
+	*	1716946887	0
+	"	21	10
+	^	157	0
+	.	157	0
+	+	1	13
+	+	1	17
+	+	1	0
+	+	155	13
+	+	156	17
+	+	157	0
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/transformer.py
+	*	1716946592	0
+	"	401	82
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/distributed/algorithms/_checkpoint/checkpoint_wrapper.py
+	*	1716941924	0
+	"	131	18
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/container.py
+	*	1716931787	0
+	"	304	16
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/module.py
+	*	1716931781	0
+	"	340	4
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/mrl.py
+	*	1716927358	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/sampling.py
+	*	1716927358	0
+	"	1	0
+	^	97	4
+	.	51	0
+	+	95	0
+	+	103	13
+	+	103	33
+	+	103	0
+	+	94	44
+	+	103	0
+	+	94	0
+	+	99	61
+	+	102	0
+	+	100	34
+	+	99	0
+	+	8	25
+	+	55	0
+	+	8	27
+	+	103	0
+	+	8	71
+	+	55	0
+	+	52	0
+	+	50	40
+	+	8	61
+	+	50	0
+	+	11	20
+	+	9	44
+	+	11	28
+	+	10	32
+	+	11	9
+	+	49	21
+	+	55	0
+	+	53	10
+	+	54	14
+	+	55	0
+	+	53	12
+	+	54	18
+	+	53	74
+	+	27	34
+	+	23	0
+	+	21	13
+	+	22	0
+	+	23	7
+	+	24	54
+	+	26	0
+	+	26	7
+	+	27	7
+	+	26	0
+	+	47	0
+	+	28	74
+	+	47	0
+	+	32	3
+	+	32	0
+	+	33	74
+	+	47	0
+	+	37	35
+	+	36	3
+	+	34	0
+	+	37	3
+	+	37	0
+	+	38	74
+	+	47	0
+	+	36	0
+	+	35	9
+	+	30	51
+	+	26	18
+	+	25	51
+	+	26	0
+	+	25	30
+	+	30	29
+	+	35	47
+	+	45	34
+	+	40	0
+	+	43	0
+	+	41	41
+	+	46	46
+	+	41	0
+	+	12	84
+	+	15	12
+	+	12	8
+	+	13	4
+	+	20	0
+	+	15	68
+	+	14	41
+	+	16	14
+	+	13	0
+	+	16	15
+	+	19	0
+	+	102	0
+	+	101	18
+	+	103	0
+	+	101	17
+	+	103	73
+	+	12	8
+	+	13	0
+	+	12	8
+	+	47	0
+	+	48	0
+	+	100	20
+	+	52	0
+	+	52	82
+	+	100	0
+	+	52	0
+	+	51	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/metrics.py
+	*	1716927357	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/hammer/generative_recommenders/ops/triton/triton_ragged_hstu_attention.py
+	*	1716924653	0
+	"	680	33
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/NERD_tree_tab_2
+	*	1716920579	0
+	"	5	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/hammer/ops/triton/triton_ragged_hstu_attention.py
+	*	1716920548	0
+	"	15	11
+
+> /data/users/xlwang/fbsource/fbcode/hammer/ops/triton/triton_jagged_hstu_attention.py
+	*	1716920513	0
+	"	3	0
+
+> /data/users/xlwang/fbsource/fbcode/hammer/ops/triton/cc/jagged_hstu_attention/triton_cc_jagged_hstu_attention.py
+	*	1716920495	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/parallel/distributed.py
+	*	1716920489	0
+	"	578	81
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/parallel/data_parallel.py
+	*	1716918404	0
+	"	59	60
+
+> /data/users/xlwang/fbsource/fbcode/torchrec/distributed/model_parallel.py
+	*	1716918402	0
+	"	106	18
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/NERD_tree_win_1
+	*	1716918388	0
+	"	5	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/parallel/__init__.py
+	*	1716918388	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/model_family_api/configs.py
+	*	1716918364	0
+	"	559	15
+	.	560	0
+	+	560	56
+	+	560	0
+
+> /data/users/xlwang/fbsource/fbcode/dataswarm-pipelines/tasks/feed_fblearner/mrs/fm/pixel_aggregation_utils_v2.py
+	*	1716917293	0
+	"	72	0
+
+> /data/users/xlwang/fbsource/fbcode/dataswarm-pipelines/tasks/feed_fblearner/mrs/fm/fbr_pixel_aggregated_hourly_v2.py
+	*	1716916074	0
+	"	9	10
+
+> /data/users/xlwang/fbsource/fbcode/dataswarm-pipelines/tasks/feed_fblearner/mrs/fm/pixel_aggregation_utils.py
+	*	1716916068	0
+	"	29	0
+
+> /data/users/xlwang/fbsource/fbcode/dataswarm-pipelines/tasks/feed_fblearner/mrs/fm/fbr_pool_coverage_checker.py
+	*	1716915485	0
+	"	12	35
+
+> /data/users/xlwang/fbsource/fbcode/torchrec/sparse/jagged_tensor.py
+	*	1716592525	0
+	"	83	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/seq_select.py
+	*	1716585427	0
+	"	329	21
+	^	317	8
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/jt_lib.py
+	*	1716585426	0
+	"	577	5
+	^	264	18
+	.	285	0
+	+	695	0
+	+	232	4
+	+	232	0
+	+	236	0
+	+	234	29
+	+	264	17
+	+	284	0
+	+	285	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/conf/feature_index_loader_configs.py
+	*	1716585265	0
+	"	380	0
+	^	360	4
+	.	376	0
+	+	1	20
+	+	1	0
+	+	1	39
+	+	1	0
+	+	1	28
+	+	1	0
+	+	1	25
+	+	1	17
+	+	1	28
+	+	1	0
+	+	1	33
+	+	1	0
+	+	1	51
+	+	1	19
+	+	1	72
+	+	1	19
+	+	1	0
+	+	332	20
+	+	338	0
+	+	343	0
+	+	344	39
+	+	351	0
+	+	352	0
+	+	350	0
+	+	219	28
+	+	217	0
+	+	283	25
+	+	293	17
+	+	351	17
+	+	350	28
+	+	351	0
+	+	339	33
+	+	341	0
+	+	338	51
+	+	341	19
+	+	340	72
+	+	330	19
+	+	339	34
+	+	340	30
+	+	342	19
+	+	340	30
+	+	351	28
+	+	352	17
+	+	340	29
+	+	351	28
+	+	352	17
+	+	351	28
+	+	376	0
+	j	328	4
+
+> /data/users/xlwang/fbsource/fbcode/ControlP
+	*	1716585092	0
+	"	10	0
+	.	2	0
+	+	1	0
+	+	51	0
+	+	42	0
+	+	1	0
+	+	2	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/enrichment_interactor.py
+	*	1716583495	0
+	"	3	0
+
+> /data/users/xlwang/fbsource/fbcode/hpc/new/models/feed/preproc_configs.py
+	*	1716573349	0
+	"	1020	16
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-_ddk40dz.commit.hg.txt
+	*	1716513326	0
+	"	15	8
+	^	15	9
+	.	6	0
+	+	5	85
+	+	6	32
+	+	11	0
+	+	7	0
+	+	10	81
+	+	15	8
+	+	6	0
+
+> /data/users/xlwang/fbsource/fbcode/NERD_tree_tab_1
+	*	1716501982	0
+	"	1536	9
+	.	1	0
+	+	1	0
+
+> ~/.profile_wangxl
+	*	1716486768	0
+	"	73	0
+	^	70	69
+	.	70	68
+	+	2288	16
+	+	2287	17
+	+	2288	24
+	+	40	28
+	+	41	23
+	+	42	34
+	+	35	16
+	+	110	39
+	+	76	0
+	+	70	68
+
 > ~/.zshrc
-	*	1716278899	0
+	*	1716486365	0
 	"	49	0
 	^	48	38
 	.	49	0
@@ -23012,23 +24242,473 @@ $
 	+	48	37
 	+	49	0
 
+> ~/.active_ssh_client_for_tmux
+	*	1716485793	0
+	"	1	0
+
+> ~/misc/scripts/ping_status.sh
+	*	1716485791	0
+	"	7	13
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-rqgzinvh.commit.hg.txt
+	*	1716449408	0
+	"	8	83
+	^	8	84
+	.	8	83
+	+	8	83
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-y3rtolgd.commit.hg.txt
+	*	1716449054	0
+	"	22	0
+	^	22	0
+	.	22	2
+	+	1	48
+	+	5	6
+	+	5	0
+	+	11	0
+	+	5	86
+	+	11	0
+	+	10	0
+	+	7	14
+	+	1	0
+	+	7	88
+	+	8	33
+	+	9	35
+	+	19	0
+	+	16	43
+	+	14	2
+	+	16	2
+	+	15	37
+	+	18	0
+	+	17	28
+	+	20	0
+	+	22	2
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/batchnorm.py
+	*	1716448907	0
+	"	804	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-inqcfopz.commit.hg.txt
+	*	1716448175	0
+	"	20	0
+	.	22	0
+	+	22	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-628d270r.commit.hg.txt
+	*	1716448144	0
+	"	1	2
+	^	1	3
+	.	1	2
+	+	1	2
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-b0bf_0ur.commit.hg.txt
+	*	1716448137	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/tests/seq_select_tests.py
+	*	1716448110	0
+	"	97	7
+	.	97	0
+	+	63	0
+	+	59	0
+	+	54	43
+	+	35	0
+	+	36	0
+	+	64	0
+	+	1	0
+	+	1	31
+	+	1	0
+	+	1	78
+	+	1	20
+	+	1	78
+	+	1	0
+	+	1	42
+	+	1	0
+	+	1	50
+	+	1	97
+	+	1	50
+	+	1	0
+	+	1	60
+	+	1	0
+	+	1	47
+	+	1	0
+	+	1	42
+	+	1	17
+	+	1	42
+	+	1	83
+	+	1	0
+	+	1	83
+	+	1	0
+	+	1	83
+	+	1	0
+	+	1	42
+	+	1	0
+	+	1	23
+	+	1	42
+	+	1	0
+	+	1	50
+	+	1	97
+	+	1	50
+	+	1	0
+	+	1	60
+	+	1	0
+	+	1	42
+	+	1	17
+	+	1	42
+	+	1	83
+	+	1	0
+	+	1	83
+	+	1	0
+	+	1	83
+	+	1	0
+	+	1	42
+	+	1	0
+	+	1	23
+	+	1	42
+	+	1	0
+	+	1	50
+	+	1	97
+	+	1	50
+	+	1	0
+	+	1	60
+	+	1	0
+	+	1	47
+	+	1	0
+	+	1	88
+	+	1	0
+	+	1	26
+	+	1	37
+	+	1	0
+	+	1	54
+	+	1	38
+	+	1	35
+	+	1	0
+	+	1	51
+	+	1	21
+	+	1	0
+	+	1	23
+	+	1	46
+	+	1	29
+	+	1	0
+	+	1	27
+	+	1	46
+	+	1	21
+	+	1	0
+	+	1	31
+	+	1	0
+	+	1	78
+	+	1	20
+	+	1	78
+	+	1	0
+	+	55	0
+	+	60	0
+	+	63	0
+	+	59	0
+	+	54	43
+	+	35	0
+	+	36	0
+	+	64	0
+	+	97	0
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/adaptive.py
+	*	1716420190	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/modules/activation.py
+	*	1716420187	0
+	"	256	4
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/model_hstu_standalone_cint.py
+	*	1716360715	0
+	"	570	59
+
+> /data/users/xlwang/fbsource/fbcode/tgif/lib/pack_weights_and_save_pass.py
+	*	1716330171	0
+	"	23	5
+
+> /data/users/xlwang/fbsource/fbcode/inference_enablement/model_processing/utils/xl_weights_utils.py
+	*	1716330149	0
+	"	371	0
+	^	413	16
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/utils.py
+	*	1716327117	0
+	"	93	13
+	^	489	12
+	.	442	0
+	+	442	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/tgif_publisher.py
+	*	1716327043	0
+	"	55	5
+	.	150	0
+	+	150	0
+
+> /data/users/xlwang/fbsource/fbcode/tgif/fx/tgif_split.py
+	*	1716327033	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/feature_index_loader.py
+	*	1716316694	0
+	"	449	46
+
+> ~/.vimrc
+	*	1716314726	0
+	"	416	10
+	^	416	27
+	.	416	26
+	+	421	0
+	+	415	0
+	+	421	0
+	+	416	0
+	+	420	0
+	+	419	45
+	+	420	0
+	+	415	0
+	+	416	26
+
+> ~/misc/scripts/vim_tmux_load_buffer.sh
+	*	1716314571	0
+	"	3	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_online_train.sh
+	*	1716314493	0
+	"	12	31
+	^	18	23
+	.	18	22
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	9	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	9	0
+	+	11	0
+	+	29	0
+	+	11	0
+	+	29	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	9	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	16	22
+	+	22	68
+	+	14	16
+	+	23	48
+	+	29	0
+	+	28	26
+	+	15	0
+	+	16	0
+	+	11	0
+	+	7	0
+	+	29	0
+	+	9	0
+	+	29	0
+	+	9	0
+	+	11	0
+	+	29	0
+	+	11	0
+	+	29	0
+	+	15	0
+	+	29	0
+	+	15	0
+	+	29	0
+	+	18	22
+
+> /usr/share/vim/vim91/doc/eval.txt
+	*	1716314230	0
+	"	2516	5
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/tc_train_online_cint_di.sh
+	*	1716310718	0
+	"	2	0
+
+> ~/misc/tmp/NERD_tree_tab_1
+	*	1716304021	0
+	"	72	12
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/tc_train_online.sh
+	*	1716304019	0
+	"	10	25
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/tc_train_online_cint.sh
+	*	1716304014	0
+	"	1	0
+
+> ~/misc/tmp/ControlP
+	*	1716303985	0
+	"	4	0
+	.	2	0
+	+	1	0
+	+	2	0
+
+> ~/misc/dotfiles/lib/.gitconfig_linux
+	*	1716303296	0
+	"	1	0
+
+> ~/misc/tmp/mast_exp
+	*	1716303256	0
+	"	1	0
+	.	38	0
+	+	10	38
+	+	1	0
+	+	34	38
+	+	1	0
+	+	5	0
+	+	34	38
+	+	14	9
+	+	5	0
+	+	2	69
+	+	3	0
+	+	2	0
+	+	15	0
+	+	39	1
+	+	31	78
+	+	33	0
+	+	29	76
+	+	27	74
+	+	26	74
+	+	40	47
+	+	41	92
+	+	24	0
+	+	18	12
+	+	17	7
+	+	41	0
+	+	43	51
+	+	23	20
+	+	22	15
+	+	23	19
+	+	16	0
+	+	4	3
+	+	11	0
+	+	2	1
+	+	1	1
+	+	14	1
+	+	26	0
+	+	25	3
+	+	34	38
+	+	39	0
+	+	35	5
+	+	39	1
+	+	39	5
+	+	39	0
+	+	43	0
+	+	43	3
+	+	43	4
+	+	43	0
+	+	43	2
+	+	43	0
+	+	43	4
+	+	43	0
+	+	42	0
+	+	43	0
+	+	39	61
+	+	40	49
+	+	41	1
+	+	41	94
+	+	42	53
+	+	43	9
+	+	43	0
+	+	43	3
+	+	43	0
+	+	38	8
+	+	37	3
+	+	37	0
+	+	38	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/ControlP
+	*	1716303111	0
+	"	10	0
+	.	2	0
+	+	1	0
+	+	2	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/v5/Makefile
+	*	1716303109	0
+	"	28	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/recurring/start_recurring.py
+	*	1716303106	0
+	"	228	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/prospector/tc_train_online_esr_vdd.sh
+	*	1716302754	0
+	"	6	1
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/local_train_online.sh
+	*	1716302264	0
+	"	1	0
+
 > ~/.oh-my-zsh/plugins/z/z.plugin.zsh
 	*	1716278864	0
 	"	381	4
 	^	382	4
 	.	382	0
 	+	382	0
-
-> ~/misc/ControlP
-	*	1716278425	0
-	"	10	0
-	.	2	0
-	+	1	0
-	+	2	0
-
-> ~/.vimrc
-	*	1716278424	0
-	"	153	36
 
 > ~/.z
 	*	1716278086	0
@@ -23043,19 +24723,6 @@ $
 > ~/.oh-my-zsh/plugins/z/_z
 	*	1716277634	0
 	"	33	59
-
-> ~/.profile_wangxl
-	*	1716277430	0
-	"	35	17
-	^	35	17
-	.	35	16
-	+	2286	16
-	+	2285	17
-	+	2286	24
-	+	40	28
-	+	41	23
-	+	42	34
-	+	35	16
 
 > ~/misc/scripts/256_to_rgb.sh
 	*	1716277317	0
@@ -23167,14 +24834,6 @@ $
 	+	11	25
 	+	68	25
 	+	51	80
-
-> /data/users/xlwang/fbsource/fbcode/ControlP
-	*	1716276722	0
-	"	10	0
-	.	2	0
-	+	1	0
-	+	11	0
-	+	2	0
 
 > ~/misc/dotfiles/lib/.profile_wangxl
 	*	1716275682	0
@@ -23288,1139 +24947,3 @@ $
 	.	2	0
 	+	1	0
 	+	2	0
-
-> ~/misc/tmp/tb
-	*	1716275551	0
-	"	1	0
-
-> ~/misc/tmp/mast_exp.md
-	*	1716275386	0
-	"	1	0
-	.	22	0
-	+	9	38
-	+	12	0
-	+	9	38
-	+	12	0
-	+	3	3
-	+	3	5
-	+	3	0
-	+	12	0
-	+	11	0
-	+	3	3
-	+	4	0
-	+	22	0
-
-> ~/misc/dotfiles/lib/.vimrc.bundles
-	*	1716275283	0
-	"	563	0
-	^	584	31
-	.	563	0
-	+	585	45
-	+	584	0
-	+	586	26
-	+	584	30
-	+	584	0
-	+	563	0
-
-> ~/misc/tmp/mast_exp
-	*	1716275107	0
-	"	41	35
-	.	38	0
-	+	10	38
-	+	1	0
-	+	34	38
-	+	1	0
-	+	5	0
-	+	34	38
-	+	14	9
-	+	5	0
-	+	2	69
-	+	3	0
-	+	2	0
-	+	15	0
-	+	39	1
-	+	31	78
-	+	33	0
-	+	29	76
-	+	27	74
-	+	26	74
-	+	40	47
-	+	41	92
-	+	24	0
-	+	18	12
-	+	17	7
-	+	41	0
-	+	43	51
-	+	23	20
-	+	22	15
-	+	23	19
-	+	16	0
-	+	4	3
-	+	11	0
-	+	2	1
-	+	1	1
-	+	14	1
-	+	26	0
-	+	25	3
-	+	34	38
-	+	39	0
-	+	35	5
-	+	39	1
-	+	39	5
-	+	39	0
-	+	43	0
-	+	43	3
-	+	43	4
-	+	43	0
-	+	43	2
-	+	43	0
-	+	43	4
-	+	43	0
-	+	42	0
-	+	43	0
-	+	39	61
-	+	40	49
-	+	41	1
-	+	41	94
-	+	42	53
-	+	43	9
-	+	43	0
-	+	43	3
-	+	43	0
-	+	38	8
-	+	37	3
-	+	37	0
-	+	38	0
-
-> ~/.vim/bundle/preservim/vim-markdown
-	*	1716274783	0
-	"	1	0
-
-> ~/.vim/bundle/Vundle.vim/doc/vundle.txt
-	*	1716274759	0
-	"	262	0
-
-> ~/.vim/bundle/NERD_tree_tab_1
-	*	1716274709	0
-	"	4	0
-	.	1	0
-	+	1	0
-
-> ~/.vim/bundle/[Vundle] Installer
-	*	1716274704	0
-	"	3	0
-	.	1	0
-	+	1	0
-
-> ~/.vim/bundle/ctrlp-funky/autoload/ctrlp/funky/ft/markdown.vim
-	*	1716274269	0
-	"	3	0
-
-> ~/.vim/bundle/vimtex/autoload/vimtex/syntax/p/markdown.vim
-	*	1716274262	0
-	"	1	0
-
-> ~/.vim/bundle/python-syntax/syntax/python.vim
-	*	1716273975	0
-	"	430	2
-
-> ~/.vim/bundle/indentLine/after/syntax/indentLine.vim
-	*	1716273957	0
-	"	1	0
-
-> ~/misc/NERD_tree_win_1
-	*	1716273904	0
-	"	1	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-ph4f7jop.commit.hg.txt
-	*	1716270235	0
-	"	1	0
-
-> /etc/ssh/sshd_config
-	*	1716269132	0
-	"	77	11
-
-> /usr/local/bin/pbcopy
-	*	1716267344	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_v5_hstu_standalone_cint_exp_cotrain_config.py
-	*	1716266740	0
-	"	410	12
-	^	421	8
-	.	421	50
-	+	347	0
-	+	348	0
-	+	347	0
-	+	348	28
-	+	346	32
-	+	348	43
-	+	362	50
-	+	363	7
-	+	363	0
-	+	365	14
-	+	365	0
-	+	444	74
-	+	444	20
-	+	449	59
-	+	66	81
-	+	84	81
-	+	66	0
-	+	84	0
-	+	66	0
-	+	118	0
-	+	66	0
-	+	84	0
-	+	362	17
-	+	364	0
-	+	255	0
-	+	444	0
-	+	365	0
-	+	362	8
-	+	445	8
-	+	361	6
-	+	360	0
-	+	361	9
-	+	365	0
-	+	444	0
-	+	366	0
-	+	365	0
-	+	373	0
-	+	398	50
-	+	385	0
-	+	409	28
-	+	408	0
-	+	407	0
-	+	408	0
-	+	410	0
-	+	444	0
-	+	445	19
-	+	449	0
-	+	448	0
-	+	442	57
-	+	448	59
-	+	449	85
-	+	452	23
-	+	453	29
-	+	449	50
-	+	450	0
-	+	457	44
-	+	461	0
-	+	399	0
-	+	400	0
-	+	451	46
-	+	455	22
-	+	457	0
-	+	459	29
-	+	455	22
-	+	408	0
-	+	407	0
-	+	408	0
-	+	406	0
-	+	455	23
-	+	459	46
-	+	451	50
-	+	463	0
-	+	462	0
-	+	463	19
-	+	467	0
-	+	469	24
-	+	470	22
-	+	474	49
-	+	400	0
-	+	435	0
-	+	412	0
-	+	435	0
-	+	414	0
-	+	446	0
-	+	422	0
-	+	428	22
-	+	432	48
-	+	446	38
-	+	436	18
-	+	415	19
-	+	420	73
-	+	420	75
-	+	420	74
-	+	420	70
-	+	420	81
-	+	420	70
-	+	420	51
-	+	422	0
-	+	420	51
-	+	421	50
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train.sh
-	*	1716265675	0
-	"	20	43
-	^	19	2
-	.	20	0
-	+	19	28
-	+	20	39
-	+	11	0
-	+	20	0
-
-> ~/.por
-	*	1716252147	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/NERD_tree_tab_1
-	*	1716252097	0
-	"	12	3
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_online_train.sh
-	*	1716252091	0
-	"	17	0
-	^	15	0
-	.	29	0
-	+	11	0
-	+	7	0
-	+	29	0
-	+	9	0
-	+	29	0
-	+	9	0
-	+	16	22
-	+	22	68
-	+	14	16
-	+	23	48
-	+	29	0
-	+	28	26
-	+	15	0
-	+	16	0
-	+	11	0
-	+	7	0
-	+	29	0
-	+	9	0
-	+	29	0
-	+	16	22
-	+	22	68
-	+	14	16
-	+	23	48
-	+	29	0
-	+	28	26
-	+	15	0
-	+	16	0
-	+	11	0
-	+	7	0
-	+	29	0
-	+	9	0
-	+	29	0
-	+	9	0
-	+	11	0
-	+	29	0
-	+	11	0
-	+	29	0
-	+	16	22
-	+	22	68
-	+	14	16
-	+	23	48
-	+	29	0
-	+	28	26
-	+	15	0
-	+	16	0
-	+	11	0
-	+	7	0
-	+	29	0
-	+	9	0
-	+	29	0
-	+	16	22
-	+	22	68
-	+	14	16
-	+	23	48
-	+	29	0
-	+	28	26
-	+	15	0
-	+	16	0
-	+	11	0
-	+	7	0
-	+	29	0
-	+	9	0
-	+	29	0
-	+	9	0
-	+	16	22
-	+	22	68
-	+	14	16
-	+	23	48
-	+	29	0
-	+	28	26
-	+	15	0
-	+	16	0
-	+	11	0
-	+	7	0
-	+	29	0
-	+	9	0
-	+	29	0
-	+	16	22
-	+	22	68
-	+	14	16
-	+	23	48
-	+	29	0
-	+	28	26
-	+	15	0
-	+	16	0
-	+	11	0
-	+	7	0
-	+	29	0
-	+	9	0
-	+	29	0
-	+	9	0
-	+	11	0
-	+	29	0
-	+	11	0
-	+	29	0
-	+	15	0
-	+	29	0
-	+	15	0
-	+	29	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/ControlP
-	*	1716251834	0
-	"	5	0
-	.	2	0
-	+	1	0
-	+	2	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-histedit-cbfir9av.histedit.hg.txt
-	*	1716251819	0
-	"	2	0
-	.	2	0
-	+	1	0
-	+	2	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-nwqju6bx.commit.hg.txt
-	*	1716251800	0
-	"	15	0
-	^	12	0
-	.	15	0
-	+	10	21
-	+	15	0
-	+	13	29
-	+	12	0
-	+	15	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/common.sh
-	*	1716251659	0
-	"	118	3
-	^	117	64
-	.	120	9
-	+	84	0
-	+	74	27
-	+	74	28
-	+	74	0
-	+	73	0
-	+	74	0
-	+	72	0
-	+	133	18
-	+	133	0
-	+	134	21
-	+	134	0
-	+	84	0
-	+	74	27
-	+	74	28
-	+	74	0
-	+	73	0
-	+	74	0
-	+	72	0
-	+	133	18
-	+	133	0
-	+	134	21
-	+	134	0
-	+	134	25
-	+	134	24
-	+	134	0
-	+	133	0
-	+	134	0
-	+	133	0
-	+	134	0
-	+	133	53
-	+	134	0
-	+	133	52
-	+	134	0
-	+	134	31
-	+	134	0
-	+	41	4
-	+	20	26
-	+	42	8
-	+	66	35
-	+	134	0
-	+	134	155
-	+	134	49
-	+	134	58
-	+	134	30
-	+	1	0
-	+	15	20
-	+	17	16
-	+	50	0
-	+	1	0
-	+	88	0
-	+	81	0
-	+	105	0
-	+	106	0
-	+	111	0
-	+	126	0
-	+	131	0
-	+	127	38
-	+	129	0
-	+	128	42
-	+	131	0
-	+	111	0
-	+	110	0
-	+	131	0
-	+	131	7
-	+	131	37
-	+	131	47
-	+	113	28
-	+	117	0
-	+	130	18
-	+	131	0
-	+	117	0
-	+	125	0
-	+	123	0
-	+	125	0
-	+	116	38
-	+	118	5
-	+	114	19
-	+	117	3
-	+	118	4
-	+	117	25
-	+	115	10
-	+	119	7
-	+	122	65
-	+	115	0
-	+	122	47
-	+	122	108
-	+	122	68
-	+	122	0
-	+	121	0
-	+	122	23
-	+	122	14
-	+	124	16
-	+	103	82
-	+	104	0
-	+	103	80
-	+	127	30
-	+	120	28
-	+	117	64
-	+	124	7
-	+	120	9
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-cvfieswp.commit.hg.txt
-	*	1716251120	0
-	"	1	48
-	^	1	49
-	.	1	48
-	+	5	47
-	+	10	0
-	+	8	0
-	+	9	29
-	+	10	0
-	+	14	13
-	+	1	48
-
-> /data/users/xlwang/fbsource/fbcode/scripts/xlwang/test_dist.py
-	*	1716250987	0
-	"	14	17
-	^	10	55
-	.	10	0
-	+	25	0
-	+	1	13
-	+	1	0
-	+	25	0
-	+	1	0
-	+	1	7
-	+	1	0
-	+	1	11
-	+	1	16
-	+	1	0
-	+	1	39
-	+	1	30
-	+	1	0
-	+	25	0
-	+	21	13
-	+	24	0
-	+	21	0
-	+	22	0
-	+	23	0
-	+	21	0
-	+	25	0
-	+	11	0
-	+	10	7
-	+	7	0
-	+	5	11
-	+	8	16
-	+	10	0
-	+	9	39
-	+	10	30
-	+	1	26
-	+	11	0
-	+	12	16
-	+	10	0
-	a	21	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/qe_train_local.sh
-	*	1716250840	0
-	"	37	0
-	^	18	7
-	.	17	0
-	+	19	0
-	+	32	5
-	+	25	0
-	+	32	49
-	+	30	23
-	+	18	7
-	+	17	0
-	+	19	0
-	+	32	5
-	+	25	0
-	+	32	49
-	+	30	23
-	+	18	7
-	+	17	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_local_train_publish.sh
-	*	1716250836	0
-	"	27	27
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_mast_train_online.sh
-	*	1716250822	0
-	"	29	2
-	.	30	0
-	+	1	0
-	+	30	0
-	+	25	49
-	+	30	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
-	*	1716250735	0
-	"	208	8
-	^	362	36
-	.	362	0
-	+	1	0
-	+	1	19
-	+	1	0
-	+	1	19
-	+	1	0
-	+	574	69
-	+	566	0
-	+	560	34
-	+	566	0
-	+	6	50
-	+	561	56
-	+	566	0
-	+	562	59
-	+	563	19
-	+	569	0
-	+	563	19
-	+	563	0
-	+	564	19
-	+	563	0
-	+	566	19
-	+	571	19
-	+	558	0
-	+	565	58
-	+	566	62
-	+	1	69
-	+	1	0
-	+	1	34
-	+	1	0
-	+	1	50
-	+	1	56
-	+	1	0
-	+	1	59
-	+	1	19
-	+	1	0
-	+	1	19
-	+	1	0
-	+	1	19
-	+	1	0
-	+	1	69
-	+	1	0
-	+	1	34
-	+	1	0
-	+	1	50
-	+	1	56
-	+	1	0
-	+	1	59
-	+	1	19
-	+	1	0
-	+	1	19
-	+	1	0
-	+	1	19
-	+	1	0
-	+	1	19
-	+	1	0
-	+	1	69
-	+	1	0
-	+	1	34
-	+	1	0
-	+	1	50
-	+	1	56
-	+	1	0
-	+	1	59
-	+	1	19
-	+	1	0
-	+	1	19
-	+	1	0
-	+	1	19
-	+	1	0
-	+	574	69
-	+	566	0
-	+	560	34
-	+	566	0
-	+	6	50
-	+	561	56
-	+	566	0
-	+	562	59
-	+	563	19
-	+	569	0
-	+	563	19
-	+	563	0
-	+	564	19
-	+	563	0
-	+	566	19
-	+	571	19
-	+	558	0
-	+	565	58
-	+	566	0
-	+	565	20
-	+	530	46
-	+	577	12
-	+	34	40
-	+	36	0
-	+	576	52
-	+	577	48
-	+	576	53
-	+	590	52
-	+	593	48
-	+	468	14
-	+	469	58
-	+	362	0
-
-> /data/users/xlwang/fbsource/fbcode/NERD_tree_tab_4
-	*	1716250053	0
-	"	1494	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/cu_cotrain_cint_mast_train_eval.sh
-	*	1716249953	0
-	"	17	9
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/tc_train_online.sh
-	*	1716249853	0
-	"	72	8
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/cu_cotrain_cint_mast_eval.sh
-	*	1716249519	0
-	"	27	14
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/launch.py
-	*	1716249515	0
-	"	268	4
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_ifu/cotrain/model_v4_hstu_standalone_magic.py
-	*	1716249510	0
-	"	3	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/trainer.py
-	*	1716249510	0
-	"	634	16
-	^	1068	4
-	.	806	0
-	+	806	86
-	+	806	0
-	+	833	84
-	+	806	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/launch.py
-	*	1716249509	0
-	"	122	45
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/launcher.py
-	*	1716249508	0
-	"	3	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf/roo_trainer_config.py
-	*	1716249496	0
-	"	137	0
-	^	828	12
-	.	186	0
-	+	643	0
-	+	186	0
-
-> /data/users/xlwang/fbsource/fbcode/mvai_infra/checkpoint/checkpoint_manager.py
-	*	1716249491	0
-	"	378	13
-	^	378	12
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/job_resolver.py
-	*	1716249489	0
-	"	729	8
-
-> /data/users/xlwang/fbsource/fbcode/mvai_infra/checkpoint/checkpoint.py
-	*	1716249489	0
-	"	233	40
-	^	211	8
-
-> /data/users/xlwang/fbsource/fbcode/NERD_tree_tab_2
-	*	1716249264	0
-	"	1490	41
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/scripts/xlwang/video_sampler.py
-	*	1716248397	0
-	"	318	4
-
-> /data/users/xlwang/fbsource/fbcode/scripts/xlwang/NERD_tree_tab_1
-	*	1716248265	0
-	"	10	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/scripts/xlwang/mp_crash.py
-	*	1716248245	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/roo_trainer_config.py
-	*	1716248152	0
-	"	4	22
-
-> /data/users/xlwang/fbsource/fbcode/tgif/lib/tgif_split_pass.py
-	*	1716248150	0
-	"	125	29
-	.	113	0
-	+	113	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/utils.py
-	*	1716248150	0
-	"	440	59
-	^	489	12
-	.	442	0
-	+	442	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/utils/utils.py
-	*	1716247656	0
-	"	429	4
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts/reduce_cu_cotrain_cint_mast_eval.sh
-	*	1716247440	0
-	"	29	4
-	.	16	0
-	+	17	0
-	+	16	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/local_train_online.sh
-	*	1716247336	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-	*	1716247279	0
-	"	1572	26
-	^	594	16
-	.	1439	0
-	+	1	0
-	+	1	83
-	+	1	0
-	+	1	98
-	+	1	0
-	+	1622	0
-	+	1621	83
-	+	1622	0
-	+	1621	98
-	+	1420	0
-	+	93	24
-	+	1420	77
-	+	1420	22
-	+	1432	35
-	+	1451	33
-	+	1762	0
-	+	1621	0
-	+	1439	80
-	+	1	0
-	+	1	83
-	+	1	0
-	+	1	98
-	+	1	0
-	+	1622	0
-	+	1621	83
-	+	1622	0
-	+	1621	98
-	+	1420	0
-	+	93	24
-	+	1420	77
-	+	1420	22
-	+	1432	35
-	+	1451	33
-	+	1762	0
-	+	1621	0
-	+	1439	80
-	+	1463	84
-	+	1	0
-	+	1	83
-	+	1	0
-	+	1	98
-	+	1	0
-	+	1622	0
-	+	1621	83
-	+	1622	0
-	+	1621	98
-	+	1420	0
-	+	93	24
-	+	1420	77
-	+	1420	22
-	+	1432	35
-	+	1451	33
-	+	1762	0
-	+	1621	0
-	+	1439	80
-	+	1	0
-	+	1	83
-	+	1	0
-	+	1	98
-	+	1	0
-	+	1622	0
-	+	1621	83
-	+	1622	0
-	+	1621	98
-	+	1420	0
-	+	93	24
-	+	1420	77
-	+	1420	22
-	+	1432	35
-	+	1451	33
-	+	1762	0
-	+	1621	0
-	+	1439	80
-	+	1463	0
-	+	1439	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/fire/fire.py
-	*	1716247275	0
-	"	1488	8
-	^	1361	4
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/fire/quickapp_utils.py
-	*	1716246430	0
-	"	1592	4
-
-> /data/users/xlwang/fbsource/fbcode/NERD_tree_win_3
-	*	1716245396	0
-	"	6	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/standalone/conf/model_10s_v4_hstu_standalone_cint_config.py
-	*	1716245377	0
-	"	5	0
-	.	113	0
-	+	113	30
-	+	113	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/tgif_publisher.py
-	*	1716245022	0
-	"	55	22
-	.	150	0
-	+	150	0
-
-> /data/users/xlwang/fbsource/fbcode/tgif/fx/tgif_tracer.py
-	*	1716245022	0
-	"	35	0
-	^	33	0
-	.	34	0
-	+	34	0
-
-> /data/users/xlwang/fbsource/fbcode/hammer/modules/features/hstu_feature_processors.py
-	*	1716237775	0
-	"	235	9
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/enrichment_interactor.py
-	*	1716237582	0
-	"	69	8
-	.	69	0
-	+	316	21
-	+	330	51
-	+	118	0
-	+	68	0
-	+	69	0
-
-> /data/users/xlwang/fbsource/fbcode/torchrec/distributed/types.py
-	*	1716237582	0
-	"	397	27
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/roo_predict.py
-	*	1716237200	0
-	"	50	16
-
-> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fx/node.py
-	*	1716236932	0
-	"	754	28
-
-> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fx/graph.py
-	*	1716236676	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/conf/feature_index_loader_configs.py
-	*	1716233260	0
-	"	339	58
-	^	340	30
-	.	351	28
-	+	1	20
-	+	1	0
-	+	1	39
-	+	1	0
-	+	1	28
-	+	1	0
-	+	1	25
-	+	1	17
-	+	1	28
-	+	1	0
-	+	1	33
-	+	1	0
-	+	1	51
-	+	1	19
-	+	1	72
-	+	1	19
-	+	1	0
-	+	332	20
-	+	338	0
-	+	343	0
-	+	344	39
-	+	351	0
-	+	352	0
-	+	350	0
-	+	219	28
-	+	217	0
-	+	283	25
-	+	293	17
-	+	351	17
-	+	350	28
-	+	351	0
-	+	339	33
-	+	341	0
-	+	338	51
-	+	341	19
-	+	340	72
-	+	330	19
-	+	339	34
-	+	340	30
-	+	342	19
-	+	340	30
-	+	351	28
-	+	352	17
-	+	340	29
-	+	351	28
-	+	352	17
-	+	351	28
-
-> /tmp/xlwang/ControlP
-	*	1716233219	0
-	"	6	0
-	.	2	0
-	+	1	0
-	+	2	0
-
-> /data/users/xlwang/fbsource/fbcode/caffe2/torch/utils/_python_dispatch.py
-	*	1716231287	0
-	"	261	9
-	n	252	8
-
-> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/model_transform/splitting/split_dispatcher.py
-	*	1716231263	0
-	"	332	4
-
-> /data/users/xlwang/fbsource/fbcode/torchrec/sparse/jagged_tensor.py
-	*	1716231175	0
-	"	9	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/type_adaptors.py
-	*	1716231168	0
-	"	11	25
-
-> /data/users/xlwang/fbsource/fbcode/tgif/fx/tgif_split.py
-	*	1716228015	0
-	"	321	4
-	^	118	13
-	.	355	0
-	+	54	45
-	+	54	16
-	+	435	0
-	+	54	0
-	+	355	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/seq_select.py
-	*	1716225312	0
-	"	221	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/jt_lib.py
-	*	1716224868	0
-	"	518	4
-
-> /data/users/xlwang/fbsource/fbcode/torchrec/distributed/embedding.py
-	*	1716018025	0
-	"	937	61
-
-> /data/users/xlwang/fbsource/fbcode/torchrec/modules/embedding_modules.py
-	*	1716017946	0
-	"	384	8
-
-> /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch/modules/retrieval/sampling/ec_sparse_arch_uih_sampling.py
-	*	1715988295	0
-	"	459	13
-	^	459	12
-
-> /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch/modules/retrieval/sparse_arch_utils.py
-	*	1715988253	0
-	"	109	0
-
-> /data/users/xlwang/fbsource/fbcode/dper_lib/silvertorch/modules/retrieval/sparse_arch.py
-	*	1715988251	0
-	"	160	0
-
-> /data/users/xlwang/fbsource/fbcode/tgif/publish/tgif_application.py
-	*	1715986429	0
-	"	174	14
-	^	171	8
-
-> /data/users/xlwang/fbsource/fbcode/caffe2/torch/fb/common/sigrid_pytorch_constants.py
-	*	1715985498	0
-	"	22	1
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cotrain_configs.py
-	*	1715982650	0
-	"	29	0
-	.	48	0
-	+	32	35
-	+	42	0
-	+	43	0
-	+	48	32
-	+	32	35
-	+	42	0
-	+	43	0
-	+	48	0
-	+	32	35
-	+	42	0
-	+	43	0
-	+	48	32
-	+	32	35
-	+	42	0
-	+	43	0
-	+	48	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/configs.py
-	*	1715982649	0
-	"	57	28
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/gmpp_in_trainer_publisher_config.py
-	*	1715972029	0
-	"	11	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/tgif_publisher_config.py
-	*	1715972024	0
-	"	66	23
