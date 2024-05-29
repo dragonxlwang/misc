@@ -531,10 +531,10 @@ function! FBRepo(blame, fburl)
     return
   endif
   if a:fburl == 1
-    echo substitute(system('fburl "' . l:url . '" 2> /dev/null'), "\n", "", "")
-  else
-    echo l:url
+    let l:url = substitute(system('fburl "' . l:url . '" 2> /dev/null'), "\n", "", "")
   endif
+  echo l:url
+  let l:yank = system("~/misc/scripts/oscyank.sh -", l:url)
 endfunction
 
 function! HasPaste()
@@ -624,19 +624,19 @@ endfunction
 function! NumberToggle()
   " number -> rnu -> nonumber
   if(&number == 1 && &relativenumber == 0)
-    setlocal rnu
-    echohl Error
-    echo "relative"
-    echohl None
+  setlocal rnu
+  echohl Error
+  echo "relative"
+  echohl None
   elseif(&number == 1)
-    setlocal nornu
-    setlocal nonu
-    if exists("g:indentLine_loaded")
-      IndentLinesDisable
-    endif
-    echohl Error
-    echo "no line number"
-    echohl None
+  setlocal nornu
+  setlocal nonu
+  if exists("g:indentLine_loaded")
+    IndentLinesDisable
+  endif
+  echohl Error
+  echo "no line number"
+  echohl None
   else
     setlocal nu
     if exists("g:indentLine_loaded")
