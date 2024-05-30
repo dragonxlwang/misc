@@ -2288,6 +2288,28 @@ function mast_exp {
   vim ~/misc/tmp/mast_exp.md
 }
 
+function mast_show {
+  echo "mast_list"
+  echo "========"
+  mast_list
+
+  echo "mast_tenant cot"
+  echo "========"
+  mast_tenant cot
+
+  echo "mast_cat"
+  echo "========"
+  mast_cat
+
+  local dir="$HOME/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/scripts"
+  if [[ -f $dir/mast_tenant_select.sh ]]; then
+    echo "mast_tenant_select.sh"
+    echo "========"
+    $dir/mast_tenant_select.sh
+  fi
+
+}
+
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
 #            /       \   \  /   / /       |           |   ____||   \/   |      #
