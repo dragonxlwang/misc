@@ -2171,11 +2171,12 @@ for (i=1; i<=n; i++)
 
 function mast_cat {
   # cat -n ~/misc/tmp/tb | head -n "${1:-5}" | lolcat -h 0.5
-  cat -n ~/misc/tmp/tb |  \
+  cat ~/misc/tmp/tb | nl -w2 -s'] ' | \
     head -n 5 | \
-    awk '{print $1"\t"$2"\t"$3"\t"$4; \
+    awk '{print $1"\t"$2"\t"$3; \
     for(i=5;i<=NF;i++) \
-      printf "\t\t%s\n", "https://www.internalfb.com/mast/job/"$i;}' | \
+      printf "\t\t%s\n", "https://www.internalfb.com/mast/job/"$i; \
+      printf "\t\t%s\n", $4; }' | \
       lolcat -h 0.5
 
   print -s "mast_cat_select "
