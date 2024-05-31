@@ -67,6 +67,8 @@ function setup_ssh_client_for_tmux {
   # echo "$SSH_CLIENT" > ~/.active_ssh_client_for_tmux
   who | grep ${$(tty)##/dev/} | \
     sed -rn 's/.*\((\S*).*\)/\1/p' > ~/.active_ssh_client_for_tmux
+
+
   who | grep ${$(tty)##/dev/} | awk '{ print $(2) }'  > ~/.active_ssh_tty
 
 #
@@ -2168,7 +2170,14 @@ for (i=1; i<=n; i++)
 }
 
 function mast_cat {
-  cat -n ~/misc/tmp/tb | head -n "${1:-5}" | lolcat -h 0.5
+  # cat -n ~/misc/tmp/tb | head -n "${1:-5}" | lolcat -h 0.5
+  cat -n ~/misc/tmp/tb |  \
+    head -n 5 | \
+    awk '{print $1"\t"$2"\t"$3"\t"$4; \
+    for(i=5;i<=NF;i++) \
+      printf "\t\t%s\n", "https://www.internalfb.com/mast/job/"$i;}' | \
+      lolcat -h 0.5
+
   print -s "mast_cat_select "
 }
 function mast_cat_select {
