@@ -2322,19 +2322,22 @@ function mast_show {
 function mast_status {
   local runs="$(mast_resolve "$@")"
   for r in "${=runs[@]}"; do
-    local res=$(mast get-status $r)
-    local attempt=$(echo $res | grep "attemptIndex (i32)" \
-      | head -1 | awk '{$1=$1};1' | sed -E 's/.*=\s*([0-9]+).*/\1/')
+    echo "$r"
+    mast diag execution "$r" |  head -n -2 | lolcat -h 0.5
 
-    local st=$(echo $res | grep "state (enum)" | head -1 \
-      | awk '{$1=$1};1' | sed -E 's/.*\((.*)\).*/\1/')
-
-    local ts=$(echo $res | awk "/jobStateTransitionTimestampSecs/,/},/" \
-      | sed -e '1d' -e '$d' \
-      | sed -E 's/(.*->\s*)([0-9]+)(.*)/echo "\1"`date -d @"\2"`"\3"/;e')
-
-    echo $r
-    echo -e "attempt: $attempt\nstatus: $st\ntimestamp: \n$ts" | lolcat -h 0.5
+    # local res=$(mast get-status $r)
+    # local attempt=$(echo $res | grep "attemptIndex (i32)" \
+    #   | head -1 | awk '{$1=$1};1' | sed -E 's/.*=\s*([0-9]+).*/\1/')
+    #
+    # local st=$(echo $res | grep "state (enum)" | head -1 \
+    #   | awk '{$1=$1};1' | sed -E 's/.*\((.*)\).*/\1/')
+    #
+    # local ts=$(echo $res | awk "/jobStateTransitionTimestampSecs/,/},/" \
+    #   | sed -e '1d' -e '$d' \
+    #   | sed -E 's/(.*->\s*)([0-9]+)(.*)/echo "\1"`date -d @"\2"`"\3"/;e')
+    #
+    # echo $r
+    # echo -e "attempt: $attempt\nstatus: $st\ntimestamp: \n$ts" | lolcat -h 0.5
   done
 
 }
