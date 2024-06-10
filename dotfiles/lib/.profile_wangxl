@@ -2172,10 +2172,10 @@ for (i=1; i<=n; i++)
 function mast_cat {
   # cat -n ~/misc/tmp/tb | head -n "${1:-5}" | lolcat -h 0.5
   cat ~/misc/tmp/tb | nl -w2 -s'] ' | \
-    head -n 5 | \
+    head -n ${1-5} | \
     awk '{print $1"\t"$2"\t"$3; \
     for(i=5;i<=NF;i++) \
-      printf "\t\t%s\n", "https://www.internalfb.com/mast/job/"$i; \
+      printf "\t\t %2s) %s\n", i-4, "https://www.internalfb.com/mast/job/"$i; \
       printf "\t\t%s\n", $4; }' | \
       lolcat -h 0.5
 
@@ -2235,6 +2235,17 @@ function mast_resolve {
         done
       elif [[ "$arg" =~ ^-?[0-9]+$ ]]; then
         echo -n $(mast_select "$arg")
+      elif [[ "$arg" == c* ]]; then
+        local cat_id=$(echo "${arg:1}" | cut -d',' -f1)
+        local run_id=$(echo "${arg:1}" | cut -d',' -f2)
+        local runs=$(sed "${cat_id}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4)
+        local j=0
+        for r in ${=runs[@]}; do
+          j=$((j+1))
+          if [[ -z $run_id || $run_id == $j ]]; then
+            echo "$r"
+          fi
+        done
       else
         echo -n $(echo "${arg/"https:\/\/www.internalfb.com\/mast\/job\/"}")
       fi
