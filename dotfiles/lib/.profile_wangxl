@@ -2236,8 +2236,8 @@ function mast_resolve {
       elif [[ "$arg" =~ ^-?[0-9]+$ ]]; then
         echo -n $(mast_select "$arg")
       elif [[ "$arg" == c* ]]; then
-        local cat_id=$(echo "${arg:1}" | cut -d',' -f1)
-        local run_id=$(echo "${arg:1}" | cut -d',' -f2)
+        local cat_id=$(echo "${arg:1}" | cut -d'.' -f1)
+        local run_id=$(echo "${arg:1}" | cut -s -d'.' -f2)
         local runs=$(sed "${cat_id}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4)
         local j=0
         for r in ${=runs[@]}; do
