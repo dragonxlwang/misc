@@ -2176,7 +2176,7 @@ function mast_cat {
     awk '{print $1"\t"$2"\t"$3; \
     for(i=5;i<=NF;i++) \
       printf "\t\t %2s) %s\n", i-4, "https://www.internalfb.com/mast/job/"$i; \
-      printf "\t\t%s\n", $4; }' | \
+      printf "\t\t     %s\n", $4; }' | \
       lolcat -h 0.5
 
   print -s "mast_cat_select "
