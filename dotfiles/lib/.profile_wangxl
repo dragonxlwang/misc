@@ -110,6 +110,9 @@ function ddate {
   echo "( $(date -d $2 +%s)  -  $(date -d $1 +%s) )/86400 + 1" | bc
 }
 alias oscyank="~/misc/scripts/oscyank.sh"
+function oscstr {
+  echo "$@" | oscyank -
+}
 ##--------------------------------== admin ==---------------------------------##
 function _psfmt {
   if [[ $(uname) == "Linux" ]]; then
@@ -1841,6 +1844,16 @@ function h() {
   hg log -T '{xg_sl}' --rev $rev
   cyanecho ${cmd}
   eval ${cmd}
+}
+
+function y() {
+  local selected=( $(fc -rl 1 |
+    perl -ne 'print if ( /^\s*[0-9]+\**\s+oscstr\s+\"/ && !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++)' |
+    fzf --query="$*" --prompt="oscyank> " --nth=3.. ))
+
+  local cmd=$(echo $selected | cut -f 2- -d' ')
+  echo $cmd
+  eval "$cmd"
 }
 # Kerberos
 function krefresh() {
