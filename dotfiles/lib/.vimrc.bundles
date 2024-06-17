@@ -101,6 +101,10 @@ set guifont=Monaco\ for\ Powerline:h12
 let g:airline_powerline_fonts = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline#extensions#searchcount#show_search_term = 0
+let g:airline#extensions#default#layout = [
+      \ [ 'a', 'b', 'y', 'c' ],
+      \ [ 'x', 'z', 'error', 'warning' ]
+      \ ]
 
 Plugin 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'       " | ¦ ┆ │ ┊

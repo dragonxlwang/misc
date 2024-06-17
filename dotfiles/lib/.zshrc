@@ -135,7 +135,7 @@ fi
 # Source Facebook definitions
 if [[ -e "/usr/facebook/ops/rc/master.zshrc" ]]; then
   # first source fb zshrc to avoid my own setting being overwritten
-  source /usr/facebook/ops/rc/master.zshrc
+  source /usr/facebook/ops/rc/master.zshrc >/dev/null 2>&1
 fi
 for i in /etc/profile.d/*.sh; do
   if [ -r "$i" ]; then
@@ -152,7 +152,7 @@ source $ZSH/oh-my-zsh.sh
 
 # enable zsh-completions
 setopt completealiases
-autoload -U compinit && compinit
+autoload -U compinit && compinit >/dev/null 2>&1
 
 # Use vi mode.
 # bindkey -v
