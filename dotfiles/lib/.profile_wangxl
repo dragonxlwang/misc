@@ -1111,6 +1111,11 @@ function hs {
   [[ -n $TMUX ]] && tmux refresh-client
   [[ $1 == "-l" ]] && jf list --status CLOSED -l 10
 }
+function hsh {
+  [[ -z $(hg root 2>/dev/null) ]] && {cd ~/fbcode; tmrn fbc}
+  hg smartlog -T '{xg_sl}' -r 'lost()';
+  [[ -n $TMUX ]] && tmux refresh-client
+}
 function hfs {
   [[ -z $(hg root 2>/dev/null) ]] && {cd ~/fbcode; tmrn fbc}
   hg st && hg fsl -T '{xg_sl}';
@@ -1393,9 +1398,17 @@ alias acls="arc canary --list"
 alias acch="arc canary --cancel-host $(hostname)"
 alias al="arc lint"
 alias alc="arc lint -e extra --take CLANGTIDY"
-alias alpr="al && pyre --output=text"
-alias prfm="pyre --output=json | pyre-upgrade fixme"
-alias prp="pyre --output=text"
+function prp {
+  local files=$(hg status --change . | awk '{ print $2 }' | grep '.py$')
+  arc pyre check-owning-targets ${(f)files}
+}
+function prfm {
+  local files=$(hg status --change . | awk '{ print $2 }' | grep '.py$')
+  arc pyre check-owning-targets --output=json ${(f)files} | pyre-upgrade fixme
+}
+alias alpr="al && prp"
+# alias prfm="pyre --output=json | pyre-upgrade fixme"
+# alias prp="pyre --output=text"
 alias canary_workflow='~/misc/scripts/canary_workflow.sh'
 alias fbsf='/usr/local/bin/sf'
 function tmp {
