@@ -1864,6 +1864,8 @@ function y() {
     perl -ne 'print if ( /^\s*[0-9]+\**\s+oscstr\s+\"/ && !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++)' |
     fzf --query="$*" --prompt="oscyank> " --nth=3.. -1 ))
 
+  echo 123 | oscyank  -
+
   local cmd=$(echo $selected | cut -f 2- -d' ')
   echo $cmd
   eval "$cmd"
