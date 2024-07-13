@@ -125,6 +125,7 @@ Plugin 'dragonxlwang/molokai'
 " Plugin 'airblade/vim-gitgutter'
 " Plugin 'mhinz/vim-signify'
 Plugin 'dragonxlwang/vim-signify'
+" nnoremap <leader>hd: :SignifyHunkDiff<CR>
 Plugin 'jeetsukumaran/vim-buffergator'
 nnoremap <leader>bb :BuffergatorToggle<CR>
 " Plugin 'vim-scripts/ScrollColors'
@@ -517,10 +518,17 @@ nnoremap <leader>www :exe "Autoformat" \| w! \|
       \ silent exe "!git push"  \| redraw! <CR>
 " Plugin 'jlfwong/vim-mercenary'
 Plugin 'ludovicchabant/vim-lawrencium'
-command! -nargs=? HgVertSplitDiff :call HgVsDiff(<f-args>)
-cnoreabbrev <expr> hd
-      \ (getcmdtype() == ':' && getcmdline() =~ '^hd$')? 'HgVertSplitDiff' : 'hd'
-function! HgVsDiff(...)
+command! -nargs=? HgVertSplitDiffRev :call HgVsDiffRev(<f-args>)
+command! HgVertSplitDiff :call HgVsDiff()
+cnoreabbrev <expr> hdh
+      \ (getcmdtype() == ':' && getcmdline() =~ '^hdh$')? 'HgVertSplitDiffRev' : 'hdh'
+cnoreabbrev <expr> hdf
+      \ (getcmdtype() == ':' && getcmdline() =~ '^hdf$')? 'HgVertSplitDiff' : 'hdf'
+
+noremap <silent> <C-g>d :call HgVsDiff()<cr>
+noremap <silent> <C-g>h :call HgVsDiffRev()<cr>
+noremap <silent> <C-g>c :call HgVsDiffClose()<cr>
+function! HgVsDiffRev(...)
   let l:ft = &filetype
   if a:0 == 0
     let l:rev = ".^"
@@ -532,6 +540,29 @@ function! HgVsDiff(...)
   wincmd h
   exec "set filetype=". l:ft
   wincmd x
+endfunction
+function! HgVsDiff()
+  let l:ft = &filetype
+  exec "Hgvdiff"
+  " move to left (rev file)
+  wincmd h
+  exec "set filetype=". l:ft
+  wincmd x
+endfunction
+function! HgVsDiffClose()
+  diffoff
+  let l:path = expand('%:p:h')
+  if l:path =~ 'lawrencium://'
+    let l:orig = winnr('2h')
+    let l:cmp = winnr()
+  else
+    let l:orig = winnr()
+    let l:cmp = winnr('1l')
+  endif
+
+  execute l:orig. 'wincmd w'
+  %foldo!
+  execute l:cmp. 'wincmd c'
 endfunction
 
 " ============================================================================ "
