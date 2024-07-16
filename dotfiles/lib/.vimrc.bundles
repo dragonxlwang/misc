@@ -517,7 +517,8 @@ nnoremap <leader>www :exe "Autoformat" \| w! \|
       \ silent exe "!git commit -v -a -m 'message'" \|
       \ silent exe "!git push"  \| redraw! <CR>
 " Plugin 'jlfwong/vim-mercenary'
-Plugin 'ludovicchabant/vim-lawrencium'
+" Plugin 'ludovicchabant/vim-lawrencium'
+Plugin 'dragonxlwang/vim-lawrencium'
 command! -nargs=? HgVertSplitDiffRev :call HgVsDiffRev(<f-args>)
 command! HgVertSplitDiff :call HgVsDiff()
 cnoreabbrev <expr> hdh

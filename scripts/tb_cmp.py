@@ -75,5 +75,40 @@ def sort_dedup(s: int, fp: str) -> None:
         f.writelines(lines)
 
 
+@main.command()
+@click.option("-t", type=str)
+@click.option("-h", type=str)
+@click.argument("fp", required=True, nargs=1, type=str)
+def tag(t: str, h: str, fp: str) -> None:
+    try:
+        with open(fp, "r") as f:
+            lines = f.readlines()
+    except:
+        lines = []
+
+    records = {
+        k: set(v.strip().split(",")) for ln in lines for k, v in [ln.split("\t")]
+    }
+    records[h] = records.get(h, set()) | set(t.split(","))
+    lines = [f"{k}\t{','.join(v)}\n" for k, v in records.items()]
+
+    with open(fp, "w") as f:
+        f.writelines(lines)
+
+
+@main.command()
+@click.option("-h", type=str)
+@click.argument("fp", required=True, nargs=1, type=str)
+def query_tag(h: str, fp: str) -> None:
+    try:
+        with open(fp, "r") as f:
+            lines = f.readlines()
+    except:
+        lines = []
+
+    records = {k: v.strip() for ln in lines for k, v in [ln.split("\t")]}
+    print(records.get(h, ""))
+
+
 if __name__ == "__main__":
     main()
