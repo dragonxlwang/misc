@@ -2226,8 +2226,8 @@ function mast_cat_select {
 
 }
 function mast_remove {
-  sed -i "${1}d" ~/misc/tmp/tb
-
+  # sed -i "${1}d" ~/misc/tmp/tb
+  sed -i "$(echo $@ | tr ',' ' ' | sed -E 's/(\w+)/\1d/g' | tr ' ' ';')" ~/misc/tmp/tb
 }
 function drst {
   for ((i=1; i<=$#; i++))
