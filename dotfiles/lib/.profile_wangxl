@@ -1970,12 +1970,8 @@ function export_env_variables() {
 # fi
 function presto() {
   local presto=/usr/local/bin/presto
-  local namespace=groups
-  if [[ $# -eq 0 ]]; then
-    $presto ad_delivery
-  else
-    $presto $1 --execute ${@:2}
-  fi
+  local namespace=feed_fblearner
+  $presto $namespace --execute $1
 }
 function presto_list_table() {
   where_clause=""
@@ -2203,6 +2199,21 @@ function mast_cat {
     head -n ${1-5} | \
     awk '{ \
     "~/misc/scripts/tb_cmp.py query-tag -h " $3 " ~/misc/tmp/tb_tags" |& getline v; \
+    print $1"\t"$2"\t"$3"\t"v; \
+    for(i=5;i<=NF;i++) \
+      printf "\t\t %2s) %s\n", i-4, "https://www.internalfb.com/mast/job/"$i; \
+      printf "\t\t     %s\n", $4; }' | \
+      lolcat -h 0.5
+
+  print -s "mast_cat_select "
+}
+function mast_cat_tagged {
+  # cat -n ~/misc/tmp/tb | head -n "${1:-5}" | lolcat -h 0.5
+  cat ~/misc/tmp/tb | nl -w2 -s'] ' | \
+    head -n ${1-5} | \
+    awk '{ \
+    "~/misc/scripts/tb_cmp.py query-tag -h " $3 " ~/misc/tmp/tb_tags" |& getline v; \
+    if (v=="") next; \
     print $1"\t"$2"\t"$3"\t"v; \
     for(i=5;i<=NF;i++) \
       printf "\t\t %2s) %s\n", i-4, "https://www.internalfb.com/mast/job/"$i; \
