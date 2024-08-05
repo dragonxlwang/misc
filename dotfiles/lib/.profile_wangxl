@@ -2235,7 +2235,7 @@ function mast_cat_select {
   print -s "mast_link $runs"
 
 }
-function mast_cat_contains {
+function mast_contains {
   local runs1=$(sed "${1}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4 \
     | xargs -n1 | sort | xargs)
 
