@@ -2212,7 +2212,7 @@ function mast_cat_tagged {
   cat ~/misc/tmp/tb | nl -w2 -s'] ' |  \
     awk -v l=${1-5} '{ \
     "~/misc/scripts/tb_cmp.py query-tag -h " $3 " ~/misc/tmp/tb_tags" |& getline v; \
-      if (l==0) exit; if (v=="") next; l--; \
+    if (l==0) exit; if (v=="") next; l--; \
       print $1"\t"$2"\t"$3"\t"v; \
       for(i=5;i<=NF;i++) \
         printf "\t\t %2s) %s\n", i-4, "https://www.internalfb.com/mast/job/"$i; \
@@ -2234,6 +2234,22 @@ function mast_cat_select {
 
   print -s "mast_link $runs"
 
+}
+function mast_cat_contains {
+  local runs1=$(sed "${1}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4 \
+    | xargs -n1 | sort | xargs)
+
+  local runs2=$(sed "${2}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f4 \
+    | xargs -n1 | sort | xargs)
+
+  local not_contain=0
+  for r in ${=runs2[@]}; do
+    if [[ ! $runs1 =~ $r ]]; then
+      echo $r
+      not_contain=1
+    fi
+  done
+  return $not_contain
 }
 function mast_remove {
   # sed -i "${1}d" ~/misc/tmp/tb
