@@ -1399,12 +1399,15 @@ alias acch="arc canary --cancel-host $(hostname)"
 alias al="arc lint"
 alias alc="arc lint -e extra --take CLANGTIDY"
 function prp {
-  local files=$(hg status --change . | awk '{ print $2 }' | grep '.py$')
-  arc pyre check-owning-targets ${(f)files}
+  # local files=$(hg status --change . | awk '{ print $2 }' | grep '.py$')
+  # arc pyre check-owning-targets ${(f)files}
+  arc pyre check-changed-targets
 }
 function prfm {
-  local files=$(hg status --change . | awk '{ print $2 }' | grep '.py$')
-  arc pyre check-owning-targets --output=json ${(f)files} | pyre-upgrade fixme
+  # local files=$(hg status --change . | awk '{ print $2 }' | grep '.py$')
+  # arc pyre check-owning-targets --output=json ${(f)files} | pyre-upgrade fixme
+  arc pyre check-changed-targets --output=json | pyre-upgrade fixme
+
 }
 alias alpr="al && prp"
 # alias prfm="pyre --output=json | pyre-upgrade fixme"
@@ -2424,7 +2427,8 @@ function mast_model_entity_id {
     manifold get --overwrite_local_path \
       deep_retrieval/tree/jobs/$r/info.json ~/tmp/tmp_job_info.json
 
-
+    cat ~/tmp/tmp_job_info.json
+    echo ""
     local mid=$(cat ~/tmp/tmp_job_info.json | jq ".retryable_job_save_model_entity_id")
     echo "$r => $mid" | lolcat -h 0.5
     rrm ~/tmp/tmp_job_info.json
