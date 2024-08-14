@@ -9,7 +9,8 @@ import mrs.fm.video.transforms as vt
 import torch
 import torchmultimodal.fb.utils.decord_utils as vu
 from libfb.py.asyncio.await_utils import await_sync
-from mrs.fm.utils import logger
+from mrs.fm.logging import logger
+from mrs.fm.utils import rgb_to_grayscale
 from mrs.fm.video import utils
 from phabricator.new_phabricator_graphql_helpers import PhabricatorPaste
 from phabricator.phabricator_auth_strategy_factory import PhabricatorAuthStrategyFactory
@@ -276,8 +277,19 @@ def process_16x9_sampled(
                 title=f"resized: {h}x{w},{p=:.4},{v_clips.shape}",
             )
             tensors.append(v_clips)
+
+            v_clips = rgb_to_grayscale(v_clips)
+            utils.upload_clip_to_manifold(
+                v_clips,
+                file_name=f"{h}x{w}_grayscaled",
+                mf_dir=mf_dir,
+                title=f"grayscaled: {h}x{w},{p=:.4},{v_clips.shape}",
+                grayscale=True,
+            )
+            tensors.append(v_clips)
         except Exception as e:
             logger.info(f"[RED]{e=}")
+            raise e
 
     std_mean = torch.std_mean(torch.stack(tensors).view(-1, 3).float(), dim=0)
     logger.info(f"[GREEN]{std_mean=}")
