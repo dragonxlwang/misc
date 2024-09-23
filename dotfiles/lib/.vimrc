@@ -322,10 +322,11 @@ noremap <leader>vj :vs \| bprev <cr>
 " print file path
 command! Fp  echohl Directory | echo GetFilePath() | echohl None
 command! Tp  echohl Directory | echo GetFilePath() | echohl None
-nmap <silent> <C-K> :wincmd k \| :Fp <cr>
-nmap <silent> <C-J> :wincmd j \| :Fp <cr>
-nmap <silent> <C-H> :wincmd h \| :Fp <cr>
-nmap <silent> <C-L> :wincmd l \| :Fp <cr>
+command! Fpny  echohl Directory | echo GetFilePath(0) | echohl None
+nmap <silent> <C-K> :wincmd k \| :Fpny <cr>
+nmap <silent> <C-J> :wincmd j \| :Fpny <cr>
+nmap <silent> <C-H> :wincmd h \| :Fpny <cr>
+nmap <silent> <C-L> :wincmd l \| :Fpny <cr>
 
 " Cycle between tabs
 " noremap <C-w><C-k> :tabn<cr>
@@ -363,10 +364,10 @@ noremap <silent> <C-m> :NERDTreeClose \| :100 wincmd h \|
       \ execute "vert res" . &columns / 3 \|
       \ wincmd l \| execute "vert res" . &columns / 3 \| wincmd h<cr>
 
-noremap <silent> <C-w><C-j> :100 wincmd j \| :Fp<cr>
-noremap <silent> <C-w><C-h> :100 wincmd h \| :Fp<cr>
-noremap <silent> <C-w><C-k> :100 wincmd k \| :Fp<cr>
-noremap <silent> <C-w><C-l> :100 wincmd l \| :Fp<cr>
+noremap <silent> <C-w><C-j> :100 wincmd j \| :Fpny<cr>
+noremap <silent> <C-w><C-h> :100 wincmd h \| :Fpny<cr>
+noremap <silent> <C-w><C-k> :100 wincmd k \| :Fpny<cr>
+noremap <silent> <C-w><C-l> :100 wincmd l \| :Fpny<cr>
 noremap <silent> <C-w>H :NERDTreeClose \| :wincmd H<cr>
 " go to files
 noremap <C-w>v :vertical wincmd f<CR>
@@ -833,12 +834,14 @@ function! FindFbcodeTargets()
   return l:new_targets
 endfunction
 
-function! GetFilePath()
+function! GetFilePath(yank=1)
   let l:path = expand('%:p')
   let l:path = substitute(l:path, '^/data/users/xlwang/fbsource/', '', '')
   let l:path = substitute(l:path, '^/data/users/xlwang/configerator/', '', '')
   let l:path = substitute(l:path, '^/data/users/xlwang/www/', '', '')
-  let l:yank = system("~/misc/scripts/oscyank.sh -", l:path)
+  if a:yank
+    let l:yank = system("~/misc/scripts/oscyank.sh -", l:path)
+  endif
   return l:path
 endfunction
 
