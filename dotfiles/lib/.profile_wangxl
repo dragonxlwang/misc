@@ -1157,7 +1157,12 @@ alias hg_query_diff="hg log -r . --template '{sl_diff_super}'"
 alias hld="hg log --rev . --template '{phabdiff}'"
 alias hrf='hhl && arc cleanup-features && hum && hs'
 alias har='hg addremove'
-alias hrv='hg revert'
+function hrv {
+  cwd=$(pwd)
+  cd $(hg root)
+  hg revert "$@"
+  cd $cwd
+}
 alias hrvh='hg revert -r ".^"'
 alias hprune='hg prune'
 alias hpurge='hg purge'
