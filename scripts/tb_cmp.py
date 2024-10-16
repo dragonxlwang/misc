@@ -110,5 +110,39 @@ def query_tag(h: str, fp: str) -> None:
     print(records.get(h, ""))
 
 
+@main.command()
+@click.argument("tag_fp", required=True, nargs=1, type=str)
+@click.argument("tb_fp", required=True, nargs=1, type=str)
+@click.option("-n", type=int, default=-1)
+def mast_cat(tag_fp: str, tb_fp: str, n: int) -> None:
+    try:
+        with open(tag_fp, "r") as f:
+            lines = f.readlines()
+    except:
+        lines = []
+
+    tag_records = {k: v.strip() for ln in lines for k, v in [ln.split("\t")]}
+
+    with open(tb_fp, "r") as f:
+        lines = f.readlines()
+        for idx, ln in enumerate(lines):
+            report = ""
+            parts = ln.split("\t")
+            report += f"{parts[0]}\t{parts[1]}\t{parts[2]}"
+            if tag in tag_records:
+                report += "\t{tag_records[tag]}"
+            report += "\n"
+            for i, r in enumerate(parts[3].split()):
+                if "," in r:
+                    alias, name = r.split(",")
+                    r = f"{name}  # {alias}"
+                m = f"{idx+1},{i+1}"
+                report += f"\t\t{m:>5}] https://www.internalfb.com/mast/job/{r}\n"
+
+            print(report)
+            if n > 0 and idx + 1 >= n:
+                break
+
+
 if __name__ == "__main__":
     main()

@@ -2210,19 +2210,19 @@ for (i=1; i<=n; i++)
 
 function mast_cat {
   # cat -n ~/misc/tmp/tb | head -n "${1:-5}" | lolcat -h 0.5
-  cat ~/misc/tmp/tb | nl -w2 -s'] ' | \
-    head -n ${1-5} | \
-    awk '{ \
-    "~/misc/scripts/tb_cmp.py query-tag -h " $3 " ~/misc/tmp/tb_tags" |& getline v; \
-    print $1"\t"$2"\t"$3"\t"v; \
-    for(i=5;i<=NF;i++) { \
-      "~/misc/scripts/mast_cat_run_convert.sh " $i |& getline r; \
-      printf "\t\t %2s) https://www.internalfb.com/mast/job/%s\n", i-4, r; \
-    } \
-    printf "\t\t     %s\n", $4; \
-  }' | \
-  lolcat -h 0.5
-
+  # cat ~/misc/tmp/tb | nl -w2 -s'] ' | \
+  #   head -n ${1-5} | \
+  #   awk '{ \
+  #   "~/misc/scripts/tb_cmp.py query-tag -h " $3 " ~/misc/tmp/tb_tags" |& getline v; \
+  #   print $1"\t"$2"\t"$3"\t"v; \
+  #   for(i=5;i<=NF;i++) { \
+  #     "~/misc/scripts/mast_cat_run_convert.sh " $i |& getline r; \
+  #     printf "\t\t %2s) https://www.internalfb.com/mast/job/%s\n", i-4, r; \
+  #   } \
+  #   printf "\t\t     %s\n", $4; \
+  # }' | \
+  # lolcat -h 0.5
+  ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n ${1:-"-1"} | lolcat -h 0.5
   print -s "mast_cat_select "
 }
 function mast_cat_tagged {
