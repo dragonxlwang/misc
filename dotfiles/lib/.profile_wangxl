@@ -2222,7 +2222,7 @@ function mast_cat {
   #   printf "\t\t     %s\n", $4; \
   # }' | \
   # lolcat -h 0.5
-  ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n ${1:-"-1"} | lolcat -h 0.5
+  ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n ${1:-"10"} | lolcat -h 0.5
   print -s "mast_cat_select "
 }
 function mast_cat_tagged {
