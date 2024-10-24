@@ -1885,6 +1885,11 @@ function krefresh() {
   klist
   fbwallet_fetch
 }
+function refresh_ping () {
+  rm ~/misc/tmp/ping_$(hostname).txt
+  ~/misc/scripts/ping_status.sh;
+  cat ~/misc/tmp/ping_$(hostname).txt
+}
 function everpaste_url_gen() {
   ${HOME}/misc/scripts/everpaste_url_gen.sh $*
 }
