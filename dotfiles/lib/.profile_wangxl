@@ -1432,6 +1432,9 @@ function fb_latest_pkg {
 function fbpkg_rev_log {
   hg log -r $(fbpkg info $@ | grep Revision | awk '{ print $2 }')
 }
+function fbpkg_uprev_log {
+  hg log -r $(fbpkg info $@ | grep Upstream: | awk '{ print $2 }')
+}
 function fbpkg_rev_up {
   rev=$(fbpkg info $@ | grep Revision | awk '{ print $2 }')
   yellowecho "rev: $rev"
