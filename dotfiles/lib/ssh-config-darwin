@@ -15,8 +15,11 @@ Host devgpu
     HostName devgpu088.cco2.facebook.com
 Host devgpu2
     User xlwang
-    HostName devgpu019.ash9.facebook.com
+    HostName devvm6470.cco0.facebook.com
 Host devgpu3
+    User xlwang
+    HostName devgpu019.ash9.facebook.com
+Host devgpu4
     User xlwang
     HostName devgpu166.prn2.facebook.com
 Host dragoncave
