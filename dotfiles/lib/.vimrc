@@ -623,21 +623,27 @@ function! WriteListedFiles()
 endfunction
 
 function! NumberToggle()
-  " number -> rnu -> nonumber
-  if(&number == 1 && &relativenumber == 0)
-  setlocal rnu
-  echohl Error
-  echo "relative"
-  echohl None
-  elseif(&number == 1)
-  setlocal nornu
-  setlocal nonu
-  if exists("g:indentLine_loaded")
-    IndentLinesDisable
-  endif
-  echohl Error
-  echo "no line number"
-  echohl None
+  " number -> rnu -> cuc -> nonumber
+  if (&number == 1 && &relativenumber == 0 && &cursorcolumn == 0)
+    setlocal rnu
+    echohl Error
+    echo "relative"
+    echohl None
+  elseif (&number == 1 && &relativenumber == 1 && &cursorcolumn == 0)
+    setlocal cuc
+    echohl Error
+    echo "column"
+    echohl None
+  elseif (&number == 1 && &relativenumber == 1 && &cursorcolumn == 1)
+    setlocal nornu
+    setlocal nonu
+    setlocal nocuc
+    if exists("g:indentLine_loaded")
+      IndentLinesDisable
+    endif
+    echohl Error
+    echo "no line number"
+    echohl None
   else
     setlocal nu
     if exists("g:indentLine_loaded")
