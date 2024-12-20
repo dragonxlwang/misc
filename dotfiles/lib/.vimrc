@@ -631,6 +631,9 @@ function! NumberToggle()
     echohl None
   elseif (&number == 1 && &relativenumber == 1 && &cursorcolumn == 0)
     setlocal cuc
+    if exists("g:indentLine_loaded")
+      IndentLinesDisable
+    endif
     echohl Error
     echo "column"
     echohl None
