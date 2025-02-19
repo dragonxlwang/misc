@@ -1388,6 +1388,7 @@ function nbfq {
 alias jfe="jf s && hed"
 alias jfp="jf s --update-fields && jf publish"
 alias jfep="jfe && jfp"
+alias jfl="jf sync"
 alias jfs="jf s"
 alias jfss="jf s --stack"
 alias jfsss="jf s -r bottom::top"
@@ -2232,7 +2233,13 @@ function mast_cat {
   #   printf "\t\t     %s\n", $4; \
   # }' | \
   # lolcat -h 0.5
-  ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n ${1:-"10"} | lolcat -h 0.5
+  if [[ $1 == -1 ]]; then
+    ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n -1 \
+      | lolcat -h 0.5 | less -R
+  else
+    ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n ${1:-"10"} \
+      | lolcat -h 0.5
+  fi
   print -s "mast_cat_select "
 }
 function mast_cat_tagged {
@@ -2358,8 +2365,11 @@ function mast_resolve {
 function mast_kill {
   for ((i=1; i<=$#; i++))
   do
-    job="$(mast_resolve $@[i])"
-    mast kill --comment user_error "$job"
+    local runs="$(mast_resolve "$@")"
+    for r in ${=runs[@]}; do
+      job="$(echo $r | tr "," "\n" | tail -n 1)"
+      mast kill --comment user_error "$job"
+    done
   done
 
 }
@@ -2436,8 +2446,10 @@ function mast_show {
 function mast_status {
   local runs="$(mast_resolve "$@")"
   for r in "${=runs[@]}"; do
-    echo "https://www.internalfb.com/mast/job/$r"
-    mast diag execution "$r" |  head -n -2 | lolcat -h 0.5
+    echo $r
+    job="$(mast_resolve $r | tr "," "\n" | tail -n 1)"
+    echo "https://www.internalfb.com/mast/job/$job"
+    mast diag execution "$job" |  head -n -2 | lolcat -h 0.5
 
     # local res=$(mast get-status $r)
     # local attempt=$(echo $res | grep "attemptIndex (i32)" \
@@ -2469,6 +2481,7 @@ function mast_model_entity_id {
     rrm ~/tmp/tmp_job_info.json
   done
 }
+alias uuid4="uuidgen | cut -c1-8"
 
 ## ========================================================================== ##
 #             ___________    ____  _______.___________._______ .___  ___.      #
