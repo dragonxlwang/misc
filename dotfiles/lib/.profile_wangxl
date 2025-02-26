@@ -2236,9 +2236,11 @@ function mast_cat {
   if [[ $1 == -1 ]]; then
     ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n -1 \
       | lolcat -h 0.5 | less -R
+
   else
     ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n ${1:-"10"} \
       | lolcat -h 0.5
+
   fi
   print -s "mast_cat_select "
 }
@@ -2363,15 +2365,11 @@ function mast_resolve {
 #
 }
 function mast_kill {
-  for ((i=1; i<=$#; i++))
-  do
-    local runs="$(mast_resolve "$@")"
-    for r in ${=runs[@]}; do
-      job="$(echo $r | tr "," "\n" | tail -n 1)"
-      mast kill --comment user_error "$job"
-    done
+  local runs="$(mast_resolve "$@")"
+  for r in ${=runs[@]}; do
+    job="$(echo $r | tr "," "\n" | tail -n 1)"
+    mast kill --comment user_error "$job"
   done
-
 }
 function mast_link {
   [[ $# -eq 0 ]] && return 1
