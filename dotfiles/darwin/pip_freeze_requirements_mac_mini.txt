@@ -28,7 +28,7 @@ MarkupSafe==0.23
 matplotlib==1.5.0
 mccabe==0.3.1
 mercurial==3.6.1
-mistune==0.7.1
+mistune==2.0.3
 mock==1.0.1
 nbconvert==4.1.0
 nbformat==4.0.1
