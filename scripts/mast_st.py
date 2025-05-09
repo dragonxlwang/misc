@@ -43,6 +43,7 @@ def get_ods_url(
     end_ts: int,
     transformation: Optional[str] = None,
     reduction: Optional[str] = None,
+    title: Optional[str] = None,
 ):
     period = {
         "static_start": start_ts,
@@ -54,10 +55,9 @@ def get_ods_url(
         "type": "linechart",
         "renderer": "highcharts",
         "no_relative_scale": True,
-        "chart_title": ",".join(keys),
+        "chart_title": ",".join(keys) if title is None else title,
         "reload_interval": "0",
         "h_marks": "",
-        # "superimpose": 7 * 24 * 60,
     }
 
     queries = {
@@ -95,10 +95,24 @@ def main() -> None:
 @main.command()
 @click.argument("run", required=True, nargs=1, type=str)
 @click.option("-n", "--num", type=int, default=4)
-def mem(run: str, num: int) -> None:
+@click.option("--per-host-details", type=bool, default=False)
+@click.option("--mem-free", type=bool, default=False)
+def mem(run: str, num: int, per_host_details: bool, mem_free: bool) -> None:
     job_status = json.loads(sh.mast("get-status", run, json=True))
     attempts = job_status["latestAttempt"]["taskGroupExecutionAttempts"]["trainer"]
-    # pprint(attempts)
+
+    ods_keys = (
+        [
+            "system.mem_free_nobuffer_nocache",
+            "system.mem_free",
+            "system.swap_used",
+        ]
+        if mem_free
+        else [
+            "system.mem_used",
+        ]
+    )
+
     for att in attempts:
         idx = att["attemptIndex"]
         start_ts, end_ts = [
@@ -124,6 +138,7 @@ def mem(run: str, num: int) -> None:
 
         start_ts_str = sh.date("+%Y-%m-%d %H:%M:%S", d=f"@{start_ts}").strip()
         end_ts_str = sh.date("+%Y-%m-%d %H:%M:%S", d=f"@{end_ts}").strip()
+        color_print("green", f"https://www.internalfb.com/mast/job/{run}")
         color_print("yellow", f"ATTEMPT     [{idx}]")
         color_print("yellow", f"START_TS:   {start_ts_str}")
         color_print("yellow", f"END_TS:     {end_ts_str}    {final_status}")
@@ -131,29 +146,23 @@ def mem(run: str, num: int) -> None:
         color_print("yellow", f"HOSTS:")
         for r, h in hosts:
             url = ""
-            if r < num:
+            if per_host_details and r < num:
                 url = get_ods_url(
                     entities=[h],
-                    keys=[
-                        "system.mem_free_nobuffer_nocache",
-                        "system.mem_free",
-                        "system.swap_used",
-                    ],
+                    keys=ods_keys,
                     start_ts=start_ts,
                     end_ts=end_ts,
+                    title=f"cpu mem: {run}",
                 )
                 url = sh.fburl(url).strip()
             color_print("yellow", f"            rank {r}\t{h}\t{url}")
 
         url = get_ods_url(
             entities=[h for r, h in hosts if r < num],
-            keys=[
-                "system.mem_free_nobuffer_nocache",
-                "system.mem_free",
-                "system.swap_used",
-            ],
+            keys=ods_keys,
             start_ts=start_ts,
             end_ts=end_ts,
+            title=f"cpu mem: {run}",
         )
         url = sh.fburl(url).strip()
         color_print("cyan", f"ODS:        {url}")

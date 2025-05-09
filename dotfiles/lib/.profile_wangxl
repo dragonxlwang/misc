@@ -2144,7 +2144,9 @@ function drtb { # to be deprecated
 }
 
 function mast_tenant {
-  mast list-jobs --job-application-metadata rm_attribution:$1 | \
+  mast list-jobs --job-application-metadata rm_attribution:$1 > ~/misc/tmp/mast
+
+  cat ~/misc/tmp/mast | \
     nl -w2 -s'] ' -v0 | \
     awk '(NR>1) {
       print $0, "\thttps://www.internalfb.com/mast/job/"$2 ; next
@@ -2442,27 +2444,28 @@ function mast_show {
 
 }
 function mast_status {
-  local runs="$(mast_resolve "$@")"
-  for r in "${=runs[@]}"; do
-    echo $r
-    job="$(mast_resolve $r | tr "," "\n" | tail -n 1)"
-    echo "https://www.internalfb.com/mast/job/$job"
-    mast diag execution "$job" |  head -n -2 | lolcat -h 0.5
-
-    # local res=$(mast get-status $r)
-    # local attempt=$(echo $res | grep "attemptIndex (i32)" \
-    #   | head -1 | awk '{$1=$1};1' | sed -E 's/.*=\s*([0-9]+).*/\1/')
-    #
-    # local st=$(echo $res | grep "state (enum)" | head -1 \
-    #   | awk '{$1=$1};1' | sed -E 's/.*\((.*)\).*/\1/')
-    #
-    # local ts=$(echo $res | awk "/jobStateTransitionTimestampSecs/,/},/" \
-    #   | sed -e '1d' -e '$d' \
-    #   | sed -E 's/(.*->\s*)([0-9]+)(.*)/echo "\1"`date -d @"\2"`"\3"/;e')
-    #
-    # echo $r
-    # echo -e "attempt: $attempt\nstatus: $st\ntimestamp: \n$ts" | lolcat -h 0.5
-  done
+  ~/misc/scripts/mast_st.py mem -n 100 $@
+  # local runs="$(mast_resolve "$@")"
+  # for r in "${=runs[@]}"; do
+  #   echo $r
+  #   job="$(mast_resolve $r | tr "," "\n" | tail -n 1)"
+  #   echo "https://www.internalfb.com/mast/job/$job"
+  #   mast diag execution "$job" |  head -n -2 | lolcat -h 0.5
+  #
+  #   # local res=$(mast get-status $r)
+  #   # local attempt=$(echo $res | grep "attemptIndex (i32)" \
+  #   #   | head -1 | awk '{$1=$1};1' | sed -E 's/.*=\s*([0-9]+).*/\1/')
+  #   #
+  #   # local st=$(echo $res | grep "state (enum)" | head -1 \
+  #   #   | awk '{$1=$1};1' | sed -E 's/.*\((.*)\).*/\1/')
+  #   #
+  #   # local ts=$(echo $res | awk "/jobStateTransitionTimestampSecs/,/},/" \
+  #   #   | sed -e '1d' -e '$d' \
+  #   #   | sed -E 's/(.*->\s*)([0-9]+)(.*)/echo "\1"`date -d @"\2"`"\3"/;e')
+  #   #
+  #   # echo $r
+  #   # echo -e "attempt: $attempt\nstatus: $st\ntimestamp: \n$ts" | lolcat -h 0.5
+  # done
 
 }
 function mast_model_entity_id {
