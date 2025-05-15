@@ -2144,7 +2144,7 @@ function drtb { # to be deprecated
 }
 
 function mast_tenant {
-  mast list-jobs --job-application-metadata rm_attribution:$1 > ~/misc/tmp/mast
+  mast list-jobs --job-application-metadata rm_attribution:$1 -d > ~/misc/tmp/mast
 
   cat ~/misc/tmp/mast | \
     nl -w2 -s'] ' -v0 | \
@@ -2153,11 +2153,20 @@ function mast_tenant {
     } { print $0 }' | \
       lolcat -h 0.5
 
+
+
+    gpus=$(cat ~/misc/tmp/mast | \
+      tail -n+2 | tr -s ' ' | cut -d' ' -f11 | paste -s -d+ - | bc)
+
+    hosts=$(echo "scale=2; $gpus / 8" | bc -l)
+
+    echo "gpus/hosts: $gpus / $hosts"
+
 #
 }
 
 function mast_list {
-  echo "$(mast list-jobs --job-owner-unixname $USER)" > ~/misc/tmp/mast
+  echo "$(mast list-jobs --job-owner-unixname $USER -d)" > ~/misc/tmp/mast
   # cat ~/misc/tmp/mast | nl -w2 -s'] ' -v0 | lolcat -h 0.5
 
   # cat ~/misc/tmp/mast | \
@@ -2385,13 +2394,16 @@ function mast_link {
   ~/misc/scripts/tb_cmp.py sort-dedup -s 1 ~/misc/tmp/tb
 
   local r
+  local i=0
   for r in ${=runs[@]}; do
     local suffix=""
     if [[ $r == *,* ]]; then
       suffix=" # "$(echo $r | cut -f1 -d,)
       r=${r#*,}
     fi
-    echo "https://www.internalfb.com/mast/job/$r$suffix"
+    greenecho -n "$i]"
+    echo " https://www.internalfb.com/mast/job/$r$suffix"
+    i=$((i+1))
   done
   echo $fb_url | lolcat -h 0.5
 }
