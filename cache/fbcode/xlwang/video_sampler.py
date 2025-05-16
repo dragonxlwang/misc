@@ -55,6 +55,9 @@ def process(
             video_max_dimension=-1,
         )
         av_clips = clip_sampler(video_byte_tensor)
+        # pyre-fixme[6]: For 1st argument expected `List[Dict[str, Tensor]]` but got
+        #  `Union[None, List[Dict[str, Tensor]], Tuple[List[Dict[str, Tensor]],
+        #  VideoMetaData]]`.
         v_clips = vt.extract_video(av_clips)
         h, w = v_clips.shape[2:4]
         utils.upload_clip_to_manifold(
@@ -73,6 +76,9 @@ def process(
             video_max_dimension=64,
         )
         av_clips = clip_sampler(video_byte_tensor)
+        # pyre-fixme[6]: For 1st argument expected `List[Dict[str, Tensor]]` but got
+        #  `Union[None, List[Dict[str, Tensor]], Tuple[List[Dict[str, Tensor]],
+        #  VideoMetaData]]`.
         v_clips = vt.extract_video(av_clips)
         utils.upload_clip_to_manifold(v_clips, file_name="64x64", mf_dir=mf_dir)
 
@@ -88,6 +94,9 @@ def process(
             video_max_dimension=32,
         )
         av_clips = clip_sampler(video_byte_tensor)
+        # pyre-fixme[6]: For 1st argument expected `List[Dict[str, Tensor]]` but got
+        #  `Union[None, List[Dict[str, Tensor]], Tuple[List[Dict[str, Tensor]],
+        #  VideoMetaData]]`.
         v_clips = vt.extract_video(av_clips)
         utils.upload_clip_to_manifold(v_clips, file_name="32x32", mf_dir=mf_dir)
 
@@ -103,9 +112,14 @@ def process(
             video_max_dimension=-1,
         )
         av_clips = clip_sampler(video_byte_tensor)
+        # pyre-fixme[6]: For 1st argument expected `List[Dict[str, Tensor]]` but got
+        #  `Union[None, List[Dict[str, Tensor]], Tuple[List[Dict[str, Tensor]],
+        #  VideoMetaData]]`.
         v_clips = vt.extract_video(av_clips)
 
         for scale in [0.5, 0.25, (0.5, 0.125, 0.125), (0.25, 0.0625, 0.0625)]:
+            # pyre-fixme[6]: For 2nd argument expected `Union[Tuple[float], float]`
+            #  but got `Union[Tuple[float, float, float], float]`.
             interpolate_v_clips = vt.downsample_interpolate_video(v_clips, scale=scale)
             h, w = interpolate_v_clips.shape[2:4]
             utils.upload_clip_to_manifold(
@@ -123,7 +137,10 @@ def process(
         )
 
         transformed_v_clips = vt.downsample_interpolate_video(
-            v_clips, scale=(0.25, 0.0625, 0.0625)
+            v_clips,
+            # pyre-fixme[6]: For 2nd argument expected `Union[Tuple[float], float]`
+            #  but got `Tuple[float, float, float]`.
+            scale=(0.25, 0.0625, 0.0625),
         )
         transformed_v_clips = vt.center_crop_video(transformed_v_clips, 0.5)
         h, w = transformed_v_clips.shape[2:4]
@@ -133,9 +150,13 @@ def process(
             mf_dir=mf_dir,
         )
     elif clips:
+        # pyre-fixme[9]: clips has type `str`; used as `Tensor`.
+        # pyre-fixme[6]: For 1st argument expected `bytes` but got `str`.
         clips = uint8_tensor_from_b64(clips)
         utils.upload_clip_to_manifold(
+            # pyre-fixme[6]: For 1st argument expected `Tensor` but got `str`.
             clips,
+            # pyre-fixme[16]: `str` has no attribute `shape`.
             file_name="_".join(["clips"] + [str(x) for x in clips.shape]),
             mf_dir=mf_dir,
         )
@@ -225,6 +246,9 @@ def process_16x9(
         video_max_dimension=-1,
     )
     av_clips = clip_sampler(video_byte_tensor)
+    # pyre-fixme[6]: For 1st argument expected `List[Dict[str, Tensor]]` but got
+    #  `Union[None, List[Dict[str, Tensor]], Tuple[List[Dict[str, Tensor]],
+    #  VideoMetaData]]`.
     v_clips = vt.extract_video(av_clips)
     utils.upload_clip_to_manifold(v_clips, file_name="original", mf_dir=mf_dir)
     logger.info(f"[RED] {v_clips.shape=}")
@@ -261,6 +285,9 @@ def process_16x9_sampled(
             )
             av_clips = clip_sampler(video_byte_tensor)
 
+            # pyre-fixme[6]: For 1st argument expected `List[Dict[str, Tensor]]` but
+            #  got `Union[None, List[Dict[str, Tensor]], Tuple[List[Dict[str, Tensor]],
+            #  VideoMetaData]]`.
             v_clips = vt.extract_video(av_clips)
             utils.upload_clip_to_manifold(
                 v_clips,
@@ -313,6 +340,7 @@ def renders(
     paste: str,
 ) -> None:
     mf_dir = utils.create_mf_dir()
+    # pyre-fixme[16]: `Optional` has no attribute `split`.
     handle, clips = get_paste(paste).split()[-2:]
     handle = handle[1:-1] if handle[0] == "'" else handle
     clips = clips[1:-1] if clips[0] == "'" else clips

@@ -5,7 +5,7 @@ import time
 from multiprocessing import Process
 
 
-def f(i: int):
+def f(i: int) -> None:
     j = 0
     while True:
         print(f"==> f({i}), {j=}", flush=True)

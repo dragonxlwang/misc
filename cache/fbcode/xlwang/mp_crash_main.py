@@ -38,7 +38,7 @@ def bad_main():
     is_flag=True,
     default=False,
 )
-def crash_main(bad: bool):
+def crash_main(bad: bool) -> None:
     if bad:
         bad_main()
     else:

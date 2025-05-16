@@ -11,27 +11,217 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/\c\(\<contextual_input_embeddings\>\)
+~MSle0~/cache_sync
 
 # Last Substitute Search Pattern:
-~MSle0&
+~MSle0&HSTU_MAX_SEQ_LEN
 
 # Last Substitute String:
 $
 
 # Command Line History (newest to oldest):
+:qa
+|2,0,1747391230,,"qa"
+:w
+|2,0,1747391173,,"w"
+:Duf
+|2,0,1747330501,,"Duf"
+:wqa
+|2,0,1747341918,,"wqa"
+:117
+|2,0,1747280539,,"117"
+:300
+|2,0,1747280529,,"300"
+:Fbs13
+|2,0,1747280172,,"Fbs13"
+:W
+|2,0,1747275628,,"W"
+:'<,'>q
+|2,0,1747264833,,"'<,'>q"
+:377
+|2,0,1747172046,,"377"
+:Wipeout
+|2,0,1747168200,,"Wipeout"
+:Dufburl
+|2,0,1747168140,,"Dufburl"
+:vs
+|2,0,1747161092,,"vs"
+:Rg
+|2,0,1747158345,,"Rg"
+:e
+|2,0,1747122994,,"e"
+:"W
+|2,0,1747119967,,"\"W"
+:Wqa
+|2,0,1747122515,,"Wqa"
+:NERDTreeClose | FBVimSaveSession
+|2,0,1747116632,,"NERDTreeClose | FBVimSaveSession"
+:43
+|2,0,1747095997,,"43"
+:Fbs16
+|2,0,1747095788,,"Fbs16"
+:110
+|2,0,1747115691,,"110"
+:c
+|2,0,1747101576,,"c"
+:sb17
+|2,0,1747095382,,"sb17"
+:Fbs
+|2,0,1747095380,,"Fbs"
+:Fbs23
+|2,0,1747086958,,"Fbs23"
+:D
+|2,0,1747086089,,"D"
+:Diuf
+|2,0,1747086088,,"Diuf"
+:185
+|2,0,1747079703,,"185"
+:2890
+|2,0,1747079515,,"2890"
+:307
+|2,0,1747079279,,"307"
+:qa!
+|2,0,1747077211,,"qa!"
+:Fbs15
+|2,0,1746901350,,"Fbs15"
+:'<,'>w
+|2,0,1746813508,,"'<,'>w"
+:2555
+|2,0,1746775673,,"2555"
+:1385
+|2,0,1746774381,,"1385"
+:251
+|2,0,1746772351,,"251"
+:sp ~/fbcode/minimal_viable_ai/core/ranking_common/tgif_publisher.py
+|2,0,1746772327,,"sp ~/fbcode/minimal_viable_ai/core/ranking_common/tgif_publisher.py"
+:f
+|2,0,1746772129,,"f"
+:sb10
+|2,0,1746771934,,"sb10"
+:sp ~/.profile_wangxl
+|2,0,1746771908,,"sp ~/.profile_wangxl"
+:C
+|2,0,1746776677,,"C"
+:701
+|2,0,1746776602,,"701"
+:144
+|2,0,1746776567,,"144"
+:134
+|2,0,1746775828,,"134"
+:41
+|2,0,1746775801,,"41"
+:Qa!
+|2,0,1746775052,,"Qa!"
+:448
+|2,0,1746769504,,"448"
+:1641
+|2,0,1746769141,,"1641"
+:TS
+|2,0,1746768912,,"TS"
+:E
+|2,0,1746766698,,"E"
+:sb6
+|2,0,1746739744,,"sb6"
+:347
+|2,0,1746738374,,"347"
 :sb
-|2,0,1746145491,,"sb"
+|2,0,1746733456,,"sb"
+:331
+|2,0,1746732946,,"331"
+:374
+|2,0,1746732903,,"374"
+:368
+|2,0,1746732725,,"368"
+:351
+|2,0,1746732598,,"351"
+:Fbs28
+|2,0,1746731666,,"Fbs28"
+:Fbs32
+|2,0,1746725739,,"Fbs32"
+:Fbs29
+|2,0,1746725713,,"Fbs29"
+:Delete!
+|2,0,1746695107,,"Delete!"
+:Remove!
+|2,0,1746695103,,"Remove!"
+:Fbs25
+|2,0,1746692912,,"Fbs25"
+:52
+|2,0,1746689498,,"52"
+:q
+|2,0,1746658859,,"q"
+:Fbs17
+|2,0,1746647312,,"Fbs17"
+:F
+|2,0,1746647265,,"F"
+:jk
+|2,0,1746647264,,"jk"
+:Fbs133
+|2,0,1746647262,,"Fbs133"
+:Fbs10
+|2,0,1746647132,,"Fbs10"
+:Fbs11
+|2,0,1746647126,,"Fbs11"
+:Fbs12
+|2,0,1746642957,,"Fbs12"
+:494
+|2,0,1746571297,,"494"
+:402
+|2,0,1746571291,,"402"
+:231
+|2,0,1746571282,,"231"
+:3043
+|2,0,1746545351,,"3043"
+:%s/HSTU_MAX_SEQ_LEN/self.hstu_max_seq_len/g
+|2,0,1746479622,,"%s/HSTU_MAX_SEQ_LEN/self.hstu_max_seq_len/g"
+:%s/HSTU_MAX_SEQ_LEN/self.hstu_max_seq_len/gc
+|2,0,1746479616,,"%s/HSTU_MAX_SEQ_LEN/self.hstu_max_seq_len/gc"
+:%s/VVP100_TRUNCATE_MAX_VAL/self.vvp100_truncate_max_val/g
+|2,0,1746479569,,"%s/VVP100_TRUNCATE_MAX_VAL/self.vvp100_truncate_max_val/g"
+:%s/jkklllÄ¸
+|2,0,1746472467,,"%s/jkklllÄ¸"
+:%s/VVP100_TRUNCATE_MAX_VAL/self.VVP100_TRUNCATE_MAX_VAL/
+|2,0,1746466921,,"%s/VVP100_TRUNCATE_MAX_VAL/self.VVP100_TRUNCATE_MAX_VAL/"
+:%s/
+|2,0,1746466861,,"%s/"
+:%s/VVP100_TRUNCATE_MAX_VAL/self.
+|2,0,1746466851,,"%s/VVP100_TRUNCATE_MAX_VAL/self."
+:%s/VVP_TRUNCATE_MAX_VAL/self.vvp_truncate_max_val/g
+|2,0,1746466596,,"%s/VVP_TRUNCATE_MAX_VAL/self.vvp_truncate_max_val/g"
+:%/VVP_TRUNCATE_MAX_VAL/self.vvp_truncate_max_val/g
+|2,0,1746466577,,"%/VVP_TRUNCATE_MAX_VAL/self.vvp_truncate_max_val/g"
+:Fbs4
+|2,0,1746465235,,"Fbs4"
+:341
+|2,0,1746223590,,"341"
+:319
+|2,0,1746222512,,"319"
+:1805
+|2,0,1746219896,,"1805"
+:!805
+|2,0,1746219891,,"!805"
+:1085
+|2,0,1746219885,,"1085"
+:sb4
+|2,0,1746214930,,"sb4"
+:Sb4
+|2,0,1746214928,,"Sb4"
+:316
+|2,0,1746212554,,"316"
+:1445
+|2,0,1746210092,,"1445"
+:324
+|2,0,1746207921,,"324"
+:2213
+|2,0,1746206442,,"2213"
+:Qa
+|2,0,1746206432,,"Qa"
+:2256
+|2,0,1746204321,,"2256"
 :Sb
 |2,0,1746145487,,"Sb"
-:w
-|2,0,1746145165,,"w"
 :w!
 |2,0,1746128260,,"w!"
-:Wipeout
-|2,0,1746124214,,"Wipeout"
-:Duf
-|2,0,1746123831,,"Duf"
 :sp ~/fbcode/dper3/dper3_models/notebook_utils/model_tracer/tracer.py
 |2,0,1746123367,,"sp ~/fbcode/dper3/dper3_models/notebook_utils/model_tracer/tracer.py"
 :sp fbcode/dper3/dper3_models/notebook_utils/model_tracer/tracer.py
@@ -50,38 +240,20 @@ $
 |2,0,1746057374,,"446"
 :205
 |2,0,1746057366,,"205"
-:Fbs
-|2,0,1746054094,,"Fbs"
 :Fbs8
 |2,0,1746052268,,"Fbs8"
-:Fbs15
-|2,0,1746048820,,"Fbs15"
 :232
 |2,0,1746040825,,"232"
 :Df
 |2,0,1746034381,,"Df"
-:vs
-|2,0,1746034229,,"vs"
-:qa
-|2,0,1746139656,,"qa"
-:Dufburl
-|2,0,1746139111,,"Dufburl"
 :"
 |2,0,1746139110,,"\""
-:wqa
-|2,0,1746128251,,"wqa"
-:Wqa
-|2,0,1746124082,,"Wqa"
 :wq
 |2,0,1746123750,,"wq"
 :860
 |2,0,1746119301,,"860"
 :447
 |2,0,1746116838,,"447"
-:Qa
-|2,0,1746118932,,"Qa"
-:W
-|2,0,1746032993,,"W"
 :8591
 |2,0,1746021670,,"8591"
 :2152
@@ -92,10 +264,6 @@ $
 |2,0,1746032377,,"sp /tmp/tmp"
 :vs 
 |2,0,1746032371,,"vs "
-:q
-|2,0,1746032203,,"q"
-:NERDTreeClose | FBVimSaveSession
-|2,0,1745972061,,"NERDTreeClose | FBVimSaveSession"
 :e!
 |2,0,1745971639,,"e!"
 :sb#
@@ -128,8 +296,6 @@ $
 |2,0,1745964272,,"787"
 :808
 |2,0,1745964177,,"808"
-:e
-|2,0,1745963904,,"e"
 :2510
 |2,0,1745963803,,"2510"
 :1610
@@ -140,32 +306,18 @@ $
 |2,0,1745963667,,"kjkjjjkk"
 :796
 |2,0,1745963559,,"796"
-:F
-|2,0,1745958631,,"F"
 :Fbs30
 |2,0,1745955801,,"Fbs30"
 :204
 |2,0,1745947833,,"204"
-:TS
-|2,0,1745948784,,"TS"
 :Fbvim
 |2,0,1745944985,,"Fbvim"
 :2
 |2,0,1745879932,,"2"
-:"W
-|2,0,1745875469,,"\"W"
-:Fbs4
-|2,0,1745875379,,"Fbs4"
-:Rg
-|2,0,1745861123,,"Rg"
-:qa!
-|2,0,1745878211,,"qa!"
 :jkkk:
 |2,0,1745878210,,"jkkk:"
 :133
 |2,0,1745860019,,"133"
-:Fbs17
-|2,0,1745685302,,"Fbs17"
 :7571
 |2,0,1745681546,,"7571"
 :522
@@ -240,8 +392,6 @@ $
 |2,0,1745445398,,"help m{"
 :s
 |2,0,1745445375,,"s"
-:Fbs10
-|2,0,1745444890,,"Fbs10"
 :Fbs9
 |2,0,1745444884,,"Fbs9"
 :4
@@ -288,8 +438,6 @@ $
 |2,0,1745276198,,"sb14"
 :147
 |2,0,1745190602,,"147"
-:41
-|2,0,1745188811,,"41"
 :248
 |2,0,1745185897,,"248"
 :247
@@ -300,12 +448,8 @@ $
 |2,0,1744871434,,"121"
 :748
 |2,0,1744694672,,"748"
-:Fbs16
-|2,0,1744644428,,"Fbs16"
 :Fbs19
 |2,0,1744609190,,"Fbs19"
-:sb4
-|2,0,1744477755,,"sb4"
 :Wiupe
 |2,0,1744409864,,"Wiupe"
 :Fbs18
@@ -328,12 +472,8 @@ $
 |2,0,1744311282,,"129"
 :102
 |2,0,1744311244,,"102"
-:Fbs32
-|2,0,1744307518,,"Fbs32"
 :233
 |2,0,1744305244,,"233"
-:Fbs25
-|2,0,1744302108,,"Fbs25"
 :Fbs22
 |2,0,1744302105,,"Fbs22"
 :Fbs31
@@ -356,12 +496,8 @@ $
 |2,0,1744220534,,"duf"
 :Vjk
 |2,0,1744228663,,"Vjk"
-:319
-|2,0,1744211038,,"319"
 :259
 |2,0,1744172794,,"259"
-:sb10
-|2,0,1744149290,,"sb10"
 :44
 |2,0,1744139611,,"44"
 :sb32
@@ -374,10 +510,6 @@ $
 |2,0,1744101862,,"sp ~/.vim/bundle/vim-better-search/plugin/better-search.vim"
 :sp ~/.vimrc
 |2,0,1744101834,,"sp ~/.vimrc"
-:D
-|2,0,1744071638,,"D"
-:300
-|2,0,1744066268,,"300"
 :use_micro
 |2,0,1744061526,,"use_micro"
 :sb1
@@ -394,8 +526,6 @@ $
 |2,0,1743807848,,"3154"
 :303
 |2,0,1743797460,,"303"
-:110
-|2,0,1743794395,,"110"
 :104
 |2,0,1743709508,,"104"
 :226
@@ -426,8 +556,6 @@ $
 |2,0,1743591152,,"40"
 :27
 |2,0,1743591095,,"27"
-:E
-|2,0,1743589940,,"E"
 :4094
 |2,0,1743549576,,"4094"
 :75
@@ -450,8 +578,6 @@ $
 |2,0,1743525559,,"1763"
 :46
 |2,0,1743369723,,"46"
-:Fbs11
-|2,0,1743482364,,"Fbs11"
 :Dufbur;l
 |2,0,1743456976,,"Dufbur;l"
 :515
@@ -486,16 +612,12 @@ $
 |2,0,1742927037,,"j"
 :Fbs53
 |2,0,1742899373,,"Fbs53"
-:Fbs23
-|2,0,1742896285,,"Fbs23"
 :143
 |2,0,1742893723,,"143"
 :241
 |2,0,1742890088,,"241"
 :565
 |2,0,1742886056,,"565"
-:117
-|2,0,1742885511,,"117"
 :"w
 |2,0,1742883578,,"\"w"
 :585
@@ -504,8 +626,6 @@ $
 |2,0,1742868142,,"755"
 :775
 |2,0,1742868139,,"775"
-:134
-|2,0,1742865475,,"134"
 :770
 |2,0,1742861416,,"770"
 :160
@@ -532,8 +652,6 @@ $
 |2,0,1742847023,,"Fbs63"
 :ew
 |2,0,1742846572,,"ew"
-:Fbs13
-|2,0,1742844205,,"Fbs13"
 :Fbs35
 |2,0,1742843753,,"Fbs35"
 :825
@@ -544,8 +662,6 @@ $
 |2,0,1742781016,,"751"
 :831
 |2,0,1742780850,,"831"
-:Fbs12
-|2,0,1742836972,,"Fbs12"
 :1636
 |2,0,1742613301,,"1636"
 :!636
@@ -560,8 +676,6 @@ $
 |2,0,1742558378,,"246"
 :183
 |2,0,1742556215,,"183"
-:Qa!
-|2,0,1742550235,,"Qa!"
 :Dispatch jk
 |2,0,1742509150,,"Dispatch jk"
 :T
@@ -570,8 +684,6 @@ $
 |2,0,1742507631,,"Fbs20"
 :364
 |2,0,1742506479,,"364"
-:sp ~/.profile_wangxl
-|2,0,1742496103,,"sp ~/.profile_wangxl"
 :Rg SingleTask
 |2,0,1742550060,,"Rg SingleTask"
 :sp ~/fbcode/scripts/xlwang/test_a2a.py
@@ -694,8 +806,6 @@ $
 |2,0,1740762727,,"Dufburljkkk jkkk"
 :Vs
 |2,0,1740607955,,"Vs"
-:Fbs28
-|2,0,1740602880,,"Fbs28"
 :586
 |2,0,1740602828,,"586"
 :223
@@ -870,8 +980,6 @@ $
 |2,0,1736271399,,"362"
 :Fbs48
 |2,0,1736208152,,"Fbs48"
-:Fbs29
-|2,0,1736193995,,"Fbs29"
 :Rg IGRankingTrainPipelineSparseDistProvider
 |2,0,1735848900,,"Rg IGRankingTrainPipelineSparseDistProvider"
 :'<,'>"
@@ -884,8 +992,720 @@ $
 |2,0,1734724866,,"YcmDiags"
 
 # Search String History (newest to oldest):
+?/cache_sync
+|2,1,1747391229,47,"cache_sync"
+?/pe
+|2,1,1747351441,47,"pe"
+?/expor
+|2,1,1747342839,47,"expor"
+?/pe_expor
+|2,1,1747342838,47,"pe_expor"
+?/add_pe
+|2,1,1747342717,47,"add_pe"
+?/spawn
+|2,1,1747331661,47,"spawn"
+?/start
+|2,1,1747330869,47,"start"
+?/"tfbnw.net
+|2,1,1747326832,47,"\"tfbnw.net"
+?/dev_
+|2,1,1747326831,47,"dev_"
+?/max
+|2,1,1747310662,47,"max"
+?/max_seq
+|2,1,1747310652,47,"max_seq"
+?/mp3c
+|2,1,1747309905,47,"mp3c"
+?/rank
+|2,1,1747309842,47,"rank"
+?/clean
+|2,1,1747309653,47,"clean"
+?/interval
+|2,1,1747309614,47,"interval"
+?/itnerval
+|2,1,1747309613,47,"itnerval"
+?/cache
+|2,1,1747309563,47,"cache"
+?/beconfigpro
+|2,1,1747280615,47,"beconfigpro"
+?/bulkeva
+|2,1,1747280592,47,"bulkeva"
+?/mrs
+|2,1,1747280386,47,"mrs"
+?/bulkeval
+|2,1,1747280342,47,"bulkeval"
+?/light
+|2,1,1747274919,47,"light"
+?/fork
+|2,1,1747274906,47,"fork"
+?/multiprocess
+|2,1,1747274904,47,"multiprocess"
+?/process
+|2,1,1747274887,47,"process"
+?/consumer
+|2,1,1747267094,47,"consumer"
+?/put
+|2,1,1747262034,47,"put"
+?/empty
+|2,1,1747245047,47,"empty"
+?/mast_link
+|2,1,1747275730,47,"mast_link"
+?/green
+|2,1,1747275682,47,"green"
+?/+1
+|2,1,1747275652,47,"+1"
+?/error
+|2,1,1747267819,47,"error"
+?/runtime error
+|2,1,1747267678,47,"runtime error"
+?/E0514
+|2,1,1747267486,47,"E0514"
+?/item_llm_micro
+|2,1,1747266151,47,"item_llm_micro"
+?/item_llm
+|2,1,1747266133,47,"item_llm"
+?/ddp_config
+|2,1,1747265528,47,"ddp_config"
+?/padd
+|2,1,1747265500,47,"padd"
+?/cot_hive
+|2,1,1747264779,47,"cot_hive"
+?/hive
+|2,1,1747264759,47,"hive"
+?/ddp
+|2,1,1747239592,47,"ddp"
+?/zero
+|2,1,1747208104,47,"zero"
+?/to_padded
+|2,1,1747206333,47,"to_padded"
+?/log_cuda
+|2,1,1747205967,47,"log_cuda"
 ? \s\+$
-|2,1,1746145639,,"\\s\\+$"
+|2,1,1747205770,,"\\s\\+$"
+?/mem
+|2,1,1747188849,47,"mem"
+?/inspect
+|2,1,1747188621,47,"inspect"
+?/frame
+|2,1,1747188056,47,"frame"
+?/logg
+|2,1,1747188042,47,"logg"
+?/Gjkjkujk
+|2,1,1747187983,47,"Gjkjkujk"
+?/set_fra
+|2,1,1747187977,47,"set_fra"
+?/logger
+|2,1,1747187971,47,"logger"
+?/set_trace
+|2,1,1747187782,47,"set_trace"
+?/collect
+|2,1,1747187542,47,"collect"
+?/gc
+|2,1,1747187540,47,"gc"
+?/build
+|2,1,1747187517,47,"build"
+?/stack
+|2,1,1747176379,47,"stack"
+?/memory
+|2,1,1747175087,47,"memory"
+?/full_item
+|2,1,1747173346,47,"full_item"
+?/module
+|2,1,1747168443,47,"module"
+?/moeul
+|2,1,1747168442,47,"moeul"
+?/max_se
+|2,1,1747168432,47,"max_se"
+?/max_
+|2,1,1747168392,47,"max_"
+?/save_re
+|2,1,1747168119,47,"save_re"
+?/save_retr
+|2,1,1747168114,47,"save_retr"
+?/save_job
+|2,1,1747168086,47,"save_job"
+?/job_info
+|2,1,1747168066,47,"job_info"
+?/save
+|2,1,1747168060,47,"save"
+?/load_job
+|2,1,1747168034,47,"load_job"
+?/dump_re
+|2,1,1747168026,47,"dump_re"
+?/start_ts
+|2,1,1747167926,47,"start_ts"
+?/padding
+|2,1,1747167562,47,"padding"
+?/bf16
+|2,1,1747161912,47,"bf16"
+?/b16
+|2,1,1747161910,47,"b16"
+?/batch_size
+|2,1,1747161389,47,"batch_size"
+?/mast_list
+|2,1,1747204452,47,"mast_list"
+?/tc_an
+|2,1,1747184024,47,"tc_an"
+?/grandt
+|2,1,1747184023,47,"grandt"
+?/mast_te
+|2,1,1747180098,47,"mast_te"
+?/mast_tennat
+|2,1,1747180097,47,"mast_tennat"
+?/cut
+|2,1,1747179591,47,"cut"
+?/mast_tenant
+|2,1,1747179499,47,"mast_tenant"
+?/prod
+|2,1,1747158508,47,"prod"
+?/prodconfig
+|2,1,1747157422,47,"prodconfig"
+?/fsdp
+|2,1,1747157418,47,"fsdp"
+?/pipeline
+|2,1,1747158374,47,"pipeline"
+?/igrankingmode
+|2,1,1747158368,47,"igrankingmode"
+?/mb3
+|2,1,1747158320,47,"mb3"
+?/model_fam
+|2,1,1747158292,47,"model_fam"
+?/model
+|2,1,1747158280,47,"model"
+?/nocom
+|2,1,1747157194,47,"nocom"
+?/padded_item
+|2,1,1747155129,47,"padded_item"
+?/segment
+|2,1,1747149282,47,"segment"
+?/segmented_eval
+|2,1,1747149254,47,"segmented_eval"
+?/segme
+|2,1,1747149100,47,"segme"
+?/segmented
+|2,1,1747149093,47,"segmented"
+?/segmen
+|2,1,1747149079,47,"segmen"
+?/launch
+|2,1,1747149031,47,"launch"
+?/al
+|2,1,1747149030,47,"al"
+?/train
+|2,1,1747122574,47,"train"
+?/is_bulkeval
+|2,1,1747122252,47,"is_bulkeval"
+?/training
+|2,1,1747120947,47,"training"
+?/is_bulk
+|2,1,1747120731,47,"is_bulk"
+?/bulk_eval
+|2,1,1747120723,47,"bulk_eval"
+?/jkk
+|2,1,1747118854,47,"jkk"
+?/seg
+|2,1,1747117710,47,"seg"
+?/bulk
+|2,1,1747095890,47,"bulk"
+?/skip_time
+|2,1,1747095805,47,"skip_time"
+?/service
+|2,1,1747095783,47,"service"
+?/quantile
+|2,1,1747115445,47,"quantile"
+?/prod =
+|2,1,1747101665,47,"prod ="
+?/5 +
+|2,1,1747101560,47,"5 +"
+?/train_eval_option
+|2,1,1747095611,47,"train_eval_option"
+?/train_eval
+|2,1,1747095265,47,"train_eval"
+?/bul
+|2,1,1747095167,47,"bul"
+?/pipelineprovider
+|2,1,1747095154,47,"pipelineprovider"
+?/bvu
+|2,1,1747095103,47,"bvu"
+?/capacity
+|2,1,1747094070,47,"capacity"
+?/capaci
+|2,1,1747094069,47,"capaci"
+?/size
+|2,1,1747093307,47,"size"
+?/local_size
+|2,1,1747092866,47,"local_size"
+?/size(
+|2,1,1747092849,47,"size("
+?/lr=
+|2,1,1747090984,47,"lr="
+?/learning_rate
+|2,1,1747090980,47,"learning_rate"
+?/learnin
+|2,1,1747090978,47,"learnin"
+?/learning
+|2,1,1747090975,47,"learning"
+?/i
+|2,1,1747090974,47,"i"
+?/item
+|2,1,1747090970,47,"item"
+?/with_rope
+|2,1,1747090525,47,"with_rope"
+?/coalesce
+|2,1,1747087274,47,"coalesce"
+?/fioun
+|2,1,1747086953,47,"fioun"
+?/user_seq_len_min
+|2,1,1747086758,47,"user_seq_len_min"
+?/user_seq
+|2,1,1747086754,47,"user_seq"
+?/llama
+|2,1,1747086082,47,"llama"
+?/shard
+|2,1,1747085996,47,"shard"
+?/enum
+|2,1,1747085721,47,"enum"
+?/sharding_st
+|2,1,1747083969,47,"sharding_st"
+?/sharding
+|2,1,1747083951,47,"sharding"
+?/sharding_str
+|2,1,1747083900,47,"sharding_str"
+?/fsdp_
+|2,1,1747083893,47,"fsdp_"
+?/sharding_s
+|2,1,1747083882,47,"sharding_s"
+?/api
+|2,1,1747083653,47,"api"
+?/end_of_data
+|2,1,1747080332,47,"end_of_data"
+?/eval_impl
+|2,1,1747080148,47,"eval_impl"
+?/comms_shutdown
+|2,1,1747080010,47,"comms_shutdown"
+?/full_sh
+|2,1,1747072394,47,"full_sh"
+?/udd_common_pool_cot_pixel_new_format_active_16x9_v2_vit_embedding
+|2,1,1747067530,47,"udd_common_pool_cot_pixel_new_format_active_16x9_v2_vit_embedding"
+?/udd_common_pool_cot_pixel_new_format_delta_16x9_v2_vit_embedding
+|2,1,1747067507,47,"udd_common_pool_cot_pixel_new_format_delta_16x9_v2_vit_embedding"
+?/vit_embedding
+|2,1,1747067467,47,"vit_embedding"
+?/embedding
+|2,1,1747067465,47,"embedding"
+?/16x9
+|2,1,1747067444,47,"16x9"
+?/disable_checkpoint
+|2,1,1747071712,47,"disable_checkpoint"
+?/disable
+|2,1,1747071703,47,"disable"
+?/disbla
+|2,1,1747071591,47,"disbla"
+?/disable_
+|2,1,1747071584,47,"disable_"
+?/checkpoint
+|2,1,1747069232,47,"checkpoint"
+?/checkpoint is dis
+|2,1,1747069170,47,"checkpoint is dis"
+?/checkpointis dis
+|2,1,1747069167,47,"checkpointis dis"
+?/get_checkpoint_schedule_type
+|2,1,1747068762,47,"get_checkpoint_schedule_type"
+?/auto_wrap
+|2,1,1746904658,47,"auto_wrap"
+?/dpp
+|2,1,1746904355,47,"dpp"
+?/dppconfig
+|2,1,1746904353,47,"dppconfig"
+?/version
+|2,1,1746904198,47,"version"
+?/pref
+|2,1,1746904014,47,"pref"
+?/grad_op
+|2,1,1746903783,47,"grad_op"
+?/ful
+|2,1,1746901346,47,"ful"
+?/rp[d
+|2,1,1746813519,47,"rp[d"
+?/get_trainre
+|2,1,1746775670,47,"get_trainre"
+?/enable_raw
+|2,1,1746774389,47,"enable_raw"
+?/get_train_p
+|2,1,1746774374,47,"get_train_p"
+?/mast_ten
+|2,1,1746771937,47,"mast_ten"
+?/fbgemm
+|2,1,1746771292,47,"fbgemm"
+?/fbge
+|2,1,1746771291,47,"fbge"
+?/deepl
+|2,1,1746771281,47,"deepl"
+?/filtered
+|2,1,1746769640,47,"filtered"
+?/bat
+|2,1,1746775801,47,"bat"
+?/inference
+|2,1,1746735728,47,"inference"
+?/feature_index
+|2,1,1746734988,47,"feature_index"
+?/callback
+|2,1,1746769229,47,"callback"
+?/llfm_ro_ue
+|2,1,1746769201,47,"llfm_ro_ue"
+?/b_ro
+|2,1,1746769175,47,"b_ro"
+?/console
+|2,1,1746768724,47,"console"
+?/report
+|2,1,1746768589,47,"report"
+?/test_report
+|2,1,1746768337,47,"test_report"
+?/tgif
+|2,1,1746767700,47,"tgif"
+?/train_mode
+|2,1,1746767501,47,"train_mode"
+?/predict_mode
+|2,1,1746767498,47,"predict_mode"
+?/is_train
+|2,1,1746767375,47,"is_train"
+?/micro
+|2,1,1746767355,47,"micro"
+?/falc
+|2,1,1746767354,47,"falc"
+?/fal
+|2,1,1746767310,47,"fal"
+?/rope
+|2,1,1746766669,47,"rope"
+?/640
+|2,1,1746766649,47,"640"
+?/local_states,
+|2,1,1746758540,47,"local_states,"
+?/world_size
+|2,1,1746758146,47,"world_size"
+?/get_wor
+|2,1,1746757853,47,"get_wor"
+?/quanti
+|2,1,1746757835,47,"quanti"
+?/patch
+|2,1,1746757817,47,"patch"
+?/metrics_tests
+|2,1,1746749051,47,"metrics_tests"
+?/testcase
+|2,1,1746748641,47,"testcase"
+?/pos_embedd
+|2,1,1746748471,47,"pos_embedd"
+?/multihead
+|2,1,1746748461,47,"multihead"
+?/pos_embedi
+|2,1,1746748458,47,"pos_embedi"
+?/para
+|2,1,1746748284,47,"para"
+?/combin
+|2,1,1746745779,47,"combin"
+?/cat
+|2,1,1746740776,47,"cat"
+?/qt
+|2,1,1746740728,47,"qt"
+?/itrn
+|2,1,1746739755,47,"itrn"
+?/irn
+|2,1,1746739754,47,"irn"
+?/should_compute
+|2,1,1746739703,47,"should_compute"
+?/tb_export
+|2,1,1746739503,47,"tb_export"
+?/device
+|2,1,1746739448,47,"device"
+?/cpu
+|2,1,1746739317,47,"cpu"
+?/seq_target
+|2,1,1746734161,47,"seq_target"
+?/len
+|2,1,1746734098,47,"len"
+?/global_metriuc
+|2,1,1746734055,47,"global_metriuc"
+?/tb_ex
+|2,1,1746733946,47,"tb_ex"
+?/global
+|2,1,1746733722,47,"global"
+?/quantilemetric
+|2,1,1746733649,47,"quantilemetric"
+?/tb:
+|2,1,1746733577,47,"tb:"
+?/ranking_output
+|2,1,1746733570,47,"ranking_output"
+?/combined
+|2,1,1746733515,47,"combined"
+?/self._metric
+|2,1,1746733215,47,"self._metric"
+?/update_combin
+|2,1,1746733030,47,"update_combin"
+?/self._metrics
+|2,1,1746733007,47,"self._metrics"
+?/self.me
+|2,1,1746732998,47,"self.me"
+?/parse
+|2,1,1746732926,47,"parse"
+?/metric
+|2,1,1746732718,47,"metric"
+?/world_sizes
+|2,1,1746732662,47,"world_sizes"
+?/metricslogg
+|2,1,1746732429,47,"metricslogg"
+?/force
+|2,1,1746732339,47,"force"
+?/toggle
+|2,1,1746732329,47,"toggle"
+?/torchmetr
+|2,1,1746727536,47,"torchmetr"
+?/dist.new_
+|2,1,1746727494,47,"dist.new_"
+?/self.process_gro
+|2,1,1746727482,47,"self.process_gro"
+?/pg
+|2,1,1746727476,47,"pg"
+?/sync
+|2,1,1746727401,47,"sync"
+?/gather
+|2,1,1746727388,47,"gather"
+?/utili
+|2,1,1746727191,47,"utili"
+?/update_
+|2,1,1746726672,47,"update_"
+?/window
+|2,1,1746726047,47,"window"
+?/window_size
+|2,1,1746726025,47,"window_size"
+?/windwo
+|2,1,1746725973,47,"windwo"
+?/wr
+|2,1,1746725940,47,"wr"
+?/combinedmetric
+|2,1,1746725672,47,"combinedmetric"
+?/add_state
+|2,1,1746725314,47,"add_state"
+?/def compute
+|2,1,1746695623,47,"def compute"
+?/compute
+|2,1,1746695621,47,"compute"
+?/cmopute
+|2,1,1746695620,47,"cmopute"
+?/self._me
+|2,1,1746695431,47,"self._me"
+?/self.metri
+|2,1,1746695428,47,"self.metri"
+?/com
+|2,1,1746695424,47,"com"
+?/combine
+|2,1,1746695322,47,"combine"
+?/update(
+|2,1,1746695315,47,"update("
+?/class 
+|2,1,1746695089,47,"class "
+?/quant
+|2,1,1746695087,47,"quant"
+?/windowbuffer
+|2,1,1746694514,47,"windowbuffer"
+?/combined_me
+|2,1,1746694344,47,"combined_me"
+?/update
+|2,1,1746694303,47,"update"
+?/forward
+|2,1,1746694242,47,"forward"
+?/dist
+|2,1,1746693598,47,"dist"
+?/per
+|2,1,1746692861,47,"per"
+?/apply_to
+|2,1,1746692832,47,"apply_to"
+?/apply
+|2,1,1746692822,47,"apply"
+?/PREDIC
+|2,1,1746692629,47,"PREDIC"
+?/compute(
+|2,1,1746692451,47,"compute("
+?/ne
+|2,1,1746692354,47,"ne"
+?/set
+|2,1,1746692256,47,"set"
+?/self.sync
+|2,1,1746692047,47,"self.sync"
+?/add
+|2,1,1746692031,47,"add"
+?/gat
+|2,1,1746691854,47,"gat"
+?/class met
+|2,1,1746691812,47,"class met"
+?/me
+|2,1,1746691783,47,"me"
+?/rec_metr
+|2,1,1746691752,47,"rec_metr"
+?/torchmetric
+|2,1,1746691719,47,"torchmetric"
+?/self.
+|2,1,1746691646,47,"self."
+?/state
+|2,1,1746691604,47,"state"
+?/di
+|2,1,1746686054,47,"di"
+?/client
+|2,1,1746686013,47,"client"
+?/thread
+|2,1,1746685821,47,"thread"
+?/rebat
+|2,1,1746654728,47,"rebat"
+?/rebatch
+|2,1,1746654721,47,"rebatch"
+?/prefetch
+|2,1,1746654440,47,"prefetch"
+?/disa
+|2,1,1746654436,47,"disa"
+?/queue
+|2,1,1746653868,47,"queue"
+?/cilent
+|2,1,1746653866,47,"cilent"
+?/d
+|2,1,1746653680,47,"d"
+?/dis
+|2,1,1746653673,47,"dis"
+?/disagg
+|2,1,1746653670,47,"disagg"
+?/prefetdh
+|2,1,1746653637,47,"prefetdh"
+?/user_s
+|2,1,1746653254,47,"user_s"
+?/user_S
+|2,1,1746653251,47,"user_S"
+?/on_epoch
+|2,1,1746647424,47,"on_epoch"
+?/on_pipelin
+|2,1,1746647422,47,"on_pipelin"
+?/epoch
+|2,1,1746647366,47,"epoch"
+?/on_
+|2,1,1746647362,47,"on_"
+?/reset_data
+|2,1,1746647135,47,"reset_data"
+?/pipeline_Base
+|2,1,1746647101,47,"pipeline_Base"
+?/b
+|2,1,1746647100,47,"b"
+?/train_pipeline_base
+|2,1,1746646867,47,"train_pipeline_base"
+?/pipeline_base
+|2,1,1746646751,47,"pipeline_base"
+?/pieline
+|2,1,1746646749,47,"pieline"
+?/disg
+|2,1,1746642976,47,"disg"
+?/dis/disa
+|2,1,1746642971,47,"dis/disa"
+?/disag
+|2,1,1746642849,47,"disag"
+?/eval
+|2,1,1746574615,47,"eval"
+?/local_capacity
+|2,1,1746567173,47,"local_capacity"
+?/per-rank pool 
+|2,1,1746566447,47,"per-rank pool "
+?/embedding_size_gb
+|2,1,1746566373,47,"embedding_size_gb"
+?/embedding_Size_
+|2,1,1746566370,47,"embedding_Size_"
+?/abcde
+|2,1,1746639271,47,"abcde"
+?/title
+|2,1,1746638138,47,"title"
+?/mast_st
+|2,1,1746637954,47,"mast_st"
+?/mast
+|2,1,1746637948,47,"mast"
+?/tb_cmp
+|2,1,1746637894,47,"tb_cmp"
+?/get_ods
+|2,1,1746637821,47,"get_ods"
+?/url
+|2,1,1746563451,47,"url"
+?/print
+|2,1,1746556756,47,"print"
+?/pprint
+|2,1,1746556755,47,"pprint"
+?/capacity(
+|2,1,1746553077,47,"capacity("
+?/pool
+|2,1,1746553031,47,"pool"
+?/max_r
+|2,1,1746552319,47,"max_r"
+?/n
+|2,1,1746552289,47,"n"
+?/url;
+|2,1,1746549979,47,"url;"
+?/axis
+|2,1,1746549693,47,"axis"
+?/llfm_u
+|2,1,1746545405,47,"llfm_u"
+? HSTU_MAX_SEQ_LEN
+|2,1,1746479622,,"HSTU_MAX_SEQ_LEN"
+? VVP100_TRUNCATE_MAX_VAL
+|2,1,1746479569,,"VVP100_TRUNCATE_MAX_VAL"
+? VVP_TRUNCATE_MAX_VAL
+|2,1,1746466596,,"VVP_TRUNCATE_MAX_VAL"
+?/VVP_TRUNCATE_MAX_VAL/self.vvp_truncate_max_val/g
+|2,1,1746466562,47,"VVP_TRUNCATE_MAX_VAL/self.vvp_truncate_max_val/g"
+?/enable_
+|2,1,1746465780,47,"enable_"
+?/join
+|2,1,1746490070,47,"join"
+?/finish_ts
+|2,1,1746490052,47,"finish_ts"
+?/key
+|2,1,1746490040,47,"key"
+??s
+|2,1,1746489992,63,"s"
+?/job
+|2,1,1746483324,47,"job"
+?/pip
+|2,1,1746484093,47,"pip"
+?/producer
+|2,1,1746481777,47,"producer"
+?/impl
+|2,1,1746481624,47,"impl"
+?/task
+|2,1,1746481621,47,"task"
+?/user_id
+|2,1,1746481575,47,"user_id"
+?/output
+|2,1,1746479357,47,"output"
+?/out_col
+|2,1,1746479356,47,"out_col"
+?/output_col
+|2,1,1746479354,47,"output_col"
+?/lr
+|2,1,1746476951,47,"lr"
+?/self.prepro
+|2,1,1746465092,47,"self.prepro"
+?/self.hpreprocess
+|2,1,1746465089,47,"self.hpreprocess"
+?/preprocessor
+|2,1,1746465082,47,"preprocessor"
+?/preprocessor(
+|2,1,1746465038,47,"preprocessor("
+?/awa
+|2,1,1746464883,47,"awa"
+?/set_tra
+|2,1,1746222253,47,"set_tra"
+?/set_trac
+|2,1,1746215637,47,"set_trac"
+?/set_
+|2,1,1746213529,47,"set_"
+?/offset
+|2,1,1746207858,47,"offset"
+?/llfm
+|2,1,1746206472,47,"llfm"
+?/ig_ind
+|2,1,1746205541,47,"ig_ind"
+?/construc
+|2,1,1746204311,47,"construc"
 ?/context
 |2,1,1746145577,47,"context"
 ?/contex
@@ -894,14 +1714,10 @@ $
 |2,1,1746145269,47,"none_"
 ?/non_spar
 |2,1,1746145109,47,"non_spar"
-?/llfm
-|2,1,1746145088,47,"llfm"
 ?/construct
 |2,1,1746143725,47,"construct"
 ?/contextual
 |2,1,1746143595,47,"contextual"
-?/set_trace
-|2,1,1746142961,47,"set_trace"
 ?/set_tarce
 |2,1,1746142959,47,"set_tarce"
 ?/2048
@@ -930,8 +1746,6 @@ $
 |2,1,1746123370,47,"baseline_ke"
 ?/set_t
 |2,1,1746084044,47,"set_t"
-?/set_tra
-|2,1,1746084041,47,"set_tra"
 ?/input_dtype
 |2,1,1746084008,47,"input_dtype"
 ?/interleavepre
@@ -960,8 +1774,6 @@ $
 |2,1,1746057748,47,"content_mlp_"
 ?/simplemlp
 |2,1,1746057651,47,"simplemlp"
-?/set_trac
-|2,1,1746057255,47,"set_trac"
 ?/get_non
 |2,1,1746055748,47,"get_non"
 ?/get_non_sparse
@@ -978,8 +1790,6 @@ $
 |2,1,1746054545,47,"preproc"
 ?/set_tr
 |2,1,1746054390,47,"set_tr"
-?/mrs
-|2,1,1746054387,47,"mrs"
 ?/non_
 |2,1,1746054331,47,"non_"
 ?/nonesparse
@@ -998,16 +1808,12 @@ $
 |2,1,1746051024,47,"non"
 ?/non_sparse
 |2,1,1746051021,47,"non_sparse"
-?/llfm_u
-|2,1,1746048576,47,"llfm_u"
 ?/constr
 |2,1,1746048527,47,"constr"
 ?/jaggedtenso
 |2,1,1746045704,47,"jaggedtenso"
 ?/llfm_
 |2,1,1746044091,47,"llfm_"
-?/device
-|2,1,1746043950,47,"device"
 ?/b_nro
 |2,1,1746043883,47,"b_nro"
 ?//l
@@ -1026,6 +1832,10 @@ $
 |2,1,1746033854,47,"hstucint"
 ?/hstu
 |2,1,1746033849,47,"hstu"
+?/cach
+|2,1,1746203704,47,"cach"
+?/zsh_his
+|2,1,1746203679,47,"zsh_his"
 ?/as_row
 |2,1,1746138255,47,"as_row"
 ?/idass
@@ -1040,8 +1850,6 @@ $
 |2,1,1746118102,47,"-m"
 ?/src_table
 |2,1,1746117968,47,"src_table"
-?/process
-|2,1,1746117920,47,"process"
 ?/torchtnt
 |2,1,1746117031,47,"torchtnt"
 ?/make
@@ -1072,26 +1880,18 @@ $
 |2,1,1746026007,47,"self.stage"
 ?/self.data_source_config
 |2,1,1746025953,47,"self.data_source_config"
-?/eval_impl
-|2,1,1746025759,47,"eval_impl"
 ?/should_reb
 |2,1,1746023216,47,"should_reb"
 ?/self.data_source
 |2,1,1746023189,47,"self.data_source"
 ?/eval_data
 |2,1,1746022796,47,"eval_data"
-?/impl
-|2,1,1746022790,47,"impl"
 ?/loop(
 |2,1,1746022535,47,"loop("
 ?/replace
 |2,1,1746019966,47,"replace"
 ?/num_batch
 |2,1,1745985262,47,"num_batch"
-?/eval
-|2,1,1745985258,47,"eval"
-?/epoch
-|2,1,1745979585,47,"epoch"
 ?/resolve
 |2,1,1745979157,47,"resolve"
 ?/self._epoch
@@ -1108,8 +1908,6 @@ $
 |2,1,1745972626,47,"rest_"
 ?/rankingmtml
 |2,1,1745972547,47,"rankingmtml"
-?/pipeline
-|2,1,1745972456,47,"pipeline"
 ?/04
 |2,1,1746032020,47,"04"
 ?/index
@@ -1126,8 +1924,6 @@ $
 |2,1,1746031881,47,"data"
 ?/mrs_logg
 |2,1,1745971621,47,"mrs_logg"
-?/on_epoch
-|2,1,1745971478,47,"on_epoch"
 ?/trainpipeline
 |2,1,1745971382,47,"trainpipeline"
 ?/reset
@@ -1144,8 +1940,6 @@ $
 |2,1,1745969465,47,"recreate"
 ?/in batch n
 |2,1,1745969214,47,"in batch n"
-?/itrn
-|2,1,1745967677,47,"itrn"
 ?/in batch number
 |2,1,1745967672,47,"in batch number"
 ?/start epoch
@@ -1204,10 +1998,6 @@ $
 |2,1,1745957778,47,"shopu"
 ?/should_rebui
 |2,1,1745955913,47,"should_rebui"
-?/self.
-|2,1,1745955442,47,"self."
-?/checkpoint
-|2,1,1745955200,47,"checkpoint"
 ?/create
 |2,1,1745953254,47,"create"
 ?/dataclass
@@ -1262,18 +2052,12 @@ $
 |2,1,1745881139,47,"train_impl"
 ?/dataloaderconfig
 |2,1,1745881099,47,"dataloaderconfig"
-?/hive
-|2,1,1745881087,47,"hive"
 ?/run(
 |2,1,1745880415,47,"run("
 ?/type
 |2,1,1745880405,47,"type"
 ?/job_t
 |2,1,1745880256,47,"job_t"
-?/job
-|2,1,1745880244,47,"job"
-?/train
-|2,1,1745880238,47,"train"
 ?/training_enviro
 |2,1,1745878534,47,"training_enviro"
 ?/utils
@@ -1304,8 +2088,6 @@ $
 |2,1,1745870568,47,"archinput"
 ?/opt
 |2,1,1745870563,47,"opt"
-?/di
-|2,1,1745870520,47,"di"
 ?/num_llfm_em
 |2,1,1745870339,47,"num_llfm_em"
 ?/num_tasks
@@ -1342,8 +2124,6 @@ $
 |2,1,1745860897,47,"remote"
 ?/igloca
 |2,1,1745860883,47,"igloca"
-?/com
-|2,1,1745860710,47,"com"
 ?/label
 |2,1,1745866130,47,"label"
 ?/share
@@ -1372,12 +2152,8 @@ $
 |2,1,1745877992,47,"leva"
 ?/tensor
 |2,1,1745863220,47,"tensor"
-?/logger
-|2,1,1745863214,47,"logger"
 ?/channel_output
 |2,1,1745860050,47,"channel_output"
-?/task
-|2,1,1745685546,47,"task"
 ?/input
 |2,1,1745685458,47,"input"
 ?/llfm_user_
@@ -1404,8 +2180,6 @@ $
 |2,1,1745680231,47,"128"
 ?/att_task
 |2,1,1745679212,47,"att_task"
-?/pool
-|2,1,1745678868,47,"pool"
 ?/num
 |2,1,1745677044,47,"num"
 ?/st
@@ -1498,8 +2272,6 @@ $
 |2,1,1745520388,47,"train-eval-mas"
 ?/llfm-train-eval
 |2,1,1745520381,47,"llfm-train-eval"
-?/bulk
-|2,1,1745520295,47,"bulk"
 ?/append
 |2,1,1745519294,47,"append"
 ?/pooled
@@ -1558,8 +2330,6 @@ $
 |2,1,1745513679,47,"hstu_emb"
 ?/dhen
 |2,1,1745513466,47,"dhen"
-?/embedding
-|2,1,1745512730,47,"embedding"
 ?/recor
 |2,1,1745512423,47,"recor"
 ?/tb
@@ -1584,8 +2354,6 @@ $
 |2,1,1745507102,47,"query"
 ?/partition-
 |2,1,1745506094,47,"partition-"
-?/feature_index
-|2,1,1745482744,47,"feature_index"
 ?/report_int
 |2,1,1745481455,47,"report_int"
 ?/metrics
@@ -1618,8 +2386,6 @@ $
 |2,1,1745472884,47,"12"
 ?/feed_
 |2,1,1745472427,47,"feed_"
-?/item
-|2,1,1745472425,47,"item"
 ?/feed
 |2,1,1745472292,47,"feed"
 ?/table
@@ -1642,8 +2408,6 @@ $
 |2,1,1745470454,47,"adapt"
 ?/ada
 |2,1,1745470451,47,"ada"
-?/shard
-|2,1,1745469444,47,"shard"
 ?/shard_
 |2,1,1745469436,47,"shard_"
 ?/def sha
@@ -1658,8 +2422,6 @@ $
 |2,1,1745452792,47,"train-eval"
 ?/make 
 |2,1,1745452127,47,"make "
-?/user_id
-|2,1,1745451134,47,"user_id"
 ?/reloadable
 |2,1,1745450884,47,"reloadable"
 ?/featu
@@ -1686,8 +2448,6 @@ $
 |2,1,1745449921,47,"shampoo"
 ?/opti
 |2,1,1745449916,47,"opti"
-?/get_wor
-|2,1,1745449910,47,"get_wor"
 ?/get_world
 |2,1,1745449907,47,"get_world"
 ?/world_siz
@@ -1700,8 +2460,6 @@ $
 |2,1,1745449557,47,"to_mast"
 ?/tomast
 |2,1,1745449524,47,"tomast"
-?/disagg
-|2,1,1745449519,47,"disagg"
 ?/to_local
 |2,1,1745449476,47,"to_local"
 ?/query_
@@ -1734,14 +2492,8 @@ $
 |2,1,1745444927,47,"config"
 ?/reloadablefeatur
 |2,1,1745444822,47,"reloadablefeatur"
-?/add_pe
-|2,1,1745454210,47,"add_pe"
-?/bulk_eval
-|2,1,1745454166,47,"bulk_eval"
 ?/be
 |2,1,1745454164,47,"be"
-?/max
-|2,1,1745453841,47,"max"
 ?/fi
 |2,1,1745453393,47,"fi"
 ?/fea
@@ -1772,8 +2524,6 @@ $
 |2,1,1745438232,47,"train-eval-"
 ?/mast-tra
 |2,1,1745438224,47,"mast-tra"
-?/mast
-|2,1,1745438209,47,"mast"
 ?/predicate
 |2,1,1745442657,47,"predicate"
 ?/data_sour
@@ -1782,8 +2532,6 @@ $
 |2,1,1745433386,47,"pe_tasks"
 ?/block
 |2,1,1745432004,47,"block"
-?/start
-|2,1,1745431779,47,"start"
 ?/loss
 |2,1,1745430680,47,"loss"
 ?/all_wei
@@ -1802,8 +2550,6 @@ $
 |2,1,1745427579,47,"logits"
 ?/module_config
 |2,1,1745427438,47,"module_config"
-?/module
-|2,1,1745427424,47,"module"
 ?/loss_f
 |2,1,1745427302,47,"loss_f"
 ?/classifica
@@ -1838,8 +2584,6 @@ $
 |2,1,1745375249,47,"ts:"
 ?/acceltrainp
 |2,1,1745375206,47,"acceltrainp"
-?/gc
-|2,1,1745374731,47,"gc"
 ?/col
 |2,1,1745374178,47,"col"
 ?/input_to
@@ -1892,10 +2636,6 @@ $
 |2,1,1745364257,47,"jk"
 ?/lau
 |2,1,1745364254,47,"lau"
-?/launch
-|2,1,1745364244,47,"launch"
-?/al
-|2,1,1745364243,47,"al"
 ?/roo
 |2,1,1745364186,47,"roo"
 ?/additional_
@@ -1908,8 +2648,6 @@ $
 |2,1,1745363643,47,"rid"
 ?/user_r
 |2,1,1745363589,47,"user_r"
-?/model
-|2,1,1745363528,47,"model"
 ?/user
 |2,1,1745363463,47,"user"
 ?/train_b
@@ -1920,8 +2658,6 @@ $
 |2,1,1745363084,47,"wuk"
 ?/wukon
 |2,1,1745363064,47,"wukon"
-?/model_fam
-|2,1,1745362383,47,"model_fam"
 ?/oncall
 |2,1,1745362123,47,"oncall"
 ?/train-loca
@@ -1942,8 +2678,6 @@ $
 |2,1,1745426791,47,"provider"
 ?/regression
 |2,1,1745426735,47,"regression"
-?/metric
-|2,1,1745426709,47,"metric"
 ?/regression_task_names
 |2,1,1745426707,47,"regression_task_names"
 ?/export
@@ -1962,12 +2696,8 @@ $
 |2,1,1745364708,47,"/"
 ?/position
 |2,1,1745363750,47,"position"
-?/rope
-|2,1,1745363719,47,"rope"
 ?/llam
 |2,1,1745363708,47,"llam"
-?/item_llm
-|2,1,1745363706,47,"item_llm"
 ?/mb5_
 |2,1,1745361185,47,"mb5_"
 ?/embeddingmoduleop
@@ -1980,8 +2710,6 @@ $
 |2,1,1745356609,47,"nro_dict"
 ?/red
 |2,1,1745355210,47,"red"
-?/producer
-|2,1,1745354792,47,"producer"
 ?/rss_in_gb
 |2,1,1745354653,47,"rss_in_gb"
 ?/first
@@ -1998,12 +2726,8 @@ $
 |2,1,1745342167,47,"adD_row"
 ?/gc.coll
 |2,1,1745342108,47,"gc.coll"
-?/batch_size
-|2,1,1745335789,47,"batch_size"
 ?/rss_in
 |2,1,1745335146,47,"rss_in"
-?/consumer
-|2,1,1745335137,47,"consumer"
 ?/writer
 |2,1,1745334933,47,"writer"
 ?/param
@@ -2016,8 +2740,6 @@ $
 |2,1,1745307542,47,"uvm"
 ?/interva
 |2,1,1745305779,47,"interva"
-?/bulkeval
-|2,1,1745301546,47,"bulkeval"
 ?/custom
 |2,1,1745277273,47,"custom"
 ?/block_d
@@ -2048,18 +2770,12 @@ $
 |2,1,1745273989,47,"prof"
 ?/trace
 |2,1,1745273988,47,"trace"
-?/queue
-|2,1,1745273240,47,"queue"
 ?/producer.py
 |2,1,1745354664,47,"producer.py"
 ?/bulk_eva
 |2,1,1745352461,47,"bulk_eva"
-?/put
-|2,1,1745272703,47,"put"
 ?/cpu(
 |2,1,1745272594,47,"cpu("
-?/cpu
-|2,1,1745272591,47,"cpu"
 ?/cpu_memory
 |2,1,1745272589,47,"cpu_memory"
 ?/del
@@ -2076,22 +2792,14 @@ $
 |2,1,1745262035,47,"get_queue"
 ?/shm
 |2,1,1745262031,47,"shm"
-?/mem
-|2,1,1745261552,47,"mem"
 ?/async process
 |2,1,1745255702,47,"async process"
-?/collect
-|2,1,1745253668,47,"collect"
 ?/qsize
 |2,1,1745248545,47,"qsize"
-?/empty
-|2,1,1745246190,47,"empty"
 ?/named_tenso
 |2,1,1745245885,47,"named_tenso"
 ?/progress(
 |2,1,1745243019,47,"progress("
-?/d
-|2,1,1745243017,47,"d"
 ?/progress
 |2,1,1745242993,47,"progress"
 ?/rss
@@ -2128,14 +2836,10 @@ $
 |2,1,1745115075,,""
 ?/def stride(
 |2,1,1745113879,47,"def stride("
-?/state
-|2,1,1745111930,47,"state"
 ?/stage_id
 |2,1,1745111826,47,"stage_id"
 ?/warm
 |2,1,1745111652,47,"warm"
-?/lr
-|2,1,1745111649,47,"lr"
 ?/module_con
 |2,1,1745111022,47,"module_con"
 ?/register_buffer
@@ -2148,14 +2852,8 @@ $
 |2,1,1744872727,47,"fi_latest_ds"
 ?/fi_latest
 |2,1,1744872715,47,"fi_latest"
-?/len
-|2,1,1744872240,47,"len"
-?/user_seq
-|2,1,1744872238,47,"user_seq"
 ?/task_done
 |2,1,1744731199,47,"task_done"
-?/set_
-|2,1,1744731198,47,"set_"
 ?/toli
 |2,1,1744731102,47,"toli"
 ?/tolis
@@ -2188,8 +2886,6 @@ $
 |2,1,1744688540,47,"system"
 ?/biograp
 |2,1,1744688538,47,"biograp"
-?/interval
-|2,1,1744610394,47,"interval"
 ?/igmastconfig
 |2,1,1744610309,47,"igmastconfig"
 ?/ig_mast
@@ -2208,8 +2904,6 @@ $
 |2,1,1744608074,47,"addrow"
 ?/commit
 |2,1,1744608073,47,"commit"
-?/bulkeva
-|2,1,1744608048,47,"bulkeva"
 ?/hivewriter
 |2,1,1744607919,47,"hivewriter"
 ?/gc\.
@@ -2244,8 +2938,6 @@ $
 |2,1,1744381733,47,"masked_selec"
 ?/num_channel
 |2,1,1744360186,47,"num_channel"
-?/micro
-|2,1,1744359976,47,"micro"
 ?/eval_on
 |2,1,1744359855,47,"eval_on"
 ?/eval_onl
@@ -2254,8 +2946,6 @@ $
 |2,1,1744359837,47,"sorted="
 ?/fiv2
 |2,1,1744359716,47,"fiv2"
-?/combine
-|2,1,1744358341,47,"combine"
 ?/jt_lib
 |2,1,1744357622,47,"jt_lib"
 ?/pos
@@ -2278,8 +2968,6 @@ $
 |2,1,1744338003,47,"post"
 ?/oom
 |2,1,1744329736,47,"oom"
-?/stack
-|2,1,1744322671,47,"stack"
 ?/item_Forwarc/
 |2,1,1744316496,47,"item_Forwarc/"
 ?/load_retryable_job_info
@@ -2314,8 +3002,6 @@ $
 |2,1,1744302675,47,"cos"
 ?/build_
 |2,1,1744302219,47,"build_"
-?/max_
-|2,1,1744280362,47,"max_"
 ?/all_nonzer
 |2,1,1744277303,47,"all_nonzer"
 ?/all_nonzero
@@ -2402,14 +3088,10 @@ $
 |2,1,1744217735,47,"save_fr"
 ?/save_
 |2,1,1744217727,47,"save_"
-?/sync
-|2,1,1744211006,47,"sync"
 ?/suff
 |2,1,1744151681,47,"suff"
 ?/exhaustive
 |2,1,1744150764,47,"exhaustive"
-?/start_ts
-|2,1,1744150173,47,"start_ts"
 ?/buolk
 |2,1,1744150146,47,"buolk"
 ?/bulkevalconfig
@@ -2436,8 +3118,6 @@ $
 |2,1,1744133624,47,"force_"
 ?/start gather
 |2,1,1744108976,47,"start gather"
-?/tb_export
-|2,1,1744106680,47,"tb_export"
 ?/du
 |2,1,1744106668,47,"du"
 ?/dim_zero_sum
@@ -2448,8 +3128,6 @@ $
 |2,1,1744106606,47,"re"
 ?/dim_zer
 |2,1,1744106432,47,"dim_zer"
-?/combined
-|2,1,1744106313,47,"combined"
 ?/dim_zero
 |2,1,1744106245,47,"dim_zero"
 ?/preio
@@ -2464,8 +3142,6 @@ $
 |2,1,1744104136,47,"stride"
 ?/dedup
 |2,1,1744103766,47,"dedup"
-?/global
-|2,1,1744103755,47,"global"
 ?/global_metri
 |2,1,1744103738,47,"global_metri"
 ?/retr
@@ -2474,16 +3150,12 @@ $
 |2,1,1744103502,47,"retrieval"
 ?/user_export
 |2,1,1744103464,47,"user_export"
-?/tb:
-|2,1,1744103453,47,"tb:"
 ?/"retrieval
 |2,1,1744103449,47,"\"retrieval"
 ?/pre_segment
 |2,1,1744102933,47,"pre_segment"
 ?/pres_g
 |2,1,1744102931,47,"pres_g"
-?/update
-|2,1,1744102390,47,"update"
 ?/local_global
 |2,1,1744102021,47,"local_global"
 ?/zh
@@ -2496,16 +3168,12 @@ $
 |2,1,1744099868,47,"env"
 ?/init
 |2,1,1744099867,47,"init"
-?/report
-|2,1,1744099701,47,"report"
 ?/varia
 |2,1,1744099122,47,"varia"
 ?/qps
 |2,1,1744099040,47,"qps"
 ?/variab
 |2,1,1744099022,47,"variab"
-?/dist
-|2,1,1744098902,47,"dist"
 ?/mas
 |2,1,1744098850,47,"mas"
 ?/inf
@@ -2530,12 +3198,8 @@ $
 |2,1,1744091444,47,"filter_by_prese"
 ?/fiolte
 |2,1,1744091442,47,"fiolte"
-?/gather
-|2,1,1744069389,47,"gather"
 ?/item_emb
 |2,1,1744067291,47,"item_emb"
-?/full_item
-|2,1,1744066331,47,"full_item"
 ?/eval_fwd_mbsz
 |2,1,1744065166,47,"eval_fwd_mbsz"
 ?/micro_
@@ -2554,8 +3218,6 @@ $
 |2,1,1744061490,47,"micro_bat"
 ?/use
 |2,1,1744061404,47,"use"
-?/to_padded
-|2,1,1744059097,47,"to_padded"
 ?/microbatch
 |2,1,1744058050,47,"microbatch"
 ?/none
@@ -2568,16 +3230,12 @@ $
 |2,1,1744052732,47,"to_offse"
 ?/topk
 |2,1,1744098334,47,"topk"
-?/train_eval
-|2,1,1744054154,47,"train_eval"
 ?/se
 |2,1,1744054081,47,"se"
 ?/set_iter/set
 |2,1,1744054077,47,"set_iter/set"
 ?/met
 |2,1,1744049323,47,"met"
-?/padd
-|2,1,1744046694,47,"padd"
 ?/get(
 |2,1,1744045581,47,"get("
 ?/prefi
@@ -2590,16 +3248,10 @@ $
 |2,1,1743877826,47,"ke"
 ?/extract_kjt
 |2,1,1743877822,47,"extract_kjt"
-?/print
-|2,1,1743877771,47,"print"
-?/b
-|2,1,1743877470,47,"b"
 ?/torchrec
 |2,1,1743877462,47,"torchrec"
 ?/comm
 |2,1,1743877460,47,"comm"
-?/forward
-|2,1,1743877182,47,"forward"
 ?/fwd
 |2,1,1743877181,47,"fwd"
 ?/rankllm
@@ -2660,8 +3312,6 @@ $
 |2,1,1743683342,47,"mi"
 ?/min_frac
 |2,1,1743682248,47,"min_frac"
-?/training
-|2,1,1743680697,47,"training"
 ?/log_m
 |2,1,1743638922,47,"log_m"
 ?/combined_met
@@ -2718,10 +3368,6 @@ $
 |2,1,1743628278,47,"should_save"
 ?/checkpoint is disabled
 |2,1,1743628224,47,"checkpoint is disabled"
-?/checkpoint is dis
-|2,1,1743628207,47,"checkpoint is dis"
-?/logg
-|2,1,1743628120,47,"logg"
 ?/foun
 |2,1,1743627235,47,"foun"
 ?/selec
@@ -2772,16 +3418,12 @@ $
 |2,1,1743552694,47,"scatter"
 ?/to_offset
 |2,1,1743552599,47,"to_offset"
-?/fbgemm
-|2,1,1743552594,47,"fbgemm"
 ?/wait_impl
 |2,1,1743551290,47,"wait_impl"
 ?/get
 |2,1,1743551140,47,"get"
 ?/port
 |2,1,1743549980,47,"port"
-?/world_size
-|2,1,1743549802,47,"world_size"
 ?/common_utils
 |2,1,1743549566,47,"common_utils"
 ?/world
@@ -2790,10 +3432,6 @@ $
 |2,1,1743549411,47,"expect"
 ?/id_to_index
 |2,1,1743548614,47,"id_to_index"
-?/rank
-|2,1,1743548579,47,"rank"
-?/pg
-|2,1,1743548440,47,"pg"
 ?/free
 |2,1,1743548409,47,"free"
 ?/func
@@ -2898,8 +3536,6 @@ $
 |2,1,1743532058,47,"get_world_size"
 ?/id_has
 |2,1,1743531653,47,"id_has"
-?/i
-|2,1,1743531579,47,"i"
 ?/cache_cleaner
 |2,1,1743526232,47,"cache_cleaner"
 ?/datasource
@@ -2922,18 +3558,12 @@ $
 |2,1,1743489347,47,"process_indices"
 ?/id_hah
 |2,1,1743489343,47,"id_hah"
-?/cat
-|2,1,1743369641,47,"cat"
 ?/end_ts
 |2,1,1743487341,47,"end_ts"
-?/disable
-|2,1,1743487252,47,"disable"
 ?/extra_fire
 |2,1,1743487250,47,"extra_fire"
 ?/recu
 |2,1,1743487149,47,"recu"
-?/dpp
-|2,1,1743487017,47,"dpp"
 ?/bulk-eval
 |2,1,1743486845,47,"bulk-eval"
 ?/evaluation
@@ -2948,12 +3578,8 @@ $
 |2,1,1743482246,47,"cuda.cach"
 ?/build_snp
 |2,1,1743367978,47,"build_snp"
-?/build
-|2,1,1743367961,47,"build"
 ?/memory_snapshot_config
 |2,1,1743367948,47,"memory_snapshot_config"
-?/bf16
-|2,1,1743268611,47,"bf16"
 ?/ac
 |2,1,1743268601,47,"ac"
 ?/auto_wai
@@ -3030,8 +3656,6 @@ $
 |2,1,1743020828,47,"model_input"
 ?/model_np
 |2,1,1743020826,47,"model_np"
-?/output
-|2,1,1743020592,47,"output"
 ?/ro_id_list_features
 |2,1,1743020454,47,"ro_id_list_features"
 ?/id_list_fea
@@ -3066,12 +3690,8 @@ $
 |2,1,1742970573,47,"scaled_dot"
 ?/penalize
 |2,1,1742968224,47,"penalize"
-?/size
-|2,1,1742945286,47,"size"
 ?/apply_llama
 |2,1,1742940355,47,"apply_llama"
-?/llama
-|2,1,1742939832,47,"llama"
 ?/amp
 |2,1,1742939086,47,"amp"
 ?/clazz
@@ -3096,8 +3716,6 @@ $
 |2,1,1742937272,47,"sl_"
 ?/sampl'jkjjjjkk
 |2,1,1742937262,47,"sampl'jkjjjjkk"
-?/memory
-|2,1,1742925329,47,"memory"
 ?/step(
 |2,1,1742925222,47,"step("
 ?/build_snaps
@@ -3244,8 +3862,6 @@ $
 |2,1,1742887560,47,"candidate"
 ?/named_tens
 |2,1,1742887546,47,"named_tens"
-?/parse
-|2,1,1742887476,47,"parse"
 ?/task_names
 |2,1,1742887126,47,"task_names"
 ?/tasks
@@ -3344,8 +3960,6 @@ $
 |2,1,1742850343,47,"eval-start-ts"
 ?/model_entity
 |2,1,1742850173,47,"model_entity"
-?/save
-|2,1,1742849782,47,"save"
 ?/iglocal
 |2,1,1742849230,47,"iglocal"
 ?/create_infer
@@ -3378,8 +3992,6 @@ $
 |2,1,1742843351,47,"rankdb"
 ?/on_preempt
 |2,1,1742842676,47,"on_preempt"
-?/bul
-|2,1,1742842294,47,"bul"
 ?/blue-
 |2,1,1742842188,47,"blue-"
 ?/xlog_pre
@@ -3398,16 +4010,12 @@ $
 |2,1,1742780267,47,"self.get"
 ?/penaliz
 |2,1,1742780215,47,"penaliz"
-?/irn
-|2,1,1742777817,47,"irn"
 ?/up
 |2,1,1742776891,47,"up"
 ?/update_rate
 |2,1,1742776852,47,"update_rate"
 ?/schedule
 |2,1,1742776756,47,"schedule"
-?/learning_rate
-|2,1,1742776754,47,"learning_rate"
 ?/video_positive
 |2,1,1742837071,47,"video_positive"
 ?/mt_
@@ -3484,8 +4092,6 @@ $
 |2,1,1742551881,,"#"
 ?/embedd
 |2,1,1742550578,47,"embedd"
-?/apply
-|2,1,1742508565,47,"apply"
 ?/applye
 |2,1,1742508564,47,"applye"
 ?/cls_values
@@ -3628,8 +4234,6 @@ $
 |2,1,1742364174,47,"all_keys"
 ?/unbind
 |2,1,1742361389,47,"unbind"
-?/cache
-|2,1,1742349559,47,"cache"
 ?/embe
 |2,1,1742342451,47,"embe"
 ?/torch.nn.e
@@ -3734,8 +4338,6 @@ $
 |2,1,1742312137,47,"init."
 ?/transformer
 |2,1,1742311450,47,"transformer"
-?/padding
-|2,1,1742311354,47,"padding"
 ?/normal_
 |2,1,1742311347,47,"normal_"
 ?/init_
@@ -3774,8 +4376,6 @@ $
 |2,1,1742260725,47,"scaled_dot_"
 ?/fir
 |2,1,1742260693,47,"fir"
-?/multihead
-|2,1,1742260681,47,"multihead"
 ?/scale_factor
 |2,1,1742260057,47,"scale_factor"
 ?/layernorm
@@ -3920,14 +4520,10 @@ $
 |2,1,1742078547,47,"norm"
 ?/wei
 |2,1,1742078483,47,"wei"
-?/zero
-|2,1,1742076377,47,"zero"
 ?/upd
 |2,1,1742076369,47,"upd"
 ?/parall
 |2,1,1742076246,47,"parall"
-?/lr=
-|2,1,1742064737,47,"lr="
 ?/is_regression
 |2,1,1742056487,47,"is_regression"
 ?/regr
@@ -4002,8 +4598,6 @@ $
 |2,1,1741898453,47,"model_parallel"
 ?/parallel
 |2,1,1741898056,47,"parallel"
-?/fsdp
-|2,1,1741895628,47,"fsdp"
 ?/prune
 |2,1,1741888170,47,"prune"
 ?/conv1d
@@ -4058,8 +4652,6 @@ $
 |2,1,1741859967,47,"src"
 ?/encoder
 |2,1,1741858191,47,"encoder"
-?/cach
-|2,1,1741857468,47,"cach"
 ?/tril
 |2,1,1741856791,47,"tril"
 ?/ones
@@ -4128,14 +4720,8 @@ $
 |2,1,1741848701,47,"datafmmerge"
 ?/prefix=
 |2,1,1741847632,47,"prefix="
-?/learning
-|2,1,1741847628,47,"learning"
 ?/enable_session
 |2,1,1741846223,47,"enable_session"
-?/offset
-|2,1,1741846130,47,"offset"
-?/segment
-|2,1,1741842545,47,"segment"
 ?/set_e
 |2,1,1741842211,47,"set_e"
 ?/int
@@ -4156,8 +4742,6 @@ $
 |2,1,1741824470,47,"segment_config"
 ?/segmented_config
 |2,1,1741824347,47,"segmented_config"
-?/segmented
-|2,1,1741824090,47,"segmented"
 ?/enab;.e
 |2,1,1741822107,47,"enab;.e"
 ?/step
@@ -4170,8 +4754,6 @@ $
 |2,1,1741821466,47,"output_segmnet"
 ?/cjk
 |2,1,1741821444,47,"cjk"
-?/segmen
-|2,1,1741821397,47,"segmen"
 ?/output_segment
 |2,1,1741821325,47,"output_segment"
 ?/segment_tags
@@ -4434,8 +5016,6 @@ $
 |2,1,1740528783,47,"mast_kil"
 ?/jf sync
 |2,1,1740524039,47,"jf sync"
-?/enable_
-|2,1,1740466026,47,"enable_"
 ?/enable_xauc
 |2,1,1740466023,47,"enable_xauc"
 ?/is_debug
@@ -4502,8 +5082,6 @@ $
 |2,1,1740433800,47,"process_single"
 ?/send
 |2,1,1740433687,47,"send"
-?/key
-|2,1,1740433664,47,"key"
 ?/creating empty
 |2,1,1740433441,47,"creating empty"
 ?/to_sample
@@ -4578,10 +5156,6 @@ $
 |2,1,1740176301,47,"fliup"
 ?/gen
 |2,1,1740422182,47,"gen"
-?/tb_cmp
-|2,1,1740422181,47,"tb_cmp"
-?/mast_link
-|2,1,1740422125,47,"mast_link"
 ?/num_reg
 |2,1,1740172825,47,"num_reg"
 ?/server_time
@@ -4708,8 +5282,6 @@ $
 |2,1,1740083079,47,"num_items"
 ?/user_expor
 |2,1,1740083032,47,"user_expor"
-?/max_se
-|2,1,1740082972,47,"max_se"
 ?/get_rank
 |2,1,1740080802,47,"get_rank"
 ?/is_rank0
@@ -4732,8 +5304,6 @@ $
 |2,1,1740100618,47,"version = \"mlp"
 ?/versin = "
 |2,1,1740100615,47,"versin = \""
-?/version
-|2,1,1740100542,47,"version"
 ?/item_id=
 |2,1,1740079811,47,"item_id="
 ?/set_print
@@ -4900,16 +5470,12 @@ $
 |2,1,1739313080,47,"padded_den"
 ?/udd_pixel
 |2,1,1739312512,47,"udd_pixel"
-?/light
-|2,1,1738782897,47,"light"
 ?/2d_jagged
 |2,1,1738367440,47,"2d_jagged"
 ?/udd
 |2,1,1738268677,47,"udd"
 ?/need_backw
 |2,1,1738965870,47,"need_backw"
-?/update(
-|2,1,1738965732,47,"update("
 ?/get_all
 |2,1,1738963646,47,"get_all"
 ?/process_lookup
@@ -5116,8 +5682,6 @@ $
 |2,1,1738028536,47,"checkpo"
 ?/Parameter
 |2,1,1738026788,47,"Parameter"
-?/para
-|2,1,1738026781,47,"para"
 ?/def _load_
 |2,1,1738026138,47,"def _load_"
 ?/_load_state_dict
@@ -5162,8 +5726,6 @@ $
 |2,1,1738006047,47,"triton_hstu_compute_output"
 ?/compute_output
 |2,1,1738006026,47,"compute_output"
-?/clean
-|2,1,1738004558,47,"clean"
 ?/dest
 |2,1,1737999595,47,"dest"
 ?/est
@@ -5328,8 +5890,6 @@ $
 |2,1,1736973157,47,"ha"
 ?/ero targe
 |2,1,1736968891,47,"ero targe"
-?/set
-|2,1,1736967969,47,"set"
 ?/width
 |2,1,1736964269,47,"width"
 ?/16
@@ -5442,8 +6002,6 @@ $
 |2,1,1737082456,47,"light_cli"
 ?/fire
 |2,1,1737081796,47,"fire"
-?/prod
-|2,1,1737081777,47,"prod"
 ?/pt2_config
 |2,1,1737079685,47,"pt2_config"
 ?/set_+t
@@ -5468,8 +6026,6 @@ $
 |2,1,1737071058,47,"student_hstu"
 ?/p[a
 |2,1,1737069237,47,"p[a"
-?/n
-|2,1,1737069233,47,"n"
 ?/_STU"
 |2,1,1737069129,47,"_STU\""
 ?/stu
@@ -5514,8 +6070,6 @@ $
 |2,1,1736986239,47,"bf1"
 ?/deep
 |2,1,1736986204,47,"deep"
-?/tgif
-|2,1,1736986158,47,"tgif"
 ?/import_from_module
 |2,1,1736985804,47,"import_from_module"
 ?/spindle
@@ -5624,8 +6178,6 @@ $
 |2,1,1736710760,47,"only kee"
 ?/asset
 |2,1,1736316779,47,"asset"
-?/max_seq
-|2,1,1736316400,47,"max_seq"
 ?/64
 |2,1,1736308449,47,"64"
 ?/max_tar
@@ -5646,8 +6198,6 @@ $
 |2,1,1736278101,47,"safe_mean"
 ?/mean(
 |2,1,1736277835,47,"mean("
-?/coalesce
-|2,1,1736277726,47,"coalesce"
 ?/super
 |2,1,1736276266,47,"super"
 ?/hammer_kernel
@@ -5712,8 +6262,6 @@ $
 |2,1,1736190863,47,"variabels"
 ?/provid
 |2,1,1736190734,47,"provid"
-?/ne
-|2,1,1736190579,47,"ne"
 ?/is_variable_s
 |2,1,1736190534,47,"is_variable_s"
 ?/sum_entropy
@@ -5866,10 +6414,6 @@ $
 |2,1,1734740630,47,"jt_li"
 ?/ba
 |2,1,1734737810,47,"ba"
-?/local_size
-|2,1,1734737760,47,"local_size"
-?/size(
-|2,1,1734737746,47,"size("
 ?/red]
 |2,1,1734728045,47,"red]"
 ?/arch
@@ -5884,6 +6428,8 @@ $
 # Expression History (newest to oldest):
 
 # Input Line History (newest to oldest):
+@/data/users/xlwang/fbsource/fbcode/torchrec/metrics/quantiles.py
+|2,3,1746692904,,"/data/users/xlwang/fbsource/fbcode/torchrec/metrics/quantiles.py"
 @/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/lsr_ilb.py
 |2,3,1745514080,,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/lsr_ilb.py"
 @/data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/tests/id_assigner_tests.py
@@ -5908,44 +6454,43 @@ $
 # Debug Line History (newest to oldest):
 
 # Registers:
-"0	CHAR	0
-	view
-|3,0,0,0,1,0,1746145625,"view"
-"1	CHAR	0
-	self._contextual_feature_to_max_length[self._llfm_ue_key],
-	                                                                self._input_embedding_dim
-|3,0,1,0,2,0,1746145625,"self._contextual_feature_to_max_length[self._llfm_ue_key],","                                                                self._input_embedding_dim"
+"0	LINE	0
+	            # D74781793
+|3,0,0,1,1,0,1747351024,"            # D74781793"
+"1	LINE	0
+	
+|3,0,1,1,1,0,1747352148,""
 "2	LINE	0
-	
-|3,0,2,1,1,0,1746145549,""
+	    add_pe_tasks: bool = False
+	    pe_user_embedding_grad_scale: float = 1.0
+|3,0,2,1,2,0,1747352140,"    add_pe_tasks: bool = False","    pe_user_embedding_grad_scale: float = 1.0"
 "3	LINE	0
-	
-|3,0,3,1,1,0,1746145526,""
+	    pass
+|3,0,3,1,1,0,1747351943,"    pass"
 "4	LINE	0
-	
-|3,0,4,1,1,0,1746145525,""
+	    add_pe_tasks: bool = False
+	    pe_user_embedding_grad_scale: float = 1.0
+|3,0,4,1,2,0,1747351927,"    add_pe_tasks: bool = False","    pe_user_embedding_grad_scale: float = 1.0"
 "5	LINE	0
 	
-|3,0,5,1,1,0,1746143630,""
+|3,0,5,1,1,0,1747341889,""
 "6	LINE	0
 	
-|3,0,6,1,1,0,1746143629,""
+|3,0,6,1,1,0,1747341874,""
 "7	LINE	0
-	>>>>>>> source: 6871fc442ca5 - xlwang: shelve changes to: [ez]: make model tr...
-|3,0,7,1,1,0,1746128246,">>>>>>> source: 6871fc442ca5 - xlwang: shelve changes to: [ez]: make model tr..."
+	            # D74781793
+|3,0,7,1,1,0,1747334242,"            # D74781793"
 "8	LINE	0
-	=======
-	                        hidden_dim=256,
-|3,0,8,1,2,0,1746128245,"=======","                        hidden_dim=256,"
+	            # spawn_async_process=True was set to fix consumer process; see context in
+	            # D74781793
+|3,0,8,1,2,0,1747334211,"            # spawn_async_process=True was set to fix consumer process; see context in","            # D74781793"
 "9	LINE	0
-	<<<<<<< dest:   a9b0c759f64f - xlwang: [llfm][lsr]: ue in ci preprocessor mlps
-|3,0,9,1,1,0,1746128244,"<<<<<<< dest:   a9b0c759f64f - xlwang: [llfm][lsr]: ue in ci preprocessor mlps"
+	        from mrs.fm.utils import logger
+|3,0,9,1,1,0,1747330882,"        from mrs.fm.utils import logger"
 "j	CHAR	0
-	705
-<kjjknmakefile/visiblejkjjjkjjj/visirunlocal.shiglocalrunsjknyyjjjjjjjjjjj/llfm-trainjkojkpkJjki	jk:wjkwwwjkjjjkkj:1512wwbbzhjkjwjzhjkkzhjkkwwwwzhjkjzhjzhjkzhkzhjzhjzhjzhzhjkjkjjjjhhhhhhhzhjkkkkkkwwwwwzhggnjjjjjjjjjjjjwwzhjkjkNnjkkjkjjkzhjknjkzhjknjkNnNnNjkjkzhkjjkjjjnjjwwwzhjk€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýNjkzhkjkkkkkkkkzhkjjkzhjkjzhjkkzhjkjzhjkhhhzhjkwzhjkjkkkkjjjjknjwwwwwwwzhjk/videojzhjkjjjjjjjjjjjjjjjjjjjjjjjjjkkkkjjkkzhkjnkkkkNjjjjjjjjjjjjjjjjjjjjjjjjjjjjjnjkjjjjjjjjjocontent_embedding_mlp_fnjkhjkjkAjkjkA€kb€kb€kbjkA_no_wrapper = Falsejkbbhi: booljkA, jkyypjkxxxxxxxijk/fnjkddjk:wGkkkk:Duf
-|3,0,19,0,1,0,1746082684,>704
-|<"kjjk\nmakefile/visiblejkjjjkjjj/visirunlocal.shiglocalrunsjknyyjjjjjjjjjjj/llfm-trainjkojkpkJjki	jk:wjkwwwjkjjjkkj:1512wwbbzhjkjwjzhjkkzhjkkwwwwzhjkjzhjzhjkzhkzhjzhjzhjzhzhjkjkjjjjhhhhhhhzhjkkkkkkwwwwwzhggnjjjjjjjjjjjjwwzhjkjkN\njkkjkjjkzhjk\njkzhjknjkNnNnNjkjkzhkjjkjjj\njjwwwzhjk€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýN€ýNjkzhkjkkkkkkkkzhkjjkzhjkjzhjkkzhjkjzhjkhhhzhjkwzhjkjkkkkjjjjk\njwwwwwwwzhjk/videojzhjkjjjjjjjjjj
-|<jjjjjjjjjjjjjjjkkkkjjkkzhkj\nkkkkNjjjjjjjjjjjjjjjjjjjjjjjjjjjjj\njkjjjjjjjjjocontent_embedding_mlp_fnjkhjkjkAjkjkA€kb€kb€kbjkA_no_wrapper = Falsejkbbhi: booljkA, jkyypjkxxxxxxxijk/fnjkddjk:wGkkkk:Duf"
+	264
+<kjjkjkkkjjkjzhjkkkkjjjkA€kb if jkbDAjkbbbjkAwas set to fix child€kb€kb€kb€kb€kbconsumer process jkkkkkjjjjjkA€kb; see context in €ý,€ý.jkkjo€FID74781792€FJjkgccjk,wVk,tc€ý5cjkkjjkujkVk,twjkLwjkjk:wko€FID74781792€FJjkkddgccjk,wjkkjkjkkkjkkjkkjkk
+|3,0,19,0,1,0,1747335497,"kjjkjkkkjjkjzhjkkkkjjjkA€kb if jkbDAjkbbbjkAwas set to fix child€kb€kb€kb€kb€kbconsumer process jkkkkkjjjjjkA€kb; see context in €ý,€ý.jkkjo€FID74781792€FJjkgccjk,wVk,tc€ý5cjkkjjkujkVk,twjkLwjkjk:wko€FID74781792€FJjkkddgccjk,wjkkjkjkkkjkkjkkjkk"
 "k	CHAR	0
 	365
 <jkjk/set_tracejkkkzhjkwwwito€kb€kb.jkukjjjddddddNNjkA.to(jkjjjkkkjjjjjjjkNjkAjkipast_emb	jkhzhjkkJjkAjki.dtypejkkJjkNnjkkjjk/input_dtypejkzhjkjkvwwwhzhjkjk,wzhjknjjwzhjk/set_Tra€kb€kb€kbtrannn/set_tar€kb€kbnnnjk€ý,€ý.jkjjjjjjjjjjjjjjjjjjjjjjjjjjjbbbbkjjkIjkzhjk€ý,€ý.jkjzhjkjkkjzhjk€ý,€ý.jknnnNNNnjkjjkjjkkNjnn
@@ -5963,7 +6508,7 @@ $
 <kkkkVjjjj<jk:Wzhjkddjjjpjk:wkkkjjjofrom mrs.fm.utils import set-tra€kb€kb€kb€kb_trace; set_trace(jk:wkkjjkjjkkkkkkkkkbbbbbbwzhjkjjjjjjjjjjjjjjjjjjjjjjjwwjjwwwbzhjjbbbkwzhjzhjzhjkkkkkkkkkkkkkkkkkkkkkkkjVjjj;;kkkkkkkkkddkkkkpjkojkkoif target_mask	.sum().gt(0): jkjjVjjjjjjjjk><jkkdjkjjjjddkVk>kddjjjjjjeoelse:loggjkkjAerjkhzhjkA.warnin	jkjkkjA(?€kb"emptyjkbzhjkwijkbdwizero target €kb - paddedjkbzhjkjkbjk:Wjk:wjk:wjk zhjkojkkotarget_w	jkA = wt[jkkjik€kb0:0jkjkhhhjkbbDAtorch.jkbbwzhjkAones(€ku€ku€ku€kujkjjkjjjkkkjj/padd/16jkjkkggjjkj11jo_PADDING _S€kb€kb€kb_SIZE = 16jkjk/jknnxxi_PADDINGS	jkhhivwyjkujkviwykkkjkAjkbbwpjkzhjkwbi, jkkkjjiwt.jkbbidevice=jkwlideivc	jkbdwidevice, dtype=wt.dtypejkjkbzhjk,wjkjotarget_bit_act	jkhzhjkA= kjjkhDAtorch.onesjkhzhjkA(_+€kbPADDIN	, devic	=t€kbwt.€kb€kb€kbbitac	.deivc	€kbejkbzhjkwi,jkbdjkbdwidevicejkhzhjkwbli dtype=bit_ac	.dtypejkhzhjkkkjJjkotarget_item_chann	jkhzhjkA = {channeljkhzhjkA: ijkDAfor channel in channelsjkhzhjkkojkddwwijkkA`jkkkjjbDAtorch.zerosjkhzhjkA(jki_PADDING	jkbviwS]jkwwli+  jk/dimjkjjjjjjjjjjjjjjwwwwwwkkkwwwwwwwwwwbhhhxjkhi, self._mojkbbbjk/widthjkjjnwlvwwwhykkkkkjjjj
 	3094
 <jkk22kkkkjwwwwwwwwpjklvwwlllxjkbbbbbzhjkwwwwlwllhi, device=jkbbzhjkwwhhdwiitems_em	[channe	jkli.values().devic	, dtype=jkkwYjhpjkhbdwidtypejkbwxjkhjk,wjkhhzhjkjjbzhjkjjjjkkkkkkkbbwzhjkNNddjjjjjjjjjjjjjjpjk<<jkjkddkkkkkkkkkkkkjkjjjjjjjjjjjpkojkkkjkkjwjotarget_user-em	jkbbddkotarget_user_emb	jkhzhjkA=  jkAjkjkAtorch.zerosjkbzhjkbbbzhjkA([)_€kb€kb_PADDINGS	, moduleconfi	.itemllmdim	jkbbwdwijkkkkkkkbbbwlvbbbbbbyjkvwwwwwlykwwhhi]+jkhpjkli.shapejkvwwwwxjkkjjkbbbbbbbbwilist(jkxjkAjki)[1:jkw:jk:wjkjkjjjjjjwwwbbkzhjkwjbvwxjkli + list(useremb	jkzhhjkjkbzhjkjkbbdwiuseremb		jkhzhjklhi.shapejkli[1:jkli, devic	=d€kbuser_em					.devic	, dtype-=€kb€kb=usersemb	.dtypejkkjk,wjkkJJJjkbhhxjk,wjwwzhjkjzhjkjkIjkkkkzhjkjjjjjjjVjjjjjxddkzhjkjjjkjkbbbzhjkkwwwwbbzhjkjjjkIjkjkzhjkjkjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkjjjkjjjjojkko		if jkjkAtargetmas	.sum().gt(0):jkbbbbxxieqjk:wjkkjjkojkkkjjwkwkkonnnnjkkjkwolossjkhhzhjkA = jkkwwwwwbxxigtjkhzhjkjddVjxjjVjjjjjjjjjjj>kddkddjjjjjjjjjjjjkkVjxkkkkkkkkkkkkkpjkVj2<jkVj>jk:wjjjjjjjjjjjjkoelse:jkonamed_tenso	jkhzhjka.updatejkkkkjjjjkA({jk,wkkkjjjjkwwwwddddjkuuddddkkkkkkkkkkkkkkwofrom mrs.fm.utils import set_trace; set_trace(jk:wjkjjjjjjkbbbbbbv$hhxitorch.zeros(jkbbzhjkwwblipred.shapejkbbwwjkbbbilist(jkjkxjkwwwi)jki)jkhi[1:jkbbbbbbbbi[0] + jkwwwwwwwlli, pred.valuesjkhzhjkbdwidevicejkbbbideivce=jkwwwi, dtype=pred.dtypejk,wjkjjkwwwwwwwwjjwlllijkitorch.zeros_like jkkjijkhi(lossjkljkuuujkkkkkjVjjjjjjyjkuuuuuuuuuuuuuuuuujjjjjjjjjjjjjAjkhijkkojkpkddwwwjkjwwwwbbbbbdwxi[jkxjkwwwxjkllxijkli, -]€kb€kb0]jkjkbbbbbbbbbbvbbhxjkddukjxjk:wjjjwwwkwwwwjkjkhi.view(-1jklDA, jk:swjk:wjkjIjkkwjwwjkitorch.zeros([label.shape[1], 0jkli, deivce=label.device, dtype=label.dtypejkwDA, jk,wjkuujkkjhkljhjjddkkk,wjjjjwwwjkjjdwitorch.zeros(weight.jkbbdwi[wieght.jkbbdwiweight.shape[0]€kb€kb1]jkllhhr €ý5,jkr,€ý5jkli 0jklxi, device=weight.devic	, dtype=label€kb€kb€kb€kb€kbweight.dtypejkhbzhjk,wjbbbbhDAjk,wjjkkkkkkkkkkkkkkkkkkkkkkkkkkVkxddjk,wjjjkkjkjkjkkkjjj/predictionjkjkjjjjjjjjjwjbbbzhjkwwwwwwwjk%%%%%%wwwwbbbzhjkwwwwwwzhjkjkIjkwzhjkjkkjjjjjzhjkjkkkjkkkwwwwwwwwzhjkljkkkkkkkkkkkkkkkkoif target_mas	.sum().eq(0):lossjkhzhjkA = loss -  €kb loss.detach(jkbbbwzhjk;wjkbzhjk:wjkopredictionjkhzhjkA = predjkhzhjkA[0:0jkAjkkjjkojkkwzhjkhdwipred jkbzhjk:wjkzhhjkzhjkjkolabel jkA = labeljkhzhjkA[0:0jkoweightjkbzhjkA = weight[:jkhi0jkli-€kb0jk:wjkjkojkddjjjVjjjjjjjxkkkpVjjjjjjj<jkkdjjjjjjjjjjVjjjjjjjjjjjjjjjxddjk:wkkk,wkkkkkkkkkkkkkkkkkkkkkkkkkkkk/set€ý,€ý.jkjjjjjjjkkk/ero targejkzhjkjkIjkjjjjjjjjjjjjjzhjkkkkkkkwwkwwitorch.concat jkjkjkhi(jkxjkijkkoitems_emb[channeljkbbbzhjkAjkbzhjkA.values(), jkjjjjjA)jk,wjkAdim=0, jk,wjkkjddjk:wkkkkkkwkwjkA[jkDjkjjjjjjo]jk,wjkjjjkkwjjjjjjjkI jkhiusers_em	jkujk:wjk:wjkxjk:wkkkkkkkkkkkkwzhjkjkwwwwjkAjki[target_mas	jkhzhjkjjjjjjjjjjjjkIjkzhjkjwijkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjVjjjjjjxkkkjkojkpjKkkkkjjjjVkkkkkkkkkkkkkkkkxjk,wjwzhjkkkkjjj/optionalggjjjjkkjjknjkdwxjkwxi | Nonejkjbhlxhbhvbxjkwi | Nonejk,wjkkkkkkkkkkjkgg/dictjkggnnnjkkjggnwwwwzhjknnn/c/dictkkkkkkkk:Duf
-|3,0,31,0,2,0,1746139753,>1231
+|3,0,31,0,2,0,1747351024,>1231
 |<"kkkkVjjjj<jk:Wzhjkddjjjpjk:wkkkjjjofrom mrs.fm.utils import set-tra€kb€kb€kb€kb_trace; set_trace(jk:wkkjjkjjkkkkkkkkkbbbbbbwzhjkjjjjjjjjjjjjjjjjjjjjjjjwwjjwwwbzhjjbbbkwzhjzhjzhjkkkkkkkkkkkkkkkkkkkkkkkjVjjj;;kkkkkkkkkddkkkkpjkojkkoif target_mask	.sum().gt(0): jkjjVjjjjjjjjk><jkkdjkjjjjddkVk>kddjjjjjjeoelse:loggjkkjAerjkhzhjkA.warnin	jkjkkjA(?€kb\"emptyjkbzhjkwijkbdwizero target €kb - paddedjkbzhjkjkbjk:Wjk:wjk:wjk zhjkojkkotarget_w	jkA = wt[jkkjik€kb0:0jkjkhhhjkbbDAtorch.jkbbwz
 |<hjkAones(€ku€ku€ku€kujkjjkjjjkkkjj/padd/16jkjkkggjjkj11jo_PADDING _S€kb€kb€kb_SIZE = 16jkjk/jknnxxi_PADDINGS	jkhhivwyjkujkviwykkkjkAjkbbwpjkzhjkwbi, jkkkjjiwt.jkbbidevice=jkwlideivc	jkbdwidevice, dtype=wt.dtypejkjkbzhjk,wjkjotarget_bit_act	jkhzhjkA= kjjkhDAtorch.onesjkhzhjkA(_+€kbPADDIN	, devic	=t€kbwt.€kb€kb€kbbitac	.deivc	€kbejkbzhjkwi,jkbdjkbdwidevicejkhzhjkwbli dtype=bit_ac	.dtypejkhzhjkkkjJjkotarget_item_chann	jkhzhjkA = {channeljkhzhjkA: ijkDAfo
 |<r channel in channelsjkhzhjkkojkddwwijkkA`jkkkjjbDAtorch.zerosjkhzhjkA(jki_PADDING	jkbviwS]jkwwli+  jk/dimjkjjjjjjjjjjjjjjwwwwwwkkkwwwwwwwwwwbhhhxjkhi, self._mojkbbbjk/widthjkjjnwlvwwwhykkkkkjjjj",>3093
@@ -5981,8 +6526,8 @@ $
 |<"whvjjxjkijk<<jkkjjkajkjbhDjkkAjkpjk,wjkkkAjkbbbwwhhi,jk,wkj\njjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkk33kkjjjjjjjjwwzhjkjjjjjjjjjjjjzhjkn/atttaskarchnnbbzhjknnjnjjjjjjjjjjjjjjkkbbbjjjjjkIjkzhkjjjjkwwwwbjjjjjjjjjjjjhjk:sbggnNjknnjkjjjjjjjkkkkkkkjkkkkkkcjkkkkkkkkkkkkkkkkkkjzhjkjkjjjkkkjkkjkkkkkkkkkkkkkkkkkwwjbzhjkkkkkkkkkjkIjkzhjkddjk:wwwwjwwzhjkwwbbviwyjkhhbblvwwhxi2*jkwwhhhvbbyhvwwwhywwwwviwpjkjhhhhhhhhhviw,pjkjviw,pjkjjjjbblvwwwh,pjkwwviw,pjk
 |<nkhbviw,pjkjbviw,pjkjjk,wjjjkIjkwwzhjkNVjjjjxjk,wjkj/set_Trace/stjk/set_Tra€kb€kb€kbtracejk:w\nkkggjkjjkjjjkjjjkjkzhjkwwDA5jk:wbbzhjknnnjkbbYjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk/llfm_nNNNNNnnNNnzhjkggnjjnjwwwAjkDAjkjkaoptsjkhzhkjjkjkbDAarchinpu		.numllfmi	jkhzhjkA,jk,wjkjkAjkr3€ý5jk,wjk"
 ""-	CHAR	0
-	 
-|3,1,36,0,1,0,1746145653," "
+	field_
+|3,1,36,0,1,0,1747352155,"field_"
 
 # global variables:
 !DISPATCH_STARTS	DIC	{}
@@ -5990,942 +6535,593 @@ $
 # File marks:
 'N  5651  4  /data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/functional.py
 |4,78,5651,4,1741049820,"/data/users/xlwang/fbsource/fbcode/caffe2/torch/nn/functional.py"
-'0  1456  28  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,48,1456,28,1746145679,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
-'1  1453  161  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,49,1453,161,1746145639,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
-'2  1453  142  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,50,1453,142,1746145639,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
-'3  1  89  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,51,1,89,1746145248,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
-'4  2137  89  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,52,2137,89,1746145248,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
-'5  1  89  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,53,1,89,1746145248,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
-'6  2137  89  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,54,2137,89,1746145248,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
-'7  2137  89  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,55,2137,89,1746145248,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
-'8  1  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,56,1,8,1746145237,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
-'9  2137  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,57,2137,8,1746145237,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
+'0  2080  31  ~/.profile_wangxl
+|4,48,2080,31,1747391230,"~/.profile_wangxl"
+'1  123  10  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,49,123,10,1747391196,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+'2  126  4  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,50,126,4,1747352149,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+'3  126  4  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,51,126,4,1747352149,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+'4  126  4  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,52,126,4,1747352149,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+'5  1  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,53,1,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+'6  72  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,54,72,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+'7  1  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,55,1,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+'8  72  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,56,72,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+'9  72  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,57,72,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
 
 # Jumplist (newest first):
--'  1456  28  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1456,28,1746145679,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1455  73  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1455,73,1746145675,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1454  31  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1454,31,1746145665,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1453  31  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1453,31,1746145660,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1452  27  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1452,27,1746145658,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1  0  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1,0,1746145644,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1453  142  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1453,142,1746145639,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1452  64  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1452,64,1746145625,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1451  67  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1451,67,1746145620,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1451  67  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1451,67,1746145620,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1457  24  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1457,24,1746145548,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1454  24  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1454,24,1746145548,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1450  0  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1450,0,1746145525,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1450  0  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1450,0,1746145525,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1449  59  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1449,59,1746145508,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1449  59  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1449,59,1746145508,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1448  77  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1448,77,1746145468,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1448  77  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1448,77,1746145468,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1807  20  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1807,20,1746145447,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1804  20  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1804,20,1746145447,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1766  16  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1766,16,1746145407,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1763  16  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1763,16,1746145407,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1353  20  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1353,20,1746145389,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1353  20  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1353,20,1746145389,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1289  16  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1289,16,1746145387,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1289  16  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1289,16,1746145387,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1103  12  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1103,12,1746145383,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1103  12  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1103,12,1746145383,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1024  57  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1024,57,1746145382,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1024  57  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1024,57,1746145382,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1022  58  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1022,58,1746145381,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1000  17  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1000,17,1746145381,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1022  58  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1022,58,1746145381,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1000  17  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1000,17,1746145381,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1040  21  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1040,21,1746145370,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1044  21  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1044,21,1746145370,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1040  21  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1040,21,1746145370,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1044  21  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1044,21,1746145370,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1226  40  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1226,40,1746145367,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1226  40  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1226,40,1746145367,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  477  13  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,477,13,1746145363,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  477  13  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,477,13,1746145363,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1  0  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1,0,1746145362,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1439  57  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1439,57,1746145359,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1439  57  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1439,57,1746145359,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1801  20  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1801,20,1746145358,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1798  20  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1798,20,1746145358,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1440  15  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1440,15,1746145320,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  1440  15  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,1440,15,1746145320,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  308  17  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,308,17,1746145319,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  308  17  /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-|4,39,308,17,1746145319,"/data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py"
--'  2137  89  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2137,89,1746145248,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2141  56  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2141,56,1746145244,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2137  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2137,8,1746145237,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2211  25  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2211,25,1746145236,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2213  25  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2213,25,1746145236,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2143  24  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2143,24,1746145236,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2138  22  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2138,22,1746145228,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2138  7  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2138,7,1746145209,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2140  7  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2140,7,1746145209,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1  50  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1,50,1746145205,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1  50  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1,50,1746145205,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2138  50  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2138,50,1746145205,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2140  51  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2140,51,1746145201,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1,0,1746145199,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2140  52  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2140,52,1746145196,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2137  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2137,8,1746145165,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2137  8  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2137,8,1746145165,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2107  53  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2107,53,1746145147,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2107  53  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2107,53,1746145147,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2107  53  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2107,53,1746145147,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2107  53  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2107,53,1746145147,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2210  30  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2210,30,1746145140,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2209  30  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2209,30,1746145140,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2212  30  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2212,30,1746145140,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2211  30  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2211,30,1746145140,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2212  30  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2212,30,1746145140,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2211  30  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2211,30,1746145140,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2203  16  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2203,16,1746145135,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2202  16  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2202,16,1746145135,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2205  16  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2205,16,1746145135,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2204  16  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2204,16,1746145135,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2205  16  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2205,16,1746145135,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2204  16  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2204,16,1746145135,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2140  43  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2140,43,1746145134,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2139  43  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2139,43,1746145134,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2142  43  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2142,43,1746145134,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2141  43  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2141,43,1746145134,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2142  43  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2142,43,1746145134,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2141  43  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2141,43,1746145134,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2139  85  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2139,85,1746145129,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2139  85  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2139,85,1746145129,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  2139  85  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,2139,85,1746145129,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  3064  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,3064,19,1746145114,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  3063  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,3063,19,1746145114,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  3066  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,3066,19,1746145114,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  3065  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,3065,19,1746145114,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  3066  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,3066,19,1746145114,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  3065  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,3065,19,1746145114,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
--'  1835  13  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-|4,39,1835,13,1746145111,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py"
+-'  2080  31  ~/.profile_wangxl
+|4,39,2080,31,1747391230,"~/.profile_wangxl"
+-'  2405  8  ~/.profile_wangxl
+|4,39,2405,8,1747391229,"~/.profile_wangxl"
+-'  123  10  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,123,10,1747391196,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  123  10  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,123,10,1747391196,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  126  46  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,126,46,1747352159,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  126  46  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,126,46,1747352159,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  126  4  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,126,4,1747352149,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  126  4  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,126,4,1747352149,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  1  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,1,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  1  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,1,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  1  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,1,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  1  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,1,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,20,1747352120,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,19,1747352115,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,19,1747352115,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,19,1747352115,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,19,1747352115,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,19,1747352115,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,19,1747352115,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  1  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,1,20,1747352111,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,20,1747352111,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  1  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,1,20,1747352111,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  20  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,20,1747352111,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  74  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,74,0,1747352094,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  74  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,74,0,1747352094,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  74  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,74,0,1747352094,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  74  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,74,0,1747352094,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  74  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,74,0,1747352094,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  74  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,74,0,1747352094,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  74  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,74,0,1747352094,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  74  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,74,0,1747352094,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  1  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,1,19,1747352092,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,19,1747352092,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,19,1747352092,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  1  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,1,19,1747352092,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,19,1747352092,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  72  19  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,72,19,1747352092,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  75  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,75,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  75  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,75,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  75  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,75,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  75  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,75,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  75  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,75,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  75  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,75,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  75  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,75,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  75  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,75,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  73  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,73,0,1747352065,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  71  27  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,71,27,1747351942,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  128  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,128,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  127  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,127,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  130  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,130,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  128  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,128,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  127  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,127,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  130  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,130,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  128  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,128,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  130  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,130,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  128  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,128,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  128  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,128,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  127  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,127,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  130  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,130,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  128  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,128,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  127  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,127,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  130  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,130,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  128  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,128,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  130  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,130,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  128  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,128,0,1747351928,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  87  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,87,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  85  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,85,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  87  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,87,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  85  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,85,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  87  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,87,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  85  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,85,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  87  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,87,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  85  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,85,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  87  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,87,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  85  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,85,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  87  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,87,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  85  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,85,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  87  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,87,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  85  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,85,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  87  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,87,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  85  0  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,85,0,1747351924,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  76  7  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,76,7,1747351882,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  76  7  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,76,7,1747351882,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  76  7  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,76,7,1747351882,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
+-'  76  7  /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+|4,39,76,7,1747351882,"/data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py"
 
 # History of marks within files (newest to oldest):
 
-> /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/contextual_interleaved_preprocessor.py
-	*	1746145678	0
-	"	1832	16
-	^	1456	29
-	.	1456	28
-	+	1	13
+> ~/.profile_wangxl
+	*	1747391229	0
+	"	2080	31
+	^	2405	8
+	.	2406	0
+	+	2147	0
+	+	2147	78
+	+	2150	0
+	+	2148	0
+	+	2149	20
+	+	2408	0
+	+	2147	64
+	+	2158	136
+	+	2158	0
+	+	2480	0
+	+	2459	40
+	+	2147	0
+	+	2147	78
+	+	2150	0
+	+	2148	0
+	+	2149	20
+	+	2408	0
+	+	2147	64
+	+	2158	136
+	+	2480	0
+	+	2459	40
+	+	2147	0
+	+	2147	78
+	+	2150	0
+	+	2148	0
+	+	2149	20
+	+	2408	0
+	+	2147	64
+	+	2158	136
+	+	2158	0
+	+	2480	0
+	+	2459	40
+	+	2147	0
+	+	2147	78
+	+	2150	0
+	+	2148	0
+	+	2149	20
+	+	2408	0
+	+	2147	64
+	+	2158	136
+	+	2480	0
+	+	2459	40
+	+	2147	0
+	+	2147	78
+	+	2150	0
+	+	2148	0
+	+	2149	20
+	+	2408	0
+	+	2147	64
+	+	2158	136
+	+	2158	0
+	+	2480	0
+	+	2459	40
+	+	2147	0
+	+	2147	78
+	+	2150	0
+	+	2148	0
+	+	2149	20
+	+	2408	0
+	+	2147	64
+	+	2158	136
+	+	2480	0
+	+	2459	40
+	+	2147	0
+	+	2147	78
+	+	2150	0
+	+	2148	0
+	+	2149	20
+	+	2408	0
+	+	2147	64
+	+	2158	136
+	+	2158	2
+	+	2157	0
+	+	2158	0
+	+	2157	0
+	+	2158	1
+	+	2158	0
+	+	2157	0
+	+	2156	0
+	+	2158	70
+	+	2158	34
+	+	2158	11
+	+	2158	95
+	+	2163	0
+	+	2163	34
+	+	2161	43
+	+	2161	0
+	+	2160	0
+	+	2161	45
+	+	2163	35
+	+	2158	34
+	+	2160	0
+	+	2159	0
+	+	2169	53
+	+	2397	10
+	+	2404	13
+	+	2406	11
+	+	2404	22
+	+	2405	8
+	+	2406	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_configs.py
+	*	1747391177	0
+	"	123	10
+	^	126	47
+	.	126	46
+	+	127	0
+	+	128	0
+	+	129	0
+	+	71	27
+	+	76	0
+	+	75	0
+	+	72	19
+	+	74	0
+	+	73	19
+	+	72	15
+	+	73	15
+	+	127	0
+	+	126	0
 	+	1	0
-	+	1	30
-	+	1	54
+	+	1	7
+	+	1	0
 	+	1	27
-	+	1	35
 	+	1	0
-	+	1	20
-	+	1	65
-	+	1	30
+	+	1	23
+	+	1	9
 	+	1	0
-	+	1	46
+	+	1	15
 	+	1	0
-	+	1	47
+	+	1	7
+	+	1	0
+	+	1	27
 	+	1	0
 	+	1	19
-	+	1	39
-	+	1	30
-	+	1	21
 	+	1	0
-	+	1	13
+	+	1	23
+	+	1	9
 	+	1	0
-	+	1	30
-	+	1	54
+	+	1	15
+	+	1	0
+	+	1	7
+	+	1	0
 	+	1	27
-	+	1	35
 	+	1	0
-	+	1	20
+	+	1	23
+	+	1	9
 	+	1	0
-	+	1	46
+	+	1	15
 	+	1	0
-	+	1	47
+	+	1	7
+	+	1	0
+	+	1	27
 	+	1	0
 	+	1	19
-	+	1	39
-	+	1	30
-	+	1	21
 	+	1	0
-	+	1	13
+	+	1	19
 	+	1	0
-	+	1	30
-	+	1	54
-	+	1	27
-	+	1	35
-	+	1	0
-	+	1	20
-	+	1	65
-	+	1	30
-	+	1	59
-	+	1	55
-	+	1	0
-	+	1	38
-	+	1	0
-	+	1	39
-	+	1	0
-	+	1	39
-	+	1	0
-	+	5	0
-	+	1478	58
-	+	1448	79
-	+	1449	78
-	+	1449	47
-	+	1458	0
-	+	1449	60
-	+	1451	56
-	+	1450	50
-	+	1450	0
-	+	1450	52
-	+	1451	56
-	+	1451	39
-	+	1451	56
-	+	1451	38
-	+	1451	56
-	+	1457	0
-	+	1451	67
-	+	1452	85
-	+	1452	115
-	+	1451	67
-	+	1452	0
-	+	1453	90
-	+	1453	160
-	+	1453	90
-	+	1451	67
-	+	1452	31
-	+	1453	90
-	+	1453	0
-	+	1457	0
-	+	1453	91
-	+	1455	28
-	+	1456	28
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/model.py
-	*	1746145307	0
-	"	610	16
-	^	447	28
-	.	447	27
-	+	449	57
-	+	1	0
-	+	1	44
-	+	1	0
-	+	1	58
-	+	1	59
-	+	1	61
-	+	1	0
-	+	1	29
-	+	1	63
-	+	1	0
-	+	1	73
-	+	1	0
-	+	1	83
-	+	1	52
-	+	1	28
-	+	1	0
-	+	1	46
-	+	1	28
-	+	1	37
-	+	1	40
-	+	1	0
-	+	1	52
-	+	1	54
-	+	1	46
-	+	1	22
-	+	1	4
-	+	1	0
-	+	1	81
-	+	1	40
-	+	1	18
-	+	1	8
-	+	1	60
-	+	1	12
-	+	1	0
-	+	1	25
-	+	1	43
-	+	1	0
-	+	1	49
-	+	1	58
-	+	1	39
-	+	1	0
-	+	1	58
-	+	1	86
-	+	1	26
-	+	1	0
-	+	1	12
-	+	1	82
-	+	1	80
-	+	1	53
-	+	1	27
-	+	1	52
-	+	1	46
-	+	1	0
-	+	1	33
-	+	1	21
-	+	1	14
-	+	1	39
-	+	1	27
-	+	1	0
-	+	1	18
-	+	1	34
-	+	1	31
-	+	1	0
-	+	1	25
-	+	1	0
-	+	1	38
-	+	1	0
-	+	1	47
-	+	1	0
-	+	1	76
-	+	1	0
-	+	1	41
-	+	1	0
-	+	1	42
-	+	1	80
-	+	1	35
-	+	1	0
-	+	1	44
-	+	1	0
-	+	1	58
-	+	1	59
-	+	1	61
-	+	1	0
-	+	1	29
-	+	1	63
-	+	1	0
-	+	1	73
-	+	1	0
-	+	1	83
-	+	1	52
-	+	1	28
-	+	1	0
-	+	52	85
-	+	449	0
-	+	205	64
-	+	449	57
-	+	205	37
-	+	449	0
-	+	447	27
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_cint.py
-	*	1746145260	0
-	"	2140	9
-	^	2137	90
-	.	2137	90
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	15
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	15
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	54
-	+	1	56
+	+	1	23
+	+	1	9
 	+	1	0
 	+	1	15
 	+	1	0
-	+	3051	0
-	+	1826	0
-	+	3051	58
-	+	1824	8
-	+	1823	0
-	+	1824	67
-	+	1825	61
-	+	2146	0
-	+	2197	0
-	+	2199	21
-	+	1317	21
-	+	1317	22
-	+	1317	54
-	+	1325	0
-	+	1317	21
-	+	1317	22
-	+	1317	21
-	+	1317	72
-	+	1325	0
-	+	1317	63
-	+	53	0
-	+	55	0
-	+	1317	97
-	+	1325	52
-	+	1325	0
-	+	1317	98
-	+	1317	54
-	+	1337	20
-	+	1337	21
-	+	1338	0
-	+	1341	77
-	+	1324	0
-	+	1334	0
-	+	1348	0
-	+	1358	0
-	+	1392	56
-	+	1322	37
-	+	1346	37
-	+	2137	77
-	+	2143	15
-	+	2147	32
-	+	2189	28
-	+	2193	43
-	+	2137	45
-	+	2142	0
-	+	2141	0
-	+	2137	90
-	+	2137	169
-	+	2138	53
-	+	2137	8
-	+	2137	91
-	+	2138	52
-	+	2140	0
-	+	2138	0
-	+	2137	83
-	+	2137	8
-	+	2141	24
-	+	2211	25
-	+	2141	57
-	+	2138	0
-	+	2137	90
+	+	1	7
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	23
+	+	1	9
+	+	1	0
+	+	1	15
+	+	1	0
+	+	1	7
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	19
+	+	1	0
+	+	1	23
+	+	1	9
+	+	1	0
+	+	1	15
+	+	1	0
+	+	1	7
+	+	1	0
+	+	1	27
+	+	1	0
+	+	127	23
+	+	69	9
+	+	78	0
+	+	77	0
+	+	70	15
+	+	76	0
+	+	76	7
+	+	127	0
+	+	128	0
+	+	129	0
+	+	71	27
+	+	76	0
+	+	75	0
+	+	72	19
+	+	74	0
+	+	73	19
+	+	72	15
+	+	73	15
+	+	127	0
+	+	126	46
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/model_config.py
-	*	1746145257	0
-	"	1618	21
-	^	1619	25
-	.	1619	26
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/llfm.py
+	*	1747391133	0
+	"	471	39
+	^	706	12
+	.	588	0
+	+	738	0
+	+	797	0
+	+	634	0
+	+	651	24
+	+	648	29
+	+	649	0
+	+	647	0
+	+	666	0
+	+	666	33
+	+	666	0
+	+	647	18
+	+	656	39
+	+	656	94
+	+	10	0
 	+	1	0
-	+	1645	93
-	+	1647	34
-	+	1644	92
-	+	1645	79
-	+	1643	19
-	+	1644	8
-	+	1643	20
-	+	1644	16
-	+	1645	16
-	+	1644	0
-	+	1634	29
-	+	1646	59
-	+	1591	66
-	+	1569	21
-	+	1571	0
-	+	1570	27
-	+	1570	0
-	+	1590	31
-	+	1591	63
-	+	1590	53
-	+	1591	79
-	+	1647	34
-	+	1647	33
-	+	1647	0
-	+	1647	33
-	+	1647	0
-	+	1590	31
-	+	1642	19
-	+	1647	75
-	+	1647	42
-	+	9	30
-	+	1647	70
-	+	1647	82
-	+	1647	78
-	+	1647	0
-	+	1647	59
-	+	1611	0
-	+	1612	0
-	+	1647	0
-	+	1604	34
-	+	1622	0
-	+	1622	62
-	+	1550	0
-	+	1549	0
-	+	1553	0
-	+	1552	0
-	+	1648	0
-	+	1649	0
-	+	1651	24
-	+	1551	0
-	+	1609	8
-	+	1612	63
-	+	1612	0
-	+	1623	0
-	+	1612	0
-	+	1622	11
-	+	366	0
-	+	1622	36
-	+	1622	0
-	+	1623	0
-	+	1622	74
-	+	1608	8
-	+	1622	75
-	+	1622	35
-	+	1622	34
-	+	1622	0
-	+	1601	32
-	+	1604	0
-	+	1603	39
-	+	1612	0
-	+	1610	23
-	+	1569	0
-	+	1601	32
-	+	1602	38
-	+	1590	39
-	+	1615	74
-	+	1622	0
-	+	1621	0
-	+	1615	0
-	+	1614	20
-	+	1615	0
-	+	1614	56
-	+	1613	19
-	+	1606	62
-	+	1611	34
-	+	1614	8
-	+	1615	8
-	+	1616	38
-	+	1617	69
-	+	171	44
-	+	172	47
-	+	174	40
-	+	404	0
-	+	1618	20
-	+	1618	21
-	+	1621	0
-	+	1618	61
-	+	1619	0
-	+	1619	26
+	+	656	39
+	+	657	0
+	+	667	16
+	+	668	24
+	+	666	47
+	+	666	34
+	+	666	31
+	+	24	77
+	+	25	0
+	+	662	59
+	+	663	0
+	+	665	68
+	+	666	0
+	+	667	75
+	+	668	0
+	+	563	0
+	+	562	62
+	+	562	0
+	+	563	0
+	+	666	60
+	+	670	53
+	+	674	60
+	+	678	14
+	+	679	87
+	+	678	0
+	+	689	30
+	+	702	0
+	+	690	0
+	+	688	23
+	+	679	0
+	+	692	0
+	+	692	14
+	+	690	9
+	+	692	35
+	+	696	26
+	+	659	0
+	+	651	17
+	+	659	12
+	+	673	16
+	+	674	20
+	+	696	24
+	+	697	0
+	+	697	47
+	+	698	0
+	+	697	0
+	+	698	0
+	+	702	0
+	+	706	36
+	+	705	33
+	+	706	0
+	+	717	30
+	+	718	0
+	+	724	29
+	+	718	78
+	+	724	51
+	+	724	44
+	+	725	41
+	+	726	47
+	+	724	58
+	+	494	15
+	+	491	32
+	+	658	0
+	+	674	32
+	+	724	0
+	+	719	25
+	+	559	0
+	+	516	52
+	+	816	68
+	+	763	27
+	+	516	32
+	+	516	0
+	+	335	52
+	+	335	37
+	+	584	0
+	+	585	55
+	+	593	32
+	+	621	21
+	+	354	62
+	+	335	97
+	+	354	0
+	+	335	37
+	+	336	0
+	+	586	0
+	+	587	0
+	+	588	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/Makefile
-	*	1746142860	0
-	"	136	20
-	^	134	1
-	.	134	3
-	+	68	91
-	+	69	95
-	+	18	0
-	+	38	93
-	+	39	95
-	+	40	97
-	+	40	0
-	+	39	0
-	+	40	98
-	+	67	84
-	+	68	91
-	+	69	0
-	+	6	21
-	+	50	0
-	+	50	34
-	+	51	19
-	+	18	0
-	+	38	93
-	+	39	95
-	+	40	97
-	+	40	0
-	+	39	0
-	+	40	98
-	+	67	84
-	+	68	91
-	+	69	95
-	+	18	0
-	+	38	93
-	+	39	95
-	+	40	97
-	+	40	0
-	+	39	0
-	+	40	98
-	+	67	84
-	+	68	91
-	+	69	0
-	+	6	21
-	+	50	0
-	+	50	34
-	+	51	0
-	+	49	53
-	+	7	14
-	+	23	0
-	+	130	33
-	+	63	54
-	+	64	27
-	+	62	0
-	+	56	0
-	+	57	0
-	+	64	48
-	+	60	0
-	+	57	0
-	+	60	0
-	+	57	0
-	+	58	13
-	+	60	64
-	+	62	13
-	+	60	24
-	+	61	0
-	+	60	0
-	+	61	0
-	+	60	79
-	+	27	0
-	+	61	0
-	+	64	30
-	+	57	0
-	+	140	0
-	+	140	5
-	+	140	0
-	+	140	4
-	+	140	0
-	+	140	39
-	+	140	0
-	+	18	0
-	+	140	0
-	+	133	4
-	+	136	39
-	+	139	0
-	+	6	21
-	+	11	48
-	+	12	29
-	+	13	43
-	+	14	40
-	+	10	29
-	+	201	4
-	+	206	43
-	+	209	0
-	+	6	21
-	+	2	0
-	+	6	0
-	+	7	14
-	+	138	18
-	+	6	21
-	+	7	14
-	+	6	21
-	+	7	14
-	+	134	0
-	+	135	0
-	+	134	3
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/ig_local_run.sh
-	*	1746142859	0
-	"	20	7
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/trainer_config.py
-	*	1746142859	0
-	"	90	21
-	^	365	40
-	.	365	39
-	+	1	52
-	+	1	0
-	+	1	52
-	+	1	0
-	+	1	32
-	+	1	0
-	+	1	52
-	+	1	0
-	+	51	52
-	+	413	0
-	+	412	32
-	+	378	0
-	+	379	0
-	+	297	0
-	+	298	0
-	+	98	0
-	+	1	52
-	+	1	0
-	+	1	52
-	+	1	0
-	+	1	32
-	+	1	0
-	+	1	52
-	+	1	0
-	+	51	52
-	+	413	0
-	+	412	32
-	+	378	0
-	+	379	0
-	+	297	0
-	+	298	0
-	+	98	0
-	+	363	48
-	+	364	16
-	+	366	20
-	+	367	0
-	+	365	39
-	+	1	52
-	+	1	0
-	+	1	52
-	+	1	0
-	+	1	32
-	+	1	0
-	+	1	52
-	+	1	0
-	+	51	52
-	+	413	0
-	+	412	32
-	+	378	0
-	+	379	0
-	+	297	0
-	+	298	0
-	+	98	0
-	+	1	52
-	+	1	0
-	+	1	52
-	+	1	0
-	+	1	32
-	+	1	0
-	+	1	52
-	+	1	0
-	+	51	52
-	+	413	0
-	+	412	32
-	+	378	0
-	+	379	0
-	+	297	0
-	+	298	0
-	+	98	0
-	+	363	48
-	+	364	16
-	+	366	20
-	+	367	0
-	+	365	39
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/run_config.py
-	*	1746139840	0
-	"	409	41
-
-> /data/users/xlwang/fbsource/fbcode/NERD_tree_tab_2
-	*	1746139767	0
-	"	1743	13
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/NERD_tree_tab_1
+	*	1747351428	0
+	"	13	0
 	.	1	0
 	+	1	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ranking_hstu/hstu_config.py
-	*	1746139763	0
-	"	456	0
-	^	455	24
-	.	455	23
-	+	1	0
-	+	1	46
-	+	1	0
-	+	1	46
-	+	1	0
-	+	1	23
-	+	1	24
-	+	1	0
-	+	5	0
-	+	453	46
-	+	5	0
-	+	453	46
-	+	453	0
-	+	456	23
-	+	454	24
-	+	456	0
-	+	454	24
-	+	1	0
-	+	1	46
-	+	1	0
-	+	1	46
-	+	1	0
-	+	1	23
-	+	1	24
-	+	1	0
-	+	5	0
-	+	453	46
-	+	5	0
-	+	453	46
-	+	453	0
-	+	456	23
-	+	454	24
-	+	456	0
-	+	454	24
-	+	455	23
-
-> /data/users/xlwang/fbsource/fbcode/ControlP
-	*	1746139753	0
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/ControlP
+	*	1747351027	0
 	"	10	0
 	.	2	0
 	+	1	0
-	+	11	0
 	+	2	0
 
-> /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/preprocessors/mlps.py
-	*	1746139749	0
-	"	185	24
-	^	178	8
-
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/conf/roo_trainer_config.py
-	*	1746139654	0
-	"	148	49
-	^	161	47
-	.	166	0
-	+	310	0
-	+	277	17
-	+	278	100
+	*	1747342448	0
+	"	151	35
+	^	187	21
+	.	187	0
+	+	187	0
+	+	336	19
+	+	349	0
+	+	354	0
+	+	350	16
+	+	353	17
+	+	344	55
+	+	345	41
+	+	346	42
+	+	347	31
+	+	348	0
+	+	198	45
+	+	180	39
+	+	181	18
 	+	278	0
-	+	278	14
-	+	277	38
-	+	278	28
-	+	278	0
-	+	278	32
-	+	278	39
-	+	278	40
-	+	278	0
-	+	278	87
-	+	278	0
-	+	326	17
-	+	332	19
-	+	345	0
-	+	350	0
-	+	346	16
-	+	349	17
-	+	340	55
-	+	341	41
-	+	342	42
-	+	343	31
-	+	344	0
-	+	195	45
-	+	179	39
-	+	180	18
-	+	274	0
-	+	292	0
-	+	318	0
-	+	323	37
-	+	323	0
-	+	326	0
-	+	324	19
-	+	326	0
-	+	339	36
-	+	352	0
-	+	368	0
-	+	347	17
+	+	296	0
+	+	322	0
+	+	327	37
+	+	327	0
+	+	330	0
+	+	328	19
+	+	330	0
+	+	343	36
+	+	356	0
+	+	372	0
+	+	351	17
 	+	98	40
 	+	100	43
 	+	101	8
@@ -6934,51 +7130,51 @@ $
 	+	101	0
 	+	98	40
 	+	100	44
-	+	347	17
-	+	367	0
-	+	368	0
-	+	347	17
-	+	354	0
-	+	355	0
-	+	362	68
-	+	366	0
+	+	351	17
+	+	371	0
+	+	372	0
+	+	351	17
+	+	358	0
+	+	359	0
+	+	366	68
+	+	370	0
 	+	40	0
-	+	362	78
-	+	347	17
-	+	365	28
-	+	365	0
-	+	365	27
-	+	365	0
-	+	347	18
-	+	365	0
-	+	365	20
-	+	347	18
-	+	363	0
-	+	365	0
-	+	364	27
-	+	347	18
-	+	280	0
-	+	309	0
+	+	366	78
+	+	351	17
+	+	369	28
+	+	369	0
+	+	369	27
+	+	369	0
+	+	351	18
+	+	369	0
+	+	369	20
+	+	351	18
+	+	367	0
+	+	369	0
+	+	368	27
+	+	351	18
+	+	284	0
+	+	313	0
 	+	162	26
 	+	162	0
-	+	280	16
+	+	284	16
 	+	101	0
-	+	234	0
+	+	237	0
 	+	162	42
-	+	349	18
+	+	353	18
 	+	154	36
 	+	162	48
-	+	279	16
-	+	214	0
+	+	283	16
+	+	217	0
 	+	162	55
 	+	162	44
 	+	160	50
 	+	162	42
 	+	160	0
 	+	162	42
-	+	347	18
-	+	349	18
-	+	277	16
+	+	351	18
+	+	353	18
+	+	281	16
 	+	162	42
 	+	160	36
 	+	161	46
@@ -6986,615 +7182,556 @@ $
 	+	165	0
 	+	162	0
 	+	166	0
-	b	271	0
+	+	293	16
+	+	247	0
+	+	247	30
+	+	248	0
+	+	247	46
+	+	248	0
+	+	293	16
+	+	169	36
+	+	188	36
+	+	186	86
+	+	188	23
+	+	186	0
+	+	186	86
+	+	187	0
+	b	275	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/foundational_model.py
-	*	1746139179	0
-	"	23	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-zjhuf7nz.commit.hg.txt
-	*	1746124082	0
-	"	7	11
-	^	7	12
-	.	7	11
-	+	5	6
-	+	11	2
-	+	16	3
-	+	11	0
-	+	5	34
-	+	7	11
-
-> /data/users/xlwang/fbsource/fbcode/dper3/dper3_models/notebook_utils/model_tracer/tracer.py
-	*	1746123637	0
-	"	164	84
-	^	164	114
-	.	165	0
-	+	164	84
-	+	165	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/fire/light.py
-	*	1746119379	0
-	"	859	4
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/export/clip/launch_local.sh
-	*	1746119366	0
-	"	6	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/NERD_tree_tab_1
-	*	1746119363	0
-	"	8	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/ControlP
-	*	1746119299	0
-	"	10	0
-	.	2	0
-	+	1	0
-	+	2	0
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/export/clip/embedding_predict.py
-	*	1746119292	0
-	"	346	14
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/common.sh
-	*	1746119178	0
-	"	131	6
-	^	43	47
-	.	43	46
-	+	148	0
-	+	145	37
-	+	145	83
-	+	145	64
-	+	145	63
-	+	145	37
-	+	148	0
-	+	119	0
-	+	148	49
-	+	145	37
-	+	148	0
-	+	145	35
-	+	34	0
-	+	35	0
-	+	41	39
-	+	35	0
-	+	41	16
-	+	44	0
-	+	42	67
-	+	31	0
-	+	30	53
-	+	148	0
-	+	145	37
-	+	145	83
-	+	145	64
-	+	145	63
-	+	145	37
-	+	148	0
-	+	119	0
-	+	148	49
-	+	145	37
-	+	148	0
-	+	145	35
-	+	34	0
-	+	35	0
-	+	41	39
-	+	35	0
-	+	41	16
-	+	44	0
-	+	42	67
-	+	44	0
-	+	43	13
-	+	44	0
-	+	43	15
-	+	31	0
-	+	30	53
-	+	148	0
-	+	145	37
-	+	145	83
-	+	145	64
-	+	145	63
-	+	145	37
-	+	148	0
-	+	119	0
-	+	148	49
-	+	145	37
-	+	148	0
-	+	145	35
-	+	34	0
-	+	35	0
-	+	41	39
-	+	35	0
-	+	41	16
-	+	44	0
-	+	42	67
-	+	31	0
-	+	30	53
-	+	148	0
-	+	145	37
-	+	145	83
-	+	145	64
-	+	145	63
-	+	145	37
-	+	148	0
-	+	119	0
-	+	148	49
-	+	145	37
-	+	148	0
-	+	145	35
-	+	34	0
-	+	35	0
-	+	41	39
-	+	35	0
-	+	41	16
-	+	44	0
-	+	42	67
-	+	44	0
-	+	43	13
-	+	44	0
-	+	43	15
-	+	35	7
-	+	36	0
-	+	148	49
-	+	148	48
-	+	148	0
-	+	147	0
-	+	148	0
-	+	146	0
-	+	33	68
-	+	43	46
-
-> /data/users/xlwang/fbsource/fbcode/torchtnt/utils/data/meta/onbox_dataloader.py
-	*	1746118992	0
-	"	2	0
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/configerator/source/minimal_viable_ai/cot/mvai_vit_bulk_eval.fbpkg.cconf
-	*	1746118991	0
-	"	7	0
-
-> /data/users/xlwang/fbsource/fbcode/torchtnt/framework/predict.py
-	*	1746118140	0
-	"	204	35
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/412
-	*	1746078989	0
-	"	1	0
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-727mxhnh.commit.hg.txt
+	*	1747341916	0
+	"	20	3
+	^	5	44
+	.	5	43
+	+	13	47
+	+	9	0
+	+	10	3
+	+	12	0
+	+	11	88
+	+	12	0
+	+	15	154
+	+	15	0
+	+	20	3
+	+	5	43
 
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/conf/ig_llfm_config.py
-	*	1746057512	0
-	"	286	24
-	^	1002	66
-	.	927	0
-	+	933	65
-	+	931	62
-	+	920	21
-	+	920	0
-	+	921	43
-	+	927	0
-	+	927	27
-	+	927	0
-	+	921	29
-	+	927	0
-	+	927	21
-	+	927	55
-	+	927	58
-	+	997	57
-	+	997	22
-	+	997	19
-	+	997	27
-	+	997	0
-	+	997	53
-	+	997	22
-	+	994	0
-	+	997	0
-	+	995	29
-	+	996	80
-	+	997	85
-	+	997	0
-	+	927	0
-	+	927	58
-	+	997	58
-	+	927	57
-	+	997	25
-	+	927	0
-	+	997	54
-	+	927	0
-	+	997	58
-	+	998	56
-	+	1009	0
-	+	1002	0
-	+	1004	0
-	+	1005	0
-	+	1006	16
-	+	1007	36
-	+	1009	0
-	+	1007	39
-	+	1007	40
-	+	1009	0
-	+	1007	98
-	+	1007	127
-	+	1008	0
-	+	1009	0
-	+	998	22
-	+	997	58
-	+	998	52
-	+	997	0
-	+	998	0
-	+	997	59
-	+	998	52
-	+	997	59
-	+	127	66
-	+	137	45
-	+	120	0
-	+	997	0
-	+	927	0
-	+	997	0
-	+	119	43
-	+	922	0
-	+	925	57
-	+	926	50
-	+	925	57
-	+	1001	0
-	+	143	30
-	+	510	0
-	+	511	20
-	+	511	0
-	+	512	0
-	+	514	39
-	+	514	0
-	+	512	44
-	+	513	57
+	*	1747334758	0
+	"	125	13
+	^	120	46
+	.	120	45
 	+	1	0
-	+	514	0
-	+	518	0
-	+	515	67
-	+	516	76
-	+	517	79
-	+	523	32
-	+	524	54
-	+	512	46
-	+	513	0
-	+	515	39
-	+	517	16
-	+	143	28
-	+	1002	65
-	+	1003	39
-	+	926	57
-	+	926	38
-	+	926	41
-	+	1002	65
-	+	926	0
-	+	927	0
-
-> /data/users/xlwang/fbsource/fbcode/hammer/modules/sequential/encoders/hstu_transducer_cint.py
-	*	1746055751	0
-	"	528	32
-
-> /data/users/xlwang/fbsource/fbcode/NERD_tree_tab_1
-	*	1746052395	0
-	"	1737	12
-	.	1	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/maas_config.py
-	*	1746052393	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/llfm_seq_enrich.py
-	*	1746043250	0
-	"	226	0
-	^	229	12
-	.	229	0
-	+	1	0
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	88
-	+	1	0
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	133	41
-	+	133	11
-	+	133	31
-	+	133	0
-	+	133	41
-	+	133	11
-	+	133	31
-	+	133	0
-	+	160	0
-	+	222	54
-	+	220	56
-	+	221	88
-	+	222	17
-	+	221	74
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	88
-	+	1	0
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	41
-	+	1	11
-	+	1	31
-	+	1	0
-	+	1	54
-	+	1	56
-	+	1	0
-	+	133	41
-	+	133	11
-	+	133	31
-	+	133	0
-	+	133	41
-	+	133	11
-	+	133	31
-	+	133	0
-	+	160	0
-	+	222	54
-	+	220	56
-	+	221	88
-	+	222	17
-	+	221	74
-	+	223	44
-	+	224	0
-	+	224	69
-	+	226	42
-	+	226	0
-	+	126	57
-	+	127	54
-	+	145	47
-	+	228	29
-	+	229	34
-	+	23	34
-	+	220	30
-	+	223	30
-	+	229	0
-
-> /data/users/xlwang/fbsource/fbcode/torchrec/fb/feed/modules/roo/roo_model_utils.py
-	*	1746038094	0
-	"	268	4
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/indexes.py
-	*	1746038063	0
-	"	247	87
-
-> /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_models/teams/clips/common_config.py
-	*	1746033712	0
-	"	674	4
-	^	672	0
-	.	675	0
-	+	1	0
-	+	1	7
-	+	1	0
-	+	1	5
-	+	1	32
-	+	1	0
-	+	1	4
-	+	1	0
-	+	654	0
-	+	653	7
-	+	654	0
-	+	653	5
-	+	654	32
-	+	652	0
-	+	675	0
-	+	674	0
-	+	673	4
-	+	673	0
-	+	670	33
-	+	1	0
-	+	1	7
-	+	1	0
-	+	1	5
-	+	1	32
-	+	1	0
-	+	1	4
-	+	1	0
-	+	654	0
-	+	653	7
-	+	654	0
-	+	653	5
-	+	654	32
-	+	652	0
-	+	675	0
-	+	674	0
-	+	673	4
-	+	673	0
-	+	670	33
-	+	675	0
-	+	671	0
-	+	673	0
-	+	672	0
-	+	675	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-6nhne78p.commit.hg.txt
-	*	1746033564	0
-	"	65	0
-	^	64	0
-	.	64	0
-	+	67	38
-	+	64	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_test/Makefile
-	*	1746033188	0
-	"	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/trainer.py
-	*	1746032805	0
-	"	2508	14
-	^	2515	58
-	.	2515	57
-	+	1	0
-	+	2508	14
-	+	2509	57
-	+	2510	0
-	+	2519	0
-	+	2512	76
-	+	2518	0
-	+	2512	25
-	+	198	25
-	+	2512	20
-	+	2512	0
-	+	2507	0
-	+	2509	19
-	+	2517	64
-	+	2518	0
-	+	2517	75
-	+	2518	0
-	+	1	0
-	+	1	62
-	+	1	0
-	+	1	14
+	+	1	50
 	+	1	57
 	+	1	0
-	+	1	62
+	+	1	30
 	+	1	0
-	+	1	14
+	+	1	20
+	+	1	0
+	+	1	39
+	+	1	0
+	+	1	44
 	+	1	57
 	+	1	0
+	+	1	67
 	+	1	76
+	+	1	79
+	+	1	32
+	+	1	54
+	+	1	46
 	+	1	0
-	+	1	25
-	+	1	0
-	+	603	0
-	+	1842	62
-	+	2504	0
-	+	1842	0
-	+	2519	0
-	+	2508	14
-	+	2509	57
-	+	2510	0
-	+	603	0
-	+	1842	62
-	+	2504	0
-	+	1842	0
-	+	2519	0
-	+	2508	14
-	+	2509	57
-	+	2510	0
-	+	2519	0
-	+	2512	76
-	+	2518	0
-	+	2512	25
-	+	198	25
-	+	2512	20
-	+	2512	0
-	+	2507	0
-	+	2509	19
-	+	2517	64
-	+	2518	0
-	+	2517	75
-	+	2518	0
-	+	1889	0
-	+	1890	57
-	+	1890	0
-	+	1888	28
-	+	1890	55
-	+	2517	12
-	+	2512	11
-	+	2512	0
-	+	2517	0
-	+	2513	19
-	+	2517	0
-	+	2513	37
-	+	2512	0
-	+	2511	18
-	+	1890	34
-	+	1919	34
-	+	1920	39
-	+	1842	0
-	+	1839	52
-	+	1842	85
-	+	1842	20
-	+	1897	0
-	+	1897	28
-	+	1842	0
-	+	1842	19
-	+	1897	0
-	+	1839	0
-	+	1842	0
-	+	1897	0
-	+	2321	0
-	+	2510	58
-	+	2510	100
-	+	2511	0
-	+	2510	58
-	+	2511	0
-	+	2510	58
-	+	2511	0
-	+	2512	0
-	+	2515	57
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/feature_index_loader.py
-	*	1746032802	0
-	"	1000	55
-	^	1000	25
-	.	1000	24
-	+	1	0
-	+	1	37
-	+	1	0
+	+	1	39
+	+	1	16
+	+	1	28
+	+	1	65
+	+	1	39
+	+	1	57
+	+	1	38
 	+	1	41
-	+	1	56
-	+	1	73
+	+	1	65
 	+	1	0
-	+	1	18
-	+	1	19
-	+	1	62
+	+	1	16
+	+	1	0
+	+	1	69
+	+	1	0
+	+	1	13
+	+	1	0
+	+	940	0
+	+	940	55
+	+	36	55
+	+	940	57
+	+	33	0
+	+	34	0
+	+	940	56
+	+	846	0
+	+	940	0
+	+	935	0
+	+	935	60
+	+	937	53
+	+	936	60
+	+	975	39
+	+	974	0
+	+	940	0
+	+	940	64
+	+	940	0
+	+	940	58
+	+	940	0
+	+	940	87
+	+	940	0
+	+	940	87
+	+	940	0
+	+	940	89
+	+	940	41
+	+	940	0
+	+	940	71
+	+	755	0
+	+	758	0
+	+	759	0
+	+	760	0
+	+	871	0
+	+	869	0
+	+	846	0
+	+	145	29
+	+	123	29
+	+	124	28
+	+	121	29
+	+	120	0
+	+	760	0
+	+	940	0
+	+	754	18
+	+	929	18
+	+	754	14
+	+	929	14
+	+	956	0
+	+	927	8
+	+	929	16
+	+	932	0
+	+	956	23
+	+	940	5
+	+	940	0
+	+	940	5
+	+	940	0
+	+	934	57
+	+	934	0
+	+	935	0
+	+	940	50
+	+	940	0
+	+	846	0
+	+	859	58
+	+	120	45
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/bulk_eval/consumer.py
+	*	1747334753	0
+	"	148	15
+	^	128	16
+	.	140	0
+	+	138	0
+	+	148	69
+	+	138	0
+	+	148	0
+	+	115	43
+	+	116	0
+	+	122	71
+	+	115	14
+	+	123	0
+	+	129	0
+	+	124	0
+	+	125	0
+	+	124	0
+	+	1	14
+	+	1	0
+	+	1	38
+	+	1	48
+	+	1	29
 	+	1	0
 	+	1	29
 	+	1	0
-	+	1	48
-	+	1	0
-	+	1	34
-	+	1	41
-	+	1	25
-	+	1	37
-	+	1	0
-	+	1	36
-	+	1	24
-	+	1	0
-	+	1	14
-	+	1	18
+	+	1	54
+	+	1	68
 	+	1	0
 	+	1	21
+	+	1	38
+	+	1	0
+	+	119	14
+	+	113	0
+	+	119	38
+	+	119	48
+	+	131	29
+	+	131	0
+	+	131	29
+	+	131	0
+	+	131	54
+	+	122	68
+	+	119	0
+	+	131	0
+	+	138	0
+	+	114	0
+	+	116	21
+	+	118	38
+	+	119	0
+	+	118	0
+	+	138	0
+	+	148	69
+	+	138	0
+	+	148	0
+	+	1	14
+	+	1	0
+	+	1	38
+	+	1	48
+	+	1	29
+	+	1	0
+	+	1	29
+	+	1	0
+	+	1	54
+	+	1	68
+	+	1	0
+	+	1	21
+	+	1	38
+	+	1	0
+	+	119	14
+	+	113	0
+	+	119	38
+	+	119	48
+	+	131	29
+	+	131	0
+	+	131	29
+	+	131	0
+	+	131	54
+	+	122	68
+	+	119	0
+	+	131	0
+	+	138	0
+	+	114	0
+	+	116	21
+	+	118	38
+	+	119	0
+	+	118	0
+	+	138	0
+	+	148	69
+	+	138	0
+	+	148	0
+	+	115	43
+	+	116	0
+	+	122	71
+	+	115	14
+	+	123	0
+	+	129	0
+	+	124	0
+	+	125	0
+	+	124	0
+	+	128	30
+	+	118	0
+	+	302	19
+	+	296	19
+	+	117	23
+	+	140	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/utils.py
+	*	1747331654	0
+	"	1076	0
+	^	1099	58
+	.	1099	57
+	+	1	0
+	+	1	52
+	+	1	34
+	+	1	36
+	+	1	0
+	+	1	52
+	+	1	34
+	+	1	36
+	+	1	60
+	+	1	27
+	+	1	0
+	+	1	36
+	+	1	4
+	+	1	226
+	+	1	0
+	+	1	63
 	+	1	59
+	+	1	54
+	+	1	23
+	+	1	0
+	+	1	53
+	+	1	0
+	+	1	53
+	+	1	61
+	+	1	0
+	+	1	13
+	+	1	0
+	+	1	52
+	+	1	34
+	+	1	36
+	+	1	0
+	+	1119	52
+	+	1119	34
+	+	1119	36
+	+	1119	60
+	+	1119	27
+	+	1119	0
+	+	1119	36
+	+	1119	4
+	+	1119	226
+	+	1119	0
+	+	1119	63
+	+	1119	59
+	+	1119	54
+	+	1119	23
+	+	1119	0
+	+	1119	53
+	+	1119	0
+	+	1119	53
+	+	1119	61
+	+	1119	0
+	+	1119	13
+	+	1119	0
+	+	1119	7
+	+	1119	28
+	+	1119	0
+	+	1119	24
+	+	1119	28
+	+	1119	0
+	+	2	0
+	+	1119	0
+	+	1119	24
+	+	1119	4
+	+	1119	20
+	+	1119	0
+	+	1100	0
+	+	1099	4
+	+	1104	0
+	+	1110	71
+	+	1100	70
+	+	1101	66
+	+	1100	69
+	+	1101	61
+	+	1100	0
+	+	1101	61
+	+	1102	52
+	+	1103	50
+	+	1110	53
+	+	1116	0
+	+	1110	0
+	+	1103	0
+	+	1099	15
+	+	1103	0
+	+	1110	55
+	+	1111	48
+	+	1112	39
+	+	1112	42
+	+	1112	16
+	+	1112	42
+	+	1114	0
+	+	1112	56
+	+	1113	70
+	+	1114	65
+	+	1115	10
+	+	1106	42
+	+	1099	28
+	+	1111	56
+	+	1118	27
+	+	1119	0
+	+	1099	57
+
+> ~/misc/scripts/dev_suites.sh
+	*	1747327189	0
+	"	45	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/utils/cuda_cache_cleaner.py
+	*	1747309933	0
+	"	72	8
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/trainer.py
+	*	1747309905	0
+	"	1952	18
+	^	808	12
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/trainer_config_def.py
+	*	1747309679	0
+	"	420	31
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/distributed.py
+	*	1747309465	0
+	"	88	13
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/ig_mast_be.sh
+	*	1747309437	0
+	"	26	27
+	.	29	48
+	+	29	48
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-ieo7dtm1.commit.hg.txt
+	*	1747281524	0
+	"	13	0
+	^	12	11
+	.	13	0
+	+	12	10
+	+	13	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-a91ziwj7.commit.hg.txt
+	*	1747281501	0
+	"	16	0
+	^	16	0
+	.	15	13
+	+	13	0
+	+	14	13
+	+	15	13
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-46l3zftx.commit.hg.txt
+	*	1747280881	0
+	"	1	33
+	^	1	34
+	.	1	33
+	+	1	33
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-1l931gbl.commit.hg.txt
+	*	1747280856	0
+	"	24	0
+	^	17	1
+	.	17	0
+	+	4	0
+	+	10	132
+	+	9	3
+	+	11	0
+	+	21	0
+	+	15	78
+	+	21	4
+	+	21	0
+	+	24	3
+	+	19	0
+	+	11	0
+	+	12	10
+	+	17	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/bulk_eval/producer.py
+	*	1747280609	0
+	"	106	8
+	.	149	0
+	+	149	43
+	+	149	55
+	+	149	0
+	+	150	0
+	+	150	54
+	+	149	0
+	+	149	62
+	+	154	0
+	+	149	0
+	+	150	0
+	+	149	43
+	+	149	55
+	+	149	0
+	+	150	0
+	+	150	54
+	+	149	0
+	+	149	62
+	+	154	0
+	+	149	0
+	+	150	0
+	+	149	0
+	+	149	43
+	+	149	55
+	+	149	0
+	+	150	0
+	+	150	54
+	+	149	0
+	+	149	62
+	+	154	0
+	+	149	0
+	+	150	0
+	+	149	43
+	+	149	55
+	+	149	0
+	+	150	0
+	+	150	54
+	+	149	0
+	+	149	62
+	+	154	0
+	+	149	0
+	+	150	0
+	+	149	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/fire/light.py
+	*	1747280605	0
+	"	560	5
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/fire/fire.py
+	*	1747280604	0
+	"	403	12
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/bulk_eval_config_def.py
+	*	1747280597	0
+	"	146	36
+	^	146	37
+	.	146	36
+	+	146	36
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/foundational_model.py
+	*	1747280587	0
+	"	176	30
+	.	309	0
+	+	292	0
+	+	292	47
+	+	308	0
+	+	309	46
+	+	292	0
+	+	309	0
+	+	292	0
+	+	292	47
+	+	308	0
+	+	309	46
+	+	292	0
+	+	309	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/ig_local_be.sh
+	*	1747280373	0
+	"	26	33
+	^	27	49
+	.	27	48
+	+	27	48
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-g7kmf49i.commit.hg.txt
+	*	1747280137	0
+	"	3	0
+
+> /tmp/mvai-xlwang-0514_153515.log
+	*	1747267852	0
+	"	3437	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-85375_7b.commit.hg.txt
+	*	1747266418	0
+	"	19	0
+	^	17	53
+	.	17	52
+	+	12	42
+	+	14	2
+	+	13	74
+	+	14	36
+	+	15	10
+	+	16	33
+	+	17	52
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-jur68am5.commit.hg.txt
+	*	1747265711	0
+	"	17	9
+	^	17	10
+	.	7	0
+	+	8	116
+	+	10	0
+	+	7	4
+	+	5	41
+	+	10	0
+	+	9	0
+	+	10	0
+	+	12	0
+	+	13	1
+	+	13	0
+	+	15	0
+	+	17	9
+	+	7	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/feature_index_loader.py
+	*	1747265450	0
+	"	1020	0
+	^	1015	37
+	.	9	0
 	+	1	36
 	+	1	0
 	+	1	78
@@ -7652,1397 +7789,1032 @@ $
 	+	1	0
 	+	1	29
 	+	1	0
-	+	785	0
-	+	950	11
-	+	792	61
+	+	790	0
+	+	955	11
+	+	797	61
+	+	798	0
+	+	805	0
+	+	797	0
 	+	793	0
-	+	800	0
-	+	792	0
-	+	788	0
-	+	789	65
-	+	791	0
-	+	789	73
-	+	790	47
-	+	791	54
-	+	937	26
-	+	1001	0
-	+	1000	24
-	n	1068	34
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-oiwtu6nh.commit.hg.txt
-	*	1746032447	0
-	"	56	83
-	^	57	1
-	.	56	86
-	+	62	0
-	+	55	0
-	+	58	3
-	+	61	0
-	+	59	0
-	+	55	0
-	+	21	0
-	+	59	0
-	+	54	0
-	+	61	0
-	+	60	0
-	+	61	0
-	+	57	1
-	+	57	6
-	+	56	83
-	+	58	0
-	+	56	86
-
-> /tmp/tmp
-	*	1746032379	0
-	"	1	0
-	^	337	62
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-w0nlujxw.commit.hg.txt
-	*	1746032265	0
-	"	52	0
-	^	41	3
-	.	52	0
-	+	52	0
-	+	24	0
-	+	30	2
-	+	31	0
-	+	41	2
-	+	42	0
-	+	24	0
-	+	52	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-3lr6k730.commit.hg.txt
-	*	1746032207	0
-	"	4	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-td5tfdzp.commit.hg.txt
-	*	1746032187	0
-	"	53	0
-	^	22	14
-	.	23	0
-	+	28	0
-	+	31	0
-	+	25	0
-	+	26	0
-	+	29	0
-	+	30	0
-	+	53	0
-	+	31	0
-	+	32	0
-	+	53	0
-	+	33	0
-	+	34	0
-	+	35	0
-	+	36	0
-	+	37	0
-	+	41	0
-	+	42	0
-	+	43	0
-	+	44	0
-	+	45	0
-	+	46	0
-	+	48	0
-	+	47	0
-	+	49	0
-	+	50	0
-	+	52	0
-	+	51	0
-	+	25	0
-	+	23	0
-	+	22	13
-	+	23	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-4peg05e5.commit.hg.txt
-	*	1746031496	0
-	"	28	3
-	^	28	14
-	.	5	0
-	+	5	77
-	+	9	16
-	+	11	3
-	+	14	38
-	+	24	10
-	+	22	0
-	+	14	27
-	+	14	0
-	+	17	0
-	+	22	0
-	+	14	0
-	+	18	0
-	+	28	4
-	+	5	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/trainer.py
-	*	1746031370	0
-	"	326	9
-	^	328	54
-	.	328	53
-	+	1	0
-	+	1	59
-	+	1	17
-	+	1	0
-	+	1	22
-	+	1	0
-	+	1	34
-	+	1	0
-	+	1	32
-	+	1	51
-	+	1	36
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	228	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	228	22
-	+	173	0
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	228	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	1	0
-	+	240	0
-	+	167	30
-	+	173	22
-	+	228	22
-	+	173	0
-	+	322	0
-	+	323	34
-	+	338	0
-	+	338	32
-	+	324	51
-	+	325	36
-	+	326	0
-	+	330	0
-	+	332	0
-	+	338	0
-	+	15	0
-	+	16	0
-	+	331	59
-	+	8	17
+	+	794	65
+	+	796	0
+	+	794	73
+	+	795	47
+	+	796	54
+	+	942	26
+	+	1006	0
+	+	1005	24
+	+	223	56
+	+	224	16
+	+	214	38
+	+	225	44
+	+	226	57
+	+	227	0
+	+	226	58
+	+	225	63
+	+	209	0
+	+	215	52
+	+	225	73
+	+	226	57
+	+	225	0
+	+	227	0
+	+	226	0
+	+	1014	0
+	+	1013	44
+	+	1013	0
+	+	1014	0
+	+	1017	0
+	+	1018	0
+	+	1015	0
+	+	1014	0
+	+	1015	36
+	+	1014	0
+	+	1013	0
+	+	10	0
 	+	9	0
-	+	323	86
-	+	324	0
-	+	328	53
+	n	1076	34
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/hive/partition_utils_lite.py
-	*	1746031370	0
-	"	557	4
-	.	462	33
-	+	462	33
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/train_pipeline.py
-	*	1746023214	0
-	"	1159	33
-	^	1220	16
-	.	1220	15
-	+	1	0
-	+	1	27
-	+	1	0
-	+	1214	0
-	+	1216	27
-	+	1223	0
-	+	1216	0
-	+	1223	11
-	+	1222	29
-	+	1223	0
-	+	1	0
-	+	1	27
-	+	1	0
-	+	1214	0
-	+	1216	27
-	+	1223	0
-	+	1216	0
-	+	1223	11
-	+	1222	29
-	+	1223	0
-	+	1222	0
-	+	1218	74
-	+	1220	15
-
-> /data/users/xlwang/fbsource/fbcode/torchrec/distributed/train_pipeline/train_pipelines.py
-	*	1746023213	0
-	"	144	14
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/job_resolver.py
-	*	1746023212	0
-	"	172	20
-	^	716	8
-	.	1	0
-	+	710	85
-	+	711	0
-	+	710	85
-	+	711	0
-	+	722	0
-	+	714	25
-	+	711	44
-	+	714	64
-	+	1	52
-	+	1	0
-	+	1	72
-	+	1	54
-	+	1	17
-	+	1	0
-	+	1	85
-	+	1	0
-	+	1	52
-	+	1	0
-	+	1	72
-	+	1	54
-	+	1	17
-	+	1	0
-	+	1	85
-	+	1	0
-	+	1	85
-	+	1	0
-	+	1	52
-	+	1	0
-	+	1	72
-	+	1	54
-	+	1	17
-	+	1	0
-	+	1	85
-	+	1	0
-	+	391	52
-	+	705	0
-	+	706	72
-	+	707	54
-	+	708	17
-	+	712	0
-	+	710	85
-	+	711	0
-	+	710	85
-	+	711	0
-	+	722	0
-	+	714	25
-	+	711	44
-	+	1	52
-	+	1	0
-	+	1	72
-	+	1	54
-	+	1	17
-	+	1	0
-	+	1	85
-	+	1	0
-	+	1	52
-	+	1	0
-	+	1	72
-	+	1	54
-	+	1	17
-	+	1	0
-	+	1	85
-	+	1	0
-	+	1	85
-	+	1	0
-	+	1	52
-	+	1	0
-	+	1	72
-	+	1	54
-	+	1	17
-	+	1	0
-	+	1	85
-	+	1	0
-	+	391	52
-	+	705	0
-	+	706	72
-	+	707	54
-	+	708	17
-	+	712	0
-	+	710	85
-	+	711	0
-	+	710	85
-	+	711	0
-	+	722	0
-	+	714	25
-	+	711	44
-	+	714	64
-	+	721	0
-	+	720	0
-	+	85	26
-	+	715	60
-	+	719	0
-	+	718	0
-	+	717	20
-	+	716	62
-	+	717	83
-	+	718	78
-	+	706	35
-	+	493	0
-	+	1	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/launch.py
-	*	1746023211	0
-	"	813	0
-	^	742	16
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/model_family.py
-	*	1746023209	0
-	"	840	0
-	.	1229	0
-	+	1	46
-	+	1	0
-	+	1	63
-	+	1	0
-	+	1	38
-	+	1	28
-	+	1	0
-	+	1	39
-	+	1	0
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	0
-	+	1	63
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	44
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	46
-	+	1	0
-	+	1	63
-	+	1	0
-	+	1	38
-	+	1	28
-	+	1	0
-	+	1	39
-	+	1	0
-	+	14	0
-	+	1	0
-	+	434	71
-	+	409	0
-	+	410	0
-	+	1237	44
-	+	1224	31
-	+	1229	64
-	+	1250	27
-	+	1251	41
-	+	1252	42
-	+	1253	33
-	+	1254	48
-	+	1423	0
-	+	410	0
-	+	1516	0
-	+	434	0
-	+	1547	0
-	+	1229	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/trainer_config_def.py
-	*	1746023155	0
-	"	401	4
-	.	390	0
-	+	391	0
-	+	390	35
-	+	391	0
-	+	390	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/dataloader/dataloader_configs.py
-	*	1746023152	0
-	"	18	5
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/dataloader/dataloader_core_configs.py
-	*	1746023151	0
-	"	43	20
-
-> /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_models/teams/clips/model_archs.py
-	*	1746022370	0
-	"	8590	8
-	^	7542	100
-	.	7543	0
-	+	7543	0
-	+	1	0
-	+	1	47
-	+	1	40
-	+	1	66
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	60
-	+	1	0
-	+	1	47
-	+	1	40
-	+	1	0
-	+	1	60
-	+	1	0
-	+	1	47
-	+	1	40
-	+	1	66
-	+	1	0
-	+	1	60
-	+	1	0
-	+	1	47
-	+	1	40
-	+	1	0
-	+	1	60
-	+	1	0
-	+	1	47
-	+	1	40
-	+	1	66
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	60
-	+	1	0
-	+	1	47
-	+	1	40
-	+	1	0
-	+	1	60
-	+	1	0
-	+	1	47
-	+	1	40
-	+	1	66
-	+	1	0
-	+	1	60
-	+	1	0
-	+	1	47
-	+	1	40
-	+	1	0
-	+	1	60
-	+	1	0
-	+	1	47
-	+	1	40
-	+	1	66
-	+	1	0
-	+	1	36
-	+	1	0
-	+	1	58
-	+	1	0
-	+	1	59
-	+	1	63
-	+	1	0
-	+	1	68
-	+	1	58
-	+	1	57
-	+	1	0
-	+	7459	0
-	+	7604	0
-	+	7634	0
-	+	7575	0
-	+	7576	0
-	+	7551	0
-	+	7552	0
-	+	6908	0
-	+	6931	36
-	+	7552	0
-	+	7543	53
-	+	7549	0
-	+	7545	54
-	+	7545	52
-	+	7545	53
-	+	7547	0
-	+	7545	80
-	+	7547	0
-	+	7545	0
-	+	7546	0
-	+	7548	35
-	+	16	0
-	+	1	0
-	+	7548	0
-	+	7547	29
-	+	7551	70
-	+	7551	0
-	+	6931	50
-	+	6931	0
-	+	7542	59
-	+	7543	0
-	+	7542	63
-	+	7543	0
-	+	7542	63
-	+	7543	0
-	m	5071	44
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/hive/partition_utils.py
-	*	1745972528	0
-	"	206	7
-	^	206	8
-	.	205	84
-	+	1	0
-	+	1	29
-	+	1	0
-	+	1	31
-	+	1	35
-	+	1	25
-	+	1	55
-	+	1	0
-	+	1	65
-	+	1	0
-	+	1	65
-	+	1	0
-	+	1	7
-	+	221	0
-	+	1	29
-	+	221	0
-	+	1	31
-	+	1	35
-	+	1	25
-	+	1	55
-	+	1	0
-	+	1	35
-	+	1	0
-	+	1	65
-	+	1	0
-	+	1	65
-	+	1	0
-	+	1	7
-	+	1	0
-	+	1	29
-	+	1	0
-	+	1	31
-	+	1	35
-	+	1	25
-	+	1	55
-	+	1	0
-	+	1	65
-	+	1	0
-	+	188	65
-	+	188	0
-	+	188	7
-	+	222	0
-	+	189	29
-	+	222	0
-	+	189	31
-	+	189	35
-	+	189	25
-	+	189	55
-	+	221	0
-	+	189	35
-	+	203	0
-	+	189	54
-	+	203	0
-	+	190	73
-	+	191	0
-	+	192	23
-	+	193	31
-	+	195	36
-	+	196	34
-	+	197	24
-	+	196	33
-	+	196	29
-	+	197	35
-	+	203	0
-	+	199	39
-	+	203	0
-	+	196	0
-	+	194	0
-	+	195	12
-	+	188	70
-	+	3	39
-	+	199	0
-	+	201	61
-	+	203	0
-	+	188	24
-	+	189	46
-	+	188	0
-	+	189	54
-	+	202	18
-	+	201	0
-	+	202	76
-	+	220	0
-	+	218	0
-	+	217	0
-	+	203	60
-	+	209	80
-	+	209	0
-	+	214	41
-	+	209	0
-	+	211	27
-	+	212	16
-	+	213	0
-	+	210	0
-	+	217	86
-	+	215	85
-	+	216	25
-	+	203	73
-	+	212	16
-	+	216	38
-	+	205	84
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/training_environment.py
-	*	1745972315	0
-	"	33	12
-	^	32	45
-	.	32	44
-	+	33	31
-	+	32	44
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/dataloader/dataloader.py
-	*	1745972314	0
-	"	370	8
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/v5/train_pipeline.py
+	*	1747264833	0
+	"	530	22
 
 > /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/train_pipeline.py
-	*	1745971511	0
-	"	28	8
-
-> /data/users/xlwang/fbsource/fbcode/ai_tooling/instrumentation/logging/event_logger.py
-	*	1745969488	0
-	"	1067	6
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/utils.py
-	*	1745964507	0
-	"	352	4
-	.	1082	0
-	+	1	0
-	+	1	33
-	+	1	0
-	+	1	33
-	+	1	80
-	+	1	23
-	+	1	0
-	+	1	33
-	+	1	0
-	+	1	33
-	+	1	80
-	+	1082	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/launch.py
-	*	1745963388	0
-	"	294	18
-
-> /data/users/xlwang/fbsource/fbcode/mvai_infra/checkpoint/checkpoint_manager.py
-	*	1745955252	0
-	"	236	5
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/job_type.py
-	*	1745949182	0
-	"	32	30
-
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/TARGETS
-	*	1745948937	0
-	"	45	12
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/publisher/publisher.py
-	*	1745945056	0
-	"	16	24
-	^	25	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/publisher/publisher_config.py
-	*	1745884451	0
-	"	16	7
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/utils/utils.py
-	*	1745882267	0
-	"	364	19
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/model_family.py
-	*	1745881883	0
-	"	68	8
-
-> /data/users/xlwang/fbsource/fbcode/fbcode/minimal_viable_ai/models/biography/conf/trainer_config.py
-	*	1745881082	0
+	*	1747264751	0
 	"	1	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/ControlP
-	*	1745879926	0
-	"	10	0
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/train_pipeline.py
+	*	1747264748	0
+	"	1247	21
+	^	622	24
+	.	622	23
+	+	1	81
+	+	1	0
+	+	1	36
+	+	1	8
+	+	1	0
+	+	1	55
+	+	1	48
+	+	1	0
+	+	1	89
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	11
+	+	1	29
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	11
+	+	1	29
+	+	1	0
+	+	1	74
+	+	1	15
+	+	1	0
+	+	1	21
+	+	1	66
+	+	1	0
+	+	1	89
+	+	1	36
+	+	1	8
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	11
+	+	1	29
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1	11
+	+	1	29
+	+	1	0
+	+	1	74
+	+	1	15
+	+	1	0
+	+	1	21
+	+	1	66
+	+	1	0
+	+	1	89
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1242	0
+	+	1244	27
+	+	1251	0
+	+	1244	0
+	+	1251	11
+	+	1250	29
+	+	1251	0
+	+	1	0
+	+	1	27
+	+	1	0
+	+	1242	0
+	+	1244	27
+	+	1251	0
+	+	1244	0
+	+	1251	11
+	+	1250	29
+	+	1251	0
+	+	1250	0
+	+	1246	74
+	+	1248	15
+	+	55	0
+	+	1225	21
+	+	282	66
+	+	285	0
+	+	283	0
+	+	285	0
+	+	48	89
+	+	1225	36
+	+	620	8
+	+	620	0
+	+	640	0
+	+	621	0
+	+	289	55
+	+	620	48
+	+	636	0
+	+	635	0
+	+	624	19
+	+	624	0
+	+	626	46
+	+	633	81
+	+	634	81
+	+	622	23
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/cot.py
+	*	1747264746	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/logging.py
+	*	1747258151	0
+	"	83	8
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/llama/modules.py
+	*	1747208099	0
+	"	1110	12
+	.	1107	0
+	+	1108	0
+	+	1107	44
+	+	1107	21
+	+	1120	0
+	+	1120	31
+	+	1108	0
+	+	1107	44
+	+	1107	21
+	+	1120	0
+	+	1120	25
+	+	1107	21
+	+	1108	0
+	+	1107	44
+	+	1107	21
+	+	1120	0
+	+	1120	31
+	+	1108	0
+	+	1107	44
+	+	1107	21
+	+	1120	0
+	+	1120	25
+	+	1107	21
+	+	1107	0
+	+	1120	0
+	+	1107	0
+	+	1108	0
+	+	1107	44
+	+	1107	21
+	+	1120	0
+	+	1120	31
+	+	1108	0
+	+	1107	44
+	+	1107	21
+	+	1120	0
+	+	1120	25
+	+	1107	21
+	+	1108	0
+	+	1107	44
+	+	1107	21
+	+	1120	0
+	+	1120	31
+	+	1108	0
+	+	1107	44
+	+	1107	21
+	+	1120	0
+	+	1120	25
+	+	1107	21
+	+	1107	0
+	+	1120	0
+	+	1107	0
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/distributed/fsdp/fully_sharded_data_parallel.py
+	*	1747206856	0
+	"	169	23
+	.	14	0
+	+	14	0
+	m	71	4
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/llfm_encoding.py
+	*	1747206842	0
+	"	83	14
+
+> lawrencium:///data/users/xlwang/fbsource//fbcode/minimal_viable_ai/models/biography/llfm.py//rev=.^
+	*	1747206367	0
+	"	587	11
+	.	846	0
+	+	846	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/llama/model.py
+	*	1747198807	0
+	"	8	5
+	.	104	0
+	+	104	9
+	+	104	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/ig_mast_run.sh
+	*	1747198498	0
+	"	30	12
+	^	31	14
+	.	31	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	56
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	56
+	+	31	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	56
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	56
+	+	31	0
+	+	30	57
+	+	29	48
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	56
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	56
+	+	31	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	56
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	0
+	+	25	59
+	+	32	0
+	+	29	0
+	+	30	56
+	+	31	0
+	+	30	57
+	+	29	48
+	+	31	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/ig_local_run.sh
+	*	1747195183	0
+	"	30	5
+	^	29	3
+	.	30	0
+	+	23	59
+	+	32	0
+	+	30	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/common.sh
+	*	1747184073	0
+	"	1	0
+	^	152	0
+	.	151	0
+	+	138	46
+	+	151	0
+	+	148	0
+	+	150	0
+	+	137	0
+	+	135	0
+	+	134	0
+	+	153	0
+	+	147	0
+	+	151	0
+	+	149	0
+	+	151	0
+	+	138	46
+	+	151	0
+	+	148	0
+	+	150	0
+	+	137	0
+	+	135	0
+	+	134	0
+	+	152	0
+	+	153	0
+	+	147	0
+	+	151	0
+	+	149	0
+	+	151	0
+	+	138	46
+	+	151	0
+	+	148	0
+	+	150	0
+	+	137	0
+	+	135	0
+	+	134	0
+	+	153	0
+	+	147	0
+	+	151	0
+	+	149	0
+	+	151	0
+	+	138	46
+	+	151	0
+	+	148	0
+	+	150	0
+	+	137	0
+	+	135	0
+	+	134	0
+	+	152	0
+	+	153	0
+	+	150	0
+	+	151	0
+	+	147	0
+	+	151	0
+	+	149	0
+	+	151	0
+	+	138	46
+	+	151	0
+	+	148	0
+	+	150	0
+	+	137	0
+	+	135	0
+	+	134	0
+	+	153	0
+	+	147	0
+	+	151	0
+	+	149	0
+	+	151	0
+	+	138	46
+	+	151	0
+	+	148	0
+	+	150	0
+	+	137	0
+	+	135	0
+	+	134	0
+	+	152	0
+	+	153	0
+	+	147	0
+	+	151	0
+	+	149	0
+	+	151	0
+	+	138	46
+	+	151	0
+	+	148	0
+	+	150	0
+	+	137	0
+	+	135	0
+	+	134	0
+	+	153	0
+	+	147	0
+	+	151	0
+	+	149	0
+	+	151	0
+	+	138	46
+	+	151	0
+	+	148	0
+	+	150	0
+	+	137	0
+	+	135	0
+	+	134	0
+	+	152	0
+	+	153	0
+	+	150	0
+	+	151	0
+
+> /data/users/xlwang/fbsource/fbcode/torchrec/sparse/jagged_tensor.py
+	*	1747176990	0
+	"	788	8
+
+> /data/users/xlwang/fbsource/fbcode/hammer/ops/position.py
+	*	1747168408	0
+	"	97	24
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/trainer.py
+	*	1747168193	0
+	"	91	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-rfehyfhi.commit.hg.txt
+	*	1747158973	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/ControlP
+	*	1747158874	0
+	"	3	0
 	.	2	0
 	+	1	0
 	+	2	0
 
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-plcgtwjb.commit.hg.txt
-	*	1745879868	0
-	"	15	3
-	^	15	4
-	.	15	3
-	+	10	13
-	+	9	38
-	+	5	40
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/conf/ig_feature_index_loader_configs.py
+	*	1747158570	0
+	"	176	5
+	^	179	86
+	.	179	85
+	+	185	0
+	+	180	23
+	+	178	0
+	+	197	0
+	+	161	0
+	+	170	20
+	+	179	85
+	+	185	0
+	+	180	23
+	+	178	0
+	+	197	0
+	+	161	0
+	+	170	20
+	+	179	85
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/onefeed/lsr/mb3_roo/mb3_baseline_model_config.py
+	*	1747158436	0
+	"	338	17
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/model_config_def.py
+	*	1747158374	0
+	"	270	15
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/onefeed/lsr/mb3_roo/model_roo_base.py
+	*	1747158365	0
+	"	468	11
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/onefeed/lsr/mb3_lc_roo_cint/mb3_lc_w_cint_model_config.py
+	*	1747158364	0
+	"	384	13
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/onefeed/lsr/mb3_roo/trainer_config.py
+	*	1747158359	0
+	"	32	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/model_family.py
+	*	1747158296	0
+	"	3	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/onefeed/lsr/mb3_roo/TARGETS
+	*	1747158271	0
+	"	66	8
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-vb6ohy7c.commit.hg.txt
+	*	1747157159	0
+	"	1	2
+	^	1	3
+	.	1	2
+	+	1	2
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-t17idxww.commit.hg.txt
+	*	1747157150	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/launch.py
+	*	1747150897	0
+	"	889	50
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/launch.py
+	*	1747150894	0
+	"	175	8
+	^	143	8
+	.	23	10
+	+	1	0
+	+	1	54
+	+	1	0
+	+	1	55
+	+	1	0
+	+	185	0
+	+	135	0
+	+	24	0
+	+	143	0
+	+	147	0
+	+	137	54
+	+	143	0
+	+	162	0
+	+	161	0
+	+	139	0
+	+	137	55
+	+	138	0
+	+	143	0
+	+	161	0
+	+	165	0
+	+	179	0
+	+	1	0
+	+	1	54
+	+	1	0
+	+	1	55
+	+	1	0
+	+	185	0
+	+	135	0
+	+	24	0
+	+	143	0
+	+	147	0
+	+	137	54
+	+	143	0
+	+	162	0
+	+	161	0
+	+	139	0
+	+	137	55
+	+	138	0
+	+	143	0
+	+	161	0
+	+	165	0
+	+	179	0
+	+	157	0
+	+	177	0
+	+	23	10
+	+	1	0
+	+	1	54
+	+	1	0
+	+	1	55
+	+	1	0
+	+	185	0
+	+	135	0
+	+	24	0
+	+	143	0
+	+	147	0
+	+	137	54
+	+	143	0
+	+	162	0
+	+	161	0
+	+	139	0
+	+	137	55
+	+	138	0
+	+	143	0
+	+	161	0
+	+	165	0
+	+	179	0
+	+	1	0
+	+	1	54
+	+	1	0
+	+	1	55
+	+	1	0
+	+	185	0
+	+	135	0
+	+	24	0
+	+	143	0
+	+	147	0
+	+	137	54
+	+	143	0
+	+	162	0
+	+	161	0
+	+	139	0
+	+	137	55
+	+	138	0
+	+	143	0
+	+	161	0
+	+	165	0
+	+	179	0
+	+	157	0
+	+	177	0
+	+	23	10
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/launcher.py
+	*	1747150894	0
+	"	53	8
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/utils.py
+	*	1747150891	0
+	"	2229	8
+
+> lawrencium:///data/users/xlwang/fbsource//fbcode/minimal_viable_ai/models/biography/scripts/ig_mast_run.sh//rev=.^
+	*	1747149175	0
+	"	30	2
+	.	32	0
+	+	32	0
+
+> lawrencium:///data/users/xlwang/fbsource//fbcode/minimal_viable_ai/models/biography/scripts/ig_local_run.sh//rev=.^
+	*	1747149015	0
+	"	31	2
+	.	32	0
+	+	1	0
+	+	32	0
+
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/distributed/fsdp/api.py
+	*	1747122685	0
+	"	67	4
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/NERD_tree_win_2
+	*	1747122671	0
+	"	24	0
+	.	1	0
+	+	1	0
+
+> lawrencium:///data/users/xlwang/fbsource//fbcode/minimal_viable_ai/models/biography/conf/ig_llfm_config.py//rev=.^
+	*	1747122649	0
+	"	961	0
+	.	1047	0
+	+	1047	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-reuuwxru.commit.hg.txt
+	*	1747122515	0
+	"	9	14
+	^	9	15
+	.	9	14
+	+	1	0
+	+	2	0
 	+	8	0
 	+	13	0
-	+	15	3
+	+	9	14
 
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-0ytteawv.commit.hg.txt
-	*	1745879807	0
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-05kx_ihp.commit.hg.txt
+	*	1747122478	0
+	"	5	8
+	^	5	9
+	.	5	8
+	+	4	22
+	+	5	1
+	+	3	20
+	+	5	8
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-1kt_bfk5.commit.hg.txt
+	*	1747122356	0
+	"	1	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/indexes.py
+	*	1747120721	0
+	"	152	0
+	^	156	65
+	.	156	64
+	+	1	0
+	+	1	17
+	+	1	31
+	+	1	0
+	+	1	17
+	+	1	31
+	+	1	0
+	+	1	21
+	+	1	31
+	+	1	0
+	+	1	17
+	+	1	31
+	+	1	0
+	+	1	17
+	+	1	31
+	+	1	0
+	+	1	21
+	+	1	31
+	+	1	37
+	+	1	0
+	+	1	31
+	+	1	0
+	+	1	40
+	+	1	0
+	+	147	0
+	+	146	0
+	+	147	17
+	+	148	31
+	+	147	0
+	+	146	0
+	+	147	17
+	+	148	31
+	+	150	0
+	+	149	0
+	+	150	21
+	+	151	31
+	+	147	0
+	+	146	0
+	+	147	17
+	+	148	31
+	+	147	0
+	+	146	0
+	+	147	17
+	+	148	31
+	+	150	0
+	+	149	0
+	+	150	21
+	+	151	31
+	+	153	37
+	+	158	0
+	+	154	31
+	+	157	0
+	+	155	40
+	+	156	64
+
+> /data/users/xlwang/fbsource/fbcode/mrs/fm/feature_joiner/id_hashers.py
+	*	1747120720	0
+	"	98	8
+	.	281	0
+	+	281	0
+	+	209	0
+	+	213	24
+	+	56	0
+	+	50	32
+	+	51	32
+	+	1	32
+	+	1	19
+	+	1	0
+	+	208	32
+	+	209	19
+	+	209	0
+	+	213	24
+	+	56	0
+	+	50	32
+	+	51	32
+	+	209	13
+	+	213	0
+	+	209	14
+	+	1	32
+	+	1	19
+	+	1	0
+	+	208	32
+	+	209	19
+	+	209	0
+	+	213	24
+	+	56	0
+	+	50	32
+	+	51	32
+	+	1	32
+	+	1	19
+	+	1	0
+	+	208	32
+	+	209	19
+	+	209	0
+	+	213	24
+	+	56	0
+	+	50	32
+	+	51	32
+	+	209	13
+	+	213	0
+	+	209	14
+	+	280	0
+	+	281	0
+	+	1	32
+	+	1	19
+	+	1	0
+	+	208	32
+	+	209	19
+	+	209	0
+	+	213	24
+	+	56	0
+	+	50	32
+	+	51	32
+	+	1	32
+	+	1	19
+	+	1	0
+	+	208	32
+	+	209	19
+	+	209	0
+	+	213	24
+	+	56	0
+	+	50	32
+	+	51	32
+	+	209	13
+	+	213	0
+	+	209	14
+	+	1	32
+	+	1	19
+	+	1	0
+	+	208	32
+	+	209	19
+	+	209	0
+	+	213	24
+	+	56	0
+	+	50	32
+	+	51	32
+	+	1	32
+	+	1	19
+	+	1	0
+	+	208	32
+	+	209	19
+	+	209	0
+	+	213	24
+	+	56	0
+	+	50	32
+	+	51	32
+	+	209	13
+	+	213	0
+	+	209	14
+	+	280	0
+	+	281	0
+	+	53	0
+	+	52	0
+	+	53	21
+	+	208	36
+	+	208	42
+	+	208	0
+	+	210	0
+	+	281	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/ranking_common/tests/train_pipeline_test.py
+	*	1747115932	0
+	"	106	8
+	^	136	153
+	.	110	0
+	+	43	37
+	+	43	36
+	+	43	65
+	+	43	24
+	+	43	47
+	+	43	0
+	+	62	0
+	+	81	52
+	+	82	83
+	+	83	0
+	+	81	0
+	+	108	56
+	+	109	232
+	+	110	0
+	+	122	66
+	+	123	86
+	+	123	159
+	+	124	0
+	+	135	62
+	+	136	86
+	+	137	0
+	+	108	0
+	+	110	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/NERD_tree_win_1
+	*	1747101616	0
+	"	15	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/scripts/NERD_tree_tab_2
+	*	1747101615	0
 	"	3	0
 	.	1	0
 	+	1	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/labels.py
-	*	1745878678	0
-	"	151	0
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/launch.py
+	*	1747095378	0
+	"	364	0
 
-> /tmp/mvai-xlwang.log
-	*	1745878210	0
-	"	79958	4
-	.	79958	0
-	+	79958	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/lsr_model_config_def.py
-	*	1745875969	0
-	"	46	27
-	^	157	26
-	.	21	0
-	+	1	10
-	+	1	42
-	+	1	10
-	+	1	42
-	+	1	9
-	+	1	17
-	+	1	0
-	+	1	32
-	+	1	25
-	+	1	0
-	+	1	10
-	+	1	42
-	+	1	10
-	+	1	42
-	+	1	9
-	+	1	17
-	+	1	0
-	+	1	32
-	+	1	25
-	+	1	0
-	+	1	10
-	+	1	42
-	+	1	10
-	+	1	42
-	+	1	9
-	+	1	17
-	+	1	0
-	+	1	32
-	+	1	25
-	+	1	0
-	+	186	10
-	+	187	42
-	+	186	10
-	+	187	42
-	+	154	9
-	+	155	17
-	+	158	0
-	+	156	32
-	+	157	25
-	+	158	0
-	+	20	0
-	+	21	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/lsr_lib.py
-	*	1745875645	0
-	"	13	7
-	.	38	0
-	+	1	0
-	+	1	43
-	+	1	62
-	+	1	0
-	+	1	53
-	+	1	0
-	+	1	62
-	+	1	42
-	+	1	52
-	+	1	45
-	+	1	0
-	+	1	58
-	+	1	53
-	+	1	58
-	+	1	27
-	+	1	28
-	+	1	30
-	+	1	23
-	+	53	0
-	+	1	0
-	+	53	39
-	+	1	0
-	+	53	77
-	+	1	67
-	+	1	0
-	+	53	17
-	+	1	0
-	+	1	49
-	+	1	0
-	+	1	47
-	+	1	0
-	+	1	35
-	+	1	49
-	+	1	0
-	+	53	0
-	+	1	0
-	+	1	27
-	+	1	0
-	+	1	42
-	+	1	14
-	+	1	16
-	+	1	21
-	+	53	54
-	+	14	70
-	+	17	0
-	+	25	0
-	+	17	0
-	+	18	74
-	+	22	0
-	+	22	10
-	+	22	0
-	+	46	0
-	+	43	0
-	+	42	80
-	+	42	156
-	+	24	39
-	+	42	66
-	+	38	0
-	+	19	81
-	+	43	0
-	+	42	80
-	+	20	0
-	+	20	42
-	+	18	0
-	+	20	22
-	+	42	18
-	+	43	0
-	+	47	77
-	+	21	32
-	+	51	42
-	+	52	0
-	+	46	0
-	+	52	0
-	+	46	44
-	+	47	0
-	+	53	0
-	+	54	15
-	+	42	14
-	+	48	23
-	+	51	23
-	+	54	15
-	+	10	0
-	+	20	26
-	+	43	72
-	+	44	63
-	+	44	159
-	+	46	0
-	+	44	63
-	+	45	0
-	+	46	9
-	+	45	13
-	+	43	72
-	+	26	0
-	+	27	40
-	+	28	27
-	+	29	28
-	+	33	40
-	+	34	27
-	+	35	28
-	+	38	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/labels.py
-	*	1745866131	0
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-ejtrlkjj.commit.hg.txt
+	*	1747092683	0
 	"	1	0
 
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/llfm_encoding.py
-	*	1745865920	0
-	"	89	8
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-26dhveur.commit.hg.txt
+	*	1747092680	0
+	"	3	17
+	^	3	18
+	.	3	17
+	+	3	17
 
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/dense.py
-	*	1745864617	0
-	"	480	53
-	^	382	6
-	.	382	0
-	+	382	0
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-tcdju2sw.commit.hg.txt
+	*	1747092386	0
+	"	1	2
+	^	1	3
+	.	1	2
+	+	1	2
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/model_family_api/configs.py
-	*	1745861270	0
-	"	263	6
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-cse6lg0m.commit.hg.txt
+	*	1747092379	0
+	"	1	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/trainer_config_def.py
-	*	1745682646	0
-	"	21	6
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-dlskaipq.commit.hg.txt
+	*	1747087543	0
+	"	13	3
+	^	13	4
+	.	13	3
+	+	1	42
+	+	5	6
+	+	9	3
+	+	13	3
 
-> /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_models/teams/clips/test/cu_kaleido/arches.py
-	*	1745679657	0
-	"	61	14
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-_q_dqrwn.commit.hg.txt
+	*	1747087431	0
+	"	1	2
+	^	1	3
+	.	1	2
+	+	1	2
 
-> /data/users/xlwang/fbsource/fbcode/mrs/fm/modules/aiayn.py
-	*	1745674927	0
-	"	609	14
-	^	611	8
-	.	609	0
-	+	609	0
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-k2xyouap.commit.hg.txt
+	*	1747087425	0
+	"	1	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/over_arch.py
-	*	1745671824	0
-	"	14	20
+> /data/users/xlwang/fbsource/fbcode/torchrec/distributed/model_parallel.py
+	*	1747086957	0
+	"	354	8
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/llfm.py
-	*	1745671817	0
-	"	23	40
-	^	722	26
-	.	722	25
-	+	496	14
-	+	496	20
-	+	507	20
-	+	496	0
-	+	491	13
-	+	494	11
-	+	740	14
-	+	742	0
-	+	766	17
-	+	764	52
-	+	766	0
-	+	738	20
-	+	660	0
-	+	652	50
-	+	653	0
-	+	655	28
-	+	811	0
-	+	738	0
-	+	739	0
-	+	740	0
-	+	741	0
-	+	800	0
-	+	637	0
-	+	654	24
-	+	651	29
-	+	652	0
-	+	650	0
-	+	669	0
-	+	669	33
-	+	669	0
-	+	650	18
-	+	659	39
-	+	659	94
-	+	10	0
-	+	1	0
-	+	659	39
-	+	660	0
-	+	670	16
-	+	671	24
-	+	669	47
-	+	669	34
-	+	669	31
-	+	24	77
-	+	25	0
-	+	665	59
-	+	666	0
-	+	668	68
-	+	669	0
-	+	670	75
-	+	671	0
-	+	565	0
-	+	564	62
-	+	564	0
-	+	565	0
-	+	669	60
-	+	673	53
-	+	677	60
-	+	681	14
-	+	682	87
-	+	681	0
-	+	692	30
-	+	705	0
-	+	693	0
-	+	691	23
-	+	682	0
-	+	695	0
-	+	695	14
-	+	693	9
-	+	695	35
-	+	699	26
-	+	662	0
-	+	654	17
-	+	662	12
-	+	676	16
-	+	677	20
-	+	699	24
-	+	700	0
-	+	700	47
-	+	701	0
-	+	700	0
-	+	701	0
-	+	705	0
-	+	709	36
-	+	708	33
-	+	709	0
-	+	720	30
-	+	721	0
-	+	727	29
-	+	721	78
-	+	727	51
-	+	727	44
-	+	728	41
-	+	729	47
-	+	727	58
-	+	498	15
-	+	495	32
-	+	661	0
-	+	677	32
-	+	727	0
-	+	722	25
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/model_family_api/model_family.py
+	*	1747086780	0
+	"	58	6
+	^	62	9
+	.	62	0
+	+	62	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/ig_ranking/lsr/mb5_llfm/embedding_tables.py
-	*	1745670585	0
-	"	16	0
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/model_family_api/data_parallel.py
+	*	1747086780	0
+	"	57	0
+	^	542	8
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/bulk_eval/producer.py
-	*	1745670355	0
-	"	163	0
-	^	140	22
-	.	163	0
-	+	1	0
-	+	130	34
-	+	130	0
-	+	162	0
-	+	141	28
-	+	141	21
-	+	10	7
-	+	1	34
-	+	1	0
-	+	1	7
-	+	1	0
-	+	130	34
-	+	130	0
-	+	162	0
-	+	141	28
-	+	141	21
-	+	10	7
-	+	141	62
-	+	141	0
-	+	150	0
-	+	5	0
-	+	10	0
-	+	7	12
-	+	132	34
-	+	151	0
-	+	152	0
-	+	6	9
-	+	152	74
-	+	153	65
-	+	128	0
-	+	153	77
-	+	17	0
-	+	18	30
-	+	152	25
-	+	153	25
-	+	162	27
-	+	156	77
-	+	160	0
-	+	161	61
-	+	92	0
-	+	94	31
-	+	95	62
-	+	94	0
-	+	157	0
-	+	158	0
-	+	155	39
-	+	156	0
-	+	155	27
-	+	154	12
-	+	155	25
-	+	156	86
-	+	162	43
-	+	163	67
-	+	163	25
-	+	155	25
-	+	163	0
-	+	163	10
-	+	153	0
-	+	163	0
-	+	163	31
-	+	163	0
-	+	163	69
-	+	163	0
-	+	133	0
-	+	108	44
-	+	124	49
-	+	141	23
-	+	14	8
-	+	15	12
-	+	10	0
-	+	9	0
-	+	100	53
-	+	144	18
-	+	144	0
-	+	142	20
-	+	144	57
-	+	143	19
-	+	144	24
-	+	138	0
-	+	136	0
-	+	138	0
-	+	141	0
-	+	141	7
-	+	16	0
-	+	17	30
-	+	140	73
-	+	141	0
-	+	140	20
-	+	100	0
-	+	140	0
-	+	140	20
-	+	141	0
-	+	16	0
-	+	17	0
-	+	16	0
-	+	158	0
-	+	163	0
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/distributed/fsdp/__init__.py
+	*	1747083650	0
+	"	24	4
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/bulk_eval/output_sink.py
-	*	1745670238	0
-	"	524	12
-	^	524	12
-	.	524	0
-	+	370	0
-	+	365	0
-	+	364	32
-	+	1	0
-	+	1	32
-	+	1	0
-	+	1	27
-	+	1	0
-	+	386	0
-	+	371	0
-	+	369	32
-	+	371	0
-	+	370	27
-	+	4	8
-	+	1	0
-	+	1	32
-	+	1	0
-	+	1	27
-	+	1	0
-	+	386	0
-	+	371	0
-	+	369	32
-	+	371	0
-	+	370	27
-	+	4	8
-	+	304	0
-	+	323	0
-	+	370	0
-	+	365	0
-	+	364	32
-	+	1	0
-	+	1	32
-	+	1	0
-	+	1	27
-	+	1	0
-	+	386	0
-	+	371	0
-	+	369	32
-	+	371	0
-	+	370	27
-	+	4	8
-	+	1	0
-	+	1	32
-	+	1	0
-	+	1	27
-	+	1	0
-	+	386	0
-	+	371	0
-	+	369	32
-	+	371	0
-	+	370	27
-	+	4	8
-	+	304	0
-	+	323	0
-	+	370	0
-	+	365	0
-	+	364	32
-	+	357	0
-	+	5	8
-	+	502	33
-	+	502	0
-	+	482	0
-	+	480	0
-	+	506	27
-	+	409	26
-	+	514	39
-	+	532	18
-	+	534	0
-	+	533	74
-	+	533	79
-	+	534	0
-	+	538	33
-	+	524	55
-	+	525	0
-	+	530	20
-	+	530	74
-	+	533	20
-	+	532	18
-	+	525	19
-	+	529	0
-	+	525	0
-	+	528	4
-	+	23	0
-	+	529	0
-	+	528	19
-	+	526	0
-	+	529	0
-	+	525	19
-	+	530	0
-	+	527	70
-	+	530	20
-	+	536	0
-	+	537	28
-	+	536	82
-	+	537	51
-	+	524	0
-	+	527	41
-	+	529	31
-	+	538	0
-	+	524	0
+> /data/users/xlwang/fbsource/fbcode/pytorch/data/fb/utils/exhaustive_full_sync_data_iterator.py
+	*	1747081098	0
+	"	112	99
 
-> /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_models/teams/clips/utils/arch_utils.py
-	*	1745670162	0
-	"	372	9
-	^	372	8
-	.	372	8
-	+	1	37
-	+	1	0
-	+	371	37
-	+	372	8
-	+	1	37
-	+	1	0
-	+	371	37
-	+	372	8
+> /data/users/xlwang/fbsource/fbcode/caffe2/torch/distributed/distributed_c10d.py
+	*	1747079696	0
+	"	2882	0
 
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/metrics.py
-	*	1745604809	0
-	"	619	20
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-r4npr94w.commit.hg.txt
-	*	1745538216	0
-	"	20	0
-	^	18	0
-	.	20	0
-	+	17	38
-	+	13	0
-	+	20	0
-
-> /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_models/teams/clips/zen_archs.py
-	*	1745536405	0
-	"	487	19
-	^	490	38
-	.	502	0
-	+	490	37
-	+	502	0
-
-> /usr/share/vim/vim91/doc/motion.txt
-	*	1745535732	0
-	"	1289	0
-
-> /usr/share/vim/vim91/doc/ft_context.txt
-	*	1745535687	0
-	"	158	1
-
-> /data/users/xlwang/fbsource/fbcode/dper_lib/instagram/ig_models/pt_models/teams/home/utils/feed_constants.py
-	*	1745534251	0
-	"	9	0
-
-> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-histedit-asny262w.histedit.hg.txt
-	*	1745532356	0
-	"	6	0
-	.	6	0
-	+	9	0
-	+	6	0
-
-> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/biography/launcher.py
-	*	1745531996	0
-	"	31	26
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/experimental/cotrain/conf/feature_index_loader_configs.py
+	*	1747077210	0
+	"	481	15
 
 > /data/users/xlwang/fbsource/fbcode/mvai_infra/checkpoint/checkpoint.py
-	*	1745531991	0
-	"	159	17
+	*	1747072374	0
+	"	666	12
+	.	666	0
+	+	655	0
+	+	666	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-6e3noi25.commit.hg.txt
+	*	1747072331	0
+	"	20	9
+	^	20	10
+	.	10	0
+	+	11	0
+	+	5	6
+	+	9	0
+	+	7	13
+	+	11	0
+	+	15	0
+	+	10	24
+	+	14	2
+	+	20	9
+	+	10	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/trainer/job_resolver.py
+	*	1747071745	0
+	"	897	39
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/core/model_family_api/configs.py
+	*	1747071585	0
+	"	1494	4
+	^	1496	4
 
 > /data/users/xlwang/fbsource/fbcode/hpc/trainer/trainer.py
-	*	1745531976	0
-	"	242	57
+	*	1747068752	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/fbcode/minimal_viable_ai/models/blue_reels_vdd/cotrain/conf/model_10s_hstu_standalone_cint_new2_vdd_unification_cotrain_config.py
+	*	1747067437	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-9ijqxvuc.commit.hg.txt
+	*	1746776718	0
+	"	1	0
+	.	1	0
+	+	1	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-v0rvq_lv.commit.hg.txt
+	*	1746776685	0
+	"	1	0
+
+> /data/users/xlwang/fbsource/.hg/edit-tmp/hg-editor-h73e4g14.commit.hg.txt
+	*	1746776679	0
+	"	1	2
+	^	1	3
+	.	1	2
+	+	1	2
