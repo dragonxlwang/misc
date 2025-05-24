@@ -17,3 +17,5 @@
 	insteadOf = git://github.com/
 [http "https://git.internal.tfbnw.net/"]
 	sslCert = /var/facebook/credentials/xlwang/x509/xlwang.pem
+[http "https://manifold.c2p.facebook.net/"]
+	sslCert = /var/facebook/credentials/xlwang/x509/xlwang.pem
