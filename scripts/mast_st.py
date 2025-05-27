@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
 
 import json
 import re
@@ -187,7 +188,7 @@ def mem(run: str, num: int, per_host_details: bool, mem_free: bool) -> None:
 def job_resolver_paste(run: str) -> None:
     job_status = json.loads(sh.mast("get-status", run, json=True))
     attempts = job_status["latestAttempt"]["taskGroupExecutionAttempts"]["trainer"]
-    tw_tasks = list(sorted(attempts[0]["taskExecutionAttempts"].keys()))
+    tw_tasks = sorted(attempts[0]["taskExecutionAttempts"].keys())
 
     tw0 = tw_tasks[0]
     start_ts, end_ts = get_start_end_ts(job_status)
@@ -203,7 +204,7 @@ def job_resolver_paste(run: str) -> None:
     color_print("yellow", f"CMD:        {cmd}")
 
     pastry = subprocess.check_output(cmd, shell=True, stderr=subprocess.DEVNULL)
-    pastry = re.search("P\d{9,}", pastry.decode("utf-8"))[0]
+    pastry = re.search(r"P\d{9,}", pastry.decode("utf-8"))[0]
 
     color_print("green", "resolved pastry: (first appearance)")
     print(pastry)
@@ -225,7 +226,7 @@ def job_diff(run1: str, run2: str) -> None:
     def _get_resolver_paste(run: str) -> str:
         job_status = json.loads(sh.mast("get-status", run, json=True))
         attempts = job_status["latestAttempt"]["taskGroupExecutionAttempts"]["trainer"]
-        tw_tasks = list(sorted(attempts[0]["taskExecutionAttempts"].keys()))
+        tw_tasks = sorted(attempts[0]["taskExecutionAttempts"].keys())
 
         tw0 = tw_tasks[0]
         start_ts, end_ts = get_start_end_ts(job_status)
@@ -235,7 +236,7 @@ def job_diff(run1: str, run2: str) -> None:
         )
 
         pastry = subprocess.check_output(cmd, shell=True, stderr=subprocess.DEVNULL)
-        pastry = re.search("P\d{9,}", pastry.decode("utf-8"))[0]
+        pastry = re.search(r"P\d{9,}", pastry.decode("utf-8"))[0]
 
         return pastry
 
