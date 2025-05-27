@@ -269,5 +269,27 @@ def job_diff(run1: str, run2: str) -> None:
     color_print("yellow", "<<<<<<<   diff local diff")
 
 
+@main.command()
+@click.argument("runs", required=True, nargs=-1, type=str)
+def tb(runs: List[str]) -> None:
+    url = "https://www.internalfb.com/intern/tensorboard/?dir="
+    parts = []
+    for i, r in enumerate(runs):
+        r = r.replace("https://www.internalfb.com/mast/job/", "")
+
+        if "," in r:
+            a, r = r.split(",")
+        else:
+            a = f"{i}/{r}"
+
+        if not r.startswith("manifold://"):
+            r = f"manifold://deep_retrieval/tree/jobs/{r}/tensorboard"
+        parts += [f"{a}:{r}"]
+
+    url = url + ",".join(parts)
+    url = sh.fburl(url).strip()
+    print(url)
+
+
 if __name__ == "__main__":
     main()
