@@ -1,15 +1,17 @@
 #!/usr/bin/python3
 
 import json
+import re
+import subprocess
 import time
 import urllib
 from pprint import pprint
-from typing import List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import click
 import sh
 
-_color_codes: dict[str, str] = {
+_color_codes: Dict[str, str] = {
     "black": "\033[0;30m",
     "red": "\033[0;31m",
     "green": "\033[0;32m",
@@ -92,6 +94,16 @@ def main() -> None:
     pass
 
 
+def get_start_end_ts(job_status: Dict[str, Any]) -> Tuple[int, int]:
+    attempts = job_status["latestAttempt"]["taskGroupExecutionAttempts"]["trainer"]
+    att = attempts[0]
+    start_ts, end_ts = [
+        att["taskGroupStateTransitionTimestampSecs"]["RUNNING"],
+        att["taskGroupStateTransitionTimestampSecs"].get("STOPPING", int(time.time())),
+    ]
+    return start_ts, end_ts
+
+
 @main.command()
 @click.argument("run", required=True, nargs=1, type=str)
 @click.option("-n", "--num", type=int, default=4)
@@ -168,6 +180,93 @@ def mem(run: str, num: int, per_host_details: bool, mem_free: bool) -> None:
         color_print("cyan", f"ODS:        {url}")
 
     color_print("green", ">>>>>>")
+
+
+@main.command()
+@click.argument("run", required=True, nargs=1, type=str)
+def job_resolver_paste(run: str) -> None:
+    job_status = json.loads(sh.mast("get-status", run, json=True))
+    attempts = job_status["latestAttempt"]["taskGroupExecutionAttempts"]["trainer"]
+    tw_tasks = list(sorted(attempts[0]["taskExecutionAttempts"].keys()))
+
+    tw0 = tw_tasks[0]
+    start_ts, end_ts = get_start_end_ts(job_status)
+    cmd = (
+        f"tw log {tw0} --start-time {start_ts} --end-time {end_ts} | "
+        'grep -m 1 "Configs after resolve:"'
+    )
+
+    color_print("green", f"https://www.internalfb.com/mast/job/{run}")
+    color_print("yellow", f"TW:         {tw0}")
+    color_print("yellow", f"START_TS:   {start_ts}")
+    color_print("yellow", f"END_TS:     {end_ts}")
+    color_print("yellow", f"CMD:        {cmd}")
+
+    pastry = subprocess.check_output(cmd, shell=True, stderr=subprocess.DEVNULL)
+    pastry = re.search("P\d{9,}", pastry.decode("utf-8"))[0]
+
+    color_print("green", "resolved pastry: (first appearance)")
+    print(pastry)
+    pprint(job_status)
+
+
+@main.command()
+@click.argument("run", required=True, nargs=1, type=str)
+def job_meta(run: str) -> None:
+    job_def = json.loads(sh.mast("get-job-definition", run, json=True))
+    for k, v in job_def["applicationMetadata"].items():
+        print(f"{k:<40}: {v}")
+
+
+@main.command()
+@click.argument("run1", required=True, nargs=1, type=str)
+@click.argument("run2", required=True, nargs=1, type=str)
+def job_diff(run1: str, run2: str) -> None:
+    def _get_resolver_paste(run: str) -> str:
+        job_status = json.loads(sh.mast("get-status", run, json=True))
+        attempts = job_status["latestAttempt"]["taskGroupExecutionAttempts"]["trainer"]
+        tw_tasks = list(sorted(attempts[0]["taskExecutionAttempts"].keys()))
+
+        tw0 = tw_tasks[0]
+        start_ts, end_ts = get_start_end_ts(job_status)
+        cmd = (
+            f"tw log {tw0} --start-time {start_ts} --end-time {end_ts} | "
+            'grep -m 1 "Configs after resolve:"'
+        )
+
+        pastry = subprocess.check_output(cmd, shell=True, stderr=subprocess.DEVNULL)
+        pastry = re.search("P\d{9,}", pastry.decode("utf-8"))[0]
+
+        return pastry
+
+    def _get_local_diff(run: str) -> str:
+        job_def = json.loads(sh.mast("get-job-definition", run, json=True))
+        return job_def["applicationMetadata"]["local_diff"]
+
+    def _diff_pastry(pastry1: str, pastry2: str) -> None:
+        subprocess.check_call("mkdir -p /tmp", shell=True)
+        subprocess.check_call(f"pastry {pastry1} > /tmp/{pastry1}", shell=True)
+        subprocess.check_call(f"pastry {pastry2} > /tmp/{pastry2}", shell=True)
+        cmd = f"diff /tmp/{pastry1} /tmp/{pastry2}"
+
+        color_print("green", cmd)
+
+        subprocess.check_call(
+            f"diff -wbBdu --color=always /tmp/{pastry1} /tmp/{pastry2} | less -R",
+            shell=True,
+        )
+
+    color_print("green", ">>>>>>>   diff job resolver")
+    pastry1 = _get_resolver_paste(run1)
+    pastry2 = _get_resolver_paste(run2)
+    _diff_pastry(pastry1, pastry2)
+    color_print("yellow", "<<<<<<<   diff job resolver")
+
+    color_print("green", ">>>>>>>   diff local diff")
+    pastry1 = _get_local_diff(run1)
+    pastry2 = _get_local_diff(run2)
+    _diff_pastry(pastry1, pastry2)
+    color_print("yellow", "<<<<<<<   diff local diff")
 
 
 if __name__ == "__main__":
