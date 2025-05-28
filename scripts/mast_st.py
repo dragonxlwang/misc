@@ -208,7 +208,6 @@ def job_resolver_paste(run: str) -> None:
 
     color_print("green", "resolved pastry: (first appearance)")
     print(pastry)
-    pprint(job_status)
 
 
 @main.command()
