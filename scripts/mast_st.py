@@ -290,5 +290,24 @@ def tb(runs: List[str]) -> None:
     print(url)
 
 
+@main.command()
+@click.argument("run", required=True, nargs=1, type=str)
+@click.argument("key", required=True, nargs=1, type=str)
+def log_grep(run: str, key: str) -> None:
+    job_status = json.loads(sh.mast("get-status", run, json=True))
+    attempts = job_status["latestAttempt"]["taskGroupExecutionAttempts"]["trainer"]
+    tw_tasks = sorted(attempts[0]["taskExecutionAttempts"].keys())
+
+    tw0 = tw_tasks[0]
+    start_ts, end_ts = get_start_end_ts(job_status)
+    cmd = (
+        f'tw log {tw0} --start-time {start_ts} --end-time {end_ts} | grep -E -i "{key}"'
+    )
+
+    color_print("green", ">>>>>>>   start grep")
+    subprocess.check_call(cmd, shell=True)
+    color_print("green", ">>>>>>>   end grep")
+
+
 if __name__ == "__main__":
     main()

@@ -2250,7 +2250,7 @@ function mast_cat {
 
   else
     ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n ${1:-"10"} \
-      | lolcat -h 0.5
+      | lolcat -h 0.5 | less -R
 
   fi
   print -s "mast_cat_select "
@@ -2478,8 +2478,8 @@ function mast_status {
   #   # echo $r
   #   # echo -e "attempt: $attempt\nstatus: $st\ntimestamp: \n$ts" | lolcat -h 0.5
   # done
-
 }
+alias mast_st="~/misc/scripts/mast_st.py"
 function mast_model_entity_id {
   local runs="$(mast_resolve "$@")"
   for r in "${=runs[@]}"; do
