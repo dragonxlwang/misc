@@ -3,6 +3,7 @@
 import json
 import re
 import subprocess
+import sys
 import time
 import urllib
 from pprint import pprint
@@ -110,8 +111,7 @@ def get_start_end_ts(job_status: Dict[str, Any]) -> Tuple[int, int]:
 @click.option("--per-host-details", type=bool, default=False)
 @click.option("--mem-free", type=bool, default=False)
 def mem(run: str, num: int, per_host_details: bool, mem_free: bool) -> None:
-    job_status = json.loads(sh.mast("get-status", run, json=True))
-    attempts = job_status["latestAttempt"]["taskGroupExecutionAttempts"]["trainer"]
+    hosts, start_ts, end_ts = get_job_info(run)
 
     ods_keys = (
         [
@@ -125,61 +125,43 @@ def mem(run: str, num: int, per_host_details: bool, mem_free: bool) -> None:
         ]
     )
 
-    for att in attempts:
-        idx = att["attemptIndex"]
-        start_ts, end_ts = [
-            att["taskGroupStateTransitionTimestampSecs"]["RUNNING"],
-            att["taskGroupStateTransitionTimestampSecs"].get(
-                "STOPPING", int(time.time())
-            ),
-        ]
-        final_status = ",".join(
-            {
-                k
-                for k, v in att["taskGroupStateTransitionTimestampSecs"].items()
-                if v > end_ts
-            }
-        )
-        hosts = sorted(
-            [
-                (int(k.split("/")[-1]), t["hostname"])
-                for k, v in att["taskExecutionAttempts"].items()
-                for t in v
-            ]
-        )
+    color_print("green", f"https://www.internalfb.com/mast/job/{run}")
 
-        start_ts_str = sh.date("+%Y-%m-%d %H:%M:%S", d=f"@{start_ts}").strip()
-        end_ts_str = sh.date("+%Y-%m-%d %H:%M:%S", d=f"@{end_ts}").strip()
-        color_print("green", f"https://www.internalfb.com/mast/job/{run}")
-        color_print("yellow", f"ATTEMPT     [{idx}]")
-        color_print("yellow", f"START_TS:   {start_ts_str}")
-        color_print("yellow", f"END_TS:     {end_ts_str}    {final_status}")
+    url = get_ods_url(
+        entities=hosts,
+        keys=ods_keys,
+        start_ts=start_ts,
+        end_ts=end_ts,
+        title=f"cpu mem: {run}",
+    )
+    url = sh.fburl(url).strip()
 
-        color_print("yellow", f"HOSTS:")
-        for r, h in hosts:
-            url = ""
-            if per_host_details and r < num:
-                url = get_ods_url(
-                    entities=[h],
-                    keys=ods_keys,
-                    start_ts=start_ts,
-                    end_ts=end_ts,
-                    title=f"cpu mem: {run}",
-                )
-                url = sh.fburl(url).strip()
-            color_print("yellow", f"            rank {r}\t{h}\t{url}")
-
-        url = get_ods_url(
-            entities=[h for r, h in hosts if r < num],
-            keys=ods_keys,
-            start_ts=start_ts,
-            end_ts=end_ts,
-            title=f"cpu mem: {run}",
-        )
-        url = sh.fburl(url).strip()
-        color_print("cyan", f"ODS:        {url}")
-
+    color_print("cyan", f"ODS:        {url}")
     color_print("green", ">>>>>>")
+
+
+def get_job_info(run: str) -> Tuple[List[str], int, int]:
+    attempt_index = -1
+    if ":" in run:
+        parts = run.split(":")
+        run = parts[0]
+        attempt_index = int(parts[1])
+    res = json.loads(
+        sh.mast("get-job-history", run, attempt_index=attempt_index, json=True)
+    )
+    res = res["jobExecutionAttempt"]["taskGroupExecutionAttempts"]["trainer"][0][
+        "taskExecutionAttempts"
+    ]
+
+    hosts = []
+    start_ts = sys.maxsize
+    end_ts = -1
+    for task in res.values():
+        hosts.append(task[0]["hostname"])
+        start_ts = min(start_ts, task[0]["startTimestamp"])
+        end_ts = max(end_ts, task[0]["endTimestamp"])
+
+    return hosts, start_ts, end_ts
 
 
 @main.command()
