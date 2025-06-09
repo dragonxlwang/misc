@@ -129,8 +129,9 @@ def mast_cat(tag_fp: str, tb_fp: str, n: int) -> None:
             report = ""
             parts = ln.split("\t")
             report += f"{parts[0]}\t{parts[1]}\t{parts[2]}"
+            tag = parts[1]
             if tag in tag_records:
-                report += "\t{tag_records[tag]}"
+                report += f"\t{tag_records[tag]}"
             report += "\n"
             for i, r in enumerate(parts[3].split()):
                 if "," in r:
