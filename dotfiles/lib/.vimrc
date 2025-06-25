@@ -836,6 +836,11 @@ function! FindFbcodeTargets()
     if filereadable(l:targets)
       return l:targets
     endif
+    let l:targets = l:path . '/BUCK'
+    if filereadable(l:targets)
+      return l:targets
+    endif
+
     let slashidx = strridx(l:path, '/')
     let l:path = l:path[0:slashidx-1]
   endwhile
