@@ -2248,11 +2248,16 @@ function mast_cat {
     ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n -1 \
       | lolcat -h 0.5 | less -R
 
-  else
+  elif [[ $1 =~ "^[0-9]+$" ]]; then
     ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n ${1:-"10"} \
       | lolcat -h 0.5 | less -R
 
+  else
+    ~/misc/scripts/tb_cmp.py mast-cat ~/misc/tmp/tb_tags ~/misc/tmp/tb -n -1 -t $1 \
+      | lolcat -h 0.5
+
   fi
+
   print -s "mast_cat_select "
 }
 function mast_cat_tagged {
@@ -2406,6 +2411,7 @@ function mast_link {
     i=$((i+1))
   done
   echo $fb_url | lolcat -h 0.5
+  echo $hashkey
 }
 function mast_tag {
   local h=$(sed "${1}q;d" ~/misc/tmp/tb | tail -n 1 | cut -d$'\t' -f2)
@@ -2432,6 +2438,13 @@ function mast_runs {
 }
 function mast_exp {
   vim ~/misc/tmp/mast_exp.md
+}
+function mast_summary {
+  local runs="$(mast_resolve "$@")"
+  for r in ${=runs[@]}; do
+    job="$(echo $r | tr "," "\n" | tail -n 1)"
+    mast list-jobs --include-historical --job-name "$job"
+  done
 }
 
 function mast_show {

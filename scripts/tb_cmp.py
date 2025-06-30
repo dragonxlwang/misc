@@ -114,7 +114,8 @@ def query_tag(h: str, fp: str) -> None:
 @click.argument("tag_fp", required=True, nargs=1, type=str)
 @click.argument("tb_fp", required=True, nargs=1, type=str)
 @click.option("-n", type=int, default=-1)
-def mast_cat(tag_fp: str, tb_fp: str, n: int) -> None:
+@click.option("-t", type=str, default="")
+def mast_cat(tag_fp: str, tb_fp: str, n: int, t: str) -> None:
     try:
         with open(tag_fp, "r") as f:
             lines = f.readlines()
@@ -130,6 +131,8 @@ def mast_cat(tag_fp: str, tb_fp: str, n: int) -> None:
             parts = ln.split("\t")
             report += f"{parts[0]}\t{parts[1]}\t{parts[2]}"
             tag = parts[1]
+            if t and t != tag:
+                continue
             if tag in tag_records:
                 report += f"\t{tag_records[tag]}"
             report += "\n"
